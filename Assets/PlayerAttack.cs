@@ -4,29 +4,40 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour
 {
-    
+
     public Animator animate;
     // Update is called once per frame
 
     public GameObject ObjectToSpawn;
 
+    public GameObject[] skills;
+
     void Update()
     {
 
-        switch(Input.inputString){
+        switch (Input.inputString)
+        {
             case "p":
-            animate.SetTrigger("BasicAttack");
-            GameObject Spawn = Instantiate(ObjectToSpawn, GameObject.FindWithTag("Player").transform);
-            Destroy(Spawn, 1);
-            break;
+                animate.SetTrigger("BasicAttack");
+                GameObject Spawn = Instantiate(ObjectToSpawn, GameObject.FindWithTag("Player").transform);
+                Destroy(Spawn, 1);
+                break;
+
+            case "1":
+                skills[0].GetComponent<IgniteSkill>().Active();
+                break;
+
+            case "2":
+                skills[1].GetComponent<WaterwallSkill>().Active();
+                break;
 
             case "=":
-            SceneManager.LoadScene("MainMenu");
-            break;
+                SceneManager.LoadScene("MainMenu");
+                break;
 
         }
 
-        
+
         //animate.ResetTrigger("BasicAttack");
     }
 }
