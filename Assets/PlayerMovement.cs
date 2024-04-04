@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator animate;
 
     Vector2 movement;
+
+    GameObject Player;
 
     public bool canMove = true;
 
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        Camera.main.transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0);
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        //Camera.main.transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0);
     }
 }
