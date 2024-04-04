@@ -10,7 +10,18 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject ObjectToSpawn;
 
-    public GameObject[] skills;
+    public GameObject[] skillObjects;
+
+
+    void Start()
+    {
+        // hubungkan gameobject skill dengan kelasnya
+        for (int i = 0; i < GameManager.playerNow.usedSkills.Length; i++)
+        {
+            string name = GameManager.playerNow.usedSkills[i].name;
+            GameManager.playerNow.usedSkills[i].skillObject = skillObjects[SkillIndexInSkillObjects(name)];
+        }
+    }
 
     void Update()
     {
@@ -24,14 +35,15 @@ public class PlayerAttack : MonoBehaviour
                 break;
 
             case "1":
-                skills[0].GetComponent<IgniteSkill>().Active();
+
+                GameManager.playerNow.usedSkills[0].Attack();
                 break;
 
             case "2":
-                skills[1].GetComponent<WaterwallSkill>().Active();
+                GameManager.playerNow.usedSkills[1].Attack();
                 break;
             case "3":
-                skills[2].GetComponent<HighTideSkill>().Active();
+                GameManager.playerNow.usedSkills[2].Attack();
                 break;
 
             case "=":
@@ -43,4 +55,19 @@ public class PlayerAttack : MonoBehaviour
 
         //animate.ResetTrigger("BasicAttack");
     }
+
+    int SkillIndexInSkillObjects(string name)
+    {
+        for (int i = 0; i < skillObjects.Length; i++)
+        {
+
+            if (skillObjects[i].name == name)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
 }

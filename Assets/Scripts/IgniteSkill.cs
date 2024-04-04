@@ -27,23 +27,23 @@ public class IgniteSkill : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2d(Collision2D collision)
-    {
-        hit = true;
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            print("Kenaa");
-        }
+    // private void OnCollisionEnter2d(Collision2D collision)
+    // {
+    //     hit = true;
+    //     if (collision.gameObject.CompareTag("Enemy"))
+    //     {
+    //         print("Kenaa");
+    //     }
 
-    }
+    // }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            print("Kenaa wehh");
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.CompareTag("Enemy"))
+    //     {
+    //         print("Kenaa wehh");
+    //     }
+    // }
 
     public void Active()
     {

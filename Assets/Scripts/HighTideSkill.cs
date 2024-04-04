@@ -6,7 +6,6 @@ public class HighTideSkill : MonoBehaviour
 {
     private bool hit;
     public float damage;
-    float moveHorizontal, moveVertical;
     public Animator animator;
     public PolygonCollider2D polygonCollider;
 
