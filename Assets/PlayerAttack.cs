@@ -16,10 +16,10 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         // hubungkan gameobject skill dengan kelasnya
-        for (int i = 0; i < GameManager.playerNow.usedSkills.Length; i++)
+        for (int i = 0; i < TotalSelectedSkills(); i++)
         {
-            string name = GameManager.playerNow.usedSkills[i].name;
-            GameManager.playerNow.usedSkills[i].skillObject = skillObjects[SkillIndexInSkillObjects(name)];
+            string name = GameManager.playerNow.selectedSkills[i].name;
+            GameManager.playerNow.selectedSkills[i].skillObject = skillObjects[SkillIndexInSkillObjects(name)];
         }
     }
 
@@ -36,14 +36,17 @@ public class PlayerAttack : MonoBehaviour
 
             case "1":
 
-                GameManager.playerNow.usedSkills[0].Attack();
+                GameManager.playerNow.selectedSkills[0].Attack();
                 break;
 
             case "2":
-                GameManager.playerNow.usedSkills[1].Attack();
+                GameManager.playerNow.selectedSkills[1].Attack();
                 break;
             case "3":
-                GameManager.playerNow.usedSkills[2].Attack();
+                GameManager.playerNow.selectedSkills[2].Attack();
+                break;
+            case "4":
+                GameManager.playerNow.selectedSkills[3].Attack();
                 break;
 
             case "=":
@@ -69,5 +72,22 @@ public class PlayerAttack : MonoBehaviour
         return -1;
     }
 
+    int TotalSelectedSkills()
+    {
+        for (int i = 0; i < GameManager.playerNow.selectedSkills.Length; i++)
+        {
+
+            if (GameManager.playerNow.selectedSkills[i] == null)
+            {
+                return i;
+            }
+            else
+            {
+                Debug.Log(GameManager.playerNow.selectedSkills[i].name);
+
+            }
+        }
+        return 7;
+    }
 
 }

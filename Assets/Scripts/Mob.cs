@@ -17,9 +17,9 @@ public class Mob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp < 0)
+        if (hp <= 0)
         {
-            Destroy(mobObject, 1f);
+            Destroy(mobObject, 0.5f);
         }
     }
 
@@ -29,6 +29,7 @@ public class Mob : MonoBehaviour
         {
             hp -= 100;
             print(hp);
+
             spriteRenderer.color = Color.red;
             // print("Kenaa wehh");
         }
@@ -39,7 +40,6 @@ public class Mob : MonoBehaviour
         if (other.CompareTag("Damage"))
         {
             spriteRenderer.color = Color.white;
-            // print("selesee");
         }
     }
 

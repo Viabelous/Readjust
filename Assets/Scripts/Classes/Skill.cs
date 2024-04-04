@@ -28,6 +28,9 @@ public class Skill
             case "high_tide":
                 skillObject.GetComponent<HighTideSkill>().Active();
                 break;
+            case "whirlwind":
+                skillObject.GetComponent<WhirlwindSkill>().Active();
+                break;
         }
     }
 }
