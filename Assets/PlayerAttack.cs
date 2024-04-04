@@ -30,6 +30,9 @@ public class PlayerAttack : MonoBehaviour
             case "2":
                 skills[1].GetComponent<WaterwallSkill>().Active();
                 break;
+            case "3":
+                skills[2].GetComponent<HighTideSkill>().Active();
+                break;
 
             case "=":
                 SceneManager.LoadScene("MainMenu");

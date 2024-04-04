@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterwallSkill : MonoBehaviour
+public class HighTideSkill : MonoBehaviour
 {
     private bool hit;
     public float damage;
+    float moveHorizontal, moveVertical;
     public Animator animator;
     public PolygonCollider2D polygonCollider;
 
