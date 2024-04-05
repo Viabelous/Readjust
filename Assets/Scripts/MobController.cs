@@ -10,7 +10,11 @@ public class MobController : MonoBehaviour
 
     public float ogSpeed = 1f, speed = 1f;
     public float ogHp = 500, hp = 500;
-    // public float knock = 0;
+    public bool isKnocked = false;
+    public float ogKnock = 1, knock = 1;
+    public bool isSwiped = false;
+    public Vector2 ogBackward = new Vector2(0, 0), backward = new Vector2(0, 0);
+    public float ogSwipe = 1, swipe = 1;
 
     public Rigidbody2D rb;
     Vector2 movement;
@@ -56,20 +60,6 @@ public class MobController : MonoBehaviour
         }
     }
 
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     // Memeriksa apakah objek bertabrakan dengan sesuatu
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         // Mendapatkan arah normal dari permukaan yang ditabrak
-    //         Vector3 bounceDirection = collision.contacts[0].normal;
-
-    //         // Memberikan gaya pantulan mundur ke objek
-    //         collision.rigidbody.AddForce(-bounceDirection * 20, ForceMode2D.Impulse);
-    //     }
-    // }
-
-
 
     void Move()
     {
@@ -98,11 +88,13 @@ public class MobController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+
+        rb.MovePosition(rb.position + (isSwiped ? backward * swipe : movement * (isKnocked ? -knock : knock) * speed) * Time.fixedDeltaTime);
         if (movement.x != 0 && movement.y != 0)
         {
             mob.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
         }
+
     }
 
     public bool OnTheLeft()

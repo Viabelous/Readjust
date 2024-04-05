@@ -24,6 +24,8 @@ public class HighTideSkill : MonoBehaviour
             MobController mob = other.GetComponent<MobController>();
             mob.hp -= damage;
 
+            mob.isKnocked = true;
+            mob.knock = knock;
         }
     }
 
@@ -35,8 +37,13 @@ public class HighTideSkill : MonoBehaviour
         {
             MobController mob = other.GetComponent<MobController>();
 
+            mob.isKnocked = false;
+            mob.knock = mob.ogKnock;
+
+
         }
     }
+
 
     public void Active()
     {

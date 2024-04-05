@@ -10,8 +10,8 @@ public static class GameManager
     // private static Object[] loadedAssets = AssetDatabase.LoadAllAssetsAtPath("Assets/Skills/");
     // public static Sprite[] skillImgs = System.Array.FindAll(loadedAssets, obj => obj is Sprite) as Sprite[];
     public static Skill[] skillsAvailable = {
-        new Skill("ignite", 0),
-        new Skill("waterwall", 0),
+        new Skill("ignite", 1),
+        new Skill("waterwall", 1),
         new Skill("high_tide", 3),
         new Skill("whirlwind", 3),
     };
