@@ -5,7 +5,7 @@ using UnityEngine;
 public class WhirlwindSkill : MonoBehaviour
 {
     private bool hit;
-    private float damage;
+    private float damage = 30;
 
 
     private void Start()
@@ -20,33 +20,17 @@ public class WhirlwindSkill : MonoBehaviour
 
     }
 
-    public float GetDamage()
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        return this.damage;
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+            mob.hp -= damage;
+            mob.rb.AddForce(Vector2.up * 20, ForceMode2D.Impulse);
+        }
     }
-    public void SetDamage(float damage)
-    {
-        this.damage = damage;
-    }
-
-
-    // private void OnCollisionEnter2d(Collision2D collision)
-    // {
-    //     hit = true;
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa");
-    //     }
-
-    // }
-
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa wehh");
-    //     }
-    // }
 
     public void Active()
     {

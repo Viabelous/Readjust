@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: 146110289}
   - component: {fileID: 146110288}
   - component: {fileID: 146110287}
-  - component: {fileID: 146110286}
   - component: {fileID: 146110292}
   m_Layer: 0
   m_Name: Mob
@@ -327,23 +326,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &146110286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146110285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf97a3a8ec5de1469f2a46c350a29d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 929240444}
-  Mob: {fileID: 146110285}
-  speed: 1
-  rb: {fileID: 146110289}
-  animate: {fileID: 146110287}
 --- !u!95 &146110287
 Animator:
   serializedVersion: 5
@@ -394,10 +376,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04, y: 0}
+  m_Offset: {x: -0.011339717, y: -0.074953124}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -408,7 +390,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1.4}
+  m_Size: {x: 0.42222553, y: 0.40062454}
   m_EdgeRadius: 0
 --- !u!50 &146110289
 Rigidbody2D:
@@ -516,8 +498,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aab027c29ecc4fbdcdcd5df8a5ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 929240444}
+  mob: {fileID: 146110285}
+  ogSpeed: 1
+  speed: 1
+  ogHp: 500
   hp: 500
-  mobObject: {fileID: 146110285}
+  rb: {fileID: 146110289}
+  animate: {fileID: 146110287}
 --- !u!1 &189802845
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +628,6 @@ GameObject:
   - component: {fileID: 290860533}
   - component: {fileID: 290860532}
   - component: {fileID: 290860531}
-  - component: {fileID: 290860530}
   - component: {fileID: 290860536}
   m_Layer: 0
   m_Name: Mob_2
@@ -649,23 +636,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &290860530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290860529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf97a3a8ec5de1469f2a46c350a29d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 929240444}
-  Mob: {fileID: 290860529}
-  speed: 1
-  rb: {fileID: 290860533}
-  animate: {fileID: 290860531}
 --- !u!95 &290860531
 Animator:
   serializedVersion: 5
@@ -716,10 +686,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04, y: 0}
+  m_Offset: {x: 0.008245595, y: -0.056287378}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -730,7 +700,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1.4}
+  m_Size: {x: 0.35259038, y: 0.40289563}
   m_EdgeRadius: 0
 --- !u!50 &290860533
 Rigidbody2D:
@@ -838,8 +808,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aab027c29ecc4fbdcdcd5df8a5ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 929240444}
+  mob: {fileID: 290860529}
+  ogSpeed: 1
+  speed: 1
+  ogHp: 500
   hp: 500
-  mobObject: {fileID: 290860529}
+  rb: {fileID: 290860533}
+  animate: {fileID: 290860531}
 --- !u!1 &302463197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1200,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1670,7 +1646,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3153,7 +3129,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4614,7 +4590,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.096950874, y: 0.4192073}

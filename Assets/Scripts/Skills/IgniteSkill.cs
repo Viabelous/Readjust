@@ -4,50 +4,29 @@ using UnityEngine;
 
 public class IgniteSkill : MonoBehaviour
 {
-    private bool hit;
-    private float damage;
+    private float damage = 50;
     float moveHorizontal, moveVertical;
     public SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-
         spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
     private void Update()
     {
 
-        if (hit) return;
-
     }
-    public float GetDamage()
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        return this.damage;
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+            mob.hp -= damage;
+        }
     }
-    public void SetDamage(float damage)
-    {
-        this.damage = damage;
-    }
-
-    // private void OnCollisionEnter2d(Collision2D collision)
-    // {
-    //     hit = true;
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa");
-    //     }
-
-    // }
-
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa wehh");
-    //     }
-    // }
 
     public void Active()
     {

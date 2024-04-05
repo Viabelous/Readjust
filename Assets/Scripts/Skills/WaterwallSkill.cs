@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WaterwallSkill : MonoBehaviour
 {
-    private bool hit;
-    private float damage;
+    private float damage = 0.1f;
+    private float slow = 0.7f;
 
 
     private void Start()
@@ -16,7 +16,6 @@ public class WaterwallSkill : MonoBehaviour
     private void Update()
     {
 
-        if (hit) return;
 
     }
     public float GetDamage()
@@ -28,23 +27,26 @@ public class WaterwallSkill : MonoBehaviour
         this.damage = damage;
     }
 
-    // private void OnCollisionEnter2d(Collision2D collision)
-    // {
-    //     hit = true;
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa");
-    //     }
 
-    // }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+            mob.hp -= damage;
+            mob.speed -= mob.ogSpeed * slow;
+        }
+    }
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa wehh");
-    //     }
-    // }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+            mob.speed = mob.ogSpeed;
+        }
+    }
 
     public void Active()
     {

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HighTideSkill : MonoBehaviour
 {
-    private bool hit;
-    private float damage;
+    private float damage = 10;
+    private float knock = 20;
 
     private void Start()
     {
@@ -15,37 +15,28 @@ public class HighTideSkill : MonoBehaviour
     private void Update()
     {
 
-        if (hit) return;
-
     }
 
-    public float GetDamage()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        return this.damage;
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+            mob.hp -= damage;
+
+        }
     }
-    public void SetDamage(float damage)
+
+
+
+    private void OnTriggerExit2D(Collider2D other)
     {
-        this.damage = damage;
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+
+        }
     }
-
-
-    // private void OnCollisionEnter2d(Collision2D collision)
-    // {
-    //     hit = true;
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa");
-    //     }
-
-    // }
-
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         print("Kenaa wehh");
-    //     }
-    // }
 
     public void Active()
     {
