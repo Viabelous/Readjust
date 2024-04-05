@@ -5,14 +5,11 @@ using UnityEngine;
 public class WaterwallSkill : MonoBehaviour
 {
     private bool hit;
-    public float damage;
-    public Animator animator;
-    public PolygonCollider2D polygonCollider;
+    private float damage;
+
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
 
     }
 
@@ -22,7 +19,14 @@ public class WaterwallSkill : MonoBehaviour
         if (hit) return;
 
     }
-
+    public float GetDamage()
+    {
+        return this.damage;
+    }
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
 
     // private void OnCollisionEnter2d(Collision2D collision)
     // {

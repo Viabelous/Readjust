@@ -7,15 +7,14 @@ public class SelectSkill : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    int totalSelected;
+
     bool selected = false;
-    public GameObject skillObject;
     Image img;
     int slotNumber;
+
     void Start()
     {
         img = GetComponent<Image>();
-        totalSelected = TotalSelected();
     }
 
     // Update is called once per frame
@@ -37,9 +36,10 @@ public class SelectSkill : MonoBehaviour
 
         if (!selected)
         {
+            int totalSelected = TotalSelectedSkills();
             Debug.Log("Tambah");
             slotNumber = totalSelected + 1;
-            GameManager.playerNow.selectedSkills[TotalSelected()] = new Skill(skillObject.name);
+            GameManager.playerNow.selectedSkills[totalSelected] = GameManager.skillsAvailable[SkillIndex()];
 
             img.color = Color.blue;
         }
@@ -49,16 +49,15 @@ public class SelectSkill : MonoBehaviour
             Debug.Log("Hapus");
             Unselected();
             img.color = Color.white;
-            // selected = false;
 
         }
 
-        Debug.Log(TotalSelected());
+        Debug.Log(TotalSelectedSkills());
     }
 
     void Unselected()
     {
-        for (int i = slotNumber - 1; i < TotalSelected(); i++)
+        for (int i = slotNumber - 1; i < TotalSelectedSkills(); i++)
         {
             if (i == GameManager.playerNow.selectedSkills.Length - 1)
             {
@@ -72,21 +71,30 @@ public class SelectSkill : MonoBehaviour
         }
     }
 
-    int TotalSelected()
+    int TotalSelectedSkills()
     {
-        for (int i = 0; i < GameManager.playerNow.selectedSkills.Length; i++)
+        int total = GameManager.playerNow.selectedSkills.Length;
+        for (int i = 0; i < total; i++)
         {
 
             if (GameManager.playerNow.selectedSkills[i] == null)
             {
                 return i;
             }
-            else
-            {
-                Debug.Log(GameManager.playerNow.selectedSkills[i].name);
 
+        }
+        return total;
+    }
+
+    int SkillIndex()
+    {
+        for (int i = 0; i < GameManager.skillsAvailable.Length; i++)
+        {
+            if (GameManager.skillsAvailable[i].name == gameObject.name)
+            {
+                return i;
             }
         }
-        return 7;
+        return -1;
     }
 }

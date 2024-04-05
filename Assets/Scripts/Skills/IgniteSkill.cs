@@ -5,16 +5,13 @@ using UnityEngine;
 public class IgniteSkill : MonoBehaviour
 {
     private bool hit;
-    public float damage;
+    private float damage;
     float moveHorizontal, moveVertical;
-    public Animator animator;
-    public PolygonCollider2D polygonCollider;
     public SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
@@ -25,7 +22,14 @@ public class IgniteSkill : MonoBehaviour
         if (hit) return;
 
     }
-
+    public float GetDamage()
+    {
+        return this.damage;
+    }
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
 
     // private void OnCollisionEnter2d(Collision2D collision)
     // {
