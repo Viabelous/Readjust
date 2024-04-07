@@ -113,19 +113,20 @@ public class WhirlwindSkill : MonoBehaviour
         {
             case "right":
                 spriteRenderer.sortingOrder = 20;
-                transform.position = player.transform.position + new Vector3(0, initialPosition.y, initialPosition.z);
+                transform.position = player.transform.position + new Vector3(2, initialPosition.y, 0);
                 break;
             case "left":
                 spriteRenderer.sortingOrder = 20;
-                transform.position = player.transform.position + new Vector3(0, initialPosition.y, initialPosition.z);
+                transform.position = player.transform.position + new Vector3(-2, initialPosition.y, 0);
                 break;
             case "front":
                 spriteRenderer.sortingOrder = 20;
-                transform.position = player.transform.position + new Vector3(0, -2, initialPosition.z);
+                transform.position = player.transform.position + new Vector3(0, initialPosition.y - 1f, initialPosition.z);
                 break;
             case "back":
+                print("back");
                 spriteRenderer.sortingOrder = -1;
-                transform.position = player.transform.position + new Vector3(0, 2, initialPosition.z);
+                transform.position = player.transform.position + new Vector3(0, 3, initialPosition.z);
                 break;
         }
 
