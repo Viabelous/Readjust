@@ -8,13 +8,15 @@ public class MobController : MonoBehaviour
     public GameObject player;
     public GameObject mob;
 
-    public float ogSpeed = 1f, speed = 1f;
-    public float ogHp = 500, hp = 500;
-    public bool isKnocked = false;
-    public float ogKnock = 1, knock = 1;
-    public bool isSwiped = false;
-    public Vector2 ogBackward = new Vector2(0, 0), backward = new Vector2(0, 0);
-    public float ogSwipe = 1, swipe = 1;
+    public float ogSpeed = 1f, speed;
+    public float attack;
+
+    public float ogHp = 500, hp;
+
+    public bool isKnocked = false, isSwiped = false;
+    public float ogKnock = 1, knock;
+    public float ogSwipe = 1, swipe;
+    public Vector2 ogBackward = new Vector2(0, 0), backward;
 
     public Rigidbody2D rb;
     Vector2 movement;
@@ -24,6 +26,11 @@ public class MobController : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        speed = ogSpeed;
+        hp = ogHp;
+        knock = ogKnock;
+        swipe = ogSwipe;
+        backward = ogBackward;
     }
 
     // Update is called once per frame
@@ -88,8 +95,20 @@ public class MobController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isKnocked)
+        {
+            rb.MovePosition(rb.position + movement * -knock * speed * Time.fixedDeltaTime);
+        }
+        else if (isSwiped)
+        {
+            rb.MovePosition(rb.position + backward * swipe * Time.fixedDeltaTime);
+        }
+        else
+        {
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
-        rb.MovePosition(rb.position + (isSwiped ? backward * swipe : movement * (isKnocked ? -knock : knock) * speed) * Time.fixedDeltaTime);
+        }
+
         if (movement.x != 0 && movement.y != 0)
         {
             mob.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
@@ -97,22 +116,5 @@ public class MobController : MonoBehaviour
 
     }
 
-    public bool OnTheLeft()
-    {
-        return mob.transform.position.x < player.transform.position.x;
-    }
-
-    public bool OnTheRight()
-    {
-        return mob.transform.position.x > player.transform.position.x;
-    }
-    public bool OnTheTop()
-    {
-        return mob.transform.position.y > player.transform.position.x;
-    }
-    public bool OnTheBottom()
-    {
-        return mob.transform.position.x < player.transform.position.x;
-    }
 
 }

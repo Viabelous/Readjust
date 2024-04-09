@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     // movement ------------------------------------------------------
     public float speed = 5f;
+    public float ogHp = 500, hp;
+    public float ogMana = 100, mana;
+    public GameObject healtBar, manaBar;
+
+
 
     public Rigidbody2D rb;
 
     public Animator animate;
 
     Vector2 movement;
+
     public string direction;
 
     public bool canMove = true;
@@ -27,6 +34,8 @@ public class PlayerController : MonoBehaviour
     {
         direction = "front";
         ObjectToSpawn = GameObject.Find("basic_stab");
+        hp = ogHp;
+        mana = ogMana;
 
         // hubungkan gameobject skill dengan object skill
         for (int i = 0; i < TotalSelectedSkills(); i++)
@@ -57,6 +66,17 @@ public class PlayerController : MonoBehaviour
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         //Camera.main.transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") && hp >= 0)
+        {
+            MobController enemy = other.GetComponent<MobController>();
+            hp -= enemy.attack;
+            healtBar.GetComponent<Image>().fillAmount = hp / ogHp;
+        }
+    }
+
 
     void PlayerDirection()
     {
@@ -95,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
+        UpdateMana();
+
         switch (Input.inputString)
         {
             case "p":
@@ -104,20 +126,31 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case "1":
-
-                GameManager.playerNow.selectedSkills[0].Attack();
+                if (mana > 0)
+                {
+                    GameManager.playerNow.selectedSkills[0].Attack();
+                }
                 break;
 
             case "2":
-                GameManager.playerNow.selectedSkills[1].Attack();
+                if (mana > 0)
+                {
+                    GameManager.playerNow.selectedSkills[1].Attack();
+                }
                 break;
 
             case "3":
-                GameManager.playerNow.selectedSkills[2].Attack();
+                if (mana > 0)
+                {
+                    GameManager.playerNow.selectedSkills[2].Attack();
+                }
                 break;
 
             case "4":
-                GameManager.playerNow.selectedSkills[3].Attack();
+                if (mana > 0)
+                {
+                    GameManager.playerNow.selectedSkills[3].Attack();
+                }
                 break;
 
             case "=":
@@ -125,6 +158,11 @@ public class PlayerController : MonoBehaviour
                 break;
 
         }
+    }
+
+    void UpdateMana()
+    {
+        manaBar.GetComponent<Image>().fillAmount = mana / ogMana;
     }
 
     int SkillIndex(string name)

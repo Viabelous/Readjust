@@ -10,14 +10,16 @@ public class Skill
 {
     public string name;
     public float maxCd;
+    public float manaUsage;
     public bool isCooldown = false;
     public GameObject skillObj;
     public Sprite sprite;
 
-    public Skill(string name, float maxCd)
+    public Skill(string name, float maxCd, float manaUsage)
     {
         this.name = name;
         this.maxCd = maxCd;
+        this.manaUsage = manaUsage;
         this.skillObj = GameObject.Find(name);
         this.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Skills/" + name + ".png");
     }
@@ -29,6 +31,7 @@ public class Skill
         {
             return;
         }
+
 
         switch (name)
         {

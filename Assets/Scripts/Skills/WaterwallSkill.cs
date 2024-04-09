@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WaterwallSkill : MonoBehaviour
 {
-    private float damage = 0.1f;
-    private float slow = 0.7f;
+    public float damage = 0.1f;
+    public float slow = 0.7f;
+    public float manaUsage = 10;
 
 
     private void Start()

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HighTideSkill : MonoBehaviour
 {
-    private float damage = 10;
-    private float knock = 20;
+    public float damage = 10;
+    public float knock = 20;
+    public float manaUsage = 15;
 
     private void Start()
     {

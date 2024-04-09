@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class IgniteSkill : MonoBehaviour
 {
-    private float damage = 50;
+    public float damage = 50;
+    public float manaUsage = 3;
+
     private float moveHorizontal, moveVertical;
     private Quaternion initialRotation;
     private Vector3 initialScale = new Vector3(1.2f, 1.2f, 1.2f);

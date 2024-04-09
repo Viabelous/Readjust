@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WhirlwindSkill : MonoBehaviour
 {
-    private float damage = 10;
-    private float speed = 10;
-    private float swipe = 5;
+    public float damage = 10;
+    public float speed = 10;
+    public float swipe = 5;
+    public float manaUsage = 5;
 
     private string direction = "front";
     private bool isInstantiate = false;
@@ -28,8 +29,6 @@ public class WhirlwindSkill : MonoBehaviour
 
         if (gameObject.activeInHierarchy)
         {
-
-
             switch (direction)
             {
                 case "right":
@@ -58,6 +57,7 @@ public class WhirlwindSkill : MonoBehaviour
             MobController mob = other.GetComponent<MobController>();
             mob.hp -= damage;
             mob.isSwiped = true;
+            mob.swipe = swipe;
 
             switch (direction)
             {
@@ -74,26 +74,16 @@ public class WhirlwindSkill : MonoBehaviour
                     mob.backward = mob.transform.up;
                     break;
             }
-            mob.swipe = swipe;
-
-            // Vector2 backwardDirection = -transform.right;
-
-            // Menggerakkan objek mundur secara horizontal menggunakan rb.MovePosition
-            // mob.rb.MovePosition(mob.rb.position + backwardDirection * swipe * Time.fixedDeltaTime);
-
-            // mob.isKnocked = true;
-            // mob.knock = knock;
         }
     }
+
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
             mob.isSwiped = false;
-
-            // mob.isKnocked = false;
-            // mob.knock = mob.ogKnock;
         }
     }
 

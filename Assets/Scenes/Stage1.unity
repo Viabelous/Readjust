@@ -470,16 +470,17 @@ MonoBehaviour:
   mob: {fileID: 146110285}
   ogSpeed: 1
   speed: 1
+  attack: 20
   ogHp: 500
   hp: 500
   isKnocked: 0
+  isSwiped: 0
   ogKnock: 1
   knock: 1
-  isSwiped: 0
-  ogBackward: {x: 0, y: 0}
-  backward: {x: 0, y: 0}
   ogSwipe: 1
   swipe: 1
+  ogBackward: {x: 0, y: 0}
+  backward: {x: 0, y: 0}
   rb: {fileID: 146110289}
   animate: {fileID: 146110287}
 --- !u!1 &189802845
@@ -788,16 +789,17 @@ MonoBehaviour:
   mob: {fileID: 290860529}
   ogSpeed: 1
   speed: 1
+  attack: 10
   ogHp: 500
   hp: 500
   isKnocked: 0
+  isSwiped: 0
   ogKnock: 1
   knock: 1
-  isSwiped: 0
-  ogBackward: {x: 0, y: 0}
-  backward: {x: 0, y: 0}
   ogSwipe: 1
   swipe: 1
+  ogBackward: {x: 0, y: 0}
+  backward: {x: 0, y: 0}
   rb: {fileID: 290860533}
   animate: {fileID: 290860531}
 --- !u!1 &302463197
@@ -1154,6 +1156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b474e74c5238c84f890f6eb945aaad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
+  manaUsage: 3
   polyCollider: {fileID: 411375432}
 --- !u!60 &411375432
 PolygonCollider2D:
@@ -1687,6 +1691,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45ef33b981c8074a8129b8e9df344fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  knock: 20
+  manaUsage: 15
 --- !u!95 &497098229
 Animator:
   serializedVersion: 5
@@ -3101,7 +3108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &864521677
 Transform:
   m_ObjectHideFlags: 0
@@ -3274,6 +3281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66215dea572e674587717c9979573b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  speed: 10
+  swipe: 5
+  manaUsage: 5
   player: {fileID: 929240444}
   spriteRenderer: {fileID: 864521680}
 --- !u!1 &910833213
@@ -3455,10 +3466,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
@@ -3501,9 +3512,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  ogHp: 500
+  hp: 0
+  ogMana: 100
+  mana: 0
+  healtBar: {fileID: 787877656}
+  manaBar: {fileID: 910833213}
   rb: {fileID: 929240447}
   animate: {fileID: 929240449}
-  direction: 
+  direction: front
   canMove: 1
   ObjectToSpawn: {fileID: 1190868487}
   skillObjs:
@@ -4533,6 +4550,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0.1
+  slow: 0.7
+  manaUsage: 10
 --- !u!58 &1274247694
 CircleCollider2D:
   m_ObjectHideFlags: 0
