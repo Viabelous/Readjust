@@ -12,15 +12,12 @@ public class WhirlwindSkill : MonoBehaviour
     private string direction = "front";
     private bool isInstantiate = false;
 
-    private Vector3 initialPosition;
 
     public GameObject player;
     public SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        initialPosition = transform.position;
-        player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -56,6 +53,7 @@ public class WhirlwindSkill : MonoBehaviour
         {
             MobController mob = other.GetComponent<MobController>();
             mob.hp -= damage;
+
             mob.isSwiped = true;
             mob.swipe = swipe;
 
@@ -92,33 +90,34 @@ public class WhirlwindSkill : MonoBehaviour
         gameObject.SetActive(true);
         isInstantiate = true;
 
-
         if (isInstantiate)
         {
+            player = GameObject.Find("Player");
             direction = player.GetComponent<PlayerController>().direction;
             isInstantiate = false;
+
+            // reset tempat awal muncul skill
+            switch (direction)
+            {
+                case "right":
+                    spriteRenderer.sortingOrder = 20;
+                    transform.position = player.transform.position + new Vector3(2, 1, 0);
+                    break;
+                case "left":
+                    spriteRenderer.sortingOrder = 20;
+                    transform.position = player.transform.position + new Vector3(-2, 1, 0);
+                    break;
+                case "front":
+                    spriteRenderer.sortingOrder = 20;
+                    transform.position = player.transform.position;
+                    break;
+                case "back":
+                    spriteRenderer.sortingOrder = -1;
+                    transform.position = player.transform.position + new Vector3(0, 3, 0);
+                    break;
+            }
         }
-        // reset tempat awal muncul skill
-        switch (direction)
-        {
-            case "right":
-                spriteRenderer.sortingOrder = 20;
-                transform.position = player.transform.position + new Vector3(2, initialPosition.y, 0);
-                break;
-            case "left":
-                spriteRenderer.sortingOrder = 20;
-                transform.position = player.transform.position + new Vector3(-2, initialPosition.y, 0);
-                break;
-            case "front":
-                spriteRenderer.sortingOrder = 20;
-                transform.position = player.transform.position + new Vector3(0, initialPosition.y - 1f, initialPosition.z);
-                break;
-            case "back":
-                print("back");
-                spriteRenderer.sortingOrder = -1;
-                transform.position = player.transform.position + new Vector3(0, 3, initialPosition.z);
-                break;
-        }
+
 
 
     }

@@ -466,21 +466,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aab027c29ecc4fbdcdcd5df8a5ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 929240444}
-  mob: {fileID: 146110285}
-  ogSpeed: 1
+  maxSpeed: 1
   speed: 1
-  attack: 20
-  ogHp: 500
+  maxHp: 500
   hp: 500
+  attack: 20
   isKnocked: 0
   isSwiped: 0
-  ogKnock: 1
-  knock: 1
-  ogSwipe: 1
-  swipe: 1
-  ogBackward: {x: 0, y: 0}
+  knock: 0
+  swipe: 0
   backward: {x: 0, y: 0}
+  intervalTimer: 1
+  timerAttack: 0
+  player: {fileID: 929240444}
+  mob: {fileID: 146110285}
   rb: {fileID: 146110289}
   animate: {fileID: 146110287}
 --- !u!1 &189802845
@@ -785,21 +784,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aab027c29ecc4fbdcdcd5df8a5ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 929240444}
-  mob: {fileID: 290860529}
-  ogSpeed: 1
+  maxSpeed: 1
   speed: 1
-  attack: 10
-  ogHp: 500
+  maxHp: 500
   hp: 500
+  attack: 10
   isKnocked: 0
   isSwiped: 0
-  ogKnock: 1
   knock: 1
-  ogSwipe: 1
   swipe: 1
-  ogBackward: {x: 0, y: 0}
   backward: {x: 0, y: 0}
+  intervalTimer: 1
+  timerAttack: 0
+  player: {fileID: 929240444}
+  mob: {fileID: 290860529}
   rb: {fileID: 290860533}
   animate: {fileID: 290860531}
 --- !u!1 &302463197
@@ -3108,7 +3106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &864521677
 Transform:
   m_ObjectHideFlags: 0
@@ -3118,7 +3116,7 @@ Transform:
   m_GameObject: {fileID: 864521676}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.0646448, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3512,12 +3510,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  ogHp: 500
+  maxHp: 500
   hp: 0
-  ogMana: 100
+  maxMana: 100
   mana: 0
   healtBar: {fileID: 787877656}
   manaBar: {fileID: 910833213}
+  attacked: 0
+  spriteRenderers:
+  - {fileID: 1529843815}
+  - {fileID: 498924821}
+  - {fileID: 1983667678}
+  - {fileID: 1499167616}
+  - {fileID: 361397228}
+  - {fileID: 1174777295}
+  - {fileID: 1476669789}
+  - {fileID: 822250032}
   rb: {fileID: 929240447}
   animate: {fileID: 929240449}
   direction: front
@@ -4550,9 +4558,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.1
-  slow: 0.7
+  damage: 10
+  slow: 0.5
   manaUsage: 10
+  intervalTimer: 1
+  timerAttack: 0
 --- !u!58 &1274247694
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour
 {
     // movement ------------------------------------------------------
     public float speed = 5f;
-    public float ogHp = 500, hp;
-    public float ogMana = 100, mana;
+    public float maxHp = 500, hp;
+    public float maxMana = 100, mana;
     public GameObject healtBar, manaBar;
 
+    public bool attacked = false;
 
 
+
+    public SpriteRenderer[] spriteRenderers;
     public Rigidbody2D rb;
 
     public Animator animate;
@@ -34,8 +37,8 @@ public class PlayerController : MonoBehaviour
     {
         direction = "front";
         ObjectToSpawn = GameObject.Find("basic_stab");
-        hp = ogHp;
-        mana = ogMana;
+        hp = maxHp;
+        mana = maxMana;
 
         // hubungkan gameobject skill dengan object skill
         for (int i = 0; i < TotalSelectedSkills(); i++)
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
             string name = GameManager.playerNow.selectedSkills[i].name;
             GameManager.playerNow.selectedSkills[i].skillObj = skillObjs[SkillIndex(name)];
         }
+
     }
 
     // Update is called once per frame
@@ -52,6 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
 
         PlayerAttack();
 
@@ -67,15 +72,24 @@ public class PlayerController : MonoBehaviour
         //Camera.main.transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy") && hp >= 0)
-        {
-            MobController enemy = other.GetComponent<MobController>();
-            hp -= enemy.attack;
-            healtBar.GetComponent<Image>().fillAmount = hp / ogHp;
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Enemy") && hp >= 0)
+    //     {
+
+    //     }
+    // }
+
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     // Cek apakah collider yang bertabrakan adalah child collider
+    //     if (!IsChildCollider(collision.collider) && collision.gameObject.CompareTag("Enemy"))
+    //     {
+    //         MobController enemy = collision.gameObject.GetComponent<MobController>();
+    //         hp -= enemy.attack;
+    //         UpdateHp();
+    //     }
+    // }
 
 
     void PlayerDirection()
@@ -115,7 +129,27 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
-        UpdateMana();
+        if (
+            (Input.inputString == "1" ||
+            Input.inputString == "2" ||
+            Input.inputString == "3" ||
+            Input.inputString == "4" ||
+            Input.inputString == "5" ||
+            Input.inputString == "6" ||
+            Input.inputString == "7") && mana > 0
+        )
+
+        {
+            int index = int.Parse(Input.inputString) - 1;
+            Skill skill = GameManager.playerNow.selectedSkills[index];
+
+            if (skill != null && !skill.isCooldown && mana >= skill.manaUsage)
+            {
+                skill.Attack();
+                mana -= skill.manaUsage;
+                UpdateManaBar();
+            }
+        }
 
         switch (Input.inputString)
         {
@@ -125,33 +159,6 @@ public class PlayerController : MonoBehaviour
                 Destroy(Spawn, 1);
                 break;
 
-            case "1":
-                if (mana > 0)
-                {
-                    GameManager.playerNow.selectedSkills[0].Attack();
-                }
-                break;
-
-            case "2":
-                if (mana > 0)
-                {
-                    GameManager.playerNow.selectedSkills[1].Attack();
-                }
-                break;
-
-            case "3":
-                if (mana > 0)
-                {
-                    GameManager.playerNow.selectedSkills[2].Attack();
-                }
-                break;
-
-            case "4":
-                if (mana > 0)
-                {
-                    GameManager.playerNow.selectedSkills[3].Attack();
-                }
-                break;
 
             case "=":
                 SceneManager.LoadScene("MainMenu");
@@ -160,9 +167,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void UpdateMana()
+
+    public void UpdateHealthBar()
     {
-        manaBar.GetComponent<Image>().fillAmount = mana / ogMana;
+        healtBar.GetComponent<Image>().fillAmount = hp / maxHp;
+    }
+    public void UpdateManaBar()
+    {
+        manaBar.GetComponent<Image>().fillAmount = mana / maxMana;
     }
 
     int SkillIndex(string name)
@@ -191,5 +203,19 @@ public class PlayerController : MonoBehaviour
 
         }
         return total;
+    }
+
+    private bool IsChildCollider(Collider2D collider)
+    {
+        // Loop melalui semua collider child
+        foreach (Collider childCollider in GetComponentsInChildren<Collider>())
+        {
+            // Periksa apakah collider yang diberikan adalah collider child
+            if (childCollider == collider)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

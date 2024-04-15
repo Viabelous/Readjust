@@ -5,19 +5,21 @@ using UnityEngine;
 public class MobController : MonoBehaviour
 {
 
-    public GameObject player;
-    public GameObject mob;
-
-    public float ogSpeed = 1f, speed;
-    public float attack;
-
-    public float ogHp = 500, hp;
+    public float maxSpeed = 1f, speed;
+    public float maxHp = 500, hp;
+    public float attack = 10f;
 
     public bool isKnocked = false, isSwiped = false;
-    public float ogKnock = 1, knock;
-    public float ogSwipe = 1, swipe;
-    public Vector2 ogBackward = new Vector2(0, 0), backward;
+    public float knock, swipe;
 
+    public Vector2 backward; // untuk arah swipe
+
+    public float intervalTimer = 1, timerAttack;
+
+
+
+    public GameObject player;
+    public GameObject mob;
     public Rigidbody2D rb;
     Vector2 movement;
     public Animator animate;
@@ -26,50 +28,21 @@ public class MobController : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        speed = ogSpeed;
-        hp = ogHp;
-        knock = ogKnock;
-        swipe = ogSwipe;
-        backward = ogBackward;
+        speed = maxSpeed;
+        hp = maxHp;
+        timerAttack = intervalTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // kalau hp habis, hilangkan
+        // kalau hp habis, hilangkan ---------------------------------------------------
         if (hp <= 0)
         {
             Destroy(mob, 0.5f);
         }
 
-        Move();
-
-    }
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        // kena damage
-        if (other.CompareTag("Damage"))
-        {
-            spriteRenderer.color = Color.red;
-            print("HP = " + hp.ToString());
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        // sudah gak kena damage
-        if (other.CompareTag("Damage"))
-        {
-            spriteRenderer.color = Color.white;
-
-
-        }
-    }
-
-
-    void Move()
-    {
+        // arah hadap mob (?) ------------------------------------------------------------
         if (player.transform.position.x != mob.transform.position.x)
         {
             movement.x = player.transform.position.x < mob.transform.position.x ? -1 : 1;
@@ -90,9 +63,77 @@ public class MobController : MonoBehaviour
 
         animate.SetFloat("Horizontal", movement.y);
         animate.SetFloat("Speed", movement.sqrMagnitude);
+
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // kena damage
+        if (other.CompareTag("Damage"))
+        {
+            spriteRenderer.color = Color.red;
+        }
+
+    }
+
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Damage"))
+        {
+            print("HP = " + hp.ToString());
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            player.attacked = true;
+
+            if (timerAttack >= intervalTimer)
+            {
+                for (int i = 0; i < player.spriteRenderers.Length; i++)
+                {
+                    player.spriteRenderers[i].color = Color.red;
+                }
+
+                if (player.hp > 0)
+                {
+                    player.hp -= attack;
+                    player.UpdateHealthBar();
+                }
+                timerAttack = 0f;
+            }
+            else
+            {
+                timerAttack += Time.deltaTime;
+            }
+
+        }
+
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        // sudah gak kena damage
+        if (other.CompareTag("Damage"))
+        {
+            spriteRenderer.color = Color.white;
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            for (int i = 0; i < player.spriteRenderers.Length; i++)
+            {
+                player.spriteRenderers[i].color = Color.white;
+            }
+            timerAttack = intervalTimer;
+
+        }
     }
 
 
+
+    // pergerakan mob ------------------------------------------------------------------------
     void FixedUpdate()
     {
         if (isKnocked)

@@ -27,12 +27,6 @@ public class Skill
 
     public void Attack()
     {
-        if (isCooldown)
-        {
-            return;
-        }
-
-
         switch (name)
         {
             case "ignite":

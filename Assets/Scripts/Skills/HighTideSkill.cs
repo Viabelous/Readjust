@@ -37,10 +37,7 @@ public class HighTideSkill : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-
             mob.isKnocked = false;
-            mob.knock = mob.ogKnock;
-
 
         }
     }
