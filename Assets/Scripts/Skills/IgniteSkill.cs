@@ -25,6 +25,9 @@ public class IgniteSkill : MonoBehaviour
 
     private void Update()
     {
+        transform.position = GameObject.Find("Player").transform.position;
+
+        Active();
     }
 
 
@@ -85,16 +88,7 @@ public class IgniteSkill : MonoBehaviour
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -90);
         }
 
-        // polyCollider.transform.
-
-
     }
-
-    public void ResetRotation()
-    {
-        transform.rotation = initialRotation;
-    }
-
 
     public void Deactive()
     {
@@ -103,7 +97,7 @@ public class IgniteSkill : MonoBehaviour
 
     private void OnAnimationEnd()
     {
-
+        Destroy(gameObject);
         Deactive();
     }
 }

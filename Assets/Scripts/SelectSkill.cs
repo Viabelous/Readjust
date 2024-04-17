@@ -36,10 +36,13 @@ public class SelectSkill : MonoBehaviour
 
         if (!selected)
         {
-            int totalSelected = TotalSelectedSkills();
-            Debug.Log("Tambah");
-            slotNumber = totalSelected + 1;
-            GameManager.playerNow.selectedSkills[totalSelected] = GameManager.skillsAvailable[SkillIndex()];
+            // int totalSelected = GameManager.playerNow.selectedSkills.Count;
+            // Debug.Log("Tambah");
+            // slotNumber = totalSelected + 1;
+            // GameManager.playerNow.selectedSkills[totalSelected] = GameManager.skills[SkillIndex()];
+            GameManager.playerNow.selectedSkills.Add(
+                GameManager.skills.Find(skill => skill.name == gameObject.name)
+            );
 
             img.color = Color.blue;
         }
@@ -47,54 +50,57 @@ public class SelectSkill : MonoBehaviour
         else
         {
             Debug.Log("Hapus");
-            Unselected();
+            // Unselected();
+            GameManager.playerNow.selectedSkills.Remove(
+                GameManager.skills.Find(skill => skill.name == gameObject.name)
+            );
             img.color = Color.white;
 
         }
 
-        Debug.Log(TotalSelectedSkills());
+
     }
 
-    void Unselected()
-    {
-        for (int i = slotNumber - 1; i < TotalSelectedSkills(); i++)
-        {
-            if (i == GameManager.playerNow.selectedSkills.Length - 1)
-            {
-                GameManager.playerNow.selectedSkills[i] = null;
-            }
-            else
-            {
-                GameManager.playerNow.selectedSkills[i] = GameManager.playerNow.selectedSkills[i + 1];
-            }
+    // void Unselected()
+    // {
+    //     for (int i = slotNumber - 1; i < TotalSelectedSkills(); i++)
+    //     {
+    //         if (i == GameManager.playerNow.selectedSkills.Length - 1)
+    //         {
+    //             GameManager.playerNow.selectedSkills[i] = null;
+    //         }
+    //         else
+    //         {
+    //             GameManager.playerNow.selectedSkills[i] = GameManager.playerNow.selectedSkills[i + 1];
+    //         }
 
-        }
-    }
+    //     }
+    // }
 
-    int TotalSelectedSkills()
-    {
-        int total = GameManager.playerNow.selectedSkills.Length;
-        for (int i = 0; i < total; i++)
-        {
+    // int TotalSelectedSkills()
+    // {
+    //     int total = GameManager.playerNow.selectedSkills.Length;
+    //     for (int i = 0; i < total; i++)
+    //     {
 
-            if (GameManager.playerNow.selectedSkills[i] == null)
-            {
-                return i;
-            }
+    //         if (GameManager.playerNow.selectedSkills[i] == null)
+    //         {
+    //             return i;
+    //         }
 
-        }
-        return total;
-    }
+    //     }
+    //     return total;
+    // }
 
-    int SkillIndex()
-    {
-        for (int i = 0; i < GameManager.skillsAvailable.Length; i++)
-        {
-            if (GameManager.skillsAvailable[i].name == gameObject.name)
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
+    // int SkillIndex()
+    // {
+    //     for (int i = 0; i < GameManager.skills.Length; i++)
+    //     {
+    //         if (GameManager.skills[i].name == gameObject.name)
+    //         {
+    //             return i;
+    //         }
+    //     }
+    //     return -1;
+    // }
 }

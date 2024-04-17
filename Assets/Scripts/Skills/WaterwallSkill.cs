@@ -19,8 +19,9 @@ public class WaterwallSkill : MonoBehaviour
 
     private void Update()
     {
+        transform.position = GameObject.Find("Player").transform.position;
 
-
+        Active();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -66,6 +67,7 @@ public class WaterwallSkill : MonoBehaviour
 
     private void OnAnimationEnd()
     {
+        Destroy(gameObject);
         Deactive();
     }
 }

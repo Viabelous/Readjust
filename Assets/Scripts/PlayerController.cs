@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,13 +11,9 @@ public class PlayerController : MonoBehaviour
 {
     // movement ------------------------------------------------------
     public float speed = 5f;
-    public float maxHp = 500, hp;
-    public float maxMana = 100, mana;
-    public GameObject healtBar, manaBar;
+    public float hp, mana, shield;
 
-    public bool attacked = false;
-
-
+    public GameObject healtBar, manaBar, shieldBar;
 
     public SpriteRenderer[] spriteRenderers;
     public Rigidbody2D rb;
@@ -31,21 +29,34 @@ public class PlayerController : MonoBehaviour
     // attack -------------------------------------------------
     public GameObject ObjectToSpawn;
 
-    public GameObject[] skillObjs;
+    // public GameObject[] skillObjs;
+    public List<GameObject> skillPrefs = new List<GameObject>();
 
     void Start()
     {
         direction = "front";
         ObjectToSpawn = GameObject.Find("basic_stab");
-        hp = maxHp;
-        mana = maxMana;
 
-        // hubungkan gameobject skill dengan object skill
-        for (int i = 0; i < TotalSelectedSkills(); i++)
-        {
-            string name = GameManager.playerNow.selectedSkills[i].name;
-            GameManager.playerNow.selectedSkills[i].skillObj = skillObjs[SkillIndex(name)];
-        }
+        hp = GameManager.playerNow.maxHp;
+        mana = GameManager.playerNow.maxMana;
+        shield = GameManager.playerNow.maxShield;
+
+        // // hubungkan gameobject skill dengan object skill
+        // for (int i = 0; i < TotalSelectedSkills(); i++)
+        // {
+        //     string name = GameManager.playerNow.selectedSkills[i].name;
+        //     GameManager.playerNow.selectedSkills[i].skillObj = skillObjs[SkillIndex(name)];
+        // }
+
+        // Object[] loadedAssets = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Skills/");
+        // for (int i = 0; i < GameManager.playerNow.selectedSkills.Count; i++)
+        // {
+        //     string name = GameManager.playerNow.selectedSkills[i].name;
+        //     GameObject prefab = System.Array.Find(loadedAssets, obj => obj is GameObject && obj.name == name) as GameObject;
+        //     skillPrefs[i] = prefab;
+        // }
+
+        // skillPrefs = System.Array.FindAll(loadedAssets, obj => obj is GameObject && obj.name == "") as GameObject[];
 
     }
 
@@ -56,6 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        // print(skillPrefs.Count);
 
 
         PlayerAttack();
@@ -71,25 +83,6 @@ public class PlayerController : MonoBehaviour
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         //Camera.main.transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0);
     }
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy") && hp >= 0)
-    //     {
-
-    //     }
-    // }
-
-    // private void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     // Cek apakah collider yang bertabrakan adalah child collider
-    //     if (!IsChildCollider(collision.collider) && collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         MobController enemy = collision.gameObject.GetComponent<MobController>();
-    //         hp -= enemy.attack;
-    //         UpdateHp();
-    //     }
-    // }
 
 
     void PlayerDirection()
@@ -145,7 +138,10 @@ public class PlayerController : MonoBehaviour
 
             if (skill != null && !skill.isCooldown && mana >= skill.manaUsage)
             {
-                skill.Attack();
+                GameObject prefab = skillPrefs.Find(prefab => prefab.name == skill.name);
+                Instantiate(prefab, transform.position, Quaternion.identity);
+                skill.isCooldown = true;
+
                 mana -= skill.manaUsage;
                 UpdateManaBar();
             }
@@ -159,7 +155,6 @@ public class PlayerController : MonoBehaviour
                 Destroy(Spawn, 1);
                 break;
 
-
             case "=":
                 SceneManager.LoadScene("MainMenu");
                 break;
@@ -170,40 +165,30 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        healtBar.GetComponent<Image>().fillAmount = hp / maxHp;
+        healtBar.GetComponent<Image>().fillAmount = hp / GameManager.playerNow.maxHp;
     }
     public void UpdateManaBar()
     {
-        manaBar.GetComponent<Image>().fillAmount = mana / maxMana;
+        manaBar.GetComponent<Image>().fillAmount = mana / GameManager.playerNow.maxMana;
     }
-
-    int SkillIndex(string name)
+    public void UpdateShieldBar()
     {
-        for (int i = 0; i < skillObjs.Length; i++)
-        {
-
-            if (skillObjs[i].name == name)
-            {
-                return i;
-            }
-        }
-        return -1;
+        shieldBar.GetComponent<Image>().fillAmount = shield / GameManager.playerNow.maxShield;
     }
 
-    int TotalSelectedSkills()
-    {
-        int total = GameManager.playerNow.selectedSkills.Length;
-        for (int i = 0; i < total; i++)
-        {
+    // int SkillIndex(string name)
+    // {
+    //     for (int i = 0; i < skillPrefs.Length; i++)
+    //     {
 
-            if (GameManager.playerNow.selectedSkills[i] == null)
-            {
-                return i;
-            }
+    //         if (skillPrefs[i].name == name)
+    //         {
+    //             return i;
+    //         }
+    //     }
+    //     return -1;
+    // }
 
-        }
-        return total;
-    }
 
     private bool IsChildCollider(Collider2D collider)
     {

@@ -86,7 +86,6 @@ public class MobController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            player.attacked = true;
 
             if (timerAttack >= intervalTimer)
             {

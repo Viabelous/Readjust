@@ -15,7 +15,9 @@ public class HighTideSkill : MonoBehaviour
 
     private void Update()
     {
+        transform.position = GameObject.Find("Player").transform.position;
 
+        Active();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -55,6 +57,7 @@ public class HighTideSkill : MonoBehaviour
 
     private void OnAnimationEnd()
     {
+        Destroy(gameObject);
         Deactive();
     }
 }

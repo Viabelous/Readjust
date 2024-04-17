@@ -19,10 +19,13 @@ public class WhirlwindSkill : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        isInstantiate = true;
     }
 
     private void Update()
     {
+
+        Active();
 
         if (gameObject.activeInHierarchy)
         {
@@ -87,8 +90,8 @@ public class WhirlwindSkill : MonoBehaviour
 
     public void Active()
     {
-        gameObject.SetActive(true);
-        isInstantiate = true;
+        // gameObject.SetActive(true);
+        // isInstantiate = true;
 
         if (isInstantiate)
         {
@@ -130,6 +133,8 @@ public class WhirlwindSkill : MonoBehaviour
 
     private void OnAnimationEnd()
     {
+        isInstantiate = true;
+        Destroy(gameObject);
         Deactive();
     }
 }

@@ -23,7 +23,7 @@ public class SkillSlot : MonoBehaviour
         objDark = GameObject.Find("skill_" + slotNumber.ToString() + "_dark");
 
         // slot ada skillnya
-        if (slotNumber <= TotalSelectedSkills())
+        if (slotNumber <= GameManager.playerNow.selectedSkills.Count)
         {
             isEmpty = false;
 
@@ -70,7 +70,7 @@ public class SkillSlot : MonoBehaviour
                 if (isCooldown)
                 {
                     isCooldown = false;
-                    GameManager.skillsAvailable[slotNumber - 1].isCooldown = false;
+                    GameManager.playerNow.selectedSkills[slotNumber - 1].isCooldown = false;
                     objDark.GetComponent<Image>().fillAmount = 0;
                 }
 
@@ -107,19 +107,19 @@ public class SkillSlot : MonoBehaviour
 
     // }
 
-    int TotalSelectedSkills()
-    {
-        int total = GameManager.playerNow.selectedSkills.Length;
-        for (int i = 0; i < total; i++)
-        {
+    // int TotalSelectedSkills()
+    // {
+    //     int total = GameManager.playerNow.selectedSkills.Length;
+    //     for (int i = 0; i < total; i++)
+    //     {
 
-            if (GameManager.playerNow.selectedSkills[i] == null)
-            {
-                return i;
-            }
-        }
-        return total;
-    }
+    //         if (GameManager.playerNow.selectedSkills[i] == null)
+    //         {
+    //             return i;
+    //         }
+    //     }
+    //     return total;
+    // }
 
     // bool isCooldown()
     // {

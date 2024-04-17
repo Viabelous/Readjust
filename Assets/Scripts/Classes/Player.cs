@@ -5,25 +5,16 @@ using UnityEngine;
 
 public class Player
 {
-    public float hp = 100;
-    public float mana = 50;
-    public float defense = 30;
+    public float maxHp = 100;
+    public float maxMana = 50;
+    public float maxShield = 30;
 
-    public Skill[] selectedSkills = new Skill[7];
-
-    // public Skill[] selectedSkills = {
-    //     GameManager.skillsAvailable[0],
-    //     GameManager.skillsAvailable[1],
-    //     GameManager.skillsAvailable[2],
-    //     GameManager.skillsAvailable[3],
-    // };
+    public List<Skill> selectedSkills;
 
     public Player()
     {
-        selectedSkills[0] = GameManager.skillsAvailable[0];
-        selectedSkills[1] = GameManager.skillsAvailable[1];
-        selectedSkills[2] = GameManager.skillsAvailable[2];
-        selectedSkills[3] = GameManager.skillsAvailable[3];
+        selectedSkills = new List<Skill> { GameManager.skills[2], GameManager.skills[0], GameManager.skills[3], GameManager.skills[1] };
+
     }
 
 }
