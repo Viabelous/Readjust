@@ -120,36 +120,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PlayerAttack()
-    {
-        if (
-            (Input.inputString == "1" ||
-            Input.inputString == "2" ||
-            Input.inputString == "3" ||
-            Input.inputString == "4" ||
-            Input.inputString == "5" ||
-            Input.inputString == "6" ||
-            Input.inputString == "7") && mana > 0
-        )
+    void PlayerAttack(){
+        switch (Input.inputString){
+            case "1" :
+            case "2" :
+            case "3" :
+            case "4" :
+            case "5" :
+            case "6" :
+            case "7" :
+                if (mana > 0){
+                    int index = int.Parse(Input.inputString) - 1;
+                    Skill skill = GameManager.playerNow.selectedSkills[index];
 
-        {
-            int index = int.Parse(Input.inputString) - 1;
-            Skill skill = GameManager.playerNow.selectedSkills[index];
+                    if (skill != null && !skill.isCooldown && mana >= skill.manaUsage){
+                        GameObject prefab = skillPrefs.Find(prefab => prefab.name == skill.name);
+                        Instantiate(prefab, transform.position, Quaternion.identity);
+                        skill.isCooldown = true;
 
-            if (skill != null && !skill.isCooldown && mana >= skill.manaUsage)
-            {
-                GameObject prefab = skillPrefs.Find(prefab => prefab.name == skill.name);
-                Instantiate(prefab, transform.position, Quaternion.identity);
-                skill.isCooldown = true;
+                        mana -= skill.manaUsage;
+                        UpdateManaBar();
+                    }
+                }
+                break;
 
-                mana -= skill.manaUsage;
-                UpdateManaBar();
-            }
-        }
 
-        switch (Input.inputString)
-        {
-            case "p":
+            case "q":
                 animate.SetTrigger("BasicAttack");
                 GameObject Spawn = Instantiate(ObjectToSpawn, GameObject.FindWithTag("Player").transform);
                 Destroy(Spawn, 1);
