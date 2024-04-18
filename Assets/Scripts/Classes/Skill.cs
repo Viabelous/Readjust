@@ -9,17 +9,19 @@ public class Skill
     public string name;
     public float maxCd;
     public float manaUsage;
+    public float trueDamage;
+
     public bool isCooldown = false;
     // public GameObject skillObj;
     public Sprite sprite;
 
 
-    public Skill(string name, float maxCd, float manaUsage)
+    public Skill(string name, float trueDamage, float maxCd, float manaUsage)
     {
         this.name = name;
+        this.trueDamage = trueDamage;
         this.maxCd = maxCd;
         this.manaUsage = manaUsage;
-        // this.skillObj = GameObject.Find(name);
         this.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Skills/" + name + ".png");
     }
 

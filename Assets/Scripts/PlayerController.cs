@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject healtBar, manaBar, shieldBar;
 
+    public float minX, maxX, minY, maxY;
     public SpriteRenderer[] spriteRenderers;
     public Rigidbody2D rb;
 
@@ -27,9 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
 
     // attack -------------------------------------------------
-    // public GameObject ObjectToSpawn;
 
-    // public GameObject[] skillObjs;
     public List<GameObject> skillPrefs = new List<GameObject>();
 
     void Start()
@@ -37,32 +36,20 @@ public class PlayerController : MonoBehaviour
         direction = "front";
         // ObjectToSpawn = GameObject.Find("basic_stab");
 
-        hp = GameManager.playerNow.maxHp;
-        mana = GameManager.playerNow.maxMana;
-        shield = GameManager.playerNow.maxShield;
-
-        // // hubungkan gameobject skill dengan object skill
-        // for (int i = 0; i < TotalSelectedSkills(); i++)
-        // {
-        //     string name = GameManager.playerNow.selectedSkills[i].name;
-        //     GameManager.playerNow.selectedSkills[i].skillObj = skillObjs[SkillIndex(name)];
-        // }
-
-        // Object[] loadedAssets = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Skills/");
-        // for (int i = 0; i < GameManager.playerNow.selectedSkills.Count; i++)
-        // {
-        //     string name = GameManager.playerNow.selectedSkills[i].name;
-        //     GameObject prefab = System.Array.Find(loadedAssets, obj => obj is GameObject && obj.name == name) as GameObject;
-        //     skillPrefs[i] = prefab;
-        // }
-
-        // skillPrefs = System.Array.FindAll(loadedAssets, obj => obj is GameObject && obj.name == "") as GameObject[];
+        hp = GameManager.player.maxHp;
+        mana = GameManager.player.maxMana;
+        shield = GameManager.player.maxShield;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hp <= 0)
+        {
+            Die();
+        }
+
         if (!canMove)
         {
             return;
@@ -109,8 +96,21 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // if (
+        //     transform.position.x < maxX &&
+        //     transform.position.x > minX &&
+        //     transform.position.y < maxY &&
+        //     transform.position.y > minY
+        // )
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+
+        Vector3 position = rb.position;
+        position.x = Mathf.Clamp(position.x, minX, maxX);
+        position.y = Mathf.Clamp(position.y, minY, maxY);
+
+        transform.position = position;
+
+        // Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         //Camera.main.transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0);
     }
 
@@ -128,9 +128,9 @@ public class PlayerController : MonoBehaviour
             case "7":
                 int index = int.Parse(Input.inputString) - 1;
 
-                if (mana > 0 && index < GameManager.playerNow.selectedSkills.Count)
+                if (mana > 0 && index < GameManager.selectedSkills.Count)
                 {
-                    Skill skill = GameManager.playerNow.selectedSkills[index];
+                    Skill skill = GameManager.selectedSkills[index];
 
                     if (skill != null && !skill.isCooldown && mana >= skill.manaUsage)
                     {
@@ -161,42 +161,20 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        healtBar.GetComponent<Image>().fillAmount = hp / GameManager.playerNow.maxHp;
+        healtBar.GetComponent<Image>().fillAmount = hp / GameManager.player.maxHp;
     }
     public void UpdateManaBar()
     {
-        manaBar.GetComponent<Image>().fillAmount = mana / GameManager.playerNow.maxMana;
+        manaBar.GetComponent<Image>().fillAmount = mana / GameManager.player.maxMana;
     }
     public void UpdateShieldBar()
     {
-        shieldBar.GetComponent<Image>().fillAmount = shield / GameManager.playerNow.maxShield;
+        shieldBar.GetComponent<Image>().fillAmount = shield / GameManager.player.maxShield;
     }
 
-    // int SkillIndex(string name)
-    // {
-    //     for (int i = 0; i < skillPrefs.Length; i++)
-    //     {
-
-    //         if (skillPrefs[i].name == name)
-    //         {
-    //             return i;
-    //         }
-    //     }
-    //     return -1;
-    // }
-
-
-    private bool IsChildCollider(Collider2D collider)
+    private void Die()
     {
-        // Loop melalui semua collider child
-        foreach (Collider childCollider in GetComponentsInChildren<Collider>())
-        {
-            // Periksa apakah collider yang diberikan adalah collider child
-            if (childCollider == collider)
-            {
-                return true;
-            }
-        }
-        return false;
+        StageManager.Instance.ChangeGameState(GameState.Lose);
+
     }
 }

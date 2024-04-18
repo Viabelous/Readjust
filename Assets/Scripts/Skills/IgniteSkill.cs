@@ -8,6 +8,7 @@ public class IgniteSkill : MonoBehaviour
     public float damage = 50;
 
     private float moveHorizontal, moveVertical;
+    private bool isInstantiate;
     private Quaternion initialRotation;
     private Vector3 initialScale = new Vector3(1.2f, 1.2f, 1.2f);
     // public SpriteRenderer spriteRenderer;
@@ -19,14 +20,62 @@ public class IgniteSkill : MonoBehaviour
         polyCollider = GetComponent<PolygonCollider2D>();
         initialRotation = transform.localRotation;
         initialScale = transform.localScale;
+        isInstantiate = true;
         // print(initialScale);
     }
 
     private void Update()
     {
+        if (isInstantiate)
+        {
+            isInstantiate = false;
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+
+            transform.localRotation = initialRotation;
+            // transform.localScale = initialScale;
+
+            // kanan
+            if (moveHorizontal > 0f)
+            {
+                // spriteRenderer.flipX = true;
+                // spriteRenderer.flipY = false;
+                // transform.localScale = new Vector3(-1.2f, 1.2f, 1.2f);
+                transform.localScale = new Vector3(
+                    -initialScale.x,
+                    initialScale.y,
+                    initialScale.z
+                );
+            }
+
+            // kiri
+            else if (moveHorizontal < 0f)
+            {
+                transform.localScale = initialScale;
+            }
+
+            // depan
+            else if (moveVertical < 0f)
+            {
+                // spriteRenderer.flipY = true;
+                // transform.localScale = new Vector3(1.2f, -1.2f, 1.2f);
+                transform.localScale = new Vector3(
+                    initialScale.x,
+                    -initialScale.y,
+                    initialScale.z
+                );
+                transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 90);
+            }
+            // belakang
+            else if (moveVertical > 0f)
+            {
+                transform.localScale = initialScale;
+                transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -90);
+            }
+        }
+
         transform.position = GameObject.Find("Player").transform.position;
 
-        Active();
     }
 
 
@@ -39,64 +88,11 @@ public class IgniteSkill : MonoBehaviour
         }
     }
 
-    public void Active()
-    {
-        gameObject.SetActive(true);
 
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
-
-        transform.localRotation = initialRotation;
-        // transform.localScale = initialScale;
-
-        // kanan
-        if (moveHorizontal > 0f)
-        {
-            // spriteRenderer.flipX = true;
-            // spriteRenderer.flipY = false;
-            // transform.localScale = new Vector3(-1.2f, 1.2f, 1.2f);
-            transform.localScale = new Vector3(
-                -initialScale.x,
-                initialScale.y,
-                initialScale.z
-            );
-        }
-
-        // kiri
-        else if (moveHorizontal < 0f)
-        {
-            transform.localScale = initialScale;
-        }
-
-        // depan
-        else if (moveVertical < 0f)
-        {
-            // spriteRenderer.flipY = true;
-            // transform.localScale = new Vector3(1.2f, -1.2f, 1.2f);
-            transform.localScale = new Vector3(
-                initialScale.x,
-                -initialScale.y,
-                initialScale.z
-            );
-            transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 90);
-        }
-        // belakang
-        else if (moveVertical > 0f)
-        {
-            transform.localScale = initialScale;
-            transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -90);
-        }
-
-    }
-
-    public void Deactive()
-    {
-        gameObject.SetActive(false);
-    }
 
     private void OnAnimationEnd()
     {
+        isInstantiate = true;
         Destroy(gameObject);
-        Deactive();
     }
 }

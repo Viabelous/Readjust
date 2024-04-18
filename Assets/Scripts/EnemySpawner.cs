@@ -7,23 +7,22 @@ public class EnemySpawner : MonoBehaviour
     // [SerializeField]
     public GameObject enemyPref;
     // [SerializeField]
-    public float _minTime, _maxTime, _timer;
+    public float minTime, maxTime, timer, gap;
+    public bool spawnEnabled = true;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _minTime = 2;
-        _maxTime = 5;
         ResetTimer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _timer -= Time.deltaTime;
+        timer -= Time.deltaTime;
 
-        if (_timer <= 0)
+        if (timer <= 0)
         {
             Instantiate(enemyPref, transform.position, Quaternion.identity);
             ResetTimer();
@@ -32,6 +31,18 @@ public class EnemySpawner : MonoBehaviour
 
     void ResetTimer()
     {
-        _timer = Random.Range(_minTime, _maxTime);
+        float time = StageManager.Instance.time;
+        // tiap 15 detik
+        if (time < 60 * 10 && time % 15 == 0 && minTime < maxTime)
+        {
+            maxTime -= gap;
+        }
+
+        if (time < 60 * 10 && time % 60 == 0 && minTime < maxTime)
+        {
+            minTime += gap;
+        }
+
+        timer = Random.Range(minTime, maxTime);
     }
 }

@@ -197,9 +197,15 @@ MonoBehaviour:
   speed: 1
   maxHp: 100
   hp: 500
-  attack: 20
-  isKnocked: 0
-  knock: 0
+  attack: 5
+  aerusValue: 10
+  expValue: 2
+  onKnockBack: 0
+  onSlide: 0
+  knockBackSpeed: 0
+  knockBackTimer: 0
+  slideSpeed: 0
+  slideTimer: 0
   backward: {x: 0, y: 0}
   intervalTimer: 1
   timerAttack: 0

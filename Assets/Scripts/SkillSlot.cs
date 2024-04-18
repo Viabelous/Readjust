@@ -7,32 +7,30 @@ using UnityEngine.UI;
 public class SkillSlot : MonoBehaviour
 {
     // public Sprite[] skillsImg;
+    public GameObject objLight, objDark;
     public Text cdText;
     public int slotNumber;
-    public bool isEmpty;
 
-    public bool isCooldown = false;
-
-    private Image img;
-    private GameObject objDark;
+    [HideInInspector]
+    public bool isCooldown = false, isEmpty;
     private float maxCd, currCd, minCd;
 
     void Start()
     {
-        img = GetComponent<Image>();
-        objDark = GameObject.Find("skill_" + slotNumber.ToString() + "_dark");
+        // objLight = GameObject.Find("skill_" + slotNumber.ToString());
+        // objDark = GameObject.Find("skill_" + slotNumber.ToString() + "_dark");
 
         // slot ada skillnya
-        if (slotNumber <= GameManager.playerNow.selectedSkills.Count)
+        if (slotNumber <= GameManager.selectedSkills.Count)
         {
             isEmpty = false;
 
             // ganti gambar sesuai skill yang dipakai
             int index = slotNumber - 1;
-            img.sprite = GameManager.playerNow.selectedSkills[index].sprite;
-            objDark.GetComponent<Image>().sprite = img.sprite;
+            objLight.GetComponent<Image>().sprite = GameManager.selectedSkills[index].sprite;
+            objDark.GetComponent<Image>().sprite = objLight.GetComponent<Image>().sprite;
 
-            maxCd = GameManager.playerNow.selectedSkills[index].maxCd;
+            maxCd = GameManager.selectedSkills[index].maxCd;
             currCd = 0;
             minCd = 0;
         }
@@ -70,12 +68,12 @@ public class SkillSlot : MonoBehaviour
                 if (isCooldown)
                 {
                     isCooldown = false;
-                    GameManager.playerNow.selectedSkills[slotNumber - 1].isCooldown = false;
+                    GameManager.selectedSkills[slotNumber - 1].isCooldown = false;
                     objDark.GetComponent<Image>().fillAmount = 0;
                 }
 
                 // player sudah menggunakan skill
-                if (GameManager.playerNow.selectedSkills[slotNumber - 1].isCooldown)
+                if (GameManager.selectedSkills[slotNumber - 1].isCooldown)
                 {
                     currCd = maxCd;
                     objDark.GetComponent<Image>().fillAmount = 1;

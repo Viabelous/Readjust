@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MobController : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class MobController : MonoBehaviour
     public float maxSpeed = 1f, speed;
     public float maxHp = 500, hp;
     public float attack = 10f;
+    public float aerusValue = 10, expValue = 2;
+    public bool movementEnabled = true;
 
-    public bool onKnockBack = false, onSlide = false;
 
-    // [HideInInspector] public float knock;
+    [HideInInspector] public bool onKnockBack = false, onSlide = false;
 
     [HideInInspector] public float knockBackSpeed, knockBackTimer;
 
@@ -49,7 +51,7 @@ public class MobController : MonoBehaviour
         // kalau hp habis, hilangkan ---------------------------------------------------
         if (hp <= 0)
         {
-            Destroy(gameObject, 0.5f);
+            Die();
         }
 
         // arah hadap mob (?) ------------------------------------------------------------
@@ -99,7 +101,7 @@ public class MobController : MonoBehaviour
             StartCoroutine(Sliding());
         }
 
-        else
+        else if (movementEnabled)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
             transform.Translate(direction * speed * Time.deltaTime);
@@ -229,7 +231,12 @@ public class MobController : MonoBehaviour
     }
 
 
-
+    private void Die()
+    {
+        StageManager.Instance.CollectAerus(aerusValue);
+        StageManager.Instance.CollectExp(expValue);
+        Destroy(gameObject);
+    }
 
 
 }

@@ -40,8 +40,8 @@ public class SelectSkill : MonoBehaviour
             // Debug.Log("Tambah");
             // slotNumber = totalSelected + 1;
             // GameManager.playerNow.selectedSkills[totalSelected] = GameManager.skills[SkillIndex()];
-            GameManager.playerNow.selectedSkills.Add(
-                GameManager.skills.Find(skill => skill.name == gameObject.name)
+            GameManager.selectedSkills.Add(
+                GameData.skills.Find(skill => skill.name == gameObject.name)
             );
 
             img.color = Color.blue;
@@ -49,10 +49,10 @@ public class SelectSkill : MonoBehaviour
 
         else
         {
-            Debug.Log("Hapus");
+
             // Unselected();
-            GameManager.playerNow.selectedSkills.Remove(
-                GameManager.skills.Find(skill => skill.name == gameObject.name)
+            GameManager.selectedSkills.Remove(
+                GameData.skills.Find(skill => skill.name == gameObject.name)
             );
             img.color = Color.white;
 
