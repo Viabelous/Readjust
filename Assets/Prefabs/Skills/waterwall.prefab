@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936677929061029640}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
@@ -71,7 +71,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   slow: 0.5
-  manaUsage: 10
   intervalTimer: 1
   timerAttack: 0
 --- !u!58 &6698029025205426298
@@ -179,8 +178,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1600984263
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -122375040, guid: b559604440e292b448c5789a13c706dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -263,8 +262,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -759652937
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -122375040, guid: b559604440e292b448c5789a13c706dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

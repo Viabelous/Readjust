@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class MobController : MonoBehaviour
@@ -9,28 +11,36 @@ public class MobController : MonoBehaviour
     public float maxHp = 500, hp;
     public float attack = 10f;
 
-    public bool isKnocked = false, isSwiped = false;
-    public float knock, swipe;
+    public bool onKnockBack = false, onSlide = false;
 
-    public Vector2 backward; // untuk arah swipe
+    // [HideInInspector] public float knock;
 
-    public float intervalTimer = 1, timerAttack;
+    [HideInInspector] public float knockBackSpeed, knockBackTimer;
+
+    [HideInInspector] public float slideSpeed, slideTimer;
+    [HideInInspector] public Vector2 backward; // untuk arah slide
+
+    [HideInInspector] public float intervalTimer = 1, timerAttack;
 
 
+    private GameObject player;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    private Animator animate;
+    private SpriteRenderer spriteRenderer;
 
-    public GameObject player;
-    public GameObject mob;
-    public Rigidbody2D rb;
-    Vector2 movement;
-    public Animator animate;
-    SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animate = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         speed = maxSpeed;
         hp = maxHp;
         timerAttack = intervalTimer;
+
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -39,22 +49,22 @@ public class MobController : MonoBehaviour
         // kalau hp habis, hilangkan ---------------------------------------------------
         if (hp <= 0)
         {
-            Destroy(mob, 0.5f);
+            Destroy(gameObject, 0.5f);
         }
 
         // arah hadap mob (?) ------------------------------------------------------------
-        if (player.transform.position.x != mob.transform.position.x)
+        if (player.transform.position.x != transform.position.x)
         {
-            movement.x = player.transform.position.x < mob.transform.position.x ? -1 : 1;
+            movement.x = player.transform.position.x < transform.position.x ? -1 : 1;
         }
         else
         {
             movement.x = 0;
         }
 
-        if (player.transform.position.y != mob.transform.position.y)
+        if (player.transform.position.y != transform.position.y)
         {
-            movement.y = player.transform.position.y < mob.transform.position.y ? -1 : 1;
+            movement.y = player.transform.position.y < transform.position.y ? -1 : 1;
         }
         else
         {
@@ -63,6 +73,95 @@ public class MobController : MonoBehaviour
 
         animate.SetFloat("Horizontal", movement.y);
         animate.SetFloat("Speed", movement.sqrMagnitude);
+
+        if (gameObject.transform.position.y > player.transform.position.y)
+        {
+            spriteRenderer.sortingLayerName = "Enemy Back";
+        }
+        else
+        {
+            spriteRenderer.sortingLayerName = "Enemy Front";
+        }
+
+    }
+
+    // pergerakan mob ------------------------------------------------------------------------
+    void FixedUpdate()
+    {
+        if (onKnockBack)
+        {
+            StartCoroutine(KnockingBack());
+            // rb.MovePosition(rb.position + movement * -knock * speed * Time.fixedDeltaTime);
+        }
+
+        else if (onSlide)
+        {
+            StartCoroutine(Sliding());
+        }
+
+        else
+        {
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            transform.Translate(direction * speed * Time.deltaTime);
+
+            // rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+
+        }
+
+        if (movement.x != 0 && movement.y != 0)
+        {
+            gameObject.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
+        }
+
+    }
+
+    public IEnumerator Sliding()
+    {
+        onSlide = true;
+
+        // // posisi mob di kanan player
+        // if (transform.position.x > player.transform.position.x)
+        // {
+        //     backward = transform.right;
+        // }
+        // // posisi mob di kiri player
+        // else if (transform.position.x < player.transform.position.x)
+        // {
+        //     backward = -transform.right;
+        // }
+
+        // // posisi mob di atas player
+        // if (transform.position.y < player.transform.position.y)
+        // {
+        //     backward = transform.up;
+        // }
+        // // posisi mob di bawah player
+        // else if (transform.position.y > player.transform.position.y)
+        // {
+        //     backward = -transform.up;
+        // }
+
+
+        // Mundur ke belakang
+        transform.Translate(backward * slideSpeed * Time.deltaTime);
+
+
+        // Tunggu beberapa detik
+        yield return new WaitForSeconds(slideTimer);
+
+        onSlide = false;
+
+    }
+
+    public IEnumerator KnockingBack()
+    {
+        Vector3 direction = -(player.transform.position - transform.position).normalized;
+        transform.Translate(direction * knockBackSpeed * Time.deltaTime);
+
+        // Tunggu beberapa detik
+        yield return new WaitForSeconds(knockBackTimer);
+
+        onKnockBack = false;
 
     }
 
@@ -126,35 +225,11 @@ public class MobController : MonoBehaviour
                 player.spriteRenderers[i].color = Color.white;
             }
             timerAttack = intervalTimer;
-
         }
     }
 
 
 
-    // pergerakan mob ------------------------------------------------------------------------
-    void FixedUpdate()
-    {
-        if (isKnocked)
-        {
-            rb.MovePosition(rb.position + movement * -knock * speed * Time.fixedDeltaTime);
-        }
-        else if (isSwiped)
-        {
-            rb.MovePosition(rb.position + backward * swipe * Time.fixedDeltaTime);
-        }
-        else
-        {
-            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-
-        }
-
-        if (movement.x != 0 && movement.y != 0)
-        {
-            mob.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
-        }
-
-    }
 
 
 }

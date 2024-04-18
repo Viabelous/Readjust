@@ -6,7 +6,6 @@ public class WaterwallSkill : MonoBehaviour
 {
     public float damage = 10f;
     public float slow = 0.5f;
-    public float manaUsage = 10;
 
     public float intervalTimer = 1, timerAttack;
 

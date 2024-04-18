@@ -17,12 +17,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
   - Player
+  - Enemy
+  - 
+  - 
+  - 
   - Skill
-  - 
-  - 
   - 
   - 
   - 
@@ -43,6 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy Back
+    uniqueID: 2842767555
+    locked: 0
+  - name: Skill Back
+    uniqueID: 3535314359
+    locked: 0
   - name: Player
-    uniqueID: 1271240857
+    uniqueID: 2637991031
+    locked: 0
+  - name: Enemy Front
+    uniqueID: 573214375
+    locked: 0
+  - name: Skill Front
+    uniqueID: 2693983033
     locked: 0

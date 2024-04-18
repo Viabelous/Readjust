@@ -13,7 +13,7 @@ public class Player
 
     public Player()
     {
-        selectedSkills = new List<Skill> { GameManager.skills[2], GameManager.skills[0], GameManager.skills[3], GameManager.skills[1] };
+        selectedSkills = new List<Skill>() { GameManager.skills[2], GameManager.skills[0], GameManager.skills[3], GameManager.skills[1] };
 
     }
 

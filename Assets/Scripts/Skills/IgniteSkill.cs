@@ -6,7 +6,6 @@ using UnityEngine;
 public class IgniteSkill : MonoBehaviour
 {
     public float damage = 50;
-    public float manaUsage = 3;
 
     private float moveHorizontal, moveVertical;
     private Quaternion initialRotation;

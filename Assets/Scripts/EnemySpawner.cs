@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemyPref;
-    [SerializeField]
-    private float _minTime, _maxTime, _timer;
+    // [SerializeField]
+    public GameObject enemyPref;
+    // [SerializeField]
+    public float _minTime, _maxTime, _timer;
 
 
     // Start is called before the first frame update
