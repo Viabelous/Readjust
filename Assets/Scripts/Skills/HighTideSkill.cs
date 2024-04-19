@@ -6,7 +6,6 @@ public class HighTideSkill : MonoBehaviour
 {
     public float damage = 10;
     public float knockBackSpeed = 10, knockBackTimer = 0.3f;
-    // public float knock = 20;
     private void Start()
     {
 

@@ -10,14 +10,19 @@ public class StageManager : MonoBehaviour
     public static StageManager Instance;
 
     public float time = 0, aerus = 0, exp = 0;
+
     private Text aerusText, expText;
     public GameState gameState;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        Instance = this;
+
+    }
 
     void Start()
     {
-        Instance = this;
         aerusText = GameObject.Find("aerus_text").GetComponent<Text>();
         expText = GameObject.Find("exp_orb_text").GetComponent<Text>();
     }
