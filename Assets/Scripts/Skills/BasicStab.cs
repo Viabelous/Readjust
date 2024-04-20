@@ -75,21 +75,6 @@ public class BasicStab : MonoBehaviour
             transform.position = player.transform.position;
         }
 
-        switch (direction)
-        {
-            case "right":
-                transform.position += Vector3.right * speed * Time.deltaTime;
-                break;
-            case "left":
-                transform.position += Vector3.left * speed * Time.deltaTime;
-                break;
-            case "front":
-                transform.position += Vector3.down * speed * Time.deltaTime;
-                break;
-            case "back":
-                transform.position += Vector3.up * speed * Time.deltaTime;
-                break;
-        }
 
     }
 

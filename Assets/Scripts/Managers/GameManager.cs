@@ -17,6 +17,7 @@ public class GameManager : ScriptableObject
         GameData.unlockedSkills[2],
         GameData.unlockedSkills[4],
         GameData.unlockedSkills[5],
+        GameData.unlockedSkills[6],
     };
 
     // public static

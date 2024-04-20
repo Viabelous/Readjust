@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6761314620475961380}
   - component: {fileID: 7792825813632868796}
   - component: {fileID: 7469980528641569207}
+  - component: {fileID: 5255594376277527878}
+  - component: {fileID: -3453010988743127036}
   m_Layer: 0
   m_Name: will_of_fire
   m_TagString: Untagged
@@ -106,3 +108,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5255594376277527878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425404161615261436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09919709ffc346546b13102000961f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: will_of_fire
+  endAnimationName: will_of_fire
+  attackTime: 8
+  offsetTime: 0
+--- !u!114 &-3453010988743127036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425404161615261436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  type: 2

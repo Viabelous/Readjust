@@ -38,51 +38,31 @@ public class FireballSkill : MonoBehaviour
             transform.localRotation = initialRotation;
 
             // reset tempat awal muncul & arah hadap skill
-
             switch (direction)
             {
                 case "right":
                     spriteRenderer.sortingLayerName = "Skill Front";
-                    transform.position = player.transform.position + new Vector3(1, 0, 0);
+                    transform.position = player.transform.position + new Vector3(2, 0, 0);
                     break;
                 case "left":
                     spriteRenderer.sortingLayerName = "Skill Front";
-                    transform.position = player.transform.position + new Vector3(-1, 0, 0);
+                    transform.position = player.transform.position + new Vector3(-2, 0, 0);
                     transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 180);
                     break;
 
                 case "front":
                     spriteRenderer.sortingLayerName = "Skill Front";
-                    transform.position = player.transform.position + new Vector3(0, -3, 0);
+                    transform.position = player.transform.position + new Vector3(0, -2, 0);
                     transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -90);
                     break;
 
                 case "back":
 
-                    transform.position = player.transform.position + new Vector3(0, 3, 0);
+                    transform.position = player.transform.position + new Vector3(0, 2, 0);
                     transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 90);
                     break;
             }
 
-        }
-
-        if (onAttack)
-        {
-            switch (direction)
-            {
-                case "right":
-                    transform.position += Vector3.right * speed * Time.deltaTime;
-                    break;
-                case "left":
-                    transform.position += Vector3.left * speed * Time.deltaTime;
-                    break;
-                case "front":
-                    transform.position += Vector3.down * speed * Time.deltaTime;
-                    break;
-                case "back":
-                    transform.position += Vector3.up * speed * Time.deltaTime;
-                    break;
-            }
         }
 
         if (
@@ -103,24 +83,8 @@ public class FireballSkill : MonoBehaviour
             MobController mob = other.GetComponent<MobController>();
             mob.hp -= damage;
 
-            onAttack = false;
-            animator.Play("fireball_end");
-        }
-    }
-
-    private void OnAnimationAttack()
-    {
-        if (onAttack)
-        {
-            animator.Play("fireball_attack");
         }
     }
 
 
-    private void OnAnimationEnd()
-    {
-        // isInstantiate = true;
-        // isInstantiate = true;
-        Destroy(gameObject);
-    }
 }

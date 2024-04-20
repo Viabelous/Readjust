@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
     public static StageManager Instance;
 
     public float time = 0, aerus = 0, exp = 0;
+    public Player player;
 
     private Text aerusText, expText;
     public GameState gameState;
@@ -18,6 +19,7 @@ public class StageManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        player = GameManager.player;
 
     }
 

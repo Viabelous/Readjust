@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2192872399577618004}
   - component: {fileID: 8933175464109646848}
   - component: {fileID: 6832236189274577113}
+  - component: {fileID: 5098591500229529860}
+  - component: {fileID: -8149487122367992876}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Damage
@@ -30,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.11, y: -0.10465407, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -1600984263
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 575448046, guid: 248ceefe84770404884afc94014a5fe8, type: 3}
+  m_Sprite: {fileID: 64729150, guid: cbaf7a1abc9f8b043987b0064c072359, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,9 +142,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.5107405, y: 0}
+  m_Offset: {x: 0.25233817, y: 0}
   serializedVersion: 2
-  m_Radius: 1.3894651
+  m_Radius: 0.667565
 --- !u!114 &6832236189274577113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,3 +163,32 @@ MonoBehaviour:
   minX: -15
   maxY: 12
   minY: -12
+--- !u!114 &5098591500229529860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222238090947821005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  type: 0
+--- !u!114 &-8149487122367992876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222238090947821005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3cb91d76383e448935f88f0ab40298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: fireball_attack
+  endAnimationName: fireball_end
+  isMoving: 0

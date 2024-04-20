@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbaf7a1abc9f8b043987b0064c072359
+guid: 248ceefe84770404884afc94014a5fe8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 640
-        height: 640
+        y: 2560
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10c629b1d64f03a43a6e78c095c5e4d9
-      internalID: 64729150
+      spriteID: 9c1d6fa72bb3c1e4880261f695a05a7a
+      internalID: 575448046
       vertices: []
       indices: 
       edges: []
@@ -147,10 +147,10 @@ TextureImporter:
       name: fireball_particles_1
       rect:
         serializedVersion: 2
-        x: 640
-        y: 0
-        width: 640
-        height: 640
+        x: 1280
+        y: 2560
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d17bd5877ecc2db41bb70715dd0069be
-      internalID: -2117651562
+      spriteID: cbf9f72dd5aa6bc48a65acd2314c7595
+      internalID: -333970782
       vertices: []
       indices: 
       edges: []
@@ -168,10 +168,10 @@ TextureImporter:
       name: fireball_particles_2
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 640
-        height: 640
+        x: 2560
+        y: 2560
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e0bc22f6d166ac40b5554584084a0c4
-      internalID: 229869051
+      spriteID: 51e0f13361dfe7e46aa8c2455f97a7c0
+      internalID: 1019245484
       vertices: []
       indices: 
       edges: []
@@ -189,10 +189,10 @@ TextureImporter:
       name: fireball_particles_3
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 640
-        height: 640
+        x: 0
+        y: 1280
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8346024f072686448127fbf6c924f74
-      internalID: 1734576420
+      spriteID: d4805d515077cd249ab612666e536551
+      internalID: -2099803209
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fireball_particles_0: 64729150
-      fireball_particles_1: -2117651562
-      fireball_particles_2: 229869051
-      fireball_particles_3: 1734576420
+      fireball_particles_0: 575448046
+      fireball_particles_1: -333970782
+      fireball_particles_2: 1019245484
+      fireball_particles_3: -2099803209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

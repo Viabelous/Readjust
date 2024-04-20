@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1131451138358607030}
   - component: {fileID: 4603014920461281421}
-  - component: {fileID: 4543482042627525955}
   - component: {fileID: 6698029025205426298}
+  - component: {fileID: 4543482042627525955}
+  - component: {fileID: -7952359689969538520}
   m_Layer: 13
   m_Name: waterwall
   m_TagString: Damage
@@ -57,22 +58,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4543482042627525955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936677929061029640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  slow: 0.5
-  intervalTimer: 1
-  timerAttack: 0
 --- !u!58 &6698029025205426298
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -108,6 +93,38 @@ CircleCollider2D:
   m_Offset: {x: -0.096950874, y: 0.4192073}
   serializedVersion: 2
   m_Radius: 4.120279
+--- !u!114 &4543482042627525955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936677929061029640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  slow: 0.5
+  intervalTimer: 1
+  timerAttack: 0
+--- !u!114 &-7952359689969538520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936677929061029640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09919709ffc346546b13102000961f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: waterwall_attack
+  endAnimationName: waterwall_end
+  attackTime: 10
+  offsetTime: 2
 --- !u!1 &4920384567343068015
 GameObject:
   m_ObjectHideFlags: 0

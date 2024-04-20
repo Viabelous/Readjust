@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1441321859140634361}
   - component: {fileID: 2261224417341495508}
   - component: {fileID: 9124680473814335809}
+  - component: {fileID: 7286693017598739972}
   m_Layer: 0
   m_Name: basic_stab
   m_TagString: Damage
@@ -167,3 +168,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 8
+--- !u!114 &7286693017598739972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020908707667774508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  type: 0

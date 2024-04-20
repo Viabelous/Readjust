@@ -9,6 +9,7 @@ public class GameData : ScriptableObject
 
     public static List<Skill> skills = new List<Skill>() {
         new Skill("sacrivert", 0, 1, 1),
+        new Skill("will_of_fire", 0, 1, 1),
         new Skill("ignite", 30, 1, 1),
         new Skill("fireball", 20, 0.5f, 1),
         new Skill("explosion", 20, 0.5f, 1),
@@ -18,7 +19,7 @@ public class GameData : ScriptableObject
     };
 
     public static List<Skill> unlockedSkills = new List<Skill>() {
-        skills[0], skills[1], skills[2], skills[3],  skills[4], skills[5]
+        skills[0], skills[1], skills[2], skills[3],  skills[4], skills[5], skills[6]
     };
 
     public static Player ogPlayer = new Player(

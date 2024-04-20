@@ -20,7 +20,7 @@ public class WaterwallSkill : MonoBehaviour
     {
         transform.position = GameObject.Find("Player").transform.position;
 
-        Active();
+        // Active();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -54,19 +54,19 @@ public class WaterwallSkill : MonoBehaviour
         }
     }
 
-    public void Active()
-    {
-        gameObject.SetActive(true);
-    }
+    // public void Active()
+    // {
+    //     gameObject.SetActive(true);
+    // }
 
-    public void Deactive()
-    {
-        gameObject.SetActive(false);
-    }
+    // public void Deactive()
+    // {
+    //     gameObject.SetActive(false);
+    // }
 
-    private void OnAnimationEnd()
-    {
-        Destroy(gameObject);
-        Deactive();
-    }
+    // private void OnAnimationEnd()
+    // {
+    //     Destroy(gameObject);
+    //     // Deactive();
+    // }
 }
