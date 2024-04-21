@@ -7,11 +7,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum PlayerState
+{
+    idle,
+    attack,
+    attacked,
+    died
+}
+
 public class PlayerController : MonoBehaviour
 {
     // movement ------------------------------------------------------
     public float speed = 5f;
     public float hp, mana, shield;
+    public PlayerState state;
 
     public GameObject healtBar, manaBar, shieldBar;
 
@@ -29,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     // attack -------------------------------------------------
 
-    public List<GameObject> skillPrefs = new List<GameObject>();
+    // public List<GameObject> skillPrefs = new List<GameObject>();
 
     void Start()
     {
@@ -126,28 +135,41 @@ public class PlayerController : MonoBehaviour
             case "5":
             case "6":
             case "7":
-                int index = int.Parse(Input.inputString) - 1;
+                // int slotNumber = int.Parse(Input.inputString);
+                // int index = int.Parse(Input.inputString) - 1;
 
-                if (mana > 0 && index < GameManager.selectedSkills.Count)
-                {
-                    Skill skill = GameManager.selectedSkills[index];
+                // if (mana > 0 && index < GameManager.selectedSkills.Count)
+                // {
+                //     SkillSlot skillSlot = GameObject.FindObjectsOfType<SkillSlot>()[index];
 
-                    if (skill != null && !skill.isCooldown && mana >= skill.manaUsage)
-                    {
-                        GameObject prefab = skillPrefs.Find(prefab => prefab.name == skill.name);
-                        Instantiate(prefab, transform.position, Quaternion.identity);
-                        skill.isCooldown = true;
+                //     // Skill skill = GameManager.selectedSkills[index];
 
-                        mana -= skill.manaUsage;
-                        UpdateManaBar();
-                    }
-                }
+                //     if (!skillSlot.isEmpty && skillSlot.skillState != SkillState.cooldown && mana >= skillSlot.skill.manaUsage)
+                //     {
+                //         skillSlot.skillState = SkillState.active;
+                //         mana -= skillSlot.skill.manaUsage;
+
+                //         // GameObject prefab = skillPrefs.Find(prefab => prefab.name == skill.name);
+                //         // Instantiate(prefab, transform.position, Quaternion.identity);
+                //         // skill.isCooldown = true;
+
+                //         // mana -= skill.manaUsage;
+                //         UpdateManaBar();
+                //     }
+                // }
                 break;
 
 
             case "q":
+                state = PlayerState.attack;
                 animate.SetTrigger("BasicAttack");
-                Instantiate(skillPrefs[0], gameObject.transform);
+                GameObject prefab = SkillHolder.Instance.skillPrefs[0];
+                // prefab.GetComponent<SkillSetting>().skill.Activate(SkillHolder.Instance.skillPrefs[0]);
+
+                Instantiate(prefab, gameObject.transform);
+                // prefab.GetComponent<SkillSetting>().skill.Activate(prefab);
+
+                // Instantiate(skillPrefs[0], gameObject.transform);
 
                 break;
 

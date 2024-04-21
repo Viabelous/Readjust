@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 435796312255344559}
   - component: {fileID: 7031565087421087864}
   - component: {fileID: 6214654627635999946}
-  - component: {fileID: 4701496805524102192}
   - component: {fileID: 1194721959245563981}
+  - component: {fileID: -8491242918944937354}
+  - component: {fileID: 5569214583486604970}
   m_Layer: 0
   m_Name: whirlwind
   m_TagString: Damage
@@ -139,7 +140,7 @@ PolygonCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -181,22 +182,6 @@ PolygonCollider2D:
       - {x: 0.7220513, y: -3.0569963}
       - {x: 4.0318413, y: 4.88649}
   m_UseDelaunayMesh: 0
---- !u!114 &4701496805524102192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368303669140024051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a66215dea572e674587717c9979573b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  speed: 10
-  slideSpeed: 5
-  slideTimer: 0.3
 --- !u!114 &1194721959245563981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,4 +195,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  range: 10
+  offset: {x: 0, y: 0, z: 0}
   type: 0
+--- !u!114 &-8491242918944937354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368303669140024051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: f5a8b2a287ad27e4e8830d2fdee1f3ad, type: 2}
+--- !u!114 &5569214583486604970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368303669140024051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c14db0004755f4eb71b1ed4fcd3259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimation: whirlwind_attack

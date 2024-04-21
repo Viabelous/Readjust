@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1131451138358607030}
   - component: {fileID: 4603014920461281421}
   - component: {fileID: 6698029025205426298}
-  - component: {fileID: 4543482042627525955}
   - component: {fileID: -7952359689969538520}
+  - component: {fileID: 23917718654987277}
+  - component: {fileID: -2003495853961622070}
   m_Layer: 13
   m_Name: waterwall
   m_TagString: Damage
@@ -93,22 +94,6 @@ CircleCollider2D:
   m_Offset: {x: -0.096950874, y: 0.4192073}
   serializedVersion: 2
   m_Radius: 4.120279
---- !u!114 &4543482042627525955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936677929061029640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  slow: 0.5
-  intervalTimer: 1
-  timerAttack: 0
 --- !u!114 &-7952359689969538520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +108,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAnimationName: waterwall_attack
   endAnimationName: waterwall_end
-  attackTime: 10
-  offsetTime: 2
+  activeTime: 10
+  offsetTime: 0
+--- !u!114 &23917718654987277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936677929061029640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 62fcbf8c78fdf4e40aa3384e4f05e836, type: 2}
+--- !u!114 &-2003495853961622070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936677929061029640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  range: 0
+  offset: {x: 0, y: 0, z: 0}
+  type: 2
 --- !u!1 &4920384567343068015
 GameObject:
   m_ObjectHideFlags: 0

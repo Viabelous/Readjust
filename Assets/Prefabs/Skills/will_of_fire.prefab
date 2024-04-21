@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7469980528641569207}
   - component: {fileID: 5255594376277527878}
   - component: {fileID: -3453010988743127036}
+  - component: {fileID: 77426884482863916}
   m_Layer: 0
   m_Name: will_of_fire
   m_TagString: Untagged
@@ -120,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09919709ffc346546b13102000961f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimationName: will_of_fire
-  endAnimationName: will_of_fire
-  attackTime: 8
+  attackAnimationName: will_of_fire_attack
+  endAnimationName: will_of_fire_end
+  activeTime: 5
   offsetTime: 0
 --- !u!114 &-3453010988743127036
 MonoBehaviour:
@@ -137,4 +138,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  range: 0
+  offset: {x: 0, y: 0, z: 0}
   type: 2
+--- !u!114 &77426884482863916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425404161615261436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 2dc884f38e447f14a8e7a2726a30c6a4, type: 2}

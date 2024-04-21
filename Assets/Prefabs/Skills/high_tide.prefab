@@ -94,8 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7537631710498267116}
   - component: {fileID: 2264112090938507879}
-  - component: {fileID: 4631296498846780219}
   - component: {fileID: 361257760938710392}
+  - component: {fileID: 6207069053977314443}
+  - component: {fileID: 2639889955653576784}
   m_Layer: 0
   m_Name: high_tide
   m_TagString: Damage
@@ -141,21 +142,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4631296498846780219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424176912135380703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45ef33b981c8074a8129b8e9df344fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  knockBackSpeed: 5
-  knockBackTimer: 0.3
 --- !u!60 &361257760938710392
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -230,6 +216,35 @@ PolygonCollider2D:
       - {x: 2.9600008, y: 2.5305662}
       - {x: 1.5792676, y: 2.1037042}
   m_UseDelaunayMesh: 0
+--- !u!114 &6207069053977314443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424176912135380703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  range: 0
+  offset: {x: 0, y: 0, z: 0}
+  type: 2
+--- !u!114 &2639889955653576784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424176912135380703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 2e954aac1e9137c4b8565a982d4a705b, type: 2}
 --- !u!1 &7849605169399100645
 GameObject:
   m_ObjectHideFlags: 0

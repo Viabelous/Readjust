@@ -2,60 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhirlwindSkill : MonoBehaviour
+[CreateAssetMenu]
+public class Whirlwind : Skill
 {
     [SerializeField]
-    private float damage = 10,
-                speed = 10, slideSpeed = 5, slideTimer = 0.3f;
-
-    private string direction = "front";
-    private bool isInstantiate = true;
-
+    private float slideSpeed = 5, slideTimer = 0.3f;
 
     private GameObject player;
     private SpriteRenderer spriteRenderer;
+    private Transform transform;
 
-
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
 
-    }
 
-    private void Update()
-    {
-
-        if (isInstantiate)
+        // reset tempat awal muncul skill
+        switch (player.GetComponent<Animator>().GetFloat("Face"))
         {
-            isInstantiate = false;
-            direction = player.GetComponent<PlayerController>().direction;
+            case 1:
+                gameObject.transform.position = player.transform.position + new Vector3(2, 1, 0);
+                break;
+            case 3:
+                gameObject.transform.position = player.transform.position + new Vector3(-2, 1, 0);
+                break;
+            case 0:
+                spriteRenderer.sortingLayerName = "Skill Front";
+                gameObject.transform.position = player.transform.position;
+                break;
+            case 2:
+                spriteRenderer.sortingLayerName = "Skill Back";
+                gameObject.transform.position = player.transform.position + new Vector3(0, 2, 0);
+                break;
 
-            // reset tempat awal muncul skill
-            switch (direction)
-            {
-                case "right":
-                    transform.position = player.transform.position + new Vector3(2, 1, 0);
-                    break;
-                case "left":
-                    transform.position = player.transform.position + new Vector3(-2, 1, 0);
-                    break;
-                case "front":
-                    spriteRenderer.sortingLayerName = "Skill Front";
-                    transform.position = player.transform.position;
-                    break;
-                case "back":
-                    spriteRenderer.sortingLayerName = "Skill Back";
-                    transform.position = player.transform.position + new Vector3(0, 2, 0);
-                    break;
-            }
         }
+        transform = gameObject.transform;
+
 
     }
 
 
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void HitEnemy(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -67,7 +56,7 @@ public class WhirlwindSkill : MonoBehaviour
             mob.slideSpeed = slideSpeed;
             mob.onSlide = true;
 
-            switch (direction)
+            switch (player.GetComponent<PlayerController>().direction)
             {
                 case "right":
                     mob.backward = transform.right;
@@ -123,10 +112,5 @@ public class WhirlwindSkill : MonoBehaviour
     //     gameObject.SetActive(false);
     // }
 
-    private void OnAnimationEnd()
-    {
-        isInstantiate = true;
-        Destroy(gameObject);
-        // Deactive();
-    }
+
 }

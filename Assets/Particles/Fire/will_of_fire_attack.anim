@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: will_of_fire
+  m_Name: will_of_fire_attack
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,11 +22,11 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -1630773273, guid: 499843d658eac674a8407cb29c412ffe, type: 3}
-    - time: 0.14285715
+    - time: 0.12857144
       value: {fileID: -995480971, guid: 499843d658eac674a8407cb29c412ffe, type: 3}
-    - time: 0.2857143
+    - time: 0.24285714
       value: {fileID: -102050754, guid: 499843d658eac674a8407cb29c412ffe, type: 3}
-    - time: 0.42857143
+    - time: 0.37142858
       value: {fileID: -1630773273, guid: 499843d658eac674a8407cb29c412ffe, type: 3}
     attribute: m_Sprite
     path: 
@@ -59,7 +59,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.44285715
+    m_StopTime: 0.3857143
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,11 +78,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.42857143
-    functionName: OnAnimationEnd
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

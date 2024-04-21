@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4458082938163574700}
   - component: {fileID: 2192872399577618004}
   - component: {fileID: 8933175464109646848}
-  - component: {fileID: 6832236189274577113}
   - component: {fileID: 5098591500229529860}
   - component: {fileID: -8149487122367992876}
+  - component: {fileID: 941804947811853658}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Damage
@@ -145,24 +145,6 @@ CircleCollider2D:
   m_Offset: {x: 0.25233817, y: 0}
   serializedVersion: 2
   m_Radius: 0.667565
---- !u!114 &6832236189274577113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222238090947821005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2334b6508f8796044af62cd34cc7774b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  speed: 10
-  maxX: 15
-  minX: -15
-  maxY: 12
-  minY: -12
 --- !u!114 &5098591500229529860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  range: 30
   type: 0
 --- !u!114 &-8149487122367992876
 MonoBehaviour:
@@ -189,6 +172,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3cb91d76383e448935f88f0ab40298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimationName: fireball_attack
-  endAnimationName: fireball_end
+  attackAnimation: fireball_attack
+  endAnimation: fireball_end
   isMoving: 0
+--- !u!114 &941804947811853658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222238090947821005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 591014c7d24157d48a889f885832067f, type: 2}

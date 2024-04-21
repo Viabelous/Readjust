@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ProjectileAttack : MonoBehaviour
+public class ProjectileSkill : MonoBehaviour // peluru
 {
 
     [SerializeField]
-    private string attackAnimationName, endAnimationName;
+    private string attackAnimation, endAnimation;
 
     [HideInInspector]
     public bool isMoving; // untuk projectile 
@@ -35,7 +35,7 @@ public class ProjectileAttack : MonoBehaviour
         if (other.CompareTag("Enemy") && isMoving)
         {
             isMoving = false;
-            animator.Play(endAnimationName);
+            animator.Play(endAnimation);
         }
     }
 
@@ -43,7 +43,7 @@ public class ProjectileAttack : MonoBehaviour
     {
         if (isMoving)
         {
-            animator.Play(attackAnimationName);
+            animator.Play(attackAnimation);
         }
     }
 

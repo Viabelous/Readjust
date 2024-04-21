@@ -7,12 +7,19 @@ using UnityEngine.UI;
 public class SkillSlot : MonoBehaviour
 {
     // public Sprite[] skillsImg;
-    public GameObject objLight, objDark;
+    public GameObject objLight, objDark, skillHolder;
     public Text cdText;
     public int slotNumber;
+    public SkillState state;
 
     [HideInInspector]
-    public bool isCooldown = false, isEmpty;
+    public GameObject skillPref;
+
+    [HideInInspector]
+    public Skill skill;
+
+    [HideInInspector]
+    public bool isEmpty;
     private float maxCd, currCd, minCd;
 
     void Start()
@@ -27,12 +34,16 @@ public class SkillSlot : MonoBehaviour
 
             // ganti gambar sesuai skill yang dipakai
             int index = slotNumber - 1;
-            objLight.GetComponent<Image>().sprite = GameManager.selectedSkills[index].sprite;
+            skillPref = SkillHolder.Instance.skillPrefs.Find(prefab => prefab.GetComponent<SkillSetting>().skill.name == GameManager.selectedSkills[index]);
+            skill = skillPref.GetComponent<SkillSetting>().skill;
+
+            objLight.GetComponent<Image>().sprite = skill.sprite;
             objDark.GetComponent<Image>().sprite = objLight.GetComponent<Image>().sprite;
 
-            maxCd = GameManager.selectedSkills[index].maxCd;
+            maxCd = skill.maxCd;
             currCd = 0;
             minCd = 0;
+            state = SkillState.ready;
         }
         // slot kosong
         else
@@ -52,41 +63,67 @@ public class SkillSlot : MonoBehaviour
         if (!isEmpty)
         {
 
-            if (isCooldown)
+            switch (state)
             {
-                cdText.text = Math.Ceiling(currCd).ToString();
-            }
-            else
-            {
-                cdText.text = "";
-            }
-
-            // cooldown selesai
-            if (currCd < minCd)
-            {
-                // baru selesai cooldown
-                if (isCooldown)
-                {
-                    isCooldown = false;
-                    GameManager.selectedSkills[slotNumber - 1].isCooldown = false;
+                case SkillState.ready:
+                    cdText.text = "";
                     objDark.GetComponent<Image>().fillAmount = 0;
-                }
 
-                // player sudah menggunakan skill
-                if (GameManager.selectedSkills[slotNumber - 1].isCooldown)
-                {
-                    currCd = maxCd;
+                    if (Input.inputString == slotNumber.ToString())
+                    {
+
+                        Instantiate(skillPref);
+                        state = SkillState.active;
+                    }
+                    break;
+
+                case SkillState.active:
+                    state = SkillState.cooldown;
                     objDark.GetComponent<Image>().fillAmount = 1;
+                    currCd = maxCd;
+                    break;
 
-                    isCooldown = true;
-                }
+                case SkillState.cooldown:
+                    currCd -= Time.deltaTime;
+                    cdText.text = Math.Ceiling(currCd).ToString();
+
+                    objDark.GetComponent<Image>().fillAmount = currCd / maxCd;
+
+                    if (currCd <= minCd)
+                    {
+                        state = SkillState.ready;
+                    }
+
+                    break;
+
             }
-            // lagi cooldown
-            else
-            {
-                objDark.GetComponent<Image>().fillAmount = currCd / maxCd;
-                currCd -= Time.deltaTime;
-            }
+
+            // // cooldown selesai
+            // if (currCd < minCd)
+            // {
+            //     // baru selesai cooldown
+            //     if (isCooldown)
+            //     {
+            //         isCooldown = false;
+            //         GameManager.selectedSkills[slotNumber - 1].isCooldown = false;
+            //         objDark.GetComponent<Image>().fillAmount = 0;
+            //     }
+
+            //     // player sudah menggunakan skill
+            //     if (GameManager.selectedSkills[slotNumber - 1].isCooldown)
+            //     {
+            //         currCd = maxCd;
+            //         objDark.GetComponent<Image>().fillAmount = 1;
+
+            //         isCooldown = true;
+            //     }
+            // }
+            // // lagi cooldown
+            // else
+            // {
+            //     objDark.GetComponent<Image>().fillAmount = currCd / maxCd;
+            //     currCd -= Time.deltaTime;
+            // }
         }
 
     }

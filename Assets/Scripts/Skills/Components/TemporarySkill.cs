@@ -3,38 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class TemporaryAttack : MonoBehaviour
+public class TemporarySkill : MonoBehaviour // skill pake waktu
 {
 
     [SerializeField]
     private string attackAnimationName, endAnimationName;
 
     [SerializeField]
-    private float attackTime, offsetTime;
+    private float activeTime, offsetTime;
     private float timer;
-    private bool isMoving;
+    private bool isAttacking;
 
     private Animator animator;
-    // Start is called before the first frame update
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        timer = attackTime - offsetTime;
-        isMoving = true;
+        timer = activeTime - offsetTime;
+        isAttacking = true;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (isMoving)
+        if (isAttacking)
         {
             timer -= Time.deltaTime;
         }
 
-        if (timer <= 0 && isMoving)
+        if (timer <= 0 && isAttacking)
         {
-            isMoving = false;
+            isAttacking = false;
             animator.Play(endAnimationName);
         }
     }
@@ -46,6 +46,8 @@ public class TemporaryAttack : MonoBehaviour
 
     private void OnAnimationEnd()
     {
+
         Destroy(gameObject);
+
     }
 }

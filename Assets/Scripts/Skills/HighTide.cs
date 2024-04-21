@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HighTideSkill : MonoBehaviour
+[CreateAssetMenu]
+public class HighTide : Skill
 {
-    public float damage = 10;
     public float knockBackSpeed = 10, knockBackTimer = 0.3f;
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-
+        gameObject.transform.position = GameObject.Find("Player").transform.position;
     }
 
-    private void Update()
-    {
-        transform.position = GameObject.Find("Player").transform.position;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void HitEnemy(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -43,9 +38,4 @@ public class HighTideSkill : MonoBehaviour
 
 
 
-
-    private void OnAnimationEnd()
-    {
-        Destroy(gameObject);
-    }
 }

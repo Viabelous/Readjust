@@ -448,9 +448,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 519462401}
   objDark: {fileID: 724175801}
+  skillHolder: {fileID: 260168801}
   cdText: {fileID: 1647211032}
   slotNumber: 2
-  isCooldown: 0
+  skillState: 0
+  skillPref: {fileID: 0}
+  skill: {fileID: 0}
   isEmpty: 0
 --- !u!1 &230175331
 GameObject:
@@ -503,6 +506,60 @@ MonoBehaviour:
   gap: 1
   time: 0
   spawnEnabled: 1
+--- !u!1 &260168801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 260168803}
+  - component: {fileID: 260168802}
+  m_Layer: 0
+  m_Name: SkillHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &260168802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260168801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4502086c4bb36a548bda1ed213a55e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillPrefs:
+  - {fileID: 4020908707667774508, guid: bbd7f39b079fd0c478f80d4ec3ef488e, type: 3}
+  - {fileID: 6349578813318396482, guid: 3db2bc1239f61d045a369550b4213701, type: 3}
+  - {fileID: 5406470412246224907, guid: 76e5b3d998d1f40478f7db13efae8316, type: 3}
+  - {fileID: 222238090947821005, guid: b22e84ccf0f3ca342a9a4263864b7ad7, type: 3}
+  - {fileID: 3425404161615261436, guid: 84a0e20d6a148e6408ab36d8ea0405d7, type: 3}
+  - {fileID: 6224096893381730839, guid: 0b148a461f7722547be2f95aed36a3ba, type: 3}
+  - {fileID: 2368303669140024051, guid: 2a50d92d159e7534da4fb36d84c6248c, type: 3}
+  - {fileID: 936677929061029640, guid: 8185314e330a4d5479d446587188286d, type: 3}
+  - {fileID: 7424176912135380703, guid: 4eeae4ce891dad14abe30046dcee9e18, type: 3}
+--- !u!4 &260168803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260168801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 360.4524, y: 144.91699, z: -1.584868}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &278054054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,9 +1434,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 1003035104}
   objDark: {fileID: 120255681}
+  skillHolder: {fileID: 260168801}
   cdText: {fileID: 858605202}
   slotNumber: 6
-  isCooldown: 0
+  skillState: 0
+  skillPref: {fileID: 0}
+  skill: {fileID: 0}
   isEmpty: 0
 --- !u!1 &519420028
 GameObject:
@@ -2832,16 +2892,6 @@ MonoBehaviour:
   animate: {fileID: 929240449}
   direction: front
   canMove: 1
-  skillPrefs:
-  - {fileID: 4020908707667774508, guid: bbd7f39b079fd0c478f80d4ec3ef488e, type: 3}
-  - {fileID: 7424176912135380703, guid: 4eeae4ce891dad14abe30046dcee9e18, type: 3}
-  - {fileID: 6349578813318396482, guid: 3db2bc1239f61d045a369550b4213701, type: 3}
-  - {fileID: 936677929061029640, guid: 8185314e330a4d5479d446587188286d, type: 3}
-  - {fileID: 2368303669140024051, guid: 2a50d92d159e7534da4fb36d84c6248c, type: 3}
-  - {fileID: 5406470412246224907, guid: 76e5b3d998d1f40478f7db13efae8316, type: 3}
-  - {fileID: 222238090947821005, guid: b22e84ccf0f3ca342a9a4263864b7ad7, type: 3}
-  - {fileID: 6224096893381730839, guid: 0b148a461f7722547be2f95aed36a3ba, type: 3}
-  - {fileID: 3425404161615261436, guid: 84a0e20d6a148e6408ab36d8ea0405d7, type: 3}
 --- !u!1 &983503445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,9 +3436,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 466687316}
   objDark: {fileID: 731676442}
+  skillHolder: {fileID: 260168801}
   cdText: {fileID: 630231153}
   slotNumber: 4
-  isCooldown: 0
+  skillState: 0
+  skillPref: {fileID: 0}
+  skill: {fileID: 0}
   isEmpty: 0
 --- !u!1 &1171222023
 GameObject:
@@ -3574,9 +3627,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 985303115}
   objDark: {fileID: 485191567}
+  skillHolder: {fileID: 260168801}
   cdText: {fileID: 420348118}
   slotNumber: 1
-  isCooldown: 0
+  skillState: 0
+  skillPref: {fileID: 0}
+  skill: {fileID: 0}
   isEmpty: 0
 --- !u!1 &1271898304
 GameObject:
@@ -3666,9 +3722,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 734131497}
   objDark: {fileID: 189802845}
+  skillHolder: {fileID: 260168801}
   cdText: {fileID: 549071945}
   slotNumber: 5
-  isCooldown: 0
+  skillState: 0
+  skillPref: {fileID: 0}
+  skill: {fileID: 0}
   isEmpty: 0
 --- !u!1 &1461055988
 GameObject:
@@ -4436,9 +4495,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 1828936792}
   objDark: {fileID: 2014131914}
+  skillHolder: {fileID: 260168801}
   cdText: {fileID: 1564798652}
   slotNumber: 3
-  isCooldown: 0
+  skillState: 0
+  skillPref: {fileID: 0}
+  skill: {fileID: 0}
   isEmpty: 0
 --- !u!1 &1677781010
 GameObject:
@@ -5149,9 +5211,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 1934671496}
   objDark: {fileID: 302463197}
+  skillHolder: {fileID: 260168801}
   cdText: {fileID: 1531944734}
   slotNumber: 7
-  isCooldown: 0
+  skillState: 0
+  skillPref: {fileID: 0}
+  skill: {fileID: 0}
   isEmpty: 0
 --- !u!1 &1983667676
 GameObject:
@@ -5481,4 +5546,5 @@ SceneRoots:
   - {fileID: 2135353936}
   - {fileID: 983503449}
   - {fileID: 1677781013}
+  - {fileID: 260168803}
   - {fileID: 1001853180}

@@ -11,6 +11,7 @@ public class SelectSkill : MonoBehaviour
     bool selected = false;
     Image img;
     int slotNumber;
+    SkillName skillName;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class SelectSkill : MonoBehaviour
             // slotNumber = totalSelected + 1;
             // GameManager.playerNow.selectedSkills[totalSelected] = GameManager.skills[SkillIndex()];
             GameManager.selectedSkills.Add(
-                GameData.skills.Find(skill => skill.name == gameObject.name)
+                skillName
             );
 
             img.color = Color.blue;
@@ -51,8 +52,7 @@ public class SelectSkill : MonoBehaviour
         {
 
             // Unselected();
-            GameManager.selectedSkills.Remove(
-                GameData.skills.Find(skill => skill.name == gameObject.name)
+            GameManager.selectedSkills.Remove(skillName
             );
             img.color = Color.white;
 

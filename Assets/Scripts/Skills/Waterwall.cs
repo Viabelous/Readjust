@@ -2,28 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterwallSkill : MonoBehaviour
+[CreateAssetMenu]
+public class Waterwall : Skill
 {
-    public float damage = 10f;
-    public float slow = 0.5f;
+    [SerializeField]
+    private float slow = 0.5f, intervalTimer = 1;
+    private float timerAttack;
 
-    public float intervalTimer = 1, timerAttack;
 
-
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
         timerAttack = intervalTimer;
 
-    }
-
-    private void Update()
-    {
-        transform.position = GameObject.Find("Player").transform.position;
+        gameObject.transform.position = GameObject.Find("Player").transform.position;
 
         // Active();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    public override void HitEnemy(Collider2D other)
     {
 
         if (other.CompareTag("Enemy"))
