@@ -54,19 +54,5 @@ public class WaterwallSkill : MonoBehaviour
         }
     }
 
-    // public void Active()
-    // {
-    //     gameObject.SetActive(true);
-    // }
 
-    // public void Deactive()
-    // {
-    //     gameObject.SetActive(false);
-    // }
-
-    // private void OnAnimationEnd()
-    // {
-    //     Destroy(gameObject);
-    //     // Deactive();
-    // }
 }

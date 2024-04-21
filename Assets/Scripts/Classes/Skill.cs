@@ -4,22 +4,27 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 
+enum SkillState
+{
+    ready,
+    cooldown
+}
 public class Skill
 {
     public string name;
     public float maxCd;
     public float manaUsage;
-    public float trueDamage;
+    public float damage;
 
     public bool isCooldown = false;
     // public GameObject skillObj;
     public Sprite sprite;
 
 
-    public Skill(string name, float trueDamage, float maxCd, float manaUsage)
+    public Skill(string name, float damage, float maxCd, float manaUsage)
     {
         this.name = name;
-        this.trueDamage = trueDamage;
+        this.damage = damage;
         this.maxCd = maxCd;
         this.manaUsage = manaUsage;
         this.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Skills/" + name + ".png");

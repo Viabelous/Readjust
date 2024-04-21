@@ -19,7 +19,7 @@ public class GameData : ScriptableObject
     };
 
     public static List<Skill> unlockedSkills = new List<Skill>() {
-        skills[0], skills[1], skills[2], skills[3],  skills[4], skills[5], skills[6]
+        skills[0], skills[1], skills[2], skills[3],  skills[4], skills[5], skills[7]
     };
 
     public static Player ogPlayer = new Player(
