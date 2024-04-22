@@ -15,7 +15,10 @@ public class BasicStab : Skill
     private Vector3 initialScale;
     private SpriteRenderer spriteRenderer;
 
-
+    public BasicStab()
+    {
+        this.damage = GameData.player.atk;
+    }
 
     public override void Activate(GameObject gameObject)
     {
@@ -64,6 +67,17 @@ public class BasicStab : Skill
         gameObject.transform.position = player.transform.position;
 
     }
+
+    // public override void HitEnemy(Collider2D other)
+    // {
+    //     if (other.CompareTag("Enemy"))
+    //     {
+    //         MobController mob = other.GetComponent<MobController>();
+    //         mob.enemy.hp -= damage;
+
+
+    //     }
+    // }
 
 
 

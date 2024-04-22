@@ -32,13 +32,27 @@ public class GameData : ScriptableObject
 SkillName.ignite,
     };
 
-    public static Player ogPlayer = new Player(
-        200, // hp
+    public static Player player = new Player(
+        100, // hp
         100, // mana
-        50,  // shield
-        0,   // aerus
-        1    // level
+        10,  // atk
+        5,   // def
+        10,  // agi
+        5    // foc
     );
+
+    public static List<Enemy> enemies = new List<Enemy>() {
+        new Enemy(
+            EnemyName.mob,
+            15, // hp
+            5,  // atk
+            0,  // def
+            0,  // agi
+            0,  // foc
+            5,  // aerus
+            1   // exp
+        )
+    };
 
 
     // public static List<int> stages = new List<int>() { 1, 2, 3, 4, 5 };

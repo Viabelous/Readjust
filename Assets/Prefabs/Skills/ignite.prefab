@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7933692499758518678}
   - component: {fileID: -8759153863037610313}
   - component: {fileID: 9087462365717237163}
+  - component: {fileID: -4248570389151874492}
   m_Layer: 13
   m_Name: ignite
   m_TagString: Damage
@@ -200,4 +201,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  range: 0
+  offset: {x: 0, y: 0, z: 0}
   type: 2
+--- !u!114 &-4248570389151874492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349578813318396482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  totalDamage: 0

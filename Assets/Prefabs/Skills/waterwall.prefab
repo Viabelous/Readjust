@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7952359689969538520}
   - component: {fileID: 23917718654987277}
   - component: {fileID: -2003495853961622070}
+  - component: {fileID: 7119398851235812307}
   m_Layer: 13
   m_Name: waterwall
   m_TagString: Damage
@@ -139,6 +140,20 @@ MonoBehaviour:
   range: 0
   offset: {x: 0, y: 0, z: 0}
   type: 2
+--- !u!114 &7119398851235812307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936677929061029640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  totalDamage: 0
 --- !u!1 &4920384567343068015
 GameObject:
   m_ObjectHideFlags: 0

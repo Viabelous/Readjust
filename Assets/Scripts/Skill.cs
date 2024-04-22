@@ -27,6 +27,11 @@ public class Skill : ScriptableObject
 
     }
 
+    public virtual void AfterHitEnemey(Collider2D other)
+    {
+
+    }
+
     // public virtual void OnTriggerEnter2D(Collider2D other)
     // {
 

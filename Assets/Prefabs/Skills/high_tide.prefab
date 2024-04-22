@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 361257760938710392}
   - component: {fileID: 6207069053977314443}
   - component: {fileID: 2639889955653576784}
+  - component: {fileID: 4302961139427784445}
   m_Layer: 0
   m_Name: high_tide
   m_TagString: Damage
@@ -245,6 +246,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 11400000, guid: 2e954aac1e9137c4b8565a982d4a705b, type: 2}
+--- !u!114 &4302961139427784445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424176912135380703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  totalDamage: 0
 --- !u!1 &7849605169399100645
 GameObject:
   m_ObjectHideFlags: 0

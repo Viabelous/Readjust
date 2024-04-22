@@ -6,14 +6,10 @@ using UnityEngine;
 public class Waterwall : Skill
 {
     [SerializeField]
-    private float slow = 0.5f, intervalTimer = 1;
-    private float timerAttack;
-
+    private float slow = 50;
 
     public override void Activate(GameObject gameObject)
     {
-        timerAttack = intervalTimer;
-
         gameObject.transform.position = GameObject.Find("Player").transform.position;
 
         // Active();
@@ -25,28 +21,17 @@ public class Waterwall : Skill
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-            mob.speed = mob.maxSpeed * slow;
-
-            if (timerAttack >= intervalTimer)
-            {
-                mob.hp -= damage;
-                timerAttack = 0f;
-            }
-            else
-            {
-                timerAttack += Time.deltaTime;
-            }
+            mob.enemy.agi -= slow;
         }
 
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public override void AfterHitEnemey(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-            mob.speed = mob.maxSpeed;
-            timerAttack = intervalTimer;
+            mob.enemy.agi += slow;
         }
     }
 

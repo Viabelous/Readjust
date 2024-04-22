@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbaf7a1abc9f8b043987b0064c072359
+guid: 047b8cc271c2e444e8ccfd4b1767ce43
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10c629b1d64f03a43a6e78c095c5e4d9
-      internalID: 64729150
+      spriteID: 361362219a84c4343a1642ad11a721b1
+      internalID: -1523905056
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d17bd5877ecc2db41bb70715dd0069be
-      internalID: -2117651562
+      spriteID: 558693a2bae17784886c57f2876ed8f8
+      internalID: -568480246
       vertices: []
       indices: 
       edges: []
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e0bc22f6d166ac40b5554584084a0c4
-      internalID: 229869051
+      spriteID: 6c2e48dbfc8042340a6b4694d93a067d
+      internalID: -1857469932
       vertices: []
       indices: 
       edges: []
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8346024f072686448127fbf6c924f74
-      internalID: 1734576420
+      spriteID: 48fee320ab514974cbb01e8355bf0387
+      internalID: 996151511
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fireball_particles_0: 64729150
-      fireball_particles_1: -2117651562
-      fireball_particles_2: 229869051
-      fireball_particles_3: 1734576420
+      fireball_particles_0: -1523905056
+      fireball_particles_1: -568480246
+      fireball_particles_2: -1857469932
+      fireball_particles_3: 996151511
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

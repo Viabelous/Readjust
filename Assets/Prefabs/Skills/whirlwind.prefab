@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1194721959245563981}
   - component: {fileID: -8491242918944937354}
   - component: {fileID: 5569214583486604970}
+  - component: {fileID: 727543214345560969}
   m_Layer: 0
   m_Name: whirlwind
   m_TagString: Damage
@@ -224,3 +225,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAnimation: whirlwind_attack
+--- !u!114 &727543214345560969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368303669140024051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  totalDamage: 0

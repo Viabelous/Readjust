@@ -3,26 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Player
+public class Player : Character
 {
-    public float maxHp;
-    public float maxMana;
-    public float maxShield;
-    public float aeurus;
+    public float maxMana, mana;
+    public float maxShield, shield;
+    public float aerus;
+    public float exp;
     public float level;
 
-    // public List<Skill> selectedSkills;
 
-    public Player(float maxHp, float maxMana, float maxShield, float aeurus, float level)
+    public Player(float maxHp, float maxMana, float atk, float def, float agi, float foc)
     {
         this.maxHp = maxHp;
+        this.hp = this.maxHp;
+        this.atk = atk;
+        this.def = def;
+        this.agi = agi;
+        this.foc = foc;
         this.maxMana = maxMana;
-        this.maxShield = maxShield;
-        this.aeurus = aeurus;
-        this.level = level;
-
-        // selectedSkills = new List<Skill>() { GameManager.skills[2], GameManager.skills[0], GameManager.skills[3], GameManager.skills[1] };
-
+        this.mana = this.maxMana;
+        this.maxShield = 0;
+        this.shield = maxShield;
+        this.aerus = 0;
+        this.level = 1;
     }
+
+    public float movementSpeed
+    {
+        get
+        {
+            // Isi dengan logika atau nilai yang ingin Anda kembalikan
+            return 4 + agi * 0.1f;
+
+        }
+    }
+
+
+
+
 
 }

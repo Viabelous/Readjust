@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SkillSlot : MonoBehaviour
 {
-    // public Sprite[] skillsImg;
     public GameObject objLight, objDark, skillHolder;
     public Text cdText;
     public int slotNumber;
@@ -20,6 +19,8 @@ public class SkillSlot : MonoBehaviour
 
     [HideInInspector]
     public bool isEmpty;
+
+    private PlayerController playerController;
     private float maxCd, currCd, minCd;
 
     void Start()
@@ -31,6 +32,7 @@ public class SkillSlot : MonoBehaviour
         if (slotNumber <= GameManager.selectedSkills.Count)
         {
             isEmpty = false;
+            playerController = GameObject.FindObjectOfType<PlayerController>();
 
             // ganti gambar sesuai skill yang dipakai
             int index = slotNumber - 1;
@@ -69,10 +71,10 @@ public class SkillSlot : MonoBehaviour
                     cdText.text = "";
                     objDark.GetComponent<Image>().fillAmount = 0;
 
-                    if (Input.inputString == slotNumber.ToString())
+                    if (Input.inputString == slotNumber.ToString() && playerController.player.mana > skill.manaUsage)
                     {
-
                         Instantiate(skillPref);
+                        playerController.UseSkill(skill);
                         state = SkillState.active;
                     }
                     break;

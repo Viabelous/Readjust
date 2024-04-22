@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     // [SerializeField]
     public GameObject enemyPref;
+
     // [SerializeField]
     public float minTime, maxTime, timer, gap, time;
     public bool spawnEnabled = true;
@@ -14,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        time = StageManager.Instance.time;
+        time = StageManager.instance.time;
         ResetTimer();
     }
 

@@ -8,9 +8,14 @@ public class SkillSetting : MonoBehaviour
 {
     public Skill skill;
 
+    private float intervalTimer = 1;
+
+    [HideInInspector]
+    private float timerAttack;
+
     private void Start()
     {
-        // skill.Activate(gameObject);
+        timerAttack = intervalTimer;
         skill.Activate(gameObject);
     }
 
@@ -28,12 +33,31 @@ public class SkillSetting : MonoBehaviour
             skill.HitEnemy(other);
         }
 
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-            mob.hp -= skill.damage;
-        }
 
+            if (timerAttack >= intervalTimer)
+            {
+                mob.enemy.hp -= skill.damage;
+                timerAttack = 0f;
+            }
+            else
+            {
+                timerAttack += Time.deltaTime;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        skill.AfterHitEnemey(other);
+        timerAttack = intervalTimer;
     }
 
     private void OnAnimationEnd()

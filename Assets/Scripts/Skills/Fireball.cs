@@ -63,5 +63,13 @@ public class Fireball : Skill
         // }
     }
 
+    // public override void HitEnemy(Collider2D other)
+    // {
+    //     if (other.CompareTag("Enemy"))
+    //     {
+    //         MobController mob = other.GetComponent<MobController>();
+    //         mob.enemy.hp -= damage;
+    //     }
+    // }
 
 }

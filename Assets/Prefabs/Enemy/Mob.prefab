@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7426282635619544661}
   - component: {fileID: 5759869079324006559}
   - component: {fileID: 390535354912882856}
+  - component: {fileID: 5846968007811048139}
+  - component: {fileID: -5924167133976428185}
   m_Layer: 11
   m_Name: Mob
   m_TagString: Enemy
@@ -193,13 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aab027c29ecc4fbdcdcd5df8a5ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1
-  speed: 1
-  maxHp: 100
-  hp: 500
-  attack: 5
-  aerusValue: 10
-  expValue: 2
+  movementEnabled: 1
   onKnockBack: 0
   onSlide: 0
   knockBackSpeed: 0
@@ -209,3 +205,31 @@ MonoBehaviour:
   backward: {x: 0, y: 0}
   intervalTimer: 1
   timerAttack: 0
+--- !u!114 &5846968007811048139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170722551558479055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  totalDamage: 0
+--- !u!114 &-5924167133976428185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170722551558479055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e43780564f741b4ea4b5e73d4a5e6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  finalDamage: 0

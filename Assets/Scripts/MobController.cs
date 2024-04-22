@@ -8,10 +8,7 @@ using UnityEngine.UI;
 public class MobController : MonoBehaviour
 {
 
-    public float maxSpeed = 1f, speed;
-    public float maxHp = 500, hp;
-    public float attack = 10f;
-    public float aerusValue = 10, expValue = 2;
+    public Enemy enemy;
     public bool movementEnabled = true;
 
 
@@ -22,34 +19,46 @@ public class MobController : MonoBehaviour
     [HideInInspector] public float slideSpeed, slideTimer;
     [HideInInspector] public Vector2 backward; // untuk arah slide
 
-    [HideInInspector] public float intervalTimer = 1, timerAttack;
-
+    private DefenseSystem defenseSystem;
+    private AttackSystem attackSystem;
 
     private GameObject player;
-    private Rigidbody2D rb;
     private Vector2 movement;
     private Animator animate;
     private SpriteRenderer spriteRenderer;
+    private PlayerController playerController;
 
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         animate = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        speed = maxSpeed;
-        hp = maxHp;
-        timerAttack = intervalTimer;
+        defenseSystem = GetComponent<DefenseSystem>();
+        attackSystem = GetComponent<AttackSystem>();
 
         player = GameObject.Find("Player");
+        playerController = player.GetComponent<PlayerController>();
+
+        // NANTI UBAH KALO UDAH BANYAK MUSUHNYA
+        enemy = new Enemy(
+            EnemyName.mob,
+            GameData.enemies[0].maxHp,
+            GameData.enemies[0].atk,
+            GameData.enemies[0].def,
+            GameData.enemies[0].agi,
+            GameData.enemies[0].foc,
+            GameData.enemies[0].aerusValue,
+            GameData.enemies[0].expValue
+        );
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // kalau hp habis, hilangkan ---------------------------------------------------
-        if (hp <= 0)
+        if (enemy.hp <= 0)
         {
             Die();
         }
@@ -104,7 +113,7 @@ public class MobController : MonoBehaviour
         else if (movementEnabled)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(direction * enemy.movementSpeed * Time.deltaTime);
 
             // rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
@@ -167,74 +176,107 @@ public class MobController : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        // kena damage
-        if (other.CompareTag("Damage"))
-        {
-            spriteRenderer.color = Color.red;
-        }
-
-    }
-
-    public void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Damage"))
         {
-            print("HP = " + hp.ToString());
+            Damaged();
         }
-
-        if (other.CompareTag("Player"))
-        {
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
-
-            if (timerAttack >= intervalTimer)
-            {
-                for (int i = 0; i < player.spriteRenderers.Length; i++)
-                {
-                    player.spriteRenderers[i].color = Color.red;
-                }
-
-                if (player.hp > 0)
-                {
-                    player.hp -= attack;
-                    player.UpdateHealthBar();
-                }
-                timerAttack = 0f;
-            }
-            else
-            {
-                timerAttack += Time.deltaTime;
-            }
-
-        }
-
     }
 
-    public void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        // sudah gak kena damage
         if (other.CompareTag("Damage"))
         {
-            spriteRenderer.color = Color.white;
-        }
-
-        if (other.CompareTag("Player"))
-        {
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            for (int i = 0; i < player.spriteRenderers.Length; i++)
-            {
-                player.spriteRenderers[i].color = Color.white;
-            }
-            timerAttack = intervalTimer;
+            Undamaged();
         }
     }
+    // private void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Damage"))
+    //     {
+    //         if (timer <= 0)
+    //         {
+    //             timer = maxTimer;
+    //             defenseSystem.TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
+    //         }
+    //         else
+    //         {
+    //             timer -= Time.deltaTime;
+    //         }
+    //     }
+
+    //     // if ()
+    // }
+
+    // public void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Damage"))
+    //     {
+    //         Damaged();
+    //         defenseSystem.TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
+    //     }
+
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         if (timerAttack >= intervalTimer)
+    //         {
+    //             playerController.state = PlayerState.attacked;
+    //             timerAttack = 0f;
+    //         }
+    //         else
+    //         {
+    //             playerController.state = PlayerState.idle;
+    //             timerAttack += Time.deltaTime;
+    //         }
+    //     }
+
+    // }
+
+    // public void OnTriggerExit2D(Collider2D other)
+    // {
+    //     // sudah gak kena damage
+    //     if (other.CompareTag("Damage"))
+    //     {
+    //         spriteRenderer.color = Color.white;
+    //     }
+
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         playerController.state = PlayerState.idle;
+    //         timerAttack = intervalTimer;
+    //     }
+    // }
+
+
+    private void Attack()
+    {
+        // atur kalo attacknya mau diapa2in
+        // totalDamage = attack * 1;
+    }
+
+    private void Attacked(float totalDamage)
+    {
+        // defenseSystem.TakeDamage();
+    }
+
+    private void Damaged()
+    {
+        spriteRenderer.color = Color.red;
+
+    }
+
+    private void Undamaged()
+    {
+        spriteRenderer.color = Color.white;
+    }
+
 
 
     private void Die()
     {
-        StageManager.Instance.CollectAerus(aerusValue);
-        StageManager.Instance.CollectExp(expValue);
+        playerController.CollectAerus(enemy.aerusValue);
+        playerController.CollectExp(enemy.expValue);
         Destroy(gameObject);
     }
 

@@ -13,27 +13,24 @@ public class Sacrivert : Skill
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
 
-        if (playerController.hp < 0.01 * GameManager.player.maxHp)
+        if (playerController.player.hp < 0.01 * playerController.player.maxHp)
         {
             Destroy(gameObject);
         }
 
-        float result = persentase * playerController.hp;
+        float result = persentase * playerController.player.hp;
 
-        if (result > GameManager.player.maxMana)
+        if (result > playerController.player.maxMana)
         {
-            playerController.mana = GameManager.player.maxMana;
+            playerController.player.mana = playerController.player.maxMana;
 
         }
         else
         {
-            playerController.mana += result;
+            playerController.player.mana += result;
         }
 
-        playerController.UpdateManaBar();
-
-        playerController.hp -= result;
-        playerController.UpdateHealthBar();
+        playerController.player.hp -= result;
 
         gameObject.transform.position = player.transform.position;
         // gameObject.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);

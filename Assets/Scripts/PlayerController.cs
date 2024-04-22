@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,13 +19,12 @@ public enum PlayerState
 public class PlayerController : MonoBehaviour
 {
     // movement ------------------------------------------------------
-    public float speed = 5f;
-    public float hp, mana, shield;
-    public PlayerState state;
 
-    public GameObject healtBar, manaBar, shieldBar;
+    public Text aerusText, expText;
+    public float aerus = 0, exp = 0;
 
     public float minX, maxX, minY, maxY;
+
     public SpriteRenderer[] spriteRenderers;
     public Rigidbody2D rb;
 
@@ -32,9 +32,18 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movement;
 
-    public string direction;
 
-    public bool canMove = true;
+    [HideInInspector]
+    public Player player;
+    [HideInInspector]
+    public PlayerState state;
+
+    [HideInInspector]
+    public string direction;
+    [HideInInspector]
+    public bool movementEnabled;
+
+    private DefenseSystem defenseSystem;
 
     // attack -------------------------------------------------
 
@@ -43,30 +52,29 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         direction = "front";
-        // ObjectToSpawn = GameObject.Find("basic_stab");
 
-        hp = GameManager.player.maxHp;
-        mana = GameManager.player.maxMana;
-        shield = GameManager.player.maxShield;
+        // CERITANYA HABIS DITAMBAH ITEM
+        player = new Player(
+            GameData.player.maxHp + 100,
+            GameData.player.maxMana + 50,
+            GameData.player.atk + 5,
+            GameData.player.def + 1,
+            GameData.player.agi,
+            GameData.player.foc
+        );
+
+        defenseSystem = GetComponent<DefenseSystem>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0)
+        if (player.hp <= 0)
         {
             Die();
         }
 
-        if (!canMove)
-        {
-            return;
-        }
-        // print(skillPrefs.Count);
-
-
-        PlayerAttack();
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -100,77 +108,14 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
-    }
-
-    void FixedUpdate()
-    {
-        // if (
-        //     transform.position.x < maxX &&
-        //     transform.position.x > minX &&
-        //     transform.position.y < maxY &&
-        //     transform.position.y > minY
-        // )
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-
-        Vector3 position = rb.position;
-        position.x = Mathf.Clamp(position.x, minX, maxX);
-        position.y = Mathf.Clamp(position.y, minY, maxY);
-
-        transform.position = position;
-
-        // Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-        //Camera.main.transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0);
-    }
-
-
-    void PlayerAttack()
-    {
         switch (Input.inputString)
         {
-            case "1":
-            case "2":
-            case "3":
-            case "4":
-            case "5":
-            case "6":
-            case "7":
-                // int slotNumber = int.Parse(Input.inputString);
-                // int index = int.Parse(Input.inputString) - 1;
-
-                // if (mana > 0 && index < GameManager.selectedSkills.Count)
-                // {
-                //     SkillSlot skillSlot = GameObject.FindObjectsOfType<SkillSlot>()[index];
-
-                //     // Skill skill = GameManager.selectedSkills[index];
-
-                //     if (!skillSlot.isEmpty && skillSlot.skillState != SkillState.cooldown && mana >= skillSlot.skill.manaUsage)
-                //     {
-                //         skillSlot.skillState = SkillState.active;
-                //         mana -= skillSlot.skill.manaUsage;
-
-                //         // GameObject prefab = skillPrefs.Find(prefab => prefab.name == skill.name);
-                //         // Instantiate(prefab, transform.position, Quaternion.identity);
-                //         // skill.isCooldown = true;
-
-                //         // mana -= skill.manaUsage;
-                //         UpdateManaBar();
-                //     }
-                // }
-                break;
-
-
             case "q":
                 state = PlayerState.attack;
                 animate.SetTrigger("BasicAttack");
+
                 GameObject prefab = SkillHolder.Instance.skillPrefs[0];
-                // prefab.GetComponent<SkillSetting>().skill.Activate(SkillHolder.Instance.skillPrefs[0]);
-
                 Instantiate(prefab, gameObject.transform);
-                // prefab.GetComponent<SkillSetting>().skill.Activate(prefab);
-
-                // Instantiate(skillPrefs[0], gameObject.transform);
-
                 break;
 
             case "=":
@@ -178,25 +123,83 @@ public class PlayerController : MonoBehaviour
                 break;
 
         }
-    }
 
 
-    public void UpdateHealthBar()
-    {
-        healtBar.GetComponent<Image>().fillAmount = hp / GameManager.player.maxHp;
     }
-    public void UpdateManaBar()
+
+    void FixedUpdate()
     {
-        manaBar.GetComponent<Image>().fillAmount = mana / GameManager.player.maxMana;
+        rb.MovePosition(rb.position + movement * player.movementSpeed * Time.fixedDeltaTime);
+
+        Vector3 position = rb.position;
+        position.x = Mathf.Clamp(position.x, minX, maxX);
+        position.y = Mathf.Clamp(position.y, minY, maxY);
+
+        transform.position = position;
     }
-    public void UpdateShieldBar()
+
+    public void UseSkill(Skill skill)
     {
-        shieldBar.GetComponent<Image>().fillAmount = shield / GameManager.player.maxShield;
+        // atur kalo ada pengurangan penggunaan mana dari item kah apa
+        player.mana -= skill.manaUsage;
+
+    }
+
+    public void AddShield(float shield)
+    {
+        player.shield += shield;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Damaged();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Undamaged();
+        }
+    }
+
+    public void Damaged()
+    {
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            spriteRenderers[i].color = Color.red;
+        }
+    }
+
+    public void Undamaged()
+    {
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            spriteRenderers[i].color = Color.white;
+        }
+    }
+
+    public void CollectAerus(float num)
+    {
+        player.aerus += num;
+        aerusText.text = player.aerus.ToString();
+    }
+
+    public void CollectExp(float num)
+    {
+        player.exp += num;
+        expText.text = player.exp.ToString();
     }
 
     private void Die()
     {
-        StageManager.Instance.ChangeGameState(GameState.Lose);
-
+        state = PlayerState.died;
+        Damaged();
+        StageManager.instance.ChangeGameState(GameState.lose);
     }
 }
+
+

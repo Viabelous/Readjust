@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 248ceefe84770404884afc94014a5fe8
+guid: 56e5b19837939fb4a8d9963588dd407b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fireball_particles_0
+      name: sacrivert_particles (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2560
-        width: 1280
-        height: 1280
+        y: 300
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c1d6fa72bb3c1e4880261f695a05a7a
-      internalID: 575448046
+      spriteID: a0b93a60a72875a4db78d6bf40f325be
+      internalID: 233654117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball_particles_1
+      name: sacrivert_particles (1)_1
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 2560
-        width: 1280
-        height: 1280
+        x: 300
+        y: 300
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbf9f72dd5aa6bc48a65acd2314c7595
-      internalID: -333970782
+      spriteID: e2502872f85579a478704fa564d69212
+      internalID: 1605588060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball_particles_2
+      name: sacrivert_particles (1)_2
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2560
-        width: 1280
-        height: 1280
+        x: 600
+        y: 300
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e0f13361dfe7e46aa8c2455f97a7c0
-      internalID: 1019245484
+      spriteID: a7ce3a28cd9e6934a8e8e1fb7d319257
+      internalID: -1484576965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireball_particles_3
+      name: sacrivert_particles (1)_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 1280
-        width: 1280
-        height: 1280
+        y: 0
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4805d515077cd249ab612666e536551
-      internalID: -2099803209
+      spriteID: 56dad70ad11cd944aa03e8473aa458f3
+      internalID: 989830989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sacrivert_particles (1)_4
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d0e4cd97a2b8c4a92b31366762f403
+      internalID: 1793054211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sacrivert_particles (1)_5
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146a24475c243824d8e0ca608cd20103
+      internalID: 690987241
       vertices: []
       indices: 
       edges: []
@@ -217,10 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fireball_particles_0: 575448046
-      fireball_particles_1: -333970782
-      fireball_particles_2: 1019245484
-      fireball_particles_3: -2099803209
+      sacrivert_particles (1)_0: 233654117
+      sacrivert_particles (1)_1: 1605588060
+      sacrivert_particles (1)_2: -1484576965
+      sacrivert_particles (1)_3: 989830989
+      sacrivert_particles (1)_4: 1793054211
+      sacrivert_particles (1)_5: 690987241
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

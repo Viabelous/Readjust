@@ -58,6 +58,15 @@ public class Ignite : Skill
         // print(initialScale);
     }
 
+    // public override void HitEnemy(Collider2D other)
+    // {
+    //     if (other.CompareTag("Enemy"))
+    //     {
+    //         MobController mob = other.GetComponent<MobController>();
+    //         mob.enemy.hp -= damage;
+    //     }
+    // }
+
     // private void Update()
     // {
     //     if (isInstantiate)

@@ -16,7 +16,7 @@ public class HighTide : Skill
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-            mob.hp -= damage;
+            // mob.enemy.hp -= damage;
 
             mob.onKnockBack = true;
             mob.knockBackSpeed = knockBackSpeed;

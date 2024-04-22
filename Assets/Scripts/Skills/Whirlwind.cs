@@ -50,7 +50,7 @@ public class Whirlwind : Skill
         {
             // gameObject.GetComponent<AreaEffector2D>().forceMagnitude = 300;
             MobController mob = other.GetComponent<MobController>();
-            mob.hp -= damage;
+            // mob.enemy.hp -= damage;
 
             mob.slideTimer = slideTimer;
             mob.slideSpeed = slideSpeed;

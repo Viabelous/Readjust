@@ -72,6 +72,7 @@ public class Explosion : Skill
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
+            // mob.enemy.hp -= damage;
             mob.onKnockBack = true;
             mob.knockBackSpeed = knockBackSpeed;
             mob.knockBackTimer = knockBackTimer;

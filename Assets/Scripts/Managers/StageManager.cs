@@ -7,56 +7,57 @@ using UnityEngine.UI;
 // digunakan dalam stage 
 public class StageManager : MonoBehaviour
 {
-    public static StageManager Instance;
+    public static StageManager instance;
 
-    public float time = 0, aerus = 0, exp = 0;
-    public Player player;
+    [Header("Timer")]
+    public Text timeText;
 
-    private Text aerusText, expText;
+    [HideInInspector]
+    public float time;
+    private int min, sec;
+
+    [HideInInspector]
     public GameState gameState;
 
     // Start is called before the first frame update
     void Awake()
     {
-        Instance = this;
-        player = GameManager.player;
+        instance = this;
 
     }
 
     void Start()
     {
-        aerusText = GameObject.Find("aerus_text").GetComponent<Text>();
-        expText = GameObject.Find("exp_orb_text").GetComponent<Text>();
+        time = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        time = Time.time;
+
+        min = Mathf.FloorToInt(time / 60f);
+        sec = Mathf.FloorToInt(time % 60f);
+
+        timeText.text = string.Format("{0:00}:{1:00}", min, sec);
+
+        if (min == 10)
+        {
+            StageManager.instance.gameState = GameState.boss;
+        }
 
         switch (gameState)
         {
-            case GameState.Boss:
+            case GameState.boss:
                 break;
-            case GameState.Pause:
+            case GameState.pause:
                 break;
-            case GameState.Victory:
+            case GameState.victory:
                 break;
-            case GameState.Lose:
+            case GameState.lose:
                 PauseGame();
                 break;
         }
-    }
-
-    public void CollectAerus(float num)
-    {
-        aerus += num;
-        aerusText.text = aerus.ToString();
-    }
-
-    public void CollectExp(float num)
-    {
-        exp += num;
-        expText.text = exp.ToString();
     }
 
     public void ChangeGameState(GameState gameState)
@@ -72,6 +73,9 @@ public class StageManager : MonoBehaviour
             mob.movementEnabled = false;
         }
 
+        PlayerController player = FindObjectOfType<PlayerController>();
+        player.movementEnabled = false;
+
         EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
         foreach (EnemySpawner spawner in spawners)
         {
@@ -79,12 +83,13 @@ public class StageManager : MonoBehaviour
         }
 
     }
+
 }
 
 public enum GameState
 {
-    Boss,
-    Pause,
-    Victory,
-    Lose
+    boss,
+    pause,
+    victory,
+    lose
 }

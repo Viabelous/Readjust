@@ -8,7 +8,7 @@ using UnityEditor;
 public class GameManager : ScriptableObject
 {
     // kalau sudah ada pake item, property (hp, mana, dll ubah)
-    public static Player player = GameData.ogPlayer;
+    public static Player player = GameData.player;
 
     public static List<SkillName> selectedSkills = new List<SkillName>()
     {

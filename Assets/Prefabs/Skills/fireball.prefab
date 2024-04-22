@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5098591500229529860}
   - component: {fileID: -8149487122367992876}
   - component: {fileID: 941804947811853658}
+  - component: {fileID: 6191372766625315695}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Damage
@@ -78,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: -1600984263
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 64729150, guid: cbaf7a1abc9f8b043987b0064c072359, type: 3}
+  m_Sprite: {fileID: -568480246, guid: 047b8cc271c2e444e8ccfd4b1767ce43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.8, y: 12.8}
+  m_Size: {x: 6.4, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -142,9 +143,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.25233817, y: 0}
+  m_Offset: {x: 0.1356856, y: -0.023330647}
   serializedVersion: 2
-  m_Radius: 0.667565
+  m_Radius: 0.7900504
 --- !u!114 &5098591500229529860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   range: 30
+  offset: {x: 0, y: 0, z: 0}
   type: 0
 --- !u!114 &-8149487122367992876
 MonoBehaviour:
@@ -188,3 +190,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 11400000, guid: 591014c7d24157d48a889f885832067f, type: 2}
+--- !u!114 &6191372766625315695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222238090947821005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  totalDamage: 0
