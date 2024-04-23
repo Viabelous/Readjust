@@ -6,10 +6,7 @@ using UnityEngine;
 
 public enum EnemyName
 {
-    pinkBoogie,
-    yellowBoogie,
-    flamingBird,
-    desertAnomaly
+    PinkBoogie, YellowBoogie, FlamingBird, DesertAnomaly
 }
 
 [CreateAssetMenu]
@@ -24,8 +21,6 @@ public class Enemy : Character
     {
         this.hp = this.maxHp;
     }
-
-
 
     public float movementSpeed
     {

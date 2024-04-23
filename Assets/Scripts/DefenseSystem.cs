@@ -26,10 +26,10 @@ public class DefenseSystem : MonoBehaviour
     {
         // switch (type)
         // {
-        //     case CharacterType.player:
+        //     case CharacterType.Player:
         //         character = GetComponent<PlayerController>().player;
         //         break;
-        //     case CharacterType.enemy:
+        //     case CharacterType.Enemy:
         //         character = GetComponent<MobController>().enemy;
         //         break;
         // }
@@ -42,10 +42,10 @@ public class DefenseSystem : MonoBehaviour
         {
             switch (type)
             {
-                case CharacterType.player:
+                case CharacterType.Player:
                     defender = GetComponent<PlayerController>().player;
                     break;
-                case CharacterType.enemy:
+                case CharacterType.Enemy:
                     defender = GetComponent<MobController>().enemy;
                     break;
             }
@@ -67,10 +67,10 @@ public class DefenseSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (type == CharacterType.enemy && other.CompareTag("Damage"))
+        if (type == CharacterType.Enemy && other.CompareTag("Damage"))
         {
             Skill skill = other.GetComponent<SkillController>().skill;
-            if (skill.hitType == SkillHitType.once)
+            if (skill.hitType == SkillHitType.Once)
             {
                 TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
             }
@@ -81,18 +81,18 @@ public class DefenseSystem : MonoBehaviour
     {
         switch (type)
         {
-            case CharacterType.player:
+            case CharacterType.Player:
                 if (other.CompareTag("Enemy"))
                 {
                     Attacking(other.GetComponent<AttackSystem>().DealDamage());
                 }
                 break;
 
-            case CharacterType.enemy:
+            case CharacterType.Enemy:
                 if (other.CompareTag("Damage"))
                 {
                     Skill skill = other.GetComponent<SkillController>().skill;
-                    if (skill.hitType == SkillHitType.temporary)
+                    if (skill.hitType == SkillHitType.Temporary)
                     {
                         Attacking(other.GetComponent<AttackSystem>().DealDamage());
                     }
@@ -104,7 +104,7 @@ public class DefenseSystem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(type == CharacterType.player ? "Enemy" : "Damage"))
+        if (other.CompareTag(type == CharacterType.Player ? "Enemy" : "Damage"))
         {
             timer = 0;
         }

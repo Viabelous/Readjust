@@ -10,8 +10,8 @@ using UnityEngine.UI;
 
 public enum ChrDirection
 {
-    right, left,
-    front, back
+    Right, Left,
+    Front, Back
 }
 
 public class PlayerController : MonoBehaviour
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        direction = ChrDirection.front;
+        direction = ChrDirection.Front;
         defenseSystem = GetComponent<DefenseSystem>();
         player = player.CloneObject();
     }
@@ -69,25 +69,25 @@ public class PlayerController : MonoBehaviour
         if (movement.x == 1)
         {
             animate.SetFloat("Face", 1);
-            direction = ChrDirection.right;
+            direction = ChrDirection.Right;
         }
         else if (movement.x == -1)
         {
             animate.SetFloat("Face", 3);
-            direction = ChrDirection.left;
+            direction = ChrDirection.Left;
 
         }
         if (movement.y == 1)
         {
 
             animate.SetFloat("Face", 2);
-            direction = ChrDirection.back;
+            direction = ChrDirection.Back;
 
         }
         else if (movement.y == -1)
         {
             animate.SetFloat("Face", 0);
-            direction = ChrDirection.front;
+            direction = ChrDirection.Front;
 
         }
 
@@ -126,14 +126,15 @@ public class PlayerController : MonoBehaviour
         // atur kalo ada pengurangan penggunaan mana dari item kah apa
         switch (skill.costType)
         {
-            case SkillCost.mana:
+            case SkillCost.Mana:
                 player.mana -= skill.cost;
                 break;
-            case SkillCost.hp:
+            case SkillCost.Hp:
                 player.hp -= skill.cost;
                 break;
 
         }
+
     }
 
     public void AddShield(float shield)
@@ -188,7 +189,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Damaged();
-        StageManager.instance.ChangeGameState(GameState.lose);
+        StageManager.instance.ChangeGameState(GameState.Lose);
     }
 }
 

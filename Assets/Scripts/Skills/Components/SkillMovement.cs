@@ -7,6 +7,7 @@ using UnityEngine;
 
 public enum SkillMovementType
 {
+    Area,
     Linear, // gerak lurus sesuai arah hadap
     Locking, // geraknya mengikuti pergerakan musuh yg dilock
     OnPlayer,
@@ -17,43 +18,50 @@ public class SkillMovement : MonoBehaviour
 {
     private GameObject player;
 
-    [SerializeField]
-    private float speed, range;
-    [SerializeField]
-    private Vector3 offset;
+    [SerializeField] public SkillMovementType type;
 
+    // [Header("Skip this if On Player or Camera")]
 
-    [SerializeField]
-    public SkillMovementType type;
+    [Header("Skill Position When Instantiate")]
+    [SerializeField] private Vector3 offsetRight;
+    [SerializeField] private Vector3 offsetLeft;
+    [SerializeField] private Vector3 offsetFront;
+    [SerializeField] private Vector3 offsetBack;
+
+    [SerializeField] private float rotationRight, rotationLeft, rotationFront, rotationBack;
+    [SerializeField] private bool flipRight, flipLeft, flipFront, flipBack;
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    // [Header("Movement (Linear)")]
+    // [SerializeField] private float range;
+
     private ChrDirection direction;
-    private ProjectileSkill projectileSkill;
-    private bool onInstantiate;
+    private SkillAnimation skillAnimation;
+    private bool isInstantiate;
     private Vector3 initialPosition;
-    private Animator animator;
-    private bool onCamera;
-
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         direction = player.GetComponent<PlayerController>().direction;
-        projectileSkill = GetComponent<ProjectileSkill>();
-        animator = GetComponent<Animator>();
-        onCamera = true;
-        onInstantiate = true;
+        skillAnimation = GetComponent<SkillAnimation>();
 
+        isInstantiate = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (onInstantiate)
+        if (isInstantiate)
         {
+            SetPosition();
+
             initialPosition = transform.position;
-            onInstantiate = false;
+            isInstantiate = false;
         }
 
-        if (projectileSkill != null && !projectileSkill.isMoving)
+        if (skillAnimation != null && skillAnimation.skill.hitType != SkillHitType.Temporary && !skillAnimation.isAttacking)
         {
             return;
         }
@@ -61,27 +69,28 @@ public class SkillMovement : MonoBehaviour
         switch (type)
         {
             case SkillMovementType.Linear:
+                Skill skill = GetComponent<SkillController>().skill;
                 switch (direction)
                 {
                     // kanan
-                    case ChrDirection.right:
-                        transform.position += Vector3.right * speed * Time.deltaTime;
+                    case ChrDirection.Right:
+                        transform.position += Vector3.right * skill.movementSpeed * Time.deltaTime;
                         break;
                     // kiri
-                    case ChrDirection.left:
-                        transform.position += Vector3.left * speed * Time.deltaTime;
+                    case ChrDirection.Left:
+                        transform.position += Vector3.left * skill.movementSpeed * Time.deltaTime;
                         break;
                     // depan
-                    case ChrDirection.front:
-                        transform.position += Vector3.down * speed * Time.deltaTime;
+                    case ChrDirection.Front:
+                        transform.position += Vector3.down * skill.movementSpeed * Time.deltaTime;
                         break;
                     // belakang
-                    case ChrDirection.back:
-                        transform.position += Vector3.up * speed * Time.deltaTime;
+                    case ChrDirection.Back:
+                        transform.position += Vector3.up * skill.movementSpeed * Time.deltaTime;
                         break;
                 }
 
-                if (Vector3.Distance(initialPosition, transform.position) > range)
+                if (Vector3.Distance(initialPosition, transform.position) > skill.movementRange)
                 {
                     Destroy(gameObject);
                 }
@@ -93,41 +102,102 @@ public class SkillMovement : MonoBehaviour
                 break;
 
             case SkillMovementType.OnCamera:
-                if (onCamera)
-                {
-                    transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
-                }
-                else
-                {
-                    Vector3 direction = (player.transform.position + offset - transform.position).normalized;
-                    transform.Translate(direction * (speed > 0 ? speed : 1) * Time.deltaTime);
-
-                }
-                // if (animator.GetBool("onCamera"))
-                // {
-                //     transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
-                // }
-                // else
-                // {
-                //     Vector3 direction = (player.transform.position + offset - transform.position).normalized;
-                //     transform.Translate(direction * (speed > 0 ? speed : 1) * Time.deltaTime);
-                // }
+                transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
                 break;
         }
 
     }
 
-    public void onPlayerAnimation()
+    private void SetPosition()
     {
-        // animator.SetBool("onCamera", false);
-        onCamera = false;
+        switch (type)
+        {
+            case SkillMovementType.Linear:
+            case SkillMovementType.Area:
+            case SkillMovementType.OnPlayer:
+                switch (direction)
+                {
+                    case ChrDirection.Right:
+                        if (flipRight)
+                        {
+                            FlipHorizontal();
+                        }
+                        transform.position = player.transform.position + offsetRight;
+                        transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationRight);
+
+                        break;
+
+                    case ChrDirection.Left:
+                        if (flipLeft)
+                        {
+                            FlipHorizontal();
+                        }
+                        transform.position = player.transform.position + offsetLeft;
+                        transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationLeft);
+
+                        break;
+
+                    case ChrDirection.Front:
+                        if (flipFront)
+                        {
+                            FlipVertical();
+                        }
+
+                        if (
+                            type == SkillMovementType.Linear ||
+                            type == SkillMovementType.Area
+                        )
+                        {
+                            spriteRenderer.sortingLayerName = "Skill Front";
+                        }
+
+                        transform.position = player.transform.position + offsetFront;
+                        transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationFront);
+
+                        break;
+
+                    case ChrDirection.Back:
+                        if (flipBack)
+                        {
+                            FlipVertical();
+                        }
+
+                        if (
+                            type == SkillMovementType.Linear ||
+                            type == SkillMovementType.Area
+                        )
+                        {
+                            spriteRenderer.sortingLayerName = "Skill Back";
+
+                        }
+
+                        transform.position = player.transform.position + offsetBack;
+                        transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationBack);
+
+                        break;
+                }
+
+                break;
+
+            case SkillMovementType.OnCamera:
+                transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+                break;
+        }
     }
 
-    // public void onAttackAnimation()
-    // {
-    //     // animator.SetTrigger("onAttack");
-    //     animator.SetBool("onAttack", true);
-    // }
+    private void FlipHorizontal()
+    {
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
+    }
+
+    private void FlipVertical()
+    {
+        Vector3 newScale = transform.localScale;
+        newScale.y *= -1; // Membalik skala vertical
+        transform.localScale = newScale;
+    }
 
 
 }

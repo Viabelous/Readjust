@@ -10,9 +10,9 @@ public class Waterwall : Skill
 
     public override void Activate(GameObject gameObject)
     {
-        gameObject.transform.position = GameObject.Find("Player").transform.position;
+        // gameObject.transform.position = GameObject.Find("Player").transform.position;
 
-        // Active();
+        // // Active();
     }
 
     public override void HitEnemyFirstTime(GameObject gameObject, Collider2D other)
@@ -25,8 +25,7 @@ public class Waterwall : Skill
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.isSlowed = true;
-            mob.slowedSpeed = mob.initialSpeed - mob.initialSpeed * slow;
+            mob.ActivateSlowing(slow);
         }
 
     }
@@ -36,7 +35,7 @@ public class Waterwall : Skill
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.isSlowed = false;
+            mob.DeactivateSlowing();
         }
     }
 

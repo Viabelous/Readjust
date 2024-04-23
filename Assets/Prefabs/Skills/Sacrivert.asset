@@ -19,6 +19,8 @@ MonoBehaviour:
   maxCd: 5
   cost: 2
   damage: 0
-  description: 
+  movementSpeed: 0
+  movementRange: 0
+  timer: 0
   sprite: {fileID: 21300000, guid: 0f37a53d83ad6434db2c6d2e8f0cd46c, type: 3}
   persentase: 0.1

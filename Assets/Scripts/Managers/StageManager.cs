@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum GameState
+{
+    Boss, Pause, Victory, Lose
+}
 // digunakan dalam stage 
 public class StageManager : MonoBehaviour
 {
@@ -43,18 +47,18 @@ public class StageManager : MonoBehaviour
 
         if (min == 10)
         {
-            StageManager.instance.gameState = GameState.boss;
+            StageManager.instance.gameState = GameState.Boss;
         }
 
         switch (gameState)
         {
-            case GameState.boss:
+            case GameState.Boss:
                 break;
-            case GameState.pause:
+            case GameState.Pause:
                 break;
-            case GameState.victory:
+            case GameState.Victory:
                 break;
-            case GameState.lose:
+            case GameState.Lose:
                 PauseGame();
                 break;
         }
@@ -86,10 +90,3 @@ public class StageManager : MonoBehaviour
 
 }
 
-public enum GameState
-{
-    boss,
-    pause,
-    victory,
-    lose
-}

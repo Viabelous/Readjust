@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6761314620475961380}
   - component: {fileID: 7792825813632868796}
   - component: {fileID: 7469980528641569207}
-  - component: {fileID: 5255594376277527878}
   - component: {fileID: -3453010988743127036}
   - component: {fileID: 77426884482863916}
+  - component: {fileID: 3727099567365815105}
   m_Layer: 0
   m_Name: WillOfFire
   m_TagString: Untagged
@@ -109,22 +109,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5255594376277527878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3425404161615261436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09919709ffc346546b13102000961f99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackAnimationName: will_of_fire_attack
-  endAnimationName: will_of_fire_end
-  activeTime: 5
-  offsetTime: 0
 --- !u!114 &-3453010988743127036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,10 +121,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  range: 0
-  offset: {x: 0, y: 0, z: 0}
-  type: 2
+  type: 3
+  offsetRight: {x: 0, y: 0, z: 0}
+  offsetLeft: {x: 0, y: 0, z: 0}
+  offsetFront: {x: 0, y: 0, z: 0}
+  offsetBack: {x: 0, y: 0, z: 0}
+  rotationRight: 0
+  rotationLeft: 0
+  rotationFront: 0
+  rotationBack: 0
+  flipRight: 0
+  flipLeft: 0
+  flipFront: 0
+  flipBack: 0
+  spriteRenderer: {fileID: 0}
 --- !u!114 &77426884482863916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +148,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 11400000, guid: 2dc884f38e447f14a8e7a2726a30c6a4, type: 2}
+--- !u!114 &3727099567365815105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425404161615261436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a4c5f46bbe8448a00973ce73b86c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: will_of_fire_attack
+  endAnimationName: will_of_fire_end
+  isAttacking: 0
+  skill: {fileID: 0}

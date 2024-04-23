@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HighTide : Skill
 {
-    public float knockBackSpeed, distance;
+    public float knockBackSpeed, knockBackDistance;
 
     public override void Activate(GameObject gameObject)
     {
@@ -17,13 +17,7 @@ public class HighTide : Skill
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            // mob.enemy.hp -= damage;
-
-            mob.isKnocked = true;
-            mob.knockSpeed = knockBackSpeed;
-            mob.knockDistance = distance;
-            mob.knockDirection = -(gameObject.transform.position - mob.transform.position).normalized;
-            // mob.knockBackTimer = knockBackTimer;
+            mob.ActivateKnockBack(knockBackSpeed, knockBackDistance, gameObject.transform.position);
         }
     }
 
@@ -32,7 +26,7 @@ public class HighTide : Skill
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.isKnocked = false;
+            mob.DeactivateKnockBack();
         }
     }
 

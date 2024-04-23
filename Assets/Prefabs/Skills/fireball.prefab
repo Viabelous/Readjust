@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2192872399577618004}
   - component: {fileID: 8933175464109646848}
   - component: {fileID: 5098591500229529860}
-  - component: {fileID: -8149487122367992876}
   - component: {fileID: 941804947811853658}
   - component: {fileID: 6191372766625315695}
+  - component: {fileID: 5759827130453298744}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Damage
@@ -158,25 +158,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  range: 30
-  offset: {x: 0, y: 0, z: 0}
-  type: 0
---- !u!114 &-8149487122367992876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222238090947821005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f3cb91d76383e448935f88f0ab40298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackAnimation: fireball_attack
-  endAnimation: fireball_end
-  isMoving: 0
+  type: 1
+  offsetRight: {x: 2, y: 0, z: 0}
+  offsetLeft: {x: -2, y: 0, z: 0}
+  offsetFront: {x: 0, y: -2, z: 0}
+  offsetBack: {x: 0, y: 2, z: 0}
+  rotationRight: 0
+  rotationLeft: 180
+  rotationFront: -90
+  rotationBack: 90
+  flipRight: 0
+  flipLeft: 0
+  flipFront: 0
+  flipBack: 0
+  spriteRenderer: {fileID: 4458082938163574700}
 --- !u!114 &941804947811853658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,4 +198,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  totalDamage: 0
+--- !u!114 &5759827130453298744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222238090947821005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a4c5f46bbe8448a00973ce73b86c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: fireball_attack
+  endAnimationName: d
+  timer: 0
+  isAttacking: 0
+  skill: {fileID: 0}

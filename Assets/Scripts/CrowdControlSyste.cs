@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum CrowdControlState
+public enum CrowdControlType
 {
     normal,
     slide,
@@ -20,8 +20,7 @@ public class CrowdControlSystem : MonoBehaviour
 
 
     public CharacterType type;
-    [HideInInspector]
-    public CrowdControlState state;
+
     [HideInInspector]
     public bool isSlid, isKnocked, isSlowed, isStunned;
     [HideInInspector]
@@ -38,9 +37,8 @@ public class CrowdControlSystem : MonoBehaviour
 
     void Start()
     {
-        state = CrowdControlState.normal;
 
-        initialSpeed = type == CharacterType.player ?
+        initialSpeed = type == CharacterType.Player ?
                         GetComponent<PlayerController>().player.movementSpeed :
                         GetComponent<MobController>().enemy.movementSpeed;
     }
@@ -50,13 +48,13 @@ public class CrowdControlSystem : MonoBehaviour
 
         switch (type)
         {
-            case CharacterType.player:
+            case CharacterType.Player:
 
 
                 break;
 
 
-            case CharacterType.enemy:
+            case CharacterType.Enemy:
 
                 if (isSlid)
                 {
@@ -100,6 +98,14 @@ public class CrowdControlSystem : MonoBehaviour
 
     }
 
+
+    public void ActivateSliding(float speed, float distance)
+    {
+        isSlid = true;
+        slideSpeed = speed;
+        slideDistance = distance;
+    }
+
     private void EnemySliding()
     {
         if (Vector3.Distance(initialPosSlide, transform.position) >= slideDistance)
@@ -107,6 +113,19 @@ public class CrowdControlSystem : MonoBehaviour
             isSlid = false;
         }
         transform.Translate(slideDirection * slideSpeed * Time.deltaTime);
+    }
+
+    public void DeactivateSliding()
+    {
+        isSlid = false;
+    }
+
+    public void ActivateKnockBack(float speed, float distance, Vector3 gameObjectPos)
+    {
+        isKnocked = true;
+        knockSpeed = speed;
+        knockDistance = distance;
+        knockDirection = -(gameObjectPos - transform.position).normalized;
     }
 
     private void EnemyKnockedBack()
@@ -120,6 +139,19 @@ public class CrowdControlSystem : MonoBehaviour
         transform.Translate(knockDirection * knockSpeed * Time.deltaTime);
     }
 
+    public void DeactivateKnockBack()
+    {
+        isKnocked = false;
+    }
 
+    public void ActivateSlowing(float slow)
+    {
+        isSlowed = true;
+        slowedSpeed = initialSpeed - initialSpeed * slow;
+    }
 
+    public void DeactivateSlowing()
+    {
+        isSlowed = false;
+    }
 }

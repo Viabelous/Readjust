@@ -19,18 +19,18 @@ public class GameData : ScriptableObject
     // };
 
     public static List<SkillName> skills = new List<SkillName>() {
-        SkillName.basicStab,
-        SkillName.sacrivert,
-        SkillName.explosion,
-        SkillName.ignite,
-        SkillName.fireball,
-        SkillName.whirlwind,
-        SkillName.highTide,
-        SkillName.waterwall
+        SkillName.BasicStab,
+        SkillName.Sacrivert,
+        SkillName.Explosion,
+        SkillName.Ignite,
+        SkillName.Fireball,
+        SkillName.Whirlwind,
+        SkillName.HighTide,
+        SkillName.Waterwall
     };
 
     public static List<SkillName> unlockedSkills = new List<SkillName>() {
-        SkillName.ignite,
+        SkillName.Ignite,
     };
 
     // public static Player player = new Player(
@@ -44,10 +44,10 @@ public class GameData : ScriptableObject
 
     public static List<EnemyName> enemies = new List<EnemyName>()
     {
-        EnemyName.pinkBoogie,
-        EnemyName.yellowBoogie,
-        EnemyName.desertAnomaly,
-        EnemyName.flamingBird,
+        EnemyName.PinkBoogie,
+        EnemyName.YellowBoogie,
+        EnemyName.DesertAnomaly,
+        EnemyName.FlamingBird,
     };
 
 

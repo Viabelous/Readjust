@@ -229,10 +229,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  type: 3
+  offsetRight: {x: 0, y: 0, z: 0}
+  offsetLeft: {x: 0, y: 0, z: 0}
+  offsetFront: {x: 0, y: 0, z: 0}
+  offsetBack: {x: 0, y: 0, z: 0}
+  rotationRight: 0
+  rotationLeft: 0
+  rotationFront: 0
+  rotationBack: 0
+  spriteRenderer: {fileID: 0}
   range: 0
-  offset: {x: 0, y: 0, z: 0}
-  type: 2
 --- !u!114 &2639889955653576784
 MonoBehaviour:
   m_ObjectHideFlags: 0

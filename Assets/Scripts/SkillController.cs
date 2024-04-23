@@ -21,14 +21,18 @@ public class SkillController : MonoBehaviour
 
     private void Update()
     {
+        if (GetComponent<AttackSystem>() != null)
+        {
+            print(GetComponent<AttackSystem>().DealDamage());
 
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (
-            skill.type == SkillType.burstDamage ||
-            skill.type == SkillType.crowdControl
+            skill.type == SkillType.BurstDamage ||
+            skill.type == SkillType.CrowdControl
         )
         {
             skill.HitEnemy(gameObject, other);

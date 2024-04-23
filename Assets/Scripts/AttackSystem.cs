@@ -18,10 +18,10 @@ public class AttackSystem : MonoBehaviour
     private float totalDamage, damage;
     // private bool isInstantiate = true;
     private Character attacker;
+    private BuffSystem buffSystem;
 
     void Start()
     {
-
     }
 
     void Update()
@@ -37,11 +37,21 @@ public class AttackSystem : MonoBehaviour
 
         switch (type)
         {
-            case CharacterType.player:
+            case CharacterType.Player:
                 attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
                 damage = GetComponent<SkillController>().skill.damage;
+
+                buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+                if (buffSystem.CheckBuff(BuffType.ATK))
+                {
+                    damage += buffSystem.GetBuffValues(BuffType.ATK);
+                }
+
+                // print(damage);
+
                 break;
-            case CharacterType.enemy:
+
+            case CharacterType.Enemy:
                 attacker = GetComponent<MobController>().enemy;
                 damage = attacker.atk;
                 break;

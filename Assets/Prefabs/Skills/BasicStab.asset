@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 0
   type: 0
+  hitType: 0
+  costType: 0
   maxCd: 0
-  manaUsage: 0
-  damage: 5
-  description: Hehehe
+  cost: 0
+  damage: 10
+  movementSpeed: 10
+  movementRange: 3
+  timer: 0
   sprite: {fileID: 0}
-  speed: 10

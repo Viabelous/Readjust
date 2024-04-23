@@ -4,7 +4,25 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 
+public enum SkillName
+{
+    BasicStab, Sacrivert, WillOfFire, Explosion, Ignite, Whirlwind, Fireball, HighTide, Waterwall
+}
 
+public enum SkillType
+{
+    BurstDamage, CrowdControl, Buff, Healing, Debuff
+}
+
+public enum SkillHitType
+{
+    Once, Temporary
+}
+
+public enum SkillCost
+{
+    None, Mana, Hp
+}
 
 public class Skill : ScriptableObject
 {
@@ -15,8 +33,15 @@ public class Skill : ScriptableObject
     public float maxCd;
     public float cost;
     public float damage;
-    public string description;
 
+    [Header("Linear Skill")]
+    public float movementSpeed;
+    public float movementRange;
+
+    [Header("Temporary Skill")]
+    public float timer;
+
+    [Header("Skill Icon")]
     public Sprite sprite;
 
     public virtual void Activate(GameObject gameObject)
@@ -40,36 +65,4 @@ public class Skill : ScriptableObject
 
     }
 
-}
-
-public enum SkillName
-{
-    basicStab,
-    sacrivert,
-    willOfFire,
-    explosion,
-    ignite,
-    whirlwind,
-    fireball,
-    highTide,
-    waterwall
-
-}
-
-public enum SkillType
-{
-    burstDamage, crowdControl, buff, healing, debuff
-}
-
-public enum SkillHitType
-{
-    once,
-    temporary
-}
-
-public enum SkillCost
-{
-    none,
-    mana,
-    hp
 }

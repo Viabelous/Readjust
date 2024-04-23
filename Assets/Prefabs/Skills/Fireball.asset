@@ -19,5 +19,7 @@ MonoBehaviour:
   maxCd: 2
   cost: 1
   damage: 10
-  description: 
+  movementSpeed: 12
+  movementRange: 30
+  timer: 0
   sprite: {fileID: 21300000, guid: 3ebdef4d590a04649af019237f66a409, type: 3}

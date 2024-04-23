@@ -74,9 +74,9 @@ public class SkillSlot : MonoBehaviour
                     if (
                         Input.inputString == slotNumber.ToString() &&
                        // jika bayarannya mana & mana yg tersedia > bayaran
-                       (skill.costType == SkillCost.mana && playerController.player.mana > skill.cost ||
+                       (skill.costType == SkillCost.Mana && playerController.player.mana > skill.cost ||
                         // jika bayarannya hp & hp yg tersedia > bayaran + 1% dari total hp keseluruhan
-                        skill.costType == SkillCost.hp && playerController.player.hp > skill.cost + playerController.player.hp * 00.1)
+                        skill.costType == SkillCost.Hp && playerController.player.hp > skill.cost + playerController.player.hp * 00.1)
                     )
                     {
                         Instantiate(skillPref);

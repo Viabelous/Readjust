@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2267502703848680664}
   - component: {fileID: 4917509990448974562}
   - component: {fileID: 565986307540441974}
+  - component: {fileID: 502177889462356864}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Damage
@@ -213,4 +214,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  totalDamage: 0
+--- !u!114 &502177889462356864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406470412246224907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  offsetRight: {x: 3, y: 0, z: 0}
+  offsetLeft: {x: -3, y: 0, z: 0}
+  offsetFront: {x: 0.25, y: -3, z: 0}
+  offsetBack: {x: -0.25, y: 3, z: 0}
+  rotationRight: 0
+  rotationLeft: 180
+  rotationFront: -90
+  rotationBack: 90
+  spriteRenderer: {fileID: 1014738670050333296}
+  speed: 0
+  range: 0

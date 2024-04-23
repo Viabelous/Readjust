@@ -10,38 +10,11 @@ public class Whirlwind : Skill
 
     private GameObject player;
     private ChrDirection direction;
-    private SpriteRenderer spriteRenderer;
+    // private SpriteRenderer spriteRenderer;
     private Transform transform;
 
     public override void Activate(GameObject gameObject)
     {
-
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        player = GameObject.Find("Player");
-        direction = player.GetComponent<PlayerController>().direction;
-
-        // reset tempat awal muncul skill
-        switch (direction)
-        {
-            case ChrDirection.right:
-                gameObject.transform.position = player.transform.position + new Vector3(2, 1, 0);
-                break;
-            case ChrDirection.left:
-                gameObject.transform.position = player.transform.position + new Vector3(-2, 1, 0);
-                break;
-            case ChrDirection.front:
-                spriteRenderer.sortingLayerName = "Skill Front";
-                gameObject.transform.position = player.transform.position;
-                break;
-            case ChrDirection.back:
-                spriteRenderer.sortingLayerName = "Skill Back";
-                gameObject.transform.position = player.transform.position + new Vector3(0, 2, 0);
-                break;
-
-        }
-        transform = gameObject.transform;
-
-
     }
 
 
@@ -53,20 +26,18 @@ public class Whirlwind : Skill
             // gameObject.GetComponent<AreaEffector2D>().forceMagnitude = 300;
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
 
-            mob.isSlid = true;
-            mob.slideSpeed = slideSpeed;
-            mob.slideDistance = slideDistance;
+            mob.ActivateSliding(slideSpeed, slideDistance);
 
             switch (direction)
             {
-                case ChrDirection.right:
+                case ChrDirection.Right:
                     mob.slideDirection = transform.right;
                     break;
-                case ChrDirection.left:
+                case ChrDirection.Left:
                     mob.slideDirection = -transform.right;
                     break;
 
-                case ChrDirection.front:
+                case ChrDirection.Front:
                     // cuma bisa untuk mob yang ada di bawah player
                     if (mob.transform.position.y < player.transform.position.y)
                     {
@@ -74,7 +45,7 @@ public class Whirlwind : Skill
                     }
                     break;
 
-                case ChrDirection.back:
+                case ChrDirection.Back:
                     // cuma bisa untuk mob yang ada di atas player
                     if (mob.transform.position.y > player.transform.position.y)
                     {
@@ -91,7 +62,7 @@ public class Whirlwind : Skill
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.isSlid = false;
+            mob.DeactivateSliding();
         }
     }
 

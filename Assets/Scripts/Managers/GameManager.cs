@@ -14,14 +14,14 @@ public class GameManager : ScriptableObject
     {
         // GameData.unlockedSkills[3],
         // GameData.unlockedSkills[1],
-        SkillName.ignite,
-        SkillName.explosion,
-        SkillName.fireball,
-        // SkillName.willOfFire,
-        SkillName.sacrivert,
-        SkillName.whirlwind,
-        SkillName.waterwall,
-        SkillName.highTide
+        SkillName.Ignite,
+        SkillName.Explosion,
+        SkillName.Fireball,
+        SkillName.WillOfFire,
+        SkillName.Sacrivert,
+        SkillName.Whirlwind,
+        SkillName.Waterwall,
+        // SkillName.HighTide
         // GameData.unlockedSkills[2],
         // GameData.unlockedSkills[4],
         // GameData.unlockedSkills[5],

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1131451138358607030}
   - component: {fileID: 4603014920461281421}
   - component: {fileID: 6698029025205426298}
-  - component: {fileID: -7952359689969538520}
   - component: {fileID: 23917718654987277}
   - component: {fileID: -2003495853961622070}
   - component: {fileID: 7119398851235812307}
+  - component: {fileID: 7672286352614517325}
   m_Layer: 13
   m_Name: Waterwall
   m_TagString: Damage
@@ -95,22 +95,6 @@ CircleCollider2D:
   m_Offset: {x: -0.096950874, y: 0.4192073}
   serializedVersion: 2
   m_Radius: 4.120279
---- !u!114 &-7952359689969538520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936677929061029640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09919709ffc346546b13102000961f99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackAnimationName: waterwall_attack
-  endAnimationName: waterwall_end
-  activeTime: 10
-  offsetTime: 0
 --- !u!114 &23917718654987277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  range: 0
-  offset: {x: 0, y: 0, z: 0}
-  type: 2
+  type: 3
+  offsetRight: {x: 0, y: 0, z: 0}
+  offsetLeft: {x: 0, y: 0, z: 0}
+  offsetFront: {x: 0, y: 0, z: 0}
+  offsetBack: {x: 0, y: 0, z: 0}
+  rotationRight: 0
+  rotationLeft: 0
+  rotationFront: 0
+  rotationBack: 0
+  flipRight: 0
+  flipLeft: 0
+  flipFront: 0
+  flipBack: 0
+  spriteRenderer: {fileID: 0}
 --- !u!114 &7119398851235812307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +147,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  totalDamage: 0
+--- !u!114 &7672286352614517325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936677929061029640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a4c5f46bbe8448a00973ce73b86c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: waterwall_attack
+  endAnimationName: waterwall_end
+  isAttacking: 0
+  skill: {fileID: 0}
 --- !u!1 &4920384567343068015
 GameObject:
   m_ObjectHideFlags: 0
