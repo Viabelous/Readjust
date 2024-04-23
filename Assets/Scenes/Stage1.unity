@@ -2973,8 +2973,6 @@ MonoBehaviour:
   timeText: {fileID: 285169045}
   time: 0
   gameState: 0
-  aerusText: {fileID: 278054056}
-  expText: {fileID: 578049194}
 --- !u!4 &1020248349
 Transform:
   m_ObjectHideFlags: 0
@@ -4785,6 +4783,10 @@ PrefabInstance:
       propertyPath: aerusText
       value: 
       objectReference: {fileID: 278054056}
+    - target: {fileID: 3363000511008790051, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3363000511008790051, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
       propertyPath: m_Name
       value: Player

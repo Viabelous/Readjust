@@ -55,8 +55,11 @@ public class AttackSystem : MonoBehaviour
 
     public float DealDamage()
     {
-        // damage dari skill + efek skill
-        totalDamage = damage + character.atk * character.foc * 0.01f;
+
+        if(UnityEngine.Random.Range(0f, 100f) <= character.foc){
+            totalDamage = damage * 2.5f;
+        }
+        
         return totalDamage;
     }
 
