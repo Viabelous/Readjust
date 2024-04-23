@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 2639889955653576784}
   - component: {fileID: 4302961139427784445}
   m_Layer: 0
-  m_Name: high_tide
+  m_Name: HighTide
   m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,7 @@ PolygonCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  totalDamage: 0
 --- !u!1 &7849605169399100645
 GameObject:
   m_ObjectHideFlags: 0

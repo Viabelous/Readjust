@@ -6,7 +6,7 @@ using UnityEngine;
 public class Waterwall : Skill
 {
     [SerializeField]
-    private float slow = 50;
+    private float slow;
 
     public override void Activate(GameObject gameObject)
     {
@@ -15,23 +15,28 @@ public class Waterwall : Skill
         // Active();
     }
 
-    public override void HitEnemy(Collider2D other)
+    public override void HitEnemyFirstTime(GameObject gameObject, Collider2D other)
+    {
+    }
+
+    public override void HitEnemy(GameObject gameObject, Collider2D other)
     {
 
         if (other.CompareTag("Enemy"))
         {
-            MobController mob = other.GetComponent<MobController>();
-            mob.enemy.agi -= slow;
+            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
+            mob.isSlowed = true;
+            mob.slowedSpeed = mob.initialSpeed - mob.initialSpeed * slow;
         }
 
     }
 
-    public override void AfterHitEnemey(Collider2D other)
+    public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            MobController mob = other.GetComponent<MobController>();
-            mob.enemy.agi += slow;
+            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
+            mob.isSlowed = false;
         }
     }
 

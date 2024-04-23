@@ -2,25 +2,43 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum CharacterState
+{
+    alive,
+    dead
+}
+
+
 
 public class MobController : MonoBehaviour
 {
 
     public Enemy enemy;
     public bool movementEnabled = true;
+    public float speed;
 
 
-    [HideInInspector] public bool onKnockBack = false, onSlide = false;
+    // [HideInInspector]
+    // public bool onKnockBack = false, onSlide = false;
 
-    [HideInInspector] public float knockBackSpeed, knockBackTimer;
+    // [HideInInspector]
+    // public float knockBackSpeed, knockBackDistance;
 
-    [HideInInspector] public float slideSpeed, slideTimer;
-    [HideInInspector] public Vector2 backward; // untuk arah slide
+    // [HideInInspector]
+    // public float slideSpeed, slideDistance;
+
+    // public Vector3 initialPosSlide, initialPosKnockBack;
+
+    // [HideInInspector]
+    // public Vector2 backward; // untuk arah slide
 
     private DefenseSystem defenseSystem;
     private AttackSystem attackSystem;
+    private CharacterState state;
 
     private GameObject player;
     private Vector2 movement;
@@ -39,19 +57,9 @@ public class MobController : MonoBehaviour
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
 
-        // NANTI UBAH KALO UDAH BANYAK MUSUHNYA
-        enemy = new Enemy(
-            EnemyName.mob,
-            GameData.enemies[0].maxHp,
-            GameData.enemies[0].atk,
-            GameData.enemies[0].def,
-            GameData.enemies[0].agi,
-            GameData.enemies[0].foc,
-            GameData.enemies[0].aerusValue,
-            GameData.enemies[0].expValue
-        );
-
-
+        enemy = enemy.CloneObject();
+        speed = enemy.movementSpeed;
+        state = CharacterState.alive;
     }
 
     // Update is called once per frame
@@ -60,6 +68,7 @@ public class MobController : MonoBehaviour
         // kalau hp habis, hilangkan ---------------------------------------------------
         if (enemy.hp <= 0)
         {
+
             Die();
         }
 
@@ -99,24 +108,11 @@ public class MobController : MonoBehaviour
     // pergerakan mob ------------------------------------------------------------------------
     void FixedUpdate()
     {
-        if (onKnockBack)
-        {
-            StartCoroutine(KnockingBack());
-            // rb.MovePosition(rb.position + movement * -knock * speed * Time.fixedDeltaTime);
-        }
 
-        else if (onSlide)
-        {
-            StartCoroutine(Sliding());
-        }
-
-        else if (movementEnabled)
+        if (movementEnabled)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            transform.Translate(direction * enemy.movementSpeed * Time.deltaTime);
-
-            // rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-
+            transform.Translate(direction * speed * Time.deltaTime);
         }
 
         if (movement.x != 0 && movement.y != 0)
@@ -126,139 +122,24 @@ public class MobController : MonoBehaviour
 
     }
 
-    public IEnumerator Sliding()
-    {
-        onSlide = true;
-
-        // // posisi mob di kanan player
-        // if (transform.position.x > player.transform.position.x)
-        // {
-        //     backward = transform.right;
-        // }
-        // // posisi mob di kiri player
-        // else if (transform.position.x < player.transform.position.x)
-        // {
-        //     backward = -transform.right;
-        // }
-
-        // // posisi mob di atas player
-        // if (transform.position.y < player.transform.position.y)
-        // {
-        //     backward = transform.up;
-        // }
-        // // posisi mob di bawah player
-        // else if (transform.position.y > player.transform.position.y)
-        // {
-        //     backward = -transform.up;
-        // }
-
-
-        // Mundur ke belakang
-        transform.Translate(backward * slideSpeed * Time.deltaTime);
-
-
-        // Tunggu beberapa detik
-        yield return new WaitForSeconds(slideTimer);
-
-        onSlide = false;
-
-    }
-
-    public IEnumerator KnockingBack()
-    {
-        Vector3 direction = -(player.transform.position - transform.position).normalized;
-        transform.Translate(direction * knockBackSpeed * Time.deltaTime);
-
-        // Tunggu beberapa detik
-        yield return new WaitForSeconds(knockBackTimer);
-
-        onKnockBack = false;
-
-    }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Damage"))
         {
+            print(enemy.hp);
             Damaged();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Damage"))
+        if (other.CompareTag("Damage") && state == CharacterState.alive)
         {
             Undamaged();
         }
     }
-    // private void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Damage"))
-    //     {
-    //         if (timer <= 0)
-    //         {
-    //             timer = maxTimer;
-    //             defenseSystem.TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
-    //         }
-    //         else
-    //         {
-    //             timer -= Time.deltaTime;
-    //         }
-    //     }
 
-    //     // if ()
-    // }
-
-    // public void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Damage"))
-    //     {
-    //         Damaged();
-    //         defenseSystem.TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
-    //     }
-
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         if (timerAttack >= intervalTimer)
-    //         {
-    //             playerController.state = PlayerState.attacked;
-    //             timerAttack = 0f;
-    //         }
-    //         else
-    //         {
-    //             playerController.state = PlayerState.idle;
-    //             timerAttack += Time.deltaTime;
-    //         }
-    //     }
-
-    // }
-
-    // public void OnTriggerExit2D(Collider2D other)
-    // {
-    //     // sudah gak kena damage
-    //     if (other.CompareTag("Damage"))
-    //     {
-    //         spriteRenderer.color = Color.white;
-    //     }
-
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         playerController.state = PlayerState.idle;
-    //         timerAttack = intervalTimer;
-    //     }
-    // }
-
-
-    private void Attack()
-    {
-        // atur kalo attacknya mau diapa2in
-        // totalDamage = attack * 1;
-    }
-
-    private void Attacked(float totalDamage)
-    {
-        // defenseSystem.TakeDamage();
-    }
 
     private void Damaged()
     {
@@ -275,8 +156,10 @@ public class MobController : MonoBehaviour
 
     private void Die()
     {
+        state = CharacterState.dead;
         playerController.CollectAerus(enemy.aerusValue);
         playerController.CollectExp(enemy.expValue);
+        Damaged();
         Destroy(gameObject);
     }
 

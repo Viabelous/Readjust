@@ -5,37 +5,36 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HighTide : Skill
 {
-    public float knockBackSpeed = 10, knockBackTimer = 0.3f;
+    public float knockBackSpeed, distance;
+
     public override void Activate(GameObject gameObject)
     {
         gameObject.transform.position = GameObject.Find("Player").transform.position;
     }
 
-    public override void HitEnemy(Collider2D other)
+    public override void HitEnemy(GameObject gameObject, Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            MobController mob = other.GetComponent<MobController>();
+            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
             // mob.enemy.hp -= damage;
 
-            mob.onKnockBack = true;
-            mob.knockBackSpeed = knockBackSpeed;
-            mob.knockBackTimer = knockBackTimer;
+            mob.isKnocked = true;
+            mob.knockSpeed = knockBackSpeed;
+            mob.knockDistance = distance;
+            mob.knockDirection = -(gameObject.transform.position - mob.transform.position).normalized;
+            // mob.knockBackTimer = knockBackTimer;
         }
     }
 
-
-
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         MobController mob = other.GetComponent<MobController>();
-    //         mob.on = false;
-
-    //     }
-    // }
-
+    public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
+            mob.isKnocked = false;
+        }
+    }
 
 
 }

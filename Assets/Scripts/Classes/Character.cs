@@ -9,11 +9,17 @@ public enum CharacterType
     enemy
 }
 
-public class Character
+public class Character : ScriptableObject
 {
-    public float maxHp, hp;
+    public float maxHp;
+
+    [HideInInspector]
+    public float hp;
+
     public float atk;
     public float def;
-    public float agi;
+    public float agi, speed;
     public float foc;
+
+
 }

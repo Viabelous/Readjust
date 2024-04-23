@@ -9,15 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd4f066c1c1aae4ab4bfcb12de40f3d, type: 3}
-  m_Name: Explosion
+  m_Script: {fileID: 11500000, guid: b45ef33b981c8074a8129b8e9df344fc, type: 3}
+  m_Name: HighTide
   m_EditorClassIdentifier: 
-  name: 3
+  name: 7
   type: 1
-  maxCd: 1
-  manaUsage: 10
-  damage: 15
+  hitType: 0
+  costType: 1
+  maxCd: 5
+  cost: 10
+  damage: 20
   description: 
-  sprite: {fileID: 21300000, guid: 7060475faf7636542aef900b79a734fe, type: 3}
+  sprite: {fileID: 21300000, guid: 2ddfddf32a6615942bedbba937951f70, type: 3}
   knockBackSpeed: 5
-  knockBackTimer: 0.3
+  distance: 7

@@ -16,47 +16,38 @@ public class AttackSystem : MonoBehaviour
     [HideInInspector]
 
     private float totalDamage, damage;
-    private bool isInstantiate = true;
-    private Character character;
+    // private bool isInstantiate = true;
+    private Character attacker;
 
     void Start()
     {
-        // switch (type)
-        // {
-        //     case CharacterType.player:
-        //         character = GameObject.FindObjectOfType<PlayerController>().player;
-        //         damage = GetComponent<SkillSetting>().skill.damage;
-        //         break;
-        //     case CharacterType.enemy:
-        //         character = GetComponent<MobController>().enemy;
-        //         damage = character.atk;
-        //         break;
-        // }
+
     }
 
     void Update()
     {
-        if (isInstantiate)
-        {
-            switch (type)
-            {
-                case CharacterType.player:
-                    character = GameObject.FindObjectOfType<PlayerController>().player;
-                    damage = GetComponent<SkillSetting>().skill.damage;
-                    break;
-                case CharacterType.enemy:
-                    character = GetComponent<MobController>().enemy;
-                    damage = character.atk;
-                    break;
-            }
-            isInstantiate = false;
-        }
+
     }
 
     public float DealDamage()
     {
+        // ditaruh di sini karena dipakenya di skill bukan di player yg mana skill munculnya sbenetar ae
+        // kalo ditaruh di update kadang error, 
+        // mungkin malah bisa jadi deal damage dipanggil duluan dari pada update (?)
 
-        if (UnityEngine.Random.Range(0f, 100f) <= character.foc)
+        switch (type)
+        {
+            case CharacterType.player:
+                attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
+                damage = GetComponent<SkillController>().skill.damage;
+                break;
+            case CharacterType.enemy:
+                attacker = GetComponent<MobController>().enemy;
+                damage = attacker.atk;
+                break;
+        }
+
+        if (UnityEngine.Random.Range(0f, 100f) <= attacker.foc && attacker.foc != 0)
         {
             totalDamage = damage * 2.5f;
         }

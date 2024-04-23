@@ -8,12 +8,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum PlayerState
+public enum ChrDirection
 {
-    idle,
-    attack,
-    attacked,
-    died
+    right, left,
+    front, back
 }
 
 public class PlayerController : MonoBehaviour
@@ -21,7 +19,6 @@ public class PlayerController : MonoBehaviour
     // movement ------------------------------------------------------
 
     public Text aerusText, expText;
-    public float aerus = 0, exp = 0;
 
     public float minX, maxX, minY, maxY;
 
@@ -32,14 +29,11 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movement;
 
-
-    [HideInInspector]
     public Player player;
-    [HideInInspector]
-    public PlayerState state;
 
     [HideInInspector]
-    public string direction;
+    public ChrDirection direction;
+
     [HideInInspector]
     public bool movementEnabled;
 
@@ -51,20 +45,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        direction = "front";
-
-        // CERITANYA HABIS DITAMBAH ITEM
-        player = new Player(
-            GameData.player.maxHp + 100,
-            GameData.player.maxMana + 50,
-            GameData.player.atk + 5,
-            GameData.player.def + 1,
-            GameData.player.agi,
-            GameData.player.foc
-        );
-
+        direction = ChrDirection.front;
         defenseSystem = GetComponent<DefenseSystem>();
-
+        player = player.CloneObject();
     }
 
     // Update is called once per frame
@@ -86,36 +69,36 @@ public class PlayerController : MonoBehaviour
         if (movement.x == 1)
         {
             animate.SetFloat("Face", 1);
-            direction = "right";
+            direction = ChrDirection.right;
         }
         else if (movement.x == -1)
         {
             animate.SetFloat("Face", 3);
-            direction = "left";
+            direction = ChrDirection.left;
 
         }
         if (movement.y == 1)
         {
 
             animate.SetFloat("Face", 2);
-            direction = "back";
+            direction = ChrDirection.back;
 
         }
         else if (movement.y == -1)
         {
             animate.SetFloat("Face", 0);
-            direction = "front";
+            direction = ChrDirection.front;
 
         }
 
+        // interaksi dengan keyboard
         switch (Input.inputString)
         {
             case "q":
-                state = PlayerState.attack;
                 animate.SetTrigger("BasicAttack");
 
                 GameObject prefab = SkillHolder.Instance.skillPrefs[0];
-                Instantiate(prefab, gameObject.transform);
+                Instantiate(prefab);
                 break;
 
             case "=":
@@ -141,8 +124,16 @@ public class PlayerController : MonoBehaviour
     public void UseSkill(Skill skill)
     {
         // atur kalo ada pengurangan penggunaan mana dari item kah apa
-        player.mana -= skill.manaUsage;
+        switch (skill.costType)
+        {
+            case SkillCost.mana:
+                player.mana -= skill.cost;
+                break;
+            case SkillCost.hp:
+                player.hp -= skill.cost;
+                break;
 
+        }
     }
 
     public void AddShield(float shield)
@@ -196,7 +187,6 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        state = PlayerState.died;
         Damaged();
         StageManager.instance.ChangeGameState(GameState.lose);
     }

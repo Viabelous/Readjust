@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4959272959691065012}
   - component: {fileID: 385963714506514320}
   m_Layer: 0
-  m_Name: sacrivert
+  m_Name: Sacrivert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

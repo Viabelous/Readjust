@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum EnemyName
 {
-    mob
+    pinkBoogie,
+    yellowBoogie,
+    flamingBird,
+    desertAnomaly
 }
 
+[CreateAssetMenu]
 public class Enemy : Character
 {
 
@@ -15,25 +20,35 @@ public class Enemy : Character
     public float aerusValue;
     public float expValue;
 
-    public Enemy(EnemyName enemyName, float maxHp, float atk, float def, float agi, float foc, float aerusValue, float expValue)
+    private void OnEnable()
     {
-        this.enemyName = enemyName;
-        this.maxHp = maxHp;
         this.hp = this.maxHp;
-        this.atk = atk;
-        this.def = def;
-        this.agi = agi;
-        this.foc = foc;
     }
+
+
 
     public float movementSpeed
     {
         get
         {
-            // Isi dengan logika atau nilai yang ingin Anda kembalikan
-            return 1 + agi * 0.1f;
-
+            return speed + agi * 0.1f;
         }
+    }
+
+    public Enemy CloneObject()
+    {
+        Enemy newEnemy = ScriptableObject.CreateInstance<Enemy>();
+        newEnemy.enemyName = this.enemyName;
+        newEnemy.maxHp = this.maxHp;
+        newEnemy.hp = this.hp;
+        newEnemy.atk = this.atk;
+        newEnemy.def = this.def;
+        newEnemy.agi = this.agi;
+        newEnemy.speed = this.speed;
+        newEnemy.foc = this.foc;
+        newEnemy.aerusValue = this.aerusValue;
+        newEnemy.expValue = this.expValue;
+        return newEnemy;
     }
 
 

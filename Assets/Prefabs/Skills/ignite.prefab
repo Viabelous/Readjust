@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9087462365717237163}
   - component: {fileID: -4248570389151874492}
   m_Layer: 13
-  m_Name: ignite
+  m_Name: Ignite
   m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

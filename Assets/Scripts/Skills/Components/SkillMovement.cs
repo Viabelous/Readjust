@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum SkillMovementType
@@ -24,7 +25,7 @@ public class SkillMovement : MonoBehaviour
 
     [SerializeField]
     public SkillMovementType type;
-    private float face;
+    private ChrDirection direction;
     private ProjectileSkill projectileSkill;
     private bool onInstantiate;
     private Vector3 initialPosition;
@@ -35,7 +36,7 @@ public class SkillMovement : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        face = player.GetComponent<Animator>().GetFloat("Face");
+        direction = player.GetComponent<PlayerController>().direction;
         projectileSkill = GetComponent<ProjectileSkill>();
         animator = GetComponent<Animator>();
         onCamera = true;
@@ -60,22 +61,22 @@ public class SkillMovement : MonoBehaviour
         switch (type)
         {
             case SkillMovementType.Linear:
-                switch (face)
+                switch (direction)
                 {
                     // kanan
-                    case 1:
+                    case ChrDirection.right:
                         transform.position += Vector3.right * speed * Time.deltaTime;
                         break;
                     // kiri
-                    case 3:
+                    case ChrDirection.left:
                         transform.position += Vector3.left * speed * Time.deltaTime;
                         break;
                     // depan
-                    case 0:
+                    case ChrDirection.front:
                         transform.position += Vector3.down * speed * Time.deltaTime;
                         break;
                     // belakang
-                    case 2:
+                    case ChrDirection.back:
                         transform.position += Vector3.up * speed * Time.deltaTime;
                         break;
                 }

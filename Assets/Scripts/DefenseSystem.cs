@@ -15,7 +15,7 @@ public class DefenseSystem : MonoBehaviour
     [HideInInspector]
     private float finalDamage, def;
     // private AttackSystem attacker;
-    private Character character;
+    private Character defender;
     private bool isInstantiate = true;
 
     private float maxTimer = 1, timer = 0;
@@ -43,13 +43,13 @@ public class DefenseSystem : MonoBehaviour
             switch (type)
             {
                 case CharacterType.player:
-                    character = GetComponent<PlayerController>().player;
+                    defender = GetComponent<PlayerController>().player;
                     break;
                 case CharacterType.enemy:
-                    character = GetComponent<MobController>().enemy;
+                    defender = GetComponent<MobController>().enemy;
                     break;
             }
-            def = character.def;
+            def = defender.def;
             isInstantiate = false;
         }
 
@@ -58,25 +58,68 @@ public class DefenseSystem : MonoBehaviour
     public void TakeDamage(float totalDamage)
     {
         finalDamage = totalDamage - def * 0.5f;
-        if(finalDamage <= 1){
+        if (finalDamage <= 1)
+        {
             finalDamage = 1;
         }
-        character.hp -= finalDamage;
+        defender.hp -= finalDamage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (type == CharacterType.enemy && other.CompareTag("Damage"))
+        {
+            Skill skill = other.GetComponent<SkillController>().skill;
+            if (skill.hitType == SkillHitType.once)
+            {
+                TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        switch (type)
+        {
+            case CharacterType.player:
+                if (other.CompareTag("Enemy"))
+                {
+                    Attacking(other.GetComponent<AttackSystem>().DealDamage());
+                }
+                break;
+
+            case CharacterType.enemy:
+                if (other.CompareTag("Damage"))
+                {
+                    Skill skill = other.GetComponent<SkillController>().skill;
+                    if (skill.hitType == SkillHitType.temporary)
+                    {
+                        Attacking(other.GetComponent<AttackSystem>().DealDamage());
+                    }
+                }
+                break;
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
         if (other.CompareTag(type == CharacterType.player ? "Enemy" : "Damage"))
         {
-            if (timer <= 0)
-            {
-                timer = maxTimer;
-                TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-            }
+            timer = 0;
+        }
+    }
+
+    private void Attacking(float totalDamage)
+    {
+        if (timer <= 0)
+        {
+            timer = maxTimer;
+            TakeDamage(totalDamage);
+        }
+        else
+        {
+            timer -= Time.deltaTime;
         }
     }
 

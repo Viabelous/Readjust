@@ -10,14 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 7296208295632083108}
   - component: {fileID: 8643005998000185084}
+  - component: {fileID: 8499137216008994804}
   - component: {fileID: 8198773297402015684}
-  - component: {fileID: 7426282635619544661}
   - component: {fileID: 5759869079324006559}
   - component: {fileID: 390535354912882856}
   - component: {fileID: 5846968007811048139}
   - component: {fileID: -5924167133976428185}
+  - component: {fileID: -5872995871299659495}
   m_Layer: 11
-  m_Name: Mob
+  m_Name: PinkBoogie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,35 +91,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8198773297402015684
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6170722551558479055}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &7426282635619544661
-BoxCollider2D:
+--- !u!60 &8499137216008994804
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,10 +120,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011339717, y: -0.074953124}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,9 +133,64 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.42222553, y: 0.40062454}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.51, y: -0.56}
+      - {x: 0.72999996, y: -0.48}
+      - {x: 0.78999996, y: -0.44}
+      - {x: 0.78999996, y: -0.37}
+      - {x: 0.78, y: -0.32999998}
+      - {x: 0.68, y: -0.29999998}
+      - {x: 0.66999996, y: -0.11}
+      - {x: 0.66999996, y: 0.17}
+      - {x: 0.63, y: 0.24}
+      - {x: 0.45999998, y: 0.39999998}
+      - {x: 0.14999999, y: 0.57}
+      - {x: 0.07, y: 0.58}
+      - {x: -0.16, y: 0.58}
+      - {x: -0.35999998, y: 0.45999998}
+      - {x: -0.45999998, y: 0.38}
+      - {x: -0.61, y: 0.22}
+      - {x: -0.75, y: -0.01}
+      - {x: -0.84, y: -0.26}
+      - {x: -0.84, y: -0.41}
+      - {x: -0.83, y: -0.48}
+      - {x: -0.79999995, y: -0.53}
+      - {x: -0.7, y: -0.59999996}
+      - {x: -0.52, y: -0.65999997}
+      - {x: -0.35, y: -0.66999996}
+      - {x: -0.13, y: -0.66999996}
+      - {x: -0.08, y: -0.65999997}
+      - {x: 0.14, y: -0.62}
+      - {x: 0.19, y: -0.56}
+  m_UseDelaunayMesh: 0
+--- !u!50 &8198773297402015684
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170722551558479055}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!95 &5759869079324006559
 Animator:
   serializedVersion: 5
@@ -195,16 +224,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aab027c29ecc4fbdcdcd5df8a5ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: 3fa01f376fc5e6a4c8b37acf120e8724, type: 2}
   movementEnabled: 1
   onKnockBack: 0
   onSlide: 0
   knockBackSpeed: 0
-  knockBackTimer: 0
+  knockBackDistance: 0
   slideSpeed: 0
-  slideTimer: 0
+  slideDistance: 0
+  initialPosSlide: {x: 0, y: 0, z: 0}
+  initialPosKnockBack: {x: 0, y: 0, z: 0}
   backward: {x: 0, y: 0}
-  intervalTimer: 1
-  timerAttack: 0
 --- !u!114 &5846968007811048139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  totalDamage: 0
 --- !u!114 &-5924167133976428185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,4 +261,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  finalDamage: 0
+--- !u!114 &-5872995871299659495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170722551558479055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5268dd78df0f5744b23a66eed653f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  state: 0
+  movementEnabled: 0
+  isSlid: 0
+  isKnocked: 0
+  isSlowed: 0
+  isStunned: 0
+  slideSpeed: 0
+  slideDistance: 0
+  knockSpeed: 0
+  knockDistance: 0
+  slow: 0
+  stunTimer: 0
+  slideDirection: {x: 0, y: 0}
+  knockDirection: {x: 0, y: 0, z: 0}

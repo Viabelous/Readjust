@@ -8,7 +8,7 @@ public class Ignite : Skill
     private float moveHorizontal, moveVertical;
     private Quaternion initialRotation;
     private Vector3 initialScale = new Vector3(1.2f, 1.2f, 1.2f);
-    private float face;
+    private ChrDirection face;
     // public SpriteRenderer spriteRenderer;
     private PolygonCollider2D polyCollider;
 
@@ -25,11 +25,11 @@ public class Ignite : Skill
 
         gameObject.transform.localRotation = initialRotation;
 
-        face = GameObject.Find("Player").GetComponent<Animator>().GetFloat("Face");
+        face = GameObject.Find("Player").GetComponent<PlayerController>().direction;
         switch (face)
         {
             // kanan
-            case 1:
+            case ChrDirection.right:
                 gameObject.transform.localScale = new Vector3(
                 -initialScale.x,
                 initialScale.y,
@@ -37,10 +37,10 @@ public class Ignite : Skill
             );
                 break;
             // kiri
-            case 3:
+            case ChrDirection.left:
                 gameObject.transform.localScale = initialScale; break;
             // depan
-            case 0:
+            case ChrDirection.front:
                 gameObject.transform.localScale = new Vector3(
                 initialScale.x,
                 -initialScale.y,
@@ -49,7 +49,7 @@ public class Ignite : Skill
                 gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, 90);
                 break;
             // belakang
-            case 2:
+            case ChrDirection.back:
                 gameObject.transform.localScale = initialScale;
                 gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, -90);
                 break;
@@ -58,41 +58,4 @@ public class Ignite : Skill
         // print(initialScale);
     }
 
-    // public override void HitEnemy(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         MobController mob = other.GetComponent<MobController>();
-    //         mob.enemy.hp -= damage;
-    //     }
-    // }
-
-    // private void Update()
-    // {
-    //     if (isInstantiate)
-    //     {
-
-    //     }
-
-    //     transform.position = GameObject.Find("Player").transform.position;
-
-    // }
-
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         MobController mob = other.GetComponent<MobController>();
-    //         mob.hp -= damage;
-    //     }
-    // }
-
-
-
-    // private void OnAnimationEnd()
-    // {
-    //     isInstantiate = true;
-    //     Destroy(gameObject);
-    // }
 }

@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2334b6508f8796044af62cd34cc7774b, type: 3}
-  m_Name: Fireball
+  m_Script: {fileID: 11500000, guid: e4b8950fd1d307a49a5a91f314c9a521, type: 3}
+  m_Name: WillOfFire
   m_EditorClassIdentifier: 
-  name: 6
-  type: 0
-  maxCd: 1
-  manaUsage: 5
-  damage: 10
+  name: 2
+  type: 2
+  costType: 1
+  maxCd: 3
+  cost: 1
+  damage: 0
   description: 
-  sprite: {fileID: 21300000, guid: 3ebdef4d590a04649af019237f66a409, type: 3}
+  sprite: {fileID: 21300000, guid: f4960afafb44e9e4d81d93df89185730, type: 3}

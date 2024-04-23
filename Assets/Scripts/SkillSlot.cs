@@ -36,8 +36,8 @@ public class SkillSlot : MonoBehaviour
 
             // ganti gambar sesuai skill yang dipakai
             int index = slotNumber - 1;
-            skillPref = SkillHolder.Instance.skillPrefs.Find(prefab => prefab.GetComponent<SkillSetting>().skill.name == GameManager.selectedSkills[index]);
-            skill = skillPref.GetComponent<SkillSetting>().skill;
+            skillPref = SkillHolder.Instance.skillPrefs.Find(prefab => prefab.GetComponent<SkillController>().skill.name == GameManager.selectedSkills[index]);
+            skill = skillPref.GetComponent<SkillController>().skill;
 
             objLight.GetComponent<Image>().sprite = skill.sprite;
             objDark.GetComponent<Image>().sprite = objLight.GetComponent<Image>().sprite;
@@ -71,7 +71,13 @@ public class SkillSlot : MonoBehaviour
                     cdText.text = "";
                     objDark.GetComponent<Image>().fillAmount = 0;
 
-                    if (Input.inputString == slotNumber.ToString() && playerController.player.mana > skill.manaUsage)
+                    if (
+                        Input.inputString == slotNumber.ToString() &&
+                       // jika bayarannya mana & mana yg tersedia > bayaran
+                       (skill.costType == SkillCost.mana && playerController.player.mana > skill.cost ||
+                        // jika bayarannya hp & hp yg tersedia > bayaran + 1% dari total hp keseluruhan
+                        skill.costType == SkillCost.hp && playerController.player.hp > skill.cost + playerController.player.hp * 00.1)
+                    )
                     {
                         Instantiate(skillPref);
                         playerController.UseSkill(skill);

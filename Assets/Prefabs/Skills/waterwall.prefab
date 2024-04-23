@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2003495853961622070}
   - component: {fileID: 7119398851235812307}
   m_Layer: 13
-  m_Name: waterwall
+  m_Name: Waterwall
   m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

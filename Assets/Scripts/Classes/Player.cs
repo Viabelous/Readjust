@@ -1,26 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-
+[CreateAssetMenu]
 public class Player : Character
 {
-    public float maxMana, mana;
-    public float maxShield, shield;
-    public float aerus;
-    public float exp;
-    public float level;
+    public float maxMana;
+
+    [HideInInspector]
+    public float mana, maxShield, shield, aerus, exp, level;
 
 
-    public Player(float maxHp, float maxMana, float atk, float def, float agi, float foc)
+    private void OnEnable()
     {
-        this.maxHp = maxHp;
+        // Kode yang ingin dijalankan saat scriptable object diaktifkan pertama kali
         this.hp = this.maxHp;
-        this.atk = atk;
-        this.def = def;
-        this.agi = agi;
-        this.foc = foc;
-        this.maxMana = maxMana;
         this.mana = this.maxMana;
         this.maxShield = 0;
         this.shield = maxShield;
@@ -33,9 +28,43 @@ public class Player : Character
         get
         {
             // Isi dengan logika atau nilai yang ingin Anda kembalikan
-            return 4 + agi * 0.1f;
-
+            return speed + agi * 0.1f;
         }
+    }
+
+    public Player CreateAsset(string name)
+    {
+        Player asset = ScriptableObject.CreateInstance<Player>();
+
+        string assetName = "Assets/Prefabs/" + name + ".asset";
+
+        AssetDatabase.CreateAsset(asset, assetName);
+        AssetDatabase.SaveAssets();
+
+        EditorUtility.FocusProjectWindow();
+
+        Selection.activeObject = asset;
+        return asset;
+    }
+
+    public Player CloneObject()
+    {
+        Player newPlayer = ScriptableObject.CreateInstance<Player>();
+        newPlayer.maxHp = this.maxHp;
+        newPlayer.hp = this.hp;
+        newPlayer.atk = this.atk;
+        newPlayer.def = this.def;
+        newPlayer.agi = this.agi;
+        newPlayer.speed = this.speed;
+        newPlayer.foc = this.foc;
+        newPlayer.maxMana = this.maxMana;
+        newPlayer.mana = this.mana;
+        newPlayer.maxShield = this.maxShield;
+        newPlayer.shield = this.shield;
+        newPlayer.aerus = this.aerus;
+        newPlayer.exp = this.exp;
+        newPlayer.level = this.level;
+        return newPlayer;
     }
 
 

@@ -46,7 +46,6 @@ public class TemporarySkill : MonoBehaviour // skill pake waktu
 
     private void OnAnimationEnd()
     {
-
         Destroy(gameObject);
 
     }

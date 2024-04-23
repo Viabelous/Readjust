@@ -17,6 +17,7 @@ public class GameData : ScriptableObject
     //     new Skill("high_tide", 15, 1, 1),
     //     new Skill("whirlwind", 20, 0.5f, 1),
     // };
+
     public static List<SkillName> skills = new List<SkillName>() {
         SkillName.basicStab,
         SkillName.sacrivert,
@@ -29,29 +30,24 @@ public class GameData : ScriptableObject
     };
 
     public static List<SkillName> unlockedSkills = new List<SkillName>() {
-SkillName.ignite,
+        SkillName.ignite,
     };
 
-    public static Player player = new Player(
-        100, // hp
-        100, // mana
-        10,  // atk
-        5,   // def
-        10,  // agi
-        5    // foc
-    );
+    // public static Player player = new Player(
+    //     100, // hp
+    //     100, // mana
+    //     10,  // atk
+    //     5,   // def
+    //     10,  // agi
+    //     5    // foc
+    // );
 
-    public static List<Enemy> enemies = new List<Enemy>() {
-        new Enemy(
-            EnemyName.mob,
-            15, // hp
-            5,  // atk
-            0,  // def
-            0,  // agi
-            0,  // foc
-            5,  // aerus
-            1   // exp
-        )
+    public static List<EnemyName> enemies = new List<EnemyName>()
+    {
+        EnemyName.pinkBoogie,
+        EnemyName.yellowBoogie,
+        EnemyName.desertAnomaly,
+        EnemyName.flamingBird,
     };
 
 

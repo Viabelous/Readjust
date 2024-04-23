@@ -14,6 +14,7 @@ public class Fireball : Skill
     private GameObject player;
 
     private SpriteRenderer spriteRenderer;
+    private ChrDirection direction;
 
 
     public override void Activate(GameObject gameObject)
@@ -25,51 +26,32 @@ public class Fireball : Skill
         player = GameObject.Find("Player");
 
         gameObject.transform.localRotation = initialRotation;
-        float face = player.GetComponent<Animator>().GetFloat("Face");
+        direction = player.GetComponent<PlayerController>().direction;
 
-        switch (face)
+        switch (direction)
         {
-            case 1:
+            case ChrDirection.right:
                 spriteRenderer.sortingLayerName = "Skill Front";
                 gameObject.transform.position = player.transform.position + new Vector3(2, 0, 0);
                 break;
-            case 3:
+            case ChrDirection.left:
                 spriteRenderer.sortingLayerName = "Skill Front";
                 gameObject.transform.position = player.transform.position + new Vector3(-2, 0, 0);
                 gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, 180);
                 break;
 
-            case 0:
+            case ChrDirection.front:
                 spriteRenderer.sortingLayerName = "Skill Front";
                 gameObject.transform.position = player.transform.position + new Vector3(0, -2, 0);
                 gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, -90);
                 break;
 
-            case 2:
+            case ChrDirection.back:
 
                 gameObject.transform.position = player.transform.position + new Vector3(0, 2, 0);
                 gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, 90);
                 break;
         }
-
-        // if (
-        //     gameObject.transform.position.x > maxX ||
-        //     gameObject.transform.position.x < minX ||
-        //     gameObject.transform.position.y > maxY ||
-        //     gameObject.transform.position.y < minY
-        // )
-        // {
-        //     Destroy(gameObject);
-        // }
     }
-
-    // public override void HitEnemy(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         MobController mob = other.GetComponent<MobController>();
-    //         mob.enemy.hp -= damage;
-    //     }
-    // }
 
 }

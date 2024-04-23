@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b474e74c5238c84f890f6eb945aaad4, type: 3}
-  m_Name: Ignite
+  m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
+  m_Name: FlamingBird
   m_EditorClassIdentifier: 
-  name: 4
-  type: 0
-  maxCd: 2
-  manaUsage: 5
-  damage: 20
-  description: 
-  sprite: {fileID: 21300000, guid: e5402d0581b6de941ba2f65c77532dc0, type: 3}
+  maxHp: 90
+  hp: 90
+  atk: 30
+  def: 0
+  agi: 0
+  speed: 0.8
+  foc: 0
+  enemyName: 2
+  aerusValue: 20
+  expValue: 10
