@@ -82,7 +82,7 @@ public class MobController : MonoBehaviour
             movement.y = 0;
         }
 
-        animate.SetFloat("Horizontal", movement.y);
+        animate.SetFloat("Vertical", movement.y);
         animate.SetFloat("Speed", movement.sqrMagnitude);
 
         if (gameObject.transform.position.y > player.transform.position.y)

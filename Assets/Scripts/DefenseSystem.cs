@@ -57,7 +57,10 @@ public class DefenseSystem : MonoBehaviour
 
     public void TakeDamage(float totalDamage)
     {
-        finalDamage = totalDamage - totalDamage * def * 0.01f;
+        finalDamage = totalDamage - def * 0.5f;
+        if(finalDamage <= 1){
+            finalDamage = 1;
+        }
         character.hp -= finalDamage;
     }
 
