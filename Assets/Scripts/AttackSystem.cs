@@ -56,10 +56,15 @@ public class AttackSystem : MonoBehaviour
     public float DealDamage()
     {
 
-        if(UnityEngine.Random.Range(0f, 100f) <= character.foc){
+        if (UnityEngine.Random.Range(0f, 100f) <= character.foc)
+        {
             totalDamage = damage * 2.5f;
         }
-        
+        else
+        {
+            totalDamage = damage;
+        }
+
         return totalDamage;
     }
 
