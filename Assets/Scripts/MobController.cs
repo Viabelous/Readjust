@@ -97,9 +97,7 @@ public class MobController : MonoBehaviour
     {
 
         if (
-            !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
-            !crowdControlSystem.CheckCC(CrowdControlType.Knockback) &&
-            !crowdControlSystem.CheckCC(CrowdControlType.Stun)
+            movementEnabled
         )
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;

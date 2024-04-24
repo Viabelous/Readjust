@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAnimationName: fireball_attack
-  endAnimationName: d
-  timer: 0
+  endAnimationName: fireball_end
   isAttacking: 0
   skill: {fileID: 0}

@@ -15,6 +15,9 @@ public class Whirlwind : Skill
 
     public override void Activate(GameObject gameObject)
     {
+        transform = gameObject.transform;
+        player = GameObject.Find("Player");
+        direction = player.GetComponent<PlayerController>().direction;
     }
 
 
