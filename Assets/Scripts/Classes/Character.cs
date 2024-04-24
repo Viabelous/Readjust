@@ -21,5 +21,8 @@ public class Character : ScriptableObject
     public float agi, speed;
     public float foc;
 
+    public bool actionEnabled = true;
+    public bool movementEnabled = true;
+
 
 }

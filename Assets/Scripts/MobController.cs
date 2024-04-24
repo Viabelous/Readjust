@@ -21,23 +21,9 @@ public class MobController : MonoBehaviour
     public bool movementEnabled = true;
     public float speed;
 
-
-    // [HideInInspector]
-    // public bool onKnockBack = false, onSlide = false;
-
-    // [HideInInspector]
-    // public float knockBackSpeed, knockBackDistance;
-
-    // [HideInInspector]
-    // public float slideSpeed, slideDistance;
-
-    // public Vector3 initialPosSlide, initialPosKnockBack;
-
-    // [HideInInspector]
-    // public Vector2 backward; // untuk arah slide
-
     private DefenseSystem defenseSystem;
     private AttackSystem attackSystem;
+    private CrowdControlSystem crowdControlSystem;
     private CharacterState state;
 
     private GameObject player;
@@ -53,6 +39,7 @@ public class MobController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defenseSystem = GetComponent<DefenseSystem>();
         attackSystem = GetComponent<AttackSystem>();
+        crowdControlSystem = GetComponent<CrowdControlSystem>();
 
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
@@ -109,7 +96,11 @@ public class MobController : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (movementEnabled)
+        if (
+            !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
+            !crowdControlSystem.CheckCC(CrowdControlType.Knockback) &&
+            !crowdControlSystem.CheckCC(CrowdControlType.Stun)
+        )
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
             transform.Translate(direction * speed * Time.deltaTime);

@@ -223,15 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 9cb0dc74d35ead640998145c5bd9d98e, type: 2}
   movementEnabled: 1
-  onKnockBack: 0
-  onSlide: 0
-  knockBackSpeed: 0
-  knockBackDistance: 0
-  slideSpeed: 0
-  slideDistance: 0
-  initialPosSlide: {x: 0, y: 0, z: 0}
-  initialPosKnockBack: {x: 0, y: 0, z: 0}
-  backward: {x: 0, y: 0}
+  speed: 0
 --- !u!114 &5163096275740064055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,17 +263,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  state: 0
-  movementEnabled: 0
-  isSlid: 0
-  isKnocked: 0
-  isSlowed: 0
-  isStunned: 0
-  slideSpeed: 0
-  slideDistance: 0
-  knockSpeed: 0
-  knockDistance: 0
-  slow: 0
-  stunTimer: 0
-  slideDirection: {x: 0, y: 0}
-  knockDirection: {x: 0, y: 0, z: 0}

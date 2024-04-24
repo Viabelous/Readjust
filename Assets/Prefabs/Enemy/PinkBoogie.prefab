@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5846968007811048139}
   - component: {fileID: -5924167133976428185}
   - component: {fileID: -5872995871299659495}
+  - component: {fileID: 4580529150396723323}
   m_Layer: 11
   m_Name: PinkBoogie
   m_TagString: Enemy
@@ -226,15 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 3fa01f376fc5e6a4c8b37acf120e8724, type: 2}
   movementEnabled: 1
-  onKnockBack: 0
-  onSlide: 0
-  knockBackSpeed: 0
-  knockBackDistance: 0
-  slideSpeed: 0
-  slideDistance: 0
-  initialPosSlide: {x: 0, y: 0, z: 0}
-  initialPosKnockBack: {x: 0, y: 0, z: 0}
-  backward: {x: 0, y: 0}
+  speed: 0
 --- !u!114 &5846968007811048139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,17 +267,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  state: 0
-  movementEnabled: 0
-  isSlid: 0
-  isKnocked: 0
-  isSlowed: 0
-  isStunned: 0
-  slideSpeed: 0
-  slideDistance: 0
-  knockSpeed: 0
-  knockDistance: 0
-  slow: 0
-  stunTimer: 0
-  slideDirection: {x: 0, y: 0}
-  knockDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &4580529150396723323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170722551558479055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4459db692c8cb4db0273db53502f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  character: {fileID: 11400000, guid: 3fa01f376fc5e6a4c8b37acf120e8724, type: 2}

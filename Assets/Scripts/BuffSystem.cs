@@ -18,13 +18,13 @@ public enum BuffType
 
 public class Buff
 {
-    public BuffType buffType;
+    public BuffType type;
     public float value;
     public float timer;
 
-    public Buff(BuffType buffType, float value, float timer)
+    public Buff(BuffType type, float value, float timer)
     {
-        this.buffType = buffType;
+        this.type = type;
         this.value = value;
         this.timer = timer;
     }
@@ -50,14 +50,14 @@ public class BuffSystem : MonoBehaviour
         //     buff => buff.timer -= Time.deltaTime
         // );
 
-        for (int i = 0; i < buffsActive.Count; i++)
-        {
-            buffsActive[i].timer -= Time.deltaTime;
-            if (buffsActive[i].timer <= 0)
-            {
-                buffsActive.Remove(buffsActive[i]);
-            }
-        }
+        // for (int i = 0; i < buffsActive.Count; i++)
+        // {
+        //     buffsActive[i].timer -= Time.deltaTime;
+        //     if (buffsActive[i].timer <= 0)
+        //     {
+        //         buffsActive.Remove(buffsActive[i]);
+        //     }
+        // }
 
         // switch (type)
         // {
@@ -69,26 +69,26 @@ public class BuffSystem : MonoBehaviour
 
     }
 
-    public void AddBuff(Buff buff)
+    public IEnumerator ActivateBuff(Buff buff)
     {
-        buffsActive.Add(buff);
+        AddBuff(buff);
+        yield return new WaitForSeconds(buff.timer);
+        RemoveBuff(buff);
     }
 
-    public bool CheckBuff(BuffType buffType)
+    public bool CheckBuff(BuffType type)
     {
-
-        if (buffsActive.FindIndex(buff => buff.buffType == buffType) != -1)
+        if (buffsActive.FindIndex(buff => buff.type == type) != -1)
         {
             return true;
         }
         return false;
     }
 
-    public float GetBuffValues(BuffType buffType)
+    public float GetBuffValues(BuffType type)
     {
-
         float totalValue = 0;
-        List<Buff> buffs = buffsActive.FindAll(buff => buff.buffType == buffType);
+        List<Buff> buffs = buffsActive.FindAll(buff => buff.type == type);
 
         foreach (Buff buff in buffs)
         {
@@ -96,7 +96,16 @@ public class BuffSystem : MonoBehaviour
         }
 
         return totalValue;
+    }
 
+    private void AddBuff(Buff buff)
+    {
+        buffsActive.Add(buff);
+    }
+
+    private void RemoveBuff(Buff buff)
+    {
+        buffsActive.Remove(buff);
     }
 
 

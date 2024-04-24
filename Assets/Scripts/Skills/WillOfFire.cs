@@ -17,7 +17,7 @@ public class WillOfFire : Skill
         player = GameObject.Find("Player");
         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
 
-        buffSystem.AddBuff(
+        buffSystem.ActivateBuff(
            new Buff(
                 BuffType.ATK,
                 buffAtk,
