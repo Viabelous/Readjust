@@ -14,6 +14,8 @@ public class GameManager : ScriptableObject
     {
         // GameData.unlockedSkills[3],
         // GameData.unlockedSkills[1],
+        SkillName.PeebleCreation,
+        SkillName.Avalanche,
         SkillName.Ignite,
         SkillName.Explosion,
         SkillName.Fireball,
@@ -21,11 +23,7 @@ public class GameManager : ScriptableObject
         SkillName.Sacrivert,
         SkillName.Whirlwind,
         SkillName.Waterwall,
-        SkillName.HighTide
-        // GameData.unlockedSkills[2],
-        // GameData.unlockedSkills[4],
-        // GameData.unlockedSkills[5],
-        // GameData.unlockedSkills[6],
+        // SkillName.HighTide,
     };
 
     // public static

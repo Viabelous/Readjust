@@ -8,8 +8,6 @@ public class SkillController : MonoBehaviour
 {
     public Skill skill;
 
-    private List<string> enemies = new List<string>();
-
     private void Start()
     {
         // enemies = ;
@@ -18,11 +16,11 @@ public class SkillController : MonoBehaviour
 
     private void Update()
     {
-        if (GetComponent<AttackSystem>() != null)
-        {
-            print(GetComponent<AttackSystem>().DealDamage());
+        // if (GetComponent<AttackSystem>() != null)
+        // {
+        //     print(GetComponent<AttackSystem>().DealDamage());
 
-        }
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

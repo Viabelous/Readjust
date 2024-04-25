@@ -14,7 +14,6 @@ public class Whirlwind : Skill
     private ChrDirection direction;
     // private SpriteRenderer spriteRenderer;
     private Transform transform;
-    private List<string> enemies = new List<string>();
 
     public override void Activate(GameObject gameObject)
     {

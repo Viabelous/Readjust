@@ -8,10 +8,6 @@ public class Waterwall : Skill
     [Header("Crowd Control")]
     [SerializeField]
     private float slow;
-    private string ccId;
-
-
-
 
     public override void Activate(GameObject gameObject)
     {
@@ -27,38 +23,30 @@ public class Waterwall : Skill
     public override void HitEnemy(GameObject gameObject, Collider2D other)
     {
 
-        base.HitEnemy(gameObject, other);
+        if (HasHitEnemy(other))
+        {
+            return;
+        }
 
         if (other.CompareTag("Enemy"))
         {
-            if (HasHitEnemy(other))
-            {
-                return;
-            }
-
-            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            CCSlow cc = new CCSlow(
-                    slow,
-                    timer,
-                    other.GetComponent<MobController>().speed
-                );
-            ccId = cc.id;
-            Debug.Log(ccId + " - " + cc.id);
-            mob.ActivateCC(
-                cc
-            );
+            MobController mob = other.GetComponent<MobController>();
+            mob.speed -= mob.speed * slow;
         }
+
+        base.HitEnemy(gameObject, other);
     }
 
     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
     {
-        base.AfterHitEnemy(gameObject, other);
 
         if (other.CompareTag("Enemy"))
         {
-            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.DactivateCC(ccId);
+            MobController mob = other.GetComponent<MobController>();
+            mob.speed = mob.enemy.movementSpeed;
         }
+
+        base.AfterHitEnemy(gameObject, other);
 
     }
 

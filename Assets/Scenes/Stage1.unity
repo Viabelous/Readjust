@@ -545,6 +545,8 @@ MonoBehaviour:
   - {fileID: 2368303669140024051, guid: 2a50d92d159e7534da4fb36d84c6248c, type: 3}
   - {fileID: 936677929061029640, guid: 8185314e330a4d5479d446587188286d, type: 3}
   - {fileID: 7424176912135380703, guid: 4eeae4ce891dad14abe30046dcee9e18, type: 3}
+  - {fileID: 6473314271843948133, guid: b9a3d991cf9c53e468681bfb324d5221, type: 3}
+  - {fileID: 509709916755308712, guid: c005fa853f510604f849d2fc047dd611, type: 3}
 --- !u!4 &260168803
 Transform:
   m_ObjectHideFlags: 0
@@ -3004,6 +3006,7 @@ MonoBehaviour:
   timeText: {fileID: 285169045}
   time: 0
   gameState: 0
+  killedEnemies: []
 --- !u!4 &1020248349
 Transform:
   m_ObjectHideFlags: 0

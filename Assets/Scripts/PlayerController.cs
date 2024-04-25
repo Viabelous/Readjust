@@ -98,7 +98,11 @@ public class PlayerController : MonoBehaviour
                 animate.SetTrigger("BasicAttack");
 
                 GameObject prefab = SkillHolder.Instance.skillPrefs[0];
-                Instantiate(prefab);
+                if (!GameObject.Find(prefab.name + "(Clone)"))
+                {
+                    Instantiate(prefab);
+
+                }
                 break;
 
             case "=":

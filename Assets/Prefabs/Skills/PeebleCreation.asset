@@ -9,18 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
-  m_Name: Waterwall
+  m_Script: {fileID: 11500000, guid: 2334b6508f8796044af62cd34cc7774b, type: 3}
+  m_Name: PeebleCreation
   m_EditorClassIdentifier: 
-  name: 8
-  type: 1
-  hitType: 1
+  name: 9
+  type: 0
+  hitType: 0
   costType: 1
-  maxCd: 15
+  maxCd: 1
   cost: 5
-  damage: 5
-  movementSpeed: 0
-  movementRange: 0
-  timer: 5
-  sprite: {fileID: 21300000, guid: 650ecdf69f55d3f45867b1fedbc76bb6, type: 3}
-  slow: 0.5
+  damage: 20
+  movementSpeed: 20
+  movementRange: 30
+  timer: 0
+  sprite: {fileID: 21300000, guid: cb0baa6b47ba2e644b55e186de9eae97, type: 3}

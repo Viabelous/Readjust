@@ -6,7 +6,8 @@ using UnityEditor;
 
 public enum SkillName
 {
-    BasicStab, Sacrivert, WillOfFire, Explosion, Ignite, Whirlwind, Fireball, HighTide, Waterwall
+    BasicStab, Sacrivert, WillOfFire, Explosion, Ignite, Whirlwind, Fireball, HighTide, Waterwall,
+    PeebleCreation, Avalanche
 }
 
 public enum SkillType
