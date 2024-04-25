@@ -5,8 +5,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Waterwall : Skill
 {
+    [Header("Crowd Control")]
     [SerializeField]
     private float slow;
+    private string ccId;
+
+
+
 
     public override void Activate(GameObject gameObject)
     {
@@ -15,28 +20,46 @@ public class Waterwall : Skill
         // // Active();
     }
 
-    public override void HitEnemyFirstTime(GameObject gameObject, Collider2D other)
-    {
-    }
+    // public override void HitEnemyFirstTime(GameObject gameObject, Collider2D other)
+    // {
+    // }
 
     public override void HitEnemy(GameObject gameObject, Collider2D other)
     {
 
+        base.HitEnemy(gameObject, other);
+
         if (other.CompareTag("Enemy"))
         {
-            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.ActivateSlowing(slow);
-        }
+            if (HasHitEnemy(other))
+            {
+                return;
+            }
 
+            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
+            CCSlow cc = new CCSlow(
+                    slow,
+                    timer,
+                    other.GetComponent<MobController>().speed
+                );
+            ccId = cc.id;
+            Debug.Log(ccId + " - " + cc.id);
+            mob.ActivateCC(
+                cc
+            );
+        }
     }
 
     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
     {
+        base.AfterHitEnemy(gameObject, other);
+
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.DeactivateSlowing();
+            mob.DactivateCC(ccId);
         }
+
     }
 
 

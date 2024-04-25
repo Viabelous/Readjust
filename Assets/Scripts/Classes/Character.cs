@@ -11,6 +11,7 @@ public enum CharacterType
 
 public class Character : ScriptableObject
 {
+    public string id;
     public float maxHp;
 
     [HideInInspector]
@@ -23,6 +24,8 @@ public class Character : ScriptableObject
 
     public bool actionEnabled = true;
     public bool movementEnabled = true;
+
+
 
 
 }

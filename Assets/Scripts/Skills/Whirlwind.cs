@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class Whirlwind : Skill
 {
-    [SerializeField]
-    private float slideSpeed, slideDistance;
+    [Header("Crowd Control")]
+    [SerializeField] private float slideSpeed;
+    [SerializeField] private float slideDistance;
 
     private GameObject player;
     private ChrDirection direction;
     // private SpriteRenderer spriteRenderer;
     private Transform transform;
+    private List<string> enemies = new List<string>();
 
     public override void Activate(GameObject gameObject)
     {
@@ -23,28 +26,27 @@ public class Whirlwind : Skill
 
     public override void HitEnemy(GameObject gameObject, Collider2D other)
     {
+        base.HitEnemy(gameObject, other);
         if (other.CompareTag("Enemy"))
         {
 
-            // gameObject.GetComponent<AreaEffector2D>().forceMagnitude = 300;
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-
-            mob.ActivateSliding(slideSpeed, slideDistance);
-
+            // mob.ActivateSliding(slideSpeed, slideDistance);
+            Vector2 backward = new Vector2();
             switch (direction)
             {
                 case ChrDirection.Right:
-                    mob.slideDirection = transform.right;
+                    backward = transform.right;
                     break;
                 case ChrDirection.Left:
-                    mob.slideDirection = -transform.right;
+                    backward = -transform.right;
                     break;
 
                 case ChrDirection.Front:
                     // cuma bisa untuk mob yang ada di bawah player
                     if (mob.transform.position.y < player.transform.position.y)
                     {
-                        mob.slideDirection = -transform.up;
+                        backward = -transform.up;
                     }
                     break;
 
@@ -52,21 +54,28 @@ public class Whirlwind : Skill
                     // cuma bisa untuk mob yang ada di atas player
                     if (mob.transform.position.y > player.transform.position.y)
                     {
-                        mob.slideDirection = transform.up;
+                        backward = transform.up;
                     }
                     break;
             }
 
+            mob.ActivateCC(
+                new CCSlide(
+                    slideSpeed,
+                    slideDistance,
+                    mob.transform.position,
+                    backward
+                )
+            );
+
         }
 
     }
+
+
     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.DeactivateSliding();
-        }
+        base.AfterHitEnemy(gameObject, other);
     }
 
 }

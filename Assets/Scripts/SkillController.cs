@@ -8,14 +8,11 @@ public class SkillController : MonoBehaviour
 {
     public Skill skill;
 
-    private float intervalTimer = 1;
-
-    [HideInInspector]
-    private float timerAttack;
+    private List<string> enemies = new List<string>();
 
     private void Start()
     {
-        timerAttack = intervalTimer;
+        // enemies = ;
         skill.Activate(gameObject);
     }
 
@@ -30,11 +27,14 @@ public class SkillController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (
             skill.type == SkillType.BurstDamage ||
             skill.type == SkillType.CrowdControl
         )
         {
+
+
             skill.HitEnemy(gameObject, other);
         }
 

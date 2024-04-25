@@ -5,24 +5,35 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Explosion : Skill
 {
-    public float knockBackSpeed, knockBackDistance;
+    [Header("Crowd Control")]
+    [SerializeField] private float knockBackSpeed;
+    [SerializeField] private float knockBackDistance;
+
+    public override void Activate(GameObject gameObject)
+    {
+    }
 
     public override void HitEnemy(GameObject gameObject, Collider2D other)
     {
+        base.HitEnemy(gameObject, other);
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.ActivateKnockBack(knockBackSpeed, knockBackDistance, gameObject.transform.position);
+            Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
+            mob.ActivateCC(
+                new CCKnockBack(
+                    knockBackSpeed,
+                    knockBackDistance,
+                    mob.transform.position,
+                    direction
+                )
+            );
         }
     }
 
     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-            mob.DeactivateKnockBack();
-        }
+        base.AfterHitEnemy(gameObject, other);
     }
 
 }

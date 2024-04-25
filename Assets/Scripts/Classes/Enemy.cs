@@ -19,6 +19,7 @@ public class Enemy : Character
 
     private void OnEnable()
     {
+        this.id = "enemy" + UnityEngine.Random.Range(1, 99999).ToString();
         this.hp = this.maxHp;
     }
 
@@ -33,6 +34,7 @@ public class Enemy : Character
     public Enemy CloneObject()
     {
         Enemy newEnemy = ScriptableObject.CreateInstance<Enemy>();
+        newEnemy.id = "enemy" + UnityEngine.Random.Range(1, 99999).ToString();
         newEnemy.enemyName = this.enemyName;
         newEnemy.maxHp = this.maxHp;
         newEnemy.hp = this.hp;

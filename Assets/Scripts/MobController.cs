@@ -96,8 +96,14 @@ public class MobController : MonoBehaviour
     void FixedUpdate()
     {
 
+        // if (!crowdControlSystem.CheckCC(CrowdControlType.Slow))
+        // {
+        //     speed = enemy.movementSpeed;
+        // }
+
         if (
-            movementEnabled
+            !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
+            !crowdControlSystem.CheckCC(CrowdControlType.KnockBack)
         )
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
@@ -141,15 +147,14 @@ public class MobController : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-
-
     private void Die()
     {
         state = CharacterState.dead;
         playerController.CollectAerus(enemy.aerusValue);
         playerController.CollectExp(enemy.expValue);
         Damaged();
-        Destroy(gameObject);
+        StageManager.instance.PlayerKill(enemy.id);
+        Destroy(gameObject, 0.1f);
     }
 
 

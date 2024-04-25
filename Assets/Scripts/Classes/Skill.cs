@@ -43,6 +43,7 @@ public class Skill : ScriptableObject
 
     [Header("Skill Icon")]
     public Sprite sprite;
+    private List<string> enemies = new List<string>();
 
     public virtual void Activate(GameObject gameObject)
     {
@@ -50,19 +51,37 @@ public class Skill : ScriptableObject
     }
 
 
-    public virtual void HitEnemyFirstTime(GameObject gameObject, Collider2D other)
-    {
+    // public virtual void HitEnemyFirstTime(GameObject gameObject, Collider2D other)
+    // {
 
-    }
+    // }
 
     public virtual void HitEnemy(GameObject gameObject, Collider2D other)
     {
-
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mobController = other.GetComponent<MobController>();
+            enemies.Add(mobController.enemy.id);
+        }
     }
 
     public virtual void AfterHitEnemy(GameObject gameObject, Collider2D other)
     {
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mobController = other.GetComponent<MobController>();
+            enemies.Remove(mobController.enemy.id);
+        }
+    }
 
+    public virtual bool HasHitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mobController = other.GetComponent<MobController>();
+            return enemies.Contains(mobController.enemy.id);
+        }
+        return false;
     }
 
 }

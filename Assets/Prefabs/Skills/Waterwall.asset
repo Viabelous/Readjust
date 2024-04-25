@@ -23,4 +23,4 @@ MonoBehaviour:
   movementRange: 0
   timer: 5
   sprite: {fileID: 21300000, guid: 650ecdf69f55d3f45867b1fedbc76bb6, type: 3}
-  slow: 0.5
+  slow: 0.9

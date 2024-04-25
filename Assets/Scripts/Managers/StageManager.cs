@@ -16,12 +16,14 @@ public class StageManager : MonoBehaviour
     [Header("Timer")]
     public Text timeText;
 
-    [HideInInspector]
-    public float time;
+
+    [HideInInspector] public float time;
     private int min, sec;
 
-    [HideInInspector]
-    public GameState gameState;
+
+    [HideInInspector] public GameState gameState;
+
+    [HideInInspector] public List<string> killedEnemies;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,6 +35,7 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         time = Time.time;
+        killedEnemies = new List<string>();
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class StageManager : MonoBehaviour
         }
     }
 
+
     public void ChangeGameState(GameState gameState)
     {
         this.gameState = gameState;
@@ -88,5 +92,10 @@ public class StageManager : MonoBehaviour
 
     }
 
+    public void PlayerKill(string enemyId)
+    {
+        killedEnemies.Add(enemyId);
+        print(killedEnemies);
+    }
 }
 
