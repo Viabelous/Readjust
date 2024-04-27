@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,28 +8,40 @@ public class NPC : MonoBehaviour
 {
     public Image pic;
     public GameObject dialogPanel;
-    public GameObject nextButton;
     public Text dialogTeks;
+
+    [HideInInspector]
     public string[] dialog;
-    private int index;
+
+    [HideInInspector]
+    public int index;
 
     public float wordSpeed;
     public bool playerDekat;
 
+    void Start(){
+
+    }
     void Update(){
-        if (Input.GetKeyDown(KeyCode.E) && playerDekat){
+        string[] teks = new string[5];
+        teks[0] = "wekwekwek";
+        teks[1] = "halahmu";
+        teks[2] = "coba mencoba";
+        teks[3] = "apacoba";
+        teks[4] = "bjirrr";
+        rescript(teks);
+
+        if (Input.GetKeyDown(KeyCode.Q) && playerDekat){
             Debug.Log("karakter berada di dekat NPC");
             if(dialogPanel.activeInHierarchy){
-                resetTeks();
+                if(dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q)){
+                    NextLine();
+                }
 
             }else{
                 dialogPanel.SetActive(true);
                 StartCoroutine(Typing());
             }
-        }
-
-        if(dialogTeks.text == dialog[index]){
-            nextButton.SetActive(true);
         }
     }
 
@@ -46,9 +59,6 @@ public class NPC : MonoBehaviour
     }
 
     public void NextLine(){
-
-        nextButton.SetActive(false);
-        
         if(index < dialog.Length - 1){
             index++;
             dialogTeks.text = "";
@@ -70,4 +80,9 @@ public class NPC : MonoBehaviour
             resetTeks();
         }
     }
+
+    public void rescript(string[] teks){
+        dialog = teks;
+    }
+
 }
