@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Will Of Fire
   element: 1
   type: 2
-  hitType: 0
+  hitType: 1
   costType: 1
   maxCd: 5
   cost: 5
@@ -29,4 +29,3 @@ MonoBehaviour:
   persentase: 0
   pushSpeed: 0
   pushRange: 0
-  stillActive: 1

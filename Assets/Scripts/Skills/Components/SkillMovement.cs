@@ -48,16 +48,17 @@ public class SkillMovement : MonoBehaviour
         skillAnimation = GetComponent<SkillAnimation>();
 
         isInstantiate = true;
+
+        initialPosition = transform.position;
+        SetPosition();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (isInstantiate)
         {
-            SetPosition();
-
-            initialPosition = transform.position;
             isInstantiate = false;
         }
 
@@ -98,7 +99,27 @@ public class SkillMovement : MonoBehaviour
                 break;
 
             case SkillMovementType.OnPlayer:
-                transform.position = player.transform.position;
+                switch (direction)
+                {
+                    // kanan
+                    case ChrDirection.Right:
+                        transform.position = player.transform.position + offsetRight;
+                        break;
+                    // kiri
+                    case ChrDirection.Left:
+                        transform.position = player.transform.position + offsetLeft;
+                        break;
+                    // depan
+                    case ChrDirection.Front:
+                        transform.position = player.transform.position + offsetFront;
+                        break;
+                    // belakang
+                    case ChrDirection.Back:
+                        transform.position = player.transform.position + offsetBack;
+                        break;
+                }
+
+                // transform.position = player.transform.position;
                 break;
 
             case SkillMovementType.OnCamera:
@@ -115,6 +136,7 @@ public class SkillMovement : MonoBehaviour
             case SkillMovementType.Linear:
             case SkillMovementType.Area:
             case SkillMovementType.OnPlayer:
+
                 switch (direction)
                 {
                     case ChrDirection.Right:

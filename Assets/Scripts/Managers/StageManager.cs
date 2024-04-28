@@ -62,7 +62,7 @@ public class StageManager : MonoBehaviour
             case GameState.Victory:
                 break;
             case GameState.Lose:
-                PauseGame();
+                // PauseGame();
                 break;
         }
     }

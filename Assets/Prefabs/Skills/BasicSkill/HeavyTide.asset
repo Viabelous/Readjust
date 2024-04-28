@@ -19,8 +19,8 @@ MonoBehaviour:
   hitType: 0
   costType: 1
   maxCd: 5
-  cost: 10
-  damage: 20
+  cost: 1
+  damage: 1
   sprite: {fileID: 21300000, guid: 2ddfddf32a6615942bedbba937951f70, type: 3}
   movementSpeed: 0
   movementRange: 0
@@ -29,4 +29,3 @@ MonoBehaviour:
   persentase: 0
   pushSpeed: 10
   pushRange: 2
-  stillActive: 1

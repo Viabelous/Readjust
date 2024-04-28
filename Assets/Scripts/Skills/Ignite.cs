@@ -10,5 +10,7 @@ public class Ignite : MonoBehaviour
     {
         skill = GetComponent<SkillController>().skill;
         skill.Damage += 2.5f * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
+
+        print("Skill Damage + Atk: " + skill.Damage);
     }
 }

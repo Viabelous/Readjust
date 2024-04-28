@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3c314a649418e594796114c447d8021e
+guid: bd3afb0fec05fa54d81e6d2afa189b42
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,7 +81,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -94,7 +94,33 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: avalanche_particles_0
+      name: sanare_particles (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee1b221037a512643b79effad9c8dbef
-      internalID: 1923975799
+      spriteID: 1fb5cf8ee7258984783980ea70acb891
+      internalID: 483751015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: avalanche_particles_1
+      name: sanare_particles (1)_1
       rect:
         serializedVersion: 2
         x: 640
@@ -158,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 085363b5329bf79438b8e5877b2af6ff
-      internalID: 620342467
+      spriteID: 28e3ede0221be254fac874c7f83593b6
+      internalID: 1317007748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: avalanche_particles_2
+      name: sanare_particles (1)_2
       rect:
         serializedVersion: 2
         x: 1280
@@ -179,8 +205,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 570a3d16735dd59448234c2967502a19
-      internalID: -1109012236
+      spriteID: 11501ef2a04d69e408b7cd6c9705d7d7
+      internalID: -931070058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sanare_particles (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9e81960ec759441b2eb5245ff0ea19
+      internalID: 180632133
       vertices: []
       indices: 
       edges: []
@@ -196,9 +243,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      avalanche_particles_0: 1923975799
-      avalanche_particles_1: 620342467
-      avalanche_particles_2: -1109012236
+      sanare_particles (1)_0: 483751015
+      sanare_particles (1)_1: 1317007748
+      sanare_particles (1)_2: -931070058
+      sanare_particles (1)_3: 180632133
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

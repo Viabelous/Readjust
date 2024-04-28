@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1441321859140634361}
   - component: {fileID: 2261224417341495508}
   - component: {fileID: 4979697231116680928}
+  - component: {fileID: -2644505444281304291}
   - component: {fileID: 7286693017598739972}
   - component: {fileID: 3634924850719543811}
-  - component: {fileID: -2644505444281304291}
   - component: {fileID: -1641705757304785236}
   m_Layer: 0
   m_Name: BasicStab
@@ -171,6 +171,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillTemplate: {fileID: 11400000, guid: f43d9cb00e76071449810eda8065ef5a, type: 2}
   skill: {fileID: 11400000, guid: f43d9cb00e76071449810eda8065ef5a, type: 2}
+--- !u!114 &-2644505444281304291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020908707667774508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307a06a1646b2784785630c4a972df01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7286693017598739972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,18 +225,6 @@ MonoBehaviour:
   endAnimationName: basic_stab_end
   isAttacking: 0
   skill: {fileID: 0}
---- !u!114 &-2644505444281304291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020908707667774508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307a06a1646b2784785630c4a972df01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1641705757304785236
 MonoBehaviour:
   m_ObjectHideFlags: 0

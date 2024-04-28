@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // print(player.atk);
+
         if (player.hp <= 0)
         {
             Die();
@@ -110,7 +112,6 @@ public class PlayerController : MonoBehaviour
                         if (!GameObject.Find(prefab.name + "(Clone)"))
                         {
                             Instantiate(prefab);
-
                         }
                     }
 

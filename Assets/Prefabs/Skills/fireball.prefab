@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4458082938163574700}
   - component: {fileID: 2192872399577618004}
   - component: {fileID: 8933175464109646848}
-  - component: {fileID: 5098591500229529860}
   - component: {fileID: 941804947811853658}
-  - component: {fileID: 5759827130453298744}
   - component: {fileID: -7453258934096427117}
+  - component: {fileID: 5098591500229529860}
+  - component: {fileID: 5759827130453298744}
   - component: {fileID: 6191372766625315695}
   m_Layer: 0
   m_Name: Fireball
@@ -147,6 +147,32 @@ CircleCollider2D:
   m_Offset: {x: 0.1356856, y: -0.023330647}
   serializedVersion: 2
   m_Radius: 0.7900504
+--- !u!114 &941804947811853658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222238090947821005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillTemplate: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
+  skill: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
+--- !u!114 &-7453258934096427117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222238090947821005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8489a66d2c905343b4e8856163f6c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5098591500229529860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,20 +199,6 @@ MonoBehaviour:
   flipFront: 0
   flipBack: 0
   spriteRenderer: {fileID: 4458082938163574700}
---- !u!114 &941804947811853658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222238090947821005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
-  skill: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
 --- !u!114 &5759827130453298744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,18 +215,6 @@ MonoBehaviour:
   endAnimationName: fireball_end
   isAttacking: 0
   skill: {fileID: 0}
---- !u!114 &-7453258934096427117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222238090947821005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8489a66d2c905343b4e8856163f6c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6191372766625315695
 MonoBehaviour:
   m_ObjectHideFlags: 0
