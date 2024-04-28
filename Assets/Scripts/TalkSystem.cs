@@ -24,13 +24,15 @@ public class NPC : MonoBehaviour
 
     public float wordSpeed;
     public bool playerDekat;
+    private bool anyWindowsEnabled;
 
     void Start(){
         SetText(selectedDialog);
+        SetAnyWindowsEnabled(false);
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Q) && playerDekat){
+        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && !anyWindowsEnabled){
             player.GetComponent<PlayerController>().movementEnable(false);
             if(dialogPanel.activeInHierarchy){
                 if(dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q)){
@@ -68,19 +70,25 @@ public class NPC : MonoBehaviour
         }else
         {
             resetTeks();
-            switch(windows)
+            if(windows != string.Empty)
             {
-                case "Skill":
-                    windows_controller.GetComponent<windowsController>().openWindows(0);
-                break;
+                player.GetComponent<PlayerController>().movementEnable(false);
+                switch(windows)
+                {
+                    case "Skill":
+                        windows_controller.GetComponent<windowsController>().openWindows(0);
+                        SetAnyWindowsEnabled(true);
+                        break;
 
-            default:
-                break;
+                    default:
+                        break;
+                }
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if(other.CompareTag("Player")){
             player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = true;
@@ -88,7 +96,8 @@ public class NPC : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit2D(Collider2D other)
+    {
         if(other.CompareTag("Player")){
             player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = false;
@@ -96,8 +105,13 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void SetText(string option){
+    public void SetAnyWindowsEnabled(bool state)
+    {
+        anyWindowsEnabled = state;
+    }
 
+    public void SetText(string option)
+    {
         string[] teks = null;
 
         switch(option){
@@ -122,7 +136,6 @@ public class NPC : MonoBehaviour
         }
 
         dialog = teks;
-    
     }
 
 }

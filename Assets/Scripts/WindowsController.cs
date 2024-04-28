@@ -11,6 +11,13 @@ public class windowsController : MonoBehaviour
 {
     public GameObject[] windows;
 
+    public GameObject[] SkillSelectionWindowsInteractable;
+    
+    public GameObject[] SkillWindowsInteractable;
+
+    [HideInInspector]
+    private int selectIndex = 1;
+
     public void openWindows(int windows_id)
     {
         windows[windows_id].SetActive(true);
