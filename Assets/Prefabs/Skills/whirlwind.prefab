@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillTemplate: {fileID: 11400000, guid: 1a7b544301eb2b445b247529a90b0ca5, type: 2}
   skill: {fileID: 11400000, guid: f5a8b2a287ad27e4e8830d2fdee1f3ad, type: 2}
 --- !u!114 &5569214583486604970
 MonoBehaviour:

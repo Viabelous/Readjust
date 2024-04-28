@@ -5,23 +5,38 @@ using UnityEngine;
 public class Sacrivert : MonoBehaviour
 {
     private Skill skill;
-    private PlayerController playerController;
+    private GameObject player;
 
     private void Start()
     {
         skill = GetComponent<SkillController>().skill;
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        float result = skill.Persentase * playerController.player.hp;
+        player = GameObject.Find("Player");
+        BuffSystem buffSystem = player.GetComponent<BuffSystem>();
 
-        if (result > playerController.player.maxMana)
-        {
-            playerController.player.mana = playerController.player.maxMana;
-        }
-        else
-        {
-            playerController.player.mana += result;
-        }
+        buffSystem.ActivateBuff(
+           new Buff(
+                BuffType.Mana,
+                skill.Value,
+                skill.Timer
+            )
+        );
+
+        // skill = GetComponent<SkillController>().skill;
+        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        // // float result = skill.Persentase * playerController.player.hp;
+        // float result = skill.Value + playerController.player.mana;
+
+        // if (result > playerController.player.maxMana)
+        // {
+        //     playerController.player.mana = playerController.player.maxMana;
+        // }
+        // else
+        // {
+        //     playerController.player.mana += skill.Value;
+        // }
     }
 }
 // [CreateAssetMenu]

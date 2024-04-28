@@ -9,7 +9,7 @@ public class Player : Character
     public float maxMana;
 
     [HideInInspector]
-    public float mana, maxShield, shield, aerus, exp, level;
+    public float mana, maxShield, shield, aerus, exp, story;
 
 
     private void OnEnable()
@@ -21,7 +21,7 @@ public class Player : Character
         this.maxShield = 0;
         this.shield = maxShield;
         this.aerus = 0;
-        this.level = 1;
+        this.story = 0;
     }
 
     public float movementSpeed
@@ -64,7 +64,7 @@ public class Player : Character
         newPlayer.shield = this.shield;
         newPlayer.aerus = this.aerus;
         newPlayer.exp = this.exp;
-        newPlayer.level = this.level;
+        newPlayer.story = this.story;
         return newPlayer;
     }
 

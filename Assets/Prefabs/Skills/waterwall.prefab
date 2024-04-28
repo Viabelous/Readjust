@@ -108,7 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 62fcbf8c78fdf4e40aa3384e4f05e836, type: 2}
+  skillTemplate: {fileID: 11400000, guid: 4da11be2a9822c7469b085c2f4f13482, type: 2}
+  skill: {fileID: 11400000, guid: 4da11be2a9822c7469b085c2f4f13482, type: 2}
 --- !u!114 &-2003495853961622070
 MonoBehaviour:
   m_ObjectHideFlags: 0

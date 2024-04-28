@@ -10,6 +10,9 @@ public class Waterwall : MonoBehaviour
     {
         // sesuaikan damage basic attack dengan atk player
         skill = GetComponent<SkillController>().skill;
+        float foc = GameObject.Find("Player").GetComponent<PlayerController>().player.foc;
+        skill.Damage = 0.75f * foc;
+        skill.Timer = foc;
     }
 
     private void OnTriggerStay2D(Collider2D other)

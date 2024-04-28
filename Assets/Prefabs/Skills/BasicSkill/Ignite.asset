@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86b9280269f955e499599c045a53eb8a, type: 3}
-  m_Name: HighTide
+  m_Name: Ignite
   m_EditorClassIdentifier: 
-  name: High Tide
-  element: 3
-  type: 1
+  id: skill_ignite
+  name: Ignite
+  element: 1
+  type: 0
   hitType: 0
-  costType: 0
-  maxCd: 0
-  maxCost: 0
-  minDamage: 0
-  sprite: {fileID: 0}
+  costType: 1
+  maxCd: 1
+  cost: 10
+  damage: 150
+  sprite: {fileID: 21300000, guid: e5402d0581b6de941ba2f65c77532dc0, type: 3}
   movementSpeed: 0
   movementRange: 0
   timer: 0
@@ -28,3 +29,4 @@ MonoBehaviour:
   persentase: 0
   pushSpeed: 0
   pushRange: 0
+  stillActive: 1

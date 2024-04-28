@@ -37,15 +37,15 @@ public enum SkillCost
 [CreateAssetMenu]
 public class Skill : ScriptableObject
 {
-    private string id;            // id skill
+    [SerializeField] private string id;            // id skill
     [SerializeField] private new string name;      // nama skill
     [SerializeField] private Element element;
     [SerializeField] private SkillType type;       // tipe damage yg diberikan
     [SerializeField] private SkillHitType hitType; // tipe pukulan yg diberikan
     [SerializeField] private SkillCost costType;   // tipe bayaran yg dipake
     [SerializeField] private float maxCd;          // cd maksimal
-    [SerializeField] private float maxCost;           // total mana/hp di awal
-    [SerializeField] private float minDamage;         // total damage di awal
+    [SerializeField] private float cost;           // total mana/hp di awal
+    [SerializeField] private float damage;         // total damage di awal
 
     [Header("Skill Icon")]
     [SerializeField] private Sprite sprite;
@@ -69,26 +69,27 @@ public class Skill : ScriptableObject
     private List<string> enemies = new List<string>();
     private int level = 1;
 
+
     public virtual void Activate(GameObject gameObject)
     {
         // switch (element)
         // {
         //     case Element.Fire:
-        //         minDamage += 20;
+        //         damage += 20;
         //         break;
         //     case Element.Earth:
-        //         minDamage += 5;
+        //         damage += 5;
         //         break;
         //     case Element.Water:
-        //         minDamage += 10;
+        //         damage += 10;
         //         break;
         //     case Element.Air:
-        //         minDamage += 10;
+        //         damage += 10;
         //         break;
         // }
     }
 
-    public virtual void HitEnemy(Collider2D other)
+    public void HitEnemy(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -97,7 +98,7 @@ public class Skill : ScriptableObject
         }
     }
 
-    public virtual void AfterHitEnemy(Collider2D other)
+    public void AfterHitEnemy(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -106,7 +107,21 @@ public class Skill : ScriptableObject
         }
     }
 
-    public virtual bool HasHitEnemy(Collider2D other)
+    public void ResetEnemies()
+    {
+        enemies.Clear();
+    }
+
+    public bool HasHit()
+    {
+        if (enemies.Count == 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public bool HasHitEnemy(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -116,11 +131,17 @@ public class Skill : ScriptableObject
         return false;
     }
 
+
+    public Skill Clone()
+    {
+        return (Skill)this.MemberwiseClone();
+    }
+
     public string Id
     {
         get
         {
-            return "skill" + name;
+            return id;
         }
     }
 
@@ -171,18 +192,7 @@ public class Skill : ScriptableObject
     {
         get
         {
-            return maxCost;
-            // switch (level)
-            // {
-            //     case 1:
-            //         return maxCost - 0.1f * maxCost;
-            //     case 2:
-            //         return maxCost - 0.2f * maxCost;
-            //     case 3:
-            //         return maxCost - 0.3f * maxCost;
-            //     default:
-            //         return maxCost;
-            // }
+            return cost;
         }
     }
 
@@ -193,19 +203,19 @@ public class Skill : ScriptableObject
             switch (level)
             {
                 case 1:
-                    return minDamage + 0.1f * minDamage;
+                    return damage + 0.1f * damage;
                 case 2:
-                    return minDamage + 0.2f * minDamage;
+                    return damage + 0.2f * damage;
                 case 3:
-                    return minDamage + 0.3f * minDamage;
+                    return damage + 0.3f * damage;
                 default:
-                    return minDamage;
+                    return damage;
             }
         }
 
         set
         {
-            minDamage = value;
+            damage = value;
         }
     }
 
@@ -227,6 +237,7 @@ public class Skill : ScriptableObject
     public float Timer
     {
         get { return timer; }
+        set { timer = value; }
     }
 
     public float Value

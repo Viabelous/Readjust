@@ -12,18 +12,9 @@ public class GameManager : ScriptableObject
 
     public static List<string> selectedSkills = new List<string>()
     {
-        // GameData.unlockedSkills[3],
-        // GameData.unlockedSkills[1],
-        "skill_pebble",
-        "skill_avalanche",
         "skill_ignite",
         "skill_explosion",
-        "skill_fireball",
-        // SkillName.WillOfFire,
-        "skill_sacrivert",
-        "skill_whirlwind",
-        "skill_waterwall",
-        // SkillName.HighTide,
+        "skill_fireball"
     };
 
     // public static

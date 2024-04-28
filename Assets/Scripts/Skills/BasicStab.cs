@@ -10,7 +10,7 @@ public class BasicStab : MonoBehaviour
     {
         // sesuaikan damage basic attack dengan atk player
         skill = GetComponent<SkillController>().skill;
-        skill.Damage = GetComponent<PlayerController>().player.atk;
+        skill.Damage = GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
     }
 }
 

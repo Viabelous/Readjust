@@ -40,12 +40,13 @@ public class AttackSystem : MonoBehaviour
             case CharacterType.Player:
                 attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
                 damage = GetComponent<SkillController>().skill.Damage;
+                print("Total Damage: " + damage);
 
-                buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
-                if (buffSystem.CheckBuff(BuffType.ATK))
-                {
-                    damage += buffSystem.GetBuffValues(BuffType.ATK);
-                }
+                // buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+                // if (buffSystem.CheckBuff(BuffType.ATK))
+                // {
+                //     damage += buffSystem.GetBuffValues(BuffType.ATK);
+                // }
 
                 // print(damage);
 

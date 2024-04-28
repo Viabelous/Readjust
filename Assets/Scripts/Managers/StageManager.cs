@@ -95,7 +95,7 @@ public class StageManager : MonoBehaviour
     public void PlayerKill(string enemyId)
     {
         killedEnemies.Add(enemyId);
-        print(killedEnemies);
+        // print(killedEnemies);
     }
 }
 

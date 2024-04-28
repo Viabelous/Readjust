@@ -146,7 +146,10 @@ public class PlayerController : MonoBehaviour
                 player.mana -= skill.Cost;
                 break;
             case SkillCost.Hp:
-                player.hp -= skill.Cost;
+                if (skill.name == "Sacrivert")
+                {
+                    player.hp -= player.hp * 0.1f;
+                }
                 break;
 
         }

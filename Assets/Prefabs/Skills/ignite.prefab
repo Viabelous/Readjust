@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1256106118661672921}
   - component: {fileID: 7778645560231167877}
   - component: {fileID: 7933692499758518678}
-  - component: {fileID: -8759153863037610313}
+  - component: {fileID: -8201811442486859590}
   - component: {fileID: 9087462365717237163}
+  - component: {fileID: -6178198077751927704}
   - component: {fileID: -4248570389151874492}
   m_Layer: 13
   m_Name: Ignite
@@ -175,7 +176,7 @@ PolygonCollider2D:
       - {x: -0.51831603, y: -0.9232235}
       - {x: -1.1614662, y: -0.073421866}
   m_UseDelaunayMesh: 0
---- !u!114 &-8759153863037610313
+--- !u!114 &-8201811442486859590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillTemplate: {fileID: 11400000, guid: f6df702630b053647b5deef34bbb0065, type: 2}
   skill: {fileID: 11400000, guid: f6df702630b053647b5deef34bbb0065, type: 2}
 --- !u!114 &9087462365717237163
 MonoBehaviour:
@@ -214,6 +216,18 @@ MonoBehaviour:
   flipFront: 0
   flipBack: 0
   spriteRenderer: {fileID: 1256106118661672921}
+--- !u!114 &-6178198077751927704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349578813318396482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ece4edbd209bc4da677e2a64f3efd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-4248570389151874492
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,10 +6,16 @@ using UnityEditor;
 
 public class SkillController : MonoBehaviour
 {
+    [SerializeField]
+    private Skill skillTemplate;
+    [HideInInspector]
     public Skill skill;
+
 
     private void Start()
     {
+        skill = skillTemplate.Clone();
+
         // sesuaikan damage dengan stage
         if (
             skill.Element == Element.Fire &&
@@ -22,6 +28,8 @@ public class SkillController : MonoBehaviour
         {
             skill.Damage += skill.Damage * 0.1f;
         }
+
+        print("Skill Damage: " + skill.Damage);
 
         skill.Activate(gameObject);
     }
@@ -47,6 +55,14 @@ public class SkillController : MonoBehaviour
 
     private void OnAnimationEnd()
     {
+        // // reset keaktifan skill
+        // if (!skill.stillActive)
+        // {
+        //     skill.stillActive = true;
+        // }
+
+        // skill.ResetEnemies();
+
         Destroy(gameObject);
     }
 

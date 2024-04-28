@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public enum BuffType
 {
-    Heal,
+    HP,
     Mana,
     Shield,
     ATK,
@@ -38,42 +38,32 @@ public class BuffSystem : MonoBehaviour
 
     [HideInInspector]
     private List<Buff> buffsActive = new List<Buff>();
+    private MonoBehaviour chrController;
 
     void Start()
     {
-
-    }
-
-    void Update()
-    {
-        // buffsActive.Skip(35).ToList().ForEach(
-        //     buff => buff.timer -= Time.deltaTime
-        // );
-
-        // for (int i = 0; i < buffsActive.Count; i++)
-        // {
-        //     buffsActive[i].timer -= Time.deltaTime;
-        //     if (buffsActive[i].timer <= 0)
-        //     {
-        //         buffsActive.Remove(buffsActive[i]);
-        //     }
-        // }
-
-        // switch (type)
-        // {
-        //     case CharacterType.Player:
-        //         break;
-        //     case CharacterType.Enemy:
-        //         break;
-        // }
-
+        switch (type)
+        {
+            case CharacterType.Player:
+                chrController = GetComponent<PlayerController>();
+                break;
+            case CharacterType.Enemy:
+                chrController = GetComponent<MobController>();
+                break;
+        }
     }
 
     public IEnumerator ActivateBuff(Buff buff)
     {
-        AddBuff(buff);
-        yield return new WaitForSeconds(buff.timer);
-        RemoveBuff(buff);
+        if (buff.timer == 0)
+        {
+            AddBuff(buff);
+        }
+        else
+        {
+            yield return new WaitForSeconds(buff.timer);
+            RemoveBuff(buff);
+        }
     }
 
     public bool CheckBuff(BuffType type)
@@ -101,6 +91,65 @@ public class BuffSystem : MonoBehaviour
     private void AddBuff(Buff buff)
     {
         buffsActive.Add(buff);
+
+        switch (type)
+        {
+            case CharacterType.Player:
+                PlayerController playerController = (PlayerController)chrController;
+                switch (buff.type)
+                {
+                    case BuffType.ATK:
+                        playerController.player.atk += buff.value;
+                        break;
+
+                    case BuffType.Mana:
+                        if (playerController.player.mana + buff.value > playerController.player.maxMana)
+                        {
+                            playerController.player.mana = playerController.player.maxMana;
+                        }
+                        else
+                        {
+                            playerController.player.mana += buff.value;
+                        }
+                        break;
+
+                    case BuffType.HP:
+                        if (playerController.player.hp + buff.value > playerController.player.maxHp)
+                        {
+                            playerController.player.hp = playerController.player.maxHp;
+                        }
+                        else
+                        {
+                            playerController.player.hp += buff.value;
+                        }
+                        break;
+                }
+
+                break;
+
+            case CharacterType.Enemy:
+                MobController mobController = (MobController)chrController;
+                switch (buff.type)
+                {
+                    case BuffType.ATK:
+                        mobController.enemy.atk += buff.value;
+                        break;
+
+                    case BuffType.HP:
+                        if (mobController.enemy.hp + buff.value > mobController.enemy.maxHp)
+                        {
+                            mobController.enemy.hp = mobController.enemy.maxHp;
+                        }
+                        else
+                        {
+                            mobController.enemy.hp += buff.value;
+                        }
+                        break;
+                }
+
+                break;
+        }
+
     }
 
     private void RemoveBuff(Buff buff)

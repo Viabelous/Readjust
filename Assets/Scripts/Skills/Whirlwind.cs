@@ -12,6 +12,9 @@ public class Whirlwind : MonoBehaviour
         // sesuaikan damage basic attack dengan atk player
         skill = GetComponent<SkillController>().skill;
         player = GameObject.Find("Player");
+        PlayerController playerController = player.GetComponent<PlayerController>();
+
+        skill.Damage = 0.5f * playerController.player.agi + playerController.player.atk;
     }
 
     private void OnTriggerStay2D(Collider2D other)

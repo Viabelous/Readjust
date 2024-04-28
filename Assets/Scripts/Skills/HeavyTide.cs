@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HighTide : MonoBehaviour
+[ExecuteAlways]
+public class HeavyTide : MonoBehaviour
 {
     private Skill skill;
 
@@ -10,6 +11,7 @@ public class HighTide : MonoBehaviour
     {
         // sesuaikan damage basic attack dengan atk player
         skill = GetComponent<SkillController>().skill;
+        skill.Damage += 0.25f * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
