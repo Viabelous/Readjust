@@ -55,6 +55,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // biasanya di tipe projectile
         if (other.CompareTag("Enemy") && isAttacking && skill.HitType == SkillHitType.Once)
         {
             isAttacking = false;

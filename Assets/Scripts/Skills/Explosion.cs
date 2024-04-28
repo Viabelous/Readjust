@@ -16,6 +16,11 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (skill.HasHitEnemy(other))
+        {
+            return;
+        }
+
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();

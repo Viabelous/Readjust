@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 5548913775764770518}
   - component: {fileID: 3400072732634240482}
   - component: {fileID: 1151667445729323495}
-  - component: {fileID: 9117923284265995293}
   - component: {fileID: 6630326249953304622}
-  - component: {fileID: 6746486723879844515}
+  - component: {fileID: -7451080170591294246}
+  - component: {fileID: 9117923284265995293}
   - component: {fileID: 1425777453348575245}
+  - component: {fileID: 6746486723879844515}
   m_Layer: 0
   m_Name: PebbleCreation
   m_TagString: Damage
@@ -190,32 +191,6 @@ PolygonCollider2D:
       - {x: -0.03, y: -0.71}
       - {x: 0.099999994, y: -0.68}
   m_UseDelaunayMesh: 0
---- !u!114 &9117923284265995293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6473314271843948133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  offsetRight: {x: 2, y: 1, z: 0}
-  offsetLeft: {x: -2, y: 1, z: 0}
-  offsetFront: {x: 0, y: -2, z: 0}
-  offsetBack: {x: 0, y: 2, z: 0}
-  rotationRight: 0
-  rotationLeft: 180
-  rotationFront: -90
-  rotationBack: 90
-  flipRight: 0
-  flipLeft: 0
-  flipFront: 0
-  flipBack: 0
-  spriteRenderer: {fileID: 5548913775764770518}
 --- !u!114 &6630326249953304622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillTemplate: {fileID: 11400000, guid: 2eba9af3050ac484882d98f90e2b997a, type: 2}
   skill: {fileID: 11400000, guid: 2eba9af3050ac484882d98f90e2b997a, type: 2}
---- !u!114 &6746486723879844515
+--- !u!114 &-7451080170591294246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,10 +214,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 6473314271843948133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Script: {fileID: 11500000, guid: d9dbc687ee83d2b42a04e525c0938aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+--- !u!114 &9117923284265995293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473314271843948133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  offsetRight: {x: 2, y: 0.5, z: 0}
+  offsetLeft: {x: -2, y: 0.5, z: 0}
+  offsetFront: {x: 0, y: -1, z: 0}
+  offsetBack: {x: 0, y: 1, z: 0}
+  rotationRight: 0
+  rotationLeft: 180
+  rotationFront: -90
+  rotationBack: 90
+  flipRight: 0
+  flipLeft: 0
+  flipFront: 0
+  flipBack: 0
+  spriteRenderer: {fileID: 5548913775764770518}
 --- !u!114 &1425777453348575245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,3 +259,16 @@ MonoBehaviour:
   endAnimationName: peeble_creation_end
   isAttacking: 0
   skill: {fileID: 0}
+--- !u!114 &6746486723879844515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473314271843948133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0

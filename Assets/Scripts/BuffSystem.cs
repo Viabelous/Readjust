@@ -53,7 +53,7 @@ public class BuffSystem : MonoBehaviour
         }
     }
 
-    public IEnumerator ActivateBuff(Buff buff)
+    public void ActivateBuff(Buff buff)
     {
         if (buff.timer == 0)
         {
@@ -61,9 +61,15 @@ public class BuffSystem : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(buff.timer);
-            RemoveBuff(buff);
+            StartCoroutine(CoroutineBuff(buff));
         }
+    }
+
+    public IEnumerator CoroutineBuff(Buff buff)
+    {
+        AddBuff(buff);
+        yield return new WaitForSeconds(buff.timer);
+        RemoveBuff(buff);
     }
 
     public bool CheckBuff(BuffType type)
@@ -96,6 +102,7 @@ public class BuffSystem : MonoBehaviour
         {
             case CharacterType.Player:
                 PlayerController playerController = (PlayerController)chrController;
+
                 switch (buff.type)
                 {
                     case BuffType.ATK:
@@ -129,25 +136,8 @@ public class BuffSystem : MonoBehaviour
 
             case CharacterType.Enemy:
                 MobController mobController = (MobController)chrController;
-                switch (buff.type)
-                {
-                    case BuffType.ATK:
-                        mobController.enemy.atk += buff.value;
-                        break;
-
-                    case BuffType.HP:
-                        if (mobController.enemy.hp + buff.value > mobController.enemy.maxHp)
-                        {
-                            mobController.enemy.hp = mobController.enemy.maxHp;
-                        }
-                        else
-                        {
-                            mobController.enemy.hp += buff.value;
-                        }
-                        break;
-                }
-
                 break;
+
         }
 
     }
@@ -155,6 +145,22 @@ public class BuffSystem : MonoBehaviour
     private void RemoveBuff(Buff buff)
     {
         buffsActive.Remove(buff);
+        switch (type)
+        {
+            case CharacterType.Player:
+                PlayerController playerController = (PlayerController)chrController;
+
+                switch (buff.type)
+                {
+                    case BuffType.ATK:
+                        playerController.player.atk -= buff.value;
+                        break;
+                }
+
+                break;
+        }
+
+
     }
 
 

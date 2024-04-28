@@ -3,7 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+public enum SkillState
+{
+    Ready,
+    Active,
+    Cooldown
+}
 public class SkillSlot : MonoBehaviour
 {
     public GameObject objLight, objDark, skillHolder;
@@ -25,8 +30,6 @@ public class SkillSlot : MonoBehaviour
 
     void Start()
     {
-        // objLight = GameObject.Find("skill_" + slotNumber.ToString());
-        // objDark = GameObject.Find("skill_" + slotNumber.ToString() + "_dark");
 
         // slot ada skillnya
         if (slotNumber <= GameManager.selectedSkills.Count)
@@ -36,8 +39,12 @@ public class SkillSlot : MonoBehaviour
 
             // ganti gambar sesuai skill yang dipakai
             int index = slotNumber - 1;
-            skillPref = SkillHolder.Instance.skillPrefs.Find(prefab => prefab.GetComponent<SkillController>().skill.Id == GameManager.selectedSkills[index]);
-            skill = skillPref.GetComponent<SkillController>().skill;
+
+            // NANTI UBAHHH!!!!
+            skillPref = SkillHolder.Instance.skillPrefs.Find(
+                prefab => prefab.GetComponent<SkillController>().skillTemplate.Id == GameManager.selectedSkills[index]
+            );
+            skill = skillPref.GetComponent<SkillController>().skillTemplate;
 
             objLight.GetComponent<Image>().sprite = skill.Sprite;
             objDark.GetComponent<Image>().sprite = objLight.GetComponent<Image>().sprite;
@@ -45,7 +52,7 @@ public class SkillSlot : MonoBehaviour
             maxCd = skill.Cd;
             currCd = 0;
             minCd = 0;
-            state = SkillState.ready;
+            state = SkillState.Ready;
         }
         // slot kosong
         else
@@ -67,7 +74,7 @@ public class SkillSlot : MonoBehaviour
 
             switch (state)
             {
-                case SkillState.ready:
+                case SkillState.Ready:
                     cdText.text = "";
                     objDark.GetComponent<Image>().fillAmount = 0;
 
@@ -81,17 +88,17 @@ public class SkillSlot : MonoBehaviour
                     {
                         Instantiate(skillPref);
                         playerController.UseSkill(skill);
-                        state = SkillState.active;
+                        state = SkillState.Active;
                     }
                     break;
 
-                case SkillState.active:
-                    state = SkillState.cooldown;
+                case SkillState.Active:
+                    state = SkillState.Cooldown;
                     objDark.GetComponent<Image>().fillAmount = 1;
                     currCd = maxCd;
                     break;
 
-                case SkillState.cooldown:
+                case SkillState.Cooldown:
                     currCd -= Time.deltaTime;
                     cdText.text = Math.Ceiling(currCd).ToString();
 
@@ -99,17 +106,17 @@ public class SkillSlot : MonoBehaviour
 
                     if (currCd <= minCd)
                     {
-                        state = SkillState.ready;
+                        state = SkillState.Ready;
                     }
 
                     break;
 
             }
 
-            // // cooldown selesai
+            // // Cooldown selesai
             // if (currCd < minCd)
             // {
-            //     // baru selesai cooldown
+            //     // baru selesai Cooldown
             //     if (isCooldown)
             //     {
             //         isCooldown = false;
@@ -126,7 +133,7 @@ public class SkillSlot : MonoBehaviour
             //         isCooldown = true;
             //     }
             // }
-            // // lagi cooldown
+            // // lagi Cooldown
             // else
             // {
             //     objDark.GetComponent<Image>().fillAmount = currCd / maxCd;

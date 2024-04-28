@@ -37,6 +37,14 @@ public class HeavyTide : MonoBehaviour
             skill.HitEnemy(other);
         }
     }
+
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Enemy"))
+    //     {
+    //         skill.AfterHitEnemy(other);
+    //     }
+    // }
 }
 
 // [CreateAssetMenu]
