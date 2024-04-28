@@ -10,6 +10,8 @@ public class NPC : MonoBehaviour
     public GameObject dialogPanel;
     public Text dialogTeks;
 
+    public GameObject Player;
+
     [HideInInspector]
     public string[] dialog;
 
@@ -19,9 +21,6 @@ public class NPC : MonoBehaviour
     public float wordSpeed;
     public bool playerDekat;
 
-    void Start(){
-
-    }
     void Update(){
         string[] teks = new string[5];
         teks[0] = "wekwekwek";
@@ -32,7 +31,7 @@ public class NPC : MonoBehaviour
         rescript(teks);
 
         if (Input.GetKeyDown(KeyCode.Q) && playerDekat){
-            Debug.Log("karakter berada di dekat NPC");
+            Player.GetComponent<PlayerController>().movementEnable(false);
             if(dialogPanel.activeInHierarchy){
                 if(dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q)){
                     NextLine();
@@ -49,6 +48,7 @@ public class NPC : MonoBehaviour
         dialogTeks.text= "";
         index = 0;
         dialogPanel.SetActive(false);
+        Player.GetComponent<PlayerController>().movementEnable(true);
     }
 
     IEnumerator Typing(){
@@ -70,12 +70,15 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")){
+            Player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = true;
+
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("Player")){
+            Player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = false;
             resetTeks();
         }

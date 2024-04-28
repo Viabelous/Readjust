@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool movementEnabled;
 
+    [HideInInspector]
+    public bool nearInteractable;
+
     private DefenseSystem defenseSystem;
 
     // attack -------------------------------------------------
@@ -48,6 +51,8 @@ public class PlayerController : MonoBehaviour
         direction = ChrDirection.Front;
         defenseSystem = GetComponent<DefenseSystem>();
         player = player.CloneObject();
+        movementEnabled = true;
+        nearInteractable = false;
     }
 
     // Update is called once per frame
@@ -59,56 +64,63 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        animate.SetFloat("Horizontal", movement.x);
-        animate.SetFloat("Vertical", movement.y);
-        animate.SetFloat("Speed", movement.sqrMagnitude);
-
-        if (movement.x == 1)
+        if(movementEnabled)
         {
-            animate.SetFloat("Face", 1);
-            direction = ChrDirection.Right;
-        }
-        else if (movement.x == -1)
-        {
-            animate.SetFloat("Face", 3);
-            direction = ChrDirection.Left;
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-        }
-        if (movement.y == 1)
-        {
+            animate.SetFloat("Horizontal", movement.x);
+            animate.SetFloat("Vertical", movement.y);
+            animate.SetFloat("Speed", movement.sqrMagnitude);
 
-            animate.SetFloat("Face", 2);
-            direction = ChrDirection.Back;
+            if (movement.x == 1)
+            {
+                animate.SetFloat("Face", 1);
+                direction = ChrDirection.Right;
+            }
+            else if (movement.x == -1)
+            {
+                animate.SetFloat("Face", 3);
+                direction = ChrDirection.Left;
 
-        }
-        else if (movement.y == -1)
-        {
-            animate.SetFloat("Face", 0);
-            direction = ChrDirection.Front;
+            }
+            if (movement.y == 1)
+            {
 
-        }
+                animate.SetFloat("Face", 2);
+                direction = ChrDirection.Back;
 
-        // interaksi dengan keyboard
-        switch (Input.inputString)
-        {
-            case "q":
-                animate.SetTrigger("BasicAttack");
+            }
+            else if (movement.y == -1)
+            {
+                animate.SetFloat("Face", 0);
+                direction = ChrDirection.Front;
 
-                GameObject prefab = SkillHolder.Instance.skillPrefs[0];
-                if (!GameObject.Find(prefab.name + "(Clone)"))
-                {
-                    Instantiate(prefab);
+            }
 
-                }
-                break;
+            // interaksi dengan keyboard
+            switch (Input.inputString)
+            {
+                case "q":
+                    if(nearInteractable == false)
+                    {
+                        animate.SetTrigger("BasicAttack");
 
-            case "=":
-                SceneManager.LoadScene("MainMenu");
-                break;
+                        GameObject prefab = SkillHolder.Instance.skillPrefs[0];
+                        if (!GameObject.Find(prefab.name + "(Clone)"))
+                        {
+                            Instantiate(prefab);
 
+                        }
+                    }
+
+                    break;
+
+                case "=":
+                    SceneManager.LoadScene("MainMenu");
+                    break;
+
+            }
         }
 
 
@@ -194,6 +206,16 @@ public class PlayerController : MonoBehaviour
     {
         Damaged();
         StageManager.instance.ChangeGameState(GameState.Lose);
+    }
+
+    public void movementEnable(bool state)
+    {
+        movementEnabled = state;
+    }
+
+    public void interactableNearby(bool state)
+    {
+        nearInteractable = state;
     }
 }
 
