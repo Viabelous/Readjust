@@ -24,15 +24,15 @@ public class NPC : MonoBehaviour
 
     public float wordSpeed;
     public bool playerDekat;
-    private bool anyWindowsEnabled;
+    
 
     void Start(){
         SetText(selectedDialog);
-        SetAnyWindowsEnabled(false);
+        windows_controller.GetComponent<windowsController>().SetAnyWindowsEnabled(false);
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && !anyWindowsEnabled){
+        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && !windows_controller.GetComponent<windowsController>().anyWindowsEnabled){
             player.GetComponent<PlayerController>().movementEnable(false);
             if(dialogPanel.activeInHierarchy){
                 if(dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q)){
@@ -72,17 +72,17 @@ public class NPC : MonoBehaviour
             resetTeks();
             if(windows != string.Empty)
             {
-                player.GetComponent<PlayerController>().movementEnable(false);
                 switch(windows)
                 {
                     case "Skill":
-                        windows_controller.GetComponent<windowsController>().openWindows(0);
-                        SetAnyWindowsEnabled(true);
+                        windows_controller.GetComponent<windowsController>().toogleWindow(1, true);
+                        windows_controller.GetComponent<windowsController>().SetAnyWindowsEnabled(true);
                         break;
 
                     default:
                         break;
                 }
+                playerDekat = false;
             }
         }
     }
@@ -103,11 +103,6 @@ public class NPC : MonoBehaviour
             playerDekat = false;
             resetTeks();
         }
-    }
-
-    public void SetAnyWindowsEnabled(bool state)
-    {
-        anyWindowsEnabled = state;
     }
 
     public void SetText(string option)
