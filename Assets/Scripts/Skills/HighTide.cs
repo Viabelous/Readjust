@@ -2,41 +2,113 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class HighTide : Skill
+public class HighTide : MonoBehaviour
 {
-    [Header("Crowd Control")]
-    [SerializeField] private float knockBackSpeed;
-    [SerializeField] private float knockBackDistance;
+    private Skill skill;
 
-    public override void Activate(GameObject gameObject)
+    private void Start()
     {
-        // gameObject.transform.position = GameObject.Find("Player").transform.position;
+        // sesuaikan damage basic attack dengan atk player
+        skill = GetComponent<SkillController>().skill;
     }
 
-    public override void HitEnemy(GameObject gameObject, Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        base.HitEnemy(gameObject, other);
+        if (skill.HasHitEnemy(other))
+        {
+            return;
+        }
+
         if (other.CompareTag("Enemy"))
         {
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
             Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
             mob.ActivateCC(
                 new CCKnockBack(
-                    knockBackSpeed,
-                    knockBackDistance,
+                    skill.PushSpeed,
+                    skill.PushRange,
                     mob.transform.position,
                     direction
                 )
             );
-            // mob.ActivateKnockBack(knockBackSpeed, knockBackDistance, gameObject.transform.position);
+
+            skill.HitEnemy(other);
         }
     }
-
-    public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
-    {
-        base.AfterHitEnemy(gameObject, other);
-    }
-
-
 }
+
+// [CreateAssetMenu]
+// public class Explosion : Skill
+// {
+//     [Header("Crowd Control")]
+//     [SerializeField] private float knockBackSpeed;
+//     [SerializeField] private float knockBackDistance;
+
+//     public override void Activate(GameObject gameObject)
+//     {
+//     }
+
+//     public override void HitEnemy(GameObject gameObject, Collider2D other)
+//     {
+//         base.HitEnemy(gameObject, other);
+//         if (other.CompareTag("Enemy"))
+//         {
+//             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
+//             Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
+//             mob.ActivateCC(
+//                 new CCKnockBack(
+//                     knockBackSpeed,
+//                     knockBackDistance,
+//                     mob.transform.position,
+//                     direction
+//                 )
+//             );
+//         }
+//     }
+
+//     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
+//     {
+//         base.AfterHitEnemy(gameObject, other);
+//     }
+
+// }
+
+
+// [CreateAssetMenu]
+// public class HighTide : Skill
+// {
+//     [Header("Crowd Control")]
+//     [SerializeField] private float knockBackSpeed;
+//     [SerializeField] private float knockBackDistance;
+
+//     public override void Activate(GameObject gameObject)
+//     {
+//         // gameObject.transform.position = GameObject.Find("Player").transform.position;
+//     }
+
+//     public override void HitEnemy(GameObject gameObject, Collider2D other)
+//     {
+//         base.HitEnemy(gameObject, other);
+//         if (other.CompareTag("Enemy"))
+//         {
+//             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
+//             Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
+//             mob.ActivateCC(
+//                 new CCKnockBack(
+//                     knockBackSpeed,
+//                     knockBackDistance,
+//                     mob.transform.position,
+//                     direction
+//                 )
+//             );
+//             // mob.ActivateKnockBack(knockBackSpeed, knockBackDistance, gameObject.transform.position);
+//         }
+//     }
+
+//     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
+//     {
+//         base.AfterHitEnemy(gameObject, other);
+//     }
+
+
+// }

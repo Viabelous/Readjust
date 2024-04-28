@@ -10,49 +10,40 @@ public class SkillController : MonoBehaviour
 
     private void Start()
     {
-        // enemies = ;
+        // sesuaikan damage dengan stage
+        if (
+            skill.Element == Element.Fire &&
+            (
+                skill.Type == SkillType.BurstDamage ||
+                skill.Type == SkillType.CrowdControl ||
+                skill.Type == SkillType.Debuff
+            )
+        )
+        {
+            skill.Damage += skill.Damage * 0.1f;
+        }
+
         skill.Activate(gameObject);
     }
 
-    private void Update()
-    {
-        // if (GetComponent<AttackSystem>() != null)
-        // {
-        //     print(GetComponent<AttackSystem>().DealDamage());
-
-        // }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-        if (
-            skill.type == SkillType.BurstDamage ||
-            skill.type == SkillType.CrowdControl
-        )
-        {
-
-
-            skill.HitEnemy(gameObject, other);
-        }
-
-    }
-
-    // private void OnTriggerStay2D(Collider2D other)
+    // private void OnTriggerEnter2D(Collider2D other)
     // {
+
     //     if (
-    //         skill.hitType == SkillHitType.temporary &&
-    //         (skill.type == SkillType.burstDamage || skill.type == SkillType.crowdControl)
+    //         skill.Type == SkillType.BurstDamage ||
+    //         skill.Type == SkillType.CrowdControl ||
+    //         skill.Type == SkillType.Debuff
     //     )
     //     {
     //         skill.HitEnemy(gameObject, other);
     //     }
+
     // }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        skill.AfterHitEnemy(gameObject, other);
-    }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     skill.AfterHitEnemy(gameObject, other);
+    // }
 
     private void OnAnimationEnd()
     {

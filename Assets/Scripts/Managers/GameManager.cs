@@ -10,19 +10,19 @@ public class GameManager : ScriptableObject
     // kalau sudah ada pake item, property (hp, mana, dll ubah)
     // public static Player player = GameData.player;
 
-    public static List<SkillName> selectedSkills = new List<SkillName>()
+    public static List<string> selectedSkills = new List<string>()
     {
         // GameData.unlockedSkills[3],
         // GameData.unlockedSkills[1],
-        SkillName.PeebleCreation,
-        SkillName.Avalanche,
-        SkillName.Ignite,
-        SkillName.Explosion,
-        SkillName.Fireball,
+        "skill_pebble",
+        "skill_avalanche",
+        "skill_ignite",
+        "skill_explosion",
+        "skill_fireball",
         // SkillName.WillOfFire,
-        SkillName.Sacrivert,
-        SkillName.Whirlwind,
-        SkillName.Waterwall,
+        "skill_sacrivert",
+        "skill_whirlwind",
+        "skill_waterwall",
         // SkillName.HighTide,
     };
 

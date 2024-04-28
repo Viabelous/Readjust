@@ -18,20 +18,20 @@ public class GameData : ScriptableObject
     //     new Skill("whirlwind", 20, 0.5f, 1),
     // };
 
-    public static List<SkillName> skills = new List<SkillName>() {
-        SkillName.BasicStab,
-        SkillName.Sacrivert,
-        SkillName.Explosion,
-        SkillName.Ignite,
-        SkillName.Fireball,
-        SkillName.Whirlwind,
-        SkillName.HighTide,
-        SkillName.Waterwall
-    };
+    // public static List<SkillName> skills = new List<SkillName>() {
+    //     SkillName.BasicStab,
+    //     SkillName.Sacrivert,
+    //     SkillName.Explosion,
+    //     SkillName.Ignite,
+    //     SkillName.Fireball,
+    //     SkillName.Whirlwind,
+    //     SkillName.HighTide,
+    //     SkillName.Waterwall
+    // };
 
-    public static List<SkillName> unlockedSkills = new List<SkillName>() {
-        SkillName.Ignite,
-    };
+    // public static List<SkillName> unlockedSkills = new List<SkillName>() {
+    //     SkillName.Ignite,
+    // };
 
     // public static Player player = new Player(
     //     100, // hp

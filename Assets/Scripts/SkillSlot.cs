@@ -39,10 +39,10 @@ public class SkillSlot : MonoBehaviour
             skillPref = SkillHolder.Instance.skillPrefs.Find(prefab => prefab.GetComponent<SkillController>().skill.name == GameManager.selectedSkills[index]);
             skill = skillPref.GetComponent<SkillController>().skill;
 
-            objLight.GetComponent<Image>().sprite = skill.sprite;
+            objLight.GetComponent<Image>().sprite = skill.Sprite;
             objDark.GetComponent<Image>().sprite = objLight.GetComponent<Image>().sprite;
 
-            maxCd = skill.maxCd;
+            maxCd = skill.Cd;
             currCd = 0;
             minCd = 0;
             state = SkillState.ready;
@@ -74,9 +74,9 @@ public class SkillSlot : MonoBehaviour
                     if (
                         Input.inputString == slotNumber.ToString() &&
                        // jika bayarannya mana & mana yg tersedia > bayaran
-                       (skill.costType == SkillCost.Mana && playerController.player.mana > skill.cost ||
+                       (skill.CostType == SkillCost.Mana && playerController.player.mana > skill.Cost ||
                         // jika bayarannya hp & hp yg tersedia > bayaran + 1% dari total hp keseluruhan
-                        skill.costType == SkillCost.Hp && playerController.player.hp > skill.cost + playerController.player.hp * 00.1)
+                        skill.CostType == SkillCost.Hp && playerController.player.hp > skill.Cost + playerController.player.hp * 00.1)
                     )
                     {
                         Instantiate(skillPref);

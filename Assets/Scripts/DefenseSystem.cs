@@ -70,7 +70,7 @@ public class DefenseSystem : MonoBehaviour
         if (type == CharacterType.Enemy && other.CompareTag("Damage"))
         {
             Skill skill = other.GetComponent<SkillController>().skill;
-            if (skill.hitType == SkillHitType.Once)
+            if (skill.HitType == SkillHitType.Once)
             {
                 TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
             }
@@ -92,7 +92,7 @@ public class DefenseSystem : MonoBehaviour
                 if (other.CompareTag("Damage"))
                 {
                     Skill skill = other.GetComponent<SkillController>().skill;
-                    if (skill.hitType == SkillHitType.Temporary)
+                    if (skill.HitType == SkillHitType.Temporary)
                     {
                         Attacking(other.GetComponent<AttackSystem>().DealDamage());
                     }

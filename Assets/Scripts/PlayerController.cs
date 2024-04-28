@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(movementEnabled)
+        if (movementEnabled)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             switch (Input.inputString)
             {
                 case "q":
-                    if(nearInteractable == false)
+                    if (nearInteractable == false)
                     {
                         animate.SetTrigger("BasicAttack");
 
@@ -140,13 +140,13 @@ public class PlayerController : MonoBehaviour
     public void UseSkill(Skill skill)
     {
         // atur kalo ada pengurangan penggunaan mana dari item kah apa
-        switch (skill.costType)
+        switch (skill.CostType)
         {
             case SkillCost.Mana:
-                player.mana -= skill.cost;
+                player.mana -= skill.Cost;
                 break;
             case SkillCost.Hp:
-                player.hp -= skill.cost;
+                player.hp -= skill.Cost;
                 break;
 
         }

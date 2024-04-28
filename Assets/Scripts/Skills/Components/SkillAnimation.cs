@@ -23,7 +23,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
         skill = GetComponent<SkillController>().skill;
         animator = GetComponent<Animator>();
 
-        timer = skill.timer;
+        timer = skill.Timer;
         isAttacking = true;
     }
 
@@ -31,7 +31,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
     void Update()
     {
 
-        switch (skill.hitType)
+        switch (skill.HitType)
         {
             case SkillHitType.Once:
 
@@ -55,7 +55,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") && isAttacking && skill.hitType == SkillHitType.Once)
+        if (other.CompareTag("Enemy") && isAttacking && skill.HitType == SkillHitType.Once)
         {
             isAttacking = false;
             animator.Play(endAnimationName);
@@ -64,7 +64,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
 
     public void OnAnimationAttack()
     {
-        switch (skill.hitType)
+        switch (skill.HitType)
         {
             case SkillHitType.Once:
                 if (isAttacking)

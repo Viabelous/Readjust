@@ -61,7 +61,7 @@ public class SkillMovement : MonoBehaviour
             isInstantiate = false;
         }
 
-        if (skillAnimation != null && skillAnimation.skill.hitType != SkillHitType.Temporary && !skillAnimation.isAttacking)
+        if (skillAnimation != null && skillAnimation.skill.HitType != SkillHitType.Temporary && !skillAnimation.isAttacking)
         {
             return;
         }
@@ -74,23 +74,23 @@ public class SkillMovement : MonoBehaviour
                 {
                     // kanan
                     case ChrDirection.Right:
-                        transform.position += Vector3.right * skill.movementSpeed * Time.deltaTime;
+                        transform.position += Vector3.right * skill.MovementSpeed * Time.deltaTime;
                         break;
                     // kiri
                     case ChrDirection.Left:
-                        transform.position += Vector3.left * skill.movementSpeed * Time.deltaTime;
+                        transform.position += Vector3.left * skill.MovementSpeed * Time.deltaTime;
                         break;
                     // depan
                     case ChrDirection.Front:
-                        transform.position += Vector3.down * skill.movementSpeed * Time.deltaTime;
+                        transform.position += Vector3.down * skill.MovementSpeed * Time.deltaTime;
                         break;
                     // belakang
                     case ChrDirection.Back:
-                        transform.position += Vector3.up * skill.movementSpeed * Time.deltaTime;
+                        transform.position += Vector3.up * skill.MovementSpeed * Time.deltaTime;
                         break;
                 }
 
-                if (Vector3.Distance(initialPosition, transform.position) > skill.movementRange)
+                if (Vector3.Distance(initialPosition, transform.position) > skill.MovementRange)
                 {
                     Destroy(gameObject);
                 }

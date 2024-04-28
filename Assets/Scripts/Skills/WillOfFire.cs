@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class WillOfFire : Skill
+public class WillOfFire : MonoBehaviour
 {
-
+    private Skill skill;
     private GameObject player;
-    [SerializeField]
-    private float buffAtk;
 
-
-    public override void Activate(GameObject gameObject)
+    private void Start()
     {
+        skill = GetComponent<SkillController>().skill;
+        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         player = GameObject.Find("Player");
         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
@@ -20,13 +18,37 @@ public class WillOfFire : Skill
         buffSystem.ActivateBuff(
            new Buff(
                 BuffType.ATK,
-                buffAtk,
-                timer
+                skill.Value,
+                skill.Timer
             )
         );
-
-
     }
-
-
 }
+// [CreateAssetMenu]
+// public class WillOfFire : Skill
+// {
+
+//     private GameObject player;
+//     [SerializeField]
+//     private float buffAtk;
+
+
+//     public override void Activate(GameObject gameObject)
+//     {
+
+//         player = GameObject.Find("Player");
+//         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
+
+//         buffSystem.ActivateBuff(
+//            new Buff(
+//                 BuffType.ATK,
+//                 buffAtk,
+//                 timer
+//             )
+//         );
+
+
+//     }
+
+
+// }

@@ -9,15 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b474e74c5238c84f890f6eb945aaad4, type: 3}
+  m_Script: {fileID: 11500000, guid: 86b9280269f955e499599c045a53eb8a, type: 3}
   m_Name: Ignite
   m_EditorClassIdentifier: 
-  name: 4
+  name: Ignite
+  element: 1
   type: 0
   hitType: 0
   costType: 1
-  maxCd: 3
-  cost: 1
-  damage: 20
-  description: 
+  maxCd: 0
+  maxCost: 0
+  minDamage: 0
   sprite: {fileID: 21300000, guid: e5402d0581b6de941ba2f65c77532dc0, type: 3}
+  movementSpeed: 0
+  movementRange: 0
+  timer: 0
+  value: 0
+  persentase: 0
+  pushSpeed: 0
+  pushRange: 0

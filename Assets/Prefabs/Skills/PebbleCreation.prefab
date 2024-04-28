@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6746486723879844515}
   - component: {fileID: 1425777453348575245}
   m_Layer: 0
-  m_Name: PeebleCreation
+  m_Name: PebbleCreation
   m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

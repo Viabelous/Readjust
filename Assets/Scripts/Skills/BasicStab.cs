@@ -2,20 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class BasicStab : Skill
+public class BasicStab : MonoBehaviour
 {
+    private Skill skill;
 
-    private GameObject player;
-
-    public override void Activate(GameObject gameObject)
+    private void Start()
     {
-
-        player = GameObject.FindWithTag("Player");
-        this.damage = player.GetComponent<PlayerController>().player.atk;
-
-
+        // sesuaikan damage basic attack dengan atk player
+        skill = GetComponent<SkillController>().skill;
+        skill.Damage = GetComponent<PlayerController>().player.atk;
     }
-
-
 }
+
+// [CreateAssetMenu]
+// public class BasicStab : Skill
+// {
+
+//     private GameObject player;
+
+//     public override void Activate(GameObject gameObject)
+//     {
+
+//         player = GameObject.FindWithTag("Player");
+//         this.damage = player.GetComponent<PlayerController>().player.atk;
+
+
+//     }
+
+
+// }
