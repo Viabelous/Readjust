@@ -17,10 +17,10 @@ public class CrowdControl
     public CrowdControlType type;
 
 
-    public CrowdControl()
-    {
-        id = "cc" + UnityEngine.Random.Range(0, 99999);
-    }
+    // public CrowdControl()
+    // {
+    //     id = "cc" + UnityEngine.Random.Range(0, 99999);
+    // }
 
 }
 
@@ -31,8 +31,9 @@ public class CCSlide : CrowdControl
     public Vector3 initialPos;
     public Vector2 backward;
 
-    public CCSlide(float speed, float range, Vector3 initialPos, Vector2 backward) : base()
+    public CCSlide(string id, float speed, float range, Vector3 initialPos, Vector2 backward) : base()
     {
+        this.id = id;
         this.type = CrowdControlType.Slide;
         this.speed = speed;
         this.range = range;
@@ -50,8 +51,9 @@ public class CCKnockBack : CrowdControl
 
     public Vector3 direction;
 
-    public CCKnockBack(float speed, float range, Vector3 initialPos, Vector3 direction) : base()
+    public CCKnockBack(string id, float speed, float range, Vector3 initialPos, Vector3 direction) : base()
     {
+        this.id = id;
         this.type = CrowdControlType.KnockBack;
         this.speed = speed;
         this.range = range;
@@ -65,9 +67,9 @@ public class CCSlow : CrowdControl
     public float initialSpeed;
     public float timer;
 
-    public CCSlow(float slow, float timer, float initialSpeed) : base()
+    public CCSlow(string id, float slow, float timer, float initialSpeed) : base()
     {
-        this.id = "slow" + UnityEngine.Random.Range(0, 99999);
+        this.id = id;
         this.type = CrowdControlType.Slow;
         this.slow = slow;
         this.timer = timer;

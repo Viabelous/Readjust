@@ -129,17 +129,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -122375040, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: -2048668642, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.06666667
-      value: {fileID: 872910501, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: -1020235052, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.13333334
-      value: {fileID: 1587958287, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: 1171550172, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.2
-      value: {fileID: -893144033, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: -1939362373, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.26666668
-      value: {fileID: -1249733555, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: -1355618261, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.33333334
-      value: {fileID: -1636544846, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: -548517088, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     attribute: m_Sprite
     path: waterwall_back
     classID: 212
@@ -148,13 +148,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0.2
-      value: {fileID: 748866874, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: -509009261, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.26666668
-      value: {fileID: 1485884567, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: 973854060, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.33333334
-      value: {fileID: 505532619, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: 1196931902, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     - time: 0.4
-      value: {fileID: -35498770, guid: b559604440e292b448c5789a13c706dc, type: 3}
+      value: {fileID: -1851422620, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
     attribute: m_Sprite
     path: waterwall_front
     classID: 212
@@ -213,16 +213,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -122375040, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: 872910501, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: 1587958287, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: -893144033, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: -1249733555, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: -1636544846, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: 748866874, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: 1485884567, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: 505532619, guid: b559604440e292b448c5789a13c706dc, type: 3}
-    - {fileID: -35498770, guid: b559604440e292b448c5789a13c706dc, type: 3}
+    - {fileID: -2048668642, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: -1020235052, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: 1171550172, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: -1939362373, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: -1355618261, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: -548517088, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: -509009261, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: 973854060, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: 1196931902, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
+    - {fileID: -1851422620, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

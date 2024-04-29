@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         // print("ATK: " + player.atk);
         // print("DEF: " + player.def);
         // print("SHIELD: " + player.shield);
+        print("FOC: " + player.foc);
 
         if (player.hp <= 0)
         {

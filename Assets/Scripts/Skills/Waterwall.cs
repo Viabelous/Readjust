@@ -6,6 +6,7 @@ public class Waterwall : MonoBehaviour
 {
     private Skill skill;
     [SerializeField] private float dmgPersenOfFoc;
+    [SerializeField] private float timerPersenOfFoc;
 
     private void Start()
     {
@@ -13,7 +14,7 @@ public class Waterwall : MonoBehaviour
         skill = GetComponent<SkillController>().skill;
         float foc = GameObject.Find("Player").GetComponent<PlayerController>().player.foc;
         skill.Damage = dmgPersenOfFoc * foc;
-        skill.Timer = foc;
+        skill.Timer = timerPersenOfFoc;
     }
 
     private void OnTriggerStay2D(Collider2D other)

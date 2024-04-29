@@ -186,6 +186,11 @@ public class BuffSystem : MonoBehaviour
                     // thorn cover
                     case BuffType.Thorn:
                         break;
+
+                    // calm
+                    case BuffType.FOC:
+                        playerController.player.foc += buff.value;
+                        break;
                 }
 
                 break;
@@ -218,6 +223,10 @@ public class BuffSystem : MonoBehaviour
                         playerController.player.def -= buff.value;
                         break;
 
+                    // calm
+                    case BuffType.FOC:
+                        playerController.player.foc -= buff.value;
+                        break;
                 }
                 break;
         }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f025acaea34cd0f4082f62b4f7e2299e, type: 3}
   m_Name: PlayerBasic
   m_EditorClassIdentifier: 
+  id: player36037
   maxHp: 100
   hp: 100
   atk: 10
@@ -19,10 +20,12 @@ MonoBehaviour:
   agi: 10
   speed: 4
   foc: 5
-  maxMana: 100
+  actionEnabled: 1
+  movementEnabled: 1
+  maxMana: 300
   mana: 100
   maxShield: 0
   shield: 0
   aerus: 0
   exp: 89
-  level: 1
+  story: 0

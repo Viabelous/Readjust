@@ -28,6 +28,7 @@ public class Explosion : MonoBehaviour
             Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
             mob.ActivateCC(
                 new CCKnockBack(
+                    skill.Id,
                     skill.PushSpeed,
                     skill.PushRange,
                     mob.transform.position,

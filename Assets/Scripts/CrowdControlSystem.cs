@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-// dikasih ke skill
+// dikasih ke musuh/player yg bisa kena cc
 public class CrowdControlSystem : MonoBehaviour
 {
 
@@ -64,64 +64,6 @@ public class CrowdControlSystem : MonoBehaviour
             }
         }
 
-        // if (CheckCC(CrowdControlType.Slow))
-        // {
-        //     int index = ccsActive.FindIndex(cc => cc.type == CrowdControlType.KnockBack);
-        //     CCSlow slow = (CCSlow)ccsActive[index];
-        //     if ()
-        //     StartCoroutine(SlowCoroutine(slow));
-        // }
-
-        // switch (type)
-        // {
-        //     case CharacterType.Player:
-
-
-        //         break;
-
-
-        //     case CharacterType.Enemy:
-
-        //         if (isSlid)
-        //         {
-        //             GetComponent<MobController>().movementEnabled = false;
-        //             EnemySliding();
-        //         }
-        //         else
-        //         {
-        //             initialPosSlide = transform.position;
-        //         }
-
-        //         if (isKnocked)
-        //         {
-        //             GetComponent<MobController>().movementEnabled = true;
-        //             EnemyKnockedBack();
-        //         }
-        //         else
-        //         {
-        //             initialPosKnock = transform.position;
-        //         }
-
-        //         if (isSlowed)
-        //         {
-        //             GetComponent<MobController>().speed = slowedSpeed;
-        //         }
-        //         else
-        //         {
-        //             GetComponent<MobController>().speed = initialSpeed;
-        //         }
-
-        //         if (isStunned)
-        //         {
-        //             GetComponent<MobController>().movementEnabled = false;
-        //         }
-        //         else
-        //         {
-        //             GetComponent<MobController>().movementEnabled = true;
-        //         }
-        //         break;
-        // }
-
     }
 
     public bool CheckCC(CrowdControlType type)
@@ -164,60 +106,4 @@ public class CrowdControlSystem : MonoBehaviour
         ccsActive.Remove(cc);
     }
 
-    //     public void ActivateSliding(float speed, float distance)
-    //     {
-    //         isSlid = true;
-    //         slideSpeed = speed;
-    //         slideDistance = distance;
-    //     }
-
-    //     private void EnemySliding()
-    //     {
-    //         if (Vector3.Distance(initialPosSlide, transform.position) >= slideDistance)
-    //         {
-    //             isSlid = false;
-    //         }
-    //         transform.Translate(slideDirection * slideSpeed * Time.deltaTime);
-    //     }
-
-    //     public void DeactivateSliding()
-    //     {
-    //         isSlid = false;
-    //     }
-
-    //     public void ActivateKnockBack(float speed, float distance, Vector3 gameObjectPos)
-    //     {
-    //         isKnocked = true;
-    //         knockSpeed = speed;
-    //         knockDistance = distance;
-    //         knockDirection = -(gameObjectPos - transform.position).normalized;
-    //     }
-
-    //     private void EnemyKnockedBack()
-    //     {
-    //         if (Vector3.Distance(initialPosKnock, transform.position) >= knockDistance)
-    //         {
-    //             isKnocked = false;
-    //         }
-
-    //         // Vector3 direction = -(player.transform.position - transform.position).normalized;
-    //         transform.Translate(knockDirection * knockSpeed * Time.deltaTime);
-    //     }
-
-    //     public void DeactivateKnockBack()
-    //     {
-    //         isKnocked = false;
-    //     }
-
-    //     public void ActivateSlowing(float slow)
-    //     {
-    //         isSlowed = true;
-    //         slowedSpeed = initialSpeed - initialSpeed * slow;
-    //     }
-
-    //     public void DeactivateSlowing()
-    //     {
-    //         isSlowed = false;
-    //     }
-    // }
 }

@@ -59,6 +59,7 @@ public class Whirlwind : MonoBehaviour
 
             mob.ActivateCC(
                 new CCSlide(
+                    skill.Id,
                     skill.PushSpeed,
                     skill.PushRange,
                     mob.transform.position,
