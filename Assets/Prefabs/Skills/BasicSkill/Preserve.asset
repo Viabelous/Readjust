@@ -15,18 +15,17 @@ MonoBehaviour:
   id: skill_preserve
   name: Preserve
   element: 2
-  type: 3
+  type: 2
   hitType: 0
   costType: 1
   maxCd: 5
   cost: 5
   damage: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: c7ad1895bdf5bc04e93578931777594b, type: 3}
   movementSpeed: 0
   movementRange: 0
   timer: 0
   value: 0
-  persentase: 300
+  persentase: 3
   pushSpeed: 0
   pushRange: 0
-  stillActive: 1

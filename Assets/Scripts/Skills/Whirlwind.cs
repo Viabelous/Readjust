@@ -6,6 +6,8 @@ public class Whirlwind : MonoBehaviour
 {
     private Skill skill;
     private GameObject player;
+    [SerializeField] private float dmgPersenOfAgi;
+    [SerializeField] private float dmgPersenOfAtk;
 
     private void Start()
     {
@@ -14,7 +16,7 @@ public class Whirlwind : MonoBehaviour
         player = GameObject.Find("Player");
         PlayerController playerController = player.GetComponent<PlayerController>();
 
-        skill.Damage = 0.5f * playerController.player.agi + playerController.player.atk;
+        skill.Damage = dmgPersenOfAgi * playerController.player.agi + dmgPersenOfAtk * playerController.player.atk;
     }
 
     private void OnTriggerStay2D(Collider2D other)

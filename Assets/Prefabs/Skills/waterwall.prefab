@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgPersenOfFoc: 0.75
 --- !u!114 &-2003495853961622070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
   flipFront: 0
   flipBack: 0
   spriteRenderer: {fileID: 0}
+  oppositeDirection: 0
 --- !u!114 &7672286352614517325
 MonoBehaviour:
   m_ObjectHideFlags: 0

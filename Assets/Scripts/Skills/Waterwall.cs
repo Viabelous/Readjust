@@ -5,13 +5,14 @@ using UnityEngine;
 public class Waterwall : MonoBehaviour
 {
     private Skill skill;
+    [SerializeField] private float dmgPersenOfFoc;
 
     private void Start()
     {
         // sesuaikan damage basic attack dengan atk player
         skill = GetComponent<SkillController>().skill;
         float foc = GameObject.Find("Player").GetComponent<PlayerController>().player.foc;
-        skill.Damage = 0.75f * foc;
+        skill.Damage = dmgPersenOfFoc * foc;
         skill.Timer = foc;
     }
 

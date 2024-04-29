@@ -7,7 +7,7 @@ public class Avalanche : MonoBehaviour
     private Skill skill;
     private Animator animator;
     private ChrDirection direction;
-    [SerializeField]
+    [SerializeField] private float dmgPersenOfAtk;
     // private GameObject objLeftRight, objFront, objBack;
 
     private BoxCollider2D boxCollider;
@@ -17,7 +17,7 @@ public class Avalanche : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         skill = GetComponent<SkillController>().skill;
-        skill.Damage += 0.3f * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
+        skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
 
         direction = GameObject.Find("Player").GetComponent<PlayerController>().direction;
 

@@ -23,6 +23,8 @@ public class SkillMovement : MonoBehaviour
     // [Header("Skip this if On Player or Camera")]
 
     [Header("Skill Position When Instantiate")]
+    // [SerializeField]
+    // private bool rotateWithPlayer;
     [SerializeField] private Vector3 offsetRight;
     [SerializeField] private Vector3 offsetLeft;
     [SerializeField] private Vector3 offsetFront;
@@ -31,7 +33,11 @@ public class SkillMovement : MonoBehaviour
     [SerializeField] private float rotationRight, rotationLeft, rotationFront, rotationBack;
     [SerializeField] private bool flipRight, flipLeft, flipFront, flipBack;
 
+    [Header("Area & Linear Only")]
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [Header("Linear Only")]
+    [SerializeField] private bool oppositeDirection = false;
 
     // [Header("Movement (Linear)")]
     // [SerializeField] private float range;
@@ -40,6 +46,7 @@ public class SkillMovement : MonoBehaviour
     private SkillAnimation skillAnimation;
     private bool isInstantiate;
     private Vector3 initialPosition;
+
 
     void Start()
     {
@@ -75,19 +82,19 @@ public class SkillMovement : MonoBehaviour
                 {
                     // kanan
                     case ChrDirection.Right:
-                        transform.position += Vector3.right * skill.MovementSpeed * Time.deltaTime;
+                        transform.position += Vector3.right * skill.MovementSpeed * Time.deltaTime * (oppositeDirection ? -1 : 1);
                         break;
                     // kiri
                     case ChrDirection.Left:
-                        transform.position += Vector3.left * skill.MovementSpeed * Time.deltaTime;
+                        transform.position += Vector3.left * skill.MovementSpeed * Time.deltaTime * (oppositeDirection ? -1 : 1);
                         break;
                     // depan
                     case ChrDirection.Front:
-                        transform.position += Vector3.down * skill.MovementSpeed * Time.deltaTime;
+                        transform.position += Vector3.down * skill.MovementSpeed * Time.deltaTime * (oppositeDirection ? -1 : 1);
                         break;
                     // belakang
                     case ChrDirection.Back:
-                        transform.position += Vector3.up * skill.MovementSpeed * Time.deltaTime;
+                        transform.position += Vector3.up * skill.MovementSpeed * Time.deltaTime * (oppositeDirection ? -1 : 1);
                         break;
                 }
 
@@ -99,6 +106,7 @@ public class SkillMovement : MonoBehaviour
                 break;
 
             case SkillMovementType.OnPlayer:
+                direction = player.GetComponent<PlayerController>().direction;
                 switch (direction)
                 {
                     // kanan
@@ -140,21 +148,22 @@ public class SkillMovement : MonoBehaviour
                 switch (direction)
                 {
                     case ChrDirection.Right:
+                        transform.position = player.transform.position + offsetRight;
+
                         if (flipRight)
                         {
                             FlipHorizontal();
                         }
-                        transform.position = player.transform.position + offsetRight;
                         transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationRight);
 
                         break;
 
                     case ChrDirection.Left:
+                        transform.position = player.transform.position + offsetLeft;
                         if (flipLeft)
                         {
                             FlipHorizontal();
                         }
-                        transform.position = player.transform.position + offsetLeft;
                         transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationLeft);
 
                         break;

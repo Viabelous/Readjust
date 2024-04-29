@@ -14,15 +14,21 @@ public class GameManager : ScriptableObject
     {
         // "skill_will_of_fire",
         // "skill_sacrivert",
-        "skill_fireball",
+        // "skill_fireball",
         // "skill_explosion",
         // "skill_ignite",
-        "skill_pebble_creation",
-        "skill_avalanche",
+        "skill_fudoshin",
+        "skill_preserve",
         "skill_sanare",
-        "skill_waterwall",
-        "skill_heavy_tide",
-        "skill_whirlwind",
+        "skill_avalanche",
+        // "skill_pebble_creation",
+        "skill_thorn_cover",
+        "skill_stalactite_shoot",
+        "skill_invitro",
+        
+        // "skill_waterwall",
+        // "skill_heavy_tide",
+        // "skill_whirlwind",
 
     };
 

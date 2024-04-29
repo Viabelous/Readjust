@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877746aa957df934ea6fb78901d9e948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider2D: {fileID: 0}
+  dmgPersenOfAtk: 0.3
 --- !u!114 &3942500282892234039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +212,7 @@ MonoBehaviour:
   flipFront: 0
   flipBack: 0
   spriteRenderer: {fileID: 5634402968409650747}
+  oppositeDirection: 0
 --- !u!114 &-7394421249312328743
 MonoBehaviour:
   m_ObjectHideFlags: 0

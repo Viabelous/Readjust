@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b9280269f955e499599c045a53eb8a, type: 3}
+  m_Name: ThornCover
+  m_EditorClassIdentifier: 
+  id: skill_thorn_cover
+  name: Thorn Cover
+  element: 2
+  type: 4
+  hitType: 1
+  costType: 1
+  maxCd: 1
+  cost: 5
+  damage: 0
+  sprite: {fileID: 21300000, guid: bb2cccd85745e0048b87f87cc6b49313, type: 3}
+  movementSpeed: 0
+  movementRange: 0
+  timer: 5
+  value: 0
+  persentase: 0
+  pushSpeed: 0
+  pushRange: 0

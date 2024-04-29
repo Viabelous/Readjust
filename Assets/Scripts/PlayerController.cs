@@ -58,7 +58,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // print(player.atk);
+
+        // print("ATK: " + player.atk);
+        // print("DEF: " + player.def);
+        // print("SHIELD: " + player.shield);
 
         if (player.hp <= 0)
         {

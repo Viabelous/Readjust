@@ -29,7 +29,7 @@ public class SkillController : MonoBehaviour
         {
             skill.Damage += skill.Damage * 0.1f;
         }
-        print("Skill Damage + Fire: " + skill.Damage);
+        // print("Skill Damage + Fire: " + skill.Damage);
         skill.Activate(gameObject);
     }
 

@@ -10,13 +10,13 @@ public class WillOfFire : MonoBehaviour
     private void Start()
     {
         skill = GetComponent<SkillController>().skill;
-        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         player = GameObject.Find("Player");
         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
 
         buffSystem.ActivateBuff(
            new Buff(
+                skill.Id,
                 BuffType.ATK,
                 skill.Value,
                 skill.Timer

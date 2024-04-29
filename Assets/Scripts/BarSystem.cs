@@ -38,7 +38,6 @@ public class BarSystem : MonoBehaviour
 
             case BarType.shield:
 
-                gameObject.SetActive(playerController.player.shield <= 0 ? false : true);
 
                 if (gameObject.activeInHierarchy)
                 {

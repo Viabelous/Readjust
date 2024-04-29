@@ -32,6 +32,8 @@ public class MobController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
 
+    private bool thorned;
+
 
     void Start()
     {
@@ -125,6 +127,13 @@ public class MobController : MonoBehaviour
             print("Enemy HP: " + enemy.hp.ToString());
             Damaged();
         }
+
+        if (other.CompareTag("Player") && playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn))
+        {
+            print("Enemy HP: " + enemy.hp.ToString());
+            thorned = true;
+            Damaged();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -133,6 +142,13 @@ public class MobController : MonoBehaviour
         {
             Undamaged();
         }
+        if (other.CompareTag("Player") && thorned)
+        {
+            thorned = false;
+            Undamaged();
+        }
+
+
     }
 
 

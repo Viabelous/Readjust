@@ -5,13 +5,14 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     private Skill skill;
+    [SerializeField] private float dmgPersenOfAtk;
 
 
     private void Start()
     {
         // sesuaikan damage basic attack dengan atk player
         skill = GetComponent<SkillController>().skill;
-        skill.Damage += 0.8f * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
+        skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

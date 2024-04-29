@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8489a66d2c905343b4e8856163f6c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgPersenOfAtk: 0.5
 --- !u!114 &5098591500229529860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +200,7 @@ MonoBehaviour:
   flipFront: 0
   flipBack: 0
   spriteRenderer: {fileID: 4458082938163574700}
+  oppositeDirection: 0
 --- !u!114 &5759827130453298744
 MonoBehaviour:
   m_ObjectHideFlags: 0

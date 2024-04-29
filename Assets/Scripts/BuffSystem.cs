@@ -12,18 +12,22 @@ public enum BuffType
     Mana,
     Shield,
     ATK,
+    DEF,
     AGI,
-    FOC
+    FOC,
+    Thorn
 }
 
 public class Buff
 {
+    public string id;
     public BuffType type;
     public float value;
     public float timer;
 
-    public Buff(BuffType type, float value, float timer)
+    public Buff(string id, BuffType type, float value, float timer)
     {
+        this.id = id;
         this.type = type;
         this.value = value;
         this.timer = timer;
@@ -37,7 +41,7 @@ public class BuffSystem : MonoBehaviour
     public CharacterType type;
 
     [HideInInspector]
-    private List<Buff> buffsActive = new List<Buff>();
+    public List<Buff> buffsActive = new List<Buff>();
     private MonoBehaviour chrController;
 
     void Start()
@@ -49,6 +53,30 @@ public class BuffSystem : MonoBehaviour
                 break;
             case CharacterType.Enemy:
                 chrController = GetComponent<MobController>();
+                break;
+        }
+    }
+
+    void Update()
+    {
+        switch (type)
+        {
+            case CharacterType.Player:
+                // print("Apakah ada buff shield? " + CheckBuff(BuffType.Shield));
+
+                // kalau sedang pakai buff shield
+                if (CheckBuff(BuffType.Shield))
+                {
+                    // cari index buff shield
+                    int index = buffsActive.FindIndex(buff => buff.type == BuffType.Shield);
+
+                    // kalau shield yg dipakai saat ini sudah habis, 
+                    // maka hapus dari list buff yg sedang dipakai
+                    if (((PlayerController)chrController).player.shield <= 0)
+                    {
+                        RemoveBuff(buffsActive[index]);
+                    }
+                }
                 break;
         }
     }
@@ -96,8 +124,6 @@ public class BuffSystem : MonoBehaviour
 
     private void AddBuff(Buff buff)
     {
-        buffsActive.Add(buff);
-
         switch (type)
         {
             case CharacterType.Player:
@@ -105,10 +131,16 @@ public class BuffSystem : MonoBehaviour
 
                 switch (buff.type)
                 {
+                    // will of fire
                     case BuffType.ATK:
                         playerController.player.atk += buff.value;
                         break;
 
+                    case BuffType.DEF:
+                        playerController.player.def += buff.value;
+                        break;
+
+                    // sacrivert
                     case BuffType.Mana:
                         if (playerController.player.mana + buff.value > playerController.player.maxMana)
                         {
@@ -120,6 +152,7 @@ public class BuffSystem : MonoBehaviour
                         }
                         break;
 
+                    // sanare
                     case BuffType.HP:
                         if (playerController.player.hp + buff.value > playerController.player.maxHp)
                         {
@@ -129,6 +162,29 @@ public class BuffSystem : MonoBehaviour
                         {
                             playerController.player.hp += buff.value;
                         }
+                        break;
+
+                    // preserve & invitro
+                    case BuffType.Shield:
+                        int index = buffsActive.FindIndex(buff => buff.type == BuffType.Shield);
+
+                        // kalau sedang menggunakan shield, 
+                        // maka hapus buff shield sebelumnya
+                        if (index != -1)
+                        {
+                            buffsActive.RemoveAt(index);
+                        }
+
+                        // // tambahkan buff shield baru
+                        // buffsActive.Add(buff);
+
+                        playerController.player.maxShield = buff.value;
+                        playerController.player.shield = buff.value;
+
+                        break;
+
+                    // thorn cover
+                    case BuffType.Thorn:
                         break;
                 }
 
@@ -140,11 +196,11 @@ public class BuffSystem : MonoBehaviour
 
         }
 
+        buffsActive.Add(buff);
     }
 
     private void RemoveBuff(Buff buff)
     {
-        buffsActive.Remove(buff);
         switch (type)
         {
             case CharacterType.Player:
@@ -152,15 +208,32 @@ public class BuffSystem : MonoBehaviour
 
                 switch (buff.type)
                 {
+                    // will of fire
                     case BuffType.ATK:
                         playerController.player.atk -= buff.value;
                         break;
-                }
 
+                    // fudoshin
+                    case BuffType.DEF:
+                        playerController.player.def -= buff.value;
+                        break;
+
+                }
                 break;
         }
 
+        buffsActive.Remove(buff);
+    }
 
+    public float GetAllBuffValues(BuffType type)
+    {
+        List<Buff> buffs = buffsActive.FindAll(buff => buff.type == type);
+        float sum = 0;
+        foreach (Buff buff in buffs)
+        {
+            sum += buff.value;
+        }
+        return sum;
     }
 
 
