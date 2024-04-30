@@ -28,11 +28,10 @@ public class NPC : MonoBehaviour
 
     void Start(){
         SetText(selectedDialog);
-        windows_controller.GetComponent<windowsController>().SetAnyWindowsEnabled(false);
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && !windows_controller.GetComponent<windowsController>().anyWindowsEnabled){
+        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && windows_controller.GetComponent<windowsController>().ActiveWindowsID == -1){
             player.GetComponent<PlayerController>().movementEnable(false);
             if(dialogPanel.activeInHierarchy){
                 if(dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q)){
@@ -76,7 +75,6 @@ public class NPC : MonoBehaviour
                 {
                     case "Skill":
                         windows_controller.GetComponent<windowsController>().toogleWindow(1, true);
-                        windows_controller.GetComponent<windowsController>().SetAnyWindowsEnabled(true);
                         break;
 
                     default:

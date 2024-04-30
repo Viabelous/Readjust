@@ -11,38 +11,56 @@ public class windowsController : MonoBehaviour
 
     public GameObject Player;
     public GameObject[] Windows;
-    public bool anyWindowsEnabled;
-    public GameObject[] SkillSelectionWindowsInteractable;
-    
-    public GameObject[] SkillWindowsInteractable;
-
-
-    private int SelectedIndex;
-
-    private enum elements
-    {
-        fire, earth,
-        water, air
-    }
-
-    void Start()
-    {
-        SelectedIndex = 0;
-    }
+    public GameObject[] WindowsButtonStartPointNavigation;
+    public GameObject HoveredButton;
+    public int ActiveWindowsID;
 
     void Update(){
-        if(Windows[1].activeInHierarchy)
+        if(ActiveWindowsID != -1)
         {
-            if(SelectedIndex == 0)
+            if(Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if(Input.GetKeyDown("q")) toogleWindow(1, false);
-            }
-        }
-        else if(Windows[2].activeInHierarchy)
-        {
-            if(SelectedIndex == 0)
+                if(HoveredButton.GetComponent<Navigation>().Left != null)
+                {   
+                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton = HoveredButton.GetComponent<Navigation>().Left;
+                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                }
+
+            } else if(Input.GetKeyDown(KeyCode.RightArrow))
             {
-                if(Input.GetKeyDown("q")) toogleWindow(2, false);
+                if(HoveredButton.GetComponent<Navigation>().Right != null)
+                {   
+                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton = HoveredButton.GetComponent<Navigation>().Right;
+                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                }
+
+            } else if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if(HoveredButton.GetComponent<Navigation>().Up != null)
+                {   
+                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton = HoveredButton.GetComponent<Navigation>().Up;
+                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                }
+
+            } else if(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if(HoveredButton.GetComponent<Navigation>().Down != null)
+                {   
+                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton = HoveredButton.GetComponent<Navigation>().Down;
+                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                }
+
+
+            } else if(Input.GetKeyDown(KeyCode.Q))
+            {
+                HoveredButton.GetComponent<Navigation>().Clicked();
+            } else
+            {
+                HoveredButton.GetComponent<Navigation>().ExclusiveKey();
             }
         }
     }
@@ -51,12 +69,18 @@ public class windowsController : MonoBehaviour
     {
         Windows[windows_id].SetActive(doOpenWindow);
         Player.GetComponent<PlayerController>().movementEnable(!doOpenWindow);
-        SetAnyWindowsEnabled(doOpenWindow);
-    }
-
-    public void SetAnyWindowsEnabled(bool state)
-    {
-        anyWindowsEnabled = state;
+        if(doOpenWindow)
+        {
+            ActiveWindowsID = windows_id;
+            HoveredButton = WindowsButtonStartPointNavigation[windows_id];
+            HoveredButton.GetComponent<Navigation>().isHovered(true);
+        } else
+        {
+            ActiveWindowsID = -1;
+            HoveredButton.GetComponent<Navigation>().isHovered(false);
+            HoveredButton = null;
+        }
+        
     }
 
 }
