@@ -6,11 +6,6 @@ using Unity.VisualScripting;
 public class CloseButton : Navigation
 {
     public int windows_id;
-    
-    void Start()
-    {
-        Down = WindowsController.WindowsButtonStartPointNavigation[windows_id];
-    }
 
     public override void IsHovered(bool state)
     {
@@ -25,6 +20,12 @@ public class CloseButton : Navigation
     public override void Clicked()
     {
         WindowsController.toogleWindow(windows_id, false);
+        if(windows_id >= 2 && windows_id <= 5)
+        {
+            WindowsController.toogleWindow(1, true);
+            WindowsController.CloseSkillTree();
+        }
+        
     }
     public override void ExclusiveKey()
     {

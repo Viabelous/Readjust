@@ -2,12 +2,16 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
+using System.Collections;
+using System;
 
 public class Elements : Navigation
 {
     public Sprite LockedSprite;
     public bool isUnlocked;
     public bool firstAccess;
+
+    public GameObject SkillsSelectionWindows;
 
     void Start()
     {
@@ -59,7 +63,12 @@ public class Elements : Navigation
 
     public override void Clicked()
     {
-        
+        if(isUnlocked)
+        {
+            WindowsController.toogleWindow(1, false);
+            SkillsSelectionWindows.SetActive(true);
+            WindowsController.toogleWindow(2, true);
+        }
     }
 
     public override void ExclusiveKey()

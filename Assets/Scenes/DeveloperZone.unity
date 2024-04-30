@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1664,10 +1664,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 412327743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a67826c28bd85448c921e6adf783b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a9b1bf56a4ce649b173c548f3b14ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skills: {fileID: 11400000, guid: af2510972af308a46831f347c858e204, type: 2}
+  ImageComponent: {fileID: 412327745}
+  WindowsController: {fileID: 0}
+  BasicSprite: {fileID: 21300000, guid: f4960afafb44e9e4d81d93df89185730, type: 3}
+  HoverSprite: {fileID: 21300000, guid: f4960afafb44e9e4d81d93df89185730, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 537895569}
+  Right: {fileID: 2137910660}
+  Down: {fileID: 1189847614}
+  skills: {fileID: 11400000, guid: af2510972af308a46831f347c858e204, type: 2}
 --- !u!1 &419485448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,7 +1780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &430216166
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2175,11 +2183,13 @@ MonoBehaviour:
   pic: {fileID: 0}
   dialogPanel: {fileID: 1628484206}
   dialogTeks: {fileID: 1170085645}
+  nameTag: {fileID: 927430683}
+  talkerName: Rion
   player: {fileID: 1762426111}
   selectedDialog: rion_basic
   windows: 
-  windows_controller: {fileID: 739427921}
-  wordSpeed: 0.05
+  windowsController: {fileID: 739427921}
+  wordSpeed: 0.03
   playerDekat: 0
 --- !u!61 &479278320
 BoxCollider2D:
@@ -2423,6 +2433,7 @@ GameObject:
   - component: {fileID: 537895570}
   - component: {fileID: 537895572}
   - component: {fileID: 537895571}
+  - component: {fileID: 537895573}
   m_Layer: 5
   m_Name: close
   m_TagString: Untagged
@@ -2487,6 +2498,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537895569}
   m_CullTransparentMesh: 1
+--- !u!114 &537895573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537895569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b92c1ffb2fd0cb45a40574e1c25d584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 537895571}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 21300000, guid: 3927885c54040c7448789dda0e7380a7, type: 3}
+  HoverSprite: {fileID: 21300000, guid: e35b502015d151343b17cff07784d1d3, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 0}
+  Right: {fileID: 0}
+  Down: {fileID: 0}
+  windows_id: 2
 --- !u!1 &538359275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2647,10 +2679,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 548992050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a67826c28bd85448c921e6adf783b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a9b1bf56a4ce649b173c548f3b14ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skills: {fileID: 11400000, guid: f6df702630b053647b5deef34bbb0065, type: 2}
+  ImageComponent: {fileID: 548992052}
+  WindowsController: {fileID: 0}
+  BasicSprite: {fileID: 21300000, guid: e5402d0581b6de941ba2f65c77532dc0, type: 3}
+  HoverSprite: {fileID: 21300000, guid: e5402d0581b6de941ba2f65c77532dc0, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 1189847614}
+  Right: {fileID: 0}
+  Down: {fileID: 1639645343}
+  skills: {fileID: 11400000, guid: f6df702630b053647b5deef34bbb0065, type: 2}
 --- !u!1 &549034562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,6 +2954,7 @@ MonoBehaviour:
   LockedSprite: {fileID: 21300000, guid: 7723ea2fa5024ba47bfac2f0f28e2670, type: 3}
   isUnlocked: 0
   firstAccess: 0
+  SkillsSelectionWindows: {fileID: 882544738}
 --- !u!1 &642430419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,9 +3139,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 855357271}
   - {fileID: 1061344190}
+  - {fileID: 1061344190}
+  - {fileID: 1061344190}
+  - {fileID: 1061344190}
   WindowsButtonStartPointNavigation:
   - {fileID: 1470956112}
   - {fileID: 1470956112}
+  - {fileID: 412327743}
+  - {fileID: 1817304212}
+  - {fileID: 1427658593}
+  - {fileID: 3368659}
+  SkillTree:
+  - {fileID: 430216165}
+  - {fileID: 1848435603}
+  - {fileID: 996796850}
+  - {fileID: 882544738}
   HoveredButton: {fileID: 0}
   ActiveWindowsID: -1
 --- !u!4 &739427923
@@ -3657,6 +3710,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921578152}
+  m_CullTransparentMesh: 1
+--- !u!1 &927430681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927430682}
+  - component: {fileID: 927430684}
+  - component: {fileID: 927430683}
+  m_Layer: 5
+  m_Name: nametag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &927430682
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927430681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1628484207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 58.459, y: -104.93614}
+  m_SizeDelta: {x: 416.72, y: 21.9413}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &927430683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927430681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &927430684
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927430681}
   m_CullTransparentMesh: 1
 --- !u!1 &936886220
 GameObject:
@@ -4248,6 +4380,7 @@ MonoBehaviour:
   LockedSprite: {fileID: 21300000, guid: b2d39a1e77d6f6845b4797a85f26729b, type: 3}
   isUnlocked: 0
   firstAccess: 0
+  SkillsSelectionWindows: {fileID: 996796850}
 --- !u!1 &1028938295
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,7 +4570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.21997, y: -120.099976}
+  m_AnchoredPosition: {x: -19, y: -76}
   m_SizeDelta: {x: -127.41217, y: 309.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1061344192
@@ -5066,7 +5199,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &1170085646
@@ -5093,8 +5226,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.9, y: -142.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 60.86329, y: -160.24057}
+  m_SizeDelta: {x: 421.5266, y: 66.2811}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1189847614
 GameObject:
@@ -5147,7 +5280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5181,10 +5314,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1189847614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a67826c28bd85448c921e6adf783b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a9b1bf56a4ce649b173c548f3b14ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skills: {fileID: 11400000, guid: f5f58ac4f5b5698428c3a648c5fe395c, type: 2}
+  ImageComponent: {fileID: 1189847616}
+  WindowsController: {fileID: 0}
+  BasicSprite: {fileID: 21300000, guid: 7060475faf7636542aef900b79a734fe, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 7060475faf7636542aef900b79a734fe, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 412327743}
+  Right: {fileID: 1330835516}
+  Down: {fileID: 548992050}
+  skills: {fileID: 11400000, guid: f5f58ac4f5b5698428c3a648c5fe395c, type: 2}
 --- !u!1 &1211237877
 GameObject:
   m_ObjectHideFlags: 0
@@ -5714,7 +5855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5748,10 +5889,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1330835516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a67826c28bd85448c921e6adf783b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a9b1bf56a4ce649b173c548f3b14ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skills: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
+  ImageComponent: {fileID: 1330835518}
+  WindowsController: {fileID: 0}
+  BasicSprite: {fileID: 21300000, guid: 3ebdef4d590a04649af019237f66a409, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 3ebdef4d590a04649af019237f66a409, type: 3}
+  Left: {fileID: 1189847614}
+  Up: {fileID: 2137910660}
+  Right: {fileID: 0}
+  Down: {fileID: 548992050}
+  skills: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
 --- !u!1 &1334197373
 GameObject:
   m_ObjectHideFlags: 0
@@ -6329,6 +6478,7 @@ MonoBehaviour:
   LockedSprite: {fileID: 21300000, guid: 84e1c958393806547989754d48101a9c, type: 3}
   isUnlocked: 1
   firstAccess: 1
+  SkillsSelectionWindows: {fileID: 430216165}
 --- !u!1 &1472006254
 GameObject:
   m_ObjectHideFlags: 0
@@ -7042,6 +7192,7 @@ RectTransform:
   - {fileID: 1978645221}
   - {fileID: 549034563}
   - {fileID: 1170085647}
+  - {fileID: 927430682}
   m_Father: {fileID: 983503449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7175,7 +7326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7209,10 +7360,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639645343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a67826c28bd85448c921e6adf783b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a9b1bf56a4ce649b173c548f3b14ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skills: {fileID: 0}
+  ImageComponent: {fileID: 1639645345}
+  WindowsController: {fileID: 0}
+  BasicSprite: {fileID: 21300000, guid: 81b446cadcbb6a243a8348ebe61f9b57, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 81b446cadcbb6a243a8348ebe61f9b57, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 548992050}
+  Right: {fileID: 0}
+  Down: {fileID: 0}
+  skills: {fileID: 0}
 --- !u!1 &1677781010
 GameObject:
   m_ObjectHideFlags: 0
@@ -8100,6 +8259,7 @@ MonoBehaviour:
   LockedSprite: {fileID: 21300000, guid: f10c0eea66e5556468730d5aa4a5915c, type: 3}
   isUnlocked: 1
   firstAccess: 0
+  SkillsSelectionWindows: {fileID: 1848435603}
 --- !u!1 &1785602631
 GameObject:
   m_ObjectHideFlags: 0
@@ -8237,11 +8397,13 @@ MonoBehaviour:
   pic: {fileID: 0}
   dialogPanel: {fileID: 1628484206}
   dialogTeks: {fileID: 1170085645}
+  nameTag: {fileID: 927430683}
+  talkerName: Zey
   player: {fileID: 1762426111}
   selectedDialog: zey_basic
   windows: skill
-  windows_controller: {fileID: 739427921}
-  wordSpeed: 0.05
+  windowsController: {fileID: 739427921}
+  wordSpeed: 0.03
   playerDekat: 0
 --- !u!61 &1791103921
 BoxCollider2D:
@@ -9736,7 +9898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9770,10 +9932,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2137910660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a67826c28bd85448c921e6adf783b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a9b1bf56a4ce649b173c548f3b14ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skills: {fileID: 11400000, guid: 1a7c209116bd69c48b8ccd4cd02953eb, type: 2}
+  ImageComponent: {fileID: 2137910662}
+  WindowsController: {fileID: 0}
+  BasicSprite: {fileID: 21300000, guid: 0f37a53d83ad6434db2c6d2e8f0cd46c, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 0f37a53d83ad6434db2c6d2e8f0cd46c, type: 3}
+  Left: {fileID: 412327743}
+  Up: {fileID: 537895569}
+  Right: {fileID: 0}
+  Down: {fileID: 1330835516}
+  skills: {fileID: 11400000, guid: 1a7c209116bd69c48b8ccd4cd02953eb, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

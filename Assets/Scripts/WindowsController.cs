@@ -12,6 +12,7 @@ public class windowsController : MonoBehaviour
     public GameObject Player;
     public GameObject[] Windows;
     public GameObject[] WindowsButtonStartPointNavigation;
+    public GameObject[] SkillTree;
     public GameObject HoveredButton;
     public int ActiveWindowsID;
 
@@ -40,6 +41,10 @@ public class windowsController : MonoBehaviour
             {
                 if(HoveredButton.GetComponent<Navigation>().Up != null)
                 {   
+                    if(HoveredButton.GetComponent<Navigation>().Up.name == "close")
+                    {
+                        HoveredButton.GetComponent<Navigation>().Up.GetComponent<Navigation>().Down = HoveredButton;
+                    }
                     HoveredButton.GetComponent<Navigation>().IsHovered(false);
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Up;
                     HoveredButton.GetComponent<Navigation>().IsHovered(true);
@@ -81,6 +86,14 @@ public class windowsController : MonoBehaviour
             HoveredButton = null;
         }
         
+    }
+
+    public void CloseSkillTree()
+    {
+        foreach(GameObject obj in SkillTree)
+        {
+            obj.SetActive(false);
+        }
     }
 
 }

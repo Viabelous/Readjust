@@ -10,7 +10,8 @@ public class NPC : MonoBehaviour
     public Image pic;
     public GameObject dialogPanel;
     public Text dialogTeks;
-
+    public Text nameTag;
+    public string talkerName;
     public GameObject player;
     public string selectedDialog;
 
@@ -20,7 +21,7 @@ public class NPC : MonoBehaviour
 
     public string windows;
 
-    public GameObject windows_controller;
+    public GameObject windowsController;
 
     public float wordSpeed;
     public bool playerDekat;
@@ -31,7 +32,8 @@ public class NPC : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && windows_controller.GetComponent<windowsController>().ActiveWindowsID == -1){
+        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && windowsController.GetComponent<windowsController>().ActiveWindowsID == -1){
+            nameTag.text = talkerName;
             player.GetComponent<PlayerController>().movementEnable(false);
             if(dialogPanel.activeInHierarchy){
                 if(dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q)){
@@ -74,7 +76,7 @@ public class NPC : MonoBehaviour
                 switch(windows)
                 {
                     case "Skill":
-                        windows_controller.GetComponent<windowsController>().toogleWindow(1, true);
+                        windowsController.GetComponent<windowsController>().toogleWindow(1, true);
                         break;
 
                     default:
@@ -116,9 +118,9 @@ public class NPC : MonoBehaviour
 
             case "rion_basic":
                 teks = new string[3];
-                teks[0] = "tch";
-                teks[1] = "nandayo koitse";
-                teks[2] = "canda";
+                teks[0] = "Kemana tujuan kali ini";
+                teks[1] = "Tapi sebelumnya...";
+                teks[2] = "Fitur ini belum tersedia";
                 break;
 
             default:
