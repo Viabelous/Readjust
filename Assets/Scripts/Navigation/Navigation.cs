@@ -13,17 +13,7 @@ public abstract class Navigation : MonoBehaviour
     public GameObject Right;
     public GameObject Down;
 
-    public void isHovered(bool state)
-    {
-        if(state)
-        {
-            GetComponent<Image>().sprite = HoverSprite;
-        } else
-        {
-            GetComponent<Image>().sprite = BasicSprite;
-        }
-    }
-
+    public abstract void IsHovered(bool state);
     public abstract void Clicked();
     public abstract void ExclusiveKey();
 }

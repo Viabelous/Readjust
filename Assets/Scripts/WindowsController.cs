@@ -22,36 +22,36 @@ public class windowsController : MonoBehaviour
             {
                 if(HoveredButton.GetComponent<Navigation>().Left != null)
                 {   
-                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(false);
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Left;
-                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(true);
                 }
 
             } else if(Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if(HoveredButton.GetComponent<Navigation>().Right != null)
                 {   
-                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(false);
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Right;
-                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(true);
                 }
 
             } else if(Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if(HoveredButton.GetComponent<Navigation>().Up != null)
                 {   
-                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(false);
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Up;
-                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(true);
                 }
 
             } else if(Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if(HoveredButton.GetComponent<Navigation>().Down != null)
                 {   
-                    HoveredButton.GetComponent<Navigation>().isHovered(false);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(false);
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Down;
-                    HoveredButton.GetComponent<Navigation>().isHovered(true);
+                    HoveredButton.GetComponent<Navigation>().IsHovered(true);
                 }
 
 
@@ -73,11 +73,11 @@ public class windowsController : MonoBehaviour
         {
             ActiveWindowsID = windows_id;
             HoveredButton = WindowsButtonStartPointNavigation[windows_id];
-            HoveredButton.GetComponent<Navigation>().isHovered(true);
+            HoveredButton.GetComponent<Navigation>().IsHovered(true);
         } else
         {
             ActiveWindowsID = -1;
-            HoveredButton.GetComponent<Navigation>().isHovered(false);
+            HoveredButton.GetComponent<Navigation>().IsHovered(false);
             HoveredButton = null;
         }
         
