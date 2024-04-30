@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 198317707}
   - component: {fileID: 198317706}
   m_Layer: 5
-  m_Name: close_windows
+  m_Name: close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2804,6 +2804,7 @@ GameObject:
   - component: {fileID: 625950097}
   - component: {fileID: 625950099}
   - component: {fileID: 625950098}
+  - component: {fileID: 625950100}
   m_Layer: 5
   m_Name: logo_air
   m_TagString: Untagged
@@ -2827,8 +2828,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61.740017, y: -32.700005}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 61.74, y: -32.700012}
+  m_SizeDelta: {x: 88.3533, y: 88.3533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625950098
 MonoBehaviour:
@@ -2868,6 +2869,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625950096}
   m_CullTransparentMesh: 1
+--- !u!114 &625950100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625950096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ddc556876703548964a3beeda3c455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 625950098}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 21300000, guid: 80b0cb88b6b93834481290e342afe735, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 0194c573665461b4ea4ea1ca1cc278f6, type: 3}
+  Left: {fileID: 1028687877}
+  Up: {fileID: 1784506688}
+  Right: {fileID: 0}
+  Down: {fileID: 0}
+  LockedSprite: {fileID: 21300000, guid: 7723ea2fa5024ba47bfac2f0f28e2670, type: 3}
+  isUnlocked: 0
 --- !u!1 &642430419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,41 +3075,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 855357271}
   - {fileID: 1061344190}
-  SkillSelectionWindowsInteractable:
-  - {fileID: 198317704}
+  WindowsButtonStartPointNavigation:
   - {fileID: 1470956112}
-  - {fileID: 1784506688}
-  - {fileID: 1028687877}
-  - {fileID: 625950096}
-  SkillWindowsInteractable:
-  - {fileID: 537895569}
-  - {fileID: 412327743}
-  - {fileID: 2137910660}
-  - {fileID: 1189847614}
-  - {fileID: 1330835516}
-  - {fileID: 548992050}
-  - {fileID: 1639645343}
-  - {fileID: 1817304212}
-  - {fileID: 1401962736}
-  - {fileID: 448406014}
-  - {fileID: 152246379}
-  - {fileID: 1472006254}
-  - {fileID: 602751448}
-  - {fileID: 1794063013}
-  - {fileID: 1528871432}
-  - {fileID: 1427658593}
-  - {fileID: 1219477138}
-  - {fileID: 225312372}
-  - {fileID: 1694444204}
-  - {fileID: 1715790220}
-  - {fileID: 1239684084}
-  - {fileID: 332005605}
-  - {fileID: 3368659}
-  - {fileID: 458494948}
-  - {fileID: 419485448}
-  - {fileID: 61879169}
-  - {fileID: 1785602631}
-  - {fileID: 1159264733}
+  - {fileID: 1470956112}
+  HoveredButton: {fileID: 0}
+  ActiveWindowsID: -1
 --- !u!4 &739427923
 Transform:
   m_ObjectHideFlags: 0
@@ -3095,7 +3088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739427921}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.174948, y: -4.367437, z: -0.02365328}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3421,10 +3414,10 @@ RectTransform:
   - {fileID: 625950097}
   m_Father: {fileID: 983503449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.7400203, y: -17.9}
-  m_SizeDelta: {x: 583.33, y: 660.866}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -6.73999, y: -17.900024}
+  m_SizeDelta: {x: -216.66998, y: 210.86603}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855357273
 MonoBehaviour:
@@ -4144,6 +4137,7 @@ GameObject:
   - component: {fileID: 1028687878}
   - component: {fileID: 1028687880}
   - component: {fileID: 1028687879}
+  - component: {fileID: 1028687881}
   m_Layer: 5
   m_Name: logo_water
   m_TagString: Untagged
@@ -4167,7 +4161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58.259983, y: -32.700005}
+  m_AnchoredPosition: {x: -60.95998, y: -32.700012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1028687879
@@ -4190,7 +4184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7723ea2fa5024ba47bfac2f0f28e2670, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2d39a1e77d6f6845b4797a85f26729b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4208,6 +4202,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028687877}
   m_CullTransparentMesh: 1
+--- !u!114 &1028687881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028687877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ddc556876703548964a3beeda3c455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 1028687879}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 21300000, guid: 2679a089c352da04fa8acec60351f354, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 8df152b72b9508f4e94816720903ea20, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 1470956112}
+  Right: {fileID: 625950096}
+  Down: {fileID: 0}
+  LockedSprite: {fileID: 21300000, guid: b2d39a1e77d6f6845b4797a85f26729b, type: 3}
+  isUnlocked: 0
 --- !u!1 &1028938295
 GameObject:
   m_ObjectHideFlags: 0
@@ -4395,10 +4411,10 @@ RectTransform:
   - {fileID: 882544739}
   m_Father: {fileID: 983503449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.22, y: -120.1}
-  m_SizeDelta: {x: 672.5878, y: 759.7}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -20.21997, y: -120.099976}
+  m_SizeDelta: {x: -127.41217, y: 309.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1061344192
 MonoBehaviour:
@@ -6201,6 +6217,7 @@ GameObject:
   - component: {fileID: 1470956113}
   - component: {fileID: 1470956115}
   - component: {fileID: 1470956114}
+  - component: {fileID: 1470956116}
   m_Layer: 5
   m_Name: logo_fire
   m_TagString: Untagged
@@ -6247,7 +6264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7723ea2fa5024ba47bfac2f0f28e2670, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84e1c958393806547989754d48101a9c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6265,6 +6282,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470956112}
   m_CullTransparentMesh: 1
+--- !u!114 &1470956116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470956112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ddc556876703548964a3beeda3c455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 1470956114}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 21300000, guid: a4b3b0b4574caf545b6cb30e7349b9e6, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 7f3787bf3019178488defda78f91818f, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 198317704}
+  Right: {fileID: 1784506688}
+  Down: {fileID: 1028687877}
+  LockedSprite: {fileID: 21300000, guid: 84e1c958393806547989754d48101a9c, type: 3}
+  isUnlocked: 0
 --- !u!1 &1472006254
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,6 +7987,7 @@ GameObject:
   - component: {fileID: 1784506689}
   - component: {fileID: 1784506691}
   - component: {fileID: 1784506690}
+  - component: {fileID: 1784506692}
   m_Layer: 5
   m_Name: logo_earth
   m_TagString: Untagged
@@ -7971,7 +8011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61.740017, y: 68.09998}
+  m_AnchoredPosition: {x: 61.740017, y: 71.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784506690
@@ -7994,7 +8034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7723ea2fa5024ba47bfac2f0f28e2670, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f10c0eea66e5556468730d5aa4a5915c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8012,6 +8052,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784506688}
   m_CullTransparentMesh: 1
+--- !u!114 &1784506692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784506688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ddc556876703548964a3beeda3c455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 1784506690}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 21300000, guid: fbed47eee43dd0f47a2531817ba996cd, type: 3}
+  HoverSprite: {fileID: 21300000, guid: b45a80c0b34cace419e5b06596965350, type: 3}
+  Left: {fileID: 1470956112}
+  Up: {fileID: 198317704}
+  Right: {fileID: 0}
+  Down: {fileID: 625950096}
+  LockedSprite: {fileID: 21300000, guid: f10c0eea66e5556468730d5aa4a5915c, type: 3}
+  isUnlocked: 0
 --- !u!1 &1785602631
 GameObject:
   m_ObjectHideFlags: 0
