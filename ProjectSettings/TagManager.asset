@@ -54,9 +54,15 @@ TagManager:
   - name: Player
     uniqueID: 2637991031
     locked: 0
-  - name: Enemy Front
+  - name: Enemy
     uniqueID: 573214375
     locked: 0
   - name: Skill Front
     uniqueID: 2693983033
+    locked: 0
+  - name: Enemy Front
+    uniqueID: 2875106781
+    locked: 0
+  - name: Player Front
+    uniqueID: 3878967115
     locked: 0

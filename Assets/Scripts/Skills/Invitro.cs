@@ -31,11 +31,11 @@ public class Invitro : MonoBehaviour
         );
     }
 
-    private void Update()
-    {
-        if (buffSystem.buffsActive.FindIndex(buff => buff.id == skill.Id) == -1)
-        {
-            Destroy(gameObject);
-        }
-    }
+    // private void Update()
+    // {
+    //     if (buffSystem.buffsActive.FindIndex(buff => buff.id == skill.Id) == -1)
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
 }

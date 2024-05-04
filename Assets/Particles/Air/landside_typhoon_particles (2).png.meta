@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 65117c35193b31246a5434beeaff5168
+guid: abc39225624edeb489e2f713b6914a11
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,7 +149,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: landside_typhoon_particles_0
+      name: landside_typhoon_particles (2)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 932cdfb849ec1b84286f3f4d51d708dc
+      internalID: -247705178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: landside_typhoon_particles (2)_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7053b1fdd31c54e468f6b7df311307d0
+      internalID: -1797926373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: landside_typhoon_particles (2)_2
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 640
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 505e9b952da44694ab7b7684ed6155ce
+      internalID: 314919735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: landside_typhoon_particles (2)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -163,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a88953985ab1cd94b927759c6d726e32
-      internalID: -344512970
+      spriteID: d1bd4a3d2a8322249a9bc33d514b8d40
+      internalID: -1241684181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: landside_typhoon_particles_1
+      name: landside_typhoon_particles (2)_4
       rect:
         serializedVersion: 2
         x: 640
@@ -184,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a623e1d27ed9c9a4eac08f8fb6f2083b
-      internalID: 431122632
+      spriteID: 64cb675f507272246bb4db7c265b12bb
+      internalID: 2094002183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: landside_typhoon_particles_2
+      name: landside_typhoon_particles (2)_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -205,29 +268,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb4d9b0e88eeba84e924796592adb33a
-      internalID: -761317749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: landside_typhoon_particles_3
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a84c2b82744fe2f478da02769b506f66
-      internalID: -651698569
+      spriteID: 80a9572ad0b8b1846bf8f9a06a9b1e2b
+      internalID: -1023925235
       vertices: []
       indices: 
       edges: []
@@ -243,10 +285,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      landside_typhoon_particles_0: -344512970
-      landside_typhoon_particles_1: 431122632
-      landside_typhoon_particles_2: -761317749
-      landside_typhoon_particles_3: -651698569
+      landside_typhoon_particles (2)_0: -247705178
+      landside_typhoon_particles (2)_1: -1797926373
+      landside_typhoon_particles (2)_2: 314919735
+      landside_typhoon_particles (2)_3: -1241684181
+      landside_typhoon_particles (2)_4: 2094002183
+      landside_typhoon_particles (2)_5: -1023925235
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

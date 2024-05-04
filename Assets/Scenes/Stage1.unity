@@ -555,7 +555,8 @@ MonoBehaviour:
   - {fileID: 5876378911442698138, guid: 1fee594a6a9f4774c939c0368b155e23, type: 3}
   - {fileID: 2794237566907782887, guid: b4e5767df8c21ff4590aef27bec22882, type: 3}
   - {fileID: 1704528781676703533, guid: f9a85960016d5d549b18f13f2c813571, type: 3}
-  - {fileID: 727586060178285636, guid: 8c17871434b707c4fa451b7a3966961f, type: 3}
+  - {fileID: 8810682604464027387, guid: 9f6dfeeb65a1b6a4e8db8bd62e5f49d2, type: 3}
+  - {fileID: 1229153380363823130, guid: 354e66ac00758324999d81a165172564, type: 3}
 --- !u!4 &260168803
 Transform:
   m_ObjectHideFlags: 0
@@ -2803,7 +2804,7 @@ GameObject:
   - component: {fileID: 1001853181}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: FlyingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2848,6 +2849,7 @@ MonoBehaviour:
   - {fileID: 218449121411476219, guid: d2a42f20348bf7b4eb08e79fc92a0b14, type: 3}
   - {fileID: 2404364144903811556, guid: 9bf566a34d49866458d922a33852f73b, type: 3}
   - {fileID: 26331218866292259, guid: 7894814de4faa3e4fa7a04356652d0ac, type: 3}
+  - {fileID: 3796948361964280087, guid: 97b757f4b3ac89943af8ebb183b88bbb, type: 3}
 --- !u!1 &1003035104
 GameObject:
   m_ObjectHideFlags: 0
@@ -4796,8 +4798,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1452199741
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 9f832f875e67bc148a44dc060f39146a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

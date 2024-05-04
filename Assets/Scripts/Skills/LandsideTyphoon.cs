@@ -37,24 +37,32 @@ public class LandsideTyphoon : MonoBehaviour
 
     private void Update()
     {
+        // cari musuh di dalam radius
         Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(transform.position, skill.PushRange, LayerMask.GetMask("Enemy"));
 
+        // untuk semua musuh di dalam radius
         foreach (Collider2D enemy in enemiesInRadius)
         {
+            // ambil id dari musuh
             string id = enemy.GetComponent<MobController>().enemy.id;
 
-            if (enemy.CompareTag(tagTarget) && !pulledEnemies.Contains(id))
+            // if (enemy.CompareTag(tagTarget) && !pulledEnemies.Contains(id))
+
+            // jika musuh belum pernah ditarik
+            if (!pulledEnemies.Contains(id))
             {
+                // tarik musuh ke dalam angin
                 pulledEnemies.Add(id);
 
                 float distance = Vector3.Distance(gameObject.transform.position, enemy.transform.position);
                 Vector3 direction = (gameObject.transform.position - enemy.transform.position).normalized;
+                float offset = UnityEngine.Random.Range(0.5f, 1.5f);
 
                 enemy.GetComponent<CrowdControlSystem>().ActivateCC(
                     new CCKnockBack(
                         skill.Id,
                         skill.PushSpeed,
-                        distance - 1f,
+                        distance + offset,
                         enemy.transform.position,
                         direction
                     )
@@ -67,20 +75,35 @@ public class LandsideTyphoon : MonoBehaviour
 
 
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(tagTarget))
+        // if (other.CompareTag(tagTarget))
+
+        // musuh darat maupun terbang
+        if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-            mob.speed = 0;
+
+            CrowdControlSystem ccSystem = mob.GetComponent<CrowdControlSystem>();
+            // hapus efek tarikan pada musuh
+            if (ccSystem.CheckCC(skill.Id))
+            {
+                mob.speed = 0;
+                ccSystem.DactivateCC(skill.Id);
+            }
         }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(tagTarget))
+        // musuh darat maupun terbang
+        if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
+
+            // kembalikan kecepatan musuh
             mob.speed = mob.enemy.movementSpeed;
         }
     }

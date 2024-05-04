@@ -18,7 +18,10 @@ public class MobController : MonoBehaviour
 {
 
     public Enemy enemy;
+    [HideInInspector]
     public bool movementEnabled = true;
+
+    [HideInInspector]
     public float speed;
 
     private DefenseSystem defenseSystem;
@@ -31,6 +34,8 @@ public class MobController : MonoBehaviour
     private Animator animate;
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
+
+    public bool onSkillTrigger = false;
 
     private bool thorned;
 
@@ -83,13 +88,13 @@ public class MobController : MonoBehaviour
         animate.SetFloat("Vertical", movement.y);
         animate.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (gameObject.transform.position.y > player.transform.position.y)
+        if (gameObject.transform.position.y > player.transform.position.y && !onSkillTrigger)
         {
             spriteRenderer.sortingLayerName = "Enemy Back";
         }
         else
         {
-            spriteRenderer.sortingLayerName = "Enemy Front";
+            spriteRenderer.sortingLayerName = "Enemy";
         }
 
     }
@@ -128,6 +133,7 @@ public class MobController : MonoBehaviour
             Damaged();
         }
 
+        // kalau player punya thorn
         if (other.CompareTag("Player") && playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn))
         {
             print("Enemy HP: " + enemy.hp.ToString());
@@ -142,6 +148,8 @@ public class MobController : MonoBehaviour
         {
             Undamaged();
         }
+
+        // kalau player punya thorn
         if (other.CompareTag("Player") && thorned)
         {
             thorned = false;

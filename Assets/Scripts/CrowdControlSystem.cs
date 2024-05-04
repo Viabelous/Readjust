@@ -75,6 +75,16 @@ public class CrowdControlSystem : MonoBehaviour
         return false;
     }
 
+
+    public bool CheckCC(string ccId)
+    {
+        if (ccsActive.FindIndex(cc => cc.id == ccId) != -1)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void ActivateCC(CrowdControl cc)
     {
         switch (cc.type)

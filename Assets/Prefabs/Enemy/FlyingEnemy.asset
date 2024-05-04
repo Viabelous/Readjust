@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
-  m_Name: FlamingBird
+  m_Name: FlyingEnemy
   m_EditorClassIdentifier: 
-  id: enemy92621
-  maxHp: 90
-  hp: 90
-  atk: 30
+  id: enemy31899
+  maxHp: 100
+  hp: 100
+  atk: 10
   def: 0
   agi: 0
-  speed: 0.8
+  speed: 1
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
-  name: Flaming Bird
-  aerusValue: 20
-  expValue: 10
+  name: Flying Enemy
+  aerusValue: 2
+  expValue: 1

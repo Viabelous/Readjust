@@ -42,13 +42,13 @@ public class GameData : ScriptableObject
     //     5    // foc
     // );
 
-    public static List<EnemyName> enemies = new List<EnemyName>()
-    {
-        EnemyName.PinkBoogie,
-        EnemyName.YellowBoogie,
-        EnemyName.DesertAnomaly,
-        EnemyName.FlamingBird,
-    };
+    // public static List<EnemyName> enemies = new List<EnemyName>()
+    // {
+    //     EnemyName.PinkBoogie,
+    //     EnemyName.YellowBoogie,
+    //     EnemyName.DesertAnomaly,
+    //     EnemyName.FlamingBird,
+    // };
 
 
     // public static List<int> stages = new List<int>() { 1, 2, 3, 4, 5 };

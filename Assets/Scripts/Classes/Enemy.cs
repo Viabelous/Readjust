@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum EnemyName
-{
-    PinkBoogie, YellowBoogie, FlamingBird, DesertAnomaly
-}
+// public enum EnemyName
+// {
+//     PinkBoogie, YellowBoogie, FlamingBird, DesertAnomaly
+// }
 
 [CreateAssetMenu]
 public class Enemy : Character
 {
-
-    public EnemyName enemyName;
+    [Header("Enemy")]
+    public new string name;
     public float aerusValue;
     public float expValue;
 
@@ -35,7 +35,7 @@ public class Enemy : Character
     {
         Enemy newEnemy = ScriptableObject.CreateInstance<Enemy>();
         newEnemy.id = "enemy" + UnityEngine.Random.Range(1, 99999).ToString();
-        newEnemy.enemyName = this.enemyName;
+        newEnemy.name = this.name;
         newEnemy.maxHp = this.maxHp;
         newEnemy.hp = this.hp;
         newEnemy.atk = this.atk;

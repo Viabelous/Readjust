@@ -19,6 +19,7 @@ public class GameManager : ScriptableObject
         // "skill_ignite",
         // "skill_fudoshin",
         "skill_landside_typhoon",
+        "skill_wind_slash",
         "skill_preserve",
         "skill_sanare",
         // "skill_avalanche",
@@ -27,7 +28,7 @@ public class GameManager : ScriptableObject
         // "skill_thorn_cover",
         "skill_stalactite_shoot",
         "skill_invitro",
-        "skill_calm",
+        // "skill_calm",
         
         // "skill_waterwall",
         // "skill_heavy_tide",
