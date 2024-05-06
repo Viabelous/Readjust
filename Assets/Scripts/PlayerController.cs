@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         direction = ChrDirection.Front;
         defenseSystem = GetComponent<DefenseSystem>();
-        player = player.CloneObject();
+        player = player.Clone();
         movementEnabled = true;
         nearInteractable = false;
     }
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         // print("ATK: " + player.atk);
         // print("DEF: " + player.def);
         // print("SHIELD: " + player.shield);
-        print("FOC: " + player.foc);
+        // print("FOC: " + player.foc);
 
         if (player.hp <= 0)
         {
@@ -166,21 +166,21 @@ public class PlayerController : MonoBehaviour
         player.shield += shield;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Damaged();
-        }
-    }
+    // private void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Enemy"))
+    //     {
+    //         Damaged();
+    //     }
+    // }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Undamaged();
-        }
-    }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Enemy"))
+    //     {
+    //         Undamaged();
+    //     }
+    // }
 
     public void Damaged()
     {

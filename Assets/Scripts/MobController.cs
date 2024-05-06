@@ -35,7 +35,8 @@ public class MobController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
 
-    public bool onSkillTrigger = false;
+
+    [HideInInspector] public bool onSkillTrigger = false; // tanda apakah sedang berada di dalam collider skill
 
     private bool thorned;
 
@@ -51,7 +52,7 @@ public class MobController : MonoBehaviour
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
 
-        enemy = enemy.CloneObject();
+        enemy = enemy.Clone();
         speed = enemy.movementSpeed;
         state = CharacterState.alive;
     }
@@ -125,48 +126,56 @@ public class MobController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Damage"))
-        {
-            print("Enemy HP: " + enemy.hp.ToString());
-            Damaged();
-        }
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
 
-        // kalau player punya thorn
-        if (other.CompareTag("Player") && playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn))
-        {
-            print("Enemy HP: " + enemy.hp.ToString());
-            thorned = true;
-            Damaged();
-        }
-    }
+    //     if (other.CompareTag("Damage"))
+    //     {
+    //         // print("Enemy HP: " + enemy.hp.ToString());
+    //         Damaged();
+    //     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Damage") && state == CharacterState.alive)
-        {
-            Undamaged();
-        }
+    //     // kalau player punya thorn dan bukan flying enemy
+    //     if (
+    //         other.CompareTag("Player") &&
+    //         gameObject.CompareTag("Enemy") &&
+    //         playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn)
+    //     )
+    //     {
+    //         // print("Enemy HP: " + enemy.hp.ToString());
+    //         thorned = true;
+    //         Damaged();
+    //     }
+    // }
 
-        // kalau player punya thorn
-        if (other.CompareTag("Player") && thorned)
-        {
-            thorned = false;
-            Undamaged();
-        }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Damage") && state == CharacterState.alive)
+    //     {
+    //         Undamaged();
+    //     }
+
+    //     // kalau player punya thorn
+    //     if (
+    //         other.CompareTag("Player") &&
+    //         gameObject.CompareTag("Enemy") &&
+    //         thorned
+    //     )
+    //     {
+    //         thorned = false;
+    //         Undamaged();
+    //     }
+
+    // }
 
 
-    }
-
-
-    private void Damaged()
+    public void Damaged()
     {
         spriteRenderer.color = Color.red;
 
     }
 
-    private void Undamaged()
+    public void Undamaged()
     {
         spriteRenderer.color = Color.white;
     }

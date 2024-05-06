@@ -6,6 +6,8 @@ public class Whirlwind : MonoBehaviour
 {
     private Skill skill;
     private GameObject player;
+
+    // [SerializeField] private EnemyType enemyTarget;
     [SerializeField] private float dmgPersenOfAgi;
     [SerializeField] private float dmgPersenOfAtk;
 
@@ -28,7 +30,15 @@ public class Whirlwind : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
+            // // kalau damage yg diberikan sesuai dengan tipe musuh yg terkena damage
+            // // misal musuh terbang terkena damage angin bisa, tapi damage biasa tidak bisa
+            // if (!gameObject.GetComponent<SkillController>().validAttack)
+            // {
+            //     return;
+            // }
+
             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
+
             // mob.ActivateSliding(slideSpeed, slideDistance);
             Vector2 backward = new Vector2();
             switch (player.GetComponent<PlayerController>().direction)
@@ -68,6 +78,16 @@ public class Whirlwind : MonoBehaviour
             );
 
             skill.HitEnemy(other);
+
+            // jika mob yang kena bukan target dari skill
+            // misal: targetnya adalah ground enemy dan yg kena flying enemy
+            //        maka flying enemy tidak akan terkena efek cc
+            // if (enemyTarget != mob.GetComponent<MobController>().enemy.type)
+            // {
+            //     return;
+            // }
+
+
         }
     }
 

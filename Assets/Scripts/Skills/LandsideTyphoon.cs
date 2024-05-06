@@ -84,13 +84,20 @@ public class LandsideTyphoon : MonoBehaviour
         {
             MobController mob = other.GetComponent<MobController>();
 
-            CrowdControlSystem ccSystem = mob.GetComponent<CrowdControlSystem>();
-            // hapus efek tarikan pada musuh
-            if (ccSystem.CheckCC(skill.Id))
+            // kalau musuh nya sudah ditarik,
+            // maka berikan efek cc
+            if (pulledEnemies.Contains(mob.enemy.id))
             {
-                mob.speed = 0;
-                ccSystem.DactivateCC(skill.Id);
+                CrowdControlSystem ccSystem = mob.GetComponent<CrowdControlSystem>();
+                // hapus efek tarikan pada musuh
+                if (ccSystem.CheckCC(skill.Id))
+                {
+                    mob.speed = 0;
+                    ccSystem.DactivateCC(skill.Id);
+                }
+
             }
+
         }
 
 
@@ -102,9 +109,12 @@ public class LandsideTyphoon : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-
-            // kembalikan kecepatan musuh
-            mob.speed = mob.enemy.movementSpeed;
+            if (pulledEnemies.Contains(mob.enemy.id))
+            {
+                // kembalikan kecepatan musuh
+                mob.speed = mob.enemy.movementSpeed;
+                pulledEnemies.Remove(mob.enemy.id);
+            }
         }
     }
 

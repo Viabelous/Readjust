@@ -59,9 +59,9 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        int index = Random.Range(0, spawnHolder.enemyPrefs.Count);
-        enemyPref = spawnHolder.enemyPrefs[index];
-        // enemyPref = spawnHolder.enemyPrefs[4];
+        // int index = Random.Range(3, spawnHolder.enemyPrefs.Count);
+        // enemyPref = spawnHolder.enemyPrefs[index];
+        enemyPref = spawnHolder.enemyPrefs[4];
 
         Instantiate(enemyPref, transform.position, Quaternion.identity);
     }

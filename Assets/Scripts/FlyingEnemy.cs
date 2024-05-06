@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlyingEnemy : MonoBehaviour
 {
 
-    [SerializeField] private List<GameObject> children;
+    public List<GameObject> children;
     private SpriteRenderer spriteRenderer;
     void Start()
     {

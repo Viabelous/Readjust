@@ -48,25 +48,33 @@ public class Player : Character
         return asset;
     }
 
-    public Player CloneObject()
+    public Player Clone()
     {
-        Player newPlayer = ScriptableObject.CreateInstance<Player>();
-        newPlayer.maxHp = this.maxHp;
-        newPlayer.hp = this.hp;
-        newPlayer.atk = this.atk;
-        newPlayer.def = this.def;
-        newPlayer.agi = this.agi;
-        newPlayer.speed = this.speed;
-        newPlayer.foc = this.foc;
-        newPlayer.maxMana = this.maxMana;
-        newPlayer.mana = this.mana;
-        newPlayer.maxShield = this.maxShield;
-        newPlayer.shield = this.shield;
-        newPlayer.aerus = this.aerus;
-        newPlayer.exp = this.exp;
-        newPlayer.story = this.story;
+        Player newPlayer = (Player)this.MemberwiseClone();
+        newPlayer.id = "player" + UnityEngine.Random.Range(1, 99999).ToString();
         return newPlayer;
     }
+
+
+    // public Player CloneObject()
+    // {
+    //     Player newPlayer = ScriptableObject.CreateInstance<Player>();
+    //     newPlayer.maxHp = this.maxHp;
+    //     newPlayer.hp = this.hp;
+    //     newPlayer.atk = this.atk;
+    //     newPlayer.def = this.def;
+    //     newPlayer.agi = this.agi;
+    //     newPlayer.speed = this.speed;
+    //     newPlayer.foc = this.foc;
+    //     newPlayer.maxMana = this.maxMana;
+    //     newPlayer.mana = this.mana;
+    //     newPlayer.maxShield = this.maxShield;
+    //     newPlayer.shield = this.shield;
+    //     newPlayer.aerus = this.aerus;
+    //     newPlayer.exp = this.exp;
+    //     newPlayer.story = this.story;
+    //     return newPlayer;
+    // }
 
 
 

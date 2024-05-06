@@ -116,14 +116,33 @@ public class DefenseSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // jika enemy sedang diserang skill yang hit sekali
-        if (type == CharacterType.Enemy && other.CompareTag("Damage"))
+        switch (type)
         {
-            Skill skill = other.GetComponent<SkillController>().skill;
-            if (skill.HitType == SkillHitType.Once)
-            {
-                TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
-            }
+            // saat enemy sebagai defender
+            case CharacterType.Enemy:
+                if (other.CompareTag("Damage"))
+                {
+                    Skill skill = other.GetComponent<SkillController>().skill;
+                    // jika enemy sedang diserang skill yang hit sekali
+                    if (skill.HitType != SkillHitType.Once)
+                    {
+                        return;
+                    }
+
+                    // jika enemy tipe terbang dan skill yang kena bukan angin,
+                    // maka enemy tidak akan menerima damage
+                    if (((Enemy)defender).type == EnemyType.Flying)
+                    {
+                        if (skill.Element != Element.Air)
+                        {
+                            return;
+                        }
+                    }
+                    gameObject.GetComponent<MobController>().Damaged();
+                    TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
+
+                }
+                break;
         }
 
     }
@@ -137,6 +156,13 @@ public class DefenseSystem : MonoBehaviour
                 // enemy sedang menyerang player
                 if (other.CompareTag("Enemy"))
                 {
+                    // kalau player terkena bayangan musuh terbang,
+                    // maka player tidak akan terkena damage
+                    if (other.GetComponent<MobController>().enemy.type == EnemyType.Flying)
+                    {
+                        return;
+                    }
+
                     float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
 
                     // jika player punya buff thorn, pantulkan damage ke musuh yg serang
@@ -145,25 +171,42 @@ public class DefenseSystem : MonoBehaviour
                         float thornDamage = buffSystem.buffsActive.Find(buff => buff.type == BuffType.Thorn).value;
 
                         // musuh yg menyerang juga terkena damage
+                        other.GetComponent<MobController>().Damaged();
                         other.GetComponent<DefenseSystem>().Attacked(thornDamage);
                     }
 
+                    gameObject.GetComponent<PlayerController>().Damaged();
                     Attacked(dealDamage);
                 }
                 break;
 
             // saat enemy sebagai defender
-            // jika enemy sedang diserang skill yg hit nya ber waktu
             case CharacterType.Enemy:
 
                 // player sedang menyerang enemy
                 if (other.CompareTag("Damage"))
                 {
                     Skill skill = other.GetComponent<SkillController>().skill;
-                    if (skill.HitType == SkillHitType.Temporary)
+
+                    // jika enemy sedang diserang skill yg hit nya ber waktu
+                    if (skill.HitType != SkillHitType.Temporary)
                     {
-                        Attacked(other.GetComponent<AttackSystem>().DealDamage());
+                        return;
                     }
+
+                    // jika enemy tipe terbang dan skill yang kena bukan angin,
+                    // maka enemy tidak akan menerima damage
+                    if (((Enemy)defender).type == EnemyType.Flying)
+                    {
+                        if (skill.Element != Element.Air)
+                        {
+                            return;
+                        }
+                    }
+
+                    gameObject.GetComponent<MobController>().Damaged();
+                    Attacked(other.GetComponent<AttackSystem>().DealDamage());
+
                 }
                 break;
         }
@@ -172,10 +215,27 @@ public class DefenseSystem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(type == CharacterType.Player ? "Enemy" : "Damage"))
+        switch (type)
         {
-            timer = 0;
+            case CharacterType.Enemy:
+                if (other.CompareTag("Damage"))
+                {
+                    timer = 0;
+
+                    gameObject.GetComponent<MobController>().Undamaged();
+
+                }
+                break;
+            case CharacterType.Player:
+                if (other.CompareTag("Enemy"))
+                {
+                    timer = 0;
+                    gameObject.GetComponent<PlayerController>().Undamaged();
+
+                }
+                break;
         }
+
     }
 
     private void Attacked(float totalDamage)
@@ -190,5 +250,12 @@ public class DefenseSystem : MonoBehaviour
             timer -= Time.deltaTime;
         }
     }
+
+    // private bool FlyingEnemyCanAttackedBy(Skill skill)
+    // {
+
+    //     // return ((Enemy)defender).type == EnemyType.Flying && skill.Element == Element.Air;
+
+    // }
 
 }

@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 1334553940672227840}
   - component: {fileID: -367244871939590513}
   - component: {fileID: 8771922181480160492}
-  - component: {fileID: -3580015501142578706}
   - component: {fileID: 3501666847714407964}
   - component: {fileID: -7324026154316327483}
   - component: {fileID: 5275132851952837798}
+  - component: {fileID: -7964881251369676706}
   m_Layer: 11
   m_Name: FlyingEnemy
   m_TagString: Enemy
@@ -202,19 +202,6 @@ MonoBehaviour:
   movementEnabled: 1
   speed: 0
   onSkillTrigger: 0
---- !u!114 &-3580015501142578706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3796948361964280087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
 --- !u!114 &3501666847714407964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +255,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   children:
   - {fileID: 6571338170955928856}
+--- !u!114 &-7964881251369676706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796948361964280087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &6571338170955928856
 GameObject:
   m_ObjectHideFlags: 0

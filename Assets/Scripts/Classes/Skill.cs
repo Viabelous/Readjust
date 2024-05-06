@@ -65,9 +65,10 @@ public class Skill : ScriptableObject
     [SerializeField] private float pushSpeed;
     [SerializeField] private float pushRange;
 
-
-    private List<string> enemies = new List<string>();
+    private List<string> enemiesId = new List<string>();
     private int level = 1;
+
+    private Transform lockedEnemy;
 
 
     public virtual void Activate(GameObject gameObject)
@@ -94,7 +95,7 @@ public class Skill : ScriptableObject
         if (other.CompareTag("Enemy"))
         {
             MobController mobController = other.GetComponent<MobController>();
-            enemies.Add(mobController.enemy.id);
+            enemiesId.Add(mobController.enemy.id);
         }
     }
 
@@ -103,18 +104,18 @@ public class Skill : ScriptableObject
         if (other.CompareTag("Enemy"))
         {
             MobController mobController = other.GetComponent<MobController>();
-            enemies.Remove(mobController.enemy.id);
+            enemiesId.Remove(mobController.enemy.id);
         }
     }
 
-    public void ResetEnemies()
+    public void ResetEnemiesId()
     {
-        enemies.Clear();
+        enemiesId.Clear();
     }
 
     public bool HasHit()
     {
-        if (enemies.Count == 0)
+        if (enemiesId.Count == 0)
         {
             return false;
         }
@@ -126,7 +127,7 @@ public class Skill : ScriptableObject
         if (other.CompareTag("Enemy"))
         {
             MobController mobController = other.GetComponent<MobController>();
-            return enemies.Contains(mobController.enemy.id);
+            return enemiesId.Contains(mobController.enemy.id);
         }
         return false;
     }
@@ -264,4 +265,9 @@ public class Skill : ScriptableObject
         get { return level; }
     }
 
+    public Transform LockedEnemy
+    {
+        get { return lockedEnemy; }
+        set { lockedEnemy = value; }
+    }
 }

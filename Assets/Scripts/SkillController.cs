@@ -12,8 +12,9 @@ public class SkillController : MonoBehaviour
     [HideInInspector]
     public Skill skill;
 
+    // [HideInInspector] public bool validAttack = true;
 
-
+    // [SerializeField] private Collider2D groundCollider, flyingCollider;
 
     private void Start()
     {
@@ -36,6 +37,31 @@ public class SkillController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+
+            // // jika musuh darat terkena collider darat ATAU
+            // // jika musuh terbang terkena collider terbang
+            // // maka berikan damage/cc dapat diberikan
+            // if (
+            //     groundCollider != null &&
+            //     groundCollider.OverlapPoint(mob.transform.position) &&
+            //     mob.enemy.type == EnemyType.Ground ||
+            //     flyingCollider != null &&
+            //     flyingCollider.OverlapPoint(mob.transform.position) &&
+            //     mob.enemy.type == EnemyType.Flying
+            // )
+            // {
+            //     validAttack = true;
+            // }
+            // else
+            // {
+            //     validAttack = false;
+            // }
+        }
+
         if (other.CompareTag("Player"))
         {
 
