@@ -17,6 +17,7 @@ MonoBehaviour:
   element: 2
   type: 2
   hitType: 1
+  movementType: 3
   costType: 1
   maxCd: 5
   cost: 5

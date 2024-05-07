@@ -21,12 +21,15 @@ public class DefenseSystem : MonoBehaviour
     private float maxTimer = 1, timer = 0;
 
     private BuffSystem buffSystem;
+    private GameObject player;
+
 
     // private AttackAttribute characterAttr;
 
     void Start()
     {
         buffSystem = GetComponent<BuffSystem>();
+        player = GameObject.Find("Player");
         // switch (type)
         // {
         //     case CharacterType.Player:
@@ -50,6 +53,9 @@ public class DefenseSystem : MonoBehaviour
                     break;
                 case CharacterType.Enemy:
                     defender = GetComponent<MobController>().enemy;
+                    break;
+                case CharacterType.FlyingEnemy:
+                    defender = transform.parent.GetComponent<MobController>().enemy;
                     break;
             }
             def = defender.def;
@@ -112,6 +118,11 @@ public class DefenseSystem : MonoBehaviour
             finalDamage = 1;
         }
         defender.hp -= finalDamage;
+
+        if (type == CharacterType.Enemy || type == CharacterType.FlyingEnemy)
+        {
+            print("HP musuh: " + defender.hp);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -123,24 +134,45 @@ public class DefenseSystem : MonoBehaviour
                 if (other.CompareTag("Damage"))
                 {
                     Skill skill = other.GetComponent<SkillController>().skill;
-                    // jika enemy sedang diserang skill yang hit sekali
-                    if (skill.HitType != SkillHitType.Once)
+
+                    // damage hanya akan diberikan jika skill hanya memberikan damage sekali
+                    if (EnemyDefendingIsValid(skill, SkillHitType.Once))
+                    {
+
+                        float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+                        TakeDamage(dealDamage);
+
+
+                        // kalau player punya buff nexus
+                        AttackIfNexusActivated(skill, dealDamage);
+                    }
+
+                }
+                break;
+
+            case CharacterType.FlyingEnemy:
+                if (other.CompareTag("Damage"))
+                {
+                    Skill skill = other.GetComponent<SkillController>().skill;
+
+                    // jika bukan elemen angin dan bukan me-lock musuh, maka tidak perlu kasih damage
+                    if (skill.Element != Element.Air && skill.MovementType != SkillMovementType.Locking)
                     {
                         return;
                     }
 
-                    // jika enemy tipe terbang dan skill yang kena bukan angin,
-                    // maka enemy tidak akan menerima damage
-                    if (((Enemy)defender).type == EnemyType.Flying)
+                    // kalau bukan yg di-lock, ga ush kasih damage
+                    if (skill.LockedEnemy.parent.GetComponent<MobController>().enemy.id != defender.id)
                     {
-                        if (skill.Element != Element.Air)
-                        {
-                            return;
-                        }
+                        return;
                     }
-                    gameObject.GetComponent<MobController>().Damaged();
-                    TakeDamage(other.GetComponent<AttackSystem>().DealDamage());
 
+                    float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+                    transform.parent.GetComponent<MobController>().Damaged();
+                    TakeDamage(dealDamage);
+
+                    // kalau player punya buff nexus
+                    AttackIfNexusActivated(skill, dealDamage);
                 }
                 break;
         }
@@ -188,24 +220,11 @@ public class DefenseSystem : MonoBehaviour
                 {
                     Skill skill = other.GetComponent<SkillController>().skill;
 
-                    // jika enemy sedang diserang skill yg hit nya ber waktu
-                    if (skill.HitType != SkillHitType.Temporary)
+                    // damage hanya akan diberikan jika skill merupakan skill ber waktu
+                    if (EnemyDefendingIsValid(skill, SkillHitType.Temporary))
                     {
-                        return;
+                        Attacked(other.GetComponent<AttackSystem>().DealDamage());
                     }
-
-                    // jika enemy tipe terbang dan skill yang kena bukan angin,
-                    // maka enemy tidak akan menerima damage
-                    if (((Enemy)defender).type == EnemyType.Flying)
-                    {
-                        if (skill.Element != Element.Air)
-                        {
-                            return;
-                        }
-                    }
-
-                    gameObject.GetComponent<MobController>().Damaged();
-                    Attacked(other.GetComponent<AttackSystem>().DealDamage());
 
                 }
                 break;
@@ -217,15 +236,6 @@ public class DefenseSystem : MonoBehaviour
     {
         switch (type)
         {
-            case CharacterType.Enemy:
-                if (other.CompareTag("Damage"))
-                {
-                    timer = 0;
-
-                    gameObject.GetComponent<MobController>().Undamaged();
-
-                }
-                break;
             case CharacterType.Player:
                 if (other.CompareTag("Enemy"))
                 {
@@ -234,6 +244,25 @@ public class DefenseSystem : MonoBehaviour
 
                 }
                 break;
+
+            case CharacterType.Enemy:
+                if (other.CompareTag("Damage"))
+                {
+                    timer = 0;
+                    gameObject.GetComponent<MobController>().Undamaged();
+
+                }
+                break;
+
+            case CharacterType.FlyingEnemy:
+                if (other.CompareTag("Damage"))
+                {
+                    timer = 0;
+                    transform.parent.GetComponent<MobController>().Undamaged();
+
+                }
+                break;
+
         }
 
     }
@@ -251,11 +280,57 @@ public class DefenseSystem : MonoBehaviour
         }
     }
 
-    // private bool FlyingEnemyCanAttackedBy(Skill skill)
-    // {
+    private bool EnemyDefendingIsValid(Skill skill, SkillHitType damageType)
+    {
+        if (skill.HitType != damageType)
+        {
+            return false;
+        }
 
-    //     // return ((Enemy)defender).type == EnemyType.Flying && skill.Element == Element.Air;
+        Enemy enemyDefender = (Enemy)defender;
 
-    // }
+        // kalau bayangan terkena damage dari skill yang tipenya lock,
+        // maka musuh terbang tidak akan terkena damage.
+        // ceritanya kena skill lock yg lagi lewat di bayangannya :)
+        if (enemyDefender.type == EnemyType.Flying && skill.MovementType == SkillMovementType.Locking)
+        {
+            return false;
+        }
+
+        // jika enemy tipe terbang dan skill yang kena bukan angin,
+        // maka enemy tidak akan menerima damage
+        if (enemyDefender.type == EnemyType.Flying)
+        {
+            if (skill.Element != Element.Air)
+            {
+                return false;
+            }
+        }
+
+        gameObject.GetComponent<MobController>().Damaged();
+        print("MERAHHH");
+        return true;
+    }
+
+
+    private void AttackIfNexusActivated(Skill skill, float dealDamage)
+    {
+        // kalau player punya buff nexus
+        if (player.GetComponent<BuffSystem>().CheckBuff(BuffType.Nexus))
+        {
+            StartCoroutine(DamagedByNexus(skill, dealDamage));
+        }
+
+    }
+
+    private IEnumerator DamagedByNexus(Skill skill, float dealDamage)
+    {
+        skill.LockedEnemy.GetComponent<MobController>().Damaged();
+        skill.LockedEnemy.GetComponent<DefenseSystem>().TakeDamage(0.3f * dealDamage);
+
+        yield return new WaitForSeconds(0.2f);
+        skill.LockedEnemy.GetComponent<MobController>().Undamaged();
+    }
+
 
 }

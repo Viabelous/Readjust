@@ -6,7 +6,8 @@ using UnityEngine;
 public enum CharacterType
 {
     Player,
-    Enemy
+    Enemy,
+    FlyingEnemy
 }
 
 public class Character : ScriptableObject

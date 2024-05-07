@@ -10,14 +10,16 @@ GameObject:
   m_Component:
   - component: {fileID: 1613608447022360107}
   - component: {fileID: 8971396048670161130}
+  - component: {fileID: 5804421871750467924}
   - component: {fileID: 5694248868531751384}
   - component: {fileID: 6129971567807249993}
   - component: {fileID: 5320165996982389154}
   - component: {fileID: 3003148663081248710}
   - component: {fileID: 6316030837594996122}
+  - component: {fileID: 5926592595837346048}
   - component: {fileID: 194557816306084170}
   m_Layer: 0
-  m_Name: Javeline
+  m_Name: Javelin
   m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 7528030891606413759}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -77,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1600984263
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6cc5c3cbd947e7847a87fade42ca4dea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -90,6 +92,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5804421871750467924
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528030891606413759}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd0289e50b4cb4343a30f08b54c4e30f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &5694248868531751384
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,7 +190,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -198,7 +221,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.38823533, g: 1, b: 0.87009037, a: 0.78431374}
+      key0: {r: 0.38823533, g: 1, b: 0.87009037, a: 0.5882353}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -207,7 +230,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 5783
-      ctime1: 43305
+      ctime1: 65535
       ctime2: 0
       ctime3: 0
       ctime4: 0
@@ -216,7 +239,7 @@ TrailRenderer:
       ctime7: 0
       atime0: 5911
       atime1: 44076
-      atime2: 0
+      atime2: 49987
       atime3: 0
       atime4: 0
       atime5: 0
@@ -225,7 +248,7 @@ TrailRenderer:
       m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -284,14 +307,30 @@ MonoBehaviour:
   offsetBack: {x: 0, y: 1, z: 0}
   rotationRight: 0
   rotationLeft: 0
-  rotationFront: -90
-  rotationBack: 90
+  rotationFront: 0
+  rotationBack: 0
   flipRight: 0
-  flipLeft: 1
+  flipLeft: 0
   flipFront: 0
   flipBack: 0
   spriteRenderer: {fileID: 0}
   oppositeDirection: 0
+--- !u!114 &5926592595837346048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528030891606413759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a4c5f46bbe8448a00973ce73b86c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: javeline_start
+  endAnimationName: javeline_end
+  isAttacking: 0
+  skill: {fileID: 0}
 --- !u!114 &194557816306084170
 MonoBehaviour:
   m_ObjectHideFlags: 0

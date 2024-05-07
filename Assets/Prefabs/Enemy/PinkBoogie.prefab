@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5846968007811048139}
   - component: {fileID: -5924167133976428185}
   - component: {fileID: -5872995871299659495}
+  - component: {fileID: 3121289651625582305}
   m_Layer: 11
   m_Name: PinkBoogie
   m_TagString: Enemy
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 1173008970, guid: 8fa9140e2fefe6d4391e3ff54df18b35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -227,6 +228,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 3fa01f376fc5e6a4c8b37acf120e8724, type: 2}
   movementEnabled: 1
   speed: 0
+  onSkillTrigger: 0
 --- !u!114 &5846968007811048139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,3 +281,15 @@ MonoBehaviour:
   slideDirection: {x: 0, y: 0}
   knockDirection: {x: 0, y: 0, z: 0}
   initialSpeed: 0
+--- !u!114 &3121289651625582305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170722551558479055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5887d4aa784ffb04b98950d34331cf65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

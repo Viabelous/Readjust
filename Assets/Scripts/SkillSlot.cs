@@ -68,10 +68,8 @@ public class SkillSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (!isEmpty)
         {
-
             switch (state)
             {
                 case SkillState.Ready:
@@ -87,6 +85,21 @@ public class SkillSlot : MonoBehaviour
                     )
                     {
                         Instantiate(skillPref);
+
+
+                        // // jika skill yg digunakan tipe lock,
+                        // // tapi tidak menemukan adanya musuh yg di-lock,
+                        // // maka skill tidak akan digunakan
+
+                        // if (skill.MovementType == SkillMovementType.Locking)
+                        // {
+                        //     if (skillPref.GetComponent<SkillController>().skill.LockedEnemy == null)
+                        //     {
+                        //         print("skill tidak akan digunakan");
+                        //         break;
+                        //     }
+                        // }
+
                         playerController.UseSkill(skill);
                         state = SkillState.Active;
                     }

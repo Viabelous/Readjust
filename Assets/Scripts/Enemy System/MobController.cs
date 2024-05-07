@@ -89,14 +89,14 @@ public class MobController : MonoBehaviour
         animate.SetFloat("Vertical", movement.y);
         animate.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (gameObject.transform.position.y > player.transform.position.y && !onSkillTrigger)
-        {
-            spriteRenderer.sortingLayerName = "Enemy Back";
-        }
-        else
-        {
-            spriteRenderer.sortingLayerName = "Enemy";
-        }
+        // if (gameObject.transform.position.y > player.transform.position.y && !onSkillTrigger)
+        // {
+        //     spriteRenderer.sortingLayerName = "Enemy Back";
+        // }
+        // else
+        // {
+        //     spriteRenderer.sortingLayerName = "Enemy";
+        // }
 
     }
 
@@ -126,47 +126,49 @@ public class MobController : MonoBehaviour
     }
 
 
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
 
-    //     if (other.CompareTag("Damage"))
-    //     {
-    //         // print("Enemy HP: " + enemy.hp.ToString());
-    //         Damaged();
-    //     }
+        // if (other.CompareTag("Damage"))
+        // {
+        //     // print("Enemy HP: " + enemy.hp.ToString());
+        //     Damaged();
+        // }
 
-    //     // kalau player punya thorn dan bukan flying enemy
-    //     if (
-    //         other.CompareTag("Player") &&
-    //         gameObject.CompareTag("Enemy") &&
-    //         playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn)
-    //     )
-    //     {
-    //         // print("Enemy HP: " + enemy.hp.ToString());
-    //         thorned = true;
-    //         Damaged();
-    //     }
-    // }
+        // kalau player punya thorn dan bukan flying enemy
+        if (
+            other.CompareTag("Player") &&
+            gameObject.CompareTag("Enemy") &&
+            enemy.type == EnemyType.Ground &&
+            playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn)
+        )
+        {
+            // print("Enemy HP: " + enemy.hp.ToString());
+            thorned = true;
+            Damaged();
+        }
+    }
 
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Damage") && state == CharacterState.alive)
-    //     {
-    //         Undamaged();
-    //     }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        // if (other.CompareTag("Damage") && state == CharacterState.alive)
+        // {
+        //     Undamaged();
+        // }
 
-    //     // kalau player punya thorn
-    //     if (
-    //         other.CompareTag("Player") &&
-    //         gameObject.CompareTag("Enemy") &&
-    //         thorned
-    //     )
-    //     {
-    //         thorned = false;
-    //         Undamaged();
-    //     }
+        // kalau player punya thorn
+        if (
+            other.CompareTag("Player") &&
+            gameObject.CompareTag("Enemy") &&
+            enemy.type == EnemyType.Ground &&
+            thorned
+        )
+        {
+            thorned = false;
+            Undamaged();
+        }
 
-    // }
+    }
 
 
     public void Damaged()

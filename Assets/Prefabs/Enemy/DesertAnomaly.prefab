@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5499710316623183906}
   - component: {fileID: 412621924380607531}
   - component: {fileID: 9155712469995986980}
+  - component: {fileID: -1881948656101206118}
   m_Layer: 11
   m_Name: DesertAnomaly
   m_TagString: Enemy
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1517597047, guid: e1f0bb8dcab46764b9755b9e749f7290, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -237,15 +238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 2db6baeff692f7a4f91b52215d8e6e35, type: 2}
   movementEnabled: 1
-  onKnockBack: 0
-  onSlide: 0
-  knockBackSpeed: 0
-  knockBackDistance: 0
-  slideSpeed: 0
-  slideDistance: 0
-  initialPosSlide: {x: 0, y: 0, z: 0}
-  initialPosKnockBack: {x: 0, y: 0, z: 0}
-  backward: {x: 0, y: 0}
+  speed: 0
+  onSkillTrigger: 0
 --- !u!114 &5499710316623183906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,8 +279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  state: 0
-  movementEnabled: 0
   isSlid: 0
   isKnocked: 0
   isSlowed: 0
@@ -295,7 +287,20 @@ MonoBehaviour:
   slideDistance: 0
   knockSpeed: 0
   knockDistance: 0
-  slow: 0
+  slowedSpeed: 0
   stunTimer: 0
   slideDirection: {x: 0, y: 0}
   knockDirection: {x: 0, y: 0, z: 0}
+  initialSpeed: 0
+--- !u!114 &-1881948656101206118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2404364144903811556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5887d4aa784ffb04b98950d34331cf65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -100870143569091846}
   - component: {fileID: 7005992240778324048}
   - component: {fileID: 3654439951966996604}
+  - component: {fileID: 4143478651424401231}
   m_Layer: 11
   m_Name: FlamingBird
   m_TagString: Enemy
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 475172086, guid: 301071d175ba1784da77ef60daae2efa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -277,6 +278,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 359817c0a00928440a1419603bacb9f5, type: 2}
   movementEnabled: 1
   speed: 0
+  onSkillTrigger: 0
 --- !u!114 &-100870143569091846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,3 +331,15 @@ MonoBehaviour:
   slideDirection: {x: 0, y: 0}
   knockDirection: {x: 0, y: 0, z: 0}
   initialSpeed: 0
+--- !u!114 &4143478651424401231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26331218866292259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5887d4aa784ffb04b98950d34331cf65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

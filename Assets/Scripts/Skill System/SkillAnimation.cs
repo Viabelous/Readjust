@@ -55,11 +55,39 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // biasanya di tipe projectile
-        if (other.CompareTag("Enemy") && isAttacking && skill.HitType == SkillHitType.Once)
+        if (other.CompareTag("Enemy"))
         {
-            isAttacking = false;
-            animator.Play(endAnimationName);
+            // kalau skill locking kena bayangan musuh terbang
+            if (
+                skill.MovementType == SkillMovementType.Locking &&
+                other.GetComponent<MobController>().enemy.type == EnemyType.Flying
+            )
+            {
+                return;
+            }
+
+            // biasanya tipe projectile
+            if (isAttacking && skill.HitType == SkillHitType.Once)
+            {
+                isAttacking = false;
+                animator.Play(endAnimationName);
+
+            }
+        }
+
+        if (
+            other.CompareTag("FlyingEnemy") &&
+            skill.Element == Element.Air &&
+            skill.MovementType == SkillMovementType.Locking
+        )
+        {
+            // biasanya tipe projectile
+            if (isAttacking && skill.HitType == SkillHitType.Once)
+            {
+                isAttacking = false;
+                animator.Play(endAnimationName);
+
+            }
         }
     }
 

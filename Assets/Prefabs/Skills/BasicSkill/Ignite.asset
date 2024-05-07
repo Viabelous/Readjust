@@ -17,6 +17,7 @@ MonoBehaviour:
   element: 1
   type: 0
   hitType: 0
+  movementType: 3
   costType: 1
   maxCd: 1
   cost: 10
@@ -29,4 +30,3 @@ MonoBehaviour:
   persentase: 0
   pushSpeed: 0
   pushRange: 0
-  stillActive: 1

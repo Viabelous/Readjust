@@ -4,11 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 
-public enum SkillName
-{
-    BasicStab, Sacrivert, WillOfFire, Explosion, Ignite, Whirlwind, Fireball, HighTide, Waterwall,
-    PeebleCreation, Avalanche
-}
+// public enum SkillName
+// {
+//     BasicStab, Sacrivert, WillOfFire, Explosion, Ignite, Whirlwind, Fireball, HighTide, Waterwall,
+//     PeebleCreation, Avalanche
+// }
 
 public enum Element
 {
@@ -41,7 +41,8 @@ public class Skill : ScriptableObject
     [SerializeField] private new string name;      // nama skill
     [SerializeField] private Element element;
     [SerializeField] private SkillType type;       // tipe damage yg diberikan
-    [SerializeField] private SkillHitType hitType; // tipe pukulan yg diberikan
+    [SerializeField] private SkillHitType hitType; // tipe pukulan yg diberikan 
+    [SerializeField] private SkillMovementType movementType; // tipe gerakan skill 
     [SerializeField] private SkillCost costType;   // tipe bayaran yg dipake
     [SerializeField] private float maxCd;          // cd maksimal
     [SerializeField] private float cost;           // total mana/hp di awal
@@ -164,6 +165,10 @@ public class Skill : ScriptableObject
     public SkillHitType HitType
     {
         get { return hitType; }
+    }
+    public SkillMovementType MovementType
+    {
+        get { return movementType; }
     }
 
     public SkillCost CostType
