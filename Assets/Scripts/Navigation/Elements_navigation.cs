@@ -10,6 +10,8 @@ public class Elements : Navigation
     public Sprite LockedSprite;
     public bool isUnlocked;
     public bool firstAccess;
+    
+    public int elementNumber;
 
     public GameObject SkillsSelectionWindows;
 
@@ -67,7 +69,7 @@ public class Elements : Navigation
         {
             WindowsController.toogleWindow(1, false);
             SkillsSelectionWindows.SetActive(true);
-            WindowsController.toogleWindow(2, true);
+            WindowsController.toogleWindow(elementNumber+1, true);
         }
     }
 
