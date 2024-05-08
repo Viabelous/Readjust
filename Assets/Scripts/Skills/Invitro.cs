@@ -29,6 +29,7 @@ public class Invitro : MonoBehaviour
                 skill.Timer
             )
         );
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
     // private void Update()

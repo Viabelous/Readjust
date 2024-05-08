@@ -25,5 +25,6 @@ public class Preserve : MonoBehaviour
                 skill.Timer
             )
         );
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }

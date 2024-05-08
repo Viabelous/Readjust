@@ -26,5 +26,6 @@ public class ThornCover : MonoBehaviour
                 skill.Timer
             )
         );
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }

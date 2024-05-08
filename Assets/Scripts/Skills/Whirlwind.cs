@@ -19,6 +19,7 @@ public class Whirlwind : MonoBehaviour
         PlayerController playerController = player.GetComponent<PlayerController>();
 
         skill.Damage = dmgPersenOfAgi * playerController.player.agi + dmgPersenOfAtk * playerController.player.atk;
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
     private void OnTriggerStay2D(Collider2D other)

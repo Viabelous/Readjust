@@ -29,9 +29,9 @@ public enum SkillHitType
     Once, Temporary
 }
 
-public enum SkillCost
+public enum CostType
 {
-    None, Mana, Hp
+    None, Mana, Hp, Aerus, Exp
 }
 
 [CreateAssetMenu]
@@ -43,7 +43,7 @@ public class Skill : ScriptableObject
     [SerializeField] private SkillType type;       // tipe damage yg diberikan
     [SerializeField] private SkillHitType hitType; // tipe pukulan yg diberikan 
     [SerializeField] private SkillMovementType movementType; // tipe gerakan skill 
-    [SerializeField] private SkillCost costType;   // tipe bayaran yg dipake
+    [SerializeField] private CostType costType;   // tipe bayaran yg dipake
     [SerializeField] private float maxCd;          // cd maksimal
     [SerializeField] private float cost;           // total mana/hp di awal
     [SerializeField] private float damage;         // total damage di awal
@@ -68,8 +68,8 @@ public class Skill : ScriptableObject
 
     private List<string> enemiesId = new List<string>();
     private int level = 1;
-
     private Transform lockedEnemy;
+    private bool invalid = false;
 
 
     public virtual void Activate(GameObject gameObject)
@@ -133,11 +133,16 @@ public class Skill : ScriptableObject
         return false;
     }
 
-
     public Skill Clone()
     {
         return (Skill)this.MemberwiseClone();
     }
+
+    // public void Cancel(GameObject gameObject)
+    // {
+    //     invalid = true;
+    //     Destroy(gameObject);
+    // }
 
     public string Id
     {
@@ -171,7 +176,7 @@ public class Skill : ScriptableObject
         get { return movementType; }
     }
 
-    public SkillCost CostType
+    public CostType CostType
     {
         get { return costType; }
     }
@@ -194,14 +199,17 @@ public class Skill : ScriptableObject
         }
     }
 
+    // karena cost untuk sacrivert berbeda sehingga bisa diedit
     public float Cost
     {
         get
         {
             return cost;
         }
+        set { cost = value; }
     }
 
+    // karena ada tambahan damage tiap elemen tergantung stage sehingga bisa diedit
     public float Damage
     {
         get
@@ -274,5 +282,9 @@ public class Skill : ScriptableObject
     {
         get { return lockedEnemy; }
         set { lockedEnemy = value; }
+    }
+    public bool Invalid
+    {
+        get { return invalid; }
     }
 }

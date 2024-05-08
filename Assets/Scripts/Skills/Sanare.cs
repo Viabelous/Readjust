@@ -24,6 +24,7 @@ public class Sanare : MonoBehaviour
                 skill.Timer
             )
         );
+        StageManager.instance.PlayerActivatesSkill(skill);
 
     }
 }

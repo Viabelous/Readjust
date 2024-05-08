@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 6129971567807249993}
   - component: {fileID: 5320165996982389154}
   - component: {fileID: 3003148663081248710}
-  - component: {fileID: 6316030837594996122}
   - component: {fileID: 5926592595837346048}
+  - component: {fileID: 6316030837594996122}
   - component: {fileID: 194557816306084170}
   m_Layer: 0
   m_Name: Javelin
@@ -187,8 +187,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1600984263
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Time: 0.5
   m_PreviewTimeScale: 1
@@ -288,6 +288,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmgPersenOfAgi: 0.3
+--- !u!114 &5926592595837346048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528030891606413759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a4c5f46bbe8448a00973ce73b86c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationName: javeline_start
+  endAnimationName: javeline_end
+  isAttacking: 0
+  skill: {fileID: 0}
 --- !u!114 &6316030837594996122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,22 +331,6 @@ MonoBehaviour:
   flipBack: 0
   spriteRenderer: {fileID: 0}
   oppositeDirection: 0
---- !u!114 &5926592595837346048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528030891606413759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42a4c5f46bbe8448a00973ce73b86c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackAnimationName: javeline_start
-  endAnimationName: javeline_end
-  isAttacking: 0
-  skill: {fileID: 0}
 --- !u!114 &194557816306084170
 MonoBehaviour:
   m_ObjectHideFlags: 0

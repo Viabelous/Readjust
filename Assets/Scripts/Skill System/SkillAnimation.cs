@@ -34,8 +34,8 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
         switch (skill.HitType)
         {
             case SkillHitType.Once:
-
                 break;
+
             case SkillHitType.Temporary:
                 if (isAttacking)
                 {

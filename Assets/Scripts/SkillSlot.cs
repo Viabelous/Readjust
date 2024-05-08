@@ -14,7 +14,6 @@ public class SkillSlot : MonoBehaviour
     public GameObject objLight, objDark, skillHolder;
     public Text cdText;
     public int slotNumber;
-    public SkillState state;
 
     [HideInInspector]
     public GameObject skillPref;
@@ -25,6 +24,7 @@ public class SkillSlot : MonoBehaviour
     [HideInInspector]
     public bool isEmpty;
 
+    private SkillState state;
     private PlayerController playerController;
     private float maxCd, currCd, minCd;
 
@@ -79,12 +79,13 @@ public class SkillSlot : MonoBehaviour
                     if (
                         Input.inputString == slotNumber.ToString() &&
                        // jika bayarannya mana & mana yg tersedia > bayaran
-                       (skill.CostType == SkillCost.Mana && playerController.player.mana > skill.Cost ||
+                       (skill.CostType == CostType.Mana && playerController.player.mana > skill.Cost ||
                         // jika bayarannya hp & hp yg tersedia > bayaran + 1% dari total hp keseluruhan
-                        skill.CostType == SkillCost.Hp && playerController.player.hp > playerController.player.hp * 0.1)
+                        skill.CostType == CostType.Hp && playerController.player.hp > playerController.player.hp * 0.1)
                     )
                     {
                         Instantiate(skillPref);
+                        // state = SkillState.Active;
 
 
                         // // jika skill yg digunakan tipe lock,
@@ -100,15 +101,21 @@ public class SkillSlot : MonoBehaviour
                         //     }
                         // }
 
-                        playerController.UseSkill(skill);
-                        state = SkillState.Active;
+
+
+                        // if (!skill.Invalid)
+                        // {
+                        //     // playerController.UseSkill(skill);
+
+                        // }
                     }
                     break;
 
                 case SkillState.Active:
-                    state = SkillState.Cooldown;
                     objDark.GetComponent<Image>().fillAmount = 1;
                     currCd = maxCd;
+
+                    ChangeState(SkillState.Cooldown);
                     break;
 
                 case SkillState.Cooldown:
@@ -119,7 +126,7 @@ public class SkillSlot : MonoBehaviour
 
                     if (currCd <= minCd)
                     {
-                        state = SkillState.Ready;
+                        ChangeState(SkillState.Ready);
                     }
 
                     break;
@@ -156,37 +163,8 @@ public class SkillSlot : MonoBehaviour
 
     }
 
-    // ca
-    // int SkillIndex()
-    // {
-    //     for (int i = 0; i < GameManager.playerNow.selectedSkills.Length; i++)
-    //     {
-    //         if ( == GameManager.playerNow.selectedSkills[slotNumber - 1].name)
-    //         {
-    //             return i;
-    //         }
-    //     }
-    //     return -1;
-
-    // }
-
-    // int TotalSelectedSkills()
-    // {
-    //     int total = GameManager.playerNow.selectedSkills.Length;
-    //     for (int i = 0; i < total; i++)
-    //     {
-
-    //         if (GameManager.playerNow.selectedSkills[i] == null)
-    //         {
-    //             return i;
-    //         }
-    //     }
-    //     return total;
-    // }
-
-    // bool isCooldown()
-    // {
-    //     img.color = Color.black;
-    //     return false;
-    // }
+    public void ChangeState(SkillState newState)
+    {
+        state = newState;
+    }
 }

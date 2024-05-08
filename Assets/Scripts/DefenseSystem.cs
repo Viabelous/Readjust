@@ -121,7 +121,7 @@ public class DefenseSystem : MonoBehaviour
 
         if (type == CharacterType.Enemy || type == CharacterType.FlyingEnemy)
         {
-            print("HP musuh: " + defender.hp);
+            print("Enemy HP: " + defender.hp);
         }
     }
 
@@ -144,7 +144,7 @@ public class DefenseSystem : MonoBehaviour
 
 
                         // kalau player punya buff nexus
-                        AttackIfNexusActivated(skill, dealDamage);
+                        AttackIfNexusActivated(dealDamage);
                     }
 
                 }
@@ -172,7 +172,7 @@ public class DefenseSystem : MonoBehaviour
                     TakeDamage(dealDamage);
 
                     // kalau player punya buff nexus
-                    AttackIfNexusActivated(skill, dealDamage);
+                    AttackIfNexusActivated(dealDamage);
                 }
                 break;
         }
@@ -308,28 +308,30 @@ public class DefenseSystem : MonoBehaviour
         }
 
         gameObject.GetComponent<MobController>().Damaged();
-        print("MERAHHH");
         return true;
     }
 
 
-    private void AttackIfNexusActivated(Skill skill, float dealDamage)
+    private void AttackIfNexusActivated(float dealDamage)
     {
         // kalau player punya buff nexus
         if (player.GetComponent<BuffSystem>().CheckBuff(BuffType.Nexus))
         {
-            StartCoroutine(DamagedByNexus(skill, dealDamage));
+            StartCoroutine(DamagedByNexus(dealDamage));
         }
 
     }
 
-    private IEnumerator DamagedByNexus(Skill skill, float dealDamage)
+    private IEnumerator DamagedByNexus(float dealDamage)
     {
-        skill.LockedEnemy.GetComponent<MobController>().Damaged();
-        skill.LockedEnemy.GetComponent<DefenseSystem>().TakeDamage(0.3f * dealDamage);
+        Transform lockedEnemy = GameObject.FindObjectOfType<Nexus>().skill.LockedEnemy;
+        MobController mobController = lockedEnemy.GetComponent<MobController>();
+        mobController.Damaged();
+        lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(0.3f * dealDamage);
+        print("Nexus HP: " + mobController.enemy.hp);
 
-        yield return new WaitForSeconds(0.2f);
-        skill.LockedEnemy.GetComponent<MobController>().Undamaged();
+        yield return new WaitForSeconds(0.5f);
+        mobController.Undamaged();
     }
 
 

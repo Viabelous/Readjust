@@ -27,17 +27,23 @@ public class NexusTargetPos : MonoBehaviour
 
     private void SetPosition()
     {
+        if (skill.LockedEnemy == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Transform target = skill.LockedEnemy;
         SpriteRenderer targetSpriteRenderer = target.GetComponent<SpriteRenderer>();
 
         switch (component)
         {
             case NexusComponent.Effect:
-                transform.position = (Vector2)target.transform.position - Vector2.up * targetSpriteRenderer.size.y * 0.5f;
+                transform.position = (Vector2)target.transform.position - Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.5f;
 
                 break;
             case NexusComponent.Voodoo:
-                transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.size.y * 0.5f;
+                transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.5f;
                 break;
         }
 

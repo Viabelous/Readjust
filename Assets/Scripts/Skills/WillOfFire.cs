@@ -22,5 +22,6 @@ public class WillOfFire : MonoBehaviour
                 skill.Timer
             )
         );
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }

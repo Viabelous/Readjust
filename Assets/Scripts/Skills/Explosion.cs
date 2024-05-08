@@ -36,6 +36,7 @@ public class Explosion : MonoBehaviour
                 )
             );
         }
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }
 

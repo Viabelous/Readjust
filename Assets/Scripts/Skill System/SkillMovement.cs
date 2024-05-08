@@ -45,7 +45,7 @@ public class SkillMovement : MonoBehaviour
 
     private ChrDirection direction;
     private SkillAnimation skillAnimation;
-    private bool isInstantiate;
+    // private bool isInstantiate;
     private Vector3 initialPosition;
 
 
@@ -57,19 +57,18 @@ public class SkillMovement : MonoBehaviour
         skillAnimation = GetComponent<SkillAnimation>();
         skill = GetComponent<SkillController>().skill;
 
-        isInstantiate = true;
-
-        if (type == SkillMovementType.Locking)
-        {
-            if (skill.LockedEnemy == null)
-            {
-                return;
-            }
-        }
+        // isInstantiate = true;
 
         SetPosition();
-
         initialPosition = transform.position;
+
+        // if (type == SkillMovementType.Locking)
+        // {
+        //     if (skill.LockedEnemy == null)
+        //     {
+        //         return;
+        //     }
+        // }
 
     }
 
@@ -77,25 +76,29 @@ public class SkillMovement : MonoBehaviour
     void Update()
     {
 
-        if (isInstantiate)
-        {
-            isInstantiate = false;
-        }
+        // if (isInstantiate)
+        // {
+        //     isInstantiate = false;
+        // }
 
-        if (skillAnimation != null && skillAnimation.skill.HitType != SkillHitType.Temporary && !skillAnimation.isAttacking)
-        {
-            return;
-        }
-
-
-        // kalau target sebelumnya ada, tapi sudah mati sebelum skill sampai
         if (
-            type == SkillMovementType.Locking &&
-            skill.LockedEnemy != null && !ReferenceEquals(skill.LockedEnemy, null)
+            skillAnimation != null &&
+            skillAnimation.skill.HitType != SkillHitType.Temporary &&
+            !skillAnimation.isAttacking
         )
         {
             return;
         }
+
+
+        // // kalau target sebelumnya ada, tapi sudah mati sebelum skill sampai
+        // if (
+        //     type == SkillMovementType.Locking &&
+        //     skill.LockedEnemy != null && !ReferenceEquals(skill.LockedEnemy, null)
+        // )
+        // {
+        //     return;
+        // }
 
         switch (type)
         {
@@ -116,7 +119,6 @@ public class SkillMovement : MonoBehaviour
 
             case SkillMovementType.Locking:
                 LockingMovement();
-
                 break;
         }
 
@@ -275,12 +277,7 @@ public class SkillMovement : MonoBehaviour
 
     private void LockingMovement()
     {
-        if (skill.LockedEnemy == null)
-        {
-            return;
-        }
-
-        transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * 0.01f);
+        transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed);
 
         // rotasikan arah hadap skill --------------------------------
 

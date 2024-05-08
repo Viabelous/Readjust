@@ -12,6 +12,6 @@ public class Ignite : MonoBehaviour
         skill = GetComponent<SkillController>().skill;
         skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
 
-        print("Skill Damage + Atk: " + skill.Damage);
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }

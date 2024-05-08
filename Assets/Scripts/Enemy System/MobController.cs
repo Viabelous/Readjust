@@ -188,7 +188,6 @@ public class MobController : MonoBehaviour
         playerController.CollectAerus(enemy.aerusValue);
         playerController.CollectExp(enemy.expValue);
         Damaged();
-        StageManager.instance.PlayerKill(enemy.id);
         Destroy(gameObject, 0.1f);
     }
 

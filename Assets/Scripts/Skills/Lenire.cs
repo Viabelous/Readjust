@@ -26,5 +26,6 @@ public class Lenire : MonoBehaviour
                 skill.Timer
             )
         );
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }

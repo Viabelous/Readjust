@@ -15,6 +15,8 @@ public class Waterwall : MonoBehaviour
         float foc = GameObject.Find("Player").GetComponent<PlayerController>().player.foc;
         skill.Damage = dmgPersenOfFoc * foc;
         skill.Timer = timerPersenOfFoc;
+
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
     private void OnTriggerStay2D(Collider2D other)

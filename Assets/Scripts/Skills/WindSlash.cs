@@ -40,6 +40,8 @@ public class WindSlash : MonoBehaviour
                 targetPos = new Vector3(0, skill.MovementRange, 0);
                 break;
         }
+
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
     private void Update()

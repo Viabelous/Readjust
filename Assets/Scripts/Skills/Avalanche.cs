@@ -34,6 +34,8 @@ public class Avalanche : MonoBehaviour
                 OnBackAnimation();
                 break;
         }
+
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
     private void OnLeftRightAnimation()

@@ -21,52 +21,14 @@ public class Javeline : MonoBehaviour
 
         GetNearestEnemy();
 
-        if (
-                   skill.LockedEnemy == null ||
-                   skill.LockedEnemy != null && !ReferenceEquals(skill.LockedEnemy, null)
-               )
+        if (skill.LockedEnemy == null)
         {
-            switch (playerController.direction)
-            {
-                case ChrDirection.Right:
-                    transform.position = playerController.transform.position + new Vector3(1, 0, 0);
-                    transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 0);
-                    break;
-                case ChrDirection.Left:
-                    transform.position = playerController.transform.position + new Vector3(-1, 0, 0);
-                    transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -180);
-                    break;
-                case ChrDirection.Front:
-                    transform.position = playerController.transform.position + new Vector3(0, -1, 0);
-                    transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -90);
-                    break;
-                case ChrDirection.Back:
-                    transform.position = playerController.transform.position + new Vector3(0, 1, 0);
-                    transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 90);
-                    break;
-            }
-
-            animator.Play("javeline_failed");
+            Destroy(gameObject);
         }
-    }
-
-    private void Update()
-    {
-
-
-        // // Menghitung posisi berdasarkan pergerakan melingkar
-        // angle += Time.deltaTime * skill.MovementSpeed * 2; // Sudut berdasarkan waktu
-        // Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius; // Offset berdasarkan sudut dan radius
-        // Vector2 targetPosition = center + offset; // Posisi target berdasarkan offset
-
-        // // Menggerakkan objek ke posisi target
-        // transform.position = targetPosition;
-
-        // // Jika sudut pergerakan mencapai 720 derajat (2 kali lingkaran), maka menghilangkan objek
-        // if (angle >= Mathf.PI * 4)
-        // {
-        //     Destroy(gameObject);
-        // }
+        else
+        {
+            StageManager.instance.PlayerActivatesSkill(skill);
+        }
     }
 
     private void GetNearestEnemy()

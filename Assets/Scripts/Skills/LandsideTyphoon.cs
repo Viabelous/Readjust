@@ -24,13 +24,15 @@ public class LandsideTyphoon : MonoBehaviour
 
         skill.Damage = dmgPersenOfAgi * playerController.player.agi + dmgPersenOfAtk * playerController.player.atk;
         skill.Timer = timerPersenOfAgi * playerController.player.agi;
-        isCollider = (gameObject.name == "collider_flying_enemies" || gameObject.name == "collider_flying_enemies") ? true : false;
+        StageManager.instance.PlayerActivatesSkill(skill);
+
+        // isCollider = (gameObject.name == "collider_flying_enemies" || gameObject.name == "collider_flying_enemies") ? true : false;
 
 
-        if (!isCollider)
-        {
-            return;
-        }
+        // if (!isCollider)
+        // {
+        //     return;
+        // }
 
 
     }

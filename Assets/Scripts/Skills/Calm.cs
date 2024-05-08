@@ -23,5 +23,7 @@ public class Calm : MonoBehaviour
                 skill.Timer
             )
         );
+
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }

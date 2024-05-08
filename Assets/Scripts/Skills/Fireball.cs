@@ -11,6 +11,7 @@ public class Fireball : MonoBehaviour
     {
         skill = GetComponent<SkillController>().skill;
         skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
 }

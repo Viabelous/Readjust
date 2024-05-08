@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fa00a0def7a194ea22a032afdb2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill: {fileID: 0}
 --- !u!114 &8948778684796012438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,8 +370,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1697301938686821161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -415,7 +416,7 @@ SpriteRenderer:
   m_SortingLayerID: -1600984263
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1595145034, guid: bca3827883c61fd42915e7ced63c28e2, type: 3}
+  m_Sprite: {fileID: 1465283434, guid: bca3827883c61fd42915e7ced63c28e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

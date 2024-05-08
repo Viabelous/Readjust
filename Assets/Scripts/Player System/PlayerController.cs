@@ -142,29 +142,46 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
     }
 
-    public void UseSkill(Skill skill)
+    // public void UseSkill(Skill skill)
+    // {
+    //     // atur kalo ada pengurangan penggunaan mana dari item kah apa
+    //     switch (skill.CostType)
+    //     {
+    //         case CostType.Mana:
+    //             player.mana -= skill.Cost;
+    //             break;
+    //         case CostType.Hp:
+    //             if (skill.name == "Sacrivert")
+    //             {
+    //                 player.hp -= player.hp * 0.1f;
+    //             }
+    //             break;
+    //     }
+    // }
+
+    public void Pay(CostType costType, float value)
     {
-        // atur kalo ada pengurangan penggunaan mana dari item kah apa
-        switch (skill.CostType)
+        switch (costType)
         {
-            case SkillCost.Mana:
-                player.mana -= skill.Cost;
+            case CostType.Mana:
+                player.mana -= value;
                 break;
-            case SkillCost.Hp:
-                if (skill.name == "Sacrivert")
-                {
-                    player.hp -= player.hp * 0.1f;
-                }
+            case CostType.Hp:
+                player.hp -= value;
                 break;
-
+            case CostType.Aerus:
+                player.aerus -= value;
+                break;
+            case CostType.Exp:
+                player.exp -= value;
+                break;
         }
-
     }
 
-    public void AddShield(float shield)
-    {
-        player.shield += shield;
-    }
+    // public void AddShield(float shield)
+    // {
+    //     player.shield += shield;
+    // }
 
     // private void OnTriggerStay2D(Collider2D other)
     // {

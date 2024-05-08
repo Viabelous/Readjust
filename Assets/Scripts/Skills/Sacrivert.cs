@@ -23,5 +23,6 @@ public class Sacrivert : MonoBehaviour
                 skill.Timer
             )
         );
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 }

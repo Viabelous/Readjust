@@ -13,29 +13,30 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
 
-    [Header("Timer")]
+    public PlayerController playerController;
     public Text timeText;
 
 
     [HideInInspector] public float time;
+
     private int min, sec;
 
+    [HideInInspector] public float minTime;
 
     [HideInInspector] public GameState gameState;
+    [HideInInspector] public bool validSkill;
 
-    [HideInInspector] public List<string> killedEnemies;
+    // [HideInInspector] public List<string> killedEnemies;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
-
     }
 
     void Start()
     {
         time = Time.time;
-        killedEnemies = new List<string>();
     }
 
     // Update is called once per frame
@@ -92,10 +93,38 @@ public class StageManager : MonoBehaviour
 
     }
 
-    public void PlayerKill(string enemyId)
+    public void PlayerActivatesSkill(Skill skill)
     {
-        killedEnemies.Add(enemyId);
-        // print(killedEnemies);
+        playerController.Pay(skill.CostType, skill.Cost);
+        int index = GameManager.selectedSkills.FindIndex(skillId => skill.Id == skillId);
+        // ubah state slot skill
+        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillSlot>().ChangeState(SkillState.Active);
     }
+
+    // public void PlayerCancelSkill(GameObject)
+    // {
+    //     skill.Cancel();
+    // }
+
+    // public void CancelSkill(GameObject skillPref)
+    // {
+    //     Destroy(skillPref);
+    //     validSkill = false;
+
+    //     // Skill skill = skillPref.GetComponent<SkillController>().skill;
+
+    //     // SkillSlot[] slots = FindObjectsOfType<SkillSlot>();
+    //     // foreach (SkillSlot slot in slots)
+    //     // {
+    //     //     if (slot.skill.name == skill.Name)
+    //     //     {
+    //     //         slot.state = SkillState.Ready;
+    //     //         player.GetComponent<PlayerController>().player.mana += skill.Cost;
+    //     //         break;
+    //     //     }
+    //     // }
+    // }
+
+
 }
 

@@ -13,6 +13,7 @@ public class StalactiteShoot : MonoBehaviour
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         skill = GetComponent<SkillController>().skill;
         skill.Damage += dmgPersenOfDef * playerController.player.def + dmgPersenOfAtk * playerController.player.atk;
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
 }

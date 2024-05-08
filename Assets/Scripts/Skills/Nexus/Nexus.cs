@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Nexus : MonoBehaviour
 {
-    private Skill skill;
+    public Skill skill;
     private PlayerController playerController;
 
     private void Start()
@@ -28,19 +28,13 @@ public class Nexus : MonoBehaviour
                     skill.Timer
                 )
             );
+
+            StageManager.instance.PlayerActivatesSkill(skill);
         }
+
         else
         {
             Destroy(gameObject);
-            SkillSlot[] slots = FindObjectsOfType<SkillSlot>();
-            foreach (SkillSlot slot in slots)
-            {
-                if (slot.skill.name == skill.Name)
-                {
-                    slot.state = SkillState.Ready;
-                    playerController.player.mana += skill.Cost;
-                }
-            }
         }
     }
 

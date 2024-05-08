@@ -38,6 +38,7 @@ public class HeavyTide : MonoBehaviour
 
             skill.HitEnemy(other);
         }
+        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
     // private void OnTriggerExit2D(Collider2D other)
