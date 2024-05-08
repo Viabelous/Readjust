@@ -24,10 +24,7 @@ public class MobController : MonoBehaviour
     [HideInInspector]
     public float speed;
 
-    private DefenseSystem defenseSystem;
-    private AttackSystem attackSystem;
     private CrowdControlSystem crowdControlSystem;
-    private CharacterState state;
 
     private GameObject player;
     private Vector2 movement;
@@ -45,8 +42,6 @@ public class MobController : MonoBehaviour
     {
         animate = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        defenseSystem = GetComponent<DefenseSystem>();
-        attackSystem = GetComponent<AttackSystem>();
         crowdControlSystem = GetComponent<CrowdControlSystem>();
 
         player = GameObject.Find("Player");
@@ -54,7 +49,6 @@ public class MobController : MonoBehaviour
 
         enemy = enemy.Clone();
         speed = enemy.movementSpeed;
-        state = CharacterState.alive;
     }
 
     // Update is called once per frame
@@ -184,7 +178,6 @@ public class MobController : MonoBehaviour
 
     private void Die()
     {
-        state = CharacterState.dead;
         playerController.CollectAerus(enemy.aerusValue);
         playerController.CollectExp(enemy.expValue);
         Damaged();

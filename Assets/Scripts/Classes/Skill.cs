@@ -135,7 +135,9 @@ public class Skill : ScriptableObject
 
     public Skill Clone()
     {
-        return (Skill)this.MemberwiseClone();
+        Skill newSkill = (Skill)this.MemberwiseClone();
+        newSkill.Id += Random.Range(0, 99999);
+        return newSkill;
     }
 
     // public void Cancel(GameObject gameObject)
@@ -144,11 +146,17 @@ public class Skill : ScriptableObject
     //     Destroy(gameObject);
     // }
 
+    // id dapat diubah setiap pembuatan objek baru
+    // agar id tiap skill berbeda, biarpun objeknya sama
     public string Id
     {
         get
         {
             return id;
+        }
+        set
+        {
+            id = value;
         }
     }
 

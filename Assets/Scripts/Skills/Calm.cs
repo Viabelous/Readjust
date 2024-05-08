@@ -7,23 +7,32 @@ public class Calm : MonoBehaviour
 
     private Skill skill;
     private GameObject player;
+    private BuffSystem buffSystem;
+    private Buff buff;
 
     private void Start()
     {
         skill = GetComponent<SkillController>().skill;
 
         player = GameObject.Find("Player");
-        BuffSystem buffSystem = player.GetComponent<BuffSystem>();
-
-        buffSystem.ActivateBuff(
-           new Buff(
+        buffSystem = player.GetComponent<BuffSystem>();
+        buff = new Buff(
                 skill.Id,
+                skill.Name,
                 BuffType.FOC,
                 skill.Value,
                 skill.Timer
-            )
-        );
+            );
+        buffSystem.ActivateBuff(buff);
 
         StageManager.instance.PlayerActivatesSkill(skill);
+    }
+
+    private void Update()
+    {
+        if (!buffSystem.CheckBuff(buff))
+        {
+            Destroy(gameObject);
+        }
     }
 }

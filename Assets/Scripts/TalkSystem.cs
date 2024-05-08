@@ -25,22 +25,29 @@ public class NPC : MonoBehaviour
 
     public float wordSpeed;
     public bool playerDekat;
-    
 
-    void Start(){
+
+    void Start()
+    {
         SetText(selectedDialog);
     }
 
-    void Update(){
-        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && windowsController.GetComponent<windowsController>().ActiveWindowsID == -1){
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && windowsController.GetComponent<windowsController>().ActiveWindowsID == -1)
+        {
             nameTag.text = talkerName;
             player.GetComponent<PlayerController>().movementEnable(false);
-            if(dialogPanel.activeInHierarchy){
-                if(dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q)){
+            if (dialogPanel.activeInHierarchy)
+            {
+                if (dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q))
+                {
                     NextLine();
                 }
 
-            }else{
+            }
+            else
+            {
                 SetText(selectedDialog);
                 dialogPanel.SetActive(true);
                 StartCoroutine(Typing());
@@ -48,32 +55,37 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void resetTeks(){
-        dialogTeks.text= "";
+    public void resetTeks()
+    {
+        dialogTeks.text = "";
         index = 0;
         player.GetComponent<PlayerController>().movementEnable(true);
-        dialogPanel.SetActive(false);
+        // dialogPanel.SetActive(false);
     }
 
-    IEnumerator Typing(){
-        foreach(char letter in dialog[index].ToCharArray()){
+    IEnumerator Typing()
+    {
+        foreach (char letter in dialog[index].ToCharArray())
+        {
             dialogTeks.text += letter;
             yield return new WaitForSeconds(wordSpeed);
         }
     }
 
-    public void NextLine(){
-        if(index < dialog.Length - 1)
+    public void NextLine()
+    {
+        if (index < dialog.Length - 1)
         {
             index++;
             dialogTeks.text = "";
             StartCoroutine(Typing());
-        }else
+        }
+        else
         {
             resetTeks();
-            if(windows != string.Empty)
+            if (windows != string.Empty)
             {
-                switch(windows)
+                switch (windows)
                 {
                     case "Skill":
                         windowsController.GetComponent<windowsController>().toogleWindow(1, true);
@@ -89,7 +101,8 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player")){
+        if (other.CompareTag("Player"))
+        {
             player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = true;
 
@@ -98,7 +111,8 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Player")){
+        if (other.CompareTag("Player"))
+        {
             player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = false;
             resetTeks();
@@ -109,7 +123,8 @@ public class NPC : MonoBehaviour
     {
         string[] teks = null;
 
-        switch(option){
+        switch (option)
+        {
             case "zey_basic":
                 teks = new string[1];
                 teks[0] = "Mau buka skill windows?";
@@ -127,7 +142,7 @@ public class NPC : MonoBehaviour
                 teks = new string[1];
                 teks[0] = "System Error";
                 break;
-            
+
         }
 
         dialog = teks;

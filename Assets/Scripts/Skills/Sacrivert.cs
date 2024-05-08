@@ -18,6 +18,7 @@ public class Sacrivert : MonoBehaviour
         buffSystem.ActivateBuff(
            new Buff(
                 skill.Id,
+                skill.Name,
                 BuffType.Mana,
                 skill.Value,
                 skill.Timer

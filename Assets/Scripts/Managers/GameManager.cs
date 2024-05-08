@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+public enum GameState
+{
+    OnStage,
+    OnDeveloperZone
+}
 
 // digunakan dalam menuju on stage (?)
 public class GameManager : ScriptableObject
@@ -12,31 +17,33 @@ public class GameManager : ScriptableObject
 
     public static List<string> selectedSkills = new List<string>()
     {
-        // "skill_will_of_fire",
+        "Will Of Fire",
         // "skill_sacrivert",
         // "skill_fireball",
         // "skill_explosion",
-        "skill_ignite",
-        // "skill_fudoshin",
-        "skill_nexus",
-        // "skill_landside_typhoon",
-        // "skill_wind_slash",
-        "skill_javelin",
-        // "skill_whirlwind",
-        // "skill_preserve",
+        // "skill_ignite",
+        // "skill_nexus",
+        "Fudoshin",
+        "Preserve",
         // "skill_sanare",
         // "skill_avalanche",
+        "Invitro",
+        "Calm",
         // "skill_lenire",
-        "skill_pebble_creation",
+        "Hydro Pulse",
+        // "skill_pebble_creation",
         // "skill_thorn_cover",
         // "skill_stalactite_shoot",
-        // "skill_invitro",
-        // "skill_calm",
-
         // "skill_waterwall",
         // "skill_heavy_tide",
+        // "skill_javelin",
+        // "skill_wind_slash",
+        // "skill_whirlwind",
+        // "skill_landside_typhoon",
 
     };
+
+    public static List<string> selectedItems = new List<string>();
 
     // public static
 

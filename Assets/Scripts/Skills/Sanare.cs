@@ -19,6 +19,7 @@ public class Sanare : MonoBehaviour
         buffSystem.ActivateBuff(
            new Buff(
                 skill.Id,
+                skill.Name,
                 BuffType.HP,
                 value,
                 skill.Timer

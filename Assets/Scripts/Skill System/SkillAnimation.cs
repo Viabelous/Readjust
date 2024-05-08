@@ -57,14 +57,18 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
     {
         if (other.CompareTag("Enemy"))
         {
-            // kalau skill locking kena bayangan musuh terbang
+            // kalau skill locking kena bayangan musuh terbang atau
+            // kalau skill kena org yg bukan di-locknya
             if (
                 skill.MovementType == SkillMovementType.Locking &&
-                other.GetComponent<MobController>().enemy.type == EnemyType.Flying
+                other.GetComponent<MobController>().enemy.type == EnemyType.Flying ||
+                skill.MovementType == SkillMovementType.Locking &&
+                skill.LockedEnemy != other.transform
             )
             {
                 return;
             }
+
 
             // biasanya tipe projectile
             if (isAttacking && skill.HitType == SkillHitType.Once)

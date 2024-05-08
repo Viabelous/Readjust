@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum GameState
+public enum StageState
 {
     Boss, Pause, Victory, Lose
 }
@@ -49,30 +49,30 @@ public class StageManager : MonoBehaviour
 
         timeText.text = string.Format("{0:00}:{1:00}", min, sec);
 
-        if (min == 10)
-        {
-            StageManager.instance.gameState = GameState.Boss;
-        }
+        // if (min == 10)
+        // {
+        //     StageManager.instance.gameState = GameState.Boss;
+        // }
 
-        switch (gameState)
-        {
-            case GameState.Boss:
-                break;
-            case GameState.Pause:
-                break;
-            case GameState.Victory:
-                break;
-            case GameState.Lose:
-                // PauseGame();
-                break;
-        }
+        // switch (gameState)
+        // {
+        //     case GameState.Boss:
+        //         break;
+        //     case GameState.Pause:
+        //         break;
+        //     case GameState.Victory:
+        //         break;
+        //     case GameState.Lose:
+        //         // PauseGame();
+        //         break;
+        // }
     }
 
 
-    public void ChangeGameState(GameState gameState)
-    {
-        this.gameState = gameState;
-    }
+    // public void ChangeGameState(GameState gameState)
+    // {
+    //     this.gameState = gameState;
+    // }
 
     private void PauseGame()
     {
@@ -96,7 +96,7 @@ public class StageManager : MonoBehaviour
     public void PlayerActivatesSkill(Skill skill)
     {
         playerController.Pay(skill.CostType, skill.Cost);
-        int index = GameManager.selectedSkills.FindIndex(skillId => skill.Id == skillId);
+        int index = GameManager.selectedSkills.FindIndex(skillId => skill.Name == skillId);
         // ubah state slot skill
         GameObject.Find("slot_" + (index + 1)).GetComponent<SkillSlot>().ChangeState(SkillState.Active);
     }

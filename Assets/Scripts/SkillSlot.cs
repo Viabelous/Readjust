@@ -42,7 +42,7 @@ public class SkillSlot : MonoBehaviour
 
             // NANTI UBAHHH!!!!
             skillPref = SkillHolder.Instance.skillPrefs.Find(
-                prefab => prefab.GetComponent<SkillController>().skillTemplate.Id == GameManager.selectedSkills[index]
+                prefab => prefab.GetComponent<SkillController>().skillTemplate.Name == GameManager.selectedSkills[index]
             );
             skill = skillPref.GetComponent<SkillController>().skillTemplate;
 

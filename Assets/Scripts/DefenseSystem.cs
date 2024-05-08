@@ -72,7 +72,7 @@ public class DefenseSystem : MonoBehaviour
                 Player playerDefender = (Player)defender;
 
                 // kalau sedang menggunakan invitro
-                if (buffSystem.buffsActive.FindIndex(buff => buff.id == "skill_invitro") != -1)
+                if (buffSystem.CheckBuff("Invitro"))
                 {
                     // print("Invitro sedang aktif");
                     float gainHp = 0.5f * totalDamage;
@@ -155,24 +155,15 @@ public class DefenseSystem : MonoBehaviour
                 {
                     Skill skill = other.GetComponent<SkillController>().skill;
 
-                    // jika bukan elemen angin dan bukan me-lock musuh, maka tidak perlu kasih damage
-                    if (skill.Element != Element.Air && skill.MovementType != SkillMovementType.Locking)
+                    if (FlyingEnemyDefendingIsValid(skill, SkillHitType.Once))
                     {
-                        return;
+                        float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+                        TakeDamage(dealDamage);
+
+                        // kalau player punya buff nexus
+                        AttackIfNexusActivated(dealDamage);
                     }
 
-                    // kalau bukan yg di-lock, ga ush kasih damage
-                    if (skill.LockedEnemy.parent.GetComponent<MobController>().enemy.id != defender.id)
-                    {
-                        return;
-                    }
-
-                    float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
-                    transform.parent.GetComponent<MobController>().Damaged();
-                    TakeDamage(dealDamage);
-
-                    // kalau player punya buff nexus
-                    AttackIfNexusActivated(dealDamage);
                 }
                 break;
         }
@@ -312,17 +303,53 @@ public class DefenseSystem : MonoBehaviour
     }
 
 
+    private bool FlyingEnemyDefendingIsValid(Skill skill, SkillHitType damageType)
+    {
+        if (skill.HitType != damageType)
+        {
+            return false;
+        }
+
+        if (skill.Element != Element.Air)
+        {
+            return false;
+        }
+
+        // jika bukan elemen angin dan bukan me-lock musuh, maka tidak perlu kasih damage
+        // misalnya skill angin yang tipe area (typhoon, whirlwind dkk)
+        if (skill.MovementType != SkillMovementType.Locking)
+        {
+            return false;
+        }
+
+        // kalau skill me-lock musuh, tapi yang di lock bukan orang ini
+        // artinya skillnya cuma lewati orang ini
+        if (skill.MovementType == SkillMovementType.Locking && skill.LockedEnemy != transform)
+        {
+            return false;
+        }
+
+        // // kalau bukan yg di-lock, ga ush kasih damage
+        // if (skill.LockedEnemy.parent.GetComponent<MobController>().enemy.id != defender.id)
+        // {
+        //     return false;
+        // }
+
+        transform.parent.GetComponent<MobController>().Damaged();
+        return true;
+    }
+
     private void AttackIfNexusActivated(float dealDamage)
     {
         // kalau player punya buff nexus
-        if (player.GetComponent<BuffSystem>().CheckBuff(BuffType.Nexus))
+        if (player.GetComponent<BuffSystem>().CheckBuff("Nexus"))
         {
-            StartCoroutine(DamagedByNexus(dealDamage));
+            StartCoroutine(DamagedByNexusSkill(dealDamage));
         }
 
     }
 
-    private IEnumerator DamagedByNexus(float dealDamage)
+    private IEnumerator DamagedByNexusSkill(float dealDamage)
     {
         Transform lockedEnemy = GameObject.FindObjectOfType<Nexus>().skill.LockedEnemy;
         MobController mobController = lockedEnemy.GetComponent<MobController>();

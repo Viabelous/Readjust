@@ -21,6 +21,7 @@ public class Lenire : MonoBehaviour
         buffSystem.ActivateBuff(
            new Buff(
                 skill.Id,
+                skill.Name,
                 BuffType.Mana,
                 value,
                 skill.Timer

@@ -7,6 +7,8 @@ public class Nexus : MonoBehaviour
 {
     public Skill skill;
     private PlayerController playerController;
+    BuffSystem buffSystem;
+    private Buff buff;
 
     private void Start()
     {
@@ -18,16 +20,15 @@ public class Nexus : MonoBehaviour
 
         if (skill.LockedEnemy != null)
         {
-            BuffSystem buffSystem = playerController.GetComponent<BuffSystem>();
-
-            buffSystem.ActivateBuff(
-               new Buff(
+            buffSystem = playerController.GetComponent<BuffSystem>();
+            buff = new Buff(
                     skill.Id,
+                    skill.Name,
                     BuffType.Nexus,
                     0,
                     skill.Timer
-                )
-            );
+                );
+            buffSystem.ActivateBuff(buff);
 
             StageManager.instance.PlayerActivatesSkill(skill);
         }
@@ -38,6 +39,13 @@ public class Nexus : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!buffSystem.CheckBuff(buff))
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void GetNearestEnemyInFrontOfPlayer()
     {

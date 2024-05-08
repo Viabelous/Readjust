@@ -22,13 +22,16 @@ public enum BuffType
 public class Buff
 {
     public string id;
+    public string name;
     public BuffType type;
     public float value;
     public float timer;
+    public IEnumerator coroutine;
 
-    public Buff(string id, BuffType type, float value, float timer)
+    public Buff(string id, string name, BuffType type, float value, float timer)
     {
         this.id = id;
+        this.name = name;
         this.type = type;
         this.value = value;
         this.timer = timer;
@@ -90,7 +93,8 @@ public class BuffSystem : MonoBehaviour
         }
         else
         {
-            StartCoroutine(CoroutineBuff(buff));
+            buff.coroutine = CoroutineBuff(buff);
+            StartCoroutine(buff.coroutine);
         }
     }
 
@@ -98,12 +102,39 @@ public class BuffSystem : MonoBehaviour
     {
         AddBuff(buff);
         yield return new WaitForSeconds(buff.timer);
-        RemoveBuff(buff);
+
+        // kalau misalnya sebelum waktunya habis
+        // tapi buffnya sudah hilang,
+        // tidak perlu remove lagi
+        // biasanya terjadi saat efek skill te reset 
+        // karena player menekan skill sebelum efek skill habis
+        if (CheckBuff(buff))
+        {
+            RemoveBuff(buff);
+        }
     }
 
     public bool CheckBuff(BuffType type)
     {
         if (buffsActive.FindIndex(buff => buff.type == type) != -1)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool CheckBuff(string name)
+    {
+        if (buffsActive.FindIndex(buff => buff.name == name) != -1)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool CheckBuff(Buff buff)
+    {
+        if (buffsActive.Contains(buff))
         {
             return true;
         }
@@ -129,6 +160,14 @@ public class BuffSystem : MonoBehaviour
         {
             case CharacterType.Player:
                 PlayerController playerController = (PlayerController)chrController;
+
+                // untuk semua buff yg memiliki waktu,
+                // maka buff waktu akan direset
+                // dan efek dari buff tidak akan berganda
+                if (buff.timer > 0)
+                {
+                    ResetSimiliarBuff(buff);
+                }
 
                 switch (buff.type)
                 {
@@ -167,17 +206,11 @@ public class BuffSystem : MonoBehaviour
 
                     // preserve & invitro
                     case BuffType.Shield:
-                        int index = buffsActive.FindIndex(buff => buff.type == BuffType.Shield);
+                        // int index = buffsActive.FindIndex(buff => buff.type == BuffType.Shield);
 
                         // kalau sedang menggunakan shield, 
                         // maka hapus buff shield sebelumnya
-                        if (index != -1)
-                        {
-                            buffsActive.RemoveAt(index);
-                        }
-
-                        // // tambahkan buff shield baru
-                        // buffsActive.Add(buff);
+                        ResetSimiliarBuff(buff);
 
                         playerController.player.maxShield = buff.value;
                         playerController.player.shield = buff.value;
@@ -192,13 +225,17 @@ public class BuffSystem : MonoBehaviour
                     case BuffType.FOC:
                         playerController.player.foc += buff.value;
                         break;
+
+                    case BuffType.Nexus:
+                        break;
+
                 }
 
                 break;
 
-            case CharacterType.Enemy:
-                MobController mobController = (MobController)chrController;
-                break;
+                // case CharacterType.Enemy:
+                //     MobController mobController = (MobController)chrController;
+                //     break;
 
         }
 
@@ -246,6 +283,27 @@ public class BuffSystem : MonoBehaviour
         return sum;
     }
 
+    private void ResetSimiliarBuff(Buff buff)
+    {
+        // kalau sedang menggunakan shield, 
+        // maka hapus buff shield sebelumnya
+        if (CheckBuff(buff.name))
+        {
+            int prevBuffIndex = buffsActive.FindIndex(buffActive => buffActive.name == buff.name);
+            RemoveBuff(buffsActive[prevBuffIndex]);
+            // StopCoroutine(buff.coroutine);
+        }
 
+    }
+
+    private bool BuffisSkill(Buff buff)
+    {
+        if (buff.id.Contains("skill"))
+        {
+            return true;
+        }
+        return false;
+
+    }
 
 }

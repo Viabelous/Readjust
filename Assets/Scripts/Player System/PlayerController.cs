@@ -16,6 +16,8 @@ public enum ChrDirection
 
 public class PlayerController : MonoBehaviour
 {
+    public GameState state;
+
     // movement ------------------------------------------------------
 
     public Text aerusText, expText;
@@ -59,10 +61,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        // print("ATK: " + player.atk);
-        // print("DEF: " + player.def);
-        // print("SHIELD: " + player.shield);
-        // print("FOC: " + player.foc);
+        print("ATK: " + player.atk);
+        print("DEF: " + player.def);
+        print("SHIELD: " + player.shield);
+        print("FOC: " + player.foc);
 
         if (player.hp <= 0)
         {
@@ -104,28 +106,34 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            // interaksi dengan keyboard
-            switch (Input.inputString)
+            switch (state)
             {
-                case "q":
-                    if (nearInteractable == false)
+                case GameState.OnStage:
+                    // interaksi dengan keyboard
+                    switch (Input.inputString)
                     {
-                        animate.SetTrigger("BasicAttack");
+                        case "q":
+                            animate.SetTrigger("BasicAttack");
 
-                        GameObject prefab = SkillHolder.Instance.skillPrefs[0];
-                        if (!GameObject.Find(prefab.name + "(Clone)"))
-                        {
-                            Instantiate(prefab);
-                        }
+                            GameObject prefab = SkillHolder.Instance.skillPrefs[0];
+                            if (!GameObject.Find(prefab.name + "(Clone)"))
+                            {
+                                Instantiate(prefab);
+                            }
+
+                            break;
+
+                        case "=":
+                            SceneManager.LoadScene("MainMenu");
+                            break;
+
                     }
-
                     break;
 
-                case "=":
-                    SceneManager.LoadScene("MainMenu");
+                case GameState.OnDeveloperZone:
                     break;
-
             }
+
         }
 
 
@@ -230,7 +238,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Damaged();
-        StageManager.instance.ChangeGameState(GameState.Lose);
+        // StageManager.instance.ChangeGameState(GameState.Lose);
     }
 
     public void movementEnable(bool state)

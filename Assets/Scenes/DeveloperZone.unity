@@ -422,7 +422,6 @@ MonoBehaviour:
   skillHolder: {fileID: 0}
   cdText: {fileID: 1294995769}
   slotNumber: 7
-  state: 0
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
@@ -804,7 +803,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1452199741
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 698c211ba956fb64f9f9d9a10dca492f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4037,7 +4036,6 @@ MonoBehaviour:
   skillHolder: {fileID: 0}
   cdText: {fileID: 1376887927}
   slotNumber: 1
-  state: 0
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
@@ -4218,7 +4216,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1452199741
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6d15f7f288a575d4fa5dc07baeb43d60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4378,6 +4376,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1292305430675066341, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1292305430675066341, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
       propertyPath: movementEnabled
       value: 1
@@ -4637,7 +4639,6 @@ MonoBehaviour:
   skillHolder: {fileID: 0}
   cdText: {fileID: 143503749}
   slotNumber: 2
-  state: 0
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
@@ -6658,7 +6659,6 @@ MonoBehaviour:
   skillHolder: {fileID: 0}
   cdText: {fileID: 1798407109}
   slotNumber: 4
-  state: 0
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
@@ -9893,7 +9893,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1452199741
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: eb0e3f679ab3a524289b8d057c6443a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10310,7 +10310,6 @@ MonoBehaviour:
   skillHolder: {fileID: 0}
   cdText: {fileID: 1314414707}
   slotNumber: 6
-  state: 0
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
@@ -10934,7 +10933,6 @@ MonoBehaviour:
   skillHolder: {fileID: 0}
   cdText: {fileID: 1744597244}
   slotNumber: 5
-  state: 0
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
@@ -11332,7 +11330,6 @@ MonoBehaviour:
   skillHolder: {fileID: 0}
   cdText: {fileID: 770315578}
   slotNumber: 3
-  state: 0
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
@@ -11964,7 +11961,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1452199741
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 698c211ba956fb64f9f9d9a10dca492f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12033,7 +12030,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1452199741
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 6b0fc07100f25ca4bbfca9d5ad62b0a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

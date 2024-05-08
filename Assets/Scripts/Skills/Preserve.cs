@@ -20,6 +20,7 @@ public class Preserve : MonoBehaviour
         buffSystem.ActivateBuff(
            new Buff(
                 skill.Id,
+                skill.Name,
                 BuffType.Shield,
                 value,
                 skill.Timer
