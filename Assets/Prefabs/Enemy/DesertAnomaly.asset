@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: DesertAnomaly
   m_EditorClassIdentifier: 
-  id: enemy5401
-  maxHp: 45
+  id: enemy84610
+  maxHp: 90
   hp: 45
   atk: 15
   def: 0
@@ -23,5 +23,6 @@ MonoBehaviour:
   actionEnabled: 1
   movementEnabled: 1
   name: Desert Anomaly
+  type: 0
   aerusValue: 15
   expValue: 5

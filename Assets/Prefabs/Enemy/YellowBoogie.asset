@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: YellowBoogie
   m_EditorClassIdentifier: 
-  id: enemy72940
-  maxHp: 30
+  id: enemy83437
+  maxHp: 50
   hp: 30
   atk: 10
   def: 0
@@ -23,5 +23,6 @@ MonoBehaviour:
   actionEnabled: 1
   movementEnabled: 1
   name: Yellow Boogie
+  type: 0
   aerusValue: 10
   expValue: 4
