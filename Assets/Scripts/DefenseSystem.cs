@@ -280,13 +280,29 @@ public class DefenseSystem : MonoBehaviour
 
         Enemy enemyDefender = (Enemy)defender;
 
-        // kalau bayangan terkena damage dari skill yang tipenya lock,
-        // maka musuh terbang tidak akan terkena damage.
-        // ceritanya kena skill lock yg lagi lewat di bayangannya :)
-        if (enemyDefender.type == EnemyType.Flying && skill.MovementType == SkillMovementType.Locking)
+        if (skill.MovementType == SkillMovementType.Locking)
         {
-            return false;
+            // kalau bayangan terkena damage dari skill yang tipenya lock,
+            // maka musuh terbang tidak akan terkena damage.
+            // ceritanya kena skill lock yg lagi lewat di bayangannya :)
+            if (enemyDefender.type == EnemyType.Flying)
+            {
+                return false;
+            }
+
+            // kalau kena damage yg tipenya lock,
+            // tapi bukan yg di-lock
+            if (skill.LockedEnemy != transform)
+            {
+                return false;
+            }
         }
+
+
+        // if (enemyDefender.type == EnemyType.Flying && skill.MovementType == SkillMovementType.Locking)
+        // {
+
+        // }
 
         // jika enemy tipe terbang dan skill yang kena bukan angin,
         // maka enemy tidak akan menerima damage

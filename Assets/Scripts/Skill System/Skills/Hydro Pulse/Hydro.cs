@@ -14,6 +14,11 @@ public class Hydro : MonoBehaviour
         skill = transform.parent.GetComponent<SkillController>().skill.Clone();
         skill.LockedEnemy = transform.parent.GetComponent<HydroPulse>().lockedEnemies[index];
         GetComponent<SkillController>().skill = skill;
+
+        if (skill.LockedEnemy == null)
+        {
+            Destroy(gameObject);
+        }
         // print(skill.LockedEnemy.name);
     }
 

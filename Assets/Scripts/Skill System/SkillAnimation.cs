@@ -62,6 +62,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
             if (
                 skill.MovementType == SkillMovementType.Locking &&
                 other.GetComponent<MobController>().enemy.type == EnemyType.Flying ||
+
                 skill.MovementType == SkillMovementType.Locking &&
                 skill.LockedEnemy != other.transform
             )

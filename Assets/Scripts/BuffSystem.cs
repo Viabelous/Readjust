@@ -16,7 +16,9 @@ public enum BuffType
     AGI,
     FOC,
     Thorn,
-    Nexus
+    Nexus,
+    Element,
+    Custom
 }
 
 public class Buff

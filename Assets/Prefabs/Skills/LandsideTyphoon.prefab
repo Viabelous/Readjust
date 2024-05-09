@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1600984263
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 314919735, guid: abc39225624edeb489e2f713b6914a11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -201,8 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: c6f3de97706e77c42b4954762c878a41, type: 2}
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: c6f3de97706e77c42b4954762c878a41, type: 2}
 --- !u!114 &6767475783979136638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +245,7 @@ MonoBehaviour:
   flipBack: 0
   spriteRenderer: {fileID: 6112719182095238235}
   oppositeDirection: 0
+  offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &9090087688447881899
 MonoBehaviour:
   m_ObjectHideFlags: 0

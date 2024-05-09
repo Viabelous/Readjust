@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class NPC : MonoBehaviour
         {
             nameTag.text = talkerName;
             player.GetComponent<PlayerController>().movementEnable(false);
+
+            // kalau dialog panel sudah aktif
             if (dialogPanel.activeInHierarchy)
             {
                 if (dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q))
@@ -46,6 +49,8 @@ public class NPC : MonoBehaviour
                 }
 
             }
+
+            // kalau belum, aktifkan dialog panel
             else
             {
                 SetText(selectedDialog);
@@ -53,6 +58,8 @@ public class NPC : MonoBehaviour
                 StartCoroutine(Typing());
             }
         }
+
+
     }
 
     public void resetTeks()
@@ -91,6 +98,11 @@ public class NPC : MonoBehaviour
                         windowsController.GetComponent<windowsController>().toogleWindow(1, true);
                         break;
 
+                    // NANTI GANTI !!!!
+                    case "Stage":
+                        SceneManager.LoadScene("Stage1");
+                        break;
+
                     default:
                         break;
                 }
@@ -115,7 +127,14 @@ public class NPC : MonoBehaviour
         {
             player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = false;
+
+            // kalau nda diginiin error pas ganti scene
+            if (!Object.ReferenceEquals(dialogPanel, null))
+            {
+                dialogPanel.SetActive(false);
+            }
             resetTeks();
+
         }
     }
 
@@ -132,10 +151,15 @@ public class NPC : MonoBehaviour
                 break;
 
             case "rion_basic":
-                teks = new string[3];
+                // SILAHKAN DIGANTI NANTI !!!!!
+                teks = new string[4];
+
                 teks[0] = "Kemana tujuan kali ini";
                 teks[1] = "Tapi sebelumnya...";
                 teks[2] = "Fitur ini belum tersedia";
+
+                teks[3] = "Boong uyy ~ Menuju Stage 1 !!!";
+                windows = "Stage";
                 break;
 
             default:

@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1600984263
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 1360456890, guid: 83b8b73c6c405524f9d7b167f17576ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: 2fca79d8c8196c143af0d781961a2142, type: 2}
   skill: {fileID: 0}
 --- !u!114 &3921243976562557163
 MonoBehaviour:
@@ -270,6 +269,7 @@ MonoBehaviour:
   flipBack: 1
   spriteRenderer: {fileID: 7695240572350048324}
   oppositeDirection: 1
+  offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &2079992640913453812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,8 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: 2fca79d8c8196c143af0d781961a2142, type: 2}
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: 2fca79d8c8196c143af0d781961a2142, type: 2}
 --- !u!1 &8586706720647049876
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +424,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1600984263
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -1207471621, guid: 83b8b73c6c405524f9d7b167f17576ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -574,7 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: 2fca79d8c8196c143af0d781961a2142, type: 2}
   skill: {fileID: 0}
 --- !u!114 &6640299106011278881
 MonoBehaviour:
@@ -617,6 +615,7 @@ MonoBehaviour:
   flipBack: 0
   spriteRenderer: {fileID: 4107375629720466745}
   oppositeDirection: 0
+  offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &8111378322959267080
 MonoBehaviour:
   m_ObjectHideFlags: 0

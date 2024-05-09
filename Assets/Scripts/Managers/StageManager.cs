@@ -96,9 +96,9 @@ public class StageManager : MonoBehaviour
     public void PlayerActivatesSkill(Skill skill)
     {
         playerController.Pay(skill.CostType, skill.Cost);
-        int index = GameManager.selectedSkills.FindIndex(skillId => skill.Name == skillId);
+        int index = GameManager.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
         // ubah state slot skill
-        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillSlot>().ChangeState(SkillState.Active);
+        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
     }
 
     // public void PlayerCancelSkill(GameObject)

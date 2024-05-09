@@ -7,9 +7,6 @@ using UnityEditor;
 public class SkillController : MonoBehaviour
 {
     [SerializeField]
-    public Skill skillTemplate;
-
-    [HideInInspector]
     public Skill skill;
 
     // [HideInInspector] public bool validAttack = true;
@@ -18,7 +15,7 @@ public class SkillController : MonoBehaviour
 
     private void Start()
     {
-        skill = skillTemplate.Clone();
+        skill = skill.Clone();
         // sesuaikan damage skill dengan stage
         if (
             skill.Element == Element.Fire &&

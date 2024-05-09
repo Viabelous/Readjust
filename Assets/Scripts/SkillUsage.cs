@@ -9,7 +9,8 @@ public enum SkillState
     Active,
     Cooldown
 }
-public class SkillSlot : MonoBehaviour
+
+public class SkillUsage : MonoBehaviour
 {
     public GameObject objLight, objDark, skillHolder;
     public Text cdText;
@@ -17,6 +18,7 @@ public class SkillSlot : MonoBehaviour
 
     [HideInInspector]
     public GameObject skillPref;
+    // public GameObject skillPref;
 
     [HideInInspector]
     public Skill skill;
@@ -40,11 +42,14 @@ public class SkillSlot : MonoBehaviour
             // ganti gambar sesuai skill yang dipakai
             int index = slotNumber - 1;
 
-            // NANTI UBAHHH!!!!
-            skillPref = SkillHolder.Instance.skillPrefs.Find(
-                prefab => prefab.GetComponent<SkillController>().skillTemplate.Name == GameManager.selectedSkills[index]
-            );
-            skill = skillPref.GetComponent<SkillController>().skillTemplate;
+            // // NANTI UBAHHH!!!!
+            // skillPref = SkillHolder.Instance.skillPrefs.Find(
+            //     prefab => prefab.GetComponent<SkillController>().skillTemplate.Name == GameManager.selectedSkills[index].skillTemplate.Name
+            // );
+            // skill = skillPref.GetComponent<SkillController>().skillTemplate;
+
+            skillPref = GameManager.selectedSkills[index];
+            skill = skillPref.GetComponent<SkillController>().skill;
 
             objLight.GetComponent<Image>().sprite = skill.Sprite;
             objDark.GetComponent<Image>().sprite = objLight.GetComponent<Image>().sprite;
@@ -85,29 +90,7 @@ public class SkillSlot : MonoBehaviour
                     )
                     {
                         Instantiate(skillPref);
-                        // state = SkillState.Active;
 
-
-                        // // jika skill yg digunakan tipe lock,
-                        // // tapi tidak menemukan adanya musuh yg di-lock,
-                        // // maka skill tidak akan digunakan
-
-                        // if (skill.MovementType == SkillMovementType.Locking)
-                        // {
-                        //     if (skillPref.GetComponent<SkillController>().skill.LockedEnemy == null)
-                        //     {
-                        //         print("skill tidak akan digunakan");
-                        //         break;
-                        //     }
-                        // }
-
-
-
-                        // if (!skill.Invalid)
-                        // {
-                        //     // playerController.UseSkill(skill);
-
-                        // }
                     }
                     break;
 

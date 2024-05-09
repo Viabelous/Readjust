@@ -8,6 +8,7 @@ public class HydroPulse : MonoBehaviour
 {
     Skill skill;
     PlayerController playerController;
+    Animator animator;
 
     [HideInInspector] public List<Transform> lockedEnemies = new List<Transform>();
 
@@ -20,6 +21,7 @@ public class HydroPulse : MonoBehaviour
 
         skill = GetComponent<SkillController>().skill;
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        animator = gameObject.GetComponent<Animator>();
 
         GetNearestEnemy();
 
@@ -29,15 +31,7 @@ public class HydroPulse : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < lockedEnemies.Count; i++)
-            {
-                GameObject hydroPref = Instantiate(hydro, transform);
-                hydroPref.GetComponent<Hydro>().index = i;
-
-                // activatedHydros.Add(hydroPref);
-            }
-            Destroy(hydro);
-
+            animator.Play("hydro_pulse_awake");
             StageManager.instance.PlayerActivatesSkill(skill);
         }
     }
@@ -100,5 +94,19 @@ public class HydroPulse : MonoBehaviour
             index++;
         }
 
+    }
+
+    private void InstantiateHydros()
+    {
+        GetComponent<SkillMovement>().type = SkillMovementType.Area;
+
+        for (int i = 0; i < lockedEnemies.Count; i++)
+        {
+            GameObject hydroPref = Instantiate(hydro, transform);
+            hydroPref.GetComponent<Hydro>().index = i;
+
+            // activatedHydros.Add(hydroPref);
+        }
+        // Destroy(hydro);
     }
 }
