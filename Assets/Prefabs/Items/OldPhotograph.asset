@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467e91f0cb750da41ad934dfe3c3aaa9, type: 3}
+  m_Name: OldPhotograph
+  m_EditorClassIdentifier: 
+  id: item_old_photograph
+  name: Old Photograph
+  description: Foto keluarga usang
+  price: 5
+  icon: {fileID: 21300000, guid: fd8492186b069114e96f56aad53f8c34, type: 3}
+  types: 08000000090000000a0000000b000000
+  persentase:
+  - 0.35
+  - 0.35
+  - 0.35
+  - 0.35

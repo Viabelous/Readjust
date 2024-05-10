@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2192872399577618004}
   - component: {fileID: 8933175464109646848}
   - component: {fileID: 941804947811853658}
-  - component: {fileID: -7453258934096427117}
   - component: {fileID: 5098591500229529860}
   - component: {fileID: 5759827130453298744}
   - component: {fileID: 6191372766625315695}
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1600984263
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -568480246, guid: 047b8cc271c2e444e8ccfd4b1767ce43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -159,21 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
-  skill: {fileID: 11400000, guid: 290a7afef55eab24da746950d660d422, type: 2}
---- !u!114 &-7453258934096427117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222238090947821005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8489a66d2c905343b4e8856163f6c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgPersenOfAtk: 0.5
+  skill: {fileID: 11400000, guid: 2f2d616ca400c694893f1c63cf419826, type: 2}
 --- !u!114 &5098591500229529860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +186,7 @@ MonoBehaviour:
   flipBack: 0
   spriteRenderer: {fileID: 4458082938163574700}
   oppositeDirection: 0
+  offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &5759827130453298744
 MonoBehaviour:
   m_ObjectHideFlags: 0

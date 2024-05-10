@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class BasicStab : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Basic Stab")]
+public class BasicStab : Skill
 {
-    private Skill skill;
-
-    private void Start()
+    public override float GetDamage(Character character)
     {
-        // sesuaikan damage basic attack dengan atk player
-        skill = GetComponent<SkillController>().skill;
-        skill.Damage = GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
+        return character.atk;
     }
 }

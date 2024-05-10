@@ -2,30 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Preserve : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Preserve")]
+public class Preserve : Skill
 {
-    private Skill skill;
-    private GameObject player;
+    [Header("Buff Value")]
+    [SerializeField] private float shieldPersenOfDEF;
 
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-        skill = GetComponent<SkillController>().skill;
+        BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
-        player = GameObject.Find("Player");
-        BuffSystem buffSystem = player.GetComponent<BuffSystem>();
-
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        float value = skill.Persentase * playerController.player.def;
+        PlayerController playerController = buffSystem.GetComponent<PlayerController>();
+        float value = shieldPersenOfDEF * playerController.player.def;
 
         buffSystem.ActivateBuff(
-           new Buff(
-                skill.Id,
-                skill.Name,
-                BuffType.Shield,
-                value,
-                skill.Timer
-            )
-        );
-        StageManager.instance.PlayerActivatesSkill(skill);
+               new Buff(
+                    this.id,
+                    this.name,
+                    BuffType.Shield,
+                    value,
+                    this.timer
+                )
+            );
+        StageManager.instance.PlayerActivatesSkill(this);
     }
 }
+
+// public class Preserve : MonoBehaviour
+// {
+//     private Skill skill;
+//     private GameObject player;
+
+//     private void Start()
+//     {
+//         skill = GetComponent<SkillController>().skill;
+
+//         player = GameObject.Find("Player");
+//         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
+
+//         PlayerController playerController = player.GetComponent<PlayerController>();
+//         float value = skill.Persentase * playerController.player.def;
+
+//         buffSystem.ActivateBuff(
+//            new Buff(
+//                 skill.Id,
+//                 skill.Name,
+//                 BuffType.Shield,
+//                 value,
+//                 skill.Timer
+//             )
+//         );
+//         StageManager.instance.PlayerActivatesSkill(skill);
+//     }
+// }

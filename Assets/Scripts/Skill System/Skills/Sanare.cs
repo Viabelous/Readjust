@@ -2,30 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sanare : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Sanare")]
+public class Sanare : Skill
 {
-    private Skill skill;
-    private GameObject player;
+    [Header("Buff Value")]
+    [SerializeField] private float HPPersenOfMaxHP;
 
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-        skill = GetComponent<SkillController>().skill;
-        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        player = GameObject.Find("Player");
-        BuffSystem buffSystem = player.GetComponent<BuffSystem>();
-        float value = skill.Persentase * player.GetComponent<PlayerController>().player.maxHp;
+        BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+        float value = HPPersenOfMaxHP * buffSystem.GetComponent<PlayerController>().player.maxHp;
 
         buffSystem.ActivateBuff(
            new Buff(
-                skill.Id,
-                skill.Name,
+                this.id,
+                this.name,
                 BuffType.HP,
                 value,
-                skill.Timer
+                this.timer
             )
         );
-        StageManager.instance.PlayerActivatesSkill(skill);
+        StageManager.instance.PlayerActivatesSkill(this);
 
     }
 }
+// public class Sanare : MonoBehaviour
+// {
+//     private Skill skill;
+//     private GameObject player;
+
+//     private void Start()
+//     {
+//         skill = GetComponent<SkillController>().skill;
+//         // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+//         player = GameObject.Find("Player");
+//         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
+//         float value = skill.Persentase * player.GetComponent<PlayerController>().player.maxHp;
+
+//         buffSystem.ActivateBuff(
+//            new Buff(
+//                 skill.Id,
+//                 skill.Name,
+//                 BuffType.HP,
+//                 value,
+//                 skill.Timer
+//             )
+//         );
+//         StageManager.instance.PlayerActivatesSkill(skill);
+
+//     }
+// }

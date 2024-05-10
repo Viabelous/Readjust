@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3840209713542342047}
   - component: {fileID: 2660870827333475092}
   - component: {fileID: 385963714506514320}
-  - component: {fileID: -3119945284746679008}
   m_Layer: 0
   m_Name: Sacrivert
   m_TagString: Untagged
@@ -121,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 1a7c209116bd69c48b8ccd4cd02953eb, type: 2}
+  skill: {fileID: 11400000, guid: 310c8aea962df42489725b9c15f73481, type: 2}
 --- !u!114 &385963714506514320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,15 +149,3 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   oppositeDirection: 0
   offsetPivot: {x: 0, y: 0, z: 0}
---- !u!114 &-3119945284746679008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6224096893381730839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1da7fc16b0b30e4e9b0fc41befe1d7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

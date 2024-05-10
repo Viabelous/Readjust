@@ -241,8 +241,9 @@ public class SkillMovement : MonoBehaviour
                 transform.position += Vector3.up * skill.MovementSpeed * Time.deltaTime * (oppositeDirection ? -1 : 1);
                 break;
         }
-
-        if (Vector3.Distance(initialPosition, transform.position) > skill.MovementRange)
+        float distance = Vector3.Distance(initialPosition, transform.position);
+        // print(distance);
+        if (distance > skill.MovementRange)
         {
             Destroy(gameObject);
         }
@@ -279,33 +280,31 @@ public class SkillMovement : MonoBehaviour
 
     private void LockingMovement()
     {
-        if (skill.LockedEnemy != null && skill.LockedEnemy.gameObject != null)
+        if (skill.LockedEnemy == null)
         {
-
-            transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * 0.01f);
-
-            // rotasikan arah hadap skill --------------------------------
-
-            // Menghitung arah vektor dari titik pivot ke targetObject
-            Vector2 directionToTarget = skill.LockedEnemy.position - (transform.position + offsetPivot);
-
-            // Menghitung rotasi untuk menghadap ke arah targetObject (dalam 2D, hanya rotasi pada sumbu Z)
-            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            // Terapkan rotasi pada titik pivot
-            transform.rotation = targetRotation;
-
-            // if (transform.position == skill.LockedEnemy.position)
-            // {
-            //     // print("Hilangkan skill");
-            //     Destroy(gameObject);
-            // }
+            return;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * 0.01f);
+
+        // rotasikan arah hadap skill --------------------------------
+
+        // Menghitung arah vektor dari titik pivot ke targetObject
+        Vector2 directionToTarget = skill.LockedEnemy.position - (transform.position + offsetPivot);
+
+        // Menghitung rotasi untuk menghadap ke arah targetObject (dalam 2D, hanya rotasi pada sumbu Z)
+        float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        // Terapkan rotasi pada titik pivot
+        transform.rotation = targetRotation;
+
+        // if (transform.position == skill.LockedEnemy.position)
+        // {
+        //     // print("Hilangkan skill");
+        //     Destroy(gameObject);
+        // }
+
     }
 
 

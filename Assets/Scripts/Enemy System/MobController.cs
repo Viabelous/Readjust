@@ -35,7 +35,7 @@ public class MobController : MonoBehaviour
 
     [HideInInspector] public bool onSkillTrigger = false; // tanda apakah sedang berada di dalam collider skill
 
-    private bool thorned;
+    // private bool thorned;
 
 
     void Start()
@@ -120,49 +120,49 @@ public class MobController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
 
-        // if (other.CompareTag("Damage"))
-        // {
-        //     // print("Enemy HP: " + enemy.hp.ToString());
-        //     Damaged();
-        // }
+    //     // if (other.CompareTag("Damage"))
+    //     // {
+    //     //     // print("Enemy HP: " + enemy.hp.ToString());
+    //     //     Damaged();
+    //     // }
 
-        // kalau player punya thorn dan bukan flying enemy
-        if (
-            other.CompareTag("Player") &&
-            gameObject.CompareTag("Enemy") &&
-            enemy.type == EnemyType.Ground &&
-            playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn)
-        )
-        {
-            // print("Enemy HP: " + enemy.hp.ToString());
-            thorned = true;
-            Damaged();
-        }
-    }
+    //     // kalau player punya thorn dan bukan flying enemy
+    //     if (
+    //         other.CompareTag("Player") &&
+    //         gameObject.CompareTag("Enemy") &&
+    //         enemy.type == EnemyType.Ground &&
+    //         playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn)
+    //     )
+    //     {
+    //         // print("Enemy HP: " + enemy.hp.ToString());
+    //         thorned = true;
+    //         Damaged();
+    //     }
+    // }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        // if (other.CompareTag("Damage") && state == CharacterState.alive)
-        // {
-        //     Undamaged();
-        // }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     // if (other.CompareTag("Damage") && state == CharacterState.alive)
+    //     // {
+    //     //     Undamaged();
+    //     // }
 
-        // kalau player punya thorn
-        if (
-            other.CompareTag("Player") &&
-            gameObject.CompareTag("Enemy") &&
-            enemy.type == EnemyType.Ground &&
-            thorned
-        )
-        {
-            thorned = false;
-            Undamaged();
-        }
+    //     // kalau player punya thorn
+    //     if (
+    //         other.CompareTag("Player") &&
+    //         gameObject.CompareTag("Enemy") &&
+    //         enemy.type == EnemyType.Ground &&
+    //         thorned
+    //     )
+    //     {
+    //         thorned = false;
+    //         Undamaged();
+    //     }
 
-    }
+    // }
 
 
     public void Damaged()
@@ -174,6 +174,21 @@ public class MobController : MonoBehaviour
     public void Undamaged()
     {
         spriteRenderer.color = Color.white;
+    }
+
+    public void Effected(string effect)
+    {
+        switch (effect)
+        {
+            case "thorn":
+                Damaged();
+                Invoke("Undamaged", 0.2f);
+                break;
+            case "nexus":
+                Damaged();
+                Invoke("Undamaged", 0.2f);
+                break;
+        }
     }
 
     private void Die()

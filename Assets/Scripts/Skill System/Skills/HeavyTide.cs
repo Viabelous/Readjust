@@ -2,22 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
-public class HeavyTide : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Heavy Tide")]
+public class HeavyTide : Skill
 {
-    private Skill skill;
-    [SerializeField] private float dmgPersenOfAtk;
 
-    private void Start()
+    [Header("Boost Damage")]
+    [SerializeField] private float dmgPersenOfATK;
+
+    [Header("Crowd Control")]
+    [SerializeField] private float pushSpeed;
+    [SerializeField] private float pushRange;
+    private GameObject gameObject;
+
+
+    public override float GetDamage(Character character)
     {
-        // sesuaikan damage basic attack dengan atk player
-        skill = GetComponent<SkillController>().skill;
-        skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
+        return this.damage += dmgPersenOfATK * character.atk;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void Activate(GameObject gameObject)
     {
-        if (skill.HasHitEnemy(other))
+        this.gameObject = gameObject;
+        StageManager.instance.PlayerActivatesSkill(this);
+    }
+
+    public override void HitEnemy(Collider2D other)
+    {
+        if (HasHitEnemy(other))
         {
             return;
         }
@@ -28,100 +39,17 @@ public class HeavyTide : MonoBehaviour
             Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
             mob.ActivateCC(
                 new CCKnockBack(
-                    skill.Id,
-                    skill.PushSpeed,
-                    skill.PushRange,
+                    this.id,
+                    pushSpeed,
+                    pushRange,
                     mob.transform.position,
                     direction
                 )
             );
 
-            skill.HitEnemy(other);
+            base.HitEnemy(other);
         }
-        StageManager.instance.PlayerActivatesSkill(skill);
     }
 
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         skill.AfterHitEnemy(other);
-    //     }
-    // }
+
 }
-
-// [CreateAssetMenu]
-// public class Explosion : Skill
-// {
-//     [Header("Crowd Control")]
-//     [SerializeField] private float knockBackSpeed;
-//     [SerializeField] private float knockBackDistance;
-
-//     public override void Activate(GameObject gameObject)
-//     {
-//     }
-
-//     public override void HitEnemy(GameObject gameObject, Collider2D other)
-//     {
-//         base.HitEnemy(gameObject, other);
-//         if (other.CompareTag("Enemy"))
-//         {
-//             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-//             Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
-//             mob.ActivateCC(
-//                 new CCKnockBack(
-//                     knockBackSpeed,
-//                     knockBackDistance,
-//                     mob.transform.position,
-//                     direction
-//                 )
-//             );
-//         }
-//     }
-
-//     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
-//     {
-//         base.AfterHitEnemy(gameObject, other);
-//     }
-
-// }
-
-
-// [CreateAssetMenu]
-// public class HighTide : Skill
-// {
-//     [Header("Crowd Control")]
-//     [SerializeField] private float knockBackSpeed;
-//     [SerializeField] private float knockBackDistance;
-
-//     public override void Activate(GameObject gameObject)
-//     {
-//         // gameObject.transform.position = GameObject.Find("Player").transform.position;
-//     }
-
-//     public override void HitEnemy(GameObject gameObject, Collider2D other)
-//     {
-//         base.HitEnemy(gameObject, other);
-//         if (other.CompareTag("Enemy"))
-//         {
-//             CrowdControlSystem mob = other.GetComponent<CrowdControlSystem>();
-//             Vector3 direction = -(gameObject.transform.position - mob.transform.position).normalized;
-//             mob.ActivateCC(
-//                 new CCKnockBack(
-//                     knockBackSpeed,
-//                     knockBackDistance,
-//                     mob.transform.position,
-//                     direction
-//                 )
-//             );
-//             // mob.ActivateKnockBack(knockBackSpeed, knockBackDistance, gameObject.transform.position);
-//         }
-//     }
-
-//     public override void AfterHitEnemy(GameObject gameObject, Collider2D other)
-//     {
-//         base.AfterHitEnemy(gameObject, other);
-//     }
-
-
-// }

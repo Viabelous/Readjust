@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8151553566048235563}
   - component: {fileID: 5616897810884416296}
-  - component: {fileID: 6639038773946524796}
   - component: {fileID: 6435487527517161376}
   m_Layer: 0
   m_Name: voodoo
@@ -86,19 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6639038773946524796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5729069013633496286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skill: {fileID: 0}
 --- !u!114 &6435487527517161376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8355492636816918285}
   - component: {fileID: 3616401932824184746}
-  - component: {fileID: 3300916697938809450}
-  - component: {fileID: 6033090541346286224}
+  - component: {fileID: 8376914496802109261}
   m_Layer: 0
   m_Name: player_effect
   m_TagString: Untagged
@@ -198,7 +183,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3300916697938809450
+--- !u!114 &8376914496802109261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,38 +192,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6172582790652352302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
+  m_Script: {fileID: 11500000, guid: a44c5e0d3ed964e4a9d5bc988dcf7e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
---- !u!114 &6033090541346286224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172582790652352302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 3
-  offsetRight: {x: 0.12, y: 0.2, z: 0}
-  offsetLeft: {x: 0, y: 0.2, z: 0}
-  offsetFront: {x: 0.03, y: 0.2, z: 0}
-  offsetBack: {x: 0, y: 0.2, z: 0}
-  rotationRight: 0
-  rotationLeft: 0
-  rotationFront: 0
-  rotationBack: 0
-  flipRight: 0
-  flipLeft: 0
-  flipFront: 0
-  flipBack: 0
-  spriteRenderer: {fileID: 0}
-  oppositeDirection: 0
-  offsetPivot: {x: 0, y: 0, z: 0}
+  component: 0
 --- !u!1 &6574741127715354586
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: c56d5dc17ebd35940882cd0a2a1a796d, type: 2}
+  skill: {fileID: 11400000, guid: c37a80d3212a334449b4a046a47832b4, type: 2}
 --- !u!114 &8472302220352784144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fa00a0def7a194ea22a032afdb2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: c56d5dc17ebd35940882cd0a2a1a796d, type: 2}
 --- !u!114 &8948778684796012438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,4 +394,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44c5e0d3ed964e4a9d5bc988dcf7e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  component: 0
+  component: 2

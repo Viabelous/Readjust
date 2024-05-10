@@ -2,36 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WillOfFire : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Will Of Fire")]
+public class WillOfFire : Skill
 {
-    private Skill skill;
-    private GameObject player;
+    [Header("Buff Value")]
+    [SerializeField] private float ATKValue;
     private BuffSystem buffSystem;
     private Buff buff;
 
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-        skill = GetComponent<SkillController>().skill;
 
-        player = GameObject.Find("Player");
-        buffSystem = player.GetComponent<BuffSystem>();
+        buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
         buff = new Buff(
-                skill.Id,
-                skill.Name,
+                this.id,
+                this.name,
                 BuffType.ATK,
-                skill.Value,
-                skill.Timer
+                ATKValue,
+                this.timer
             );
 
         buffSystem.ActivateBuff(buff);
-        StageManager.instance.PlayerActivatesSkill(skill);
+        StageManager.instance.PlayerActivatesSkill(this);
     }
 
-    private void Update()
+    public override void OnActivated(GameObject gameObject)
     {
+
         if (!buffSystem.CheckBuff(buff))
         {
             Destroy(gameObject);
         }
     }
 }
+// public class WillOfFire : MonoBehaviour
+// {
+//     private Skill skill;
+//     private GameObject player;
+//     private BuffSystem buffSystem;
+//     private Buff buff;
+
+//     private void Start()
+//     {
+//         skill = GetComponent<SkillController>().skill;
+
+//         player = GameObject.Find("Player");
+//         buffSystem = player.GetComponent<BuffSystem>();
+//         buff = new Buff(
+//                 skill.Id,
+//                 skill.Name,
+//                 BuffType.ATK,
+//                 skill.Value,
+//                 skill.Timer
+//             );
+
+//         buffSystem.ActivateBuff(buff);
+//         StageManager.instance.PlayerActivatesSkill(skill);
+//     }
+
+//     private void Update()
+//     {
+//         if (!buffSystem.CheckBuff(buff))
+//         {
+//             Destroy(gameObject);
+//         }
+//     }
+// }

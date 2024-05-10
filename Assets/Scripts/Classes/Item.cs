@@ -4,19 +4,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 
-[CreateAssetMenu]
+// [CreateAssetMenu]
 public class Item : ScriptableObject
 {
-    [SerializeField] private string id;
-    [SerializeField] private new string name;
-    [SerializeField] private string description;
-    [SerializeField] private float price;
-
-    [Header("Item Buff Type")]
-    [SerializeField] private BuffType type;
+    [SerializeField] protected string id;
+    [SerializeField] protected new string name;
+    [SerializeField] protected string description;
+    [SerializeField] protected float price;
 
     [Header("Item Icon")]
-    [SerializeField] private Sprite icon;
+    [SerializeField] protected Sprite icon;
+
+    [Header("Item Buff Type")]
+    [SerializeField] protected List<BuffType> types = new List<BuffType>();
 
     public Item Clone()
     {
@@ -46,14 +46,19 @@ public class Item : ScriptableObject
         get { return price; }
     }
 
-    public BuffType Type
+    public List<BuffType> Types
     {
-        get { return type; }
+        get { return types; }
     }
 
     public Sprite Icon
     {
         get { return icon; }
+    }
+
+    public virtual void Activate(GameObject player)
+    {
+
     }
 
 }

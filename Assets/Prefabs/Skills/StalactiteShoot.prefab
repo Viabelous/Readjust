@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2393410363054025606}
   - component: {fileID: 5351507241612759970}
   - component: {fileID: 7386196645624108331}
-  - component: {fileID: 3921243976562557163}
   - component: {fileID: 4496268710673638912}
   - component: {fileID: 2079992640913453812}
   - component: {fileID: 1012745960575054088}
@@ -227,21 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
---- !u!114 &3921243976562557163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4556194617673021554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6ede416431c1f4283a8d7413aa0a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgPersenOfDef: 0.8
-  dmgPersenOfAtk: 1.8
+  skill: {fileID: 11400000, guid: f09b523d85294ea4a832e0ce811f9956, type: 2}
 --- !u!114 &4496268710673638912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2240679118178210843}
   - component: {fileID: 2373337146129584291}
+  - component: {fileID: -630682458714545024}
   m_Layer: 0
   m_Name: StalactiteShoot
   m_TagString: Untagged
@@ -345,7 +331,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 2fca79d8c8196c143af0d781961a2142, type: 2}
+  skill: {fileID: 11400000, guid: f09b523d85294ea4a832e0ce811f9956, type: 2}
+--- !u!114 &-630682458714545024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876378911442698138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42be5eb599718f64581ede5308a71f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  children:
+  - {fileID: 8586706720647049876}
+  - {fileID: 4556194617673021554}
 --- !u!1 &8586706720647049876
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +360,6 @@ GameObject:
   - component: {fileID: 3683311532169418040}
   - component: {fileID: 5275904024376243401}
   - component: {fileID: 7752878360604089852}
-  - component: {fileID: 6640299106011278881}
   - component: {fileID: 242289677856242539}
   - component: {fileID: 8111378322959267080}
   - component: {fileID: 4782026432262633095}
@@ -573,21 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
---- !u!114 &6640299106011278881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8586706720647049876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6ede416431c1f4283a8d7413aa0a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgPersenOfDef: 0.8
-  dmgPersenOfAtk: 1.8
+  skill: {fileID: 11400000, guid: f09b523d85294ea4a832e0ce811f9956, type: 2}
 --- !u!114 &242289677856242539
 MonoBehaviour:
   m_ObjectHideFlags: 0

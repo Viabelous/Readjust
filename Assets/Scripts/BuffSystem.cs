@@ -16,8 +16,10 @@ public enum BuffType
     AGI,
     FOC,
     Thorn,
-    Nexus,
-    Element,
+    Fire,
+    Earth,
+    Water,
+    Air,
     Custom
 }
 
@@ -182,6 +184,16 @@ public class BuffSystem : MonoBehaviour
                         playerController.player.def += buff.value;
                         break;
 
+                    // light step
+                    case BuffType.AGI:
+                        playerController.player.agi += buff.value;
+                        break;
+
+                    // calm
+                    case BuffType.FOC:
+                        playerController.player.foc += buff.value;
+                        break;
+
                     // sacrivert
                     case BuffType.Mana:
                         if (playerController.player.mana + buff.value > playerController.player.maxMana)
@@ -223,13 +235,6 @@ public class BuffSystem : MonoBehaviour
                     case BuffType.Thorn:
                         break;
 
-                    // calm
-                    case BuffType.FOC:
-                        playerController.player.foc += buff.value;
-                        break;
-
-                    case BuffType.Nexus:
-                        break;
 
                 }
 

@@ -2,28 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sacrivert : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Sacrivert")]
+public class Sacrivert : Skill
 {
-    private Skill skill;
-    private GameObject player;
+    [Header("Custom Cost")]
+    [SerializeField] private float costPersenOfMaxHP;
 
-    private void Start()
+    [Header("Buff Value")]
+    [SerializeField] private float manaValue;
+
+    public override void Activate(GameObject gameObject)
     {
-        skill = GetComponent<SkillController>().skill;
-        // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+        float hp = buffSystem.GetComponent<PlayerController>().player.hp;
+        this.cost = costPersenOfMaxHP * hp;
 
-        player = GameObject.Find("Player");
-        BuffSystem buffSystem = player.GetComponent<BuffSystem>();
+        if (hp >= this.cost)
+        {
+            buffSystem.ActivateBuff(
+                   new Buff(
+                        this.id,
+                        this.name,
+                        BuffType.Mana,
+                        manaValue,
+                        this.timer
+                    )
+                );
 
-        buffSystem.ActivateBuff(
-           new Buff(
-                skill.Id,
-                skill.Name,
-                BuffType.Mana,
-                skill.Value,
-                skill.Timer
-            )
-        );
-        StageManager.instance.PlayerActivatesSkill(skill);
+            StageManager.instance.PlayerActivatesSkill(this);
+        }
+
     }
 }
+// public class Sacrivert : MonoBehaviour
+// {
+//     private Skill skill;
+//     private GameObject player;
+
+//     private void Start()
+//     {
+//         skill = GetComponent<SkillController>().skill;
+//         // playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+//         player = GameObject.Find("Player");
+//         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
+
+//         buffSystem.ActivateBuff(
+//            new Buff(
+//                 skill.Id,
+//                 skill.Name,
+//                 BuffType.Mana,
+//                 skill.Value,
+//                 skill.Timer
+//             )
+//         );
+//         StageManager.instance.PlayerActivatesSkill(skill);
+//     }
+// }

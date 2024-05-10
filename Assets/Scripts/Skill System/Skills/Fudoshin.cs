@@ -1,33 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Fudoshin : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Fudoshin")]
+public class Fudoshin : Skill
 {
-    private Skill skill;
-    private GameObject player;
+    [Header("Buff Value")]
+    [SerializeField] private float DEFValue;
     private BuffSystem buffSystem;
     private Buff buff;
 
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-        skill = GetComponent<SkillController>().skill;
-
-        player = GameObject.Find("Player");
-        buffSystem = player.GetComponent<BuffSystem>();
+        buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
         buff = new Buff(
-                skill.Id,
-                skill.Name,
+                id,
+                name,
                 BuffType.DEF,
-                skill.Value,
-                skill.Timer
+                DEFValue,
+                Timer
             );
         buffSystem.ActivateBuff(buff);
-        StageManager.instance.PlayerActivatesSkill(skill);
+        StageManager.instance.PlayerActivatesSkill(this);
     }
 
-    private void Update()
+    public override void OnActivated(GameObject gameObject)
     {
         if (!buffSystem.CheckBuff(buff))
         {

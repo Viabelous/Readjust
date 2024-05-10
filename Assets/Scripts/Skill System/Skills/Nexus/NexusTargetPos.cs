@@ -7,17 +7,20 @@ public class NexusTargetPos : MonoBehaviour
     enum NexusComponent
     {
         Effect,
-        Voodoo
+        Voodoo,
+        Link
     }
 
     private Skill skill;
     [SerializeField] private NexusComponent component;
+    private PlayerController playerController;
 
     private void Start()
     {
-        skill = transform.parent.GetComponent<SkillController>().skill;
-        SetPosition();
+        // SetPosition();
 
+        skill = transform.parent.GetComponent<SkillController>().skill;
+        playerController = StageManager.instance.playerController;
     }
 
     private void Update()
@@ -39,11 +42,13 @@ public class NexusTargetPos : MonoBehaviour
         switch (component)
         {
             case NexusComponent.Effect:
-                transform.position = (Vector2)target.transform.position - Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.5f;
-
+                transform.position = playerController.transform.position;
                 break;
             case NexusComponent.Voodoo:
                 transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.5f;
+                break;
+            case NexusComponent.Link:
+                transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.1f;
                 break;
         }
 

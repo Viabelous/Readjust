@@ -71,34 +71,26 @@ public class DefenseSystem : MonoBehaviour
             case CharacterType.Player:
                 Player playerDefender = (Player)defender;
 
-                // kalau sedang menggunakan invitro
-                if (buffSystem.CheckBuff("Invitro"))
-                {
-                    // print("Invitro sedang aktif");
-                    float gainHp = 0.5f * totalDamage;
-
-                    // kalau setelah ditambahkan, > max HP,
-                    // jadikan banyak hp = maxHP
-                    if (playerDefender.hp + gainHp >= playerDefender.maxHp)
-                    {
-                        playerDefender.hp = playerDefender.maxHp;
-                    }
-                    // kalau tidak, tambahkan hp
-                    else
-                    {
-                        playerDefender.hp += gainHp;
-
-                    }
-                }
+                // kalau ada skill invitro, healing player ketika kena damage
+                HealingByInvitroSkill(playerDefender, totalDamage);
 
                 if (playerDefender.shield > 0)
                 {
+
                     // kalau ternyata damage yg diterima > shield yg ada, 
                     // berarti masih ada damage yg harus diterima hp
                     if (totalDamage > playerDefender.shield)
                     {
                         totalDamage -= playerDefender.shield;
                         playerDefender.shield = 0;
+
+                        // hapus efek healing & sheild invitro karena shield sudah habis
+                        GameObject invitro = GameObject.Find("Invitro(Clone)");
+                        if (invitro != null)
+                        {
+                            Destroy(invitro);
+                        }
+
                     }
                     // kalau ternyata shield yg ada > damage yg diterima,
                     // berarti hp tidak perlu menerima damage lagi
@@ -106,6 +98,7 @@ public class DefenseSystem : MonoBehaviour
                     {
                         playerDefender.shield -= totalDamage;
                         return;
+
                     }
                 }
 
@@ -194,7 +187,8 @@ public class DefenseSystem : MonoBehaviour
                         float thornDamage = buffSystem.buffsActive.Find(buff => buff.type == BuffType.Thorn).value;
 
                         // musuh yg menyerang juga terkena damage
-                        other.GetComponent<MobController>().Damaged();
+                        // other.GetComponent<MobController>().Damaged();
+                        other.GetComponent<MobController>().Effected("thorn");
                         other.GetComponent<DefenseSystem>().Attacked(thornDamage);
                     }
 
@@ -360,22 +354,70 @@ public class DefenseSystem : MonoBehaviour
         // kalau player punya buff nexus
         if (player.GetComponent<BuffSystem>().CheckBuff("Nexus"))
         {
-            StartCoroutine(DamagedByNexusSkill(dealDamage));
+            DamagedByNexusSkill(dealDamage);
         }
 
     }
 
-    private IEnumerator DamagedByNexusSkill(float dealDamage)
+    private void DamagedByNexusSkill(float dealDamage)
     {
-        Transform lockedEnemy = GameObject.FindObjectOfType<Nexus>().skill.LockedEnemy;
-        MobController mobController = lockedEnemy.GetComponent<MobController>();
-        mobController.Damaged();
-        lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(0.3f * dealDamage);
-        print("Nexus HP: " + mobController.enemy.hp);
+        Skill nexus = GameObject.Find("Nexus").GetComponent<SkillController>().skill;
+        Transform lockedEnemy = nexus.LockedEnemy;
 
-        yield return new WaitForSeconds(0.5f);
-        mobController.Undamaged();
+        MobController mobController = lockedEnemy.GetComponent<MobController>();
+        mobController.Effected("nexus");
+
+        // berikan damage ke musuh yg ditandai
+        lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(((Nexus)nexus).dmgPersenOfTotalDmg * dealDamage);
+
     }
+
+    private void HealingByInvitroSkill(Player playerDefender, float takenDamage)
+    {
+        GameObject invitro = GameObject.Find("Invitro(Clone)");
+
+        // kalau sedang menggunakan invitro
+        if (buffSystem.CheckBuff("Invitro") && invitro != null)
+        {
+            print("Heal ~");
+            Skill skill = invitro.GetComponent<SkillController>().skill;
+            float gainHp = ((Invitro)skill).hpPersenOfDmg * takenDamage;
+
+            // kalau setelah ditambahkan, > max HP,
+            // jadikan banyak hp = maxHP
+            if (playerDefender.hp + gainHp >= playerDefender.maxHp)
+            {
+                playerDefender.hp = playerDefender.maxHp;
+            }
+            // kalau tidak, tambahkan hp
+            else
+            {
+                playerDefender.hp += gainHp;
+            }
+        }
+    }
+
+
+
+    // private IEnumerator DamagedByNexusSkill(float dealDamage)
+    // {
+    //     Transform lockedEnemy = GameObject.FindObjectOfType<NexusBehaviour>().skill.LockedEnemy;
+    //     // Transform lockedEnemy = GameObject.Find("Nexus").GetComponent<SkillController>().skill.LockedEnemy;
+
+    //     MobController mobController = lockedEnemy.GetComponent<MobController>();
+    //     mobController.Effected("nexus");
+
+    //     // berikan damage ke musuh yg ditandai
+    //     mobController.Damaged();
+    //     lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(0.3f * dealDamage);
+    //     print("Nexus HP: " + mobController.enemy.hp);
+
+    //     yield return new WaitForSeconds(0.3f);
+    //     // if (mobController.transform != null)
+    //     // {
+    //     //     mobController.Undamaged();
+    //     // }
+    // }
 
 
 }

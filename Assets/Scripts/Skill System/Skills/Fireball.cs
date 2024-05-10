@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Fireball")]
+public class Fireball : Skill
 {
-    private Skill skill;
-    [SerializeField] private float dmgPersenOfAtk;
+    [Header("Boost Damage")]
+    [SerializeField] private float dmgPersenOfATK;
 
-    private void Start()
+    public override float GetDamage(Character character)
     {
-        skill = GetComponent<SkillController>().skill;
-        skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
-        StageManager.instance.PlayerActivatesSkill(skill);
+        return damage + dmgPersenOfATK * character.atk;
     }
 
+    public override void Activate(GameObject gameObject)
+    {
+        StageManager.instance.PlayerActivatesSkill(this);
+    }
 }

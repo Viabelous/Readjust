@@ -13,27 +13,44 @@ public class SkillController : MonoBehaviour
 
     // [SerializeField] private Collider2D groundCollider, flyingCollider;
 
-    private void Start()
+    private void Awake()
     {
         skill = skill.Clone();
+    }
+
+    private void Start()
+    {
+
         // sesuaikan damage skill dengan stage
-        if (
-            skill.Element == Element.Fire &&
-            (
-                skill.Type == SkillType.BurstDamage ||
-                skill.Type == SkillType.CrowdControl ||
-                skill.Type == SkillType.Debuff
-            )
-        )
-        {
-            skill.Damage += skill.Damage * 0.1f;
-        }
-        // print("Skill Damage + Fire: " + skill.Damage);
+        // if (
+        //     skill.Element == Element.Fire &&
+        //     (
+        //         skill.Type == SkillType.BurstDamage ||
+        //         skill.Type == SkillType.CrowdControl ||
+        //         skill.Type == SkillType.Debuff
+        //     )
+        // )
+        // {
+        //     skill.Damage += skill.Damage * 0.1f;
+        // }
+
         skill.Activate(gameObject);
+        // print(skill.GetDamage(GameObject.Find("Player").GetComponent<PlayerController>().player));
+    }
+
+    private void Update()
+    {
+        skill.OnActivated(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        skill.HitEnemy(other);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        skill.WhileHitEnemy(other);
 
         if (other.CompareTag("Enemy"))
         {
@@ -59,7 +76,7 @@ public class SkillController : MonoBehaviour
             // }
         }
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && skill.MovementType != SkillMovementType.OnPlayer)
         {
 
             if (transform.position.y > other.transform.position.y)
@@ -96,6 +113,7 @@ public class SkillController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            skill.AfterHitEnemy(other);
             other.GetComponent<MobController>().onSkillTrigger = false;
         }
     }

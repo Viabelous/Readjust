@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4530085670535589256}
   - component: {fileID: 665238623443447580}
   - component: {fileID: -5893394643169127512}
-  - component: {fileID: 6015912627290665306}
   - component: {fileID: -5034613908323077341}
   m_Layer: 0
   m_Name: Invitro
@@ -121,21 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: d3e8aecf8e1f48c48a0a753a111b7cf0, type: 2}
---- !u!114 &6015912627290665306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307972776550128653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f1a467b909e21542b75994717712a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldPersenOfMaxHP: 0.2
-  shieldPersenOfDef: 6
+  skill: {fileID: 11400000, guid: c5c466325c9139d44a6db307efbfe745, type: 2}
 --- !u!114 &-5034613908323077341
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,61 +37,56 @@ public enum CostType
 [CreateAssetMenu]
 public class Skill : ScriptableObject
 {
-    [SerializeField] private string id;            // id skill
-    [SerializeField] private new string name;      // nama skill
-    [SerializeField] private Element element;
-    [SerializeField] private SkillType type;       // tipe damage yg diberikan
-    [SerializeField] private SkillHitType hitType; // tipe pukulan yg diberikan 
-    [SerializeField] private SkillMovementType movementType; // tipe gerakan skill 
-    [SerializeField] private CostType costType;   // tipe bayaran yg dipake
-    [SerializeField] private float maxCd;          // cd maksimal
-    [SerializeField] private float cost;           // total mana/hp di awal
-    [SerializeField] private float damage;         // total damage di awal
+    [SerializeField] protected string id;            // id skill
+    [SerializeField] protected new string name;      // nama skill
+    [SerializeField] protected Element element;
+    [SerializeField] protected SkillType type;       // tipe damage yg diberikan
+    [SerializeField] protected SkillHitType hitType; // tipe pukulan yg diberikan 
+    [SerializeField] protected SkillMovementType movementType; // tipe gerakan skill 
+    [SerializeField] protected CostType costType;   // tipe bayaran yg dipake
+    [SerializeField] protected float maxCd;          // cd maksimal
+    [SerializeField] protected float cost;           // total mana/hp di awal
+    [SerializeField] protected float damage;         // total damage di awal
 
     [Header("Skill Icon")]
-    [SerializeField] private Sprite sprite;
+    [SerializeField] protected Sprite sprite;
 
     [Header("Linear Skill")]
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float movementRange;
+    [SerializeField] protected float movementSpeed;
+    [SerializeField] protected float movementRange;
 
     [Header("Temporary Skill")]
-    [SerializeField] private float timer;
+    [SerializeField] protected float timer;
+    protected int level = 1;
 
-    [Header("Buff/Heal/Debuff")]
-    [SerializeField] private float value;
-    [SerializeField] private float persentase;
+    // [Header("Buff/Heal/Debuff")]
+    // [SerializeField] private float value;
+    // [SerializeField] private float persentase;
 
-    [Header("Crowd Control")]
-    [SerializeField] private float pushSpeed;
-    [SerializeField] private float pushRange;
+    // [Header("Crowd Control")]
+    // [SerializeField] private float pushSpeed;
+    // [SerializeField] private float pushRange;
 
-    private List<string> enemiesId = new List<string>();
-    private int level = 1;
-    private Transform lockedEnemy;
-    private bool invalid = false;
+    protected List<string> enemiesId = new List<string>();
 
+    protected Transform lockedEnemy;
 
     public virtual void Activate(GameObject gameObject)
     {
-        // switch (element)
-        // {
-        //     case Element.Fire:
-        //         damage += 20;
-        //         break;
-        //     case Element.Earth:
-        //         damage += 5;
-        //         break;
-        //     case Element.Water:
-        //         damage += 10;
-        //         break;
-        //     case Element.Air:
-        //         damage += 10;
-        //         break;
-        // }
+
     }
 
-    public void HitEnemy(Collider2D other)
+    public virtual void OnActivated(GameObject gameObject)
+    {
+
+    }
+
+    public virtual void OnDeactivated(GameObject gameObject)
+    {
+
+    }
+
+    public virtual void HitEnemy(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -100,7 +95,12 @@ public class Skill : ScriptableObject
         }
     }
 
-    public void AfterHitEnemy(Collider2D other)
+    public virtual void WhileHitEnemy(Collider2D other)
+    {
+
+    }
+
+    public virtual void AfterHitEnemy(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -133,10 +133,10 @@ public class Skill : ScriptableObject
         return false;
     }
 
-    public Skill Clone()
+    public virtual Skill Clone()
     {
         Skill newSkill = (Skill)this.MemberwiseClone();
-        newSkill.Id += Random.Range(0, 99999);
+        newSkill.RandomizeId();
         return newSkill;
     }
 
@@ -153,10 +153,6 @@ public class Skill : ScriptableObject
         get
         {
             return id;
-        }
-        set
-        {
-            id = value;
         }
     }
 
@@ -193,17 +189,7 @@ public class Skill : ScriptableObject
     {
         get
         {
-            switch (level)
-            {
-                case 1:
-                    return maxCd - 0.1f * maxCd;
-                case 2:
-                    return maxCd - 0.2f * maxCd;
-                case 3:
-                    return maxCd - 0.3f * maxCd;
-                default:
-                    return maxCd;
-            }
+            return maxCd;
         }
     }
 
@@ -214,32 +200,32 @@ public class Skill : ScriptableObject
         {
             return cost;
         }
-        set { cost = value; }
     }
 
     // karena ada tambahan damage tiap elemen tergantung stage sehingga bisa diedit
-    public float Damage
-    {
-        get
-        {
-            switch (level)
-            {
-                case 1:
-                    return damage + 0.1f * damage;
-                case 2:
-                    return damage + 0.2f * damage;
-                case 3:
-                    return damage + 0.3f * damage;
-                default:
-                    return damage;
-            }
-        }
+    // public float Damage
+    // {
+    //     get
+    //     {
+    //         // switch (level)
+    //         // {
+    //         //     case 1:
+    //         //         return damage + 0.1f * damage;
+    //         //     case 2:
+    //         //         return damage + 0.2f * damage;
+    //         //     case 3:
+    //         //         return damage + 0.3f * damage;
+    //         //     default:
+    //         //         return damage;
+    //         // }
+    //         return damage;
+    //     }
 
-        set
-        {
-            damage = value;
-        }
-    }
+    //     set
+    //     {
+    //         damage = value;
+    //     }
+    // }
 
     public Sprite Sprite
     {
@@ -259,26 +245,6 @@ public class Skill : ScriptableObject
     public float Timer
     {
         get { return timer; }
-        set { timer = value; }
-    }
-
-    public float Value
-    {
-        get { return value; }
-    }
-
-    public float Persentase
-    {
-        get { return persentase; }
-    }
-
-    public float PushSpeed
-    {
-        get { return pushSpeed; }
-    }
-    public float PushRange
-    {
-        get { return pushRange; }
     }
 
     public int Level
@@ -291,8 +257,14 @@ public class Skill : ScriptableObject
         get { return lockedEnemy; }
         set { lockedEnemy = value; }
     }
-    public bool Invalid
+
+    public virtual float GetDamage(Character character)
     {
-        get { return invalid; }
+        return damage;
+    }
+
+    public void RandomizeId()
+    {
+        this.id += Random.Range(0, 99999);
     }
 }

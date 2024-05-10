@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48e88be352132b4999c8527ef4bbb27, type: 3}
+  m_Script: {fileID: 11500000, guid: d2910ca230f629949ad55ec5f745d964, type: 3}
   m_Name: RedShoes
   m_EditorClassIdentifier: 
   id: item_red_shoes
   name: Red Shoes
-  description: 
-  price: 10
-  type: 0
-  icon: {fileID: 0}
+  description: Sepatu merah snowwhite
+  price: 50
+  icon: {fileID: 21300000, guid: 716c137b9030d614fb7463a08170affe, type: 3}
+  types: 05000000
+  value:
+  - 4

@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1600984263
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -359965469, guid: d4377d813a4d7904689b3180f0e13448, type: 3}
+  m_Sprite: {fileID: 707105528, guid: d4377d813a4d7904689b3180f0e13448, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 2264112090938507879}
   - component: {fileID: 361257760938710392}
   - component: {fileID: 2639889955653576784}
-  - component: {fileID: 8461242117919894078}
   - component: {fileID: 6207069053977314443}
   - component: {fileID: 4302961139427784445}
   m_Layer: 0
@@ -116,7 +115,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1988265679017548294}
@@ -230,21 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: 2e954aac1e9137c4b8565a982d4a705b, type: 2}
-  skill: {fileID: 11400000, guid: 2e954aac1e9137c4b8565a982d4a705b, type: 2}
---- !u!114 &8461242117919894078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424176912135380703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45ef33b981c8074a8129b8e9df344fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgPersenOfAtk: 0.25
+  skill: {fileID: 11400000, guid: 4afe73092fb2a214a98d1ea18d0becae, type: 2}
 --- !u!114 &6207069053977314443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +257,7 @@ MonoBehaviour:
   flipBack: 0
   spriteRenderer: {fileID: 0}
   oppositeDirection: 0
+  offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &4302961139427784445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,9 +342,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -759652937
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -701243170, guid: d4377d813a4d7904689b3180f0e13448, type: 3}
+  m_Sprite: {fileID: -1913506456, guid: d4377d813a4d7904689b3180f0e13448, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

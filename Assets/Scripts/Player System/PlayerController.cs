@@ -20,29 +20,27 @@ public class PlayerController : MonoBehaviour
 
     // movement ------------------------------------------------------
 
-    public Text aerusText, expText;
 
-    public float minX, maxX, minY, maxY;
+    [SerializeField] private GameObject basicStab;
+    [SerializeField] private Text aerusText, expText;
+
+    [SerializeField] private float minX, maxX, minY, maxY;
 
     public SpriteRenderer[] spriteRenderers;
-    public Rigidbody2D rb;
 
-    public Animator animate;
+    [SerializeField] private Rigidbody2D rb;
 
-    Vector2 movement;
+    [SerializeField] private Animator animate;
+
+    private Vector2 movement;
 
     public Player player;
 
-    [HideInInspector]
-    public ChrDirection direction;
+    [HideInInspector] public ChrDirection direction;
 
-    [HideInInspector]
-    public bool movementEnabled;
+    [HideInInspector] public bool movementEnabled;
 
-    [HideInInspector]
-    public bool nearInteractable;
-
-    private DefenseSystem defenseSystem;
+    [HideInInspector] public bool nearInteractable;
 
     // attack -------------------------------------------------
 
@@ -51,8 +49,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         direction = ChrDirection.Front;
-        defenseSystem = GetComponent<DefenseSystem>();
         player = player.Clone();
+        // print("ATK di Start: " + player.atk);
+
         movementEnabled = true;
         nearInteractable = false;
     }
@@ -64,6 +63,7 @@ public class PlayerController : MonoBehaviour
         print("ATK: " + player.atk);
         print("DEF: " + player.def);
         print("SHIELD: " + player.shield);
+        print("AGI: " + player.agi);
         print("FOC: " + player.foc);
 
         if (player.hp <= 0)
@@ -115,10 +115,9 @@ public class PlayerController : MonoBehaviour
                         case "q":
                             animate.SetTrigger("BasicAttack");
 
-                            GameObject prefab = SkillHolder.Instance.skillPrefs[0];
-                            if (!GameObject.Find(prefab.name + "(Clone)"))
+                            if (!GameObject.Find(basicStab.name + "(Clone)"))
                             {
-                                Instantiate(prefab);
+                                Instantiate(basicStab);
                             }
 
                             break;
@@ -135,8 +134,6 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-
-
     }
 
     void FixedUpdate()
@@ -149,23 +146,6 @@ public class PlayerController : MonoBehaviour
 
         transform.position = position;
     }
-
-    // public void UseSkill(Skill skill)
-    // {
-    //     // atur kalo ada pengurangan penggunaan mana dari item kah apa
-    //     switch (skill.CostType)
-    //     {
-    //         case CostType.Mana:
-    //             player.mana -= skill.Cost;
-    //             break;
-    //         case CostType.Hp:
-    //             if (skill.name == "Sacrivert")
-    //             {
-    //                 player.hp -= player.hp * 0.1f;
-    //             }
-    //             break;
-    //     }
-    // }
 
     public void Pay(CostType costType, float value)
     {
@@ -185,27 +165,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
-    // public void AddShield(float shield)
-    // {
-    //     player.shield += shield;
-    // }
-
-    // private void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         Damaged();
-    //     }
-    // }
-
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         Undamaged();
-    //     }
-    // }
 
     public void Damaged()
     {

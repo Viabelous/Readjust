@@ -1,112 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
-
-public class HydroPulse : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Hydro Pulse")]
+public class HydroPulse : Skill
 {
-    Skill skill;
-    PlayerController playerController;
-    Animator animator;
+    [Header("Boost Damage")]
+    [SerializeField] private float dmgPersenOfATK;
+    [Header("Skill Range")]
+    [SerializeField] public float radius;
+    // [HideInInspector] public Transform ;
 
-    [HideInInspector] public List<Transform> lockedEnemies = new List<Transform>();
-
-    [SerializeField] private GameObject hydro;
-
-    void Start()
+    public override float GetDamage(Character character)
     {
-        // hydro.SetActive(false);
-
-
-        skill = GetComponent<SkillController>().skill;
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        animator = gameObject.GetComponent<Animator>();
-
-        GetNearestEnemy();
-
-        if (lockedEnemies.Count == 0)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            animator.Play("hydro_pulse_awake");
-            StageManager.instance.PlayerActivatesSkill(skill);
-        }
+        return damage += dmgPersenOfATK * character.atk;
     }
 
-    private void Update()
+    public override void Activate(GameObject gameObject)
     {
-        if (lockedEnemies.Count == 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+        //  = GameObject.Find("Player").transform;
 
-    private void GetNearestEnemy()
-    {
-        // skill.LockedEnemy = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemy>().children[0].transform;
-
-        List<Collider2D> enemiesInRadius = Physics2D.OverlapCircleAll(
-            playerController.transform.position,
-            skill.MovementRange,
-            LayerMask.GetMask("Enemy")
-        ).ToList();
-
-        Dictionary<Transform, float> distances = new Dictionary<Transform, float>();
-        // List<int> flyingEnemyIndexes = new List<int>();
-
-        // for (int i = 0; i < enemiesInRadius.Count; i++)
-        foreach (Collider2D enemy in enemiesInRadius)
-        {
-            MobController mob = enemy.GetComponent<MobController>();
-
-            if (mob.enemy.type != EnemyType.Ground)
-            {
-                // flyingEnemyIndexes.Add(i);
-                continue;
-            }
-
-            float distanceToEnemy = Vector3.Distance(playerController.transform.position, enemy.transform.position);
-            distances.Add(enemy.transform, distanceToEnemy);
-        }
-
-        // foreach (int i in flyingEnemyIndexes)
-        // {
-        //     enemiesInRadius.RemoveAt(i);
-        // }
-
-        if (distances.Count == 0)
-        {
-            return;
-        }
-
-        distances.OrderBy(dict => dict.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
-
-        int index = 0;
-        foreach (Transform key in distances.Keys)
-        {
-            if (index < 5)
-            {
-                lockedEnemies.Add(key);
-            }
-            index++;
-        }
 
     }
 
-    private void InstantiateHydros()
+    public override void OnActivated(GameObject gameObject)
     {
-        GetComponent<SkillMovement>().type = SkillMovementType.Area;
-
-        for (int i = 0; i < lockedEnemies.Count; i++)
-        {
-            GameObject hydroPref = Instantiate(hydro, transform);
-            hydroPref.GetComponent<Hydro>().index = i;
-
-            // activatedHydros.Add(hydroPref);
-        }
-        // Destroy(hydro);
     }
+
+    // private void GetNearestEnemy()
+    // {
+    //     // skill.LockedEnemy = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemy>().children[0].transform;
+
+    //     List<Collider2D> enemiesInRadius = Physics2D.OverlapCircleAll(
+    //         player.transform.position,
+    //         ((HydroPulse)skill).radius,
+    //         LayerMask.GetMask("Enemy")
+    //     ).ToList();
+
+    //     Dictionary<Transform, float> distances = new Dictionary<Transform, float>();
+
+    //     foreach (Collider2D enemy in enemiesInRadius)
+    //     {
+    //         MobController mob = enemy.GetComponent<MobController>();
+
+    //         if (mob.enemy.type != EnemyType.Ground)
+    //         {
+    //             // flyingEnemyIndexes.Add(i);
+    //             continue;
+    //         }
+
+    //         float distanceToEnemy = Vector3.Distance(player.transform.position, enemy.transform.position);
+    //         distances.Add(enemy.transform, distanceToEnemy);
+    //     }
+
+    //     if (distances.Count == 0)
+    //     {
+    //         lockedEnemies.Clear();
+    //         return;
+    //     }
+    //     distances.OrderBy(dict => dict.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+
+    //     int index = 0;
+    //     foreach (Transform key in distances.Keys)
+    //     {
+    //         if (index < 5)
+    //         {
+    //             lockedEnemies.Add(key);
+    //         }
+    //         index++;
+    //     }
+
+    // }
+
+
+
 }

@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48e88be352132b4999c8527ef4bbb27, type: 3}
+  m_Script: {fileID: 11500000, guid: d2910ca230f629949ad55ec5f745d964, type: 3}
   m_Name: TeaLeaves
   m_EditorClassIdentifier: 
   id: item_tea_leaves
   name: Tea Leaves
-  description: 
-  price: 100
-  type: 0
-  icon: {fileID: 0}
+  description: Teh pucuk
+  price: 10
+  icon: {fileID: 21300000, guid: e5ebbbda1ba5a0b48b6fc9e63b17e0cd, type: 3}
+  types: 06000000
+  value:
+  - 4

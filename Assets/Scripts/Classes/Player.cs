@@ -28,7 +28,6 @@ public class Player : Character
     {
         get
         {
-            // Isi dengan logika atau nilai yang ingin Anda kembalikan
             return speed + agi * 0.1f;
         }
     }

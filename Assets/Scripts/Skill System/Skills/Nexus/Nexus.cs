@@ -3,34 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Nexus : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Nexus")]
+public class Nexus : Skill
 {
-    public Skill skill;
+    [Header("Skill Effect")]
+    [SerializeField] private float radius;
+    [SerializeField] public float dmgPersenOfTotalDmg;
     private PlayerController playerController;
-    BuffSystem buffSystem;
+    private BuffSystem buffSystem;
     private Buff buff;
 
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-        skill = GetComponent<SkillController>().skill;
-
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        GetNearestEnemyInFrontOfPlayer();
+        GetNearestAndHighestHPEnemy();
 
-        if (skill.LockedEnemy != null)
+        if (this.lockedEnemy != null)
         {
+            // Debug.Log("Dapet bangg");
             buffSystem = playerController.GetComponent<BuffSystem>();
             buff = new Buff(
-                    skill.Id,
-                    skill.Name,
-                    BuffType.Nexus,
+                    this.id,
+                    this.name,
+                    BuffType.Custom,
                     0,
-                    skill.Timer
+                    this.timer
                 );
             buffSystem.ActivateBuff(buff);
-
-            StageManager.instance.PlayerActivatesSkill(skill);
+            StageManager.instance.PlayerActivatesSkill(this);
         }
 
         else
@@ -39,7 +40,8 @@ public class Nexus : MonoBehaviour
         }
     }
 
-    private void Update()
+
+    public override void OnActivated(GameObject gameObject)
     {
         if (!buffSystem.CheckBuff(buff))
         {
@@ -47,45 +49,42 @@ public class Nexus : MonoBehaviour
         }
     }
 
-    private void GetNearestEnemyInFrontOfPlayer()
+    private void GetNearestAndHighestHPEnemy()
     {
         // skill.LockedEnemy = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemy>().children[0].transform;
 
         Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(
             playerController.transform.position,
-            skill.MovementRange,
+            radius,
             LayerMask.GetMask("Enemy")
         );
 
-        float closestDistance = Mathf.Infinity;
+        Dictionary<Transform, float[]> enemies = new Dictionary<Transform, float[]>();
 
-        // untuk semua musuh di dalam radius
         foreach (Collider2D enemy in enemiesInRadius)
         {
             MobController mob = enemy.GetComponent<MobController>();
 
-            if (mob.enemy.type == EnemyType.Flying)
+            if (mob.enemy.type != EnemyType.Ground)
             {
+                // flyingEnemyIndexes.Add(i);
                 continue;
             }
 
-            // Menghitung jarak antara objek ini dengan musuh dalam loop
             float distanceToEnemy = Vector3.Distance(playerController.transform.position, enemy.transform.position);
-
-            // Memeriksa apakah musuh saat ini memiliki jarak lebih dekat
-            if (distanceToEnemy < closestDistance)
-            {
-                closestDistance = distanceToEnemy;
-                skill.LockedEnemy = enemy.transform;
-            }
+            float[] enemyProperty = { distanceToEnemy, mob.enemy.hp };
+            enemies.Add(enemy.transform, enemyProperty);
         }
 
-        if (skill.LockedEnemy == null)
+        if (enemies.Count == 0)
         {
-            print("Ga dapet");
-            // print("Namanya: " + skill.LockedEnemy.name);
+            return;
         }
 
+        enemies.OrderBy(dict => dict.Value[0]).ToDictionary(pair => pair.Key, pair => pair.Value);
+        enemies.OrderByDescending(dict => dict.Value[1]).ToDictionary(pair => pair.Key, pair => pair.Value);
+        this.lockedEnemy = enemies.Keys.ElementAt(0);
     }
+
 
 }

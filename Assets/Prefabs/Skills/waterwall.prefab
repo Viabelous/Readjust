@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4603014920461281421}
   - component: {fileID: 6698029025205426298}
   - component: {fileID: 23917718654987277}
-  - component: {fileID: 4390802336211969024}
   - component: {fileID: -2003495853961622070}
   - component: {fileID: 7672286352614517325}
   - component: {fileID: 7119398851235812307}
@@ -108,22 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTemplate: {fileID: 11400000, guid: 4da11be2a9822c7469b085c2f4f13482, type: 2}
-  skill: {fileID: 11400000, guid: 4da11be2a9822c7469b085c2f4f13482, type: 2}
---- !u!114 &4390802336211969024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936677929061029640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047811c3696fe204ca55d962fb138d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgPersenOfFoc: 0.75
-  timerPersenOfFoc: 1
+  skill: {fileID: 11400000, guid: 0e2834ac0f16e5a4c8af547158757859, type: 2}
 --- !u!114 &-2003495853961622070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +135,7 @@ MonoBehaviour:
   flipBack: 0
   spriteRenderer: {fileID: 0}
   oppositeDirection: 0
+  offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &7672286352614517325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +236,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1600984263
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -1851422620, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -335,7 +320,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -759652937
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -122375040, guid: b559604440e292b448c5789a13c706dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

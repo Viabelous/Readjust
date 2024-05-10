@@ -2,26 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Waterwall : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Waterwall")]
+public class Waterwall : Skill
 {
-    private Skill skill;
-    [SerializeField] private float dmgPersenOfFoc;
-    [SerializeField] private float timerPersenOfFoc;
+    [Header("Boost Damage")]
+    [SerializeField] private float dmgPersenOfFOC;
 
-    private void Start()
+    [Header("Crowd Control")]
+    [SerializeField] private float slowPersenOfEnemySpeed;
+
+    [Header("Custom Timer")]
+    [SerializeField] private float timerPersenOfFOC;
+
+    public override float GetDamage(Character character)
     {
-        // sesuaikan damage basic attack dengan atk player
-        skill = GetComponent<SkillController>().skill;
-        float foc = GameObject.Find("Player").GetComponent<PlayerController>().player.foc;
-        skill.Damage = dmgPersenOfFoc * foc;
-        skill.Timer = timerPersenOfFoc;
 
-        StageManager.instance.PlayerActivatesSkill(skill);
+        return dmgPersenOfFOC * character.foc;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    public override void Activate(GameObject gameObject)
     {
-        if (skill.HasHitEnemy(other))
+        PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        this.timer = timerPersenOfFOC * playerController.player.foc;
+        StageManager.instance.PlayerActivatesSkill(this);
+    }
+
+    public override void HitEnemy(Collider2D other)
+    {
+
+    }
+
+    public override void WhileHitEnemy(Collider2D other)
+    {
+        if (HasHitEnemy(other))
         {
             return;
         }
@@ -29,16 +42,60 @@ public class Waterwall : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-            mob.speed -= skill.Persentase * mob.speed;
-            skill.HitEnemy(other);
+            mob.speed -= slowPersenOfEnemySpeed * mob.speed;
+            base.HitEnemy(other);
         }
 
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public override void AfterHitEnemy(Collider2D other)
     {
-        MobController mob = other.GetComponent<MobController>();
-        mob.speed = mob.enemy.movementSpeed;
-        skill.AfterHitEnemy(other);
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mob = other.GetComponent<MobController>();
+            mob.speed = mob.enemy.movementSpeed;
+            base.AfterHitEnemy(other);
+        }
     }
 }
+
+// public class Waterwall : MonoBehaviour
+// {
+//     private Skill skill;
+//     [SerializeField] private float dmgPersenOfFoc;
+//     [SerializeField] private float timerPersenOfFoc;
+
+//     private void Start()
+//     {
+//         // sesuaikan damage basic attack dengan atk player
+//         skill = GetComponent<SkillController>().skill;
+//         float foc = GameObject.Find("Player").GetComponent<PlayerController>().player.foc;
+//         skill.Damage = dmgPersenOfFoc * foc;
+//         skill.Timer = timerPersenOfFoc;
+
+//         StageManager.instance.PlayerActivatesSkill(skill);
+//     }
+
+//     private void OnTriggerStay2D(Collider2D other)
+//     {
+//         if (skill.HasHitEnemy(other))
+//         {
+//             return;
+//         }
+
+//         if (other.CompareTag("Enemy"))
+//         {
+//             MobController mob = other.GetComponent<MobController>();
+//             mob.speed -= skill.Persentase * mob.speed;
+//             skill.HitEnemy(other);
+//         }
+
+//     }
+
+//     private void OnTriggerExit2D(Collider2D other)
+//     {
+//         MobController mob = other.GetComponent<MobController>();
+//         mob.speed = mob.enemy.movementSpeed;
+//         skill.AfterHitEnemy(other);
+//     }
+// }

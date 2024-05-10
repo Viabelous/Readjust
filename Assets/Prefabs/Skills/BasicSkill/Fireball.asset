@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b9280269f955e499599c045a53eb8a, type: 3}
+  m_Script: {fileID: 11500000, guid: c1d2bf728e3a2974d80db4c6374b4097, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
   id: skill_fireball
@@ -19,14 +19,11 @@ MonoBehaviour:
   hitType: 0
   movementType: 1
   costType: 1
-  maxCd: 3
+  maxCd: 1
   cost: 5
-  damage: 50
+  damage: 60
   sprite: {fileID: 21300000, guid: 3ebdef4d590a04649af019237f66a409, type: 3}
   movementSpeed: 12
   movementRange: 30
   timer: 0
-  value: 0
-  persentase: 0
-  pushSpeed: 0
-  pushRange: 0
+  dmgPersenOfATK: 0.5

@@ -2,37 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Calm : MonoBehaviour
+[CreateAssetMenu(menuName = "Skill/Calm")]
+public class Calm : Skill
 {
+    [Header("Buff Value")]
+    [SerializeField] private float FOCValue;
+    [HideInInspector] public BuffSystem buffSystem;
+    [HideInInspector] public Buff buff;
 
-    private Skill skill;
-    private GameObject player;
-    private BuffSystem buffSystem;
-    private Buff buff;
-
-    private void Start()
+    public override void Activate(GameObject gameObject)
     {
-        skill = GetComponent<SkillController>().skill;
-
-        player = GameObject.Find("Player");
-        buffSystem = player.GetComponent<BuffSystem>();
+        buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
         buff = new Buff(
-                skill.Id,
-                skill.Name,
+                id,
+                name,
                 BuffType.FOC,
-                skill.Value,
-                skill.Timer
+                FOCValue,
+                timer
             );
         buffSystem.ActivateBuff(buff);
-
-        StageManager.instance.PlayerActivatesSkill(skill);
+        StageManager.instance.PlayerActivatesSkill(this);
     }
 
-    private void Update()
+    public override void OnActivated(GameObject gameObject)
     {
         if (!buffSystem.CheckBuff(buff))
         {
             Destroy(gameObject);
         }
     }
+
+
+
 }

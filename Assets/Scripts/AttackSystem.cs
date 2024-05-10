@@ -22,10 +22,6 @@ public class AttackSystem : MonoBehaviour
 
     void Start()
     {
-    }
-
-    void Update()
-    {
 
     }
 
@@ -39,17 +35,8 @@ public class AttackSystem : MonoBehaviour
         {
             case CharacterType.Player:
                 attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
-                damage = GetComponent<SkillController>().skill.Damage;
-                print("Total Damage: " + damage);
-
-                // buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
-                // if (buffSystem.CheckBuff(BuffType.ATK))
-                // {
-                //     damage += buffSystem.GetBuffValues(BuffType.ATK);
-                // }
-
-                // print(damage);
-
+                // damage = GetComponent<SkillController>().skill.Damage;
+                damage = GetComponent<SkillController>().skill.GetDamage(attacker);
                 break;
 
             case CharacterType.Enemy:
@@ -60,14 +47,46 @@ public class AttackSystem : MonoBehaviour
 
         if (UnityEngine.Random.Range(0f, 100f) <= attacker.foc && attacker.foc != 0)
         {
-            totalDamage = damage * 2.5f;
+            // totalDamage = damage * 2.5f;
+            totalDamage = damage;
         }
         else
         {
             totalDamage = damage;
         }
 
-        return totalDamage;
+        return totalDamage += totalDamage * DamageBooster();
+    }
+
+    // peningkatan damage dari item
+    private float DamageBooster()
+    {
+        if (type != CharacterType.Player)
+        {
+            return 0;
+        }
+
+        buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+
+        BuffType buffType = BuffType.Custom;
+        switch (GetComponent<SkillController>().skill.Element)
+        {
+            case Element.Fire:
+                buffType = BuffType.Fire;
+                break;
+            case Element.Earth:
+                buffType = BuffType.Earth;
+                break;
+            case Element.Water:
+                buffType = BuffType.Water;
+                break;
+            case Element.Air:
+                buffType = BuffType.Air;
+                break;
+
+        }
+        float boosterDmg = buffSystem.GetAllBuffValues(buffType);
+        return boosterDmg;
     }
 
 }

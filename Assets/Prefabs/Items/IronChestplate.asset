@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48e88be352132b4999c8527ef4bbb27, type: 3}
+  m_Script: {fileID: 11500000, guid: d2910ca230f629949ad55ec5f745d964, type: 3}
   m_Name: IronChestplate
   m_EditorClassIdentifier: 
-  id: 
-  name: 
-  sprite: {fileID: 0}
-  price: 0
+  id: item_iron_chestplate
+  name: Iron Chestplate
+  description: Setrika di dadanya piring
+  price: 50
+  icon: {fileID: 21300000, guid: 2fa4167c0fc072347847d65bfc84361a, type: 3}
+  types: 04000000
+  value:
+  - 8

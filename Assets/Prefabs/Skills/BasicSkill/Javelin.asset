@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b9280269f955e499599c045a53eb8a, type: 3}
+  m_Script: {fileID: 11500000, guid: ab0330ed728560644aed3f6b2ed13e2b, type: 3}
   m_Name: Javelin
   m_EditorClassIdentifier: 
   id: skill_javelin
@@ -21,12 +21,10 @@ MonoBehaviour:
   costType: 1
   maxCd: 1
   cost: 5
-  damage: 5
+  damage: 1
   sprite: {fileID: 21300000, guid: 22b33bd2478de5f418fc4a809dbb5943, type: 3}
   movementSpeed: 4
-  movementRange: 10
+  movementRange: 0
   timer: 0
-  value: 0
-  persentase: 0
-  pushSpeed: 0
-  pushRange: 0
+  dmgPersenOfAgi: 0
+  radius: 10

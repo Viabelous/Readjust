@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b9280269f955e499599c045a53eb8a, type: 3}
+  m_Script: {fileID: 11500000, guid: f19d39838eb1fde45955781676749aed, type: 3}
   m_Name: Nexus
   m_EditorClassIdentifier: 
   id: skill_nexus
@@ -24,9 +24,6 @@ MonoBehaviour:
   damage: 0
   sprite: {fileID: 21300000, guid: 81b446cadcbb6a243a8348ebe61f9b57, type: 3}
   movementSpeed: 0
-  movementRange: 8
+  movementRange: 0
   timer: 5
-  value: 0
-  persentase: 0
-  pushSpeed: 0
-  pushRange: 0
+  radius: 8

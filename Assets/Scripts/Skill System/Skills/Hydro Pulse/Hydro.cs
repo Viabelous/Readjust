@@ -2,33 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 
 public class Hydro : MonoBehaviour
 {
-    [HideInInspector] public Skill skill;
-    [HideInInspector] public int index;
+    [HideInInspector] private Skill skill;
+    // [HideInInspector] public int index;
     void Start()
     {
-        // gameObject.SetActive(true);
-        skill = transform.parent.GetComponent<SkillController>().skill.Clone();
-        skill.LockedEnemy = transform.parent.GetComponent<HydroPulse>().lockedEnemies[index];
-        GetComponent<SkillController>().skill = skill;
+        skill = GetComponent<SkillController>().skill;
+        // ambil skill dari parent nya
+        // skill = transform.parent.GetComponent<SkillController>().skill.Clone();
 
-        if (skill.LockedEnemy == null)
-        {
-            Destroy(gameObject);
-        }
-        // print(skill.LockedEnemy.name);
+        // ambil locked enemy dari parent yg sudah carikan musuh utk dilock
+        // skill.LockedEnemy = ((HydroPulse)transform.parent.GetComponent<HydroPulseBehaviour>().skill).lockedEnemies[index];
+
+        // ubah skill di skill controller dengan skill yg sudah diisi locked enemynya
+        // agar bisa dipake sama component skill lainnya
+
+
+        // if (skill.LockedEnemy == null)
+        // {
+        //     Destroy(gameObject);
+        // }
+    }
+
+    void Update()
+    {
+        // kalau musuh sudah mati, tapi skill belum sampai ke musuh
+        // if (skill.LockedEnemy.IsDestroyed())
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 
     void OnDestroy()
     {
         if (skill != null)
         {
-            transform.parent.GetComponent<HydroPulse>().lockedEnemies.Remove(skill.LockedEnemy);
+            transform.parent.GetComponent<HydroPulseBehaviour>().KillLockedEnemy(skill.LockedEnemy);
         }
     }
-
 
 }

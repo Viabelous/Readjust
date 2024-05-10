@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467e91f0cb750da41ad934dfe3c3aaa9, type: 3}
+  m_Name: LotusFlowerHairclip
+  m_EditorClassIdentifier: 
+  id: item_lotus_flower_hairclip
+  name: Lotus Flower Hairclip
+  description: Jepit rambut bunga lily
+  price: 100
+  icon: {fileID: 21300000, guid: c96d32b85206ac749bdb7c2f34f48059, type: 3}
+  types: 0a000000
+  persentase:
+  - 0.35

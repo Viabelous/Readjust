@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5283110673975751587}
   - component: {fileID: 2276102518838883426}
   - component: {fileID: 2688670514531743383}
-  - component: {fileID: 4019568076077345255}
   - component: {fileID: -4104748290180398473}
   m_Layer: 0
   m_Name: Preserve
@@ -121,19 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 4a70d1ebfa07cf94dbaa4b34e2460199, type: 2}
---- !u!114 &4019568076077345255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4384909139195206193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03b40d9c9e15414ea9b9b19fd9c0b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 4dd64ea15a882c94ea1ace16bf740d4f, type: 2}
 --- !u!114 &-4104748290180398473
 MonoBehaviour:
   m_ObjectHideFlags: 0

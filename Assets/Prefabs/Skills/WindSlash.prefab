@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5051412411049105074}
   - component: {fileID: 5242816666086924542}
   - component: {fileID: -3250703228754695391}
-  - component: {fileID: -5480015632146123257}
   - component: {fileID: -7233606156725847076}
   m_Layer: 0
   m_Name: WindSlash
@@ -121,20 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703f376aa6e8124089a7dd9d5e7485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: ac75dfce3f9f7f14cab15deb2b613072, type: 2}
---- !u!114 &-5480015632146123257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229153380363823130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17d6c8d02ddf1a54492b33b2c3528100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgPersenOfAgi: 1
+  skill: {fileID: 11400000, guid: fb50c46f122c8214286bccf9cf4c164e, type: 2}
 --- !u!114 &-7233606156725847076
 MonoBehaviour:
   m_ObjectHideFlags: 0
