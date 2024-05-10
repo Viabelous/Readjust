@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8360173533304486518}
   - component: {fileID: 1352562711861578191}
   - component: {fileID: 2036122470051990639}
-  - component: {fileID: 1799021970251735893}
   - component: {fileID: 8499703715234472270}
   - component: {fileID: 1640915914869736240}
   - component: {fileID: 5163096275740064055}
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -941748349, guid: d917843dabe74654eba0de380d4a699b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -112,33 +111,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &1799021970251735893
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218449121411476219}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!60 &8499703715234472270
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -224,6 +196,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 9cb0dc74d35ead640998145c5bd9d98e, type: 2}
   movementEnabled: 1
   speed: 0
+  onSkillTrigger: 0
 --- !u!114 &5163096275740064055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,3 +236,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  isSlid: 0
+  isKnocked: 0
+  isSlowed: 0
+  isStunned: 0
+  slideSpeed: 0
+  slideDistance: 0
+  knockSpeed: 0
+  knockDistance: 0
+  slowedSpeed: 0
+  stunTimer: 0
+  slideDirection: {x: 0, y: 0}
+  knockDirection: {x: 0, y: 0, z: 0}
+  initialSpeed: 0
