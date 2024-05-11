@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Item/FoodDeliveryToken")]
+[CreateAssetMenu(menuName = "Item/Food Delivery Token")]
 public class FoodDeliveryToken : Item
 {
-    [Header("Foods Sprite")]
+    [Header("Food Sprite")]
     [SerializeField] private GameObject food;
+    [Header("Heal Value")]
     [SerializeField] private float healHP;
-    private float maxTimer;
+    [SerializeField] private float healMana;
+    [Header("Time Interval")]
     [SerializeField] private float timer;
+    private float maxTimer;
     private BuffSystem buffSystem;
+
 
 
     public override void Activate(GameObject player)
@@ -22,6 +26,7 @@ public class FoodDeliveryToken : Item
         buffSystem.ActivateBuff(buff);
 
         food.GetComponent<FoodDeliveryBehaviour>().healHP = healHP;
+        food.GetComponent<FoodDeliveryBehaviour>().healMana = healMana;
     }
 
     public override void OnActivated(GameObject player)
@@ -33,17 +38,10 @@ public class FoodDeliveryToken : Item
             DropFood();
             timer = maxTimer;
         }
-
     }
 
     private void DropFood()
     {
-        // float x, y, z;
-        // x = UnityEngine.Random.Range(-10, 10);
-        // y = 13;
-        // z = 0;
-
-        // Vector3 randomPos = new Vector3(x, y, z);
         Instantiate(food);
     }
 }

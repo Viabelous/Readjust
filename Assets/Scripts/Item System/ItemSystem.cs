@@ -7,27 +7,17 @@ public class ItemSystem : MonoBehaviour
 {
     private bool hasActivated = false;
     [SerializeField] private Map map;
-
-    // private void Start()
-    // {
-    //     print("items: " + CumaBuatDebug.instance.selectedItems.Count);
-
-    //     // !!!!!!!!!!!!!!!!!!!!!!!!
-    //     // !!!!NANTI UBAH WOIII!!!!
-    //     // !!!!!!!!!!!!!!!!!!!!!!!!
-
-
-    // }
-
+    List<Item> itemsActivated = new List<Item>();
 
     private void Update()
     {
+        // aktifkan semua item untuk pertama kalinya
         if (!hasActivated)
         {
-            // foreach (Item item in GameManager.selectedItems)
             foreach (Item item in CumaBuatDebug.instance.selectedItems)
             {
                 Item itemActivated = item.Clone();
+                itemsActivated.Add(itemActivated);
 
                 if (itemActivated.Adaptable)
                 {
@@ -38,8 +28,17 @@ public class ItemSystem : MonoBehaviour
             }
 
             hasActivated = true;
-            return;
         }
+
+        // aktifkan efek dari item, biasanya tipe custom
+        else
+        {
+            foreach (Item item in itemsActivated)
+            {
+                item.OnActivated(gameObject);
+            }
+        }
+
     }
 }
 

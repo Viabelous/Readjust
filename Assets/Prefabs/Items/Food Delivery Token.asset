@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa6f95e914ad9459bb76f0c8ce67b3, type: 3}
+  m_Name: Food Delivery Token
+  m_EditorClassIdentifier: 
+  id: item_food_delivery_token
+  name: Food Delivery Token
+  description: Burger sebagai makanan malam hari
+  price: 10
+  icon: {fileID: 21300000, guid: f67ddd1c40ed5924c842b6d1a8c58a1e, type: 3}
+  types: 0c000000
+  adaptable: 0
+  food: {fileID: 3169602492680716054, guid: 78917f25fd5e88e45ad54982d8003302, type: 3}
+  healHP: 35
+  healMana: 15
+  timer: 30
