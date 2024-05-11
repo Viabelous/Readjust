@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public enum CharacterState
 {
-    alive,
-    dead
+    Alive,
+    Dead
 }
 
 
@@ -25,6 +25,7 @@ public class MobController : MonoBehaviour
     public float speed;
 
     private CrowdControlSystem crowdControlSystem;
+    private CharacterState state;
 
     private GameObject player;
     private Vector2 movement;
@@ -49,6 +50,8 @@ public class MobController : MonoBehaviour
 
         enemy = enemy.Clone();
         speed = enemy.movementSpeed;
+
+        state = CharacterState.Alive;
     }
 
     // Update is called once per frame
@@ -57,8 +60,8 @@ public class MobController : MonoBehaviour
         // kalau hp habis, hilangkan ---------------------------------------------------
         if (enemy.hp <= 0)
         {
-
             Die();
+            return;
         }
 
         // arah hadap mob (?) ------------------------------------------------------------
@@ -193,6 +196,7 @@ public class MobController : MonoBehaviour
 
     private void Die()
     {
+        state = CharacterState.Dead;
         playerController.CollectAerus(enemy.aerusValue);
         playerController.CollectExp(enemy.expValue);
         Damaged();

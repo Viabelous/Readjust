@@ -35,6 +35,7 @@ public class FoodDeliveryToken : Item
 
         if (timer <= 0)
         {
+            Debug.Log("Food dropped!");
             DropFood();
             timer = maxTimer;
         }

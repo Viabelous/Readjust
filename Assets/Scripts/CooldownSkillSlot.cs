@@ -73,7 +73,7 @@ public class SkillUsage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isEmpty)
+        if (!isEmpty && StageManager.instance.CurrentState() != StageState.Pause)
         {
             switch (state)
             {
@@ -116,33 +116,6 @@ public class SkillUsage : MonoBehaviour
                     break;
 
             }
-
-            // // Cooldown selesai
-            // if (currCd < minCd)
-            // {
-            //     // baru selesai Cooldown
-            //     if (isCooldown)
-            //     {
-            //         isCooldown = false;
-            //         GameManager.selectedSkills[slotNumber - 1].isCooldown = false;
-            //         objDark.GetComponent<Image>().fillAmount = 0;
-            //     }
-
-            //     // player sudah menggunakan skill
-            //     if (GameManager.selectedSkills[slotNumber - 1].isCooldown)
-            //     {
-            //         currCd = maxCd;
-            //         objDark.GetComponent<Image>().fillAmount = 1;
-
-            //         isCooldown = true;
-            //     }
-            // }
-            // // lagi Cooldown
-            // else
-            // {
-            //     objDark.GetComponent<Image>().fillAmount = currCd / maxCd;
-            //     currCd -= Time.deltaTime;
-            // }
         }
 
     }

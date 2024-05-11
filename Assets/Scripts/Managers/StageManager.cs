@@ -3,19 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum StageState
 {
-    Boss, Pause, Victory, Lose
+    Play, Pause, Victory, Lose
 }
+
 // digunakan dalam stage 
 public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
 
-    public PlayerController playerController;
+    [Header("Player")]
+    public GameObject player;
+    [SerializeField] private GameObject basicStab;
+
+    [Header("Stage")]
+
     public Text timeText;
 
+    public Vector2 minMap, maxMap;
 
     [HideInInspector] public float time;
 
@@ -23,7 +31,9 @@ public class StageManager : MonoBehaviour
 
     [HideInInspector] public float minTime;
 
-    [HideInInspector] public GameState gameState;
+    [HideInInspector] private StageState state;
+    [SerializeField] private GameObject stateText;
+
     [HideInInspector] public bool validSkill;
 
     // [HideInInspector] public List<string> killedEnemies;
@@ -37,102 +47,130 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         time = Time.time;
+        state = StageState.Play;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time = Time.time;
+        KeyboardInteraction();
 
-        min = Mathf.FloorToInt(time / 60f);
-        sec = Mathf.FloorToInt(time % 60f);
 
-        timeText.text = string.Format("{0:00}:{1:00}", min, sec);
 
         // if (min == 10)
         // {
         //     StageManager.instance.gameState = GameState.Boss;
         // }
 
-        // switch (gameState)
-        // {
-        //     case GameState.Boss:
-        //         break;
-        //     case GameState.Pause:
-        //         break;
-        //     case GameState.Victory:
-        //         break;
-        //     case GameState.Lose:
-        //         // PauseGame();
-        //         break;
-        // }
+        switch (state)
+        {
+            case StageState.Play:
+                Play();
+                break;
+            case StageState.Pause:
+                Pause();
+                break;
+            case StageState.Victory:
+                break;
+            case StageState.Lose:
+                Lose();
+                break;
+        }
     }
 
-
-    // public void ChangeGameState(GameState gameState)
-    // {
-    //     this.gameState = gameState;
-    // }
-
-    private void PauseGame()
+    public void ToggleState(StageState initState, StageState currState)
     {
-        MobController[] mobs = FindObjectsOfType<MobController>();
-        foreach (MobController mob in mobs)
-        {
-            mob.movementEnabled = false;
-        }
+        this.state = state == initState ? currState : initState;
+    }
 
-        PlayerController player = FindObjectOfType<PlayerController>();
-        player.movementEnabled = false;
+    public StageState CurrentState()
+    {
+        return this.state;
+    }
 
-        EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
-        foreach (EnemySpawner spawner in spawners)
+    private void KeyboardInteraction()
+    {
+        switch (Input.inputString)
         {
-            spawner.spawnEnabled = false;
+            case "q":
+
+                if (state == StageState.Play)
+                {
+                    player.GetComponent<Animator>().SetTrigger("BasicAttack");
+                    if (!GameObject.Find(basicStab.name + "(Clone)"))
+                    {
+                        Instantiate(basicStab);
+                    }
+                }
+                break;
+
+
+            case "\b":
+                SceneManager.LoadScene("MainMenu");
+                break;
+
+            case " ":
+                ToggleState(StageState.Pause, StageState.Play);
+                break;
         }
+    }
+
+    private void RunTime()
+    {
+        Time.timeScale = 1f;
+        time = Time.time;
+
+        min = Mathf.FloorToInt(time / 60f);
+        sec = Mathf.FloorToInt(time % 60f);
+
+        timeText.text = string.Format("{0:00}:{1:00}", min, sec);
+    }
+
+    private void PauseTime()
+    {
+        Time.timeScale = 0f;
+    }
+
+    private void Play()
+    {
+        state = StageState.Play;
+        RunTime();
+
+        stateText.SetActive(false);
+    }
+
+    private void Pause()
+    {
+        state = StageState.Pause;
+        PauseTime();
+
+        stateText.SetActive(true);
+        stateText.GetComponent<Text>().text = "PAUSE";
+
+        // MobController[] mobs = FindObjectsOfType<MobController>();
+        // foreach (MobController mob in mobs)
+        // {
+        //     mob.movementEnabled = false;
+        // }
+
+        // PlayerController player = FindObjectOfType<PlayerController>();
+        // player.movementEnabled = false;
+
+        // EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
+        // foreach (EnemySpawner spawner in spawners)
+        // {
+        //     spawner.spawnEnabled = false;
+        // }
 
     }
 
-    // public void PlayerActivatesSkill(Skill skill)
-    // {
-    //     playerController.Pay(skill.CostType, skill.Cost);
-
-
-    //     // !!!!!!!!!!!!!!!!!!!!!!!!
-    //     // !!!!NANTI UBAH WOIII!!!!
-    //     // !!!!!!!!!!!!!!!!!!!!!!!!
-
-    //     // int index = GameManager.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
-    //     int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
-
-    //     // ubah state slot skill
-    //     GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
-    // }
-
-    // public void PlayerCancelSkill(GameObject)
-    // {
-    //     skill.Cancel();
-    // }
-
-    // public void CancelSkill(GameObject skillPref)
-    // {
-    //     Destroy(skillPref);
-    //     validSkill = false;
-
-    //     // Skill skill = skillPref.GetComponent<SkillController>().skill;
-
-    //     // SkillSlot[] slots = FindObjectsOfType<SkillSlot>();
-    //     // foreach (SkillSlot slot in slots)
-    //     // {
-    //     //     if (slot.skill.name == skill.Name)
-    //     //     {
-    //     //         slot.state = SkillState.Ready;
-    //     //         player.GetComponent<PlayerController>().player.mana += skill.Cost;
-    //     //         break;
-    //     //     }
-    //     // }
-    // }
-
+    private void Lose()
+    {
+        state = StageState.Lose;
+        PauseTime();
+        stateText.SetActive(true);
+        stateText.GetComponent<Text>().text = "LOSE";
+    }
 
 }
 

@@ -20,7 +20,7 @@ public class NexusTargetPos : MonoBehaviour
         // SetPosition();
 
         skill = transform.parent.GetComponent<SkillController>().skill;
-        playerController = StageManager.instance.playerController;
+        playerController = StageManager.instance.player.GetComponent<PlayerController>();
     }
 
     private void Update()

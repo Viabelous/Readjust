@@ -7,10 +7,10 @@ public class FoodDeliveryBehaviour : MonoBehaviour
     [SerializeField] private GameObject food, shadow;
     [SerializeField] private float speed;
     [SerializeField] private float startY;
-    [SerializeField] private Vector2 minRange, maxRange;
     [HideInInspector] public float healHP, healMana;
+    private Vector2 minRange, maxRange;
     private Vector3 finalPos;
-    private float initDistance, distance, shadowDistance;
+    private float initDistance, distance;
     private Vector3 initPos, shadowInitScale;
     private Transform player;
     private bool isGround;
@@ -19,6 +19,8 @@ public class FoodDeliveryBehaviour : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").transform;
+        minRange = StageManager.instance.minMap;
+        maxRange = StageManager.instance.maxMap;
 
         float x, y1, y2, z;
         x = UnityEngine.Random.Range(minRange.x, maxRange.y);
@@ -28,12 +30,11 @@ public class FoodDeliveryBehaviour : MonoBehaviour
         z = 0;
 
         initPos = new Vector3(x, y1, z);
-        food.transform.position = initPos;
-
         finalPos = new Vector3(x, y2, z);
-
         initDistance = Vector3.Distance(initPos, finalPos);
 
+        transform.position = finalPos;
+        food.transform.position = initPos;
 
         shadow.transform.position = finalPos + new Vector3(0.02f, -0.15f, 0);
         shadowInitScale = shadow.transform.localScale;
@@ -46,7 +47,7 @@ public class FoodDeliveryBehaviour : MonoBehaviour
         if (isGround)
         {
             // kalau player ada di bawah food
-            if (player.position.y < food.transform.position.y + 0.7f)
+            if (player.position.y < food.transform.position.y + 1f)
             {
                 food.GetComponent<SpriteRenderer>().sortingLayerName = "Skill Back";
             }
@@ -81,29 +82,22 @@ public class FoodDeliveryBehaviour : MonoBehaviour
             {
                 food.transform.position = finalPos;
                 isGround = true;
-
             }
         }
 
-
-
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (!isGround)
+        if (isGround)
         {
-            print("Gak bisa");
-
-            return;
-        }
-
-        if (other.CompareTag("Player"))
-        {
-            print("Teambil");
-            Player player = other.GetComponent<PlayerController>().player;
-            player.Heal(Stat.HP, healHP);
-            Destroy(gameObject);
+            if (other.CompareTag("Player"))
+            {
+                Player player = other.GetComponent<PlayerController>().player;
+                player.Heal(Stat.HP, healHP);
+                player.Heal(Stat.Mana, healMana);
+                Destroy(gameObject);
+            }
         }
     }
 

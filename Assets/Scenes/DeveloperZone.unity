@@ -2529,10 +2529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 365927423}
   offset: {x: 0, y: 0, z: -10}
-  minX: -20
-  maxX: 20
-  minY: -20
-  maxY: 20
+  minMap: {x: 0, y: 0}
+  maxMap: {x: 0, y: 0}
 --- !u!1 &537895569
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,6 +3924,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1292305430675066341, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
       propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292305430675066341, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
+      propertyPath: gameState
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1292305430675066341, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}

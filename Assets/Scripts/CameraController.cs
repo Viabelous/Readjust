@@ -1,38 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private GameState gameState;
     public Transform target; // Objek target yang diikuti oleh kamera
     public Vector3 offset; // Jarak relatif dari kamera ke target
 
-    public float minX; // Batas minimum pergerakan kamera di sumbu X
-    public float maxX; // Batas maksimum pergerakan kamera di sumbu X
-    public float minY; // Batas minimum pergerakan kamera di sumbu Y
-    public float maxY; // Batas maksimum pergerakan kamera di sumbu Y
+    [SerializeField] private Vector2 minMap, maxMap, minOffset, maxOffset;
+
 
 
     private void Start()
     {
         target = GameObject.Find("Player").transform;
+
+
+
     }
 
     void LateUpdate()
     {
-        // Hitung posisi target yang diikuti oleh kamera
-        Vector3 desiredPosition = target.position + offset;
+        switch (gameState)
+        {
+            case GameState.OnStage:
+                minMap = StageManager.instance.minMap + maxOffset;
+                maxMap = StageManager.instance.maxMap + minOffset;
+                break;
+        }
 
-        // Batasi posisi target di antara batas minimum dan maksimum pada sumbu X
-        desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
-        // Batasi posisi target di antara batas minimum dan maksimum pada sumbu Y
-        desiredPosition.y = Mathf.Clamp(desiredPosition.y, minY, maxY);
+        Vector3 pos = target.position + offset;
 
-        // Atur posisi kamera menjadi posisi yang sudah diinterpolasi
-        transform.position = desiredPosition;
+        pos.x = Mathf.Clamp(pos.x, minMap.x, maxMap.x);
+        pos.y = Mathf.Clamp(pos.y, minMap.y, maxMap.x);
 
-        // Atur rotasi kamera agar selalu menghadap target
-        // transform.LookAt(target);
+        transform.position = pos;
     }
 
 }

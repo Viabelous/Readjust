@@ -5,7 +5,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum ChrDirection
@@ -16,15 +15,11 @@ public enum ChrDirection
 
 public class PlayerController : MonoBehaviour
 {
-    public GameState state;
+    public GameState gameState;
 
-    // movement ------------------------------------------------------
-
-
-    [SerializeField] private GameObject basicStab;
     [SerializeField] private Text aerusText, expText;
 
-    [SerializeField] private float minX, maxX, minY, maxY;
+    [SerializeField] private Vector2 minMap, maxMap;
 
     public SpriteRenderer[] spriteRenderers;
 
@@ -50,10 +45,17 @@ public class PlayerController : MonoBehaviour
     {
         direction = ChrDirection.Front;
         player = player.Clone();
-        // print("ATK di Start: " + player.atk);
 
         movementEnabled = true;
         nearInteractable = false;
+
+        switch (gameState)
+        {
+            case GameState.OnStage:
+                minMap = StageManager.instance.minMap;
+                maxMap = StageManager.instance.maxMap;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -70,11 +72,12 @@ public class PlayerController : MonoBehaviour
         // print("AGI: " + player.agi);
         // print("FOC: " + player.foc);
 
-        if (player.hp <= 0)
+        switch (gameState)
         {
-            Die();
+            case GameState.OnStage:
+                DoIfOnlyOnStage();
+                break;
         }
-
 
         if (movementEnabled)
         {
@@ -110,33 +113,6 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            switch (state)
-            {
-                case GameState.OnStage:
-                    // interaksi dengan keyboard
-                    switch (Input.inputString)
-                    {
-                        case "q":
-                            animate.SetTrigger("BasicAttack");
-
-                            if (!GameObject.Find(basicStab.name + "(Clone)"))
-                            {
-                                Instantiate(basicStab);
-                            }
-
-                            break;
-
-                        case "=":
-                            SceneManager.LoadScene("MainMenu");
-                            break;
-
-                    }
-                    break;
-
-                case GameState.OnDeveloperZone:
-                    break;
-            }
-
         }
     }
 
@@ -145,8 +121,8 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + movement * player.movementSpeed * Time.fixedDeltaTime);
 
         Vector3 position = rb.position;
-        position.x = Mathf.Clamp(position.x, minX, maxX);
-        position.y = Mathf.Clamp(position.y, minY, maxY);
+        position.x = Mathf.Clamp(position.x, minMap.x, maxMap.x);
+        position.y = Mathf.Clamp(position.y, minMap.y, maxMap.y);
 
         transform.position = position;
     }
@@ -198,10 +174,22 @@ public class PlayerController : MonoBehaviour
         expText.text = player.exp.ToString();
     }
 
+    private void DoIfOnlyOnStage()
+    {
+
+        if (StageManager.instance.CurrentState() != StageState.Lose && player.hp <= 0)
+        {
+            Die();
+        }
+
+        movementEnable(StageManager.instance.CurrentState() == StageState.Play ? true : false);
+
+    }
+
     private void Die()
     {
         Damaged();
-        // StageManager.instance.ChangeGameState(GameState.Lose);
+        StageManager.instance.ToggleState(StageState.Play, StageState.Lose);
     }
 
     public void movementEnable(bool state)
