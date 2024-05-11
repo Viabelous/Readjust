@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467e91f0cb750da41ad934dfe3c3aaa9, type: 3}
-  m_Name: FourthChapterScript
+  m_Name: Fifth Chapter Script
   m_EditorClassIdentifier: 
-  id: item_fourth_chapter_script
-  name: Fourth Chapter Script
-  description: Penuh plotwist
+  id: item_fifth_chapter_script
+  name: Fifth Chapter Script
+  description: Bad ending sepertinya
   price: 5
-  icon: {fileID: 21300000, guid: ded853054d869684ebd973a2826a7fd1, type: 3}
-  types: 0b000000
+  icon: {fileID: 21300000, guid: 4f705886e8d77c24c91844eee88562f1, type: 3}
+  types: 08000000090000000a0000000b000000
   persentase:
-  - 0.1
+  - 0.08
+  - 0.08
+  - 0.08
+  - 0.08

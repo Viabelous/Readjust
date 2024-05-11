@@ -24,7 +24,7 @@ public class Waterwall : Skill
     {
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         this.timer = timerPersenOfFOC * playerController.player.foc;
-        StageManager.instance.PlayerActivatesSkill(this);
+        Payment(playerController.transform);
     }
 
     public override void HitEnemy(Collider2D other)

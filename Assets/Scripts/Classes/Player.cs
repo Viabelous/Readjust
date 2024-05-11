@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
+
 [CreateAssetMenu]
 public class Player : Character
 {
@@ -52,6 +54,91 @@ public class Player : Character
         Player newPlayer = (Player)this.MemberwiseClone();
         newPlayer.id = "player" + UnityEngine.Random.Range(1, 99999).ToString();
         return newPlayer;
+    }
+
+    public override void Upgrade(Stat stat, float value)
+    {
+        switch (stat)
+        {
+            case Stat.HP:
+                this.maxHp += value;
+                this.hp = this.maxHp;
+                break;
+            case Stat.Mana:
+                this.maxMana += value;
+                this.mana = this.maxMana;
+                break;
+            case Stat.ATK:
+                this.atk += value;
+                break;
+            case Stat.DEF:
+                this.def += value;
+                break;
+            case Stat.FOC:
+                this.foc += value;
+                break;
+            case Stat.AGI:
+                this.agi += value;
+                break;
+            case Stat.Shield:
+                this.maxShield = value;
+                this.shield = value;
+                break;
+        }
+    }
+
+    public override void Downgrade(Stat stat, float value)
+    {
+        switch (stat)
+        {
+            case Stat.HP:
+                this.maxHp -= value;
+                this.hp = this.maxHp;
+                break;
+            case Stat.Mana:
+                this.maxMana -= value;
+                this.mana = this.maxMana;
+                break;
+            case Stat.ATK:
+                this.atk -= value;
+                break;
+            case Stat.DEF:
+                this.def -= value;
+                break;
+            case Stat.FOC:
+                this.foc -= value;
+                break;
+            case Stat.AGI:
+                this.agi -= value;
+                break;
+        }
+    }
+
+    public override void Heal(Stat stat, float value)
+    {
+        switch (stat)
+        {
+            case Stat.HP:
+                if (this.hp + value > this.maxHp)
+                {
+                    this.hp = this.maxHp;
+                }
+                else
+                {
+                    this.hp += value;
+                }
+                break;
+            case Stat.Mana:
+                if (this.mana + value > this.maxMana)
+                {
+                    this.mana = this.maxMana;
+                }
+                else
+                {
+                    this.mana += value;
+                }
+                break;
+        }
     }
 
 

@@ -10,6 +10,8 @@ public class Preserve : Skill
 
     public override void Activate(GameObject gameObject)
     {
+        Payment(GameObject.Find("Player").transform);
+
         BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
         PlayerController playerController = buffSystem.GetComponent<PlayerController>();
@@ -24,7 +26,6 @@ public class Preserve : Skill
                     this.timer
                 )
             );
-        StageManager.instance.PlayerActivatesSkill(this);
     }
 }
 

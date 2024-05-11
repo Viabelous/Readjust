@@ -12,6 +12,7 @@ public class Javeline : Skill
 
     [Header("Range Attack")]
     [SerializeField] private float radius;
+    private Transform player;
 
     // [SerializeField] private float radius;
 
@@ -30,14 +31,14 @@ public class Javeline : Skill
         }
         else
         {
-            StageManager.instance.PlayerActivatesSkill(this);
+            player = GameObject.Find("Player").transform;
+            Payment(player);
         }
     }
 
     private void GetNearestEnemy()
     {
         // skill.LockedEnemy = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemy>().children[0].transform;
-        Transform player = GameObject.Find("Player").transform;
         Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(
             player.position,
             radius,

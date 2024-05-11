@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2910ca230f629949ad55ec5f745d964, type: 3}
-  m_Name: OtherworldlyAcorn
+  m_Name: Power Bracelet
   m_EditorClassIdentifier: 
-  id: item_otherworldly_acorn
-  name: Otherworldly Acorn
-  description: Apa yoo
+  id: item_power_bracelet
+  name: Power Bracelet
+  description: hehe
   price: 100
-  icon: {fileID: 21300000, guid: 3f0483be1a1658347ae86aba309aae24, type: 3}
-  types: 03000000040000000500000006000000
+  icon: {fileID: 21300000, guid: 9321f0f36e0e752448f3bc6f044a6079, type: 3}
+  types: 03000000
   value:
-  - 2
-  - 2
-  - 2
-  - 2
+  - 8

@@ -15,6 +15,6 @@ public class Fireball : Skill
 
     public override void Activate(GameObject gameObject)
     {
-        StageManager.instance.PlayerActivatesSkill(this);
+        Payment(GameObject.Find("Player").transform);
     }
 }

@@ -12,6 +12,8 @@ public class Lenire : Skill
     public override void Activate(GameObject gameObject)
     {
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        Payment(playerController.transform);
+
         BuffSystem buffSystem = playerController.GetComponent<BuffSystem>();
         float value = manaValue + manaPersenOfFOC * playerController.player.foc;
 
@@ -24,7 +26,6 @@ public class Lenire : Skill
                 this.timer
             )
         );
-        StageManager.instance.PlayerActivatesSkill(this);
     }
 }
 

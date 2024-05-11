@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2910ca230f629949ad55ec5f745d964, type: 3}
-  m_Name: IronChestplate
+  m_Name: Otherworldly Acorn
   m_EditorClassIdentifier: 
-  id: item_iron_chestplate
-  name: Iron Chestplate
-  description: Setrika di dadanya piring
-  price: 50
-  icon: {fileID: 21300000, guid: 2fa4167c0fc072347847d65bfc84361a, type: 3}
-  types: 04000000
+  id: item_otherworldly_acorn
+  name: Otherworldly Acorn
+  description: Apa yoo
+  price: 100
+  icon: {fileID: 21300000, guid: 3f0483be1a1658347ae86aba309aae24, type: 3}
+  types: 03000000040000000500000006000000
   value:
-  - 8
+  - 2
+  - 2
+  - 2
+  - 2

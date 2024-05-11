@@ -19,7 +19,10 @@ public class Invitro : Skill
     public override void Activate(GameObject gameObject)
     {
         this.gameObject = gameObject;
+
         GameObject player = GameObject.Find("Player");
+        Payment(player.transform);
+
         buffSystem = player.GetComponent<BuffSystem>();
 
         playerController = player.GetComponent<PlayerController>();
@@ -33,7 +36,6 @@ public class Invitro : Skill
                 this.timer
             )
         );
-        StageManager.instance.PlayerActivatesSkill(this);
     }
 
 }

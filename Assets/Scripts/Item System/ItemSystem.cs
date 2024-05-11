@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemSystem : MonoBehaviour
 {
     private bool hasActivated = false;
+    [SerializeField] private Map map;
 
     // private void Start()
     // {
@@ -26,8 +27,16 @@ public class ItemSystem : MonoBehaviour
             // foreach (Item item in GameManager.selectedItems)
             foreach (Item item in CumaBuatDebug.instance.selectedItems)
             {
-                item.Activate(gameObject);
+                Item itemActivated = item.Clone();
+
+                if (itemActivated.Adaptable)
+                {
+                    itemActivated.Adapting(map);
+                }
+
+                itemActivated.Activate(gameObject);
             }
+
             hasActivated = true;
             return;
         }

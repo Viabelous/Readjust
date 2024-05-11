@@ -55,7 +55,10 @@ public class AttackSystem : MonoBehaviour
             totalDamage = damage;
         }
 
-        return totalDamage += totalDamage * DamageBooster();
+        totalDamage += totalDamage * DamageBooster();
+        print("Total Damage : " + totalDamage);
+
+        return totalDamage;
     }
 
     // peningkatan damage dari item

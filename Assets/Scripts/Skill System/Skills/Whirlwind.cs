@@ -26,7 +26,7 @@ public class Whirlwind : Skill
         this.gameObject = gameObject;
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         direction = playerController.direction;
-        StageManager.instance.PlayerActivatesSkill(this);
+        Payment(playerController.transform);
     }
 
 

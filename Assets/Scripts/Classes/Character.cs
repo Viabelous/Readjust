@@ -10,6 +10,18 @@ public enum CharacterType
     FlyingEnemy
 }
 
+public enum Stat
+{
+    HP,
+    Mana,
+
+    ATK,
+    DEF,
+    FOC,
+    AGI,
+    Shield
+}
+
 public class Character : ScriptableObject
 {
     public string id;
@@ -27,6 +39,19 @@ public class Character : ScriptableObject
     public bool actionEnabled = true, movementEnabled = true;
 
 
+    public virtual void Upgrade(Stat stat, float value)
+    {
 
+    }
+
+    public virtual void Downgrade(Stat stat, float value)
+    {
+
+    }
+
+    public virtual void Heal(Stat stat, float value)
+    {
+
+    }
 
 }

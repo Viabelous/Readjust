@@ -12,6 +12,9 @@ public class Sanare : Skill
     {
 
         BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+
+        Payment(buffSystem.transform);
+
         float value = HPPersenOfMaxHP * buffSystem.GetComponent<PlayerController>().player.maxHp;
 
         buffSystem.ActivateBuff(
@@ -23,7 +26,7 @@ public class Sanare : Skill
                 this.timer
             )
         );
-        StageManager.instance.PlayerActivatesSkill(this);
+
 
     }
 }

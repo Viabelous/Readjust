@@ -30,8 +30,10 @@ public class LandsideTyphoon : Skill
 
         // sesuaikan damage basic attack dengan atk player
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
         this.timer = timerPersenOfAgi * playerController.player.agi;
-        StageManager.instance.PlayerActivatesSkill(this);
+
+        Payment(playerController.transform);
 
         // isCollider = (gameObject.name == "collider_flying_enemies" || gameObject.name == "collider_flying_enemies") ? true : false;
 

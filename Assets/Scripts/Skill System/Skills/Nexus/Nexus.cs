@@ -21,7 +21,8 @@ public class Nexus : Skill
 
         if (this.lockedEnemy != null)
         {
-            // Debug.Log("Dapet bangg");
+            Payment(playerController.transform);
+
             buffSystem = playerController.GetComponent<BuffSystem>();
             buff = new Buff(
                     this.id,
@@ -31,7 +32,6 @@ public class Nexus : Skill
                     this.timer
                 );
             buffSystem.ActivateBuff(buff);
-            StageManager.instance.PlayerActivatesSkill(this);
         }
 
         else

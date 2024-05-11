@@ -18,6 +18,8 @@ public class ThornCover : Skill
 
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         buffSystem = playerController.GetComponent<BuffSystem>();
+        Payment(buffSystem.transform);
+
         float value = dmgPersenOfDEF * playerController.player.def + dmgPersenOfATK * playerController.player.atk;
         buff = new Buff(
                 this.id,
@@ -27,7 +29,6 @@ public class ThornCover : Skill
                 this.timer
             );
         buffSystem.ActivateBuff(buff);
-        StageManager.instance.PlayerActivatesSkill(this);
     }
 
     public override void OnActivated(GameObject gameObject)

@@ -59,6 +59,8 @@ public class Skill : ScriptableObject
     [SerializeField] protected float timer;
     protected int level = 1;
 
+    // [HideInInspector] protected bool invalid = false;
+
     // [Header("Buff/Heal/Debuff")]
     // [SerializeField] private float value;
     // [SerializeField] private float persentase;
@@ -140,10 +142,31 @@ public class Skill : ScriptableObject
         return newSkill;
     }
 
-    // public void Cancel(GameObject gameObject)
+    public void Payment(Transform player)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.Pay(CostType, Cost);
+
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!
+        // !!!!NANTI UBAH WOIII!!!!
+        // !!!!!!!!!!!!!!!!!!!!!!!!
+
+        // int index = GameManager.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
+        int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
+
+        // ubah state slot skill
+        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
+    }
+
+    // public void CancelSkill()
     // {
     //     invalid = true;
-    //     Destroy(gameObject);
+    // }
+
+    // public bool Invalid()
+    // {
+    //     return invalid;
     // }
 
     // id dapat diubah setiap pembuatan objek baru

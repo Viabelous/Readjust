@@ -23,7 +23,7 @@ public class Explosion : Skill
     public override void Activate(GameObject gameObject)
     {
         this.gameObject = gameObject;
-        StageManager.instance.PlayerActivatesSkill(this);
+        Payment(GameObject.Find("Player").transform);
     }
 
     public override void HitEnemy(Collider2D other)

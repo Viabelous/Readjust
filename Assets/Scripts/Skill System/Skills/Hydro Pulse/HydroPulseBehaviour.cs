@@ -31,7 +31,7 @@ public class HydroPulseBehaviour : MonoBehaviour
         else
         {
             animator.Play("hydro_pulse_awake");
-            StageManager.instance.PlayerActivatesSkill(skill);
+            skill.Payment(player);
         }
 
         print("apakah hydro ada " + hydro != null);
@@ -57,6 +57,7 @@ public class HydroPulseBehaviour : MonoBehaviour
             print(transform == null ? "transform null" : "transform aman");
             GameObject hydroPref = Instantiate(hydro, transform);
             SkillController hydroController = hydroPref.GetComponent<SkillController>();
+
             // hydroController.skill = skill.Clone();
             hydroController.skill.LockedEnemy = lockedEnemies[i];
         }

@@ -22,8 +22,8 @@ public class WillOfFire : Skill
                 this.timer
             );
 
+        Payment(buffSystem.transform);
         buffSystem.ActivateBuff(buff);
-        StageManager.instance.PlayerActivatesSkill(this);
     }
 
     public override void OnActivated(GameObject gameObject)

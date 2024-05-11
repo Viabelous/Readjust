@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467e91f0cb750da41ad934dfe3c3aaa9, type: 3}
-  m_Name: SecondChapterScript
+  m_Name: Purple Hair Ribbon
   m_EditorClassIdentifier: 
-  id: item_second_chapter_script
-  name: Second Chapter Script
-  description: Dah masuk cerita
-  price: 10
-  icon: {fileID: 21300000, guid: d094a0421a1dbaf4da624071a45392e3, type: 3}
+  id: item_purple_hair_ribbon
+  name: Purple Hair Ribbon
+  description: Pita ikat rambut pink boogie
+  price: 50
+  icon: {fileID: 21300000, guid: 99a9a4438df7c844ebec51a702e1684e, type: 3}
   types: 08000000
   persentase:
-  - 0.1
+  - 0.35

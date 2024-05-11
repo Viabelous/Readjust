@@ -13,6 +13,7 @@ public class Calm : Skill
     public override void Activate(GameObject gameObject)
     {
         buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+        Payment(buffSystem.transform);
         buff = new Buff(
                 id,
                 name,
@@ -21,7 +22,6 @@ public class Calm : Skill
                 timer
             );
         buffSystem.ActivateBuff(buff);
-        StageManager.instance.PlayerActivatesSkill(this);
     }
 
     public override void OnActivated(GameObject gameObject)

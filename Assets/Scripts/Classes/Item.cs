@@ -18,12 +18,8 @@ public class Item : ScriptableObject
     [Header("Item Buff Type")]
     [SerializeField] protected List<BuffType> types = new List<BuffType>();
 
-    public Item Clone()
-    {
-        Item newItem = (Item)this.MemberwiseClone();
-        newItem.Id += Random.Range(0, 99999);
-        return newItem;
-    }
+    [Header("Depends On Stage")]
+    [SerializeField] protected bool adaptable = false;
 
     public string Id
     {
@@ -50,13 +46,33 @@ public class Item : ScriptableObject
     {
         get { return types; }
     }
+    public bool Adaptable
+    {
+        get { return adaptable; }
+    }
 
     public Sprite Icon
     {
         get { return icon; }
     }
 
+    public Item Clone()
+    {
+        Item newItem = (Item)this.MemberwiseClone();
+        newItem.Id += Random.Range(0, 99999);
+        return newItem;
+    }
+
     public virtual void Activate(GameObject player)
+    {
+
+    }
+    public virtual void OnActivated(GameObject player)
+    {
+
+    }
+
+    public virtual void Adapting(Map map)
     {
 
     }

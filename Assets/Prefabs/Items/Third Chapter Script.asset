@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467e91f0cb750da41ad934dfe3c3aaa9, type: 3}
-  m_Name: OldPhotograph
+  m_Name: Third Chapter Script
   m_EditorClassIdentifier: 
-  id: item_old_photograph
-  name: Old Photograph
-  description: Foto keluarga usang
+  id: item_third_chapter_script
+  name: Third Chapter Script
+  description: Puncak konflik
   price: 5
-  icon: {fileID: 21300000, guid: fd8492186b069114e96f56aad53f8c34, type: 3}
-  types: 08000000090000000a0000000b000000
+  icon: {fileID: 21300000, guid: 81a57915f2a6f2a489690bc723eda989, type: 3}
+  types: 0a000000
   persentase:
-  - 0.35
-  - 0.35
-  - 0.35
-  - 0.35
+  - 0.1

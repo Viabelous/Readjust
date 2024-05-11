@@ -14,11 +14,14 @@ public class Sacrivert : Skill
     public override void Activate(GameObject gameObject)
     {
         BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+
         float hp = buffSystem.GetComponent<PlayerController>().player.hp;
         this.cost = costPersenOfMaxHP * hp;
 
         if (hp >= this.cost)
         {
+            Payment(buffSystem.transform);
+
             buffSystem.ActivateBuff(
                    new Buff(
                         this.id,
@@ -29,7 +32,6 @@ public class Sacrivert : Skill
                     )
                 );
 
-            StageManager.instance.PlayerActivatesSkill(this);
         }
 
     }

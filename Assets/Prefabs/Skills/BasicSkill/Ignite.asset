@@ -26,4 +26,4 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
-  dmgPersenOfATK: 0.5
+  dmgPersenOfATK: 2.5

@@ -93,21 +93,21 @@ public class StageManager : MonoBehaviour
 
     }
 
-    public void PlayerActivatesSkill(Skill skill)
-    {
-        playerController.Pay(skill.CostType, skill.Cost);
+    // public void PlayerActivatesSkill(Skill skill)
+    // {
+    //     playerController.Pay(skill.CostType, skill.Cost);
 
 
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!NANTI UBAH WOIII!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!
+    //     // !!!!!!!!!!!!!!!!!!!!!!!!
+    //     // !!!!NANTI UBAH WOIII!!!!
+    //     // !!!!!!!!!!!!!!!!!!!!!!!!
 
-        // int index = GameManager.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
-        int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
+    //     // int index = GameManager.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
+    //     int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
 
-        // ubah state slot skill
-        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
-    }
+    //     // ubah state slot skill
+    //     GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
+    // }
 
     // public void PlayerCancelSkill(GameObject)
     // {

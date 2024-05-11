@@ -60,11 +60,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        print("ATK: " + player.atk);
-        print("DEF: " + player.def);
-        print("SHIELD: " + player.shield);
-        print("AGI: " + player.agi);
-        print("FOC: " + player.foc);
+        // print("MaxHP: " + player.maxHp);
+        // print("MaxMana: " + player.maxMana);
+        // print("HP: " + player.hp);
+        // print("MANA: " + player.mana);
+        // print("ATK: " + player.atk);
+        // print("DEF: " + player.def);
+        // print("SHIELD: " + player.shield);
+        // print("AGI: " + player.agi);
+        // print("FOC: " + player.foc);
 
         if (player.hp <= 0)
         {

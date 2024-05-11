@@ -14,7 +14,7 @@ public class Fudoshin : Skill
     public override void Activate(GameObject gameObject)
     {
         buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
-
+        Payment(buffSystem.transform);
         buff = new Buff(
                 id,
                 name,
@@ -23,7 +23,6 @@ public class Fudoshin : Skill
                 Timer
             );
         buffSystem.ActivateBuff(buff);
-        StageManager.instance.PlayerActivatesSkill(this);
     }
 
     public override void OnActivated(GameObject gameObject)

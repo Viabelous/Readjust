@@ -177,45 +177,33 @@ public class BuffSystem : MonoBehaviour
                 {
                     // will of fire
                     case BuffType.ATK:
-                        playerController.player.atk += buff.value;
+                        playerController.player.Upgrade(Stat.ATK, buff.value);
                         break;
 
                     case BuffType.DEF:
-                        playerController.player.def += buff.value;
+                        playerController.player.Upgrade(Stat.DEF, buff.value);
+
                         break;
 
                     // light step
                     case BuffType.AGI:
-                        playerController.player.agi += buff.value;
+                        playerController.player.Upgrade(Stat.AGI, buff.value);
+
                         break;
 
                     // calm
                     case BuffType.FOC:
-                        playerController.player.foc += buff.value;
+                        playerController.player.Upgrade(Stat.FOC, buff.value);
                         break;
 
                     // sacrivert
                     case BuffType.Mana:
-                        if (playerController.player.mana + buff.value > playerController.player.maxMana)
-                        {
-                            playerController.player.mana = playerController.player.maxMana;
-                        }
-                        else
-                        {
-                            playerController.player.mana += buff.value;
-                        }
+                        playerController.player.Heal(Stat.Mana, buff.value);
                         break;
 
                     // sanare
                     case BuffType.HP:
-                        if (playerController.player.hp + buff.value > playerController.player.maxHp)
-                        {
-                            playerController.player.hp = playerController.player.maxHp;
-                        }
-                        else
-                        {
-                            playerController.player.hp += buff.value;
-                        }
+                        playerController.player.Heal(Stat.HP, buff.value);
                         break;
 
                     // preserve & invitro
@@ -226,8 +214,7 @@ public class BuffSystem : MonoBehaviour
                         // maka hapus buff shield sebelumnya
                         ResetSimiliarBuff(buff);
 
-                        playerController.player.maxShield = buff.value;
-                        playerController.player.shield = buff.value;
+                        playerController.player.Upgrade(Stat.Shield, buff.value);
 
                         break;
 
@@ -260,17 +247,17 @@ public class BuffSystem : MonoBehaviour
                 {
                     // will of fire
                     case BuffType.ATK:
-                        playerController.player.atk -= buff.value;
+                        playerController.player.Downgrade(Stat.ATK, buff.value);
                         break;
 
                     // fudoshin
                     case BuffType.DEF:
-                        playerController.player.def -= buff.value;
+                        playerController.player.Downgrade(Stat.DEF, buff.value);
                         break;
 
                     // calm
                     case BuffType.FOC:
-                        playerController.player.foc -= buff.value;
+                        playerController.player.Downgrade(Stat.FOC, buff.value);
                         break;
                 }
                 break;

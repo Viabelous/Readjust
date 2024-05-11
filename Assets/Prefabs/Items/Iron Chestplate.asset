@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2910ca230f629949ad55ec5f745d964, type: 3}
-  m_Name: TeaLeaves
+  m_Name: Iron Chestplate
   m_EditorClassIdentifier: 
-  id: item_tea_leaves
-  name: Tea Leaves
-  description: Teh pucuk
-  price: 10
-  icon: {fileID: 21300000, guid: e5ebbbda1ba5a0b48b6fc9e63b17e0cd, type: 3}
-  types: 06000000
+  id: item_iron_chestplate
+  name: Iron Chestplate
+  description: Setrika di dadanya piring
+  price: 50
+  icon: {fileID: 21300000, guid: 2fa4167c0fc072347847d65bfc84361a, type: 3}
+  types: 04000000
   value:
-  - 4
+  - 8

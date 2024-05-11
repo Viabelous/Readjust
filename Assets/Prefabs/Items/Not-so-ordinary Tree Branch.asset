@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467e91f0cb750da41ad934dfe3c3aaa9, type: 3}
-  m_Name: LotusFlowerHairclip
+  m_Name: Not-so-ordinary Tree Branch
   m_EditorClassIdentifier: 
-  id: item_lotus_flower_hairclip
-  name: Lotus Flower Hairclip
-  description: Jepit rambut bunga lily
+  id: item_not_so_ordinary_tree_branch
+  name: Not-so-oridinary Tree Branch
+  description: Cuma tangkai pohon biasa kok
   price: 100
-  icon: {fileID: 21300000, guid: c96d32b85206ac749bdb7c2f34f48059, type: 3}
-  types: 0a000000
+  icon: {fileID: 21300000, guid: 002c9a0b835d6b2499307d6d4350e80e, type: 3}
+  types: 09000000
   persentase:
   - 0.35
