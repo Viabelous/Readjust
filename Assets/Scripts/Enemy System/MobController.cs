@@ -49,7 +49,7 @@ public class MobController : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
 
         enemy = enemy.Clone();
-        speed = enemy.movementSpeed;
+        speed = enemy.MovementSpeed;
 
         state = CharacterState.Alive;
     }

@@ -125,7 +125,7 @@ public class LandsideTyphoon : Skill
             if (pulledEnemies.Contains(mob.enemy.id))
             {
                 // kembalikan kecepatan musuh
-                mob.speed = mob.enemy.movementSpeed;
+                mob.speed = mob.enemy.MovementSpeed;
                 pulledEnemies.Remove(mob.enemy.id);
             }
         }

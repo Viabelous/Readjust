@@ -53,7 +53,7 @@ public class Waterwall : Skill
         if (other.CompareTag("Enemy"))
         {
             MobController mob = other.GetComponent<MobController>();
-            mob.speed = mob.enemy.movementSpeed;
+            mob.speed = mob.enemy.MovementSpeed;
             base.AfterHitEnemy(other);
         }
     }

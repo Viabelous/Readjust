@@ -30,7 +30,7 @@ public class Enemy : Character
         this.hp = this.maxHp;
     }
 
-    public float movementSpeed
+    public float MovementSpeed
     {
         get
         {

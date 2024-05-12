@@ -31,8 +31,8 @@ public class CrowdControlSystem : MonoBehaviour
     {
 
         initialSpeed = type == CharacterType.Player ?
-                        GetComponent<PlayerController>().player.movementSpeed :
-                        GetComponent<MobController>().enemy.movementSpeed;
+                        GetComponent<PlayerController>().player.MovementSpeed :
+                        GetComponent<MobController>().enemy.MovementSpeed;
     }
 
     void Update()
