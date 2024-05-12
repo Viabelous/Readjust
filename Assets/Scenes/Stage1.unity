@@ -657,7 +657,10 @@ MonoBehaviour:
   - {fileID: 1704528781676703533, guid: f9a85960016d5d549b18f13f2c813571, type: 3}
   - {fileID: 6224096893381730839, guid: 0b148a461f7722547be2f95aed36a3ba, type: 3}
   - {fileID: 2794237566907782887, guid: b4e5767df8c21ff4590aef27bec22882, type: 3}
-  selectedItems: []
+  selectedItems:
+  - {fileID: 11400000, guid: 615db0a82f9980149afb2785d72fb865, type: 2}
+  - {fileID: 11400000, guid: da5a8f55c55413949aed6440ed60e12e, type: 2}
+  - {fileID: 11400000, guid: 3f835aa80f25e04489c2ec9363cae026, type: 2}
 --- !u!4 &260168803
 Transform:
   m_ObjectHideFlags: 0
@@ -1842,7 +1845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &569255952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3537,6 +3540,11 @@ MonoBehaviour:
   maxMap: {x: 14, y: 9.5}
   rewardPanel: {fileID: 569255951}
   time: 0
+  score: 0
+  extraAerus: 0
+  extraExp: 0
+  extraVenetia: 0
+  extraScore: 0
   minTime: 0
   stateText: {fileID: 771887523}
   validSkill: 0

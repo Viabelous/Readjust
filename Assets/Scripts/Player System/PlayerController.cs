@@ -62,9 +62,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        // print("MaxHP: " + player.maxHp);
+        print("MaxHP: " + player.maxHp);
         // print("MaxMana: " + player.maxMana);
-        // print("HP: " + player.hp);
+        print("HP: " + player.hp);
         // print("MANA: " + player.mana);
         // print("ATK: " + player.atk);
         // print("DEF: " + player.def);

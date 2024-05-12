@@ -26,7 +26,7 @@ public class StageManager : MonoBehaviour
     public Vector2 minMap, maxMap;
     public GameObject rewardPanel;
 
-    [HideInInspector] public float time;
+    [HideInInspector] public float time, score, extraAerus, extraExp, extraVenetia, extraScore;
 
     private int min, sec;
 
@@ -46,7 +46,13 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         time = Time.time;
+        score = 0;
+        extraAerus = 0;
+        extraExp = 0;
+        extraVenetia = 0;
+        extraScore = 0;
         state = StageState.Play;
+        rewardPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -172,15 +178,22 @@ public class StageManager : MonoBehaviour
     {
         state = StageState.Reward;
 
-        rewardPanel.SetActive(true);
-        RewardPanel rewardPanelBehav = rewardPanel.GetComponent<RewardPanel>();
-        rewardPanelBehav.SetScore(10000);
-        rewardPanelBehav.SetEndTime(timeText.text);
-
         PlayerController playerController = player.GetComponent<PlayerController>();
 
-        rewardPanelBehav.SetEndAerus(playerController.player.aerus, 0);
-        rewardPanelBehav.SetEndExp(playerController.player.exp, 0);
+        rewardPanel.SetActive(true);
+        RewardPanel rewardPanelBehav = rewardPanel.GetComponent<RewardPanel>();
+
+        // finalisasi reward
+        FinalizeReward();
+
+        rewardPanelBehav.SetScore(Mathf.FloorToInt(score + extraScore));
+        rewardPanelBehav.SetEndTime(timeText.text);
+
+        rewardPanelBehav.SetEndAerus(Mathf.FloorToInt(playerController.player.aerus), Mathf.FloorToInt(extraAerus));
+        rewardPanelBehav.SetEndExp(Mathf.FloorToInt(playerController.player.exp), Mathf.FloorToInt(extraExp));
+
+        playerController.player.aerus = Mathf.FloorToInt(playerController.player.aerus + extraAerus);
+        playerController.player.aerus = Mathf.FloorToInt(playerController.player.exp + extraExp);
 
         switch (Input.inputString)
         {
@@ -190,5 +203,57 @@ public class StageManager : MonoBehaviour
         }
     }
 
-}
+    private float GetScore(Player player)
+    {
+        float timeScore = 0;
 
+        if (time > 600)
+        {
+            timeScore = 840 - time;
+            timeScore = (timeScore <= 0) ? 0 : timeScore * 50;
+        }
+
+        score = player.aerus + player.exp + timeScore;
+        return score;
+    }
+
+    private void FinalizeReward()
+    {
+        score = GetScore(player.GetComponent<PlayerController>().player);
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!
+        // !!!!NANTI UBAH WOIII!!!!
+        // !!!!!!!!!!!!!!!!!!!!!!!!
+        // List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is MultiplyReward);
+        List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is MultiplyReward);
+
+        if (rewardItem.Count == 0)
+        {
+            return;
+        }
+
+        foreach (Item item in rewardItem)
+        {
+            MultiplyReward multiplyReward = (MultiplyReward)item;
+
+            item.Activate(player);
+
+            switch (multiplyReward.rewardType)
+            {
+                case RewardType.Aerus:
+                    extraAerus += multiplyReward.result;
+                    break;
+                case RewardType.ExpOrb:
+                    extraExp += multiplyReward.result;
+                    break;
+                case RewardType.Venetia:
+                    extraVenetia += multiplyReward.result;
+                    break;
+                case RewardType.Score:
+                    extraScore += multiplyReward.result;
+                    break;
+            }
+        }
+    }
+
+}

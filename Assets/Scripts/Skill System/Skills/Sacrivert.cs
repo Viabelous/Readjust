@@ -15,6 +15,11 @@ public class Sacrivert : Skill
     {
         BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
+        if (buffSystem.CheckBuff("Badge of Honour"))
+        {
+            return;
+        }
+
         float hp = buffSystem.GetComponent<PlayerController>().player.hp;
         this.cost = costPersenOfMaxHP * hp;
 

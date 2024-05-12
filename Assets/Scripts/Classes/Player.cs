@@ -12,7 +12,7 @@ public class Player : Character
     public float maxMana;
 
     [ReadOnly]
-    public float mana, maxShield, shield, aerus, exp, story;
+    public float mana, maxShield, shield, aerus, exp, venetia, story;
 
 
     private void OnEnable()
@@ -24,6 +24,7 @@ public class Player : Character
         this.maxShield = 0;
         this.shield = maxShield;
         this.aerus = 0;
+        this.venetia = 0;
         this.story = 0;
     }
 

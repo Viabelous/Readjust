@@ -24,8 +24,14 @@ public class ItemSystem : MonoBehaviour
                     itemActivated.Adapting(map);
                 }
 
-                itemActivated.Activate(gameObject);
+                if (itemActivated.GetType() != typeof(MultiplyReward))
+                {
+                    print("Aktivasi Item");
+                    itemActivated.Activate(gameObject);
+                }
             }
+
+            BadgeOfHonourEffect();
 
             hasActivated = true;
         }
@@ -39,6 +45,12 @@ public class ItemSystem : MonoBehaviour
             }
         }
 
+    }
+
+    private void BadgeOfHonourEffect()
+    {
+        Player player = GameObject.Find("Player").GetComponent<PlayerController>().player;
+        player.Downgrade(Stat.HP, player.maxHp - 1);
     }
 }
 
