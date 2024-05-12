@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public enum StageState
 {
-    Play, Pause, Victory, Lose
+    Play, Pause, Win, Lose, Reward
 }
 
 // digunakan dalam stage 
@@ -24,6 +24,7 @@ public class StageManager : MonoBehaviour
     public Text timeText;
 
     public Vector2 minMap, maxMap;
+    public GameObject rewardPanel;
 
     [HideInInspector] public float time;
 
@@ -36,9 +37,7 @@ public class StageManager : MonoBehaviour
 
     [HideInInspector] public bool validSkill;
 
-    // [HideInInspector] public List<string> killedEnemies;
 
-    // Start is called before the first frame update
     void Awake()
     {
         instance = this;
@@ -53,15 +52,6 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        KeyboardInteraction();
-
-
-
-        // if (min == 10)
-        // {
-        //     StageManager.instance.gameState = GameState.Boss;
-        // }
-
         switch (state)
         {
             case StageState.Play:
@@ -70,10 +60,14 @@ public class StageManager : MonoBehaviour
             case StageState.Pause:
                 Pause();
                 break;
-            case StageState.Victory:
+            case StageState.Win:
+                Win();
                 break;
             case StageState.Lose:
                 Lose();
+                break;
+            case StageState.Reward:
+                Reward();
                 break;
         }
     }
@@ -86,33 +80,6 @@ public class StageManager : MonoBehaviour
     public StageState CurrentState()
     {
         return this.state;
-    }
-
-    private void KeyboardInteraction()
-    {
-        switch (Input.inputString)
-        {
-            case "q":
-
-                if (state == StageState.Play)
-                {
-                    player.GetComponent<Animator>().SetTrigger("BasicAttack");
-                    if (!GameObject.Find(basicStab.name + "(Clone)"))
-                    {
-                        Instantiate(basicStab);
-                    }
-                }
-                break;
-
-
-            case "\b":
-                SceneManager.LoadScene("MainMenu");
-                break;
-
-            case " ":
-                ToggleState(StageState.Pause, StageState.Play);
-                break;
-        }
     }
 
     private void RunTime()
@@ -137,6 +104,20 @@ public class StageManager : MonoBehaviour
         RunTime();
 
         stateText.SetActive(false);
+
+        switch (Input.inputString)
+        {
+            case "q":
+                player.GetComponent<Animator>().SetTrigger("BasicAttack");
+                if (!GameObject.Find(basicStab.name + "(Clone)"))
+                {
+                    Instantiate(basicStab);
+                }
+                break;
+            case " ":
+                ToggleState(StageState.Pause, StageState.Play);
+                break;
+        }
     }
 
     private void Pause()
@@ -147,29 +128,66 @@ public class StageManager : MonoBehaviour
         stateText.SetActive(true);
         stateText.GetComponent<Text>().text = "PAUSE";
 
-        // MobController[] mobs = FindObjectsOfType<MobController>();
-        // foreach (MobController mob in mobs)
-        // {
-        //     mob.movementEnabled = false;
-        // }
 
-        // PlayerController player = FindObjectOfType<PlayerController>();
-        // player.movementEnabled = false;
-
-        // EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
-        // foreach (EnemySpawner spawner in spawners)
-        // {
-        //     spawner.spawnEnabled = false;
-        // }
-
+        switch (Input.inputString)
+        {
+            case " ":
+                ToggleState(StageState.Pause, StageState.Play);
+                break;
+        }
     }
 
     private void Lose()
     {
         state = StageState.Lose;
         PauseTime();
+
         stateText.SetActive(true);
         stateText.GetComponent<Text>().text = "LOSE";
+
+        switch (Input.inputString)
+        {
+            case " ":
+                Reward();
+                break;
+        }
+    }
+
+    private void Win()
+    {
+        state = StageState.Win;
+        PauseTime();
+        stateText.SetActive(true);
+        stateText.GetComponent<Text>().text = "WIN";
+
+        switch (Input.inputString)
+        {
+            case " ":
+                Reward();
+                break;
+        }
+    }
+
+    private void Reward()
+    {
+        state = StageState.Reward;
+
+        rewardPanel.SetActive(true);
+        RewardPanel rewardPanelBehav = rewardPanel.GetComponent<RewardPanel>();
+        rewardPanelBehav.SetScore(10000);
+        rewardPanelBehav.SetEndTime(timeText.text);
+
+        PlayerController playerController = player.GetComponent<PlayerController>();
+
+        rewardPanelBehav.SetEndAerus(playerController.player.aerus, 0);
+        rewardPanelBehav.SetEndExp(playerController.player.exp, 0);
+
+        switch (Input.inputString)
+        {
+            case " ":
+                SceneManager.LoadScene("DeveloperZone");
+                break;
+        }
     }
 
 }

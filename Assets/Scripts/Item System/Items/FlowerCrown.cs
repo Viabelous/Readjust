@@ -10,13 +10,13 @@ public class FlowerCrown : Item
     [SerializeField] private float extraMaxHP;
     [SerializeField] private float extraMaxMana;
 
-    private BuffSystem buffSystem;
+    // private BuffSystem buffSystem;
 
     public override void Activate(GameObject player)
     {
-        buffSystem = player.GetComponent<BuffSystem>();
-        Buff buff = new Buff(this.id, this.name, BuffType.Custom, 0, 0);
-        buffSystem.ActivateBuff(buff);
+        // buffSystem = player.GetComponent<BuffSystem>();
+        // Buff buff = new Buff(this.id, this.name, BuffType.Custom, 0, 0);
+        // buffSystem.ActivateBuff(buff);
 
         PlayerController playerController = player.GetComponent<PlayerController>();
 

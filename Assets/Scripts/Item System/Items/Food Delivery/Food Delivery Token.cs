@@ -14,16 +14,16 @@ public class FoodDeliveryToken : Item
     [Header("Time Interval")]
     [SerializeField] private float timer;
     private float maxTimer;
-    private BuffSystem buffSystem;
+    // private BuffSystem buffSystem;
 
 
 
     public override void Activate(GameObject player)
     {
         maxTimer = timer;
-        buffSystem = player.GetComponent<BuffSystem>();
-        Buff buff = new Buff(this.id, this.name, BuffType.Custom, 0, 0);
-        buffSystem.ActivateBuff(buff);
+        // buffSystem = player.GetComponent<BuffSystem>();
+        // Buff buff = new Buff(this.id, this.name, BuffType.Custom, 0, 0);
+        // buffSystem.ActivateBuff(buff);
 
         food.GetComponent<FoodDeliveryBehaviour>().healHP = healHP;
         food.GetComponent<FoodDeliveryBehaviour>().healMana = healMana;

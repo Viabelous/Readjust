@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class Player : Character
 {
     public float maxMana;
 
-    [HideInInspector]
+    [ReadOnly]
     public float mana, maxShield, shield, aerus, exp, story;
 
 
@@ -26,7 +27,7 @@ public class Player : Character
         this.story = 0;
     }
 
-    public float movementSpeed
+    public float MovementSpeed
     {
         get
         {

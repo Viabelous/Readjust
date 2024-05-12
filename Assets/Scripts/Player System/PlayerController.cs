@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * player.movementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * player.MovementSpeed * Time.fixedDeltaTime);
 
         Vector3 position = rb.position;
         position.x = Mathf.Clamp(position.x, minMap.x, maxMap.x);
