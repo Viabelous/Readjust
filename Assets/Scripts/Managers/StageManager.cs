@@ -21,16 +21,19 @@ public class StageManager : MonoBehaviour
 
     [Header("Stage")]
 
+    // timer -------------------------------
     public Text timeText;
-
-    public Vector2 minMap, maxMap;
-    public GameObject rewardPanel;
-
-    [HideInInspector] public float time, score, extraAerus, extraExp, extraVenetia, extraScore;
-
+    [HideInInspector] public float time;
     private int min, sec;
-
     [HideInInspector] public float minTime;
+
+    // batasan map --------------------------
+    public Vector2 minMap, maxMap;
+
+    // panel reward --------------------------
+    public GameObject rewardPanel;
+    [HideInInspector] public float score;
+    private float extraScore, extraAerus, extraExp;
 
     [HideInInspector] private StageState state;
     [SerializeField] private GameObject stateText;
@@ -47,10 +50,9 @@ public class StageManager : MonoBehaviour
     {
         time = Time.time;
         score = 0;
+        extraScore = 0;
         extraAerus = 0;
         extraExp = 0;
-        extraVenetia = 0;
-        extraScore = 0;
         state = StageState.Play;
         rewardPanel.SetActive(false);
     }
@@ -192,14 +194,12 @@ public class StageManager : MonoBehaviour
         rewardPanelBehav.SetEndAerus(Mathf.FloorToInt(playerController.player.aerus), Mathf.FloorToInt(extraAerus));
         rewardPanelBehav.SetEndExp(Mathf.FloorToInt(playerController.player.exp), Mathf.FloorToInt(extraExp));
 
-        playerController.player.aerus = Mathf.FloorToInt(playerController.player.aerus + extraAerus);
-        playerController.player.aerus = Mathf.FloorToInt(playerController.player.exp + extraExp);
+        playerController.player.Collect(RewardType.Aerus, Mathf.FloorToInt(extraAerus));
+        playerController.player.Collect(RewardType.ExpOrb, Mathf.FloorToInt(extraExp));
 
-        switch (Input.inputString)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            case " ":
-                SceneManager.LoadScene("DeveloperZone");
-                break;
+            SceneManager.LoadScene("DeveloperZone");
         }
     }
 
@@ -219,6 +219,7 @@ public class StageManager : MonoBehaviour
 
     private void FinalizeReward()
     {
+
         score = GetScore(player.GetComponent<PlayerController>().player);
 
         // !!!!!!!!!!!!!!!!!!!!!!!!
@@ -234,23 +235,19 @@ public class StageManager : MonoBehaviour
 
         foreach (Item item in rewardItem)
         {
-            MultiplyReward multiplyReward = (MultiplyReward)item;
+            item.Activate(this.player);
 
-            item.Activate(player);
-
-            switch (multiplyReward.rewardType)
+            MultiplyReward itemReward = (MultiplyReward)item;
+            switch (itemReward.rewardType)
             {
                 case RewardType.Aerus:
-                    extraAerus += multiplyReward.result;
+                    extraAerus += itemReward.result;
                     break;
                 case RewardType.ExpOrb:
-                    extraExp += multiplyReward.result;
-                    break;
-                case RewardType.Venetia:
-                    extraVenetia += multiplyReward.result;
+                    extraExp += itemReward.result;
                     break;
                 case RewardType.Score:
-                    extraScore += multiplyReward.result;
+                    extraScore += itemReward.result;
                     break;
             }
         }

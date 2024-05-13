@@ -17,6 +17,7 @@ public class Player : Character
 
     private void OnEnable()
     {
+        Debug.Log("masa sih??");
         // Kode yang ingin dijalankan saat scriptable object diaktifkan pertama kali
         this.id = "player" + UnityEngine.Random.Range(1, 99999).ToString();
         this.hp = this.maxHp;
@@ -24,6 +25,7 @@ public class Player : Character
         this.maxShield = 0;
         this.shield = maxShield;
         this.aerus = 0;
+        this.exp = 0;
         this.venetia = 0;
         this.story = 0;
     }
@@ -142,6 +144,42 @@ public class Player : Character
                 break;
         }
     }
+
+    public void Collect(RewardType type, float value)
+    {
+        switch (type)
+        {
+            case RewardType.Aerus:
+                this.aerus += value;
+                break;
+            case RewardType.ExpOrb:
+                this.exp += value;
+                break;
+            case RewardType.Venetia:
+                this.venetia += value;
+                break;
+        }
+    }
+
+    public void Pay(CostType type, float value)
+    {
+        switch (type)
+        {
+            case CostType.Mana:
+                mana -= value;
+                break;
+            case CostType.Hp:
+                hp -= value;
+                break;
+            case CostType.Aerus:
+                aerus -= value;
+                break;
+            case CostType.Exp:
+                exp -= value;
+                break;
+        }
+    }
+
 
 
     // public Player CloneObject()

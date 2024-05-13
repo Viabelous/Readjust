@@ -35,11 +35,6 @@ public class SkillController : MonoBehaviour
         // }
 
         skill.Activate(gameObject);
-        if (GetComponent<AttackSystem>() != null)
-        {
-            print(GetComponent<AttackSystem>().DealDamage());
-
-        }
         // print(skill.GetDamage(GameObject.Find("Player").GetComponent<PlayerController>().player));
     }
 

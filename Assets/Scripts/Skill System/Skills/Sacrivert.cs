@@ -13,10 +13,13 @@ public class Sacrivert : Skill
 
     public override void Activate(GameObject gameObject)
     {
-        BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
+        GameObject player = GameObject.Find("Player");
+        BuffSystem buffSystem = player.GetComponent<BuffSystem>();
+        ItemSystem itemSystem = player.GetComponent<ItemSystem>();
 
-        if (buffSystem.CheckBuff("Badge of Honour"))
+        if (itemSystem.CheckItem("Badge of Honour"))
         {
+            Destroy(gameObject);
             return;
         }
 

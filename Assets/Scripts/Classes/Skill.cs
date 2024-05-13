@@ -145,7 +145,7 @@ public class Skill : ScriptableObject
     public void Payment(Transform player)
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
-        playerController.Pay(CostType, Cost);
+        playerController.player.Pay(CostType, Cost);
 
 
         // !!!!!!!!!!!!!!!!!!!!!!!!

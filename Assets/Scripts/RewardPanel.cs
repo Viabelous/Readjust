@@ -17,30 +17,19 @@ public class RewardPanel : MonoBehaviour
     {
         this.time.text = time;
     }
+
     public void SetEndAerus(float aerus, float extra)
     {
         this.aerus.text = aerus.ToString();
-        if (extra != 0)
-        {
-            this.extra_aerus.text = "+" + extra.ToString();
-        }
-        else
-        {
-            this.extra_aerus.text = "";
-        }
+        this.extra_aerus.text = extra != 0 ? "+" + extra.ToString() : "";
+
     }
 
     public void SetEndExp(float exp, float extra)
     {
         this.exp.text = exp.ToString();
-        if (extra != 0)
-        {
-            this.extra_exp.text = "+" + extra.ToString();
-        }
-        else
-        {
-            this.extra_exp.text = "";
-        }
+        this.extra_exp.text = extra != 0 ? "+" + extra.ToString() : "";
+
     }
 
 }

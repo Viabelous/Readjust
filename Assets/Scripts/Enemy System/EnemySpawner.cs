@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // [SerializeField]
+    [SerializeField] private SpawnHolder spawnHolder;
+
     private GameObject enemyPref;
-    [SerializeField]
-    private SpawnHolder spawnHolder;
 
     // [SerializeField]
     public float minTime, maxTime, timer, gap, time;
@@ -25,14 +24,6 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
 
-        // if (time < 10)
-        // {
-        //     enemyPref = spawnHolder.enemyPrefs.Find(
-        //         prefab => prefab.GetComponent<MobController>().enemy.enemyName == EnemyName.pinkBoogie
-        //     );
-        // }
-
-
         timer -= Time.deltaTime;
 
         if (timer <= 0)
@@ -44,16 +35,6 @@ public class EnemySpawner : MonoBehaviour
 
     void ResetTimer()
     {
-        // if (time < 60 * 10 && time % 15 == 0 && minTime < maxTime)
-        // {
-        //     maxTime -= gap;
-        // }
-
-        // if (time < 60 * 10 && time % 60 == 0 && minTime < maxTime)
-        // {
-        //     minTime += gap;
-        // }
-
         timer = Random.Range(minTime, maxTime);
     }
 
@@ -61,8 +42,6 @@ public class EnemySpawner : MonoBehaviour
     {
         int index = Random.Range(0, spawnHolder.enemyPrefs.Count);
         enemyPref = spawnHolder.enemyPrefs[index];
-
-        // enemyPref = spawnHolder.enemyPrefs[4];
 
         Instantiate(enemyPref, transform.position, Quaternion.identity);
     }

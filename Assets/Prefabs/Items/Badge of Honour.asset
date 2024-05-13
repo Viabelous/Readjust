@@ -20,5 +20,5 @@ MonoBehaviour:
   types: 0c000000
   adaptable: 0
   rewardType: 3
-  persentase: 1.25
-  result: 575
+  persentase: 0.25
+  result: 7.5

@@ -19,5 +19,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   types: 0c000000
   adaptable: 0
-  type: 0
-  persentase: 1.25
+  rewardType: 0
+  persentase: 0.25
+  result: 5

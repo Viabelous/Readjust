@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameState gameState;
 
-    [SerializeField] private Text aerusText, expText;
+    // [SerializeField] private Text aerusText, expText;
 
     [SerializeField] private Vector2 minMap, maxMap;
 
@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
         // print("SHIELD: " + player.shield);
         // print("AGI: " + player.agi);
         // print("FOC: " + player.foc);
+        // print("Aerus: " + player.aerus);
+        // print("Exp: " + player.exp);
 
         switch (gameState)
         {
@@ -127,25 +129,6 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
     }
 
-    public void Pay(CostType costType, float value)
-    {
-        switch (costType)
-        {
-            case CostType.Mana:
-                player.mana -= value;
-                break;
-            case CostType.Hp:
-                player.hp -= value;
-                break;
-            case CostType.Aerus:
-                player.aerus -= value;
-                break;
-            case CostType.Exp:
-                player.exp -= value;
-                break;
-        }
-    }
-
     public void Damaged()
     {
         for (int i = 0; i < spriteRenderers.Length; i++)
@@ -162,17 +145,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void CollectAerus(float num)
-    {
-        player.aerus += num;
-        aerusText.text = player.aerus.ToString();
-    }
+    // public void PayWithAerus(float num)
+    // {
+    //     player.Pay(CostType.Aerus, num);
+    //     aerusText.text = player.aerus.ToString();
+    // }
+    // public void PayWithExp(float num)
+    // {
+    //     player.Pay(CostType.Exp, num);
+    //     expText.text = player.exp.ToString();
+    // }
 
-    public void CollectExp(float num)
-    {
-        player.exp += num;
-        expText.text = player.exp.ToString();
-    }
+    // public void CollectAerus(float num)
+    // {
+    //     print("Tambah aerus");
+    //     player.Collect(RewardType.Aerus, num);
+    //     aerusText.text = player.aerus.ToString();
+    // }
+
+    // public void CollectExp(float num)
+    // {
+    //     player.Collect(RewardType.ExpOrb, num);
+    //     expText.text = player.exp.ToString();
+    // }
 
     private void DoIfOnlyOnStage()
     {

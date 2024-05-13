@@ -52,5 +52,15 @@ public class ItemSystem : MonoBehaviour
         Player player = GameObject.Find("Player").GetComponent<PlayerController>().player;
         player.Downgrade(Stat.HP, player.maxHp - 1);
     }
+
+    public bool CheckItem(string name)
+    {
+        // !!!!!!!!!!!!!!!!!!!!!!!!
+        // !!!!NANTI UBAH WOIII!!!!
+        // !!!!!!!!!!!!!!!!!!!!!!!!
+
+        // return GameManager.selectedItems.FindIndex(item => item.Name == name) != -1;
+        return CumaBuatDebug.instance.selectedItems.FindIndex(item => item.Name == name) != -1;
+    }
 }
 

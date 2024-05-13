@@ -21,8 +21,8 @@ public class Enemy : Character
     [Header("Enemy")]
     public new string name;
     public EnemyType type;
-    public float aerusValue;
-    public float expValue;
+    public float aerus;
+    public float exp;
 
     private void OnEnable()
     {

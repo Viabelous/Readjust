@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: PinkBoogie
   m_EditorClassIdentifier: 
-  id: enemy92562
+  id: enemy49017
   maxHp: 15
   hp: 15
   atk: 5
@@ -23,5 +23,6 @@ MonoBehaviour:
   actionEnabled: 1
   movementEnabled: 1
   name: Pink Boogie
-  aerusValue: 5
-  expValue: 2
+  type: 0
+  aerus: 5
+  exp: 2

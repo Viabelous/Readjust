@@ -12,8 +12,6 @@ public enum CharacterState
     Dead
 }
 
-
-
 public class MobController : MonoBehaviour
 {
 
@@ -57,54 +55,54 @@ public class MobController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // kalau hp habis, hilangkan ---------------------------------------------------
-        if (enemy.hp <= 0)
+        switch (state)
         {
-            Die();
-            return;
-        }
+            case CharacterState.Alive:
+                if (enemy.hp <= 0)
+                {
+                    state = CharacterState.Dead;
+                    playerController.player.Collect(RewardType.Aerus, enemy.aerus);
+                    playerController.player.Collect(RewardType.ExpOrb, enemy.exp);
+                }
 
-        // arah hadap mob (?) ------------------------------------------------------------
-        if (player.transform.position.x != transform.position.x)
-        {
-            movement.x = player.transform.position.x < transform.position.x ? -1 : 1;
-        }
-        else
-        {
-            movement.x = 0;
-        }
+                if (player.transform.position.x != transform.position.x)
+                {
+                    movement.x = player.transform.position.x < transform.position.x ? -1 : 1;
+                }
+                else
+                {
+                    movement.x = 0;
+                }
 
-        if (player.transform.position.y != transform.position.y)
-        {
-            movement.y = player.transform.position.y < transform.position.y ? -1 : 1;
-        }
-        else
-        {
-            movement.y = 0;
-        }
+                if (player.transform.position.y != transform.position.y)
+                {
+                    movement.y = player.transform.position.y < transform.position.y ? -1 : 1;
+                }
+                else
+                {
+                    movement.y = 0;
+                }
 
-        animate.SetFloat("Vertical", movement.y);
-        animate.SetFloat("Speed", movement.sqrMagnitude);
+                animate.SetFloat("Vertical", movement.y);
+                animate.SetFloat("Speed", movement.sqrMagnitude);
 
-        // if (gameObject.transform.position.y > player.transform.position.y && !onSkillTrigger)
-        // {
-        //     spriteRenderer.sortingLayerName = "Enemy Back";
-        // }
-        // else
-        // {
-        //     spriteRenderer.sortingLayerName = "Enemy";
-        // }
+                break;
+
+            case CharacterState.Dead:
+                Damaged();
+                Destroy(gameObject, 0.1f);
+                break;
+        }
 
     }
 
     // pergerakan mob ------------------------------------------------------------------------
     void FixedUpdate()
     {
-
-        // if (!crowdControlSystem.CheckCC(CrowdControlType.Slow))
-        // {
-        //     speed = enemy.movementSpeed;
-        // }
+        if (state == CharacterState.Dead)
+        {
+            return;
+        }
 
         if (
             !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
@@ -121,51 +119,6 @@ public class MobController : MonoBehaviour
         }
 
     }
-
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-
-    //     // if (other.CompareTag("Damage"))
-    //     // {
-    //     //     // print("Enemy HP: " + enemy.hp.ToString());
-    //     //     Damaged();
-    //     // }
-
-    //     // kalau player punya thorn dan bukan flying enemy
-    //     if (
-    //         other.CompareTag("Player") &&
-    //         gameObject.CompareTag("Enemy") &&
-    //         enemy.type == EnemyType.Ground &&
-    //         playerController.GetComponent<BuffSystem>().CheckBuff(BuffType.Thorn)
-    //     )
-    //     {
-    //         // print("Enemy HP: " + enemy.hp.ToString());
-    //         thorned = true;
-    //         Damaged();
-    //     }
-    // }
-
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     // if (other.CompareTag("Damage") && state == CharacterState.alive)
-    //     // {
-    //     //     Undamaged();
-    //     // }
-
-    //     // kalau player punya thorn
-    //     if (
-    //         other.CompareTag("Player") &&
-    //         gameObject.CompareTag("Enemy") &&
-    //         enemy.type == EnemyType.Ground &&
-    //         thorned
-    //     )
-    //     {
-    //         thorned = false;
-    //         Undamaged();
-    //     }
-
-    // }
 
 
     public void Damaged()
@@ -192,15 +145,6 @@ public class MobController : MonoBehaviour
                 Invoke("Undamaged", 0.2f);
                 break;
         }
-    }
-
-    private void Die()
-    {
-        state = CharacterState.Dead;
-        playerController.CollectAerus(enemy.aerusValue);
-        playerController.CollectExp(enemy.expValue);
-        Damaged();
-        Destroy(gameObject, 0.1f);
     }
 
 

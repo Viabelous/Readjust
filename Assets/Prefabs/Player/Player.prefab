@@ -403,14 +403,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0372508efe4a2734495a7451011b5ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  basicStab: {fileID: 0}
+  gameState: 0
   aerusText: {fileID: 0}
   expText: {fileID: 0}
-  minX: -13
-  maxX: 13
-  minY: -9
-  maxY: 9
+  minMap: {x: -13, y: -9}
+  maxMap: {x: 13, y: 9}
   spriteRenderers:
   - {fileID: 5733651750668834152}
   - {fileID: 6034529459704320462}
@@ -464,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7969e91983eefbb4db340009e692396b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: 0
 --- !u!1 &4370094214752357961
 GameObject:
   m_ObjectHideFlags: 0
