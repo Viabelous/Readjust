@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 3
-  maxTime: 15
+  maxTime: 10
   timer: 0
   gap: 1
   time: 0
@@ -616,8 +616,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
-  minTime: 5
-  maxTime: 30
+  minTime: 3
+  maxTime: 20
   timer: 0
   gap: 1
   time: 0
@@ -655,8 +655,10 @@ MonoBehaviour:
   - {fileID: 6349578813318396482, guid: 3db2bc1239f61d045a369550b4213701, type: 3}
   - {fileID: 7424176912135380703, guid: 4eeae4ce891dad14abe30046dcee9e18, type: 3}
   - {fileID: 1704528781676703533, guid: f9a85960016d5d549b18f13f2c813571, type: 3}
-  - {fileID: 6224096893381730839, guid: 0b148a461f7722547be2f95aed36a3ba, type: 3}
-  - {fileID: 2794237566907782887, guid: b4e5767df8c21ff4590aef27bec22882, type: 3}
+  - {fileID: 6362818899781594208, guid: effe21e53782d1c49b41463ddd3ff920, type: 3}
+  - {fileID: 222238090947821005, guid: b22e84ccf0f3ca342a9a4263864b7ad7, type: 3}
+  - {fileID: 8810682604464027387, guid: 9f6dfeeb65a1b6a4e8db8bd62e5f49d2, type: 3}
+  - {fileID: 2368303669140024051, guid: 2a50d92d159e7534da4fb36d84c6248c, type: 3}
   selectedItems:
   - {fileID: 11400000, guid: 615db0a82f9980149afb2785d72fb865, type: 2}
   - {fileID: 11400000, guid: da5a8f55c55413949aed6440ed60e12e, type: 2}
@@ -3013,8 +3015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
-  minTime: 5
-  maxTime: 30
+  minTime: 3
+  maxTime: 20
   timer: 0
   gap: 1
   time: 0
@@ -3432,9 +3434,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefs:
   - {fileID: 6170722551558479055, guid: a102c29ce7e850540b184e1eb0781387, type: 3}
-  - {fileID: 218449121411476219, guid: d2a42f20348bf7b4eb08e79fc92a0b14, type: 3}
+  - {fileID: 6565955311164720928, guid: beb2cddc8f8a883438fb805fcf45a9cd, type: 3}
   - {fileID: 2404364144903811556, guid: 9bf566a34d49866458d922a33852f73b, type: 3}
   - {fileID: 26331218866292259, guid: 7894814de4faa3e4fa7a04356652d0ac, type: 3}
+  - {fileID: 3796948361964280087, guid: 97b757f4b3ac89943af8ebb183b88bbb, type: 3}
 --- !u!1 &1003035104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,7 +3813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 3
-  maxTime: 15
+  maxTime: 10
   timer: 0
   gap: 1
   time: 0
@@ -4967,8 +4970,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
-  minTime: 5
-  maxTime: 15
+  minTime: 3
+  maxTime: 10
   timer: 0
   gap: 1
   time: 0
@@ -5109,7 +5112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 3
-  maxTime: 15
+  maxTime: 10
   timer: 0
   gap: 1
   time: 0
@@ -5159,8 +5162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
-  minTime: 5
-  maxTime: 30
+  minTime: 3
+  maxTime: 20
   timer: 0
   gap: 1
   time: 0
@@ -5450,8 +5453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
-  minTime: 5
-  maxTime: 30
+  minTime: 3
+  maxTime: 20
   timer: 0
   gap: 1
   time: 0

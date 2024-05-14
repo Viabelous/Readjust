@@ -45,11 +45,27 @@ public class SkillController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Enemy"))
+        {
+            if (skill.Element != Element.Air && other.GetComponent<MobController>().enemy.type == EnemyType.Flying)
+            {
+                return;
+            }
+        }
+
         skill.HitEnemy(other);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (other.CompareTag("Enemy"))
+        {
+            if (skill.Element != Element.Air && other.GetComponent<MobController>().enemy.type == EnemyType.Flying)
+            {
+                return;
+            }
+        }
+
         skill.WhileHitEnemy(other);
 
         if (other.CompareTag("Enemy"))

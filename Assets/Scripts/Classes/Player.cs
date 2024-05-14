@@ -17,7 +17,6 @@ public class Player : Character
 
     private void OnEnable()
     {
-        Debug.Log("masa sih??");
         // Kode yang ingin dijalankan saat scriptable object diaktifkan pertama kali
         this.id = "player" + UnityEngine.Random.Range(1, 99999).ToString();
         this.hp = this.maxHp;
