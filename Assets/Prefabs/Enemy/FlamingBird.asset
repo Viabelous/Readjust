@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: FlamingBird
   m_EditorClassIdentifier: 
-  id: enemy31038
+  id: enemy28937
   maxHp: 140
   hp: 140
-  atk: 30
+  atk: 23
   def: 0
   agi: 0
   speed: 1.5

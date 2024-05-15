@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Scorp
   m_EditorClassIdentifier: 
-  id: enemy26713
+  id: enemy56119
   maxHp: 200
   hp: 200
-  atk: 10
+  atk: 30
   def: 0
   agi: 0
   speed: 2

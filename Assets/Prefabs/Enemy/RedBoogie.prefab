@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3121289651625582305}
   - component: {fileID: 8198773297402015684}
   m_Layer: 11
-  m_Name: PinkBoogie
+  m_Name: RedBoogie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

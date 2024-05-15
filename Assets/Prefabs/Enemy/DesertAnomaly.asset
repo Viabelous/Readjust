@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: DesertAnomaly
   m_EditorClassIdentifier: 
-  id: enemy60582
+  id: enemy78683
   maxHp: 90
   hp: 90
-  atk: 15
+  atk: 18
   def: 0
   agi: 0
   speed: 1
