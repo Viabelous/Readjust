@@ -2452,8 +2452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1762426111}
-  minMap: {x: -30, y: -30}
-  maxMap: {x: 30, y: 30}
+  minMap: {x: -30, y: -20}
+  maxMap: {x: 30, y: 20}
 --- !u!4 &502121418
 Transform:
   m_ObjectHideFlags: 0
@@ -2577,8 +2577,8 @@ MonoBehaviour:
   gameState: 1
   target: {fileID: 365927423}
   offset: {x: 0, y: 0, z: -10}
-  minOffset: {x: 0, y: 0}
-  maxOffset: {x: 0, y: 0}
+  minOffset: {x: -4, y: 0}
+  maxOffset: {x: 4, y: 0}
 --- !u!1 &537895569
 GameObject:
   m_ObjectHideFlags: 0
