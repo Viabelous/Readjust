@@ -2291,12 +2291,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5329d697fc27d554e87d6375f073de23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pic: {fileID: 0}
+  pic: {fileID: 1978645220}
   dialogPanel: {fileID: 1628484206}
   dialogTeks: {fileID: 1170085645}
   nameTag: {fileID: 927430683}
   talkerName: Rion
   player: {fileID: 1762426111}
+  npc: {fileID: 11400000, guid: 27a59eaecc75b1043ba171a3784469b9, type: 2}
   selectedDialog: rion_basic
   windows: 
   windowsController: {fileID: 739427921}
@@ -9462,12 +9463,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5329d697fc27d554e87d6375f073de23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pic: {fileID: 0}
+  pic: {fileID: 1978645220}
   dialogPanel: {fileID: 1628484206}
   dialogTeks: {fileID: 1170085645}
   nameTag: {fileID: 927430683}
   talkerName: Zey
   player: {fileID: 1762426111}
+  npc: {fileID: 11400000, guid: d58af69cfe35ee14a9a466081d4f41f2, type: 2}
   selectedDialog: zey_basic
   windows: skill
   windowsController: {fileID: 739427921}
