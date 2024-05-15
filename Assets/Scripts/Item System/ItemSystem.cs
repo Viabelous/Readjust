@@ -24,14 +24,17 @@ public class ItemSystem : MonoBehaviour
                     itemActivated.Adapting(map);
                 }
 
-                if (itemActivated.GetType() != typeof(MultiplyReward))
+                if (itemActivated.GetType() != typeof(RewardMultiplier))
                 {
                     print("Aktivasi Item");
                     itemActivated.Activate(gameObject);
                 }
             }
 
-            BadgeOfHonourEffect();
+            if (CheckItem("Badge of Honour"))
+            {
+                BadgeOfHonourEffect();
+            }
 
             hasActivated = true;
         }

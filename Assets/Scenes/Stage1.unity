@@ -537,7 +537,7 @@ MonoBehaviour:
   selectedItems:
   - {fileID: 11400000, guid: 615db0a82f9980149afb2785d72fb865, type: 2}
   - {fileID: 11400000, guid: da5a8f55c55413949aed6440ed60e12e, type: 2}
-  - {fileID: 11400000, guid: 3f835aa80f25e04489c2ec9363cae026, type: 2}
+  - {fileID: 11400000, guid: 458ee3c9a6b99534a972ee0e0dfa22ed, type: 2}
 --- !u!4 &260168803
 Transform:
   m_ObjectHideFlags: 0
@@ -2892,10 +2892,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefs:
   - {fileID: 6170722551558479055, guid: a102c29ce7e850540b184e1eb0781387, type: 3}
+  - {fileID: 218449121411476219, guid: d2a42f20348bf7b4eb08e79fc92a0b14, type: 3}
   - {fileID: 2404364144903811556, guid: 9bf566a34d49866458d922a33852f73b, type: 3}
   - {fileID: 26331218866292259, guid: 7894814de4faa3e4fa7a04356652d0ac, type: 3}
-  - {fileID: 3796948361964280087, guid: 97b757f4b3ac89943af8ebb183b88bbb, type: 3}
-  - {fileID: 218449121411476219, guid: d2a42f20348bf7b4eb08e79fc92a0b14, type: 3}
+  - {fileID: 5934186277007674922, guid: fb59f6621f859dd40ac2938b38185c24, type: 3}
 --- !u!1 &1003035104
 GameObject:
   m_ObjectHideFlags: 0

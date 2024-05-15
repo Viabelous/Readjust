@@ -222,7 +222,7 @@ public class StageManager : MonoBehaviour
         // !!!!NANTI UBAH WOIII!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!
         // List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is MultiplyReward);
-        List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is MultiplyReward);
+        List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is RewardMultiplier);
 
         if (rewardItem.Count == 0)
         {
@@ -233,7 +233,7 @@ public class StageManager : MonoBehaviour
         {
             item.Activate(this.player);
 
-            MultiplyReward itemReward = (MultiplyReward)item;
+            RewardMultiplier itemReward = (RewardMultiplier)item;
             switch (itemReward.rewardType)
             {
                 case RewardType.Aerus:

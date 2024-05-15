@@ -12,7 +12,7 @@ public enum RewardType
 }
 
 [CreateAssetMenu(menuName = "Item/Multiply Reward")]
-public class MultiplyReward : Item
+public class RewardMultiplier : Item
 {
     [Header("Reward")]
     [SerializeField] public RewardType rewardType;
