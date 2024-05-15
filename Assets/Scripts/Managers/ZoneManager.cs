@@ -27,12 +27,12 @@ public class ZoneManager : MonoBehaviour
 
     void Start()
     {
-
+        Time.timeScale = 1f;
     }
 
-    void Update()
-    {
+    // void Update()
+    // {
 
-    }
+    // }
 
 }

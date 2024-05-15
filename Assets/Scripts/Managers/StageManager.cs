@@ -33,6 +33,7 @@ public class StageManager : MonoBehaviour
 
     // panel reward --------------------------
     public GameObject rewardPanel;
+    private bool rewardShowed = false;
     [HideInInspector] public float score;
     private float extraScore, extraAerus, extraExp;
 
@@ -49,18 +50,19 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
-        time = Time.time;
+        time = 0;
         score = 0;
         extraScore = 0;
         extraAerus = 0;
         extraExp = 0;
         state = StageState.Play;
-        rewardPanel.SetActive(false);
+        // rewardPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         switch (state)
         {
             case StageState.Play:
@@ -75,9 +77,6 @@ public class StageManager : MonoBehaviour
             case StageState.Lose:
                 Lose();
                 break;
-            case StageState.Reward:
-                Reward();
-                break;
         }
     }
 
@@ -91,10 +90,9 @@ public class StageManager : MonoBehaviour
         return this.state;
     }
 
-    private void RunTime()
+    private void ActivateTimer()
     {
-        Time.timeScale = 1f;
-        time = Time.time;
+        time += Time.deltaTime;
 
         min = Mathf.FloorToInt(time / 60f);
         sec = Mathf.FloorToInt(time % 60f);
@@ -102,7 +100,12 @@ public class StageManager : MonoBehaviour
         timeText.text = string.Format("{0:00}:{1:00}", min, sec);
     }
 
-    private void PauseTime()
+    public void ResumeTime()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void PauseTime()
     {
         Time.timeScale = 0f;
     }
@@ -110,7 +113,8 @@ public class StageManager : MonoBehaviour
     private void Play()
     {
         state = StageState.Play;
-        RunTime();
+        ResumeTime();
+        ActivateTimer();
 
         stateText.SetActive(false);
 
@@ -137,7 +141,6 @@ public class StageManager : MonoBehaviour
         stateText.SetActive(true);
         stateText.GetComponent<Text>().text = "PAUSE";
 
-
         switch (Input.inputString)
         {
             case " ":
@@ -151,14 +154,10 @@ public class StageManager : MonoBehaviour
         state = StageState.Lose;
         PauseTime();
 
-        stateText.SetActive(true);
-        stateText.GetComponent<Text>().text = "LOSE";
-
-        switch (Input.inputString)
+        if (!rewardShowed)
         {
-            case " ":
-                Reward();
-                break;
+            ShowReward();
+            rewardShowed = true;
         }
     }
 
@@ -166,25 +165,21 @@ public class StageManager : MonoBehaviour
     {
         state = StageState.Win;
         PauseTime();
-        stateText.SetActive(true);
-        stateText.GetComponent<Text>().text = "WIN";
-
-        switch (Input.inputString)
+        if (!rewardShowed)
         {
-            case " ":
-                Reward();
-                break;
+            ShowReward();
+            rewardShowed = true;
         }
     }
 
-    private void Reward()
+    private void ShowReward()
     {
-        state = StageState.Reward;
+        GameObject reward = Instantiate(rewardPanel, GameObject.Find("UI").transform);
 
         PlayerController playerController = player.GetComponent<PlayerController>();
+        RewardPanel rewardPanelBehav = reward.GetComponent<RewardPanel>();
 
-        rewardPanel.SetActive(true);
-        RewardPanel rewardPanelBehav = rewardPanel.GetComponent<RewardPanel>();
+        rewardPanelBehav.SetType(state);
 
         // finalisasi reward
         FinalizeReward();
@@ -226,8 +221,8 @@ public class StageManager : MonoBehaviour
         // !!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!NANTI UBAH WOIII!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!
-        List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is MultiplyReward);
-        // List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is MultiplyReward);
+        // List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is MultiplyReward);
+        List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is MultiplyReward);
 
         if (rewardItem.Count == 0)
         {

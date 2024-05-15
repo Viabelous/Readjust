@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
-        print("MaxHP: " + player.maxHp);
+        // print("MaxHP: " + player.maxHp);
         // print("MaxMana: " + player.maxMana);
         print("HP: " + player.hp);
         // print("MANA: " + player.mana);
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         // print("FOC: " + player.foc);
         // print("Aerus: " + player.aerus);
         // print("Exp: " + player.exp);
+        print(Time.time);
 
         switch (gameState)
         {

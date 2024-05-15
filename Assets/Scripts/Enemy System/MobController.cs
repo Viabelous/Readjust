@@ -27,6 +27,7 @@ public class MobController : MonoBehaviour
 
     private GameObject player;
     private Vector2 movement;
+    private Vector3 initialScale;
     private Animator animate;
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
@@ -45,6 +46,8 @@ public class MobController : MonoBehaviour
 
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
+
+        initialScale = transform.localScale;
 
         enemy = enemy.Clone();
         speed = enemy.MovementSpeed;
@@ -115,7 +118,8 @@ public class MobController : MonoBehaviour
 
         if (movement.x != 0 && movement.y != 0)
         {
-            gameObject.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
+            // gameObject.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
+            gameObject.transform.localScale = (movement.x > 0.5) ? initialScale : new Vector3(-initialScale.x, initialScale.y, initialScale.z);
         }
 
     }
