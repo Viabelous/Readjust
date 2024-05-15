@@ -129,7 +129,7 @@ public class NPC : MonoBehaviour
             playerDekat = false;
 
             // kalau nda diginiin error pas ganti scene
-            if (!Object.ReferenceEquals(dialogPanel, null))
+            if (dialogPanel != null)
             {
                 dialogPanel.SetActive(false);
             }

@@ -38,8 +38,8 @@ public class SkillUsage : MonoBehaviour
         // !!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!NANTI UBAH WOIII!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!
-        // if (slotNumber <= GameManager.selectedSkills.Count)
-        if (slotNumber <= CumaBuatDebug.instance.selectedSkills.Count)
+        if (slotNumber <= GameManager.selectedSkills.Count)
+        // if (slotNumber <= CumaBuatDebug.instance.selectedSkills.Count)
         {
             isEmpty = false;
             playerController = GameObject.FindObjectOfType<PlayerController>();
@@ -47,8 +47,8 @@ public class SkillUsage : MonoBehaviour
             // ganti gambar sesuai skill yang dipakai
             int index = slotNumber - 1;
 
-            // skillPref = GameManager.selectedSkills[index];
-            skillPref = CumaBuatDebug.instance.selectedSkills[index];
+            skillPref = GameManager.selectedSkills[index];
+            // skillPref = CumaBuatDebug.instance.selectedSkills[index];
             skill = skillPref.GetComponent<SkillController>().skill;
 
             objLight.GetComponent<Image>().sprite = skill.Sprite;

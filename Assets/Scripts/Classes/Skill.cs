@@ -152,8 +152,8 @@ public class Skill : ScriptableObject
         // !!!!NANTI UBAH WOIII!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!
 
-        // int index = GameManager.selectedSkills.FindIndex(skillPref => skill.Name == skillPref.GetComponent<SkillController>().skill.Name);
-        int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
+        int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
+        // int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
 
         // ubah state slot skill
         GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);

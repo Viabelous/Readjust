@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime >= 60 && time <= 600)
+        if (elapsedTime >= 60 && time <= totalTime)
         {
             UpdateProbablities();
             elapsedTime = 0;

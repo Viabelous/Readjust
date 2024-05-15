@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private GameState gameState;
+    [SerializeField] private GameState gameState;
     public Transform target; // Objek target yang diikuti oleh kamera
     public Vector3 offset; // Jarak relatif dari kamera ke target
 
-    [SerializeField] private Vector2 minMap, maxMap, minOffset, maxOffset;
+
+    private Vector2 minMap, maxMap;
+    [SerializeField] private Vector2 minOffset, maxOffset;
 
 
 
@@ -28,6 +30,10 @@ public class CameraController : MonoBehaviour
             case GameState.OnStage:
                 minMap = StageManager.instance.minMap + maxOffset;
                 maxMap = StageManager.instance.maxMap + minOffset;
+                break;
+            case GameState.OnDeveloperZone:
+                minMap = ZoneManager.instance.minMap + maxOffset;
+                maxMap = ZoneManager.instance.maxMap + minOffset;
                 break;
         }
 

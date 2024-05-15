@@ -9,7 +9,7 @@ public class CumaBuatDebug : MonoBehaviour
 
     public static CumaBuatDebug instance;
 
-    public List<GameObject> selectedSkills = new List<GameObject>();
+    // public List<GameObject> selectedSkills = new List<GameObject>();
     public List<Item> selectedItems = new List<Item>();
 
     void Awake()

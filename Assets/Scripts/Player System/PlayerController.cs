@@ -49,18 +49,22 @@ public class PlayerController : MonoBehaviour
         movementEnabled = true;
         nearInteractable = false;
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         switch (gameState)
         {
             case GameState.OnStage:
                 minMap = StageManager.instance.minMap;
                 maxMap = StageManager.instance.maxMap;
                 break;
+            case GameState.OnDeveloperZone:
+                minMap = ZoneManager.instance.minMap;
+                maxMap = ZoneManager.instance.maxMap;
+                break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
         print("MaxHP: " + player.maxHp);
         // print("MaxMana: " + player.maxMana);

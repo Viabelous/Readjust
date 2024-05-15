@@ -17,6 +17,7 @@ public class StageManager : MonoBehaviour
 
     [Header("Player")]
     public GameObject player;
+
     [SerializeField] private GameObject basicStab;
 
     [Header("Stage")]
@@ -225,8 +226,8 @@ public class StageManager : MonoBehaviour
         // !!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!NANTI UBAH WOIII!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!
-        // List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is MultiplyReward);
-        List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is MultiplyReward);
+        List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is MultiplyReward);
+        // List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is MultiplyReward);
 
         if (rewardItem.Count == 0)
         {

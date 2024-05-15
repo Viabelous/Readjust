@@ -651,14 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4502086c4bb36a548bda1ed213a55e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedSkills:
-  - {fileID: 6349578813318396482, guid: 3db2bc1239f61d045a369550b4213701, type: 3}
-  - {fileID: 7424176912135380703, guid: 4eeae4ce891dad14abe30046dcee9e18, type: 3}
-  - {fileID: 1704528781676703533, guid: f9a85960016d5d549b18f13f2c813571, type: 3}
-  - {fileID: 6362818899781594208, guid: effe21e53782d1c49b41463ddd3ff920, type: 3}
-  - {fileID: 222238090947821005, guid: b22e84ccf0f3ca342a9a4263864b7ad7, type: 3}
-  - {fileID: 8810682604464027387, guid: 9f6dfeeb65a1b6a4e8db8bd62e5f49d2, type: 3}
-  - {fileID: 2368303669140024051, guid: 2a50d92d159e7534da4fb36d84c6248c, type: 3}
   selectedItems:
   - {fileID: 11400000, guid: 615db0a82f9980149afb2785d72fb865, type: 2}
   - {fileID: 11400000, guid: da5a8f55c55413949aed6440ed60e12e, type: 2}
