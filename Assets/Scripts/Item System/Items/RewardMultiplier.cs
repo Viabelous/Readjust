@@ -30,11 +30,11 @@ public class RewardMultiplier : Item
                 // playerController.player.Collect(RewardType.Aerus, );
                 break;
             case RewardType.ExpOrb:
-                result = persentase * playerController.player.aerus;
+                result = persentase * playerController.player.exp;
                 // playerController.player.Collect(RewardType.ExpOrb, persentase * playerController.player.exp);
                 break;
             case RewardType.Venetia:
-                result = persentase * playerController.player.aerus;
+                result = persentase * playerController.player.venetia;
                 // playerController.player.Collect(RewardType.Venetia, persentase * playerController.player.venetia);
                 break;
             case RewardType.Score:

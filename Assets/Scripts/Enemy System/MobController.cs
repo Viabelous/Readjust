@@ -141,15 +141,17 @@ public class MobController : MonoBehaviour
         switch (effect)
         {
             case "thorn":
-                Damaged();
-                Invoke("Undamaged", 0.2f);
-                break;
             case "nexus":
-                Damaged();
-                Invoke("Undamaged", 0.2f);
+                StartCoroutine(EffectedCoroutine());
                 break;
         }
     }
 
+    IEnumerator EffectedCoroutine()
+    {
+        Damaged();
+        yield return new WaitForSeconds(0.2f);
+        Undamaged();
+    }
 
 }

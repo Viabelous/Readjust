@@ -73,7 +73,7 @@ public class SkillUsage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isEmpty && StageManager.instance.CurrentState() != StageState.Pause)
+        if (!isEmpty && StageManager.instance.CurrentState() == StageState.Play)
         {
             switch (state)
             {

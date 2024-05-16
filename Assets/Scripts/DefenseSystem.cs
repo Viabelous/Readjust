@@ -187,9 +187,8 @@ public class DefenseSystem : MonoBehaviour
                         float thornDamage = buffSystem.buffsActive.Find(buff => buff.type == BuffType.Thorn).value;
 
                         // musuh yg menyerang juga terkena damage
-                        // other.GetComponent<MobController>().Damaged();
-                        other.GetComponent<MobController>().Effected("thorn");
                         other.GetComponent<DefenseSystem>().Attacked(thornDamage);
+                        other.GetComponent<MobController>().Effected("thorn");
                     }
 
                     gameObject.GetComponent<PlayerController>().Damaged();
@@ -292,12 +291,6 @@ public class DefenseSystem : MonoBehaviour
             }
         }
 
-
-        // if (enemyDefender.type == EnemyType.Flying && skill.MovementType == SkillMovementType.Locking)
-        // {
-
-        // }
-
         // jika enemy tipe terbang dan skill yang kena bukan angin,
         // maka enemy tidak akan menerima damage
         if (enemyDefender.type == EnemyType.Flying)
@@ -361,8 +354,13 @@ public class DefenseSystem : MonoBehaviour
 
     private void DamagedByNexusSkill(float dealDamage)
     {
-        Skill nexus = GameObject.Find("Nexus").GetComponent<SkillController>().skill;
+        Skill nexus = GameObject.FindObjectOfType<NexusBehaviour>().GetComponent<SkillController>().skill;
         Transform lockedEnemy = nexus.LockedEnemy;
+
+        if (lockedEnemy == null)
+        {
+            return;
+        }
 
         MobController mobController = lockedEnemy.GetComponent<MobController>();
         mobController.Effected("nexus");

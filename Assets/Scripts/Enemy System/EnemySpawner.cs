@@ -32,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time = StageManager.instance.time;
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime >= 60 && time <= totalTime)
@@ -51,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
 
     void ResetTimer()
     {
-        timer = Random.Range(minTime, maxTime);
+        timer = Random.Range(minTime, time > totalTime ? maxTime - 5 : maxTime);
     }
 
     void SpawnEnemy()
@@ -66,6 +67,7 @@ public class EnemySpawner : MonoBehaviour
     GameObject GetEnemy()
     {
         GameObject enemySpawn = null;
+
         while (enemySpawn == null)
         {
 
@@ -92,31 +94,8 @@ public class EnemySpawner : MonoBehaviour
                     randomPoint -= enemy.Value;
                 }
             }
-
-            // float randomValue = Random.value; // Nilai acak antara 0 dan 1
-            // float cumulativeProbability = 0f;
-
-            // foreach (var enemy in enemies)
-            // {
-            //     cumulativeProbability += enemy.Value;
-            //     if (randomValue <= cumulativeProbability)
-            //     {
-            //         enemySpawn = enemy.Key;
-            //     }
-            // }
         }
         return enemySpawn;
-
-
-        // for (int i = 0; i < probabilities.Count; i++)
-        // {
-        //     cumulativeProbability += probabilities[i];
-        //     if (randomValue <= cumulativeProbability)
-        //     {
-        //         Instantiate(enemies[i], transform.position, Quaternion.identity); // Instantiate musuh yang sesuai
-        //         break;
-        //     }
-        // }
     }
 
     void UpdateProbablities()
@@ -124,41 +103,111 @@ public class EnemySpawner : MonoBehaviour
 
         int minNow = (int)time / 60;
 
-        int j = 0;
-        for (int i = 1; i < enemies.Count; i += 2)
+        switch (minNow)
         {
-            if (minNow >= 10)
-            {
-                enemies[enemies.ElementAt(i).Key] = 0.2f;
-                continue;
-            }
-
-            if (minNow == j)
-            {
-                enemies[enemies.ElementAt(i).Key] = 1f;
-            }
-
-            if (minNow - 1 == j)
-            {
-                enemies[enemies.ElementAt(i).Key] -= 0.5f;
-            }
-            else if (minNow + 1 == j)
-            {
-                enemies[enemies.ElementAt(i).Key] += 0.5f;
-            }
-
-            if (minNow == j + 2)
-            {
-                enemies[enemies.ElementAt(i).Key] -= 0.5f;
-            }
-            j += 2;
+            case 0:
+                enemies[spawnHolder.enemyPrefs[0]] = 1f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                break;
+            case 1:
+                enemies[spawnHolder.enemyPrefs[0]] = 0.5f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0.5f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                break;
+            case 2:
+                enemies[spawnHolder.enemyPrefs[0]] = 0f;
+                enemies[spawnHolder.enemyPrefs[1]] = 1f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                break;
+            case 3:
+                enemies[spawnHolder.enemyPrefs[0]] = 0f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0.5f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0.5f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                break;
+            case 4:
+                enemies[spawnHolder.enemyPrefs[0]] = 0f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0f;
+                enemies[spawnHolder.enemyPrefs[2]] = 1f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                break;
+            case 5:
+                enemies[spawnHolder.enemyPrefs[0]] = 0f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0.5f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0.5f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                break;
+            case 6:
+                enemies[spawnHolder.enemyPrefs[0]] = 0f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0f;
+                enemies[spawnHolder.enemyPrefs[3]] = 1f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                break;
+            case 7:
+                enemies[spawnHolder.enemyPrefs[0]] = 0f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0.5f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0.5f;
+                break;
+            case 8:
+                enemies[spawnHolder.enemyPrefs[0]] = 0f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0.5f;
+                break;
+            case 10:
+                enemies[spawnHolder.enemyPrefs[0]] = 0.1f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0.1f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0.2f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0.2f;
+                enemies[spawnHolder.enemyPrefs[4]] = 0.4f;
+                break;
         }
 
-
-        // foreach (var enemy in enemies)
+        // int j = 1;
+        // for (int i = 0; i < enemies.Count; i++)
         // {
+        //     if (minNow >= 10)
+        //     {
+        //         enemies[enemies.ElementAt(i).Key] = 0.2f;
+        //         continue;
+        //     }
 
-        //     i += 2;
+        //     if (minNow == j)
+        //     {
+        //         enemies[enemies.ElementAt(i).Key] = 1f;
+        //     }
+
+        //     if (minNow - 1 == j)
+        //     {
+        //         enemies[enemies.ElementAt(i).Key] -= 0.5f;
+        //     }
+        //     else if (minNow + 1 == j)
+        //     {
+        //         enemies[enemies.ElementAt(i).Key] += 0.5f;
+        //     }
+
+        //     if (minNow == j + 2)
+        //     {
+        //         enemies[enemies.ElementAt(i).Key] -= 0.5f;
+        //     }
+        //     j += 2;
         // }
+
+
+
     }
 }

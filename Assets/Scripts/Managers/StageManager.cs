@@ -37,8 +37,10 @@ public class StageManager : MonoBehaviour
     [HideInInspector] public float score;
     private float extraScore, extraAerus, extraExp;
 
+    // pause ------------------------------
     [HideInInspector] private StageState state;
-    [SerializeField] private GameObject stateText;
+    [SerializeField] private GameObject stateText, blackScreen;
+
 
     [HideInInspector] public bool validSkill;
 
@@ -56,6 +58,8 @@ public class StageManager : MonoBehaviour
         extraAerus = 0;
         extraExp = 0;
         state = StageState.Play;
+        stateText.SetActive(false);
+        blackScreen.SetActive(false);
         // rewardPanel.SetActive(false);
     }
 
@@ -117,6 +121,8 @@ public class StageManager : MonoBehaviour
         ActivateTimer();
 
         stateText.SetActive(false);
+        blackScreen.SetActive(false);
+
 
         switch (Input.inputString)
         {
@@ -140,6 +146,7 @@ public class StageManager : MonoBehaviour
 
         stateText.SetActive(true);
         stateText.GetComponent<Text>().text = "PAUSE";
+        blackScreen.SetActive(true);
 
         switch (Input.inputString)
         {
@@ -157,6 +164,7 @@ public class StageManager : MonoBehaviour
         if (!rewardShowed)
         {
             ShowReward();
+            blackScreen.SetActive(true);
             rewardShowed = true;
         }
     }
@@ -168,6 +176,7 @@ public class StageManager : MonoBehaviour
         if (!rewardShowed)
         {
             ShowReward();
+            blackScreen.SetActive(true);
             rewardShowed = true;
         }
     }
@@ -209,15 +218,12 @@ public class StageManager : MonoBehaviour
             timeScore = (timeScore <= 0) ? 0 : timeScore * 50;
         }
 
-        score = player.aerus + player.exp + timeScore;
+        score = player.aerus + extraAerus + player.exp + extraExp + timeScore;
         return score;
     }
 
     private void FinalizeReward()
     {
-
-        score = GetScore(player.GetComponent<PlayerController>().player);
-
         // !!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!NANTI UBAH WOIII!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!
@@ -247,6 +253,8 @@ public class StageManager : MonoBehaviour
                     break;
             }
         }
+
+        score = GetScore(player.GetComponent<PlayerController>().player);
     }
 
 }

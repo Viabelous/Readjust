@@ -11,6 +11,11 @@ public class DisplayText : MonoBehaviour
 
     void Update()
     {
+        gameObject.SetActive(
+            StageManager.instance.CurrentState() == StageState.Play ||
+            StageManager.instance.CurrentState() == StageState.Pause
+        );
+
         switch (type)
         {
             case RewardType.Aerus:

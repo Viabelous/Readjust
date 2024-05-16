@@ -47,8 +47,8 @@ public class AttackSystem : MonoBehaviour
 
         if (UnityEngine.Random.Range(0f, 100f) <= attacker.foc && attacker.foc != 0)
         {
-            // totalDamage = damage * 2.5f;
-            totalDamage = damage;
+            totalDamage = damage * 2.5f;
+            // totalDamage = damage;
         }
         else
         {
@@ -56,7 +56,7 @@ public class AttackSystem : MonoBehaviour
         }
 
         totalDamage += totalDamage * DamageBooster();
-        print("Total Damage : " + totalDamage);
+        // print("Total Damage : " + totalDamage);
 
         return totalDamage;
     }
