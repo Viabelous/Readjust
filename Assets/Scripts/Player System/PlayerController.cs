@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         // print("FOC: " + player.foc);
         // print("Aerus: " + player.aerus);
         // print("Exp: " + player.exp);
+        // print(Time.time);
 
         switch (gameState)
         {

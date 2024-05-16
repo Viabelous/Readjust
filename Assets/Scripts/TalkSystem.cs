@@ -6,31 +6,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class NPC : MonoBehaviour
+public class TalkSystem : MonoBehaviour
 {
-    public Image pic;
+    public GameObject pic;
     public GameObject dialogPanel;
     public Text dialogTeks;
     public Text nameTag;
     public string talkerName;
     public GameObject player;
+    public NPC npc;
     public string selectedDialog;
-
-    private string[] dialog;
-
-    private int index;
-
+    private List<string> dialog;
+    public int index;
     public string windows;
-
     public GameObject windowsController;
-
     public float wordSpeed;
     public bool playerDekat;
 
 
     void Start()
     {
-        SetText(selectedDialog);
+        if(npc != null)
+        {
+            pic.GetComponent<Image>().sprite = npc.Pict;
+        }
+        SetText(0);
     }
 
     void Update()
@@ -43,8 +43,9 @@ public class NPC : MonoBehaviour
             // kalau dialog panel sudah aktif
             if (dialogPanel.activeInHierarchy)
             {
-                if (dialogTeks.text == dialog[index] && Input.GetKeyDown(KeyCode.Q))
+                if (dialogTeks.text == dialog.First() && Input.GetKeyDown(KeyCode.Q))
                 {
+                    dialog.RemoveAt(0);
                     NextLine();
                 }
 
@@ -53,7 +54,7 @@ public class NPC : MonoBehaviour
             // kalau belum, aktifkan dialog panel
             else
             {
-                SetText(selectedDialog);
+                SetText(0);
                 dialogPanel.SetActive(true);
                 StartCoroutine(Typing());
             }
@@ -65,14 +66,13 @@ public class NPC : MonoBehaviour
     public void resetTeks()
     {
         dialogTeks.text = "";
-        index = 0;
         player.GetComponent<PlayerController>().movementEnable(true);
-        // dialogPanel.SetActive(false);
+        dialogPanel.SetActive(false);
     }
 
     IEnumerator Typing()
     {
-        foreach (char letter in dialog[index].ToCharArray())
+        foreach (char letter in dialog.First())
         {
             dialogTeks.text += letter;
             yield return new WaitForSeconds(wordSpeed);
@@ -81,9 +81,8 @@ public class NPC : MonoBehaviour
 
     public void NextLine()
     {
-        if (index < dialog.Length - 1)
+        if (dialog.Count > 0)
         {
-            index++;
             dialogTeks.text = "";
             StartCoroutine(Typing());
         }
@@ -138,38 +137,26 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void SetText(string option)
+    public void SetText(int index)
     {
-        string[] teks = null;
-
-        switch (option)
+        this.dialog = new List<string>();
+        pic.GetComponent<Image>().sprite = npc.Pict;
+        string new_dialog = npc.Dialogue[index];
+        List<string> teks = new_dialog.Split("/plus/").ToList();
+        switch(teks.Last())
         {
-            case "zey_basic":
-                teks = new string[1];
-                teks[0] = "Mau buka skill windows?";
-                windows = "Skill";
-                break;
-
-            case "rion_basic":
-                // SILAHKAN DIGANTI NANTI !!!!!
-                teks = new string[4];
-
-                teks[0] = "Kemana tujuan kali ini";
-                teks[1] = "Tapi sebelumnya...";
-                teks[2] = "Fitur ini belum tersedia";
-
-                teks[3] = "Boong uyy ~ Menuju Stage 1 !!!";
+            case "debugOnly_teleportStage1":
                 windows = "Stage";
                 break;
-
-            default:
-                teks = new string[1];
-                teks[0] = "System Error";
+            case "openSkillWindows":
+                windows = "Skill";
                 break;
-
         }
+        teks.RemoveAt(teks.Count - 1);
 
-        dialog = teks;
+        foreach (string barisTeks in teks)
+        {
+            this.dialog.Add(barisTeks);
+        }
     }
-
 }
