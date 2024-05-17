@@ -28,7 +28,7 @@ public class MobController : MonoBehaviour
     private GameObject player;
     private Vector2 movement;
     private Vector3 initialScale;
-    private Animator animate;
+    [HideInInspector] public Animator animate;
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
 
@@ -107,20 +107,25 @@ public class MobController : MonoBehaviour
             return;
         }
 
-        if (
-            !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
-            !crowdControlSystem.CheckCC(CrowdControlType.KnockBack)
-        )
+        if (movementEnabled)
         {
-            Vector3 direction = (player.transform.position - transform.position).normalized;
-            transform.Translate(direction * speed * Time.deltaTime);
+            if (
+                !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
+                !crowdControlSystem.CheckCC(CrowdControlType.KnockBack)
+            )
+            {
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+                transform.Translate(direction * speed * Time.deltaTime);
+            }
+
+            if (movement.x != 0 && movement.y != 0)
+            {
+                // gameObject.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
+                gameObject.transform.localScale = (movement.x > 0.5) ? initialScale : new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+            }
+
         }
 
-        if (movement.x != 0 && movement.y != 0)
-        {
-            // gameObject.transform.localScale = new Vector3((movement.x > 0.5) ? 1 : -1, 1, 1);
-            gameObject.transform.localScale = (movement.x > 0.5) ? initialScale : new Vector3(-initialScale.x, initialScale.y, initialScale.z);
-        }
 
     }
 

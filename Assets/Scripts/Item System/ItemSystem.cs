@@ -26,7 +26,6 @@ public class ItemSystem : MonoBehaviour
 
                 if (itemActivated.GetType() != typeof(RewardMultiplier))
                 {
-                    print("Aktivasi Item");
                     itemActivated.Activate(gameObject);
                 }
             }

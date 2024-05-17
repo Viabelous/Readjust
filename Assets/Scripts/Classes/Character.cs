@@ -28,8 +28,7 @@ public class Character : ScriptableObject
     public string id;
     public float maxHp;
 
-    [ReadOnly]
-    public float hp;
+    [HideInInspector] public float hp;
 
     public float atk;
     public float def;

@@ -15,7 +15,8 @@ public enum EnemyType
     Flying
 }
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Enemy/Common Enemy")]
+
 public class Enemy : Character
 {
     [Header("Enemy")]
@@ -43,6 +44,21 @@ public class Enemy : Character
         Enemy newEnemy = (Enemy)this.MemberwiseClone();
         newEnemy.id = "enemy" + UnityEngine.Random.Range(1, 99999).ToString();
         return newEnemy;
+    }
+
+    public virtual void Spawning(GameObject gameObject)
+    {
+
+    }
+
+    public virtual void OnAttacking(GameObject gameObject)
+    {
+
+    }
+
+    public virtual void AnimationEvent()
+    {
+
     }
 
 

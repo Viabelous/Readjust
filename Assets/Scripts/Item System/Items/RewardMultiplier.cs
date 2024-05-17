@@ -11,7 +11,7 @@ public enum RewardType
     Score
 }
 
-[CreateAssetMenu(menuName = "Item/Multiply Reward")]
+[CreateAssetMenu(menuName = "Item/Reward Multiplier")]
 public class RewardMultiplier : Item
 {
     [Header("Reward")]

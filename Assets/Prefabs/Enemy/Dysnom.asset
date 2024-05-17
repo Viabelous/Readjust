@@ -9,20 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
-  m_Name: YellowBoogie
+  m_Script: {fileID: 11500000, guid: f178503a818ad0c4985f5aeae7da75a8, type: 3}
+  m_Name: Dysnom
   m_EditorClassIdentifier: 
-  id: enemy14224
-  maxHp: 15
-  hp: 15
-  atk: 5
+  id: enemy85636
+  maxHp: 500
+  hp: 500
+  atk: 50
   def: 0
   agi: 0
-  speed: 1
+  speed: 2
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
-  name: Yellow Boogie
+  name: Dysnom
   type: 0
-  aerus: 1
-  exp: 1
+  aerus: 100
+  exp: 50
+  minTime: 12
+  maxTime: 17
+  flameTuskDelay: 0.5
+  flameTuskDamage: 1
+  flameTuskSpeed: 15

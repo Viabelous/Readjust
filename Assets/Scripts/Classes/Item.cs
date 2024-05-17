@@ -9,6 +9,8 @@ public class Item : ScriptableObject
 {
     [SerializeField] protected string id;
     [SerializeField] protected new string name;
+
+    [TextArea(5, 5)]
     [SerializeField] protected string description;
     [SerializeField] protected float price;
 
@@ -18,7 +20,7 @@ public class Item : ScriptableObject
     [Header("Item Buff Type")]
     [SerializeField] protected List<BuffType> types = new List<BuffType>();
 
-    [Header("Depends On Stage")]
+    [Header("Depends On Map")]
     [SerializeField] protected bool adaptable = false;
 
     public string Id

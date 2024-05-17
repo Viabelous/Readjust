@@ -15,9 +15,17 @@ public class EnemySpawner : MonoBehaviour
 
     private float totalTime = 600f, elapsedTime = 0;
 
+    private ItemSystem itemSystem;
+
     // Start is called before the first frame update
     void Start()
     {
+        itemSystem = GameObject.Find("Player").GetComponent<ItemSystem>();
+        if (itemSystem.CheckItem("Void Embodiment"))
+        {
+            amount *= 2;
+        }
+
         time = StageManager.instance.time;
 
         enemies.Add(spawnHolder.enemyPrefs[0], 1);
@@ -51,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
 
     void ResetTimer()
     {
-        timer = Random.Range(minTime, maxTime);
+        timer = Random.Range(time < totalTime ? minTime : minTime + 5, time < totalTime ? maxTime : maxTime + 10);
     }
 
     void SpawnEnemy()

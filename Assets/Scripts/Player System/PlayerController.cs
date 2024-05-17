@@ -68,10 +68,10 @@ public class PlayerController : MonoBehaviour
 
         // print("MaxHP: " + player.maxHp);
         // print("MaxMana: " + player.maxMana);
-        print("HP: " + player.hp);
-        print("MANA: " + player.mana);
-        print("ATK: " + player.atk);
-        print("DEF: " + player.def);
+        // print("HP: " + player.hp);
+        // print("MANA: " + player.mana);
+        // print("ATK: " + player.atk);
+        // print("DEF: " + player.def);
         // print("SHIELD: " + player.shield);
         // print("AGI: " + player.agi);
         // print("FOC: " + player.foc);
