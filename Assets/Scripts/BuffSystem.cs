@@ -20,6 +20,8 @@ public enum BuffType
     Earth,
     Water,
     Air,
+    Harmony,
+    Idiosyncrasy,
     Custom
 }
 
@@ -85,6 +87,26 @@ public class BuffSystem : MonoBehaviour
                         RemoveBuff(buffsActive[index]);
                     }
                 }
+
+                // if (CheckBuff(BuffType.Harmony))
+                // {
+                //     // cari index buff shield
+                //     int index = buffsActive.FindIndex(buff => buff.type == BuffType.Harmony);
+
+                //     if (harmonyTimer == 1)
+                //     {
+                //         Skill skill = GameObject.Find("")
+                //         Player player = ((PlayerController)chrController).player;
+                //         player.Heal(Stat.HP, player.foc)
+                //     }
+
+                //     // kalau shield yg dipakai saat ini sudah habis, 
+                //     // maka hapus dari list buff yg sedang dipakai
+                //     if (((PlayerController)chrController).player.shield <= 0)
+                //     {
+                //         RemoveBuff(buffsActive[index]);
+                //     }
+                // }
                 break;
         }
     }
@@ -100,6 +122,32 @@ public class BuffSystem : MonoBehaviour
             buff.coroutine = CoroutineBuff(buff);
             StartCoroutine(buff.coroutine);
         }
+    }
+
+
+    public void DeactivateBuff(Buff buff)
+    {
+        RemoveBuff(buff);
+    }
+
+    public void DeactivateBuff(BuffType buffType)
+    {
+        RemoveBuff(buffsActive.Find(buff => buff.type == buffType));
+    }
+
+    public void DeactivateAllRelatedBuff(string name)
+    {
+        List<Buff> buffDetected = buffsActive.FindAll(buff => buff.name == name);
+
+        foreach (Buff buff in buffDetected)
+        {
+            RemoveBuff(buff);
+        }
+    }
+
+    public string GetBuffNameOfType(BuffType buffType)
+    {
+        return buffsActive.Find(buff => buff.type == buffType).name;
     }
 
     public IEnumerator CoroutineBuff(Buff buff)
@@ -160,6 +208,12 @@ public class BuffSystem : MonoBehaviour
 
     private void AddBuff(Buff buff)
     {
+
+        if (buffsActive.Contains(buff))
+        {
+            return;
+        }
+
         switch (type)
         {
             case CharacterType.Player:
@@ -238,6 +292,11 @@ public class BuffSystem : MonoBehaviour
 
     private void RemoveBuff(Buff buff)
     {
+        if (!buffsActive.Contains(buff))
+        {
+            return;
+        }
+
         switch (type)
         {
             case CharacterType.Player:
@@ -290,7 +349,7 @@ public class BuffSystem : MonoBehaviour
 
     }
 
-    private bool BuffisSkill(Buff buff)
+    private bool BuffIsSkill(Buff buff)
     {
         if (buff.id.Contains("skill"))
         {

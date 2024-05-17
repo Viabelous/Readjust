@@ -169,11 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 1
-  maxTime: 10
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  maxTime: 5
+  amount: 1
+  spawnY: 1
 --- !u!1 &120255681
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,11 +498,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 1
-  maxTime: 15
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  maxTime: 10
+  amount: 1
+  spawnY: 0
 --- !u!1 &260168801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,11 +2470,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 1
-  maxTime: 15
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  maxTime: 10
+  amount: 1
+  spawnY: 1
 --- !u!1 &907031592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &907031593
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2930,7 +2924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1001853180
 Transform:
   m_ObjectHideFlags: 0
@@ -3311,11 +3305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 1
-  maxTime: 10
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  maxTime: 5
+  amount: 1
+  spawnY: 0
 --- !u!1 &1239135698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,11 +4124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 1
-  maxTime: 10
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  maxTime: 5
+  amount: 1
+  spawnY: 1
 --- !u!4 &1821985616
 Transform:
   m_ObjectHideFlags: 0
@@ -4274,10 +4264,8 @@ MonoBehaviour:
   spawnHolder: {fileID: 1001853181}
   minTime: 1
   maxTime: 10
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  amount: 1
+  spawnY: 0
 --- !u!1 &1879226161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4324,11 +4312,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 1
-  maxTime: 15
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  maxTime: 10
+  amount: 1
+  spawnY: 1
 --- !u!1 &1899403956
 GameObject:
   m_ObjectHideFlags: 0
@@ -4615,11 +4601,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1001853181}
   minTime: 1
-  maxTime: 15
-  timer: 0
-  gap: 1
-  time: 0
-  spawnEnabled: 1
+  maxTime: 5
+  amount: 1
+  spawnY: 0
 --- !u!1 &1934671496
 GameObject:
   m_ObjectHideFlags: 0

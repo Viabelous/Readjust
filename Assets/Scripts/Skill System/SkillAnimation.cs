@@ -37,15 +37,18 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
                 break;
 
             case SkillHitType.Temporary:
-                if (isAttacking)
+                if (skill.Timer > 0)
                 {
-                    timer -= Time.deltaTime;
-                }
+                    if (isAttacking)
+                    {
+                        timer -= Time.deltaTime;
+                    }
 
-                if (timer <= 0 && isAttacking)
-                {
-                    isAttacking = false;
-                    animator.Play(endAnimationName);
+                    if (timer <= 0 && isAttacking)
+                    {
+                        isAttacking = false;
+                        animator.Play(endAnimationName);
+                    }
                 }
                 break;
         }

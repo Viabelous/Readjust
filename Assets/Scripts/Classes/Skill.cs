@@ -77,6 +77,10 @@ public class Skill : ScriptableObject
     {
 
     }
+    public virtual void Deactivate(GameObject gameObject)
+    {
+
+    }
 
     public virtual void OnActivated(GameObject gameObject)
     {

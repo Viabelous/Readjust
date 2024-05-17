@@ -26,7 +26,7 @@ public class TalkSystem : MonoBehaviour
 
     void Start()
     {
-        if(npc != null)
+        if (npc != null)
         {
             pic.GetComponent<Image>().sprite = npc.Pict;
         }
@@ -67,7 +67,10 @@ public class TalkSystem : MonoBehaviour
     {
         dialogTeks.text = "";
         player.GetComponent<PlayerController>().movementEnable(true);
-        dialogPanel.SetActive(false);
+        if (dialogPanel != null)
+        {
+            dialogPanel.SetActive(false);
+        }
     }
 
     IEnumerator Typing()
@@ -143,7 +146,7 @@ public class TalkSystem : MonoBehaviour
         pic.GetComponent<Image>().sprite = npc.Pict;
         string new_dialog = npc.Dialogue[index];
         List<string> teks = new_dialog.Split("/plus/").ToList();
-        switch(teks.Last())
+        switch (teks.Last())
         {
             case "debugOnly_teleportStage1":
                 windows = "Stage";

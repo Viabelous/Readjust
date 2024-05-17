@@ -95,24 +95,71 @@ public class Player : Character
         switch (stat)
         {
             case Stat.HP:
-                this.maxHp -= value;
+                if (this.maxHp - value <= 0)
+                {
+                    this.maxHp = 0;
+                }
+                else
+                {
+                    this.maxHp -= value;
+                }
                 this.hp = this.maxHp;
                 break;
+
             case Stat.Mana:
-                this.maxMana -= value;
+                if (this.maxMana - value <= 0)
+                {
+                    this.maxMana = 0;
+                }
+                else
+                {
+                    this.maxMana -= value;
+                }
                 this.mana = this.maxMana;
                 break;
+
             case Stat.ATK:
                 this.atk -= value;
+                // if (this.atk - value <= 0)
+                // {
+                //     this.atk = 1;
+                // }
+                // else
+                // {
+                // }
                 break;
+
             case Stat.DEF:
-                this.def -= value;
+                if (this.def - value <= 0)
+                {
+                    this.def = 0;
+                }
+                else
+                {
+                    this.def -= value;
+                }
                 break;
+
             case Stat.FOC:
-                this.foc -= value;
+                if (this.foc - value <= 0)
+                {
+                    this.foc = 0;
+                }
+                else
+                {
+                    this.foc -= value;
+                }
                 break;
+
             case Stat.AGI:
-                this.agi -= value;
+                if (this.agi - value <= 0)
+                {
+                    this.agi = 0;
+                }
+                else
+                {
+                    this.agi -= value;
+                }
                 break;
         }
     }
@@ -165,16 +212,48 @@ public class Player : Character
         switch (type)
         {
             case CostType.Mana:
-                mana -= value;
+                if (this.mana - value <= 0)
+                {
+                    this.mana = 0;
+                }
+                else
+                {
+                    this.mana -= value;
+
+                }
                 break;
             case CostType.Hp:
-                hp -= value;
+                if (this.hp - value <= 0)
+                {
+                    this.hp = 0;
+                }
+                else
+                {
+                    this.hp -= value;
+
+                }
                 break;
             case CostType.Aerus:
-                aerus -= value;
+                if (this.aerus - value <= 0)
+                {
+                    this.aerus = 0;
+                }
+                else
+                {
+                    this.aerus -= value;
+
+                }
                 break;
             case CostType.Exp:
-                exp -= value;
+                if (this.exp - value <= 0)
+                {
+                    this.exp = 0;
+                }
+                else
+                {
+                    this.exp -= value;
+
+                }
                 break;
         }
     }

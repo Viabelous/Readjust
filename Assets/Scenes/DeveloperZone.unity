@@ -1510,7 +1510,7 @@ MonoBehaviour:
   Up: {fileID: 1715790220}
   Right: {fileID: 0}
   Down: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 5027123955284584683, guid: d1c67f12083574744b9ac4055b4f1c81, type: 3}
 --- !u!4 &365927423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7445347690408032780, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
@@ -2299,6 +2299,7 @@ MonoBehaviour:
   player: {fileID: 1762426111}
   npc: {fileID: 11400000, guid: 27a59eaecc75b1043ba171a3784469b9, type: 2}
   selectedDialog: rion_basic
+  index: 0
   windows: 
   windowsController: {fileID: 739427921}
   wordSpeed: 0.03
@@ -6241,8 +6242,8 @@ MonoBehaviour:
   Left: {fileID: 0}
   Up: {fileID: 1715790220}
   Right: {fileID: 332005605}
-  Down: {fileID: 795818064}
-  prefab: {fileID: 0}
+  Down: {fileID: 0}
+  prefab: {fileID: 7723080086111810876, guid: 6e8b8a88e3bc0954dafa75d22291aa6d, type: 3}
 --- !u!1 &1243789348
 GameObject:
   m_ObjectHideFlags: 0
@@ -9471,6 +9472,7 @@ MonoBehaviour:
   player: {fileID: 1762426111}
   npc: {fileID: 11400000, guid: d58af69cfe35ee14a9a466081d4f41f2, type: 2}
   selectedDialog: zey_basic
+  index: 0
   windows: skill
   windowsController: {fileID: 739427921}
   wordSpeed: 0.03

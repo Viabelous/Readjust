@@ -6,14 +6,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private SpawnHolder spawnHolder;
+    [SerializeField] private float minTime, maxTime;
+    [SerializeField] private int amount;
+    [SerializeField] private bool spawnY = true;
 
     private Dictionary<GameObject, float> enemies = new Dictionary<GameObject, float>();
+    private float timer, time;
 
-    // [SerializeField]
-    public float minTime, maxTime, timer, gap, time;
     private float totalTime = 600f, elapsedTime = 0;
-    public bool spawnEnabled = true;
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,6 @@ public class EnemySpawner : MonoBehaviour
         ResetTimer();
     }
 
-    // Update is called once per frame
     void Update()
     {
         time = StageManager.instance.time;
@@ -52,16 +51,24 @@ public class EnemySpawner : MonoBehaviour
 
     void ResetTimer()
     {
-        timer = Random.Range(minTime, time > totalTime ? maxTime - 5 : maxTime);
+        timer = Random.Range(minTime, maxTime);
     }
 
     void SpawnEnemy()
     {
         // int index = Random.Range(0, spawnHolder.enemyPrefs.Count);
         // GameObject enemyPref = spawnHolder.enemyPrefs[index];
-        GameObject enemyPref = GetEnemy();
 
-        Instantiate(enemyPref, transform.position, Quaternion.identity);
+        for (int i = 0; i < amount; i++)
+        {
+            float x = spawnY ? Random.Range(StageManager.instance.minMap.x, StageManager.instance.maxMap.x) : transform.position.x;
+            float y = spawnY ? transform.position.y : Random.Range(StageManager.instance.minMap.y, StageManager.instance.maxMap.y);
+            Vector3 randomPos = new Vector3(x, y, 0);
+
+            GameObject enemyPref = GetEnemy();
+            Instantiate(enemyPref, randomPos, Quaternion.identity);
+        }
+
     }
 
     GameObject GetEnemy()
@@ -166,6 +173,13 @@ public class EnemySpawner : MonoBehaviour
                 enemies[spawnHolder.enemyPrefs[1]] = 0f;
                 enemies[spawnHolder.enemyPrefs[2]] = 0f;
                 enemies[spawnHolder.enemyPrefs[3]] = 0f;
+                enemies[spawnHolder.enemyPrefs[4]] = 1f;
+                break;
+            case 9:
+                enemies[spawnHolder.enemyPrefs[0]] = 0.1f;
+                enemies[spawnHolder.enemyPrefs[1]] = 0.1f;
+                enemies[spawnHolder.enemyPrefs[2]] = 0.1f;
+                enemies[spawnHolder.enemyPrefs[3]] = 0.2f;
                 enemies[spawnHolder.enemyPrefs[4]] = 0.5f;
                 break;
             case 10:
@@ -206,8 +220,6 @@ public class EnemySpawner : MonoBehaviour
         //     }
         //     j += 2;
         // }
-
-
 
     }
 }
