@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public enum StageState
 {
@@ -43,6 +44,7 @@ public class StageManager : MonoBehaviour
 
 
     [HideInInspector] public bool validSkill;
+    private bool onFinal;
 
 
     void Awake()
@@ -60,6 +62,8 @@ public class StageManager : MonoBehaviour
         state = StageState.Play;
         stateText.SetActive(false);
         blackScreen.SetActive(false);
+
+        onFinal = false;
         // rewardPanel.SetActive(false);
     }
 
@@ -71,6 +75,16 @@ public class StageManager : MonoBehaviour
         {
             case StageState.Play:
                 Play();
+
+                if (min >= 10 && !onFinal)
+                {
+                    onFinal = true;
+
+                    List<EnemySpawner> spawners = GameObject.FindObjectsOfType<EnemySpawner>().ToList();
+                    Vector3 spawnPos = spawners[UnityEngine.Random.Range(0, spawners.Count)].transform.position;
+                    Instantiate(SpawnHolder.instance.bossPref, spawnPos, Quaternion.identity);
+                }
+
                 break;
             case StageState.Pause:
                 Pause();
@@ -92,6 +106,11 @@ public class StageManager : MonoBehaviour
     public StageState CurrentState()
     {
         return this.state;
+    }
+
+    public void ChangeCurrentState(StageState state)
+    {
+        this.state = state;
     }
 
     private void ActivateTimer()
@@ -116,7 +135,7 @@ public class StageManager : MonoBehaviour
 
     private void Play()
     {
-        state = StageState.Play;
+        ChangeCurrentState(StageState.Play);
         ResumeTime();
         ActivateTimer();
 
@@ -141,7 +160,6 @@ public class StageManager : MonoBehaviour
 
     private void Pause()
     {
-        state = StageState.Pause;
         PauseTime();
 
         stateText.SetActive(true);
@@ -158,7 +176,7 @@ public class StageManager : MonoBehaviour
 
     private void Lose()
     {
-        state = StageState.Lose;
+
         PauseTime();
 
         if (!rewardShowed)
@@ -171,7 +189,6 @@ public class StageManager : MonoBehaviour
 
     private void Win()
     {
-        state = StageState.Win;
         PauseTime();
         if (!rewardShowed)
         {
@@ -192,6 +209,7 @@ public class StageManager : MonoBehaviour
 
         // finalisasi reward
         FinalizeReward();
+        score = GetScore(player.GetComponent<PlayerController>().player);
 
         rewardPanelBehav.SetScore(Mathf.FloorToInt(score + extraScore));
         rewardPanelBehav.SetEndTime(timeText.text);
@@ -253,8 +271,6 @@ public class StageManager : MonoBehaviour
                     break;
             }
         }
-
-        score = GetScore(player.GetComponent<PlayerController>().player);
     }
 
 }

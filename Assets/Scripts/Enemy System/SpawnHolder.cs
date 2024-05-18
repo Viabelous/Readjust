@@ -6,7 +6,8 @@ public class SpawnHolder : MonoBehaviour
 {
     public static SpawnHolder instance;
     public List<GameObject> enemyPrefs = new List<GameObject>();
-    public int amount;
+
+    public GameObject bossPref;
 
     void Awake()
     {

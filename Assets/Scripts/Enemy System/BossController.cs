@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    public Enemy boss;
-
-    void Start()
-    {
-        boss.Spawning(gameObject);
-    }
+    private Enemy boss;
+    private bool isInstantiate = true;
 
     void Update()
     {
+        if (isInstantiate)
+        {
+            boss = GetComponent<MobController>().enemy;
+            boss.Spawning(gameObject);
+
+            isInstantiate = false;
+        }
+
         boss.OnAttacking(gameObject);
     }
 
@@ -21,4 +25,5 @@ public class BossController : MonoBehaviour
     {
         boss.AnimationEvent();
     }
+
 }

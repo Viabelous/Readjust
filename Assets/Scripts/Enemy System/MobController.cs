@@ -93,6 +93,12 @@ public class MobController : MonoBehaviour
 
             case CharacterState.Dead:
                 Damaged();
+                if (GetComponent<BossController>() != null)
+                {
+                    Destroy(gameObject);
+                    StageManager.instance.ChangeCurrentState(StageState.Win);
+                }
+
                 Destroy(gameObject, 0.1f);
                 break;
         }

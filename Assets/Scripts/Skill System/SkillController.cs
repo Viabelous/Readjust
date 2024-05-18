@@ -92,14 +92,24 @@ public class SkillController : MonoBehaviour
             // }
         }
 
-        if (other.CompareTag("Player") && skill.MovementType != SkillMovementType.OnPlayer)
+        if (other.CompareTag("Player"))
         {
-
-            if (transform.position.y > other.transform.position.y)
+            if (skill.MovementType != SkillMovementType.OnPlayer)
             {
-                foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)
+
+                if (transform.position.y > other.transform.position.y)
                 {
-                    spriteRenderer.sortingLayerName = "Player Front";
+                    foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)
+                    {
+                        spriteRenderer.sortingLayerName = "Player Front";
+                    }
+                }
+                else
+                {
+                    foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)
+                    {
+                        spriteRenderer.sortingLayerName = "Player";
+                    }
                 }
             }
             else
@@ -109,6 +119,7 @@ public class SkillController : MonoBehaviour
                     spriteRenderer.sortingLayerName = "Player";
                 }
             }
+
         }
 
         // if (other.CompareTag("Enemy"))

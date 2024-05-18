@@ -35,7 +35,6 @@ public class AttackSystem : MonoBehaviour
         {
             case CharacterType.Player:
                 attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
-                // damage = GetComponent<SkillController>().skill.Damage;
                 damage = GetComponent<SkillController>().skill.GetDamage(attacker);
                 break;
 

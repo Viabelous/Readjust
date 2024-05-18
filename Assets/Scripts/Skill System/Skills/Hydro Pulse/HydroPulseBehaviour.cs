@@ -53,8 +53,6 @@ public class HydroPulseBehaviour : MonoBehaviour
 
         for (int i = 0; i < lockedEnemies.Count; i++)
         {
-            print(hydro == null ? "hydro null" : "hydro aman");
-            print(transform == null ? "transform null" : "transform aman");
             GameObject hydroPref = Instantiate(hydro, transform);
             SkillController hydroController = hydroPref.GetComponent<SkillController>();
 

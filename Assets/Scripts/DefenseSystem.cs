@@ -30,16 +30,6 @@ public class DefenseSystem : MonoBehaviour
     {
         buffSystem = GetComponent<BuffSystem>();
         player = GameObject.Find("Player");
-        // switch (type)
-        // {
-        //     case CharacterType.Player:
-        //         character = GetComponent<PlayerController>().player;
-        //         break;
-        //     case CharacterType.Enemy:
-        //         character = GetComponent<MobController>().enemy;
-        //         break;
-        // }
-        // def = character.def;
     }
 
     void Update()
@@ -58,7 +48,7 @@ public class DefenseSystem : MonoBehaviour
                     defender = transform.parent.GetComponent<MobController>().enemy;
                     break;
             }
-            def = defender.def;
+
             isInstantiate = false;
         }
 
@@ -105,7 +95,11 @@ public class DefenseSystem : MonoBehaviour
                 break;
         }
 
-        finalDamage = totalDamage - def * 0.5f;
+        finalDamage = totalDamage - defender.def * 0.5f;
+
+        print("totalDamage = " + totalDamage);
+        print("finalDamage = " + finalDamage);
+
         if (finalDamage <= 1)
         {
             finalDamage = 1;

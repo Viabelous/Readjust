@@ -33,7 +33,7 @@ public class Dysnom : Enemy
     // gerakan flam tusk ----------------------------
     private Vector3 initialPos, targetPos, direction;
     private int flameTuskNumber;
-    private float distance, nowDistance;
+    private float distance, nowDistance, initialATK;
 
     public override void Spawning(GameObject gameObject)
     {
@@ -43,6 +43,7 @@ public class Dysnom : Enemy
 
         flameTuskActivate = false;
         flameTuskNumber = 0;
+        initialATK = this.atk;
         ResetflameTuskTime();
 
     }
@@ -73,6 +74,7 @@ public class Dysnom : Enemy
             {
                 case FlameTuskState.Delayed:
                     // mobController.animate.Play("dysnom_idle");
+                    ChangeAttackDamage(initialATK);
 
                     if (flameTuskNumber == 3)
                     {
@@ -81,7 +83,6 @@ public class Dysnom : Enemy
                             mobController.speed = mobController.enemy.speed;
                             flameTuskActivate = false;
                             flameTuskNumber = 0;
-
                         }
                     }
                     else
@@ -101,6 +102,8 @@ public class Dysnom : Enemy
 
                 case FlameTuskState.SetTarget:
                     mobController.animate.Play("dysnom_idle");
+                    // Debug.Log("diem: " + this.atk);
+
 
                     OnPreFlameTusking(gameObject);
                     flameTuskState = FlameTuskState.Moving;
@@ -109,6 +112,9 @@ public class Dysnom : Enemy
 
                 case FlameTuskState.Moving:
                     mobController.animate.Play("dysnom_flame_tusk_frontw");
+
+                    ChangeAttackDamage(flameTuskDamage);
+                    // Debug.Log("serudukk: " + this.atk);
 
                     nowDistance = Vector3.Distance(initialPos, gameObject.transform.position);
 
@@ -128,8 +134,8 @@ public class Dysnom : Enemy
 
     private void ResetflameTuskTime()
     {
-        // flameTuskTime = UnityEngine.Random.Range(minTime, maxTime);
-        flameTuskTime = 5;
+        flameTuskTime = UnityEngine.Random.Range(minTime, maxTime);
+        // flameTuskTime = 5;
     }
 
     private void OnPreFlameTusking(GameObject gameObject)
@@ -149,13 +155,9 @@ public class Dysnom : Enemy
         gameObject.transform.Translate(direction * flameTuskSpeed * Time.deltaTime);
     }
 
-
-
-    // private IEnumerator flameTuskCoroutine(GameObject gameObject)
-    // {
-    //     PreflameTusking(gameObject);
-    //     yield return new WaitForSeconds(1f);
-    //     flameTusking(gameObject);
-    // }
+    private void ChangeAttackDamage(float damage)
+    {
+        this.atk = damage;
+    }
 
 }

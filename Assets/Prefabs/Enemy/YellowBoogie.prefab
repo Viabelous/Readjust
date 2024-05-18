@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 1352562711861578191}
   - component: {fileID: 2036122470051990639}
   - component: {fileID: 8499703715234472270}
+  - component: {fileID: 3012116715381181818}
   - component: {fileID: 1640915914869736240}
   - component: {fileID: 5163096275740064055}
   - component: {fileID: -1896929669062627604}
   - component: {fileID: -5491308630948460349}
   - component: {fileID: 4229002426416427029}
-  - component: {fileID: 3012116715381181818}
   m_Layer: 11
   m_Name: YellowBoogie
   m_TagString: Enemy
@@ -184,6 +184,33 @@ PolygonCollider2D:
       - {x: 0.14, y: -0.62}
       - {x: 0.19999999, y: -0.56}
   m_UseDelaunayMesh: 0
+--- !u!50 &3012116715381181818
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218449121411476219}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &1640915914869736240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +226,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 9cb0dc74d35ead640998145c5bd9d98e, type: 2}
   movementEnabled: 1
   speed: 0
+  animate: {fileID: 0}
   onSkillTrigger: 0
 --- !u!114 &5163096275740064055
 MonoBehaviour:
@@ -264,33 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5887d4aa784ffb04b98950d34331cf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &3012116715381181818
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218449121411476219}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &3164622098812996045
 GameObject:
   m_ObjectHideFlags: 0

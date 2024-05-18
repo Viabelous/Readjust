@@ -36,7 +36,10 @@ public class RewardPanel : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q) && currentBtn.name == "replay_btn")
         {
-
+            // Dapatkan nama scene yang sedang aktif
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            // Muat ulang scene yang sedang aktif
+            SceneManager.LoadScene(currentSceneName);
         }
 
     }

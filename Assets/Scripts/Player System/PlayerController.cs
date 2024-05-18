@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Damaged();
-        StageManager.instance.ToggleState(StageState.Play, StageState.Lose);
+        StageManager.instance.ChangeCurrentState(StageState.Lose);
     }
 
     public void movementEnable(bool state)
