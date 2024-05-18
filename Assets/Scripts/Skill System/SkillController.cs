@@ -94,9 +94,9 @@ public class SkillController : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            if (skill.MovementType != SkillMovementType.OnPlayer)
+            if (skill.MovementType == SkillMovementType.Area)
             {
-
+                // kalau skill di atas player
                 if (transform.position.y > other.transform.position.y)
                 {
                     foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)
@@ -104,6 +104,7 @@ public class SkillController : MonoBehaviour
                         spriteRenderer.sortingLayerName = "Player Front";
                     }
                 }
+                // kalau skill di bawah player
                 else
                 {
                     foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)

@@ -531,9 +531,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItems:
-  - {fileID: 11400000, guid: 84868e16af1ade841a57a29152404e00, type: 2}
   - {fileID: 11400000, guid: 20959a10e0330c048a22493db146e364, type: 2}
-  - {fileID: 11400000, guid: cdc4100119531e74c93b257648456ab9, type: 2}
+  - {fileID: 11400000, guid: 84868e16af1ade841a57a29152404e00, type: 2}
+  - {fileID: 11400000, guid: 34e90747620b6534bb729d9d8c71da4e, type: 2}
 --- !u!4 &260168803
 Transform:
   m_ObjectHideFlags: 0
@@ -2924,7 +2924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1001853180
 Transform:
   m_ObjectHideFlags: 0

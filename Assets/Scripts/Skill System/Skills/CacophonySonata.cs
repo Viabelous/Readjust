@@ -28,6 +28,8 @@ public class CacophonySonata : Skill
 
         if (buffSystem.CheckBuff(BuffType.Idiosyncrasy))
         {
+            // tidak gunakan mana, tapi memakan cooldown
+            StartCooldown();
             buffSystem.DeactivateBuff(BuffType.Idiosyncrasy);
             Destroy(gameObject);// hapus gameobject yg sebagai trigger
         }
@@ -40,8 +42,9 @@ public class CacophonySonata : Skill
                 );
             }
 
-            // animator.Play("holy_sonata_start");
-            Payment(buffSystem.transform);
+            // gunakan mana, tapi tidak memakan cooldown
+            PayWithCostType(buffSystem.GetComponent<PlayerController>().player);
+            // Payment(buffSystem.transform);
 
             manaValue = manaPersenOfFOC * player.foc;
             hpValue = HPPersenOfFOC * player.foc;

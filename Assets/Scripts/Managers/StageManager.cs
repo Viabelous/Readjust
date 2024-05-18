@@ -171,6 +171,9 @@ public class StageManager : MonoBehaviour
             case " ":
                 ToggleState(StageState.Pause, StageState.Play);
                 break;
+            case "\b":
+                SceneManager.LoadScene("DeveloperZone");
+                break;
         }
     }
 

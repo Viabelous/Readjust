@@ -31,6 +31,9 @@ public class HolySonata : Skill
 
         if (buffSystem.CheckBuff(BuffType.Harmony))
         {
+            // tidak gunakan mana, tapi memakan cooldown
+            StartCooldown();
+
             buffSystem.DeactivateBuff(BuffType.Harmony);
             Destroy(gameObject); // hapus gameobject yg sebagai trigger
         }
@@ -43,7 +46,11 @@ public class HolySonata : Skill
                 );
             }
 
-            Payment(buffSystem.transform);
+
+            // gunakan mana, tapi tidak memakan cooldown
+            PayWithCostType(buffSystem.GetComponent<PlayerController>().player);
+            // Payment(buffSystem.transform);
+
             buff = new Buff(
                     this.id,
                     this.Name,

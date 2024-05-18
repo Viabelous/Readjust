@@ -149,18 +149,26 @@ public class Skill : ScriptableObject
     public void Payment(Transform player)
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
-        playerController.player.Pay(CostType, Cost);
-
+        PayWithCostType(playerController.player);
 
         // !!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!NANTI UBAH WOIII!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!
-
-        int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
         // int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
 
         // ubah state slot skill
-        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
+        StartCooldown();
+    }
+
+    public void StartCooldown()
+    {
+        int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
+        GameObject.Find("slot_" + index + 1).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
+    }
+
+    public void PayWithCostType(Player player)
+    {
+        player.Pay(CostType, Cost);
     }
 
     // public void CancelSkill()

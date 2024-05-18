@@ -31,6 +31,7 @@ public class MobController : MonoBehaviour
     [HideInInspector] public Animator animate;
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
+    private bool gainSpeed = false;
 
 
     [HideInInspector] public bool onSkillTrigger = false; // tanda apakah sedang berada di dalam collider skill
@@ -61,6 +62,12 @@ public class MobController : MonoBehaviour
         switch (state)
         {
             case CharacterState.Alive:
+                if (!gainSpeed && StageManager.instance.time >= 10 * 60)
+                {
+                    speed += 0.5f;
+                    gainSpeed = true;
+                }
+
                 if (enemy.hp <= 0)
                 {
                     state = CharacterState.Dead;

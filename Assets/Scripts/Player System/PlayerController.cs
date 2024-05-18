@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool nearInteractable;
 
+    private float suddenDeathTimer;
+
     // attack -------------------------------------------------
 
     // public List<GameObject> skillPrefs = new List<GameObject>();
@@ -48,12 +50,8 @@ public class PlayerController : MonoBehaviour
 
         movementEnabled = true;
         nearInteractable = false;
+        suddenDeathTimer = 0;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         switch (gameState)
         {
             case GameState.OnStage:
@@ -65,6 +63,13 @@ public class PlayerController : MonoBehaviour
                 maxMap = ZoneManager.instance.maxMap;
                 break;
         }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
 
         // print("MaxHP: " + player.maxHp);
         // print("MaxMana: " + player.maxMana);
@@ -82,7 +87,7 @@ public class PlayerController : MonoBehaviour
         switch (gameState)
         {
             case GameState.OnStage:
-                DoIfOnlyOnStage();
+                DoOnStageOnly();
                 break;
         }
 
@@ -150,32 +155,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // public void PayWithAerus(float num)
-    // {
-    //     player.Pay(CostType.Aerus, num);
-    //     aerusText.text = player.aerus.ToString();
-    // }
-    // public void PayWithExp(float num)
-    // {
-    //     player.Pay(CostType.Exp, num);
-    //     expText.text = player.exp.ToString();
-    // }
-
-    // public void CollectAerus(float num)
-    // {
-    //     print("Tambah aerus");
-    //     player.Collect(RewardType.Aerus, num);
-    //     aerusText.text = player.aerus.ToString();
-    // }
-
-    // public void CollectExp(float num)
-    // {
-    //     player.Collect(RewardType.ExpOrb, num);
-    //     expText.text = player.exp.ToString();
-    // }
-
-    private void DoIfOnlyOnStage()
+    private void DoOnStageOnly()
     {
+        player.ManaRegenerating();
+
+        if (StageManager.instance.time >= 14 * 60)
+        {
+            StartSuddenDeath();
+        }
 
         if (StageManager.instance.CurrentState() != StageState.Lose && player.hp <= 0)
         {
@@ -184,6 +171,16 @@ public class PlayerController : MonoBehaviour
 
         movementEnable(StageManager.instance.CurrentState() == StageState.Play ? true : false);
 
+    }
+
+    private void StartSuddenDeath()
+    {
+        suddenDeathTimer += Time.deltaTime;
+        if (suddenDeathTimer >= 1)
+        {
+            player.Pay(CostType.Hp, 0.25f * player.maxHp);
+            suddenDeathTimer = 0;
+        }
     }
 
     private void Die()

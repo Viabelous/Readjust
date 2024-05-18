@@ -9,10 +9,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Player : Character
 {
-    public float maxMana;
+    public float maxMana, manaRegen;
 
-    [ReadOnly]
+    [HideInInspector]
+    // [ReadOnly]
     public float mana, maxShield, shield, aerus, exp, venetia, story;
+
+    private float manaRegenTimer;
 
 
     private void OnEnable()
@@ -27,6 +30,8 @@ public class Player : Character
         this.exp = 0;
         this.venetia = 0;
         this.story = 0;
+
+        this.manaRegenTimer = 0;
     }
 
     public float MovementSpeed
@@ -119,14 +124,14 @@ public class Player : Character
                 break;
 
             case Stat.ATK:
-                this.atk -= value;
-                // if (this.atk - value <= 0)
-                // {
-                //     this.atk = 1;
-                // }
-                // else
-                // {
-                // }
+                if (this.atk - value <= 0)
+                {
+                    this.atk = 1;
+                }
+                else
+                {
+                    this.atk -= value;
+                }
                 break;
 
             case Stat.DEF:
@@ -258,7 +263,15 @@ public class Player : Character
         }
     }
 
-
+    public void ManaRegenerating()
+    {
+        manaRegenTimer += Time.deltaTime;
+        if (manaRegenTimer >= 1)
+        {
+            Heal(Stat.Mana, manaRegen);
+            manaRegenTimer = 0;
+        }
+    }
 
     // public Player CloneObject()
     // {

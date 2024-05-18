@@ -134,10 +134,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  offsetRight: {x: 0, y: 1.8, z: 0}
-  offsetLeft: {x: 0, y: 1.8, z: 0}
-  offsetFront: {x: 0, y: 1.8, z: 0}
-  offsetBack: {x: 0, y: 1.8, z: 0}
+  offsetRight: {x: 0, y: 1.3, z: 0}
+  offsetLeft: {x: 0, y: 1.3, z: 0}
+  offsetFront: {x: 0, y: 1.3, z: 0}
+  offsetBack: {x: 0, y: 1.3, z: 0}
   rotationRight: 0
   rotationLeft: 0
   rotationFront: 0

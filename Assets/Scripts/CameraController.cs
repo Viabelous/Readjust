@@ -19,12 +19,6 @@ public class CameraController : MonoBehaviour
     {
         target = GameObject.Find("Player").transform;
 
-
-
-    }
-
-    void LateUpdate()
-    {
         switch (gameState)
         {
             case GameState.OnStage:
@@ -37,6 +31,10 @@ public class CameraController : MonoBehaviour
                 break;
         }
 
+    }
+
+    void LateUpdate()
+    {
         Vector3 pos = target.position + offset;
 
         pos.x = Mathf.Clamp(pos.x, minMap.x, maxMap.x);
