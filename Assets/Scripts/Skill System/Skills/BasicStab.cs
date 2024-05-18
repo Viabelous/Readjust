@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skill/Basic Stab")]
 public class BasicStab : Skill
 {
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return character.atk;
+        return player.GetATK();
     }
 }

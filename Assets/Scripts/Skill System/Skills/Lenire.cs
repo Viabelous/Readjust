@@ -15,7 +15,7 @@ public class Lenire : Skill
         Payment(playerController.transform);
 
         BuffSystem buffSystem = playerController.GetComponent<BuffSystem>();
-        float value = manaValue + manaPersenOfFOC * playerController.player.foc;
+        float value = manaValue + manaPersenOfFOC * playerController.player.GetFOC();
 
         buffSystem.ActivateBuff(
            new Buff(

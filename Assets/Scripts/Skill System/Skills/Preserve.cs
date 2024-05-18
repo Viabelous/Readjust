@@ -15,7 +15,7 @@ public class Preserve : Skill
         BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
         PlayerController playerController = buffSystem.GetComponent<PlayerController>();
-        float value = shieldPersenOfDEF * playerController.player.def;
+        float value = shieldPersenOfDEF * playerController.player.GetDEF();
 
         buffSystem.ActivateBuff(
                new Buff(

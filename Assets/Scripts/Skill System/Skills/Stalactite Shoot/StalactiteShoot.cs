@@ -10,9 +10,9 @@ public class StalactiteShoot : Skill
     [SerializeField] private float dmgPersenOfDEF;
     [SerializeField] private float dmgPersenOfATK;
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return damage += dmgPersenOfDEF * character.def + dmgPersenOfATK * character.atk;
+        return damage += dmgPersenOfDEF * player.GetDEF() + dmgPersenOfATK * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

@@ -26,17 +26,47 @@ public enum Stat
 public class Character : ScriptableObject
 {
     public string id;
-    public float maxHp;
+    [SerializeField] protected float maxHp;
 
     [HideInInspector] public float hp;
 
-    public float atk;
-    public float def;
-    public float agi, speed;
-    public float foc;
+    [SerializeField] protected float atk;
+    [SerializeField] protected float def;
+    [SerializeField] protected float agi, speed;
+    [SerializeField] protected float foc;
 
     [HideInInspector]
     public bool actionEnabled = true, movementEnabled = true;
+
+    public virtual float GetMaxHP()
+    {
+        return maxHp;
+    }
+
+    public virtual float GetHP()
+    {
+        return hp;
+    }
+    public virtual float GetATK()
+    {
+        return atk;
+    }
+    public virtual float GetDEF()
+    {
+        return def;
+    }
+    public virtual float GetFOC()
+    {
+        return foc;
+    }
+    public virtual float GetAGI()
+    {
+        return agi;
+    }
+    public virtual float GetSpeed()
+    {
+        return speed;
+    }
 
 
     public virtual void Upgrade(Stat stat, float value)
@@ -53,5 +83,6 @@ public class Character : ScriptableObject
     {
 
     }
+
 
 }

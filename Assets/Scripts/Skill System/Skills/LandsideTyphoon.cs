@@ -20,9 +20,9 @@ public class LandsideTyphoon : Skill
 
     private List<string> pulledEnemies = new List<string>();
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return damage += dmgPersenOfAGI * character.agi + dmgPersenOfATK * character.atk;
+        return damage += dmgPersenOfAGI * player.GetAGI() + dmgPersenOfATK * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)
@@ -31,7 +31,7 @@ public class LandsideTyphoon : Skill
         // sesuaikan damage basic attack dengan atk player
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        this.timer = timerPersenOfAgi * playerController.player.agi;
+        this.timer = timerPersenOfAgi * playerController.player.GetAGI();
 
         Payment(playerController.transform);
 

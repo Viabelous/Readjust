@@ -20,7 +20,7 @@ public class ThornCover : Skill
         buffSystem = playerController.GetComponent<BuffSystem>();
         Payment(buffSystem.transform);
 
-        float value = dmgPersenOfDEF * playerController.player.def + dmgPersenOfATK * playerController.player.atk;
+        float value = dmgPersenOfDEF * playerController.player.GetDEF() + dmgPersenOfATK * playerController.player.GetATK();
         buff = new Buff(
                 this.id,
                 this.name,

@@ -65,7 +65,7 @@ public class Dysnom : Enemy
                 flameTuskActivate = true;
                 flameTuskState = FlameTuskState.Delayed;
 
-                mobController.speed = mobController.enemy.speed / 2;
+                mobController.speed = mobController.enemy.GetSpeed() / 2;
             }
         }
         else
@@ -80,7 +80,7 @@ public class Dysnom : Enemy
                     {
                         if (timer >= flameTuskDelay)
                         {
-                            mobController.speed = mobController.enemy.speed;
+                            mobController.speed = mobController.enemy.GetSpeed();
                             flameTuskActivate = false;
                             flameTuskNumber = 0;
                         }

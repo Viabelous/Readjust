@@ -52,7 +52,7 @@ public class ItemSystem : MonoBehaviour
     private void BadgeOfHonourEffect()
     {
         Player player = GameObject.Find("Player").GetComponent<PlayerController>().player;
-        player.Downgrade(Stat.HP, player.maxHp - 1);
+        player.Downgrade(Stat.HP, player.GetMaxHP() - 1);
     }
 
     public bool CheckItem(string name)

@@ -15,7 +15,7 @@ public class Sanare : Skill
 
         Payment(buffSystem.transform);
 
-        float value = HPPersenOfMaxHP * buffSystem.GetComponent<PlayerController>().player.maxHp;
+        float value = HPPersenOfMaxHP * buffSystem.GetComponent<PlayerController>().player.GetMaxHP();
 
         buffSystem.ActivateBuff(
            new Buff(

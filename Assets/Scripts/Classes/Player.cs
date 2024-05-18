@@ -9,37 +9,80 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Player : Character
 {
-    public float maxMana, manaRegen;
+    [SerializeField] protected float maxMana, manaRegen;
 
-    [HideInInspector]
-    // [ReadOnly]
-    public float mana, maxShield, shield, aerus, exp, venetia, story;
+    [Header("Player Data (Don't edit this!)")]
 
-    private float manaRegenTimer;
+    [ReadOnly]
+    [SerializeField] public float mana;
+    public float maxShield;
+    public float shield = 0;
+    public float aerus = 0;
+    public float exp = 0;
+    public float venetia = 0;
+    public float story = 0;
 
+    private float manaRegenTimer = 0;
+
+    public float maxHPLevel = 0,
+                maxManaLevel = 0,
+                atkLevel = 0,
+                defLevel = 0,
+                agiLevel = 0,
+                focLevel = 0;
 
     private void OnEnable()
     {
         // Kode yang ingin dijalankan saat scriptable object diaktifkan pertama kali
         this.id = "player" + UnityEngine.Random.Range(1, 99999).ToString();
-        this.hp = this.maxHp;
-        this.mana = this.maxMana;
-        this.maxShield = 0;
+        this.hp = GetMaxHP();
+        this.mana = GetMaxMana();
         this.shield = maxShield;
-        this.aerus = 0;
-        this.exp = 0;
-        this.venetia = 0;
-        this.story = 0;
-
-        this.manaRegenTimer = 0;
     }
 
     public float MovementSpeed
     {
-        get
-        {
-            return speed + agi * 0.1f;
-        }
+        get { return this.speed + this.agi * 0.1f; }
+    }
+
+    public override float GetMaxHP()
+    {
+        return this.maxHp + 100 * maxHPLevel;
+    }
+
+    public override float GetHP()
+    {
+        return hp;
+    }
+    public float GetMaxMana()
+    {
+        return this.maxMana + 50 * maxManaLevel;
+    }
+
+    public float GetMana()
+    {
+        return this.mana;
+    }
+
+    public override float GetATK()
+    {
+        return this.atk + 5 * atkLevel; ;
+    }
+    public override float GetDEF()
+    {
+        return this.def + 5 * defLevel;
+    }
+    public override float GetFOC()
+    {
+        return this.foc + 1 * focLevel;
+    }
+    public override float GetAGI()
+    {
+        return this.agi + 1 * agiLevel;
+    }
+    public override float GetSpeed()
+    {
+        return this.speed;
     }
 
     public Player CreateAsset(string name)
@@ -62,6 +105,31 @@ public class Player : Character
         Player newPlayer = (Player)this.MemberwiseClone();
         newPlayer.id = "player" + UnityEngine.Random.Range(1, 99999).ToString();
         return newPlayer;
+    }
+
+    public Player CloneForStage()
+    {
+        Player newPlayer = Clone();
+        newPlayer.aerus = 0;
+        newPlayer.exp = 0;
+        newPlayer.venetia = 0;
+        newPlayer.manaRegenTimer = 0;
+        return newPlayer;
+    }
+
+    public void LoadData(PlayerData playerData)
+    {
+        this.aerus = playerData.aerus;
+        this.exp = playerData.exp;
+        this.venetia = playerData.venetia;
+        this.story = playerData.story;
+
+        this.maxHPLevel = playerData.maxHPLevel;
+        this.maxManaLevel = playerData.maxManaLevel;
+        this.atkLevel = playerData.atkLevel;
+        this.defLevel = playerData.defLevel;
+        this.agiLevel = playerData.agiLevel;
+        this.focLevel = playerData.focLevel;
     }
 
     public override void Upgrade(Stat stat, float value)

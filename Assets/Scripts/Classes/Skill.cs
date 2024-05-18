@@ -163,7 +163,7 @@ public class Skill : ScriptableObject
     public void StartCooldown()
     {
         int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
-        GameObject.Find("slot_" + index + 1).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
+        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
     }
 
     public void PayWithCostType(Player player)
@@ -293,7 +293,7 @@ public class Skill : ScriptableObject
         set { lockedEnemy = value; }
     }
 
-    public virtual float GetDamage(Character character)
+    public virtual float GetDamage(Player player)
     {
         return damage;
     }

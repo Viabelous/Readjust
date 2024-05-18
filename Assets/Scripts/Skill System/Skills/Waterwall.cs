@@ -14,16 +14,16 @@ public class Waterwall : Skill
     [Header("Custom Timer")]
     [SerializeField] private float timerPersenOfFOC;
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
 
-        return dmgPersenOfFOC * character.foc;
+        return dmgPersenOfFOC * player.GetFOC();
     }
 
     public override void Activate(GameObject gameObject)
     {
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        this.timer = timerPersenOfFOC * playerController.player.foc;
+        this.timer = timerPersenOfFOC * playerController.player.GetFOC();
         Payment(playerController.transform);
     }
 

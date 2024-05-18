@@ -12,9 +12,9 @@ public class HydroPulse : Skill
     [SerializeField] public float radius;
     // [HideInInspector] public Transform ;
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return damage += dmgPersenOfATK * character.atk;
+        return damage += dmgPersenOfATK * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

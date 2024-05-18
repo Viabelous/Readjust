@@ -95,7 +95,7 @@ public class DefenseSystem : MonoBehaviour
                 break;
         }
 
-        finalDamage = totalDamage - defender.def * 0.5f;
+        finalDamage = totalDamage - defender.GetDEF() * 0.5f;
 
         print("totalDamage = " + totalDamage);
         print("finalDamage = " + finalDamage);
@@ -104,11 +104,12 @@ public class DefenseSystem : MonoBehaviour
         {
             finalDamage = 1;
         }
+
         defender.hp -= finalDamage;
 
         if (type == CharacterType.Enemy || type == CharacterType.FlyingEnemy)
         {
-            print("Enemy HP: " + defender.hp);
+            print("Enemy HP: " + defender.GetHP());
         }
     }
 
@@ -374,18 +375,19 @@ public class DefenseSystem : MonoBehaviour
             print("Heal ~");
             Skill skill = invitro.GetComponent<SkillController>().skill;
             float gainHp = ((Invitro)skill).hpPersenOfDmg * takenDamage;
+            playerDefender.Heal(Stat.HP, gainHp);
 
-            // kalau setelah ditambahkan, > max HP,
-            // jadikan banyak hp = maxHP
-            if (playerDefender.hp + gainHp >= playerDefender.maxHp)
-            {
-                playerDefender.hp = playerDefender.maxHp;
-            }
-            // kalau tidak, tambahkan hp
-            else
-            {
-                playerDefender.hp += gainHp;
-            }
+            // // kalau setelah ditambahkan, > max HP,
+            // // jadikan banyak hp = maxHP
+            // if (playerDefender.hp + gainHp >= playerDefender.maxHp)
+            // {
+            //     playerDefender.hp = playerDefender.maxHp;
+            // }
+            // // kalau tidak, tambahkan hp
+            // else
+            // {
+            //     playerDefender.hp += gainHp;
+            // }
         }
     }
 

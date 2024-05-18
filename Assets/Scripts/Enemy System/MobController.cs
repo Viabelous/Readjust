@@ -31,7 +31,7 @@ public class MobController : MonoBehaviour
     [HideInInspector] public Animator animate;
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
-    private bool gainSpeed = false;
+    private bool gainSpeed = false, isBoss;
 
 
     [HideInInspector] public bool onSkillTrigger = false; // tanda apakah sedang berada di dalam collider skill
@@ -54,6 +54,7 @@ public class MobController : MonoBehaviour
         speed = enemy.MovementSpeed;
 
         state = CharacterState.Alive;
+        isBoss = GetComponent<BossController>() != null;
     }
 
     // Update is called once per frame
@@ -62,7 +63,7 @@ public class MobController : MonoBehaviour
         switch (state)
         {
             case CharacterState.Alive:
-                if (!gainSpeed && StageManager.instance.time >= 10 * 60)
+                if (!isBoss && !gainSpeed && StageManager.instance.time >= 10 * 60)
                 {
                     speed += 0.5f;
                     gainSpeed = true;
@@ -71,8 +72,8 @@ public class MobController : MonoBehaviour
                 if (enemy.hp <= 0)
                 {
                     state = CharacterState.Dead;
-                    playerController.player.Collect(RewardType.Aerus, enemy.aerus);
-                    playerController.player.Collect(RewardType.ExpOrb, enemy.exp);
+                    playerController.player.Collect(RewardType.Aerus, enemy.GetAerus());
+                    playerController.player.Collect(RewardType.ExpOrb, enemy.GetExp());
                 }
 
                 if (player.transform.position.x != transform.position.x)
@@ -100,7 +101,7 @@ public class MobController : MonoBehaviour
 
             case CharacterState.Dead:
                 Damaged();
-                if (GetComponent<BossController>() != null)
+                if (isBoss)
                 {
                     Destroy(gameObject);
                     StageManager.instance.ChangeCurrentState(StageState.Win);

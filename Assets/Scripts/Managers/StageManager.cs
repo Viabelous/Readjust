@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
 
 
     [HideInInspector] public bool validSkill;
-    private bool onFinal;
+    private bool onFinal, hasSavedReward;
 
 
     void Awake()
@@ -64,6 +64,7 @@ public class StageManager : MonoBehaviour
         blackScreen.SetActive(false);
 
         onFinal = false;
+        hasSavedReward = false;
         // rewardPanel.SetActive(false);
     }
 
@@ -220,12 +221,10 @@ public class StageManager : MonoBehaviour
         rewardPanelBehav.SetEndAerus(Mathf.FloorToInt(playerController.player.aerus), Mathf.FloorToInt(extraAerus));
         rewardPanelBehav.SetEndExp(Mathf.FloorToInt(playerController.player.exp), Mathf.FloorToInt(extraExp));
 
-        playerController.player.Collect(RewardType.Aerus, Mathf.FloorToInt(extraAerus));
-        playerController.player.Collect(RewardType.ExpOrb, Mathf.FloorToInt(extraExp));
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!hasSavedReward)
         {
-            SceneManager.LoadScene("DeveloperZone");
+            SaveReward(playerController.player);
+            hasSavedReward = true;
         }
     }
 
@@ -276,4 +275,12 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    private void SaveReward(Player player)
+    {
+        GameManager.player.Collect(RewardType.Aerus, Mathf.FloorToInt(player.aerus + extraAerus));
+        GameManager.player.Collect(RewardType.ExpOrb, Mathf.FloorToInt(player.exp + extraExp));
+
+        DataManager.SavePlayer(GameManager.player);
+        GameManager.player.LoadData(DataManager.LoadPlayer());
+    }
 }

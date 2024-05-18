@@ -37,6 +37,8 @@ public class TalkSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && playerDekat && windowsController.GetComponent<windowsController>().ActiveWindowsID == -1)
         {
+            ZoneManager.instance.ChangeCurrentState(ZoneState.OnDialog);
+
             nameTag.text = talkerName;
             player.GetComponent<PlayerController>().movementEnable(false);
 
@@ -119,7 +121,6 @@ public class TalkSystem : MonoBehaviour
         {
             player.GetComponent<PlayerController>().interactableNearby(false);
             playerDekat = true;
-
         }
     }
 

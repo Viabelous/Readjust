@@ -22,6 +22,8 @@ public enum Map
 // digunakan dalam menuju on stage (?)
 public class GameManager : ScriptableObject
 {
+    public static Player player;
+
     public static Map selectedMap = Map.Stage1;
 
     // nama skillnya

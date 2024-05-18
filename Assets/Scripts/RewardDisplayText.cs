@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class DisplayText : MonoBehaviour
 {
+    public GameState state;
     [SerializeField] private RewardType type;
     [SerializeField] private GameObject player;
     [SerializeField] private Text displayText;
 
     void Update()
     {
-        gameObject.SetActive(
-            StageManager.instance.CurrentState() == StageState.Play ||
-            StageManager.instance.CurrentState() == StageState.Pause
-        );
+        if (state == GameState.OnStage)
+        {
+            gameObject.SetActive(
+                StageManager.instance.CurrentState() == StageState.Play ||
+                StageManager.instance.CurrentState() == StageState.Pause
+            );
+        }
 
         switch (type)
         {

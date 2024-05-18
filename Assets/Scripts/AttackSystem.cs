@@ -35,16 +35,16 @@ public class AttackSystem : MonoBehaviour
         {
             case CharacterType.Player:
                 attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
-                damage = GetComponent<SkillController>().skill.GetDamage(attacker);
+                damage = GetComponent<SkillController>().skill.GetDamage((Player)attacker);
                 break;
 
             case CharacterType.Enemy:
                 attacker = GetComponent<MobController>().enemy;
-                damage = attacker.atk;
+                damage = attacker.GetATK();
                 break;
         }
 
-        if (UnityEngine.Random.Range(0f, 100f) <= attacker.foc && attacker.foc != 0)
+        if (UnityEngine.Random.Range(0f, 100f) <= attacker.GetFOC() && attacker.GetFOC() != 0)
         {
             totalDamage = damage * 2.5f;
             // totalDamage = damage;

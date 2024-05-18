@@ -29,11 +29,11 @@ public class BarSystem : MonoBehaviour
         switch (type)
         {
             case BarType.hp:
-                bar.GetComponent<Image>().fillAmount = playerController.player.hp / playerController.player.maxHp;
+                bar.GetComponent<Image>().fillAmount = playerController.player.GetHP() / playerController.player.GetMaxHP();
                 break;
 
             case BarType.mana:
-                bar.GetComponent<Image>().fillAmount = playerController.player.mana / playerController.player.maxMana;
+                bar.GetComponent<Image>().fillAmount = playerController.player.GetMana() / playerController.player.GetMaxMana();
                 break;
 
             case BarType.shield:

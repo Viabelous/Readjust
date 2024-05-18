@@ -60,21 +60,21 @@ public class HolySonata : Skill
                 );
             buffSystem.ActivateBuff(buff);
 
-            healHPValue = HPPersenOfFOC * player.foc;
-            healManaValue = manaPersenOfFOC * player.foc;
+            healHPValue = HPPersenOfFOC * player.GetFOC();
+            healManaValue = manaPersenOfFOC * player.GetFOC();
 
             debuffATK = new Buff(
                     this.id + "atk",
                     this.Name,
                     BuffType.ATK,
-                    atkPersenOfATK * player.atk,
+                    atkPersenOfATK * player.GetATK(),
                     Timer
                 );
             debuffDEF = new Buff(
                     this.id + "def",
                     this.Name,
                     BuffType.DEF,
-                    defPersenOfDEF * player.def,
+                    defPersenOfDEF * player.GetDEF(),
                     Timer
                 );
             debuffSystem.ActivateDebuff(debuffATK);

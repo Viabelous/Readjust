@@ -46,8 +46,8 @@ public class CacophonySonata : Skill
             PayWithCostType(buffSystem.GetComponent<PlayerController>().player);
             // Payment(buffSystem.transform);
 
-            manaValue = manaPersenOfFOC * player.foc;
-            hpValue = HPPersenOfFOC * player.foc;
+            manaValue = manaPersenOfFOC * player.GetFOC();
+            hpValue = HPPersenOfFOC * player.GetFOC();
 
             buff = new Buff(
                     this.id,
@@ -61,7 +61,7 @@ public class CacophonySonata : Skill
                     this.id + "atk",
                     this.Name,
                     BuffType.ATK,
-                    ATKPersenOfFOC * player.foc,
+                    ATKPersenOfFOC * player.GetFOC(),
                     this.timer
                 );
 

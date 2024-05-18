@@ -9,9 +9,9 @@ public class WindSlash : Skill
     [SerializeField] private float dmgPersenOfAGI;
     private ChrDirection direction;
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfAGI * character.agi;
+        return this.damage += dmgPersenOfAGI * player.GetAGI();
     }
 
     public override void Activate(GameObject gameObject)

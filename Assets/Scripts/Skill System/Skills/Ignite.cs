@@ -8,9 +8,9 @@ public class Ignite : Skill
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfATK * character.atk;
+        return this.damage += dmgPersenOfATK * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

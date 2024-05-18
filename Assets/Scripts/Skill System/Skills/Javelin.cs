@@ -16,9 +16,9 @@ public class Javeline : Skill
 
     // [SerializeField] private float radius;
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfAgi * character.agi;
+        return this.damage += dmgPersenOfAgi * player.GetAGI();
     }
 
     public override void Activate(GameObject gameObject)

@@ -22,8 +22,8 @@ public class Enemy : Character
     [Header("Enemy")]
     public new string name;
     public EnemyType type;
-    public float aerus;
-    public float exp;
+    [SerializeField] protected float aerus;
+    [SerializeField] protected float exp;
 
     private void OnEnable()
     {
@@ -35,9 +35,47 @@ public class Enemy : Character
     {
         get
         {
-            return speed + agi * 0.1f;
+            return this.speed + this.agi * 0.1f;
         }
     }
+    public override float GetMaxHP()
+    {
+        return this.maxHp;
+    }
+
+    public override float GetHP()
+    {
+        return this.hp;
+    }
+    public override float GetATK()
+    {
+        return this.atk;
+    }
+    public override float GetDEF()
+    {
+        return this.def;
+    }
+    public override float GetFOC()
+    {
+        return this.foc;
+    }
+    public override float GetAGI()
+    {
+        return this.agi;
+    }
+    public override float GetSpeed()
+    {
+        return this.speed;
+    }
+    public float GetAerus()
+    {
+        return this.aerus;
+    }
+    public float GetExp()
+    {
+        return this.exp;
+    }
+
 
     public Enemy Clone()
     {
@@ -76,7 +114,7 @@ public class Enemy : Character
     //     newEnemy.foc = this.foc;
     //     newEnemy.aerusValue = this.aerusValue;
     //     newEnemy.expValue = this.expValue;
-    //     return newEnemy;
+    //     return this.newEnemy;
     // }
 
 

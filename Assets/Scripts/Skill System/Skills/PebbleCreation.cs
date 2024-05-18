@@ -8,9 +8,9 @@ public class PebbleCreation : Skill
     [Header("Buff Value")]
     [SerializeField] private float dmgPersenOfDEF;
 
-    public override float GetDamage(Character character)
+    public override float GetDamage(Player player)
     {
-        return damage += dmgPersenOfDEF * character.def;
+        return damage += dmgPersenOfDEF * player.GetDEF();
     }
 
     public override void Activate(GameObject gameObject)

@@ -26,7 +26,7 @@ public class Invitro : Skill
         buffSystem = player.GetComponent<BuffSystem>();
 
         playerController = player.GetComponent<PlayerController>();
-        shield = shieldPersenOfMaxHP * playerController.player.maxHp + shieldPersenOfDEF * playerController.player.def;
+        shield = shieldPersenOfMaxHP * playerController.player.GetMaxHP() + shieldPersenOfDEF * playerController.player.GetDEF();
         buffSystem.ActivateBuff(
            new Buff(
                 this.id,

@@ -14,9 +14,9 @@ public class Avalanche : Skill
         Payment(GameObject.Find("Player").transform);
     }
 
-    public override float GetDamage(Character player)
+    public override float GetDamage(Player player)
     {
-        return damage + dmgPersenOfATK * player.atk;
+        return damage + dmgPersenOfATK * player.GetATK();
     }
 
 

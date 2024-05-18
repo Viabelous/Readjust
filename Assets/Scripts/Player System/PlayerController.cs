@@ -46,8 +46,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         direction = ChrDirection.Front;
-        player = player.Clone();
-
         movementEnabled = true;
         nearInteractable = false;
         suddenDeathTimer = 0;
@@ -55,10 +53,34 @@ public class PlayerController : MonoBehaviour
         switch (gameState)
         {
             case GameState.OnStage:
+                // jika run dari develop zone
+                if (GameManager.player != null)
+                {
+                    player = GameManager.player.CloneForStage();
+                }
+                // jika sedang debug dan lgsg run di stage
+                else
+                {
+                    player = player.Clone();
+                    GameManager.player = player;
+                }
+
                 minMap = StageManager.instance.minMap;
                 maxMap = StageManager.instance.maxMap;
                 break;
+
             case GameState.OnDeveloperZone:
+                // jika sedang dalam mode load data
+                if (GameManager.player != null)
+                {
+                    player = GameManager.player;
+                }
+                // jika sedang dalam mode new game
+                else
+                {
+                    GameManager.player = player.Clone();
+                }
+
                 minMap = ZoneManager.instance.minMap;
                 maxMap = ZoneManager.instance.maxMap;
                 break;
@@ -178,7 +200,7 @@ public class PlayerController : MonoBehaviour
         suddenDeathTimer += Time.deltaTime;
         if (suddenDeathTimer >= 1)
         {
-            player.Pay(CostType.Hp, 0.25f * player.maxHp);
+            player.Pay(CostType.Hp, 0.25f * player.GetMaxHP());
             suddenDeathTimer = 0;
         }
     }
