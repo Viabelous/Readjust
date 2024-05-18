@@ -531,9 +531,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItems:
+  - {fileID: 11400000, guid: c8833b75188a4a24e9d244ebe46893c6, type: 2}
   - {fileID: 11400000, guid: 20959a10e0330c048a22493db146e364, type: 2}
-  - {fileID: 11400000, guid: 84868e16af1ade841a57a29152404e00, type: 2}
-  - {fileID: 11400000, guid: 34e90747620b6534bb729d9d8c71da4e, type: 2}
+  - {fileID: 11400000, guid: 3946656f767e2a24a9ecf190500b103c, type: 2}
 --- !u!4 &260168803
 Transform:
   m_ObjectHideFlags: 0
