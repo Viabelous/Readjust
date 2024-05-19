@@ -32,7 +32,10 @@ public class SkillsSelection : Navigation
         }
 
         hasUnlocked = GameManager.CheckUnlockedSkill(skill.Name);
-
+        if (hasUnlocked)
+        {
+            skill = GameManager.GetUnlockedSkill(skill.Name);
+        }
         currentColor = ImageComponent.color;
     }
 

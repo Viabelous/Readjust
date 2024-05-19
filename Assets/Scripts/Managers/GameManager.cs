@@ -36,6 +36,11 @@ public class GameManager : ScriptableObject
     {
         return unlockedSkills.FindIndex(skill => skill.Name == name) != -1;
     }
+
+    public static Skill GetUnlockedSkill(string name)
+    {
+        return unlockedSkills.Find(skill => skill.Name == name);
+    }
     // public static
 
 }

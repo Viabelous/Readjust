@@ -47,8 +47,7 @@ public class Skill : ScriptableObject
     [SerializeField] protected float maxCd;          // cd maksimal
     [SerializeField] protected float cost;           // total mana/hp di awal
     [SerializeField] protected float damage;         // total damage di awal
-    [SerializeField] protected float aerusCost;     // total damage di awal
-    [SerializeField] protected float expCost;       // total damage di awal
+
 
     [Header("Skill Icon")]
     [SerializeField] protected Sprite sprite;
@@ -60,6 +59,11 @@ public class Skill : ScriptableObject
     [Header("Temporary Skill")]
     [SerializeField] protected float timer;
     protected int level = 1;
+
+    [Header("Description")]
+    [TextArea()][SerializeField] protected string description;     // total damage di awal
+    [SerializeField] protected float aerusCost;     // total damage di awal
+    [SerializeField] protected float expCost;       // total damage di awal
 
     // [HideInInspector] protected bool invalid = false;
 
@@ -252,6 +256,10 @@ public class Skill : ScriptableObject
     public float ExpCost
     {
         get { return expCost; }
+    }
+    public string Description
+    {
+        get { return description; }
     }
 
     // karena ada tambahan damage tiap elemen tergantung stage sehingga bisa diedit
