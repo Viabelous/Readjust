@@ -97,13 +97,14 @@ public class DefenseSystem : MonoBehaviour
 
         finalDamage = totalDamage - defender.GetDEF() * 0.5f;
 
-        print("totalDamage = " + totalDamage);
-        print("finalDamage = " + finalDamage);
 
         if (finalDamage <= 1)
         {
             finalDamage = 1;
         }
+
+        // print("totalDamage = " + totalDamage);
+        // print("finalDamage = " + finalDamage);
 
         defender.hp -= finalDamage;
 

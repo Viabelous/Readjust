@@ -4,10 +4,13 @@ using System.Collections.Generic;
 
 public class SkillData
 {
-    Dictionary<string, int> unlockedIds = new Dictionary<string, int>();
+    public Dictionary<string, int> skills = new Dictionary<string, int>();
 
     public SkillData()
     {
-
+        foreach (var skill in GameManager.unlockedSkills)
+        {
+            skills.Add(skill.Name, skill.Level);
+        }
     }
 }

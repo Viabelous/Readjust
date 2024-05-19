@@ -47,6 +47,8 @@ public class Skill : ScriptableObject
     [SerializeField] protected float maxCd;          // cd maksimal
     [SerializeField] protected float cost;           // total mana/hp di awal
     [SerializeField] protected float damage;         // total damage di awal
+    [SerializeField] protected float aerusCost;     // total damage di awal
+    [SerializeField] protected float expCost;       // total damage di awal
 
     [Header("Skill Icon")]
     [SerializeField] protected Sprite sprite;
@@ -171,6 +173,11 @@ public class Skill : ScriptableObject
         player.Pay(CostType, Cost);
     }
 
+    public void UpgradeLevel()
+    {
+        this.level += 1;
+    }
+
     // public void CancelSkill()
     // {
     //     invalid = true;
@@ -235,6 +242,16 @@ public class Skill : ScriptableObject
         {
             return cost;
         }
+    }
+
+    public float AerusCost
+    {
+        get { return aerusCost; }
+    }
+
+    public float ExpCost
+    {
+        get { return expCost; }
     }
 
     // karena ada tambahan damage tiap elemen tergantung stage sehingga bisa diedit

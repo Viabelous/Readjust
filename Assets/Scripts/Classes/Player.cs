@@ -9,7 +9,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Player : Character
 {
-    [SerializeField] protected float maxMana, manaRegen;
+    [SerializeField] protected float maxMana, hpRegen, manaRegen;
 
     [Header("Player Data (Don't edit this!)")]
 
@@ -22,7 +22,7 @@ public class Player : Character
     public float venetia = 0;
     public float story = 0;
 
-    private float manaRegenTimer = 0;
+    private float regenTimer = 0;
 
     public float maxHPLevel = 0,
                 maxManaLevel = 0,
@@ -113,7 +113,7 @@ public class Player : Character
         newPlayer.aerus = 0;
         newPlayer.exp = 0;
         newPlayer.venetia = 0;
-        newPlayer.manaRegenTimer = 0;
+        newPlayer.regenTimer = 0;
         return newPlayer;
     }
 
@@ -331,13 +331,14 @@ public class Player : Character
         }
     }
 
-    public void ManaRegenerating()
+    public void Regenerating()
     {
-        manaRegenTimer += Time.deltaTime;
-        if (manaRegenTimer >= 1)
+        regenTimer += Time.deltaTime;
+        if (regenTimer >= 1)
         {
             Heal(Stat.Mana, manaRegen);
-            manaRegenTimer = 0;
+            Heal(Stat.HP, hpRegen);
+            regenTimer = 0;
         }
     }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f025acaea34cd0f4082f62b4f7e2299e, type: 3}
   m_Name: PlayerBasic
   m_EditorClassIdentifier: 
-  id: player26932
+  id: player64493
   maxHp: 100
   hp: 100
   atk: 10
@@ -23,6 +23,7 @@ MonoBehaviour:
   actionEnabled: 1
   movementEnabled: 1
   maxMana: 300
+  hpRegen: 0.25
   manaRegen: 0.5
   mana: 300
   maxShield: 0
@@ -31,3 +32,9 @@ MonoBehaviour:
   exp: 0
   venetia: 0
   story: 0
+  maxHPLevel: 0
+  maxManaLevel: 0
+  atkLevel: 0
+  defLevel: 0
+  agiLevel: 0
+  focLevel: 0

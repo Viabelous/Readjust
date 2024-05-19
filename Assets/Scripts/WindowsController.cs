@@ -14,7 +14,9 @@ public class windowsController : MonoBehaviour
     public GameObject[] WindowsButtonStartPointNavigation;
     public GameObject[] SkillTree;
     public GameObject HoveredButton;
+    public GameObject FocusedButton;
     public int ActiveWindowsID;
+
 
     void Update()
     {

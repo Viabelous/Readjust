@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         // print("HP: " + player.hp);
         // print("MANA: " + player.mana);
         // print("ATK: " + player.atk);
-        // print("DEF: " + player.def);
+        // print("DEF: " + player.GetDEF());
         // print("SHIELD: " + player.shield);
         // print("AGI: " + player.agi);
         // print("FOC: " + player.foc);
@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
     private void DoOnStageOnly()
     {
-        player.ManaRegenerating();
+        player.Regenerating();
 
         if (StageManager.instance.time >= 14 * 60)
         {

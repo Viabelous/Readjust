@@ -7,51 +7,74 @@ public enum NavigationState
 {
     Active,
     Hover,
-    Selected
+    Focused,
+    Selected,
+    Locked
 }
 
 public class SkillsSelection : Navigation
 {
     // public Skill skill;
-    public GameObject prefab;
-    private NavigationState currState;
-    private Color current;
+    [SerializeField] private GameObject prefab;
+    private Skill skill;
+    [SerializeField] private NavigationState currState;
+    private Color currentColor;
+    [HideInInspector] public bool hasUnlocked;
 
     void Start()
     {
-        currState = NavigationState.Active;
-        current = ImageComponent.color;
+        skill = prefab.GetComponent<SkillController>().skill.Clone();
 
+        // !!!! NANTI HAPUS !!!!
+        if (skill.Name == "Will of Fire" || skill.Name == "Sacrivert" && GameManager.unlockedSkills.Count < 2)
+        {
+            GameManager.unlockedSkills.Add(skill);
+        }
+
+        hasUnlocked = GameManager.CheckUnlockedSkill(skill.Name);
+
+        currentColor = ImageComponent.color;
     }
 
     void Update()
     {
-        // Color current = ImageComponent.color;
-
+        hasUnlocked = GameManager.CheckUnlockedSkill(skill.Name);
         switch (currState)
         {
             case NavigationState.Active:
-                current.r = 0.5f;
-                current.g = 0.5f;
-                current.b = 0.5f;
-                ImageComponent.color = current;
+                currentColor.r = 0.5f;
+                currentColor.g = 0.5f;
+                currentColor.b = 0.5f;
+                ImageComponent.color = currentColor;
                 break;
 
             case NavigationState.Hover:
-                // Color current = ImageComponent.color;
-                current.r = 1f;
-                current.g = 1f;
-                current.b = 1f;
-                ImageComponent.color = current;
+                WindowsController.FocusedButton = gameObject;
+
+                currentColor.r = 1f;
+                currentColor.g = 1f;
+                currentColor.b = 1f;
+                ImageComponent.color = currentColor;
+                break;
+
+            case NavigationState.Focused:
+                currentColor.r = 0.3f;
+                currentColor.g = 0.3f;
+                currentColor.b = 1f;
+                ImageComponent.color = currentColor;
                 break;
 
             case NavigationState.Selected:
-
-                // current.r = 120f;
-                // current.g = 255;
-                // current.b = 120f;
-                ImageComponent.color = Color.green;
+                currentColor.r = 0.5f;
+                currentColor.g = 1f;
+                currentColor.b = 0.5f;
+                ImageComponent.color = currentColor;
                 break;
+
+                // case NavigationState.Locked:
+                //     currentColor.a = 0.75f;
+                //     ImageComponent.color = currentColor;
+                //     break;
         }
 
     }
@@ -64,35 +87,71 @@ public class SkillsSelection : Navigation
         }
         else
         {
-            currState = IsSelected() ? NavigationState.Selected : NavigationState.Active;
+            currState = HasSelected() ? NavigationState.Selected : NavigationState.Active;
         }
     }
-
-    private bool IsSelected()
-    {
-        return GameManager.selectedSkills.Contains(prefab);
-    }
-
     public override void Clicked()
     {
-        // jika sebelumnya sudah diselect
-        if (IsSelected())
-        {
-            GameManager.selectedSkills.Remove(prefab);
-        }
-        // jika belum pernah diselect
-        else
-        {
-            // kalau slot belum penuh
-            if (GameManager.selectedSkills.Count < 7)
-            {
-                GameManager.selectedSkills.Add(prefab);
-                currState = NavigationState.Selected;
-            }
-        }
+        currState = NavigationState.Focused;
+        WindowsController.HoveredButton = GameObject.Find(hasUnlocked ? "select_btn" : "locked_btn");
+
+        // // jika sebelumnya sudah diselect
+        // if (IsSelected())
+        // {
+        //     GameManager.selectedSkills.Remove(prefab);
+        // }
+        // // jika belum pernah diselect
+        // else
+        // {
+        //     // kalau slot belum penuh
+        //     if (GameManager.selectedSkills.Count < 7)
+        //     {
+        //         GameManager.selectedSkills.Add(prefab);
+        //         currState = NavigationState.Selected;
+        //     }
+        // }
     }
     public override void ExclusiveKey()
     {
 
+    }
+
+    public bool HasSelected()
+    {
+        return GameManager.selectedSkills.Contains(prefab);
+    }
+
+    public NavigationState CurrentState()
+    {
+        return currState;
+    }
+
+    public void ChangeCurrentState(NavigationState state)
+    {
+        this.currState = state;
+    }
+
+    public Skill GetSkill()
+    {
+        return skill;
+    }
+
+    public void Select()
+    {
+        // kalau slot belum penuh
+        if (GameManager.selectedSkills.Count < 7)
+        {
+            GameManager.selectedSkills.Add(prefab);
+            currState = NavigationState.Selected;
+        }
+    }
+    public void Unselected()
+    {
+        GameManager.selectedSkills.Remove(prefab);
+    }
+
+    public void Upgrade()
+    {
+        skill.UpgradeLevel();
     }
 }
