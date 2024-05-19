@@ -12,15 +12,29 @@ public class ThornCover : Skill
     private BuffSystem buffSystem;
     private Buff buff;
 
+    public float dmgPersenOfDEFFinal
+    {
+        get { return dmgPersenOfDEF + 0.2f * (level - 1); }
+    }
+
+    public float dmgPersenOfATKFinal
+    {
+        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Memberikan status {Thorny} pada karakter untuk beberapa waktu. Ketika musuh mengakibatkan damage dari sentuhan kepada karakter, musuh akan terkena damage sebesar " + dmgPersenOfDEFFinal * 100 + "% DEF + " + dmgPersenOfATKFinal * 100 + "% ATK.";
+        return description;
+    }
 
     public override void Activate(GameObject gameObject)
     {
-
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         buffSystem = playerController.GetComponent<BuffSystem>();
         Payment(buffSystem.transform);
 
-        float value = dmgPersenOfDEF * playerController.player.GetDEF() + dmgPersenOfATK * playerController.player.GetATK();
+        float value = dmgPersenOfDEFFinal * playerController.player.GetDEF() + dmgPersenOfATKFinal * playerController.player.GetATK();
         buff = new Buff(
                 this.id,
                 this.name,
@@ -39,39 +53,3 @@ public class ThornCover : Skill
         }
     }
 }
-// public class ThornCover : MonoBehaviour
-// {
-//     private Skill skill;
-//     private PlayerController playerController;
-//     private BuffSystem buffSystem;
-//     private Buff buff;
-//     [SerializeField] private float dmgPersenOfDef;
-//     [SerializeField] private float dmgPersenOfAtk;
-
-
-//     private void Start()
-//     {
-//         skill = GetComponent<SkillController>().skill;
-
-//         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-//         buffSystem = playerController.GetComponent<BuffSystem>();
-//         float value = dmgPersenOfDef * playerController.player.def + dmgPersenOfAtk * playerController.player.atk;
-//         buff = new Buff(
-//                 skill.Id,
-//                 skill.Name,
-//                 BuffType.Thorn,
-//                 value,
-//                 skill.Timer
-//             );
-//         buffSystem.ActivateBuff(buff);
-//         StageManager.instance.PlayerActivatesSkill(skill);
-//     }
-
-//     private void Update()
-//     {
-//         if (!buffSystem.CheckBuff(buff))
-//         {
-//             Destroy(gameObject);
-//         }
-//     }
-// }

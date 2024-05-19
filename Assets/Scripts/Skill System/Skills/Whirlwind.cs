@@ -18,7 +18,7 @@ public class Whirlwind : Skill
 
     public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfAGI * player.GetAGI() + dmgPersenOfATK * player.GetATK();
+        return this.damage + dmgPersenOfAGI * player.GetAGI() + dmgPersenOfATK * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

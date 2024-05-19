@@ -10,15 +10,26 @@ public class WillOfFire : Skill
     private BuffSystem buffSystem;
     private Buff buff;
 
-    public override void Activate(GameObject gameObject)
+    public float ATKValueFinal
+    {
+        get { return ATKValue + 5 * (level - 1); }
+    }
+
+    public override string GetDescription()
     {
 
+        description = "Meningkatkan ATK sebanyak " + ATKValueFinal + " selama " + timer + " detik.";
+        return description;
+    }
+
+    public override void Activate(GameObject gameObject)
+    {
         buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
         buff = new Buff(
                 this.id,
                 this.name,
                 BuffType.ATK,
-                ATKValue,
+                ATKValueFinal,
                 this.timer
             );
 
@@ -35,36 +46,3 @@ public class WillOfFire : Skill
         }
     }
 }
-// public class WillOfFire : MonoBehaviour
-// {
-//     private Skill skill;
-//     private GameObject player;
-//     private BuffSystem buffSystem;
-//     private Buff buff;
-
-//     private void Start()
-//     {
-//         skill = GetComponent<SkillController>().skill;
-
-//         player = GameObject.Find("Player");
-//         buffSystem = player.GetComponent<BuffSystem>();
-//         buff = new Buff(
-//                 skill.Id,
-//                 skill.Name,
-//                 BuffType.ATK,
-//                 skill.Value,
-//                 skill.Timer
-//             );
-
-//         buffSystem.ActivateBuff(buff);
-//         StageManager.instance.PlayerActivatesSkill(skill);
-//     }
-
-//     private void Update()
-//     {
-//         if (!buffSystem.CheckBuff(buff))
-//         {
-//             Destroy(gameObject);
-//         }
-//     }
-// }

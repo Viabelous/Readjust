@@ -6,8 +6,8 @@ using UnityEngine;
 public class HolySonata : Skill
 {
     [Header("Buff Value")]
-    [SerializeField] private float HPPersenOfFOC;
-    [SerializeField] private float manaPersenOfFOC;
+    [SerializeField] private float HPManaPersenOfFOC;
+    // [SerializeField] private float manaPersenOfFOC;
 
     [Header("Debuff Value")]
     [SerializeField] private float atkPersenOfATK;
@@ -19,6 +19,26 @@ public class HolySonata : Skill
     private Animator animator;
     private Player player;
     private Buff buff, debuffATK, debuffDEF;
+
+    public float HPManaPersenOfFOCFinal
+    {
+        get { return HPManaPersenOfFOC + 0.2f * (level - 1); }
+    }
+
+    public float atkPersenOfATKFinal
+    {
+        get { return atkPersenOfATK - 0.2f * (level - 1); }
+    }
+    public float defPersenOfDEFFinal
+    {
+        get { return defPersenOfDEF - 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Memberikan status {Harmony} pada karakter yang akan terus mengisi HP dan Mana karakter sebanyak " + HPManaPersenOfFOCFinal * 100 + "% FOC setiap detik namun menurunkan ATK serta DEF karakter masing-masing sebanyak " + atkPersenOfATKFinal * 100 + "% ATK dan " + defPersenOfDEFFinal * 100 + "% DEF. Menggunakan kembali skill ini saat sedang memiliki status {Harmony} tidak akan mengurangi Mana dan akan menonaktifkan status {Harmony}. Menggunakan skill ini akan menghapus status {Idiosyncrasy}.";
+        return description;
+    }
 
     public override void Activate(GameObject gameObject)
     {
@@ -60,21 +80,21 @@ public class HolySonata : Skill
                 );
             buffSystem.ActivateBuff(buff);
 
-            healHPValue = HPPersenOfFOC * player.GetFOC();
-            healManaValue = manaPersenOfFOC * player.GetFOC();
+            healHPValue = HPManaPersenOfFOCFinal * player.GetFOC();
+            healManaValue = HPManaPersenOfFOCFinal * player.GetFOC();
 
             debuffATK = new Buff(
                     this.id + "atk",
                     this.Name,
                     BuffType.ATK,
-                    atkPersenOfATK * player.GetATK(),
+                    atkPersenOfATKFinal * player.GetATK(),
                     Timer
                 );
             debuffDEF = new Buff(
                     this.id + "def",
                     this.Name,
                     BuffType.DEF,
-                    defPersenOfDEF * player.GetDEF(),
+                    defPersenOfDEFFinal * player.GetDEF(),
                     Timer
                 );
             debuffSystem.ActivateDebuff(debuffATK);

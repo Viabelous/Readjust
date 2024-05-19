@@ -11,6 +11,17 @@ public class Sacrivert : Skill
     [Header("Buff Value")]
     [SerializeField] private float manaValue;
 
+    public float manaValueFinal
+    {
+        get { return manaValue + 10 * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Menambah Mana dengan mengorbankan HP. HP akan berkurang sebanyak " + costPersenOfMaxHP * 100 + " dari Max HP, sebagai gantinya, menambah mana sebanyak " + manaValueFinal + ". Jika HP berada di bawah 10%, skill tidak dapat digunakan.";
+        return description;
+    }
+
     public override void Activate(GameObject gameObject)
     {
         GameObject player = GameObject.Find("Player");
@@ -35,7 +46,7 @@ public class Sacrivert : Skill
                         this.id,
                         this.name,
                         BuffType.Mana,
-                        manaValue,
+                        manaValueFinal,
                         this.timer
                     )
                 );

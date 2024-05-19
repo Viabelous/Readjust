@@ -16,6 +16,16 @@ public class Invitro : Skill
 
     private BuffSystem buffSystem;
 
+    public float shieldPersenOfDEFFinal
+    {
+        get { return shieldPersenOfDEF + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Membuat shield yang dapat menahan serangan sebesar 20% Max HP + " + shieldPersenOfDEFFinal + "% DEF saat skill digunakan, durasi shield tidak terbatas. Memberikan status {Gaia's Protection} pada karakter yang akan mengisi HP karakter sebanyak 30% dari damage yang diterima. Status tersebut akan terus aktif selama shield dari skill {Invitro} masih ada. Efek tidak dapat ditumpuk dan akan hilang ketika shield di-refresh. Menggunakan skill ini akan me-refresh shield dan status.";
+        return description;
+    }
     public override void Activate(GameObject gameObject)
     {
         this.gameObject = gameObject;
@@ -26,7 +36,7 @@ public class Invitro : Skill
         buffSystem = player.GetComponent<BuffSystem>();
 
         playerController = player.GetComponent<PlayerController>();
-        shield = shieldPersenOfMaxHP * playerController.player.GetMaxHP() + shieldPersenOfDEF * playerController.player.GetDEF();
+        shield = shieldPersenOfMaxHP * playerController.player.GetMaxHP() + shieldPersenOfDEFFinal * playerController.player.GetDEF();
         buffSystem.ActivateBuff(
            new Buff(
                 this.id,

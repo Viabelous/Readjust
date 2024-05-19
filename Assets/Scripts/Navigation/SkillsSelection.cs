@@ -32,11 +32,17 @@ public class SkillsSelection : Navigation
         }
 
         hasUnlocked = GameManager.CheckUnlockedSkill(skill.Name);
+
         if (hasUnlocked)
         {
             skill = GameManager.GetUnlockedSkill(skill.Name);
         }
         currentColor = ImageComponent.color;
+
+        if (currState == NavigationState.Hover)
+        {
+            WindowsController.FocusedButton = gameObject;
+        }
     }
 
     void Update()
@@ -97,22 +103,6 @@ public class SkillsSelection : Navigation
     {
         currState = NavigationState.Focused;
         WindowsController.HoveredButton = GameObject.Find(hasUnlocked ? "select_btn" : "locked_btn");
-
-        // // jika sebelumnya sudah diselect
-        // if (IsSelected())
-        // {
-        //     GameManager.selectedSkills.Remove(prefab);
-        // }
-        // // jika belum pernah diselect
-        // else
-        // {
-        //     // kalau slot belum penuh
-        //     if (GameManager.selectedSkills.Count < 7)
-        //     {
-        //         GameManager.selectedSkills.Add(prefab);
-        //         currState = NavigationState.Selected;
-        //     }
-        // }
     }
     public override void ExclusiveKey()
     {

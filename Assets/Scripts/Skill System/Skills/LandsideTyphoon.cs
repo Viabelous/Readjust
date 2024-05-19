@@ -22,7 +22,7 @@ public class LandsideTyphoon : Skill
 
     public override float GetDamage(Player player)
     {
-        return damage += dmgPersenOfAGI * player.GetAGI() + dmgPersenOfATK * player.GetATK();
+        return damage + dmgPersenOfAGI * player.GetAGI() + dmgPersenOfATK * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

@@ -8,6 +8,17 @@ public class Sanare : Skill
     [Header("Buff Value")]
     [SerializeField] private float HPPersenOfMaxHP;
 
+    public float HPPersenOfMaxHPFinal
+    {
+        get { return HPPersenOfMaxHP + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Mengonsumsi Mana untuk mengisi HP. Pemulihan yang didapat senilai dengan " + HPPersenOfMaxHPFinal * 100 + "% Max HP.";
+        return description;
+    }
+
     public override void Activate(GameObject gameObject)
     {
 
@@ -15,7 +26,7 @@ public class Sanare : Skill
 
         Payment(buffSystem.transform);
 
-        float value = HPPersenOfMaxHP * buffSystem.GetComponent<PlayerController>().player.GetMaxHP();
+        float value = HPPersenOfMaxHPFinal * buffSystem.GetComponent<PlayerController>().player.GetMaxHP();
 
         buffSystem.ActivateBuff(
            new Buff(

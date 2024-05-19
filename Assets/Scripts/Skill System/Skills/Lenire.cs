@@ -9,13 +9,25 @@ public class Lenire : Skill
     [SerializeField] private float manaValue;
     [SerializeField] private float manaPersenOfFOC;
 
+    public float manaPersenOfFOCFinal
+    {
+        get { return manaPersenOfFOC + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Meningkatkan Mana sebanyak 200 + " + manaPersenOfFOC * 100 + "% FOC.";
+        return description;
+    }
+
+
     public override void Activate(GameObject gameObject)
     {
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         Payment(playerController.transform);
 
         BuffSystem buffSystem = playerController.GetComponent<BuffSystem>();
-        float value = manaValue + manaPersenOfFOC * playerController.player.GetFOC();
+        float value = manaValue + manaPersenOfFOCFinal * playerController.player.GetFOC();
 
         buffSystem.ActivateBuff(
            new Buff(

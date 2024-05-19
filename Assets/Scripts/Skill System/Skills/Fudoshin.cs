@@ -11,6 +11,17 @@ public class Fudoshin : Skill
     private BuffSystem buffSystem;
     private Buff buff;
 
+    public float DEFValueFinal
+    {
+        get { return DEFValue + 5 * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Meningkatkan DEF sebanyak " + DEFValueFinal + " untuk selama " + timer + "detik.";
+        return description;
+    }
+
     public override void Activate(GameObject gameObject)
     {
         buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
@@ -19,7 +30,7 @@ public class Fudoshin : Skill
                 id,
                 name,
                 BuffType.DEF,
-                DEFValue,
+                DEFValueFinal,
                 Timer
             );
         buffSystem.ActivateBuff(buff);

@@ -10,6 +10,17 @@ public class Calm : Skill
     [HideInInspector] public BuffSystem buffSystem;
     [HideInInspector] public Buff buff;
 
+    public float FOCValueFinal
+    {
+        get { return FOCValue + 2 * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Meningkatkan FOC sebanyak " + FOCValueFinal + " selama " + timer + " detik.";
+        return description;
+    }
+
     public override void Activate(GameObject gameObject)
     {
         buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
@@ -18,7 +29,7 @@ public class Calm : Skill
                 id,
                 name,
                 BuffType.FOC,
-                FOCValue,
+                FOCValueFinal,
                 timer
             );
         buffSystem.ActivateBuff(buff);

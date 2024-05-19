@@ -14,10 +14,20 @@ public class HeavyTide : Skill
     [SerializeField] private float pushRange;
     private GameObject gameObject;
 
+    public float dmgPersenOfATKFinal
+    {
+        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Menyerang musuh di sekitar karakter dengan ombak yang akan mendorong musuh menjauh dan mengakibatkan water damage sebesar 25 + " + dmgPersenOfATKFinal * 100 + "% ATK.";
+        return description;
+    }
 
     public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfATK * player.GetATK();
+        return this.damage + dmgPersenOfATKFinal * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

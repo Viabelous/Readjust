@@ -26,5 +26,7 @@ MonoBehaviour:
   movementSpeed: 4
   movementRange: 0
   timer: 0
-  dmgPersenOfAgi: 0
+  aerusCost: 0
+  expCost: 0
+  dmgPersenOfAgi: 0.3
   radius: 10

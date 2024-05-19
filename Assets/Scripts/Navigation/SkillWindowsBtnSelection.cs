@@ -12,8 +12,9 @@ public class SkillWindowsBtnSelection : Navigation
 
     [SerializeField] private BtnType type;
     [SerializeField] private NavigationState currState;
-    [SerializeField] private Text btnText;
+    [SerializeField] private Text btnText, costText;
     private Color currentColor;
+    private SkillsSelection skillSelected;
 
     void Start()
     {
@@ -24,11 +25,19 @@ public class SkillWindowsBtnSelection : Navigation
     void Update()
     {
         Left = WindowsController.FocusedButton;
+        skillSelected = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
+
         // hasUnlocked = GameManager.CheckUnlockedSkill(Left.GetComponent<SkillsSelection>().GetSkill().Name);
 
         switch (type)
         {
             case BtnType.Select:
+
+                if (Down != null && !Down.activeInHierarchy)
+                {
+                    Down = null;
+                }
+
                 if (Left.GetComponent<SkillsSelection>().HasSelected())
                 {
                     btnText.text = "UNSELECT";
@@ -38,9 +47,14 @@ public class SkillWindowsBtnSelection : Navigation
                     btnText.text = "SELECT";
                 }
 
+
                 break;
 
             case BtnType.Upgrade:
+                costText.text = skillSelected.GetSkill().ExpUpCost.ToString();
+                break;
+            case BtnType.Locked:
+                costText.text = skillSelected.GetSkill().ExpUnlockCost.ToString();
                 break;
         }
 
@@ -81,8 +95,6 @@ public class SkillWindowsBtnSelection : Navigation
 
     public override void Clicked()
     {
-        SkillsSelection skillSelected = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
-
         switch (type)
         {
             case BtnType.Select:
@@ -95,14 +107,27 @@ public class SkillWindowsBtnSelection : Navigation
                     skillSelected.Select();
                 }
                 break;
+
             case BtnType.Upgrade:
-                skillSelected.Upgrade();
+                if (GameManager.player.exp < skillSelected.GetSkill().ExpUpCost)
+                {
+                    print("Uangnya kurang mba");
+                }
+                else
+                {
+                    skillSelected.Upgrade();
+
+                    if (skillSelected.GetSkill().Level == skillSelected.GetSkill().MaxLevel)
+                    {
+                        HoverBackToSkill(skillSelected);
+                        gameObject.SetActive(false);
+                    }
+
+                }
                 break;
+
             case BtnType.Locked:
-                if (
-                    GameManager.player.aerus < skillSelected.GetSkill().AerusCost &&
-                    GameManager.player.exp < skillSelected.GetSkill().ExpCost
-                )
+                if (GameManager.player.exp < skillSelected.GetSkill().ExpUnlockCost)
                 {
                     print("Uangnya kurang mba");
                 }
@@ -111,32 +136,22 @@ public class SkillWindowsBtnSelection : Navigation
                     GameManager.player.Pay(CostType.Exp, skillSelected.GetSkill().Cost);
                     GameManager.unlockedSkills.Add(skillSelected.GetSkill());
 
-                    skillSelected.ChangeCurrentState(NavigationState.Hover);
-                    WindowsController.HoveredButton = Left;
-                    currState = NavigationState.Active;
+                    HoverBackToSkill(skillSelected);
+
                 }
                 break;
         }
-
-        // currState = NavigationState.Selected;
-        // // jika sebelumnya sudah diselect
-        // if (IsSelected())
-        // {
-        //     GameManager.selectedSkills.Remove(prefab);
-        // }
-        // // jika belum pernah diselect
-        // else
-        // {
-        //     // kalau slot belum penuh
-        //     if (GameManager.selectedSkills.Count < 7)
-        //     {
-        //         GameManager.selectedSkills.Add(prefab);
-        //         currState = NavigationState.Selected;
-        //     }
-        // }
     }
+
     public override void ExclusiveKey()
     {
 
+    }
+
+    private void HoverBackToSkill(SkillsSelection skillSelected)
+    {
+        skillSelected.ChangeCurrentState(NavigationState.Hover);
+        WindowsController.HoveredButton = Left;
+        currState = NavigationState.Active;
     }
 }

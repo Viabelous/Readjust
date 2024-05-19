@@ -7,10 +7,20 @@ public class PebbleCreation : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float dmgPersenOfDEF;
+    public float dmgPersenOfDEFFinal
+    {
+        get { return dmgPersenOfDEF + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Menyerang musuh di hadapan menggunakan batuan kecil, mengakibatkan earth damage sebesar 60 + " + dmgPersenOfDEFFinal * 100 + "% DEF pada satu musuh di hadapan.";
+        return description;
+    }
 
     public override float GetDamage(Player player)
     {
-        return damage += dmgPersenOfDEF * player.GetDEF();
+        return damage + dmgPersenOfDEFFinal * player.GetDEF();
     }
 
     public override void Activate(GameObject gameObject)

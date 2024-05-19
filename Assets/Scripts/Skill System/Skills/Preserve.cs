@@ -7,6 +7,15 @@ public class Preserve : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float shieldPersenOfDEF;
+    public float shieldPersenOfDEFFinal
+    {
+        get { return shieldPersenOfDEF + 0.2f * (level - 1); }
+    }
+    public override string GetDescription()
+    {
+        description = "Membuat shield yang dapat menahan serangan sebesar " + shieldPersenOfDEFFinal * 100 + "% DEF saat skill digunakan, durasi shield tidak terbatas. Menggunakan skill ini akan me-refresh shield atau menggantikan shield.";
+        return description;
+    }
 
     public override void Activate(GameObject gameObject)
     {
@@ -15,7 +24,7 @@ public class Preserve : Skill
         BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
         PlayerController playerController = buffSystem.GetComponent<PlayerController>();
-        float value = shieldPersenOfDEF * playerController.player.GetDEF();
+        float value = shieldPersenOfDEFFinal * playerController.player.GetDEF();
 
         buffSystem.ActivateBuff(
                new Buff(

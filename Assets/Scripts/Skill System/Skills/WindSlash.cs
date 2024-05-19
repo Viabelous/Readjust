@@ -11,7 +11,7 @@ public class WindSlash : Skill
 
     public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfAGI * player.GetAGI();
+        return this.damage + dmgPersenOfAGI * player.GetAGI();
     }
 
     public override void Activate(GameObject gameObject)

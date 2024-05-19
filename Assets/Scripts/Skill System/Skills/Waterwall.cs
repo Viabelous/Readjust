@@ -14,10 +14,21 @@ public class Waterwall : Skill
     [Header("Custom Timer")]
     [SerializeField] private float timerPersenOfFOC;
 
+    public float dmgPersenOfFOCFinal
+    {
+        get { return dmgPersenOfFOC + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Menciptakan {Waterwall} yang akan memberikan efek slow pada musuh dan seiring waktu memberikan water damage sebesar " + dmgPersenOfFOCFinal * 100 + "% FOC. {Waterwall} akan bertahan selama 100% FOC detik ketika skill ini digunakan. Menggunakan skill ini tidak akan menghilangkan shield.";
+        return description;
+    }
+
     public override float GetDamage(Player player)
     {
 
-        return dmgPersenOfFOC * player.GetFOC();
+        return dmgPersenOfFOCFinal * player.GetFOC();
     }
 
     public override void Activate(GameObject gameObject)
@@ -58,44 +69,3 @@ public class Waterwall : Skill
         }
     }
 }
-
-// public class Waterwall : MonoBehaviour
-// {
-//     private Skill skill;
-//     [SerializeField] private float dmgPersenOfFoc;
-//     [SerializeField] private float timerPersenOfFoc;
-
-//     private void Start()
-//     {
-//         // sesuaikan damage basic attack dengan atk player
-//         skill = GetComponent<SkillController>().skill;
-//         float foc = GameObject.Find("Player").GetComponent<PlayerController>().player.foc;
-//         skill.Damage = dmgPersenOfFoc * foc;
-//         skill.Timer = timerPersenOfFoc;
-
-//         StageManager.instance.PlayerActivatesSkill(skill);
-//     }
-
-//     private void OnTriggerStay2D(Collider2D other)
-//     {
-//         if (skill.HasHitEnemy(other))
-//         {
-//             return;
-//         }
-
-//         if (other.CompareTag("Enemy"))
-//         {
-//             MobController mob = other.GetComponent<MobController>();
-//             mob.speed -= skill.Persentase * mob.speed;
-//             skill.HitEnemy(other);
-//         }
-
-//     }
-
-//     private void OnTriggerExit2D(Collider2D other)
-//     {
-//         MobController mob = other.GetComponent<MobController>();
-//         mob.speed = mob.enemy.movementSpeed;
-//         skill.AfterHitEnemy(other);
-//     }
-// }

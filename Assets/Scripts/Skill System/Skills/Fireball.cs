@@ -7,10 +7,21 @@ public class Fireball : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
+    public float dmgPersenOfATKFinal
+    {
+        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+    }
+
+
+    public override string GetDescription()
+    {
+        description = "Menembakkan bola api ke hadapan karakter yang akan memberikan fire damage dengan damage sebesar 60 + " + dmgPersenOfATKFinal * 100 + "% ATK pada satu musuh yang terkena.";
+        return description;
+    }
 
     public override float GetDamage(Player player)
     {
-        return damage + dmgPersenOfATK * player.GetATK();
+        return damage + dmgPersenOfATKFinal * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

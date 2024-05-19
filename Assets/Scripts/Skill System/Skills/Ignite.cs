@@ -8,9 +8,19 @@ public class Ignite : Skill
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
 
+    public float dmgPersenOfATKFinal
+    {
+        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+    }
+    public override string GetDescription()
+    {
+        description = "Melakukan serangan tebasan dengan area luas yang dapat mengakibatkan damage tinggi sebesar 150 + " + dmgPersenOfATKFinal * 100 + "% ATK ke musuh yang terkena serangan.";
+        return description;
+    }
+
     public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfATK * player.GetATK();
+        return this.damage + dmgPersenOfATKFinal * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)
@@ -19,17 +29,3 @@ public class Ignite : Skill
     }
 
 }
-
-// public class Ignite : MonoBehaviour
-// {
-//     private Skill skill;
-//     [SerializeField] private float dmgPersenOfAtk;
-
-//     private void Start()
-//     {
-//         skill = GetComponent<SkillController>().skill;
-//         skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
-//         // print("Damage + atk" + skill.Damage);
-//         StageManager.instance.PlayerActivatesSkill(skill);
-//     }
-// }

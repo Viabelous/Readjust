@@ -6,8 +6,7 @@ using UnityEngine;
 public class CacophonySonata : Skill
 {
     [Header("Debuff Value")]
-    [SerializeField] private float HPPersenOfFOC;
-    [SerializeField] private float manaPersenOfFOC;
+    [SerializeField] private float HPManaPersenOfFOC;
 
     [Header("Buff Value")]
     [SerializeField] private float ATKPersenOfFOC;
@@ -17,6 +16,22 @@ public class CacophonySonata : Skill
     private Animator animator;
     private Player player;
     private Buff buff, buffATK;
+
+    public float HPManaPersenOfFOCFinal
+    {
+        get { return HPManaPersenOfFOC - 0.2f * (level - 1); }
+    }
+
+    public float ATKPersenOfFOCFinal
+    {
+        get { return ATKPersenOfFOC + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Memberikan status {Idiosyncrasy} pada karakter yang akan terus menguras HP dan Mana karakter sebanyak " + HPManaPersenOfFOCFinal * 100 + "% FOC setiap detik namun meningkatkan drastis ATK karakter sebanyak " + ATKPersenOfFOCFinal * 100 + "% FOC.  Menggunakan kembali skill ini saat sedang memiliki status {Idiosyncrasy} tidak akan mengurangi Mana dan akan menonaktifkan status {Idiosyncrasy}. Menggunakan skill ini akan menghapus status {Harmony}.";
+        return description;
+    }
 
     public override void Activate(GameObject gameObject)
     {
@@ -46,8 +61,8 @@ public class CacophonySonata : Skill
             PayWithCostType(buffSystem.GetComponent<PlayerController>().player);
             // Payment(buffSystem.transform);
 
-            manaValue = manaPersenOfFOC * player.GetFOC();
-            hpValue = HPPersenOfFOC * player.GetFOC();
+            manaValue = HPManaPersenOfFOCFinal * player.GetFOC();
+            hpValue = HPManaPersenOfFOCFinal * player.GetFOC();
 
             buff = new Buff(
                     this.id,

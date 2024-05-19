@@ -58,22 +58,18 @@ public class Skill : ScriptableObject
 
     [Header("Temporary Skill")]
     [SerializeField] protected float timer;
-    protected int level = 1;
+
 
     [Header("Description")]
-    [TextArea()][SerializeField] protected string description;     // total damage di awal
-    [SerializeField] protected float aerusCost;     // total damage di awal
-    [SerializeField] protected float expCost;       // total damage di awal
+    protected string description;
+    protected int level = 1;
+    protected int maxLevel = 10;
 
-    // [HideInInspector] protected bool invalid = false;
 
-    // [Header("Buff/Heal/Debuff")]
-    // [SerializeField] private float value;
-    // [SerializeField] private float persentase;
+    [Header("Price")]
 
-    // [Header("Crowd Control")]
-    // [SerializeField] private float pushSpeed;
-    // [SerializeField] private float pushRange;
+    [SerializeField] protected float expUpCost;
+    [SerializeField] protected float expUnlockCost;
 
     protected List<string> enemiesId = new List<string>();
 
@@ -182,18 +178,6 @@ public class Skill : ScriptableObject
         this.level += 1;
     }
 
-    // public void CancelSkill()
-    // {
-    //     invalid = true;
-    // }
-
-    // public bool Invalid()
-    // {
-    //     return invalid;
-    // }
-
-    // id dapat diubah setiap pembuatan objek baru
-    // agar id tiap skill berbeda, biarpun objeknya sama
     public string Id
     {
         get
@@ -248,44 +232,14 @@ public class Skill : ScriptableObject
         }
     }
 
-    public float AerusCost
+    public float ExpUpCost
     {
-        get { return aerusCost; }
+        get { return expUpCost; }
     }
-
-    public float ExpCost
+    public float ExpUnlockCost
     {
-        get { return expCost; }
+        get { return expUnlockCost; }
     }
-    public string Description
-    {
-        get { return description; }
-    }
-
-    // karena ada tambahan damage tiap elemen tergantung stage sehingga bisa diedit
-    // public float Damage
-    // {
-    //     get
-    //     {
-    //         // switch (level)
-    //         // {
-    //         //     case 1:
-    //         //         return damage + 0.1f * damage;
-    //         //     case 2:
-    //         //         return damage + 0.2f * damage;
-    //         //     case 3:
-    //         //         return damage + 0.3f * damage;
-    //         //     default:
-    //         //         return damage;
-    //         // }
-    //         return damage;
-    //     }
-
-    //     set
-    //     {
-    //         damage = value;
-    //     }
-    // }
 
     public Sprite Sprite
     {
@@ -311,6 +265,10 @@ public class Skill : ScriptableObject
     {
         get { return level; }
     }
+    public int MaxLevel
+    {
+        get { return maxLevel; }
+    }
 
     public Transform LockedEnemy
     {
@@ -321,6 +279,11 @@ public class Skill : ScriptableObject
     public virtual float GetDamage(Player player)
     {
         return damage;
+    }
+
+    public virtual string GetDescription()
+    {
+        return description;
     }
 
     public void RandomizeId()

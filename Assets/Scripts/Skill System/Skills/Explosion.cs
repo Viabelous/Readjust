@@ -13,11 +13,22 @@ public class Explosion : Skill
     [SerializeField] private float pushSpeed;
     [SerializeField] private float pushRange;
 
+    public float dmgPersenOfATKFinal
+    {
+        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+    }
+
     private GameObject gameObject;
+
+    public override string GetDescription()
+    {
+        description = "Memberikan damage ledakan kecil ke hadapan yang akan memberikan fire damage sebesar 30 + " + dmgPersenOfATKFinal * 100 + "% ATK sekaligus mendorong mundur musuh.";
+        return description;
+    }
 
     public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfATK * player.GetATK();
+        return this.damage + dmgPersenOfATKFinal * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

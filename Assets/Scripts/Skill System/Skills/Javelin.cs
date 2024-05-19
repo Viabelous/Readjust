@@ -18,7 +18,7 @@ public class Javeline : Skill
 
     public override float GetDamage(Player player)
     {
-        return this.damage += dmgPersenOfAgi * player.GetAGI();
+        return this.damage + dmgPersenOfAgi * player.GetAGI();
     }
 
     public override void Activate(GameObject gameObject)

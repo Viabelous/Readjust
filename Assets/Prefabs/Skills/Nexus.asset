@@ -26,5 +26,7 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 120
+  aerusCost: 0
+  expCost: 0
   radius: 8
-  dmgPersenOfTotalDmg: 0
+  dmgPersenOfTotalDmg: 0.3

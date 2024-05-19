@@ -362,7 +362,7 @@ public class DefenseSystem : MonoBehaviour
         mobController.Effected("nexus");
 
         // berikan damage ke musuh yg ditandai
-        lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(((Nexus)nexus).dmgPersenOfTotalDmg * dealDamage);
+        lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(((Nexus)nexus).dmgPersenOfTotalDmgFinal * dealDamage);
 
     }
 
