@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -51,9 +52,13 @@ public class SkillWindowsBtnSelection : Navigation
                 break;
 
             case BtnType.Upgrade:
+                costText.color = GameManager.player.exp < skillSelected.GetSkill().ExpUpCost ? Color.red : Color.black;
+
                 costText.text = skillSelected.GetSkill().ExpUpCost.ToString();
                 break;
+
             case BtnType.Locked:
+                costText.color = GameManager.player.exp < skillSelected.GetSkill().ExpUnlockCost ? Color.red : Color.black;
                 costText.text = skillSelected.GetSkill().ExpUnlockCost.ToString();
                 break;
         }
@@ -79,6 +84,22 @@ public class SkillWindowsBtnSelection : Navigation
                 ImageComponent.color = currentColor;
                 break;
         }
+
+        if (ZoneManager.instance.CurrentState() == ZoneState.OnPopUp)
+        {
+            switch (WindowsController.popUp.id)
+            {
+                case "upgrade_failed":
+                case "unlock_failed":
+                    if (WindowsController.popUp.GetClickedBtn() == PopUpBtnType.OK)
+                    {
+                        Destroy(WindowsController.popUp.gameObject);
+                        ZoneManager.instance.ChangeCurrentState(ZoneState.Idle);
+                    }
+                    break;
+            }
+        }
+
     }
 
     public override void IsHovered(bool state)
@@ -95,6 +116,8 @@ public class SkillWindowsBtnSelection : Navigation
 
     public override void Clicked()
     {
+        StartCoroutine(ClickedAnimation());
+
         switch (type)
         {
             case BtnType.Select:
@@ -111,7 +134,11 @@ public class SkillWindowsBtnSelection : Navigation
             case BtnType.Upgrade:
                 if (GameManager.player.exp < skillSelected.GetSkill().ExpUpCost)
                 {
-                    print("Uangnya kurang mba");
+                    WindowsController.CreatePopUp(
+                        "upgrade_failed",
+                        PopUpType.OK,
+                        "Anda membutuhkan lebih banyak Exp Orb untuk meningkatkan skill ini."
+                    );
                 }
                 else
                 {
@@ -129,7 +156,11 @@ public class SkillWindowsBtnSelection : Navigation
             case BtnType.Locked:
                 if (GameManager.player.exp < skillSelected.GetSkill().ExpUnlockCost)
                 {
-                    print("Uangnya kurang mba");
+                    WindowsController.CreatePopUp(
+                        "unlock_failed",
+                        PopUpType.OK,
+                        "Anda membutuhkan lebih banyak Exp Orb untuk membuka skill ini."
+                    );
                 }
                 else
                 {
@@ -143,6 +174,13 @@ public class SkillWindowsBtnSelection : Navigation
         }
     }
 
+    private IEnumerator ClickedAnimation()
+    {
+        currState = NavigationState.Active;
+        yield return new WaitForSeconds(0.5f);
+        currState = NavigationState.Hover;
+    }
+
     public override void ExclusiveKey()
     {
 
@@ -153,5 +191,10 @@ public class SkillWindowsBtnSelection : Navigation
         skillSelected.ChangeCurrentState(NavigationState.Hover);
         WindowsController.HoveredButton = Left;
         currState = NavigationState.Active;
+    }
+
+    public void SetCostColor(Color color)
+    {
+        costText.color = color;
     }
 }

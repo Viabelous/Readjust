@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public enum ZoneState
 {
     Idle,
-    OnDialog
+    OnDialog,
+    OnPopUp
 }
 
 // digunakan dalam stage 
@@ -50,11 +51,6 @@ public class ZoneManager : MonoBehaviour
                     SceneManager.LoadScene("MainMenu");
                 }
 
-                // else if (Input.GetKeyDown(KeyCode.Space))
-                // {
-                //     SaveData.SavePlayer(GameManager.player);
-                // }
-
                 if (dialogPanel.activeInHierarchy)
                 {
                     ChangeCurrentState(ZoneState.OnDialog);
@@ -66,6 +62,10 @@ public class ZoneManager : MonoBehaviour
                 {
                     ChangeCurrentState(ZoneState.Idle);
                 }
+                break;
+
+            case ZoneState.OnPopUp:
+
                 break;
         }
     }

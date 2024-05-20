@@ -17,11 +17,16 @@ public class windowsController : MonoBehaviour
     public GameObject FocusedButton;
     public int ActiveWindowsID;
 
+    public GameObject[] popUps;
+    [HideInInspector] public NotifPopUp popUp;
+
 
     void Update()
     {
-        if (ActiveWindowsID != -1)
+        if (ActiveWindowsID != -1 && ZoneManager.instance.CurrentState() != ZoneState.OnPopUp)
         {
+
+
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (HoveredButton.GetComponent<Navigation>().Left != null)
@@ -106,4 +111,17 @@ public class windowsController : MonoBehaviour
         }
     }
 
+    public void CreatePopUp(string id, PopUpType type, string info)
+    {
+        GameObject newpopUp = Instantiate(
+            popUps[type == PopUpType.OK ? 0 : 1],
+            GameObject.Find("UI").transform
+        );
+
+        popUp = newpopUp.GetComponent<NotifPopUp>();
+        popUp.id = id;
+        popUp.info = info;
+
+        ZoneManager.instance.ChangeCurrentState(ZoneState.OnPopUp);
+    }
 }
