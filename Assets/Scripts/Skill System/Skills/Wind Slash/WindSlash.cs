@@ -9,9 +9,20 @@ public class WindSlash : Skill
     [SerializeField] private float dmgPersenOfAGI;
     private ChrDirection direction;
 
+    public float dmgPersenOfAGIFinal
+    {
+        get { return dmgPersenOfAGI + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Menyerang semua musuh di hadapan sepanjang garis lurus dengan damage sebesar " + dmgPersenOfAGIFinal * 100 + "% AGI. Dapat menyerang musuh yang terbang.";
+        return description;
+    }
+
     public override float GetDamage(Player player)
     {
-        return this.damage + dmgPersenOfAGI * player.GetAGI();
+        return this.damage + dmgPersenOfAGIFinal * player.GetAGI();
     }
 
     public override void Activate(GameObject gameObject)

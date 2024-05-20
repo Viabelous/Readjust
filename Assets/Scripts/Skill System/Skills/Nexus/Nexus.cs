@@ -20,7 +20,7 @@ public class Nexus : Skill
 
     public override string GetDescription()
     {
-        description = "Memberikan status {Bloodlink} pada musuh di hadapan terdekat dengan HP tertinggi. Ketika ada musuh dengan status {Bloodlink} pada stage, memukul musuh biasa akan memberikan fire damage sebesar " + dmgPersenOfTotalDmg * 100 + "% pada musuh dengan status {Bloodlink}.";
+        description = "Memberikan status {Bloodlink} pada musuh di hadapan terdekat dengan HP tertinggi selama " + timer + " detik. Ketika ada musuh dengan status {Bloodlink} pada stage, memukul musuh biasa akan memberikan fire damage sebesar " + dmgPersenOfTotalDmg * 100 + "% pada musuh dengan status {Bloodlink}.";
         return description;
     }
 

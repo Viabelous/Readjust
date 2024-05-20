@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f178503a818ad0c4985f5aeae7da75a8, type: 3}
   m_Name: Dysnom
   m_EditorClassIdentifier: 
-  id: enemy47946
+  id: enemy73522
   maxHp: 5000
   hp: 5000
   atk: 50
@@ -30,4 +30,5 @@ MonoBehaviour:
   maxTime: 17
   flameTuskDelay: 0.5
   flameTuskDamage: 100
+  flameTuskRange: 10
   flameTuskSpeed: 15

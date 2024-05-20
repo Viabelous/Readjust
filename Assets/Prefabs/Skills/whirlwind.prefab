@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7222922452972815367}
   - component: {fileID: 435796312255344559}
   - component: {fileID: 7031565087421087864}
-  - component: {fileID: 3837103381699934755}
+  - component: {fileID: 4031506909555917366}
   - component: {fileID: 8933973302187144818}
   - component: {fileID: 1830348191893305118}
   - component: {fileID: 1194721959245563981}
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1600984263
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -324362169, guid: d7c54aae5ad16b54cab86d9c8f718271, type: 3}
+  m_Sprite: {fileID: -836858625, guid: 4d23f8374b9a35b428a24db7e9ef96ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,8 +111,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!68 &3837103381699934755
-EdgeCollider2D:
+--- !u!61 &4031506909555917366
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,21 +143,19 @@ EdgeCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.03346026, y: -1.152188}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.3999996, y: 6.40625}
+    newSize: {x: 12.803126, y: 12.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2967112, y: 2.4389198}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -1.613116, y: -0.45121336}
-  - {x: -1.839066, y: -0.51833045}
-  - {x: -0.80419445, y: -4.3978505}
-  - {x: 0.051789522, y: -4.760168}
-  - {x: 0.7196398, y: -4.402719}
-  - {x: 1.2475573, y: -2.4557672}
-  - {x: 1.9253521, y: -0.45667434}
-  - {x: -1.6696908, y: -0.47381783}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &8933973302187144818
 MonoBehaviour:
   m_ObjectHideFlags: 0

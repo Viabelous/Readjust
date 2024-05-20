@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75ee5cce9572a4498533c2141cf9503, type: 3}
+  m_Name: A Breeze Being Told
+  m_EditorClassIdentifier: 
+  id: skill_a_breeze_being_told
+  name: A Breeze Being Told
+  element: 4
+  type: 2
+  hitType: 1
+  movementType: 3
+  costType: 1
+  maxCd: 1
+  cost: 5
+  damage: 0
+  sprite: {fileID: 21300000, guid: 8f5c416476cdfef408d92c124e44f7c6, type: 3}
+  movementSpeed: 0
+  movementRange: 0
+  timer: 0
+  expUpCost: 0
+  expUnlockCost: 0
+  timerPersenOfAGI: 0.5
+  dmgPersenOfTotalDmg: 0.6
+  HPPersenOfAGI: 1

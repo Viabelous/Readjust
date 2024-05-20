@@ -294,7 +294,7 @@ MonoBehaviour:
   Up: {fileID: 537895569}
   Right: {fileID: 458494948}
   Down: {fileID: 61879169}
-  prefab: {fileID: 0}
+  prefab: {fileID: 1260312099399989671, guid: 60b41829e4cef124fa60b8b392b03cd5, type: 3}
   currState: 1
   hasUnlocked: 0
 --- !u!1 &35479919
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   Up: {fileID: 537895569}
   Right: {fileID: 0}
   Down: {fileID: 61879169}
-  prefab: {fileID: 0}
+  prefab: {fileID: 4377080657426579709, guid: 3a77601993cdf914cbc5534f3e6af0a3, type: 3}
   currState: 0
   hasUnlocked: 0
 --- !u!1 &430216165
@@ -2339,7 +2339,7 @@ MonoBehaviour:
   Up: {fileID: 537895569}
   Right: {fileID: 419485448}
   Down: {fileID: 61879169}
-  prefab: {fileID: 0}
+  prefab: {fileID: 7489144947036903945, guid: 8c8885207f18cc1438f3446b8e0e991d, type: 3}
   currState: 0
   hasUnlocked: 0
 --- !u!1 &458991138
@@ -6634,7 +6634,7 @@ MonoBehaviour:
   Up: {fileID: 1785602631}
   Right: {fileID: 0}
   Down: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 448624962892058373, guid: 85d6c8d9fe5574d4cb3445d170855200, type: 3}
   currState: 0
   hasUnlocked: 0
 --- !u!1 &1168342286

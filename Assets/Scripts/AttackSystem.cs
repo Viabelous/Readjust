@@ -55,7 +55,13 @@ public class AttackSystem : MonoBehaviour
         }
 
         totalDamage += totalDamage * DamageBooster();
-        // print("Total Damage : " + totalDamage);
+
+        // kalau player pakai skill A Breeze Being Told, 
+        // maka total damage akan bertambah sebanyak buff value persen dari total
+        if (buffSystem.CheckBuff(BuffType.Breezewheel))
+        {
+            totalDamage += totalDamage * buffSystem.GetBuffValues(BuffType.Breezewheel);
+        }
 
         return totalDamage;
     }

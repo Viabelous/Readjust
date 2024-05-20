@@ -63,14 +63,7 @@ public class SkillMovement : MonoBehaviour
 
         SetPosition();
         initialPosition = transform.position;
-
-        // if (type == SkillMovementType.Locking)
-        // {
-        //     if (skill.LockedEnemy == null)
-        //     {
-        //         return;
-        //     }
-        // }
+        print("initial pos:" + transform.position);
 
     }
 
@@ -78,29 +71,15 @@ public class SkillMovement : MonoBehaviour
     void Update()
     {
 
-        // if (isInstantiate)
-        // {
-        //     isInstantiate = false;
-        // }
 
         if (
             skillAnimation != null &&
-            skillAnimation.skill.HitType != SkillHitType.Temporary &&
+            skillAnimation.skill.HitType == SkillHitType.Once &&
             !skillAnimation.isAttacking
         )
         {
             return;
         }
-
-
-        // // kalau target sebelumnya ada, tapi sudah mati sebelum skill sampai
-        // if (
-        //     type == SkillMovementType.Locking &&
-        //     skill.LockedEnemy != null && !ReferenceEquals(skill.LockedEnemy, null)
-        // )
-        // {
-        //     return;
-        // }
 
         switch (type)
         {
@@ -282,11 +261,14 @@ public class SkillMovement : MonoBehaviour
     {
         if (skill.LockedEnemy == null)
         {
+            print("masuk sini di locking");
             return;
         }
+        print("now pos1:" + transform.position);
 
         transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * 0.01f);
 
+        // print("musuh: " + skill.LockedEnemy.position);
         // rotasikan arah hadap skill --------------------------------
 
         // Menghitung arah vektor dari titik pivot ke targetObject
@@ -298,6 +280,7 @@ public class SkillMovement : MonoBehaviour
 
         // Terapkan rotasi pada titik pivot
         transform.rotation = targetRotation;
+        print("now pos2:" + transform.position);
 
         // if (transform.position == skill.LockedEnemy.position)
         // {

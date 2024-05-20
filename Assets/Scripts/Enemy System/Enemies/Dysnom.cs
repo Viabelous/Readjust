@@ -18,8 +18,8 @@ public class Dysnom : Enemy
     [SerializeField] private float maxTime;
     [SerializeField] private float flameTuskDelay;
     [SerializeField] private float flameTuskDamage;
+    [SerializeField] private float flameTuskRange;
     [SerializeField] private float flameTuskSpeed;
-
 
     // waktu untuk mengaktifkan flam tusk -----------
     private float timer, flameTuskTime;
@@ -33,7 +33,7 @@ public class Dysnom : Enemy
     // gerakan flam tusk ----------------------------
     private Vector3 initialPos, targetPos, direction;
     private int flameTuskNumber;
-    private float distance, nowDistance, initialATK;
+    private float nowDistance, initialATK;
 
     public override void Spawning(GameObject gameObject)
     {
@@ -52,7 +52,7 @@ public class Dysnom : Enemy
     {
         if (!flameTuskActivate)
         {
-            mobController.animate.Play("dysnom_idle");
+            mobController.animate.Play("dysnom_walk_frontw");
 
             timer += Time.deltaTime;
 
@@ -65,7 +65,7 @@ public class Dysnom : Enemy
                 flameTuskActivate = true;
                 flameTuskState = FlameTuskState.Delayed;
 
-                mobController.speed = mobController.enemy.GetSpeed() / 2;
+                mobController.speed = mobController.enemy.GetSpeed() * 0.5f;
             }
         }
         else
@@ -73,13 +73,14 @@ public class Dysnom : Enemy
             switch (flameTuskState)
             {
                 case FlameTuskState.Delayed:
-                    // mobController.animate.Play("dysnom_idle");
                     ChangeAttackDamage(initialATK);
 
                     if (flameTuskNumber == 3)
                     {
+                        mobController.animate.Play("dysnom_walk_frontw");
                         if (timer >= flameTuskDelay)
                         {
+                            mobController.animate.Play("dysnom_idle");
                             mobController.speed = mobController.enemy.GetSpeed();
                             flameTuskActivate = false;
                             flameTuskNumber = 0;
@@ -87,6 +88,7 @@ public class Dysnom : Enemy
                     }
                     else
                     {
+                        mobController.animate.Play("dysnom_walk_frontw");
                         if (timer >= flameTuskDelay)
                         {
                             timer = 0;
@@ -101,7 +103,7 @@ public class Dysnom : Enemy
                     break;
 
                 case FlameTuskState.SetTarget:
-                    mobController.animate.Play("dysnom_idle");
+
                     // Debug.Log("diem: " + this.atk);
 
 
@@ -118,7 +120,7 @@ public class Dysnom : Enemy
 
                     nowDistance = Vector3.Distance(initialPos, gameObject.transform.position);
 
-                    if (nowDistance >= distance)
+                    if (nowDistance >= flameTuskRange)
                     {
                         flameTuskState = FlameTuskState.Delayed;
                     }
@@ -143,14 +145,13 @@ public class Dysnom : Enemy
         initialPos = gameObject.transform.position;
         targetPos = new Vector3(player.position.x, player.position.y, player.position.z);
         direction = (targetPos - initialPos).normalized;
-        distance = Vector3.Distance(initialPos, targetPos);
 
         flameTuskNumber++;
     }
 
     private void OnFlameTusking(GameObject gameObject)
     {
-        float speedMultiplier = Mathf.Clamp(nowDistance / distance, 0.5f, 3);
+        float speedMultiplier = Mathf.Clamp(nowDistance / flameTuskRange, 1, 3);
         mobController.animate.SetFloat("FrameSpeed", speedMultiplier);
         gameObject.transform.Translate(direction * flameTuskSpeed * Time.deltaTime);
     }

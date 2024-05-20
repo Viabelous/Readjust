@@ -16,9 +16,25 @@ public class Whirlwind : Skill
     private GameObject gameObject;
     private ChrDirection direction;
 
+    public float dmgPersenOfAGIFinal
+    {
+        get { return dmgPersenOfAGI + 0.2f * (level - 1); }
+    }
+
+    public float dmgPersenOfATKFinal
+    {
+        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+    }
+
+    public override string GetDescription()
+    {
+        description = "Menyerang semua musuh sepanjang garis lurus yang akan mendorong sedikit musuh ke belakang, mengakibatkan air damage sebesar " + dmgPersenOfAGIFinal * 100 + "% AGI + " + dmgPersenOfATKFinal * 100 + "% ATK. Dapat menyerang musuh yang terbang.";
+        return description;
+    }
+
     public override float GetDamage(Player player)
     {
-        return this.damage + dmgPersenOfAGI * player.GetAGI() + dmgPersenOfATK * player.GetATK();
+        return this.damage + dmgPersenOfAGIFinal * player.GetAGI() + dmgPersenOfATKFinal * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

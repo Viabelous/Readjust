@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff122d9e9e3a97429460e9ee00a3c68, type: 3}
+  m_Name: Light Step
+  m_EditorClassIdentifier: 
+  id: skill_light_step
+  name: Light Step
+  element: 4
+  type: 2
+  hitType: 1
+  movementType: 3
+  costType: 1
+  maxCd: 1
+  cost: 5
+  damage: 0
+  sprite: {fileID: 21300000, guid: 08a33eae0613c694a9c22279f78e72dd, type: 3}
+  movementSpeed: 0
+  movementRange: 0
+  timer: 15
+  expUpCost: 0
+  expUnlockCost: 0
+  AGIValue: 30

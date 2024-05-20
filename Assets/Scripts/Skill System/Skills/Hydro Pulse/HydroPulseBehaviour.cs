@@ -22,8 +22,6 @@ public class HydroPulseBehaviour : MonoBehaviour
 
         GetNearestEnemy();
 
-        print("Terdeteksi " + lockedEnemies.Count);
-
         if (lockedEnemies.Count == 0)
         {
             Destroy(gameObject);
@@ -34,7 +32,6 @@ public class HydroPulseBehaviour : MonoBehaviour
             skill.Payment(player);
         }
 
-        print("apakah hydro ada " + hydro != null);
     }
 
     void Update()

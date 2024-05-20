@@ -151,6 +151,7 @@ public class DefenseSystem : MonoBehaviour
 
                         // kalau player punya buff nexus
                         AttackIfNexusActivated(dealDamage);
+
                     }
 
                 }
@@ -203,7 +204,11 @@ public class DefenseSystem : MonoBehaviour
                     // damage hanya akan diberikan jika skill merupakan skill ber waktu
                     if (EnemyDefendingIsValid(skill, SkillHitType.Temporary))
                     {
-                        Attacked(other.GetComponent<AttackSystem>().DealDamage());
+                        float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+                        Attacked(dealDamage);
+
+                        // kalau player punya buff nexus
+                        AttackIfNexusActivated(dealDamage);
                     }
 
                 }
@@ -333,9 +338,17 @@ public class DefenseSystem : MonoBehaviour
         // {
         //     return false;
         // }
+        StartCoroutine(FlyingEnemyDamaged());
 
-        transform.parent.GetComponent<MobController>().Damaged();
+
         return true;
+    }
+
+    private IEnumerator FlyingEnemyDamaged()
+    {
+        transform.parent.GetComponent<MobController>().Damaged();
+        yield return new WaitForSeconds(0.2f);
+        transform.parent.GetComponent<MobController>().Undamaged();
     }
 
     private void AttackIfNexusActivated(float dealDamage)
@@ -361,8 +374,18 @@ public class DefenseSystem : MonoBehaviour
         MobController mobController = lockedEnemy.GetComponent<MobController>();
         mobController.Effected("nexus");
 
+
+        float nexusDamage = ((Nexus)nexus).dmgPersenOfTotalDmgFinal * dealDamage;
+
+        // kalau damage yg diterima merupakan damage dari breezewheel,
+        // damage ke target nexus akan berkurang setengah
+        if (buffSystem.CheckBuff(BuffType.Breezewheel))
+        {
+            nexusDamage = nexusDamage * 0.5f;
+        }
+
         // berikan damage ke musuh yg ditandai
-        lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(((Nexus)nexus).dmgPersenOfTotalDmgFinal * dealDamage);
+        lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(nexusDamage);
 
     }
 
@@ -391,7 +414,6 @@ public class DefenseSystem : MonoBehaviour
             // }
         }
     }
-
 
 
     // private IEnumerator DamagedByNexusSkill(float dealDamage)

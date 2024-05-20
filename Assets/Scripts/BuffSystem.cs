@@ -22,6 +22,7 @@ public enum BuffType
     Air,
     Harmony,
     Idiosyncrasy,
+    Breezewheel,
     Custom
 }
 
@@ -88,25 +89,6 @@ public class BuffSystem : MonoBehaviour
                     }
                 }
 
-                // if (CheckBuff(BuffType.Harmony))
-                // {
-                //     // cari index buff shield
-                //     int index = buffsActive.FindIndex(buff => buff.type == BuffType.Harmony);
-
-                //     if (harmonyTimer == 1)
-                //     {
-                //         Skill skill = GameObject.Find("")
-                //         Player player = ((PlayerController)chrController).player;
-                //         player.Heal(Stat.HP, player.foc)
-                //     }
-
-                //     // kalau shield yg dipakai saat ini sudah habis, 
-                //     // maka hapus dari list buff yg sedang dipakai
-                //     if (((PlayerController)chrController).player.shield <= 0)
-                //     {
-                //         RemoveBuff(buffsActive[index]);
-                //     }
-                // }
                 break;
         }
     }
@@ -242,7 +224,6 @@ public class BuffSystem : MonoBehaviour
                     // light step
                     case BuffType.AGI:
                         playerController.player.Upgrade(Stat.AGI, buff.value);
-
                         break;
 
                     // calm
@@ -317,6 +298,11 @@ public class BuffSystem : MonoBehaviour
                     // calm
                     case BuffType.FOC:
                         playerController.player.Downgrade(Stat.FOC, buff.value);
+                        break;
+
+                    // calm
+                    case BuffType.AGI:
+                        playerController.player.Downgrade(Stat.AGI, buff.value);
                         break;
                 }
                 break;
