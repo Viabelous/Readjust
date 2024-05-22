@@ -8,15 +8,19 @@ public class Lenire : Skill
     [Header("Buff Value")]
     [SerializeField] private float manaValue;
     [SerializeField] private float manaPersenOfFOC;
+    [Header("Level Up Value")]
+    [SerializeField] private float manaPersenOfFOCUp;
 
     public float manaPersenOfFOCFinal
     {
-        get { return manaPersenOfFOC + 0.2f * (level - 1); }
+        get { return manaPersenOfFOC + manaPersenOfFOCUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Meningkatkan Mana sebanyak 200 + " + manaPersenOfFOC * 100 + "% FOC.";
+        string additionMana = level > 1 ? " (+" + PersentaseToInt(manaPersenOfFOCFinal - manaPersenOfFOC) + "%) " : " ";
+
+        description = "Meningkatkan Mana sebanyak " + manaValue + " + " + PersentaseToInt(manaPersenOfFOC) + "%" + additionMana + "FOC.";
         return description;
     }
 

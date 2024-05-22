@@ -26,5 +26,8 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 5
+  expUpCost: 0
+  expUnlockCost: 0
   FOCValue: 20
+  FOCValueUp: 5
   buffSystem: {fileID: 0}

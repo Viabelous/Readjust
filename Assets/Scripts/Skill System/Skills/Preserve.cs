@@ -7,13 +7,16 @@ public class Preserve : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float shieldPersenOfDEF;
+    [Header("Level Up Value")]
+    [SerializeField] private float shieldPersenOfDEFUp;
     public float shieldPersenOfDEFFinal
     {
-        get { return shieldPersenOfDEF + 0.2f * (level - 1); }
+        get { return shieldPersenOfDEF + shieldPersenOfDEFUp * (level - 1); }
     }
     public override string GetDescription()
     {
-        description = "Membuat shield yang dapat menahan serangan sebesar " + shieldPersenOfDEFFinal * 100 + "% DEF saat skill digunakan, durasi shield tidak terbatas. Menggunakan skill ini akan me-refresh shield atau menggantikan shield.";
+        string additionDEF = level > 1 ? " (+" + PersentaseToInt(shieldPersenOfDEFFinal - shieldPersenOfDEF) + "%) " : " ";
+        description = "Membuat shield yang dapat menahan serangan sebesar " + PersentaseToInt(shieldPersenOfDEF) + "%" + additionDEF + "DEF saat skill digunakan, durasi shield tidak terbatas. Menggunakan skill ini akan me-refresh shield atau menggantikan shield.";
         return description;
     }
 
@@ -37,31 +40,3 @@ public class Preserve : Skill
             );
     }
 }
-
-// public class Preserve : MonoBehaviour
-// {
-//     private Skill skill;
-//     private GameObject player;
-
-//     private void Start()
-//     {
-//         skill = GetComponent<SkillController>().skill;
-
-//         player = GameObject.Find("Player");
-//         BuffSystem buffSystem = player.GetComponent<BuffSystem>();
-
-//         PlayerController playerController = player.GetComponent<PlayerController>();
-//         float value = skill.Persentase * playerController.player.def;
-
-//         buffSystem.ActivateBuff(
-//            new Buff(
-//                 skill.Id,
-//                 skill.Name,
-//                 BuffType.Shield,
-//                 value,
-//                 skill.Timer
-//             )
-//         );
-//         StageManager.instance.PlayerActivatesSkill(skill);
-//     }
-// }

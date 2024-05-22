@@ -26,5 +26,8 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
+  expUpCost: 0
+  expUnlockCost: 0
   costPersenOfMaxHP: 0.1
   manaValue: 50
+  manaValueUp: 10

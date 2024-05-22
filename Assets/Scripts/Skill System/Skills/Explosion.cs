@@ -8,6 +8,8 @@ public class Explosion : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfATKUp;
 
     [Header("Crowd Control")]
     [SerializeField] private float pushSpeed;
@@ -15,14 +17,15 @@ public class Explosion : Skill
 
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
     private GameObject gameObject;
 
     public override string GetDescription()
     {
-        description = "Memberikan damage ledakan kecil ke hadapan yang akan memberikan fire damage sebesar 30 + " + dmgPersenOfATKFinal * 100 + "% ATK sekaligus mendorong mundur musuh.";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
+        description = "Memberikan damage ledakan kecil ke hadapan yang akan memberikan fire damage sebesar " + damage + " + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK sekaligus mendorong mundur musuh.";
         return description;
     }
 

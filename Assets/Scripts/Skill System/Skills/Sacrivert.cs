@@ -11,14 +11,19 @@ public class Sacrivert : Skill
     [Header("Buff Value")]
     [SerializeField] private float manaValue;
 
+    [Header("Level Up Value")]
+    [SerializeField] private float manaValueUp;
+
     public float manaValueFinal
     {
-        get { return manaValue + 10 * (level - 1); }
+        get { return manaValue + manaValueUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menambah Mana dengan mengorbankan HP. HP akan berkurang sebanyak " + costPersenOfMaxHP * 100 + " dari Max HP, sebagai gantinya, menambah mana sebanyak " + manaValueFinal + ". Jika HP berada di bawah 10%, skill tidak dapat digunakan.";
+        string additionMana = level > 1 ? " (+" + (manaValueFinal - manaValue) + ")" : "";
+
+        description = "Menambah Mana dengan mengorbankan HP. HP akan berkurang sebanyak " + PersentaseToInt(costPersenOfMaxHP) + " dari Max HP, sebagai gantinya, menambah mana sebanyak " + manaValue + additionMana + ". Jika HP berada di bawah 10%, skill tidak dapat digunakan.";
         return description;
     }
 

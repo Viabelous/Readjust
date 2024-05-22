@@ -7,16 +7,20 @@ public class WindSlash : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfAGI;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfAGIUp;
     private ChrDirection direction;
 
     public float dmgPersenOfAGIFinal
     {
-        get { return dmgPersenOfAGI + 0.2f * (level - 1); }
+        get { return dmgPersenOfAGI + dmgPersenOfAGIUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menyerang semua musuh di hadapan sepanjang garis lurus dengan damage sebesar " + dmgPersenOfAGIFinal * 100 + "% AGI. Dapat menyerang musuh yang terbang.";
+        string additionAGI = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfAGIFinal - dmgPersenOfAGI) + "%) " : " ";
+
+        description = "Menyerang semua musuh di hadapan sepanjang garis lurus dengan damage sebesar " + PersentaseToInt(dmgPersenOfAGI) + "%" + additionAGI + " AGI. Dapat menyerang musuh yang terbang.";
         return description;
     }
 

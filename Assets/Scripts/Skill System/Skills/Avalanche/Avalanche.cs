@@ -7,15 +7,20 @@ public class Avalanche : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
-    // private PlayerController playerController;
+
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfATKUp;
+
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menyerang musuh menggunakan hentakan tanah, mengakibatkan earth damage sebesar 40 + " + dmgPersenOfATKFinal * 100 + "% ATK kepada semua musuh di hadapan karakter dengan jarak kecil.";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
+
+        description = "Menyerang musuh menggunakan hentakan tanah, mengakibatkan earth damage sebesar " + damage + " + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK kepada semua musuh di hadapan karakter dengan jarak kecil.";
         return description;
     }
 

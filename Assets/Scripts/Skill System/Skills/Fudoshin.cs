@@ -8,17 +8,21 @@ public class Fudoshin : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float DEFValue;
+    [Header("Level Up Value")]
+    [SerializeField] private float DEFValueUp;
     private BuffSystem buffSystem;
     private Buff buff;
 
     public float DEFValueFinal
     {
-        get { return DEFValue + 5 * (level - 1); }
+        get { return DEFValue + DEFValueUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Meningkatkan DEF sebanyak " + DEFValueFinal + " untuk selama " + timer + "detik.";
+        string additionDEF = level > 1 ? " (+" + (DEFValueFinal - DEFValue) + ") " : " ";
+
+        description = "Meningkatkan DEF sebanyak " + DEFValue + additionDEF + "untuk selama " + timer + "detik.";
         return description;
     }
 

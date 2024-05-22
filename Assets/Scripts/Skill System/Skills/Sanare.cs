@@ -7,15 +7,19 @@ public class Sanare : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float HPPersenOfMaxHP;
+    [Header("Level Up Value")]
+    [SerializeField] private float HPPersenOfMaxHPUp;
 
     public float HPPersenOfMaxHPFinal
     {
-        get { return HPPersenOfMaxHP + 0.2f * (level - 1); }
+        get { return HPPersenOfMaxHP + HPPersenOfMaxHPUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Mengonsumsi Mana untuk mengisi HP. Pemulihan yang didapat senilai dengan " + HPPersenOfMaxHPFinal * 100 + "% Max HP.";
+        string additionHP = level > 1 ? " (+" + PersentaseToInt(HPPersenOfMaxHPFinal - HPPersenOfMaxHP) + "%)" : " ";
+
+        description = "Mengonsumsi Mana untuk mengisi HP. Pemulihan yang didapat senilai dengan " + PersentaseToInt(HPPersenOfMaxHP) + "%" + additionHP + "Max HP.";
         return description;
     }
 

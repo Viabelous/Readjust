@@ -8,6 +8,9 @@ public class LandsideTyphoon : Skill
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfAGI;
     [SerializeField] private float dmgPersenOfATK;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfAGIUp;
+    [SerializeField] private float dmgPersenOfATKUp;
 
     [Header("Crowd Control")]
     [SerializeField] private float pullSpeed;
@@ -22,17 +25,20 @@ public class LandsideTyphoon : Skill
 
     public float dmgPersenOfAGIFinal
     {
-        get { return dmgPersenOfAGI + 0.2f * (level - 1); }
+        get { return dmgPersenOfAGI + dmgPersenOfAGIUp * (level - 1); }
     }
 
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menarik musuh yang menapak maupun terbang dan terus memberikan wind damage sebesar " + dmgPersenOfAGIFinal * 100 + "% AGI + " + dmgPersenOfATKFinal * 100 + "% ATK setiap detik. Durasi skill ini adalah " + timerPersenOfAGI * 100 + "% AGI detik.";
+        string additionAGI = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfAGIFinal - dmgPersenOfAGI) + "%) " : " ";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
+
+        description = "Menarik musuh yang menapak maupun terbang dan terus memberikan wind damage sebesar " + PersentaseToInt(dmgPersenOfAGI) + "%" + additionAGI + "AGI + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK setiap detik. Durasi skill ini adalah " + PersentaseToInt(timerPersenOfAGI) + "% AGI detik.";
         return description;
     }
 

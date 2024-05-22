@@ -10,8 +10,13 @@ public class HolySonata : Skill
     // [SerializeField] private float manaPersenOfFOC;
 
     [Header("Debuff Value")]
-    [SerializeField] private float atkPersenOfATK;
-    [SerializeField] private float defPersenOfDEF;
+    [SerializeField] private float ATKPersenOfATK;
+    [SerializeField] private float DEFPersenOfDEF;
+
+    [Header("Level Up Value")]
+    [SerializeField] private float HPManaPersenOfFOCUp;
+    [SerializeField] private float ATKPersenOfATKUp;
+    [SerializeField] private float DEFPersenOfDEFUp;
 
     private float healHPValue, healManaValue, harmonyTimer;
     private BuffSystem buffSystem;
@@ -22,21 +27,25 @@ public class HolySonata : Skill
 
     public float HPManaPersenOfFOCFinal
     {
-        get { return HPManaPersenOfFOC + 0.2f * (level - 1); }
+        get { return HPManaPersenOfFOC + HPManaPersenOfFOCUp * (level - 1); }
     }
 
-    public float atkPersenOfATKFinal
+    public float ATKPersenOfATKFinal
     {
-        get { return atkPersenOfATK - 0.2f * (level - 1); }
+        get { return ATKPersenOfATK + ATKPersenOfATKUp * (level - 1); }
     }
-    public float defPersenOfDEFFinal
+    public float DEFPersenOfDEFFinal
     {
-        get { return defPersenOfDEF - 0.2f * (level - 1); }
+        get { return DEFPersenOfDEF + DEFPersenOfDEFUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Memberikan status {Harmony} pada karakter yang akan terus mengisi HP dan Mana karakter sebanyak " + HPManaPersenOfFOCFinal * 100 + "% FOC setiap detik namun menurunkan ATK serta DEF karakter masing-masing sebanyak " + atkPersenOfATKFinal * 100 + "% ATK dan " + defPersenOfDEFFinal * 100 + "% DEF. Menggunakan kembali skill ini saat sedang memiliki status {Harmony} tidak akan mengurangi Mana dan akan menonaktifkan status {Harmony}. Menggunakan skill ini akan menghapus status {Idiosyncrasy}.";
+        string additionHPMana = level > 1 ? " (+" + PersentaseToInt(HPManaPersenOfFOCFinal - HPManaPersenOfFOC) + "%) " : " ";
+        string additionATK = level > 1 ? " (-" + PersentaseToInt(ATKPersenOfATKFinal - ATKPersenOfATK) + "%) " : " ";
+        string additionDEF = level > 1 ? " (-" + PersentaseToInt(DEFPersenOfDEFFinal - DEFPersenOfDEF) + "%) " : " ";
+
+        description = "Memberikan status {Harmony} pada karakter yang akan terus mengisi HP dan Mana karakter sebanyak " + PersentaseToInt(HPManaPersenOfFOC) + "%" + additionHPMana + "FOC setiap detik namun menurunkan ATK serta DEF karakter masing-masing sebanyak " + PersentaseToInt(ATKPersenOfATK) + "%" + additionATK + "ATK dan " + PersentaseToInt(DEFPersenOfDEF) + "%" + additionDEF + "DEF. Menggunakan kembali skill ini saat sedang memiliki status {Harmony} tidak akan mengurangi Mana dan akan menonaktifkan status {Harmony}. Menggunakan skill ini akan menghapus status {Idiosyncrasy}.";
         return description;
     }
 
@@ -87,14 +96,14 @@ public class HolySonata : Skill
                     this.id + "atk",
                     this.Name,
                     BuffType.ATK,
-                    atkPersenOfATKFinal * player.GetATK(),
+                    ATKPersenOfATKFinal * player.GetATK(),
                     Timer
                 );
             debuffDEF = new Buff(
                     this.id + "def",
                     this.Name,
                     BuffType.DEF,
-                    defPersenOfDEFFinal * player.GetDEF(),
+                    DEFPersenOfDEFFinal * player.GetDEF(),
                     Timer
                 );
             debuffSystem.ActivateDebuff(debuffATK);

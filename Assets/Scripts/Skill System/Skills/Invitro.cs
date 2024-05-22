@@ -9,6 +9,9 @@ public class Invitro : Skill
     [SerializeField] private float shieldPersenOfMaxHP;
     [SerializeField] private float shieldPersenOfDEF;
     [SerializeField] public float hpPersenOfDmg;
+
+    [Header("Level Up Value")]
+    [SerializeField] private float shieldPersenOfDEFUp;
     private PlayerController playerController;
     private float shield;
     private GameObject gameObject;
@@ -18,12 +21,14 @@ public class Invitro : Skill
 
     public float shieldPersenOfDEFFinal
     {
-        get { return shieldPersenOfDEF + 0.2f * (level - 1); }
+        get { return shieldPersenOfDEF + shieldPersenOfDEFUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Membuat shield yang dapat menahan serangan sebesar 20% Max HP + " + shieldPersenOfDEFFinal + "% DEF saat skill digunakan, durasi shield tidak terbatas. Memberikan status {Gaia's Protection} pada karakter yang akan mengisi HP karakter sebanyak 30% dari damage yang diterima. Status tersebut akan terus aktif selama shield dari skill {Invitro} masih ada. Efek tidak dapat ditumpuk dan akan hilang ketika shield di-refresh. Menggunakan skill ini akan me-refresh shield dan status.";
+        string additionDEF = level > 1 ? " (+" + PersentaseToInt(shieldPersenOfDEFFinal - shieldPersenOfDEF) + "%) " : " ";
+
+        description = "Membuat shield yang dapat menahan serangan sebesar 20% Max HP + " + PersentaseToInt(shieldPersenOfDEF) + "%" + additionDEF + "DEF saat skill digunakan, durasi shield tidak terbatas. Memberikan status {Gaia's Protection} pada karakter yang akan mengisi HP karakter sebanyak 30% dari damage yang diterima. Status tersebut akan terus aktif selama shield dari skill {Invitro} masih ada. Efek tidak dapat ditumpuk dan akan hilang ketika shield di-refresh. Menggunakan skill ini akan me-refresh shield dan status.";
         return description;
     }
     public override void Activate(GameObject gameObject)

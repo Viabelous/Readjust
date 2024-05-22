@@ -31,3 +31,4 @@ MonoBehaviour:
   timerPersenOfAGI: 0.5
   dmgPersenOfTotalDmg: 0.6
   HPPersenOfAGI: 1
+  dmgPersenOfTotalDmgUp: 0.05

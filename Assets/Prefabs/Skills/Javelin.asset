@@ -29,4 +29,5 @@ MonoBehaviour:
   expUpCost: 0
   expUnlockCost: 0
   dmgPersenOfAGI: 0.3
+  dmgPersenOfAGIUp: 0.05
   radius: 10

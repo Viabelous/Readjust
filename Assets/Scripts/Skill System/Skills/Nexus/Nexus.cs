@@ -9,18 +9,24 @@ public class Nexus : Skill
     [Header("Skill Effect")]
     [SerializeField] private float radius;
     [SerializeField] private float dmgPersenOfTotalDmg;
+
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfTotalDmgUp;
+
     private PlayerController playerController;
     private BuffSystem buffSystem;
     private Buff buff;
 
     public float dmgPersenOfTotalDmgFinal
     {
-        get { return dmgPersenOfTotalDmg + 0.2f * (level - 1); }
+        get { return dmgPersenOfTotalDmg + dmgPersenOfTotalDmgUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Memberikan status {Bloodlink} pada musuh di hadapan terdekat dengan HP tertinggi selama " + timer + " detik. Ketika ada musuh dengan status {Bloodlink} pada stage, memukul musuh biasa akan memberikan fire damage sebesar " + dmgPersenOfTotalDmg * 100 + "% pada musuh dengan status {Bloodlink}.";
+        string additionDmg = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfTotalDmgFinal - dmgPersenOfTotalDmg) + "%) " : " ";
+
+        description = "Memberikan status {Bloodlink} pada musuh di hadapan terdekat dengan HP tertinggi selama " + timer + " detik. Ketika ada musuh dengan status {Bloodlink} pada stage, memukul musuh biasa akan memberikan fire damage sebesar " + PersentaseToInt(dmgPersenOfTotalDmg) + "%" + additionDmg + "pada musuh dengan status {Bloodlink}.";
         return description;
     }
 

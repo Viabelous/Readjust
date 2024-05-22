@@ -11,18 +11,23 @@ public class ABreezeBeingTold : Skill
     [Header("Skill Effect")]
     [SerializeField] private float dmgPersenOfTotalDmg;
     [SerializeField] private float HPPersenOfAGI;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfTotalDmgUp;
     private PlayerController playerController;
     private BuffSystem buffSystem;
     private Buff buff;
 
     public float dmgPersenOfTotalDmgFinal
     {
-        get { return dmgPersenOfTotalDmg + 0.2f * (level - 1); }
+
+        get { return dmgPersenOfTotalDmg + dmgPersenOfTotalDmgUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Memanggil {Breezewheel} yang akan menyebabkan damage sebesar " + dmgPersenOfTotalDmgFinal * 100 + "% damage kepada semua musuh ketika diberi damage oleh karakter. Ketika terdapat musuh dengan status {Bloodlink} di stage, damage yang diakibatkan oleh skill ini akan berkurang setengah. Ketika terdapat status {Harmony} atau {Idiosyncrasy} pada karakter, akan memulihkan HP sebanyak " + HPPersenOfAGI * 100 + "% AGI ketika pemanggilannya. {Breezewheel} akan bertahan di stage selama " + timerPersenOfAGI * 100 + "% AGI detik.";
+        string additionDmg = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfTotalDmgFinal - dmgPersenOfTotalDmg) + "%) " : " ";
+
+        description = "Memanggil {Breezewheel} yang akan menyebabkan damage sebesar " + PersentaseToInt(dmgPersenOfTotalDmg) + "%" + additionDmg + "damage kepada semua musuh ketika diberi damage oleh karakter. Ketika terdapat musuh dengan status {Bloodlink} di stage, damage yang diakibatkan oleh skill ini akan berkurang setengah. Ketika terdapat status {Harmony} atau {Idiosyncrasy} pada karakter, akan memulihkan HP sebanyak " + PersentaseToInt(HPPersenOfAGI) + "% AGI ketika pemanggilannya. {Breezewheel} akan bertahan di stage selama " + PersentaseToInt(timerPersenOfAGI) + "% AGI detik.";
         return description;
     }
 

@@ -8,6 +8,9 @@ public class Whirlwind : Skill
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfAGI;
     [SerializeField] private float dmgPersenOfATK;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfAGIUp;
+    [SerializeField] private float dmgPersenOfATKUp;
 
     [Header("Crowd Control")]
     [SerializeField] private float pushSpeed;
@@ -18,17 +21,20 @@ public class Whirlwind : Skill
 
     public float dmgPersenOfAGIFinal
     {
-        get { return dmgPersenOfAGI + 0.2f * (level - 1); }
+        get { return dmgPersenOfAGI + dmgPersenOfAGIUp * (level - 1); }
     }
 
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menyerang semua musuh sepanjang garis lurus yang akan mendorong sedikit musuh ke belakang, mengakibatkan air damage sebesar " + dmgPersenOfAGIFinal * 100 + "% AGI + " + dmgPersenOfATKFinal * 100 + "% ATK. Dapat menyerang musuh yang terbang.";
+        string additionAGI = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfAGIFinal - dmgPersenOfAGI) + "%)" : " ";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%)" : " ";
+
+        description = "Menyerang semua musuh sepanjang garis lurus yang akan mendorong sedikit musuh ke belakang, mengakibatkan air damage sebesar " + PersentaseToInt(dmgPersenOfAGI) + "%" + additionAGI + "AGI + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK. Dapat menyerang musuh yang terbang.";
         return description;
     }
 

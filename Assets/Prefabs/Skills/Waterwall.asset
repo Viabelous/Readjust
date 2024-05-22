@@ -26,6 +26,9 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 5
+  expUpCost: 0
+  expUnlockCost: 0
   dmgPersenOfFOC: 0.75
+  dmgPersenOfFOCUp: 0.05
   slowPersenOfEnemySpeed: 0.5
   timerPersenOfFOC: 1

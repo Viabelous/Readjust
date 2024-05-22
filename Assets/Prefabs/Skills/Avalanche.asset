@@ -26,4 +26,7 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
+  expUpCost: 0
+  expUnlockCost: 0
   dmgPersenOfATK: 0.3
+  dmgPersenOfATKUp: 0.08

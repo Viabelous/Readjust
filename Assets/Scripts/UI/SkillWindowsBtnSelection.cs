@@ -39,6 +39,11 @@ public class SkillWindowsBtnSelection : Navigation
                     Down = null;
                 }
 
+                else
+                {
+                    Down = GameObject.Find("upgrade_btn");
+                }
+
                 if (Left.GetComponent<SkillsSelection>().HasSelected())
                 {
                     btnText.text = "UNSELECT";
@@ -194,6 +199,7 @@ public class SkillWindowsBtnSelection : Navigation
     {
         skillSelected.ChangeCurrentState(NavigationState.Hover);
         WindowsController.HoveredButton = Left;
+        WindowsController.FocusedButton = null;
         currState = NavigationState.Active;
     }
 

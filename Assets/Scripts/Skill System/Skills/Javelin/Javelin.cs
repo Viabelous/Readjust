@@ -9,6 +9,9 @@ public class Javeline : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfAGI;
+    [Header("Level Up Value")]
+
+    [SerializeField] private float dmgPersenOfAGIUp;
 
     [Header("Range Attack")]
     [SerializeField] private float radius;
@@ -16,13 +19,15 @@ public class Javeline : Skill
 
     public float dmgPersenOfAGIFinal
     {
-        get { return dmgPersenOfAGI + 0.2f * (level - 1); }
+        get { return dmgPersenOfAGI + dmgPersenOfAGIUp * (level - 1); }
     }
 
     // [SerializeField] private float radius;
     public override string GetDescription()
     {
-        description = "Menyerang satu musuh terbang terdekat di sekitar karakter dengan air damage sebesar 30 + " + dmgPersenOfAGIFinal * 100 + "% AGI.";
+        string additionAGI = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfAGIFinal - dmgPersenOfAGI) + "%) " : " ";
+
+        description = "Menyerang satu musuh terbang terdekat di sekitar karakter dengan air damage sebesar " + damage + " + " + PersentaseToInt(dmgPersenOfAGI) + "%" + additionAGI + "AGI.";
         return description;
     }
 

@@ -29,3 +29,4 @@ MonoBehaviour:
   expUpCost: 100
   expUnlockCost: 0
   ATKValue: 30
+  ATKValueUp: 5

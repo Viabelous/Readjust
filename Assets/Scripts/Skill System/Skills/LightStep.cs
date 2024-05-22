@@ -8,17 +8,21 @@ public class LightStep : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float AGIValue;
+    [Header("Level Up Value")]
+    [SerializeField] private float AGIValueUp;
     private BuffSystem buffSystem;
     private Buff buff;
 
     public float AGIValueFinal
     {
-        get { return AGIValue + 5 * (level - 1); }
+        get { return AGIValue + AGIValueUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Meningkatkan AGI sebanyak " + AGIValueFinal + " selama " + timer + "detik.";
+        string additionAGI = level > 1 ? " (+" + (AGIValueFinal - AGIValue) + ") " : " ";
+
+        description = "Meningkatkan AGI sebanyak " + AGIValue + additionAGI + "selama " + timer + "detik.";
         return description;
     }
 

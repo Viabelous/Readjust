@@ -26,4 +26,7 @@ MonoBehaviour:
   movementSpeed: 15
   movementRange: 30
   timer: 0
+  expUpCost: 0
+  expUnlockCost: 0
   dmgPersenOfDEF: 1
+  dmgPersenOfDEFUp: 0.05

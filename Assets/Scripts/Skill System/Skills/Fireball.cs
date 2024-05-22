@@ -7,15 +7,18 @@ public class Fireball : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfATKUp;
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
 
     public override string GetDescription()
     {
-        description = "Menembakkan bola api ke hadapan karakter yang akan memberikan fire damage dengan damage sebesar 60 + " + dmgPersenOfATKFinal * 100 + "% ATK pada satu musuh yang terkena.";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
+        description = "Menembakkan bola api ke hadapan karakter yang akan memberikan fire damage dengan damage sebesar " + damage + " + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK pada satu musuh yang terkena.";
         return description;
     }
 

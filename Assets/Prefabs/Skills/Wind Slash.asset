@@ -29,3 +29,4 @@ MonoBehaviour:
   expUpCost: 0
   expUnlockCost: 0
   dmgPersenOfAGI: 1
+  dmgPersenOfAGIUp: 0.2

@@ -7,6 +7,8 @@ public class Waterwall : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfFOC;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfFOCUp;
 
     [Header("Crowd Control")]
     [SerializeField] private float slowPersenOfEnemySpeed;
@@ -16,12 +18,14 @@ public class Waterwall : Skill
 
     public float dmgPersenOfFOCFinal
     {
-        get { return dmgPersenOfFOC + 0.2f * (level - 1); }
+        get { return dmgPersenOfFOC + dmgPersenOfFOCUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menciptakan {Waterwall} yang akan memberikan efek slow pada musuh dan seiring waktu memberikan water damage sebesar " + dmgPersenOfFOCFinal * 100 + "% FOC. {Waterwall} akan bertahan selama 100% FOC detik ketika skill ini digunakan. Menggunakan skill ini tidak akan menghilangkan shield.";
+        string additionFOC = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfFOCFinal - dmgPersenOfFOC) + "%)" : " ";
+
+        description = "Menciptakan {Waterwall} yang akan memberikan efek slow pada musuh dan seiring waktu memberikan water damage sebesar " + PersentaseToInt(dmgPersenOfFOC) + "%" + additionFOC + "FOC. {Waterwall} akan bertahan selama 100% FOC detik ketika skill ini digunakan. Menggunakan skill ini tidak akan menghilangkan shield.";
         return description;
     }
 

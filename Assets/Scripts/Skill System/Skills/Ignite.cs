@@ -7,14 +7,18 @@ public class Ignite : Skill
 {
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfATKUp;
 
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
+
     public override string GetDescription()
     {
-        description = "Melakukan serangan tebasan dengan area luas yang dapat mengakibatkan damage tinggi sebesar 150 + " + dmgPersenOfATKFinal * 100 + "% ATK ke musuh yang terkena serangan.";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
+        description = "Melakukan serangan tebasan dengan area luas yang dapat mengakibatkan damage tinggi sebesar " + damage + " + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK ke musuh yang terkena serangan.";
         return description;
     }
 

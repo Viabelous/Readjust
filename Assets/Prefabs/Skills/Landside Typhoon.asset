@@ -30,6 +30,8 @@ MonoBehaviour:
   expUnlockCost: 0
   dmgPersenOfAGI: 1
   dmgPersenOfATK: 1.25
+  dmgPersenOfAGIUp: 0.2
+  dmgPersenOfATKUp: 0.25
   pullSpeed: 5
   radius: 5
   timerPersenOfAGI: 0.5

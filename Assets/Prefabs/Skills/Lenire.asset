@@ -26,5 +26,8 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
+  expUpCost: 0
+  expUnlockCost: 0
   manaValue: 200
   manaPersenOfFOC: 2
+  manaPersenOfFOCUp: 0.2

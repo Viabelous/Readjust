@@ -234,8 +234,9 @@ public class Skill : ScriptableObject
 
     public float ExpUpCost
     {
-        get { return expUpCost; }
+        get { return expUnlockCost + expUpCost * level; }
     }
+
     public float ExpUnlockCost
     {
         get { return expUnlockCost; }
@@ -289,5 +290,10 @@ public class Skill : ScriptableObject
     public void RandomizeId()
     {
         this.id += Random.Range(0, 99999);
+    }
+
+    protected int PersentaseToInt(float persentase)
+    {
+        return Mathf.FloorToInt(persentase * 100);
     }
 }

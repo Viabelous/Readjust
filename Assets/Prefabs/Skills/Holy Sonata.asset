@@ -26,7 +26,11 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
-  HPPersenOfFOC: 1
-  manaPersenOfFOC: 1
-  atkPersenOfATK: 0.5
-  defPersenOfDEF: 0.5
+  expUpCost: 0
+  expUnlockCost: 0
+  HPManaPersenOfFOC: 1
+  ATKPersenOfATK: 0.5
+  DEFPersenOfDEF: 0.5
+  HPManaPersenOfFOCUp: 0.1
+  ATKPersenOfATKUp: -0.05
+  DEFPersenOfDEFUp: -0.05

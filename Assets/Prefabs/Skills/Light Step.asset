@@ -29,3 +29,4 @@ MonoBehaviour:
   expUpCost: 0
   expUnlockCost: 0
   AGIValue: 30
+  AGIValueUp: 5

@@ -10,19 +10,26 @@ public class StalactiteShoot : Skill
     [SerializeField] private float dmgPersenOfDEF;
     [SerializeField] private float dmgPersenOfATK;
 
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfDEFUp;
+    [SerializeField] private float dmgPersenOfATKUp;
+
     public float dmgPersenOfDEFFinal
     {
-        get { return dmgPersenOfDEF + 0.2f * (level - 1); }
+        get { return dmgPersenOfDEF + dmgPersenOfDEFUp * (level - 1); }
     }
 
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menembakkan tanah buatan runcing ke arah depan dan belakang yang akan mengakibatkan earth damage sebesar 20 + " + dmgPersenOfDEFFinal * 100 + "% DEF + " + dmgPersenOfATKFinal * 100 + "% ATK pada musuh yang terkena serangan.";
+        string additionDEF = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfDEFFinal - dmgPersenOfDEF) + "%) " : " ";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
+
+        description = "Menembakkan tanah buatan runcing ke arah depan dan belakang yang akan mengakibatkan earth damage sebesar " + damage + " + " + PersentaseToInt(dmgPersenOfDEF) + "%" + additionDEF + "DEF + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK pada musuh yang terkena serangan.";
         return description;
     }
 

@@ -9,22 +9,28 @@ public class ThornCover : Skill
     [Header("Buff Value")]
     [SerializeField] private float dmgPersenOfDEF;
     [SerializeField] private float dmgPersenOfATK;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfDEFUp;
+    [SerializeField] private float dmgPersenOfATKUp;
     private BuffSystem buffSystem;
     private Buff buff;
 
     public float dmgPersenOfDEFFinal
     {
-        get { return dmgPersenOfDEF + 0.2f * (level - 1); }
+        get { return dmgPersenOfDEF + dmgPersenOfDEFUp * (level - 1); }
     }
 
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Memberikan status {Thorny} pada karakter untuk beberapa waktu. Ketika musuh mengakibatkan damage dari sentuhan kepada karakter, musuh akan terkena damage sebesar " + dmgPersenOfDEFFinal * 100 + "% DEF + " + dmgPersenOfATKFinal * 100 + "% ATK.";
+        string additionDEF = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfDEFFinal - dmgPersenOfDEF) + "%)" : " ";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%)" : " ";
+
+        description = "Memberikan status {Thorny} pada karakter untuk beberapa waktu. Ketika musuh mengakibatkan damage dari sentuhan kepada karakter, musuh akan terkena damage sebesar " + PersentaseToInt(dmgPersenOfDEF) + "%" + additionDEF + "DEF + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK.";
         return description;
     }
 

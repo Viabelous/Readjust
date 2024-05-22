@@ -26,6 +26,9 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
+  expUpCost: 0
+  expUnlockCost: 0
   shieldPersenOfMaxHP: 0.2
   shieldPersenOfDEF: 6
   hpPersenOfDmg: 0.3
+  shieldPersenOfDEFUp: 0.1

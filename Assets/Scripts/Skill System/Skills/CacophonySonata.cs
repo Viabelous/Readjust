@@ -11,6 +11,10 @@ public class CacophonySonata : Skill
     [Header("Buff Value")]
     [SerializeField] private float ATKPersenOfFOC;
 
+    [Header("Level Up Value")]
+    [SerializeField] private float HPManaPersenOfFOCUp;
+    [SerializeField] private float ATKPersenOfFOCUp;
+
     private float hpValue, manaValue, idiosyncrasyTimer;
     private BuffSystem buffSystem;
     private Animator animator;
@@ -19,17 +23,20 @@ public class CacophonySonata : Skill
 
     public float HPManaPersenOfFOCFinal
     {
-        get { return HPManaPersenOfFOC - 0.2f * (level - 1); }
+        get { return HPManaPersenOfFOC + HPManaPersenOfFOCUp * (level - 1); }
     }
 
     public float ATKPersenOfFOCFinal
     {
-        get { return ATKPersenOfFOC + 0.2f * (level - 1); }
+        get { return ATKPersenOfFOC + ATKPersenOfFOCFinal * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Memberikan status {Idiosyncrasy} pada karakter yang akan terus menguras HP dan Mana karakter sebanyak " + HPManaPersenOfFOCFinal * 100 + "% FOC setiap detik namun meningkatkan drastis ATK karakter sebanyak " + ATKPersenOfFOCFinal * 100 + "% FOC.  Menggunakan kembali skill ini saat sedang memiliki status {Idiosyncrasy} tidak akan mengurangi Mana dan akan menonaktifkan status {Idiosyncrasy}. Menggunakan skill ini akan menghapus status {Harmony}.";
+        string additionHPMana = level > 1 ? " (-" + PersentaseToInt(HPManaPersenOfFOCFinal - HPManaPersenOfFOC) + "%) " : " ";
+        string additionATK = level > 1 ? " +" + PersentaseToInt(ATKPersenOfFOCFinal - ATKPersenOfFOC) + "%) " : " ";
+
+        description = "Memberikan status {Idiosyncrasy} pada karakter yang akan terus menguras HP dan Mana karakter sebanyak " + PersentaseToInt(HPManaPersenOfFOC) + "%" + additionHPMana + "FOC setiap detik namun meningkatkan drastis ATK karakter sebanyak " + PersentaseToInt(ATKPersenOfFOC) + "%" + additionATK + " FOC.  Menggunakan kembali skill ini saat sedang memiliki status {Idiosyncrasy} tidak akan mengurangi Mana dan akan menonaktifkan status {Idiosyncrasy}. Menggunakan skill ini akan menghapus status {Harmony}.";
         return description;
     }
 

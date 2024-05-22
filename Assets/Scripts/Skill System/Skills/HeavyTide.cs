@@ -8,6 +8,8 @@ public class HeavyTide : Skill
 
     [Header("Boost Damage")]
     [SerializeField] private float dmgPersenOfATK;
+    [Header("Level Up Value")]
+    [SerializeField] private float dmgPersenOfATKUp;
 
     [Header("Crowd Control")]
     [SerializeField] private float pushSpeed;
@@ -16,12 +18,14 @@ public class HeavyTide : Skill
 
     public float dmgPersenOfATKFinal
     {
-        get { return dmgPersenOfATK + 0.2f * (level - 1); }
+        get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
     public override string GetDescription()
     {
-        description = "Menyerang musuh di sekitar karakter dengan ombak yang akan mendorong musuh menjauh dan mengakibatkan water damage sebesar 25 + " + dmgPersenOfATKFinal * 100 + "% ATK.";
+        string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
+
+        description = "Menyerang musuh di sekitar karakter dengan ombak yang akan mendorong musuh menjauh dan mengakibatkan water damage sebesar " + damage + " + " + PersentaseToInt(dmgPersenOfATK) + "%" + additionATK + "ATK.";
         return description;
     }
 

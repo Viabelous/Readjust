@@ -7,6 +7,8 @@ public class Calm : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float FOCValue;
+    [Header("Level Up Value")]
+    [SerializeField] private float FOCValueUp;
     [HideInInspector] public BuffSystem buffSystem;
     [HideInInspector] public Buff buff;
 
@@ -17,7 +19,8 @@ public class Calm : Skill
 
     public override string GetDescription()
     {
-        description = "Meningkatkan FOC sebanyak " + FOCValueFinal + " selama " + timer + " detik.";
+        string additionFOC = level > 1 ? " (+" + (FOCValueFinal - FOCValue) + ") " : " ";
+        description = "Meningkatkan FOC sebanyak" + FOCValue + additionFOC + "selama " + timer + " detik.";
         return description;
     }
 
