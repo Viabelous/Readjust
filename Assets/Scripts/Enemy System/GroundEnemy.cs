@@ -18,13 +18,33 @@ public class GroundEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // kalau mob sedang di atas player
         if (gameObject.transform.position.y > player.transform.position.y && !mobController.onSkillTrigger)
         {
-            spriteRenderer.sortingLayerName = "Enemy Back";
+            spriteRenderer.sortingOrder = -1;
         }
+        // kalau mob sedang di bawah player
         else
         {
-            spriteRenderer.sortingLayerName = "Enemy";
+            spriteRenderer.sortingOrder = 11;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Object"))
+        {
+            // kalau musuh di atas object
+            if (transform.position.y > other.transform.position.y)
+            {
+                print("masuk");
+                spriteRenderer.sortingLayerName = "Chr Back";
+            }
+            // musuh di bawah object
+            else
+            {
+                spriteRenderer.sortingLayerName = "Chr Front";
+            }
         }
     }
 

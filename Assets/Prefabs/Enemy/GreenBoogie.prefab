@@ -163,7 +163,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 573214375
+  m_SortingLayerID: -1656976265
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 94581697, guid: 37af40bce35d35e448247c5056b36f8d, type: 3}
@@ -283,6 +283,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: c42bd20517d64534b91b77a994a876a4, type: 2}
   movementEnabled: 1
   speed: 0
+  animate: {fileID: 0}
   onSkillTrigger: 0
 --- !u!114 &-5924167133976428185
 MonoBehaviour:

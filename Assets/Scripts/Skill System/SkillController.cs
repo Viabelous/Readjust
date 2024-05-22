@@ -60,68 +60,55 @@ public class SkillController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            if (skill.Element != Element.Air && other.GetComponent<MobController>().enemy.type == EnemyType.Flying)
+            MobController mobController = other.GetComponent<MobController>();
+            if (skill.Element != Element.Air && mobController.enemy.type == EnemyType.Flying)
             {
                 return;
             }
+
+            if (mobController.enemy.type == EnemyType.Ground)
+            {
+                if (transform.position.y > other.transform.position.y)
+                {
+                    mobController.spriteRenderer.sortingLayerName = "Chr Back";
+                }
+                else
+                {
+                    mobController.spriteRenderer.sortingLayerName = "Chr Front";
+                }
+
+                mobController.onSkillTrigger = true;
+            }
+
         }
 
         skill.WhileHitEnemy(other);
 
-        if (other.CompareTag("Enemy"))
-        {
-            MobController mob = other.GetComponent<MobController>();
+        // if (other.CompareTag("Enemy"))
+        // {
+        //     MobController mob = other.GetComponent<MobController>();
 
-            // // jika musuh darat terkena collider darat ATAU
-            // // jika musuh terbang terkena collider terbang
-            // // maka berikan damage/cc dapat diberikan
-            // if (
-            //     groundCollider != null &&
-            //     groundCollider.OverlapPoint(mob.transform.position) &&
-            //     mob.enemy.type == EnemyType.Ground ||
-            //     flyingCollider != null &&
-            //     flyingCollider.OverlapPoint(mob.transform.position) &&
-            //     mob.enemy.type == EnemyType.Flying
-            // )
-            // {
-            //     validAttack = true;
-            // }
-            // else
-            // {
-            //     validAttack = false;
-            // }
-        }
+        //     // // jika musuh darat terkena collider darat ATAU
+        //     // // jika musuh terbang terkena collider terbang
+        //     // // maka berikan damage/cc dapat diberikan
+        //     // if (
+        //     //     groundCollider != null &&
+        //     //     groundCollider.OverlapPoint(mob.transform.position) &&
+        //     //     mob.enemy.type == EnemyType.Ground ||
+        //     //     flyingCollider != null &&
+        //     //     flyingCollider.OverlapPoint(mob.transform.position) &&
+        //     //     mob.enemy.type == EnemyType.Flying
+        //     // )
+        //     // {
+        //     //     validAttack = true;
+        //     // }
+        //     // else
+        //     // {
+        //     //     validAttack = false;
+        //     // }
+        // }
 
-        if (other.CompareTag("Player"))
-        {
-            if (skill.MovementType == SkillMovementType.Area)
-            {
-                // kalau skill di atas player
-                if (transform.position.y > other.transform.position.y)
-                {
-                    foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)
-                    {
-                        spriteRenderer.sortingLayerName = "Player Front";
-                    }
-                }
-                // kalau skill di bawah player
-                else
-                {
-                    foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)
-                    {
-                        spriteRenderer.sortingLayerName = "Player";
-                    }
-                }
-            }
-            else
-            {
-                foreach (SpriteRenderer spriteRenderer in other.GetComponent<PlayerController>().spriteRenderers)
-                {
-                    spriteRenderer.sortingLayerName = "Player";
-                }
-            }
 
-        }
 
         // if (other.CompareTag("Enemy"))
         // {

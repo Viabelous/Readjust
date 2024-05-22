@@ -8,6 +8,7 @@ TagManager:
   - Damage
   - FlyingEnemy
   - Buff
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Object
   - 
   - Player
   - Enemy
@@ -48,24 +49,15 @@ TagManager:
   - name: Shadow
     uniqueID: 675013767
     locked: 0
-  - name: Enemy Back
-    uniqueID: 2842767555
-    locked: 0
   - name: Skill Back
     uniqueID: 3535314359
     locked: 0
-  - name: Player
-    uniqueID: 2637991031
-    locked: 0
-  - name: Enemy
-    uniqueID: 573214375
+  - name: Chr Back
+    uniqueID: 2842767555
     locked: 0
   - name: Skill Front
-    uniqueID: 2693983033
+    uniqueID: 573214375
     locked: 0
-  - name: Enemy Front
-    uniqueID: 2875106781
-    locked: 0
-  - name: Player Front
-    uniqueID: 3878967115
+  - name: Chr Front
+    uniqueID: 2637991031
     locked: 0

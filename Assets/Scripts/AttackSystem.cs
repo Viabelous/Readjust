@@ -22,7 +22,7 @@ public class AttackSystem : MonoBehaviour
 
     void Start()
     {
-
+        buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
     }
 
     public float DealDamage()

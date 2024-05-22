@@ -29,7 +29,7 @@ public class MobController : MonoBehaviour
     private Vector2 movement;
     private Vector3 initialScale;
     [HideInInspector] public Animator animate;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private PlayerController playerController;
     private bool gainSpeed = false, isBoss;
 
