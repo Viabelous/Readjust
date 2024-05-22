@@ -69,17 +69,15 @@ public class windowsController : MonoBehaviour
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Down;
                     HoveredButton.GetComponent<Navigation>().IsHovered(true);
                 }
-
-
             }
             else if (Input.GetKeyDown(KeyCode.Q))
             {
                 HoveredButton.GetComponent<Navigation>().Clicked();
             }
-            else
-            {
-                HoveredButton.GetComponent<Navigation>().ExclusiveKey();
-            }
+            // else
+            // {
+            //     HoveredButton.GetComponent<Navigation>().ExclusiveKey();
+            // }
         }
 
     }

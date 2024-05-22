@@ -13,29 +13,32 @@ public class SkillWindowsController : MonoBehaviour
 
     void Start()
     {
+        UpdateSkillBtnHover();
+        // SetSkillDescription();
     }
 
     void Update()
     {
+        UpdateSkillBtnHover();
         SetSkillDescription();
-        // skillLevel.text = skillsSelection.GetSkill().Level.ToString();
 
-        selectBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
-        upgradeBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
-        locked.SetActive(skillsSelection.hasUnlocked ? false : true);
+        // sesudah upgrade skill, hover ke arah select btn
+        if (
+            skillsSelection.CurrentState() == NavigationState.Focused &&
+            WindowsController.HoveredButton == lockedBtn &&
+            !lockedBtn.activeInHierarchy
+        )
+        {
+            WindowsController.HoveredButton = selectBtn;
+        }
     }
 
     void SetSkillDescription()
     {
 
-        if (WindowsController.FocusedButton == null)
-        {
-            skillsSelection = WindowsController.HoveredButton.GetComponent<SkillsSelection>();
-        }
-        else
-        {
-            skillsSelection = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
-        }
+        selectBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
+        upgradeBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
+        locked.SetActive(skillsSelection.hasUnlocked ? false : true);
 
         if (skillsSelection.GetSkill().Level == skillsSelection.GetSkill().MaxLevel)
         {
@@ -46,5 +49,17 @@ public class SkillWindowsController : MonoBehaviour
         skillCD.text = "CD: " + skillsSelection.GetSkill().Cd;
         skillCost.text = "Mana Cost: " + skillsSelection.GetSkill().Cost;
         skillDescription.text = skillsSelection.GetSkill().GetDescription();
+    }
+
+    void UpdateSkillBtnHover()
+    {
+        if (WindowsController.FocusedButton == null)
+        {
+            skillsSelection = WindowsController.HoveredButton.GetComponent<SkillsSelection>();
+        }
+        else
+        {
+            skillsSelection = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
+        }
     }
 }

@@ -116,7 +116,7 @@ public class SkillWindowsBtnSelection : Navigation
 
     public override void Clicked()
     {
-        StartCoroutine(ClickedAnimation());
+        // StartCoroutine(ClickedAnimation());
 
         switch (type)
         {
@@ -140,6 +140,7 @@ public class SkillWindowsBtnSelection : Navigation
                         "Anda membutuhkan lebih banyak Exp Orb untuk meningkatkan skill ini."
                     );
                 }
+
                 else
                 {
                     skillSelected.Upgrade();
@@ -167,7 +168,10 @@ public class SkillWindowsBtnSelection : Navigation
                     GameManager.player.Pay(CostType.Exp, skillSelected.GetSkill().Cost);
                     GameManager.unlockedSkills.Add(skillSelected.GetSkill());
 
-                    HoverBackToSkill(skillSelected);
+                    // WindowsController.HoveredButton = null;
+
+                    // currState = NavigationState.Active;
+                    // HoverBackToSkill(skillSelected);
 
                 }
                 break;
