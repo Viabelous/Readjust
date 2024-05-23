@@ -63,7 +63,6 @@ public class SkillMovement : MonoBehaviour
 
         SetPosition();
         initialPosition = transform.position;
-        print("initial pos:" + transform.position);
 
     }
 

@@ -8,6 +8,7 @@ public class WindSlashBehaviour : MonoBehaviour
     private ChrDirection direction;
 
     [SerializeField] private GameObject leftRightCol, frontCol, backCol;
+    [SerializeField] private Animator animator;
 
     void Start()
     {
@@ -34,26 +35,26 @@ public class WindSlashBehaviour : MonoBehaviour
 
     private void OnLeftRightAnimation()
     {
-        // animator.Play("wind_slash_left_right");
-        leftRightCol.SetActive(true);
-        frontCol.SetActive(false);
-        backCol.SetActive(false);
+        // leftRightCol.SetActive(true);
+        // frontCol.SetActive(false);
+        // backCol.SetActive(false);
+        animator.Play("wind_slash_left_right");
 
     }
 
     private void OnFrontAnimation()
     {
-        // animator.Play("wind_slash_front");
-        leftRightCol.SetActive(false);
-        frontCol.SetActive(true);
-        backCol.SetActive(false);
+        // leftRightCol.SetActive(false);
+        // frontCol.SetActive(true);
+        // backCol.SetActive(false);
+        animator.Play("wind_slash_front");
     }
 
     private void OnBackAnimation()
     {
-        // animator.Play("wind_slash_back");
-        leftRightCol.SetActive(false);
-        frontCol.SetActive(false);
-        backCol.SetActive(true);
+        // leftRightCol.SetActive(false);
+        // frontCol.SetActive(false);
+        // backCol.SetActive(true);
+        animator.Play("wind_slash_back");
     }
 }
