@@ -159,6 +159,7 @@ public class MobController : MonoBehaviour
     {
         switch (effect)
         {
+            case "breezewheel":
             case "thorn":
             case "nexus":
                 StartCoroutine(EffectedCoroutine());

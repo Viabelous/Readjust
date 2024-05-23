@@ -13,7 +13,7 @@ public class DefenseSystem : MonoBehaviour
     public CharacterType type;
 
     [HideInInspector]
-    private float finalDamage, def;
+    private float finalDamage;
     // private AttackSystem attacker;
     private Character defender;
     private bool isInstantiate = true;

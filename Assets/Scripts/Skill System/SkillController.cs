@@ -20,22 +20,7 @@ public class SkillController : MonoBehaviour
 
     private void Start()
     {
-
-        // sesuaikan damage skill dengan stage
-        // if (
-        //     skill.Element == Element.Fire &&
-        //     (
-        //         skill.Type == SkillType.BurstDamage ||
-        //         skill.Type == SkillType.CrowdControl ||
-        //         skill.Type == SkillType.Debuff
-        //     )
-        // )
-        // {
-        //     skill.Damage += skill.Damage * 0.1f;
-        // }
-
         skill.Activate(gameObject);
-        // print(skill.GetDamage(GameObject.Find("Player").GetComponent<PlayerController>().player));
     }
 
     private void Update()

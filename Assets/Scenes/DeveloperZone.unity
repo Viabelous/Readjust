@@ -7108,6 +7108,7 @@ GameObject:
   - component: {fileID: 1215810764}
   - component: {fileID: 1215810766}
   - component: {fileID: 1215810765}
+  - component: {fileID: 1215810767}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -7172,6 +7173,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215810763}
   m_CullTransparentMesh: 1
+--- !u!114 &1215810767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215810763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b92c1ffb2fd0cb45a40574e1c25d584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 537895571}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 21300000, guid: 3927885c54040c7448789dda0e7380a7, type: 3}
+  HoverSprite: {fileID: 21300000, guid: e35b502015d151343b17cff07784d1d3, type: 3}
+  Left: {fileID: 0}
+  Up: {fileID: 0}
+  Right: {fileID: 0}
+  Down: {fileID: 1784506688}
+  windows_id: 1
 --- !u!1 &1219477138
 GameObject:
   m_ObjectHideFlags: 0
@@ -10530,7 +10552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -19, y: -76}
+  m_AnchoredPosition: {x: -19.00003, y: -76}
   m_SizeDelta: {x: -127.41217, y: 309.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1782848812

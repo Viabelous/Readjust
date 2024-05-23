@@ -10,7 +10,7 @@ public class ABreezeBeingTold : Skill
     [SerializeField] private float timerPersenOfAGI;
     [Header("Skill Effect")]
     [SerializeField] private float dmgPersenOfTotalDmg;
-    [SerializeField] private float HPPersenOfAGI;
+    [SerializeField] public float HPPersenOfAGI;
     [Header("Level Up Value")]
     [SerializeField] private float dmgPersenOfTotalDmgUp;
     private PlayerController playerController;
@@ -40,7 +40,6 @@ public class ABreezeBeingTold : Skill
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         this.timer = timerPersenOfAGI * playerController.player.GetAGI();
-
 
         Payment(playerController.transform);
 

@@ -37,7 +37,6 @@ public class GroundEnemy : MonoBehaviour
             // kalau musuh di atas object
             if (transform.position.y > other.transform.position.y)
             {
-                print("masuk");
                 spriteRenderer.sortingLayerName = "Chr Back";
             }
             // musuh di bawah object
@@ -47,6 +46,24 @@ public class GroundEnemy : MonoBehaviour
             }
         }
     }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Object"))
+        {
+            // kalau musuh di atas object
+            if (transform.position.y > other.transform.position.y)
+            {
+                spriteRenderer.sortingLayerName = "Chr Back";
+            }
+            // musuh di bawah object
+            else
+            {
+                spriteRenderer.sortingLayerName = "Chr Front";
+            }
+        }
+    }
+
 
 
 }

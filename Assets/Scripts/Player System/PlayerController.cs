@@ -173,6 +173,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Object"))
+        {
+            // kalau player di atas object
+            if (transform.position.y - 0.85f > other.transform.position.y)
+            {
+                foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                {
+                    spriteRenderer.sortingLayerName = "Chr Back";
+                }
+            }
+            // player di bawah object
+            else
+            {
+                foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                {
+                    spriteRenderer.sortingLayerName = "Chr Front";
+                }
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * player.MovementSpeed * Time.fixedDeltaTime);
