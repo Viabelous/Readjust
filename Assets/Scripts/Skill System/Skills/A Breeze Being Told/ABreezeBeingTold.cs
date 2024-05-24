@@ -69,27 +69,41 @@ public class ABreezeBeingTold : Skill
         }
     }
 
+    private void SkillEffect(Collider2D other)
+    {
+        float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+        float finalDamage = dmgPersenOfTotalDmgFinal * dealDamage;
+
+        MobController[] mobs = FindObjectsOfType<MobController>();
+        foreach (MobController mob in mobs)
+        {
+            mob.Effected("breezewheel");
+            mob.GetComponent<DefenseSystem>().TakeDamage(finalDamage);
+        }
+
+        if (buffSystem.CheckBuff(BuffType.Harmony) || buffSystem.CheckBuff(BuffType.Idiosyncrasy))
+        {
+            playerController.player.Heal(Stat.HP, HPPersenOfAGI * playerController.player.GetAGI());
+        }
+    }
+
+    public override void HitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Damage") && other.GetComponent<SkillController>().skill.HitType == SkillHitType.Once)
+        {
+            SkillEffect(other);
+        }
+
+    }
+
     public override void WhileHitEnemy(Collider2D other)
     {
-        if (other.CompareTag("Damage"))
+        if (other.CompareTag("Damage") && other.GetComponent<SkillController>().skill.HitType == SkillHitType.Temporary)
         {
             if (hitTimer <= 0)
             {
                 hitTimer = maxHitTimer;
-                float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
-                float finalDamage = dmgPersenOfTotalDmgFinal * dealDamage;
-
-                MobController[] mobs = FindObjectsOfType<MobController>();
-                foreach (MobController mob in mobs)
-                {
-                    mob.Effected("breezewheel");
-                    mob.GetComponent<DefenseSystem>().TakeDamage(finalDamage);
-                }
-
-                if (buffSystem.CheckBuff(BuffType.Harmony) || buffSystem.CheckBuff(BuffType.Idiosyncrasy))
-                {
-                    playerController.player.Heal(Stat.HP, HPPersenOfAGI);
-                }
+                SkillEffect(other);
             }
             else
             {
@@ -105,4 +119,5 @@ public class ABreezeBeingTold : Skill
             hitTimer = 0;
         }
     }
+
 }

@@ -77,14 +77,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 20
-  m_Sprite: {fileID: -836858625, guid: 4d23f8374b9a35b428a24db7e9ef96ba, type: 3}
+  m_Sprite: {fileID: 1256388407, guid: d7c54aae5ad16b54cab86d9c8f718271, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.803126, y: 12.8}
+  m_Size: {x: 6.3999996, y: 6.40625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -148,7 +148,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.3999996, y: 6.40625}
-    newSize: {x: 12.803126, y: 12.8}
+    newSize: {x: 6.3999996, y: 6.40625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -198,10 +198,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  offsetRight: {x: 2, y: 1, z: 0}
-  offsetLeft: {x: -2, y: 1, z: 0}
-  offsetFront: {x: 0, y: 0, z: 0}
-  offsetBack: {x: 0, y: 2, z: 0}
+  offsetRight: {x: 1, y: 1, z: 0}
+  offsetLeft: {x: -1, y: 1, z: 0}
+  offsetFront: {x: 0, y: -1, z: 0}
+  offsetBack: {x: 0, y: 1, z: 0}
   rotationRight: 0
   rotationLeft: 0
   rotationFront: 0

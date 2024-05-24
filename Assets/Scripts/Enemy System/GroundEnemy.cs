@@ -19,7 +19,7 @@ public class GroundEnemy : MonoBehaviour
     void Update()
     {
         // kalau mob sedang di atas player
-        if (gameObject.transform.position.y > player.transform.position.y && !mobController.onSkillTrigger)
+        if (transform.position.y > player.transform.position.y - 0.85f && !mobController.onSkillTrigger)
         {
             spriteRenderer.sortingOrder = -1;
         }

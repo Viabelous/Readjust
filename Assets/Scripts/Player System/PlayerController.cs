@@ -198,13 +198,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * player.MovementSpeed * Time.fixedDeltaTime);
+        if (movementEnabled)
+        {
+            rb.MovePosition(rb.position + movement * player.MovementSpeed * Time.fixedDeltaTime);
 
-        Vector3 position = rb.position;
-        position.x = Mathf.Clamp(position.x, minMap.x, maxMap.x);
-        position.y = Mathf.Clamp(position.y, minMap.y, maxMap.y);
+            Vector3 position = rb.position;
+            position.x = Mathf.Clamp(position.x, minMap.x, maxMap.x);
+            position.y = Mathf.Clamp(position.y, minMap.y, maxMap.y);
 
-        transform.position = position;
+            transform.position = position;
+
+        }
     }
 
     public void Damaged()

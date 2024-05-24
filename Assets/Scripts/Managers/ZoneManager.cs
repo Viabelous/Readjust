@@ -9,6 +9,7 @@ public enum ZoneState
 {
     Idle,
     OnDialog,
+    OnWindow,
     OnPopUp
 }
 
@@ -55,14 +56,31 @@ public class ZoneManager : MonoBehaviour
                 {
                     ChangeCurrentState(ZoneState.OnDialog);
                 }
+
+                // if (GameObject.FindWithTag("Window") != null)
+                // {
+                //     ChangeCurrentState(ZoneState.OnWindow);
+                // }
+
                 break;
 
             case ZoneState.OnDialog:
                 if (!dialogPanel.activeInHierarchy)
                 {
+                    // player.GetComponent<PlayerController>().movementEnable(true);
                     ChangeCurrentState(ZoneState.Idle);
                 }
+                // player.GetComponent<PlayerController>().movementEnable(false);
                 break;
+
+            // case ZoneState.OnWindow:
+            //     if (GameObject.FindWithTag("Window") == null)
+            //     {
+            //         player.GetComponent<PlayerController>().movementEnable(true);
+            //         ChangeCurrentState(ZoneState.Idle);
+            //     }
+            //     player.GetComponent<PlayerController>().movementEnable(false);
+            //     break;
 
             case ZoneState.OnPopUp:
 

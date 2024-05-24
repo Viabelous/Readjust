@@ -36,18 +36,7 @@ public class DefenseSystem : MonoBehaviour
     {
         if (isInstantiate)
         {
-            switch (type)
-            {
-                case CharacterType.Player:
-                    defender = GetComponent<PlayerController>().player;
-                    break;
-                case CharacterType.Enemy:
-                    defender = GetComponent<MobController>().enemy;
-                    break;
-                case CharacterType.FlyingEnemy:
-                    defender = transform.parent.GetComponent<MobController>().enemy;
-                    break;
-            }
+            SetDefender();
 
             isInstantiate = false;
         }
@@ -56,6 +45,11 @@ public class DefenseSystem : MonoBehaviour
 
     public void TakeDamage(float totalDamage)
     {
+        if (defender == null)
+        {
+            SetDefender();
+        }
+
         switch (type)
         {
             case CharacterType.Player:
@@ -96,7 +90,6 @@ public class DefenseSystem : MonoBehaviour
         }
 
         finalDamage = totalDamage - defender.GetDEF() * 0.5f;
-
 
         if (finalDamage <= 1)
         {
@@ -416,25 +409,21 @@ public class DefenseSystem : MonoBehaviour
     }
 
 
-    // private IEnumerator DamagedByNexusSkill(float dealDamage)
-    // {
-    //     Transform lockedEnemy = GameObject.FindObjectOfType<NexusBehaviour>().skill.LockedEnemy;
-    //     // Transform lockedEnemy = GameObject.Find("Nexus").GetComponent<SkillController>().skill.LockedEnemy;
-
-    //     MobController mobController = lockedEnemy.GetComponent<MobController>();
-    //     mobController.Effected("nexus");
-
-    //     // berikan damage ke musuh yg ditandai
-    //     mobController.Damaged();
-    //     lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(0.3f * dealDamage);
-    //     print("Nexus HP: " + mobController.enemy.hp);
-
-    //     yield return new WaitForSeconds(0.3f);
-    //     // if (mobController.transform != null)
-    //     // {
-    //     //     mobController.Undamaged();
-    //     // }
-    // }
+    private void SetDefender()
+    {
+        switch (type)
+        {
+            case CharacterType.Player:
+                defender = GetComponent<PlayerController>().player;
+                break;
+            case CharacterType.Enemy:
+                defender = GetComponent<MobController>().enemy;
+                break;
+            case CharacterType.FlyingEnemy:
+                defender = transform.parent.GetComponent<MobController>().enemy;
+                break;
+        }
+    }
 
 
 }

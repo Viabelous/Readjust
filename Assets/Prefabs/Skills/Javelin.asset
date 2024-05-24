@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_javelin
   name: Javelin
+  classTier: 0
   element: 4
   type: 0
   hitType: 0
@@ -30,4 +31,4 @@ MonoBehaviour:
   expUpCost: 750
   dmgPersenOfAGI: 0.3
   dmgPersenOfAGIUp: 0.05
-  radius: 10
+  radius: 8

@@ -53,6 +53,7 @@ public class MainMenuManager : MonoBehaviour
             if (currentBtn.name == newBtn.name)
             {
                 LoadSaveDataManager.instance.CreateNewData();
+                print(GameManager.player == null);
                 SceneManager.LoadScene("DeveloperZone");
             }
             else if (currentBtn.name == loadBtn.name)

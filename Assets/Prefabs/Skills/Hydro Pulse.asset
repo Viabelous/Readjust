@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_hydro_pulse
   name: Hydro Pulse
+  classTier: 0
   element: 3
   type: 0
   hitType: 0
@@ -30,4 +31,4 @@ MonoBehaviour:
   expUpCost: 750
   dmgPersenOfATK: 0.25
   dmgPersenOfATKUp: 0.05
-  radius: 8
+  radius: 6

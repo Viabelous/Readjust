@@ -260,10 +260,8 @@ public class SkillMovement : MonoBehaviour
     {
         if (skill.LockedEnemy == null)
         {
-            print("masuk sini di locking");
             return;
         }
-        print("now pos1:" + transform.position);
 
         transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * 0.01f);
 
@@ -279,7 +277,6 @@ public class SkillMovement : MonoBehaviour
 
         // Terapkan rotasi pada titik pivot
         transform.rotation = targetRotation;
-        print("now pos2:" + transform.position);
 
         // if (transform.position == skill.LockedEnemy.position)
         // {

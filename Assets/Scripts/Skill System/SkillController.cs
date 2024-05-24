@@ -69,64 +69,27 @@ public class SkillController : MonoBehaviour
 
         skill.WhileHitEnemy(other);
 
-        if (other.CompareTag("Object"))
-        {
-            // kalau skill ada di atas object
-            if (transform.position.y > other.transform.position.y)
-            {
-                if (GetComponent<SpriteRenderer>() != null)
-                {
-                    GetComponent<SpriteRenderer>().sortingOrder = -1;
-                }
-            }
-            // kalau skill ada di bawah object
-            else
-            {
-                if (GetComponent<SpriteRenderer>() != null)
-                {
-                    GetComponent<SpriteRenderer>().sortingOrder = 20;
-                }
-            }
-        }
-
-        // if (other.CompareTag("Enemy"))
+        // if (other.CompareTag("Object"))
         // {
-        //     MobController mob = other.GetComponent<MobController>();
-
-        //     // // jika musuh darat terkena collider darat ATAU
-        //     // // jika musuh terbang terkena collider terbang
-        //     // // maka berikan damage/cc dapat diberikan
-        //     // if (
-        //     //     groundCollider != null &&
-        //     //     groundCollider.OverlapPoint(mob.transform.position) &&
-        //     //     mob.enemy.type == EnemyType.Ground ||
-        //     //     flyingCollider != null &&
-        //     //     flyingCollider.OverlapPoint(mob.transform.position) &&
-        //     //     mob.enemy.type == EnemyType.Flying
-        //     // )
-        //     // {
-        //     //     validAttack = true;
-        //     // }
-        //     // else
-        //     // {
-        //     //     validAttack = false;
-        //     // }
-        // }
-
-
-
-        // if (other.CompareTag("Enemy"))
-        // {
-        //     other.GetComponent<MobController>().onSkillTrigger = true;
-        //     if (transform.position.y + 1 > other.transform.position.y)
+        //     // kalau skill ada di atas object
+        //     if (transform.position.y > other.transform.position.y)
         //     {
-        //         other.GetComponent<SpriteRenderer>().sortingLayerName = "Enemy Front";
+        //         if (GetComponent<SpriteRenderer>() != null)
+        //         {
+        //             GetComponent<SpriteRenderer>().sortingOrder = -1;
+        //         }
         //     }
+        //     // kalau skill ada di bawah object
         //     else
         //     {
-        //         other.GetComponent<SpriteRenderer>().sortingLayerName = "Enemy";
+        //         if (GetComponent<SpriteRenderer>() != null)
+        //         {
+        //             GetComponent<SpriteRenderer>().sortingOrder = 20;
+        //         }
         //     }
         // }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D other)

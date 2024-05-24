@@ -81,7 +81,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -94,7 +94,33 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -127,9 +153,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1280
-        width: 1280
-        height: 1280
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3efd7b1458a3554bbeb2a7de0e499fa
-      internalID: -1439135437
+      spriteID: 132b1797238a23a47b3c380575e1bd30
+      internalID: -916913549
       vertices: []
       indices: 
       edges: []
@@ -147,10 +173,10 @@ TextureImporter:
       name: whirlwind_particles_1
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1280
-        width: 1280
-        height: 1280
+        x: 640
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d75e3af6bf32eff498f1fb51bcbd24c5
-      internalID: -481849636
+      spriteID: 6fa93fcf37f624f489de8032e4cf49bc
+      internalID: -550900941
       vertices: []
       indices: 
       edges: []
@@ -168,10 +194,10 @@ TextureImporter:
       name: whirlwind_particles_2
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 1280
-        width: 1280
-        height: 1280
+        x: 1280
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3c90f609e913b446b29700f543f2dd8
-      internalID: -1908912496
+      spriteID: d7cdadc99c4a89f4fab774be61d27fe7
+      internalID: -202592283
       vertices: []
       indices: 
       edges: []
@@ -189,10 +215,10 @@ TextureImporter:
       name: whirlwind_particles_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1920
         y: 0
-        width: 1280
-        height: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +226,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 982553eac40246c43a304bdaf06eb535
-      internalID: -1893250559
+      spriteID: 9abc2c559c2100543bf795c8d1b45e01
+      internalID: 445969038
       vertices: []
       indices: 
       edges: []
@@ -210,31 +236,10 @@ TextureImporter:
       name: whirlwind_particles_4
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 1280
-        height: 1280
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44eb99e0f84438f47adb5370ff066cb8
-      internalID: -324362169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: whirlwind_particles_5
-      rect:
-        serializedVersion: 2
         x: 2560
         y: 0
-        width: 1280
-        height: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b42acb185777a3743ae347b0a51a0c8a
-      internalID: -1181451065
+      spriteID: 4755a9edd1069634a94cab6c40520ed4
+      internalID: 1256388407
       vertices: []
       indices: 
       edges: []
@@ -259,12 +264,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      whirlwind_particles_0: -1439135437
-      whirlwind_particles_1: -481849636
-      whirlwind_particles_2: -1908912496
-      whirlwind_particles_3: -1893250559
-      whirlwind_particles_4: -324362169
-      whirlwind_particles_5: -1181451065
+      whirlwind_particles_0: -916913549
+      whirlwind_particles_1: -550900941
+      whirlwind_particles_2: -202592283
+      whirlwind_particles_3: 445969038
+      whirlwind_particles_4: 1256388407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

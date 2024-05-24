@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 222238090947821005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.092, y: -0.096, z: 0}
+  m_LocalPosition: {x: 3.57, y: -0.24, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 20
   m_Sprite: {fileID: -568480246, guid: 047b8cc271c2e444e8ccfd4b1767ce43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -290,8 +290,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9559748, g: 0.40533608, b: 0, a: 0.5882353}
-      key1: {r: 1, g: 0.8781478, b: 0.24213827, a: 0.19607843}
+      key0: {r: 0.9559748, g: 0.40533608, b: 0, a: 0.39215687}
+      key1: {r: 1, g: 0.8781478, b: 0.24213827, a: 0}
       key2: {r: 1, g: 0.90058285, b: 0.39308167, a: 1}
       key3: {r: 1, g: 0.90058285, b: 0.39308167, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -325,7 +325,7 @@ TrailRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0
+  m_MinVertexDistance: 0.3
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1

@@ -4313,7 +4313,7 @@ GameObject:
   - component: {fileID: 855357273}
   m_Layer: 5
   m_Name: element_selection_windows
-  m_TagString: Untagged
+  m_TagString: Window
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5632,7 +5632,7 @@ GameObject:
   - component: {fileID: 1061344196}
   m_Layer: 5
   m_Name: skill_windows
-  m_TagString: Untagged
+  m_TagString: Window
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10468,7 +10468,7 @@ GameObject:
   - component: {fileID: 1782848812}
   m_Layer: 5
   m_Name: item_windows
-  m_TagString: Untagged
+  m_TagString: Window
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
