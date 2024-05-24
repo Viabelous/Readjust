@@ -5,6 +5,7 @@ using UnityEngine;
 public class GroundEnemy : MonoBehaviour
 {
 
+    [SerializeField] private float pivotOffset;
     private SpriteRenderer spriteRenderer;
     private MobController mobController;
     private GameObject player;
@@ -19,7 +20,7 @@ public class GroundEnemy : MonoBehaviour
     void Update()
     {
         // kalau mob sedang di atas player
-        if (transform.position.y > player.transform.position.y - 0.85f && !mobController.onSkillTrigger)
+        if (transform.position.y + pivotOffset > player.transform.position.y - 0.85f && !mobController.onSkillTrigger)
         {
             spriteRenderer.sortingOrder = -1;
         }
@@ -35,7 +36,7 @@ public class GroundEnemy : MonoBehaviour
         if (other.CompareTag("Object"))
         {
             // kalau musuh di atas object
-            if (transform.position.y > other.transform.position.y)
+            if (transform.position.y + pivotOffset > other.transform.position.y)
             {
                 spriteRenderer.sortingLayerName = "Chr Back";
             }
@@ -52,7 +53,7 @@ public class GroundEnemy : MonoBehaviour
         if (other.CompareTag("Object"))
         {
             // kalau musuh di atas object
-            if (transform.position.y > other.transform.position.y)
+            if (transform.position.y + pivotOffset > other.transform.position.y)
             {
                 spriteRenderer.sortingLayerName = "Chr Back";
             }

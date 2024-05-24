@@ -58,7 +58,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") || other.name.Contains("ABreezeBeingTold"))
+        if (other.CompareTag("Enemy"))
         {
             // kalau skill locking kena bayangan musuh terbang atau
             // kalau skill kena org yg bukan di-locknya

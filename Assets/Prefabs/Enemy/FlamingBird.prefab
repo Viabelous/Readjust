@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5887d4aa784ffb04b98950d34331cf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pivotOffset: -1.4
 --- !u!1 &6138504515549203494
 GameObject:
   m_ObjectHideFlags: 0

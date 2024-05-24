@@ -9,7 +9,6 @@ public class WindSlash : Skill
     [SerializeField] private float dmgPersenOfAGI;
     [Header("Level Up Value")]
     [SerializeField] private float dmgPersenOfAGIUp;
-    private ChrDirection direction;
 
     public float dmgPersenOfAGIFinal
     {
