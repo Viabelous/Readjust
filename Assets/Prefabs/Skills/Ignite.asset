@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_ignite
   name: Ignite
+  classTier: 2
   element: 1
   type: 0
   hitType: 0
@@ -26,7 +27,7 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 15000
+  expUpCost: 20000
   dmgPersenOfATK: 2.5
   dmgPersenOfATKUp: 0.05

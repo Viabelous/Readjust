@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_pebble_creation
   name: Pebble Creation
+  classTier: 1
   element: 2
   type: 0
   hitType: 0
@@ -26,7 +27,7 @@ MonoBehaviour:
   movementSpeed: 15
   movementRange: 30
   timer: 0
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 5000
+  expUpCost: 7500
   dmgPersenOfDEF: 1
   dmgPersenOfDEFUp: 0.05

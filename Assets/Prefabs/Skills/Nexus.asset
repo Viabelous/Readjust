@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_nexus
   name: Nexus
+  classTier: 3
   element: 1
   type: 4
   hitType: 1
@@ -26,8 +27,8 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 120
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 25000
+  expUpCost: 20000
   radius: 8
   dmgPersenOfTotalDmg: 0.3
   dmgPersenOfTotalDmgUp: 0.05

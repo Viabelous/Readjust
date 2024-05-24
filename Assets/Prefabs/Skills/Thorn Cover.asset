@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_thorn_cover
   name: Thorn Cover
+  classTier: 1
   element: 2
   type: 4
   hitType: 1
@@ -26,8 +27,8 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 5
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 5000
+  expUpCost: 7500
   dmgPersenOfDEF: 0.5
   dmgPersenOfATK: 0.2
   dmgPersenOfDEFUp: 0.05

@@ -22,30 +22,24 @@ public static class DataManager
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(playerPath, json);
 
-        // Debug.Log("Save data");
     }
 
     public static PlayerData LoadPlayer()
     {
         if (File.Exists(playerPath))
         {
-            // FileStream stream = new FileStream(playerPath, FileMode.Open);
-
             string json = File.ReadAllText(playerPath);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-            // Debug.Log("Data loaded from " + playerPath);
-
-            // stream.Close();
             return data;
         }
         else
         {
-            Debug.LogWarning("No data file found at " + playerPath);
+            Debug.LogWarning("No player data file found at " + playerPath);
             return null;
         }
     }
 
-    public static void SaveSkills()
+    public static void SaveSkills(Dictionary<string, int> dictData)
     {
         // buat direktori jika belum ada
         if (!Directory.Exists(path))
@@ -53,12 +47,11 @@ public static class DataManager
             Directory.CreateDirectory(path);
         }
 
-        SkillData data = new SkillData();
-        string json = JsonConvert.SerializeObject(data.skills, Formatting.Indented);
-        File.WriteAllText(playerPath, json);
+        string json = JsonConvert.SerializeObject(dictData, Formatting.Indented);
+        File.WriteAllText(skillPath, json);
     }
 
-    public static SkillData LoadSkills()
+    public static Dictionary<string, int> LoadSkills()
     {
         if (File.Exists(skillPath))
         {
@@ -66,22 +59,17 @@ public static class DataManager
             {
                 string json = File.ReadAllText(skillPath);
                 Dictionary<string, int> dict = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
-
-                SkillData skillData = new SkillData();
-                skillData.skills = dict;
-
-                Debug.Log("Dictionary data loaded from " + skillPath);
-                return skillData;
+                return dict;
             }
             catch (IOException e)
             {
-                Debug.LogError("Failed to load dictionary data: " + e.Message);
+                Debug.LogError("Failed to load skills data: " + e.Message);
                 return null;
             }
         }
         else
         {
-            Debug.LogWarning("No dictionary data file found at " + skillPath);
+            Debug.LogWarning("No skills data file found at " + skillPath);
             return null;
         }
     }
@@ -91,6 +79,13 @@ public static class DataManager
 
     }
 
-
+    public static bool CheckPath()
+    {
+        if (File.Exists(playerPath) && File.Exists(skillPath))
+        {
+            return true;
+        }
+        return false;
+    }
 
 }

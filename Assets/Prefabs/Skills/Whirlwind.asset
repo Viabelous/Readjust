@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_whirlwind
   name: Whirlwind
+  classTier: 1
   element: 4
   type: 1
   hitType: 1
@@ -26,8 +27,8 @@ MonoBehaviour:
   movementSpeed: 10
   movementRange: 30
   timer: 0
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 5000
+  expUpCost: 7500
   dmgPersenOfAGI: 0.5
   dmgPersenOfATK: 1
   dmgPersenOfAGIUp: 0.02

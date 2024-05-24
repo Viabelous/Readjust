@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_a_breeze_being_told
   name: A Breeze Being Told
+  classTier: 3
   element: 4
   type: 2
   hitType: 1
@@ -26,9 +27,9 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 25000
+  expUpCost: 30000
   timerPersenOfAGI: 0.5
-  dmgPersenOfTotalDmg: 0.6
+  dmgPersenOfTotalDmg: 0.3
   HPPersenOfAGI: 1
   dmgPersenOfTotalDmgUp: 0.05

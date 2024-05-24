@@ -24,19 +24,13 @@ public class SkillsSelection : Navigation
     void Start()
     {
         skill = prefab.GetComponent<SkillController>().skill.Clone();
-
-        // !!!! NANTI HAPUS !!!!
-        if (skill.Name == "Will of Fire" || skill.Name == "Sacrivert" && GameManager.unlockedSkills.Count < 2)
-        {
-            GameManager.unlockedSkills.Add(skill);
-        }
-
         hasUnlocked = GameManager.CheckUnlockedSkill(skill.Name);
 
         if (hasUnlocked)
         {
-            skill = GameManager.GetUnlockedSkill(skill.Name);
+            skill.SetLevel(GameManager.unlockedSkills[skill.Name]);
         }
+
         currentColor = ImageComponent.color;
 
         if (currState == NavigationState.Hover)
@@ -101,8 +95,11 @@ public class SkillsSelection : Navigation
     }
     public override void Clicked()
     {
-        currState = NavigationState.Focused;
-        WindowsController.HoveredButton = GameObject.Find(hasUnlocked ? "select_btn" : "locked_btn");
+        if (skill.CanBeUnlocked(GameManager.player))
+        {
+            currState = NavigationState.Focused;
+            WindowsController.HoveredButton = GameObject.Find(hasUnlocked ? "select_btn" : "locked_btn");
+        }
     }
     public override void ExclusiveKey()
     {
@@ -146,5 +143,6 @@ public class SkillsSelection : Navigation
     public void Upgrade()
     {
         skill.UpgradeLevel();
+        GameManager.unlockedSkills[skill.Name] = skill.Level;
     }
 }

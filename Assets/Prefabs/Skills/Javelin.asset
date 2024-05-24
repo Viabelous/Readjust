@@ -26,8 +26,8 @@ MonoBehaviour:
   movementSpeed: 4
   movementRange: 30
   timer: 0
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 500
+  expUpCost: 750
   dmgPersenOfAGI: 0.3
   dmgPersenOfAGIUp: 0.05
   radius: 10

@@ -54,14 +54,14 @@ public class AttackSystem : MonoBehaviour
             totalDamage = damage;
         }
 
-        totalDamage += totalDamage * DamageBooster();
-
         // kalau player pakai skill A Breeze Being Told, 
         // maka total damage akan bertambah sebanyak buff value persen dari total
         if (buffSystem.CheckBuff(BuffType.Breezewheel))
         {
             totalDamage += totalDamage * buffSystem.GetBuffValues(BuffType.Breezewheel);
         }
+
+        totalDamage += totalDamage * DamageBooster();
 
         return totalDamage;
     }
@@ -73,11 +73,47 @@ public class AttackSystem : MonoBehaviour
         {
             return 0;
         }
-
+        Skill skill = GetComponent<SkillController>().skill;
         buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
+        float boosterDmg = 0;
+
+        switch (GameManager.selectedMap)
+        {
+            case Map.Stage1:
+                if (skill.Element == Element.Fire)
+                {
+                    boosterDmg += 0.08f;
+                }
+                break;
+            case Map.Stage2:
+                if (skill.Element == Element.Earth)
+                {
+                    boosterDmg += 0.08f;
+                }
+                break;
+            case Map.Stage3:
+                if (skill.Element == Element.Earth)
+                {
+                    boosterDmg += 0.08f;
+                }
+                break;
+            case Map.Stage4:
+                if (skill.Element == Element.Earth)
+                {
+                    boosterDmg += 0.08f;
+                }
+                break;
+            case Map.Stage5:
+                if (skill.Element == Element.Earth)
+                {
+                    boosterDmg += 0.08f;
+                }
+                break;
+        }
+
         BuffType buffType = BuffType.Custom;
-        switch (GetComponent<SkillController>().skill.Element)
+        switch (skill.Element)
         {
             case Element.Fire:
                 buffType = BuffType.Fire;
@@ -93,7 +129,7 @@ public class AttackSystem : MonoBehaviour
                 break;
 
         }
-        float boosterDmg = buffSystem.GetAllBuffValues(buffType);
+        boosterDmg += buffSystem.GetAllBuffValues(buffType);
         return boosterDmg;
     }
 

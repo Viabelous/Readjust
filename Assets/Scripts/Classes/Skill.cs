@@ -34,11 +34,20 @@ public enum CostType
     None, Mana, Hp, Aerus, Exp
 }
 
+public enum SkillClass
+{
+    Basic,
+    Intermediate,
+    High,
+    Supreme
+}
+
 [CreateAssetMenu]
 public class Skill : ScriptableObject
 {
     [SerializeField] protected string id;            // id skill
     [SerializeField] protected new string name;      // nama skill
+    [SerializeField] protected SkillClass classTier;
     [SerializeField] protected Element element;
     [SerializeField] protected SkillType type;       // tipe damage yg diberikan
     [SerializeField] protected SkillHitType hitType; // tipe pukulan yg diberikan 
@@ -47,6 +56,7 @@ public class Skill : ScriptableObject
     [SerializeField] protected float maxCd;          // cd maksimal
     [SerializeField] protected float cost;           // total mana/hp di awal
     [SerializeField] protected float damage;         // total damage di awal
+
 
 
     [Header("Skill Icon")]
@@ -65,118 +75,12 @@ public class Skill : ScriptableObject
     protected int level = 1;
     protected int maxLevel = 10;
 
-
     [Header("Price")]
-
-    [SerializeField] protected float expUpCost;
     [SerializeField] protected float expUnlockCost;
+    [SerializeField] protected float expUpCost;
 
     protected List<string> enemiesId = new List<string>();
-
     protected Transform lockedEnemy;
-
-    public virtual void Activate(GameObject gameObject)
-    {
-
-    }
-    public virtual void Deactivate(GameObject gameObject)
-    {
-
-    }
-
-    public virtual void OnActivated(GameObject gameObject)
-    {
-
-    }
-
-    public virtual void OnDeactivated(GameObject gameObject)
-    {
-
-    }
-
-    public virtual void HitEnemy(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            MobController mobController = other.GetComponent<MobController>();
-            enemiesId.Add(mobController.enemy.id);
-        }
-    }
-
-    public virtual void WhileHitEnemy(Collider2D other)
-    {
-
-    }
-
-    public virtual void AfterHitEnemy(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            MobController mobController = other.GetComponent<MobController>();
-            enemiesId.Remove(mobController.enemy.id);
-        }
-    }
-
-    public void ResetEnemiesId()
-    {
-        enemiesId.Clear();
-    }
-
-    public bool HasHit()
-    {
-        if (enemiesId.Count == 0)
-        {
-            return false;
-        }
-        return true;
-    }
-
-    public bool HasHitEnemy(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            MobController mobController = other.GetComponent<MobController>();
-            return enemiesId.Contains(mobController.enemy.id);
-        }
-        return false;
-    }
-
-    public virtual Skill Clone()
-    {
-        Skill newSkill = (Skill)this.MemberwiseClone();
-        newSkill.RandomizeId();
-        return newSkill;
-    }
-
-    public void Payment(Transform player)
-    {
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        PayWithCostType(playerController.player);
-
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!NANTI UBAH WOIII!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // int index = CumaBuatDebug.instance.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
-
-        // ubah state slot skill
-        StartCooldown();
-    }
-
-    public void StartCooldown()
-    {
-        int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
-        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
-    }
-
-    public void PayWithCostType(Player player)
-    {
-        player.Pay(CostType, Cost);
-    }
-
-    public void UpgradeLevel()
-    {
-        this.level += 1;
-    }
 
     public string Id
     {
@@ -276,6 +180,233 @@ public class Skill : ScriptableObject
         get { return lockedEnemy; }
         set { lockedEnemy = value; }
     }
+
+    public bool CanBeUnlocked(Player player)
+    {
+        switch (element)
+        {
+            case Element.None:
+                return true;
+
+            case Element.Fire:
+                switch (classTier)
+                {
+                    case SkillClass.Basic:
+                        return true;
+
+                    case SkillClass.Intermediate:
+                        if (player.GetProgress(Player.Progress.FireSkill) >= 2)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.High:
+                        if (player.GetProgress(Player.Progress.FireSkill) >= 4)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.Supreme:
+                        if (player.GetProgress(Player.Progress.FireSkill) >= 5)
+                        {
+                            return true;
+                        }
+                        break;
+                }
+                break;
+
+            case Element.Earth:
+                switch (classTier)
+                {
+                    case SkillClass.Basic:
+                        return true;
+
+
+                    case SkillClass.Intermediate:
+                        if (player.GetProgress(Player.Progress.EarthSkill) >= 4)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.High:
+                        if (player.GetProgress(Player.Progress.EarthSkill) >= 4 + 2)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.Supreme:
+                        if (player.GetProgress(Player.Progress.EarthSkill) >= 4 + 2 + 1)
+                        {
+                            return true;
+                        }
+                        break;
+                }
+                break;
+
+            case Element.Water:
+                switch (classTier)
+                {
+                    case SkillClass.Basic:
+                        return true;
+
+
+                    case SkillClass.Intermediate:
+                        if (player.GetProgress(Player.Progress.WaterSkill) >= 3)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.High:
+                        if (player.GetProgress(Player.Progress.WaterSkill) >= 3 + 1)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.Supreme:
+                        if (player.GetProgress(Player.Progress.WaterSkill) >= 3 + 1 + 1)
+                        {
+                            return true;
+                        }
+                        break;
+                }
+                break;
+
+            case Element.Air:
+                switch (classTier)
+                {
+                    case SkillClass.Basic:
+                        return true;
+
+                    case SkillClass.Intermediate:
+                        if (player.GetProgress(Player.Progress.AirSkill) >= 3)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.High:
+                        if (player.GetProgress(Player.Progress.AirSkill) >= 3 + 1)
+                        {
+                            return true;
+                        }
+                        break;
+                    case SkillClass.Supreme:
+                        if (player.GetProgress(Player.Progress.AirSkill) >= 3 + 1 + 1)
+                        {
+                            return true;
+                        }
+                        break;
+                }
+                break;
+
+        }
+        return false;
+
+    }
+
+    public virtual void Activate(GameObject gameObject)
+    {
+
+    }
+    public virtual void Deactivate(GameObject gameObject)
+    {
+
+    }
+
+    public virtual void OnActivated(GameObject gameObject)
+    {
+
+    }
+
+    public virtual void OnDeactivated(GameObject gameObject)
+    {
+
+    }
+
+    public virtual void HitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mobController = other.GetComponent<MobController>();
+            enemiesId.Add(mobController.enemy.id);
+        }
+    }
+
+    public virtual void WhileHitEnemy(Collider2D other)
+    {
+
+    }
+
+    public virtual void AfterHitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mobController = other.GetComponent<MobController>();
+            enemiesId.Remove(mobController.enemy.id);
+        }
+    }
+
+    public void ResetEnemiesId()
+    {
+        enemiesId.Clear();
+    }
+
+    public bool HasHit()
+    {
+        if (enemiesId.Count == 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public bool HasHitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            MobController mobController = other.GetComponent<MobController>();
+            return enemiesId.Contains(mobController.enemy.id);
+        }
+        return false;
+    }
+
+    public virtual Skill Clone()
+    {
+        Skill newSkill = (Skill)this.MemberwiseClone();
+        newSkill.RandomizeId();
+        return newSkill;
+    }
+
+    public void Payment(Transform player)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        PayWithCostType(playerController.player);
+
+        // ubah state slot skill
+        StartCooldown();
+    }
+
+    public void StartCooldown()
+    {
+        int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
+        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
+    }
+
+    public void PayWithCostType(Player player)
+    {
+        player.Pay(CostType, Cost);
+    }
+
+    public void UpgradeLevel()
+    {
+        this.level += 1;
+    }
+
+    public void SetLevel(int level)
+    {
+        this.level = level;
+    }
+
+
 
     public virtual float GetDamage(Player player)
     {

@@ -26,7 +26,7 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 30
-  expUpCost: 100
-  expUnlockCost: 0
+  expUnlockCost: 500
+  expUpCost: 750
   ATKValue: 30
   ATKValueUp: 5

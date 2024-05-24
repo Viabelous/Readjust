@@ -26,7 +26,7 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 15
-  expUpCost: 0
-  expUnlockCost: 0
+  expUnlockCost: 500
+  expUpCost: 750
   AGIValue: 30
   AGIValueUp: 5

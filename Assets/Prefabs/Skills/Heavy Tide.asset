@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_heavy_tide
   name: High Tide
+  classTier: 1
   element: 3
   type: 1
   hitType: 0
@@ -26,6 +27,9 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
+  expUnlockCost: 5000
+  expUpCost: 7500
   dmgPersenOfATK: 0.25
+  dmgPersenOfATKUp: 0
   pushSpeed: 5
   pushRange: 1

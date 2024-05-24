@@ -468,6 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401694182}
   - component: {fileID: 401694181}
+  - component: {fileID: 401694183}
   m_Layer: 0
   m_Name: MainMenuManager
   m_TagString: Untagged
@@ -487,7 +488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394a89a9639759e42af3e335cbc670fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBasic: {fileID: 11400000, guid: c4f106ff4d971cf41925bcae2feb5ed2, type: 2}
   newBtn: {fileID: 214277513}
   loadBtn: {fileID: 555750776}
   exitBtn: {fileID: 1723844312}
@@ -506,6 +506,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &401694183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401694180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc211f81426a8a94a9fa94a883185251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBasic: {fileID: 11400000, guid: c4f106ff4d971cf41925bcae2feb5ed2, type: 2}
 --- !u!1 &555750772
 GameObject:
   m_ObjectHideFlags: 0

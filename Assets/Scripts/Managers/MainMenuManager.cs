@@ -1,12 +1,12 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
-    [SerializeField] private Player playerBasic;
 
     [SerializeField] private Image newBtn, loadBtn, exitBtn;
     private Image currentBtn;
@@ -52,17 +52,18 @@ public class MainMenuManager : MonoBehaviour
         {
             if (currentBtn.name == newBtn.name)
             {
-                CreateNewData();
+                LoadSaveDataManager.instance.CreateNewData();
                 SceneManager.LoadScene("DeveloperZone");
             }
             else if (currentBtn.name == loadBtn.name)
             {
-                LoadGameData();
+                LoadSaveDataManager.instance.LoadGameData();
                 SceneManager.LoadScene("DeveloperZone");
 
             }
             else if (currentBtn.name == exitBtn.name)
             {
+                UnityEditor.EditorApplication.isPlaying = false;
                 Application.Quit();
             }
         }
@@ -98,17 +99,7 @@ public class MainMenuManager : MonoBehaviour
         return color;
     }
 
-    private void CreateNewData()
-    {
-        GameManager.player = playerBasic.Clone();
-        DataManager.SavePlayer(GameManager.player);
-    }
 
-    private void LoadGameData()
-    {
-        GameManager.player = playerBasic.Clone();
-        GameManager.player.LoadData(DataManager.LoadPlayer());
-    }
 
 
 }

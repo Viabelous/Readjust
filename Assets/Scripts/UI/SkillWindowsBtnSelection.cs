@@ -15,7 +15,7 @@ public class SkillWindowsBtnSelection : Navigation
     [SerializeField] private NavigationState currState;
     [SerializeField] private Text btnText, costText;
     private Color currentColor;
-    private SkillsSelection skillSelected;
+    private SkillsSelection focusedSkill;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class SkillWindowsBtnSelection : Navigation
     void Update()
     {
         Left = WindowsController.FocusedButton;
-        skillSelected = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
+        focusedSkill = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
 
         // hasUnlocked = GameManager.CheckUnlockedSkill(Left.GetComponent<SkillsSelection>().GetSkill().Name);
 
@@ -57,14 +57,14 @@ public class SkillWindowsBtnSelection : Navigation
                 break;
 
             case BtnType.Upgrade:
-                costText.color = GameManager.player.exp < skillSelected.GetSkill().ExpUpCost ? Color.red : Color.black;
+                costText.color = GameManager.player.exp < focusedSkill.GetSkill().ExpUpCost ? Color.red : Color.black;
 
-                costText.text = skillSelected.GetSkill().ExpUpCost.ToString();
+                costText.text = focusedSkill.GetSkill().ExpUpCost.ToString();
                 break;
 
             case BtnType.Locked:
-                costText.color = GameManager.player.exp < skillSelected.GetSkill().ExpUnlockCost ? Color.red : Color.black;
-                costText.text = skillSelected.GetSkill().ExpUnlockCost.ToString();
+                costText.color = GameManager.player.exp < focusedSkill.GetSkill().ExpUnlockCost ? Color.red : Color.black;
+                costText.text = focusedSkill.GetSkill().ExpUnlockCost.ToString();
                 break;
         }
 
@@ -122,22 +122,27 @@ public class SkillWindowsBtnSelection : Navigation
     public override void Clicked()
     {
         // StartCoroutine(ClickedAnimation());
+        Skill skill = focusedSkill.GetSkill();
 
         switch (type)
         {
+            // masukkan skill ke slot --------------------------------------------------------
+
             case BtnType.Select:
-                if (skillSelected.HasSelected())
+                if (focusedSkill.HasSelected())
                 {
-                    skillSelected.Unselected();
+                    focusedSkill.Unselected();
                 }
                 else
                 {
-                    skillSelected.Select();
+                    focusedSkill.Select();
                 }
                 break;
 
+            // upgrade skill --------------------------------------------------------
+
             case BtnType.Upgrade:
-                if (GameManager.player.exp < skillSelected.GetSkill().ExpUpCost)
+                if (GameManager.player.exp < skill.ExpUpCost)
                 {
                     WindowsController.CreatePopUp(
                         "upgrade_failed",
@@ -148,19 +153,21 @@ public class SkillWindowsBtnSelection : Navigation
 
                 else
                 {
-                    skillSelected.Upgrade();
+                    focusedSkill.Upgrade();
+                    GameManager.player.Pay(CostType.Exp, skill.ExpUpCost);
 
-                    if (skillSelected.GetSkill().Level == skillSelected.GetSkill().MaxLevel)
+                    if (skill.Level == skill.MaxLevel)
                     {
-                        HoverBackToSkill(skillSelected);
+                        HoverBackToSkill(focusedSkill);
                         gameObject.SetActive(false);
                     }
 
                 }
                 break;
 
+            // beli / buka skill baru --------------------------------------------------------
             case BtnType.Locked:
-                if (GameManager.player.exp < skillSelected.GetSkill().ExpUnlockCost)
+                if (GameManager.player.exp < skill.ExpUnlockCost)
                 {
                     WindowsController.CreatePopUp(
                         "unlock_failed",
@@ -170,34 +177,29 @@ public class SkillWindowsBtnSelection : Navigation
                 }
                 else
                 {
-                    GameManager.player.Pay(CostType.Exp, skillSelected.GetSkill().Cost);
-                    GameManager.unlockedSkills.Add(skillSelected.GetSkill());
-
-                    // WindowsController.HoveredButton = null;
-
-                    // currState = NavigationState.Active;
-                    // HoverBackToSkill(skillSelected);
-
+                    GameManager.player.Pay(CostType.Exp, skill.ExpUnlockCost);
+                    GameManager.unlockedSkills.Add(skill.Name, skill.Level);
+                    IncreaseElementSkillProgress(skill);
                 }
                 break;
         }
     }
 
-    private IEnumerator ClickedAnimation()
-    {
-        currState = NavigationState.Active;
-        yield return new WaitForSeconds(0.5f);
-        currState = NavigationState.Hover;
-    }
+    // private IEnumerator ClickedAnimation()
+    // {
+    //     currState = NavigationState.Active;
+    //     yield return new WaitForSeconds(0.5f);
+    //     currState = NavigationState.Hover;
+    // }
 
     public override void ExclusiveKey()
     {
 
     }
 
-    private void HoverBackToSkill(SkillsSelection skillSelected)
+    private void HoverBackToSkill(SkillsSelection focusedSkill)
     {
-        skillSelected.ChangeCurrentState(NavigationState.Hover);
+        focusedSkill.ChangeCurrentState(NavigationState.Hover);
         WindowsController.HoveredButton = Left;
         WindowsController.FocusedButton = null;
         currState = NavigationState.Active;
@@ -206,5 +208,24 @@ public class SkillWindowsBtnSelection : Navigation
     public void SetCostColor(Color color)
     {
         costText.color = color;
+    }
+
+    private void IncreaseElementSkillProgress(Skill skill)
+    {
+        switch (skill.Element)
+        {
+            case Element.Fire:
+                GameManager.player.IncreaseProgress(Player.Progress.FireSkill, 1);
+                break;
+            case Element.Earth:
+                GameManager.player.IncreaseProgress(Player.Progress.EarthSkill, 1);
+                break;
+            case Element.Water:
+                GameManager.player.IncreaseProgress(Player.Progress.WaterSkill, 1);
+                break;
+            case Element.Air:
+                GameManager.player.IncreaseProgress(Player.Progress.AirSkill, 1);
+                break;
+        }
     }
 }

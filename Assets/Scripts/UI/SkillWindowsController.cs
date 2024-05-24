@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SkillWindowsController : MonoBehaviour
 {
     [SerializeField] private windowsController WindowsController;
-    [SerializeField] private GameObject selectBtn, upgradeBtn, locked, lockedBtn;
+    [SerializeField] private GameObject selectBtn, upgradeBtn, lockedBtn;
     [SerializeField] private Text skillName, skillCD, skillCost, skillDescription;
     SkillsSelection skillsSelection;
 
@@ -36,13 +36,30 @@ public class SkillWindowsController : MonoBehaviour
     void SetSkillDescription()
     {
 
+        // kalau sudah dibuka, maka tampilkan tombol select
         selectBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
-        upgradeBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
-        locked.SetActive(skillsSelection.hasUnlocked ? false : true);
 
+        // kalau skill yg dihover sudah mencapai level maksimal,
+        // maka sembunyikan tombol upgrade
         if (skillsSelection.GetSkill().Level == skillsSelection.GetSkill().MaxLevel)
         {
             upgradeBtn.SetActive(false);
+        }
+        else
+        {
+            upgradeBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
+        }
+
+        // kalau skill yg dihover belum dapat dibeli atau progres skill elemen
+        // belum terpenuhi, maka sembunyikan tombol unlock
+        if (!skillsSelection.GetSkill().CanBeUnlocked(GameManager.player))
+        {
+            lockedBtn.SetActive(false);
+        }
+        else
+        {
+            // kalau sudah dibuka, maka sembunyikan tombol unlocked
+            lockedBtn.SetActive(skillsSelection.hasUnlocked ? false : true);
         }
 
         skillName.text = skillsSelection.GetSkill().Name + " (Lv. " + skillsSelection.GetSkill().Level.ToString() + ")";

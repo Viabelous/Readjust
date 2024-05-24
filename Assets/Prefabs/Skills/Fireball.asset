@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: skill_fireball
   name: Fireball
+  classTier: 1
   element: 1
   type: 0
   hitType: 0
@@ -26,6 +27,7 @@ MonoBehaviour:
   movementSpeed: 7
   movementRange: 30
   timer: 0
-  expUpCost: 100
   expUnlockCost: 5000
+  expUpCost: 7500
   dmgPersenOfATK: 0.5
+  dmgPersenOfATKUp: 0

@@ -20,16 +20,32 @@ public class Player : Character
     public float aerus = 0;
     public float exp = 0;
     public float venetia = 0;
-    public float story = 0;
 
     private float regenTimer = 0;
 
-    public float maxHPLevel = 0,
-                maxManaLevel = 0,
-                atkLevel = 0,
-                defLevel = 0,
-                agiLevel = 0,
-                focLevel = 0;
+
+    [Header("Stat Level")]
+    [SerializeField]
+    private int maxHPLevel = 0;
+    private int maxManaLevel = 0;
+    private int atkLevel = 0;
+    private int defLevel = 0;
+    private int agiLevel = 0;
+    private int focLevel = 0;
+
+    public enum Progress
+    {
+        Story, FireSkill, EarthSkill, WaterSkill, AirSkill,
+        MaxHP, MaxMana, ATK, DEF, AGI, FOC
+    }
+
+    [Header("Progress")]
+    [SerializeField]
+    private int story = 0;
+    private int fireSkill = 0;
+    private int earthSkill = 0;
+    private int waterSkill = 0;
+    private int airSkill = 0;
 
     private void OnEnable()
     {
@@ -43,6 +59,75 @@ public class Player : Character
     public float MovementSpeed
     {
         get { return this.speed + this.agi * 0.1f; }
+    }
+
+    public int GetProgress(Progress type)
+    {
+        switch (type)
+        {
+            case Progress.Story:
+                return this.story;
+            case Progress.FireSkill:
+                return this.fireSkill;
+            case Progress.EarthSkill:
+                return this.earthSkill;
+            case Progress.WaterSkill:
+                return this.waterSkill;
+            case Progress.AirSkill:
+                return this.airSkill;
+            case Progress.MaxHP:
+                return this.maxHPLevel;
+            case Progress.MaxMana:
+                return this.maxManaLevel;
+            case Progress.ATK:
+                return this.atkLevel;
+            case Progress.DEF:
+                return this.defLevel;
+            case Progress.FOC:
+                return this.focLevel;
+            case Progress.AGI:
+                return this.agiLevel;
+        }
+        return 0;
+    }
+    public void IncreaseProgress(Progress type, int value)
+    {
+        switch (type)
+        {
+            case Progress.Story:
+                this.story += value;
+                break;
+            case Progress.FireSkill:
+                this.fireSkill += value;
+                break;
+            case Progress.EarthSkill:
+                this.earthSkill += value;
+                break;
+            case Progress.WaterSkill:
+                this.waterSkill += value;
+                break;
+            case Progress.AirSkill:
+                this.airSkill += value;
+                break;
+            case Progress.MaxHP:
+                this.maxHPLevel += value;
+                break;
+            case Progress.MaxMana:
+                this.maxManaLevel += value;
+                break;
+            case Progress.ATK:
+                this.atkLevel += value;
+                break;
+            case Progress.DEF:
+                this.defLevel += value;
+                break;
+            case Progress.FOC:
+                this.focLevel += value;
+                break;
+            case Progress.AGI:
+                this.agiLevel += value;
+                break;
+        }
     }
 
     public override float GetMaxHP()
@@ -122,7 +207,6 @@ public class Player : Character
         this.aerus = playerData.aerus;
         this.exp = playerData.exp;
         this.venetia = playerData.venetia;
-        this.story = playerData.story;
 
         this.maxHPLevel = playerData.maxHPLevel;
         this.maxManaLevel = playerData.maxManaLevel;
@@ -130,6 +214,12 @@ public class Player : Character
         this.defLevel = playerData.defLevel;
         this.agiLevel = playerData.agiLevel;
         this.focLevel = playerData.focLevel;
+
+        this.story = playerData.story;
+        this.fireSkill = playerData.fireSkill;
+        this.earthSkill = playerData.earthSkill;
+        this.waterSkill = playerData.waterSkill;
+        this.airSkill = playerData.airSkill;
     }
 
     public override void Upgrade(Stat stat, float value)

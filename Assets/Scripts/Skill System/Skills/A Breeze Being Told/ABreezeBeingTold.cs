@@ -17,6 +17,8 @@ public class ABreezeBeingTold : Skill
     private BuffSystem buffSystem;
     private Buff buff;
 
+    private float maxHitTimer = 1, hitTimer = 0;
+
     public float dmgPersenOfTotalDmgFinal
     {
 
@@ -64,6 +66,43 @@ public class ABreezeBeingTold : Skill
                     0
                 )
             );
+        }
+    }
+
+    public override void WhileHitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Damage"))
+        {
+            if (hitTimer <= 0)
+            {
+                hitTimer = maxHitTimer;
+                float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+                float finalDamage = dmgPersenOfTotalDmgFinal * dealDamage;
+
+                MobController[] mobs = FindObjectsOfType<MobController>();
+                foreach (MobController mob in mobs)
+                {
+                    mob.Effected("breezewheel");
+                    mob.GetComponent<DefenseSystem>().TakeDamage(finalDamage);
+                }
+
+                if (buffSystem.CheckBuff(BuffType.Harmony) || buffSystem.CheckBuff(BuffType.Idiosyncrasy))
+                {
+                    playerController.player.Heal(Stat.HP, HPPersenOfAGI);
+                }
+            }
+            else
+            {
+                hitTimer -= Time.deltaTime;
+            }
+        }
+    }
+
+    public override void AfterHitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Damage"))
+        {
+            hitTimer = 0;
         }
     }
 }
