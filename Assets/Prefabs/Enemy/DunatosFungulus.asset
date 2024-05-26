@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: DunatosFungulus
   m_EditorClassIdentifier: 
-  id: enemy59661
-  maxHp: 90
-  hp: 90
-  atk: 18
+  id: enemy26467
+  maxHp: 140
+  hp: 140
+  atk: 35
   def: 0
   agi: 0
-  speed: 1
+  speed: 1.2
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
   name: Dunatos Fungulus
   type: 0
-  aerus: 3
-  exp: 2
+  aerus: 25
+  exp: 15
