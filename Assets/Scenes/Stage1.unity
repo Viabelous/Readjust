@@ -5103,7 +5103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1001853180
 Transform:
   m_ObjectHideFlags: 0
@@ -5139,6 +5139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb96b7d3beff06a4d93603df3aeaa1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stage: 1
   enemyPrefs:
   - {fileID: 218449121411476219, guid: d2a42f20348bf7b4eb08e79fc92a0b14, type: 3}
   - {fileID: 6170722551558479055, guid: a102c29ce7e850540b184e1eb0781387, type: 3}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnHolder : MonoBehaviour
 {
+    public Map Stage;
     public static SpawnHolder instance;
     public List<GameObject> enemyPrefs = new List<GameObject>();
 

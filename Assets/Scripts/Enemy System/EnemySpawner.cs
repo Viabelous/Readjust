@@ -28,11 +28,12 @@ public class EnemySpawner : MonoBehaviour
 
         time = StageManager.instance.time;
 
-        enemies.Add(spawnHolder.enemyPrefs[0], 1);
-        enemies.Add(spawnHolder.enemyPrefs[1], 0);
-        enemies.Add(spawnHolder.enemyPrefs[2], 0);
-        enemies.Add(spawnHolder.enemyPrefs[3], 0);
-        enemies.Add(spawnHolder.enemyPrefs[4], 0);
+        foreach(GameObject enemy in spawnHolder.enemyPrefs)
+        {
+            enemies.Add(enemy, 0f);
+        }
+
+        enemies[spawnHolder.enemyPrefs[0]] = 1f;
 
         ResetTimer();
     }
@@ -79,6 +80,14 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    private void SpawnRateAdjuster(float[] rate)
+    {
+        for(int i = 0; i < spawnHolder.enemyPrefs.Count-1; i++)
+        {
+            enemies[spawnHolder.enemyPrefs[i]] = rate[i];
+        };
+    }
+
     GameObject GetEnemy()
     {
         GameObject enemySpawn = null;
@@ -121,81 +130,48 @@ public class EnemySpawner : MonoBehaviour
         switch (minNow)
         {
             case 0:
-                enemies[spawnHolder.enemyPrefs[0]] = 1f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {1f,0f,0f,0f,0f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {1f,0f,0f,0f,0f,0f,0f});
                 break;
             case 1:
-                enemies[spawnHolder.enemyPrefs[0]] = 0.5f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0.5f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0.5f,0.5f,0f,0f,0f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0.5f,0.5f,0f,0f,0f,0f,0f});
                 break;
             case 2:
-                enemies[spawnHolder.enemyPrefs[0]] = 0f;
-                enemies[spawnHolder.enemyPrefs[1]] = 1f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0f,1f,0f,0f,0f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,1f,0f,0f,0f,0f,0f});
                 break;
             case 3:
-                enemies[spawnHolder.enemyPrefs[0]] = 0f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0.5f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0.5f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0f,0.5f,0.5f,0f,0f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,0.5f,0.5f,0f,0f,0f,0f});
                 break;
             case 4:
-                enemies[spawnHolder.enemyPrefs[0]] = 0f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0f;
-                enemies[spawnHolder.enemyPrefs[2]] = 1f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0f,0f,1f,0f,0f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,0f,0.5f,0.4f,0.1f,0f,0f});
                 break;
             case 5:
-                enemies[spawnHolder.enemyPrefs[0]] = 0f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0.5f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0.5f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0f,0f,0.5f,0.5f,0f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,0f,0f,0f,0.5f,0.5f,0f});
                 break;
             case 6:
-                enemies[spawnHolder.enemyPrefs[0]] = 0f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0f;
-                enemies[spawnHolder.enemyPrefs[3]] = 1f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0f,0f,0f,1f,0f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,0f,0f,0f,0f,1f,0f});
                 break;
             case 7:
-                enemies[spawnHolder.enemyPrefs[0]] = 0f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0.5f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0.5f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0f,0f,0f,0.5f,0.5f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,0f,0f,0f,0f,0.5f,0.5f});
                 break;
             case 8:
-                enemies[spawnHolder.enemyPrefs[0]] = 0f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0f;
-                enemies[spawnHolder.enemyPrefs[4]] = 1f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0f,0f,0f,0f,1f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,0f,0f,0f,0f,0f,1f});
                 break;
             case 9:
-                enemies[spawnHolder.enemyPrefs[0]] = 0.1f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0.1f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0.1f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0.2f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0.5f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0.1f,0.1f,0.1f,0.2f,0.5f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0.1f,0.1f,0.1f,0.1f,0.2f,0.2f,0.2f});
                 break;
             case 10:
-                enemies[spawnHolder.enemyPrefs[0]] = 0.1f;
-                enemies[spawnHolder.enemyPrefs[1]] = 0.1f;
-                enemies[spawnHolder.enemyPrefs[2]] = 0.2f;
-                enemies[spawnHolder.enemyPrefs[3]] = 0.2f;
-                enemies[spawnHolder.enemyPrefs[4]] = 0.4f;
+                if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] {0.1f,0.1f,0.2f,0.2f,0.4f});
+                else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] {0f,0f,0.0f,0.1f,0.3f,0.3f,0.3f});
                 break;
         }
 
