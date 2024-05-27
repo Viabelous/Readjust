@@ -14,7 +14,6 @@ public class SkillWindowsController : MonoBehaviour
     void Start()
     {
         UpdateSkillBtnHover();
-        // SetSkillDescription();
     }
 
     void Update()
@@ -35,7 +34,6 @@ public class SkillWindowsController : MonoBehaviour
 
     void SetSkillDescription()
     {
-
         // kalau sudah dibuka, maka tampilkan tombol select
         selectBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
 

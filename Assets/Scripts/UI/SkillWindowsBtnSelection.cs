@@ -17,6 +17,10 @@ public class SkillWindowsBtnSelection : Navigation
     private Color currentColor;
     private SkillsSelection focusedSkill;
 
+    public SkillWindowsBtnSelection()
+    {
+    }
+
     void Start()
     {
         currentColor = ImageComponent.color;

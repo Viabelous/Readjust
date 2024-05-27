@@ -25,22 +25,23 @@ public class Player : Character
 
 
     [Header("Stat Level")]
-    [SerializeField]
+    [SerializeField] private float expUpCost;
+    [SerializeField] private float aerusUpCost;
     private int maxHPLevel = 0;
     private int maxManaLevel = 0;
     private int atkLevel = 0;
     private int defLevel = 0;
     private int agiLevel = 0;
     private int focLevel = 0;
+    private int statMaxLevel = 10;
 
     public enum Progress
     {
         Story, FireSkill, EarthSkill, WaterSkill, AirSkill,
-        MaxHP, MaxMana, ATK, DEF, AGI, FOC
+        MaxHP, MaxMana, ATK, DEF, FOC, AGI
     }
 
     [Header("Progress")]
-    [SerializeField]
     private int story = 0;
     private int fireSkill = 0;
     private int earthSkill = 0;
@@ -60,6 +61,14 @@ public class Player : Character
     {
         get { return this.speed + this.agi * 0.1f; }
     }
+    public int StatMaxLevel
+    {
+        get { return this.statMaxLevel; }
+    }
+
+    // public int StatPriceUp {
+    //     get { return this.statPriceUp * ();}
+    // }
 
     public int GetProgress(Progress type)
     {
@@ -130,6 +139,51 @@ public class Player : Character
         }
     }
 
+    public bool CanBeUpgraded(Progress type)
+    {
+        switch (type)
+        {
+            case Progress.MaxHP:
+                if (maxHPLevel < 10)
+                {
+                    return true;
+                }
+                break;
+            case Progress.MaxMana:
+                if (maxManaLevel < 10)
+                {
+                    return true;
+                }
+                break;
+            case Progress.ATK:
+                if (atkLevel < 10)
+                {
+                    return true;
+                }
+                break;
+            case Progress.DEF:
+                if (defLevel < 10)
+                {
+                    return true;
+                }
+                break;
+            case Progress.FOC:
+                if (focLevel < 10)
+                {
+                    return true;
+                }
+                break;
+            case Progress.AGI:
+                if (agiLevel < 10)
+                {
+                    return true;
+                }
+                break;
+        }
+
+        return false;
+    }
+
     public override float GetMaxHP()
     {
         return this.maxHp + 100 * maxHPLevel;
@@ -168,6 +222,45 @@ public class Player : Character
     public override float GetSpeed()
     {
         return this.speed;
+    }
+
+    public float GetExpUpCost(Progress type)
+    {
+        switch (type)
+        {
+            case Progress.MaxHP:
+                return this.expUpCost * (maxHPLevel - 1);
+            case Progress.MaxMana:
+                return this.expUpCost * (maxManaLevel - 1);
+            case Progress.ATK:
+                return this.expUpCost * (atkLevel - 1);
+            case Progress.DEF:
+                return this.expUpCost * (defLevel - 1);
+            case Progress.FOC:
+                return this.expUpCost * (focLevel - 1);
+            case Progress.AGI:
+                return this.expUpCost * (agiLevel - 1);
+        }
+        return 0;
+    }
+    public float GetAerusUpCost(Progress type)
+    {
+        switch (type)
+        {
+            case Progress.MaxHP:
+                return this.aerusUpCost * (maxHPLevel - 1);
+            case Progress.MaxMana:
+                return this.aerusUpCost * (maxManaLevel - 1);
+            case Progress.ATK:
+                return this.aerusUpCost * (atkLevel - 1);
+            case Progress.DEF:
+                return this.aerusUpCost * (defLevel - 1);
+            case Progress.FOC:
+                return this.aerusUpCost * (focLevel - 1);
+            case Progress.AGI:
+                return this.aerusUpCost * (agiLevel - 1);
+        }
+        return 0;
     }
 
     public Player CreateAsset(string name)
@@ -431,26 +524,6 @@ public class Player : Character
             regenTimer = 0;
         }
     }
-
-    // public Player CloneObject()
-    // {
-    //     Player newPlayer = ScriptableObject.CreateInstance<Player>();
-    //     newPlayer.maxHp = this.maxHp;
-    //     newPlayer.hp = this.hp;
-    //     newPlayer.atk = this.atk;
-    //     newPlayer.def = this.def;
-    //     newPlayer.agi = this.agi;
-    //     newPlayer.speed = this.speed;
-    //     newPlayer.foc = this.foc;
-    //     newPlayer.maxMana = this.maxMana;
-    //     newPlayer.mana = this.mana;
-    //     newPlayer.maxShield = this.maxShield;
-    //     newPlayer.shield = this.shield;
-    //     newPlayer.aerus = this.aerus;
-    //     newPlayer.exp = this.exp;
-    //     newPlayer.story = this.story;
-    //     return newPlayer;
-    // }
 
 
 

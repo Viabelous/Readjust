@@ -23,10 +23,10 @@ public class windowsController : MonoBehaviour
 
     void Update()
     {
+
         if (ActiveWindowsID != -1 && ZoneManager.instance.CurrentState() != ZoneState.OnPopUp)
         {
-
-
+            print("hehe");
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (HoveredButton.GetComponent<Navigation>().Left != null)
@@ -72,6 +72,7 @@ public class windowsController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Q))
             {
+                print("Pencet Q di btn: " + HoveredButton.name);
                 HoveredButton.GetComponent<Navigation>().Clicked();
             }
             // else
@@ -84,6 +85,7 @@ public class windowsController : MonoBehaviour
 
     public void toogleWindow(int windows_id, bool doOpenWindow)
     {
+        print("hohho");
         Windows[windows_id].SetActive(doOpenWindow);
         Player.GetComponent<PlayerController>().movementEnable(!doOpenWindow);
         if (doOpenWindow)
