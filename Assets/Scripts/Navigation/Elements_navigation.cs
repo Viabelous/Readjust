@@ -67,9 +67,8 @@ public class Elements : Navigation
     {
         if(isUnlocked)
         {
-            WindowsController.toogleWindow(1, false);
+            StartCoroutine(WindowsController.TransitionWindows(1, elementNumber+1));
             SkillsSelectionWindows.SetActive(true);
-            WindowsController.toogleWindow(elementNumber+1, true);
         }
     }
 

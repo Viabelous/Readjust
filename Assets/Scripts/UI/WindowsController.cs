@@ -26,7 +26,6 @@ public class windowsController : MonoBehaviour
 
         if (ActiveWindowsID != -1 && ZoneManager.instance.CurrentState() != ZoneState.OnPopUp)
         {
-            print("hehe");
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (HoveredButton.GetComponent<Navigation>().Left != null)
@@ -72,7 +71,6 @@ public class windowsController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Q))
             {
-                print("Pencet Q di btn: " + HoveredButton.name);
                 HoveredButton.GetComponent<Navigation>().Clicked();
             }
             // else
@@ -83,15 +81,15 @@ public class windowsController : MonoBehaviour
 
     }
 
-    public void toogleWindow(int windows_id, bool doOpenWindow)
+    public IEnumerator ToogleWindow(int windowsID, bool doOpenWindow)
     {
-        print("hohho");
-        Windows[windows_id].SetActive(doOpenWindow);
+        yield return new WaitForSeconds(0.1f);
+        Windows[windowsID].SetActive(doOpenWindow);
         Player.GetComponent<PlayerController>().movementEnable(!doOpenWindow);
         if (doOpenWindow)
         {
-            ActiveWindowsID = windows_id;
-            HoveredButton = WindowsButtonStartPointNavigation[windows_id];
+            ActiveWindowsID = windowsID;
+            HoveredButton = WindowsButtonStartPointNavigation[windowsID];
             HoveredButton.GetComponent<Navigation>().IsHovered(true);
         }
         else
@@ -100,7 +98,20 @@ public class windowsController : MonoBehaviour
             HoveredButton.GetComponent<Navigation>().IsHovered(false);
             HoveredButton = null;
         }
+    }
 
+    public IEnumerator TransitionWindows(int toBeClosedWindowsID, int toBeOpenedWindowsID)
+    {
+        yield return new WaitForSeconds(0.1f);
+        Windows[toBeClosedWindowsID].SetActive(false);
+        ActiveWindowsID = -1;
+        HoveredButton.GetComponent<Navigation>().IsHovered(false);
+        HoveredButton = null;
+
+        Windows[toBeOpenedWindowsID].SetActive(true);
+        ActiveWindowsID = toBeOpenedWindowsID;
+        HoveredButton = WindowsButtonStartPointNavigation[toBeOpenedWindowsID];
+        HoveredButton.GetComponent<Navigation>().IsHovered(true);
     }
 
     public void CloseSkillTree()

@@ -95,13 +95,13 @@ public class TalkSystem : MonoBehaviour
                 switch (windows)
                 {
                     case "Skill":
-                        windowsController.GetComponent<windowsController>().toogleWindow(1, true);
+                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(1, true));
                         break;
                     case "Stat":
-                        windowsController.GetComponent<windowsController>().toogleWindow(6, true);
+                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(6, true));
                         break;
                     case "Shop":
-                        windowsController.GetComponent<windowsController>().toogleWindow(7, true);
+                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(7, true));
                         break;
 
                     // NANTI GANTI !!!!

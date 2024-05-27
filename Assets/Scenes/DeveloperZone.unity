@@ -8842,7 +8842,7 @@ MonoBehaviour:
   Up: {fileID: 0}
   Right: {fileID: 0}
   Down: {fileID: 834617974}
-  windows_id: 0
+  windows_id: 6
 --- !u!1 &1162373883
 GameObject:
   m_ObjectHideFlags: 0

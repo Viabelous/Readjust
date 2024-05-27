@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
+using System;
 
 public class CloseButton : Navigation
 {
@@ -19,11 +20,16 @@ public class CloseButton : Navigation
     }
     public override void Clicked()
     {
-        WindowsController.toogleWindow(windows_id, false);
+        
         if(windows_id >= 2 && windows_id <= 5)
         {
-            WindowsController.toogleWindow(1, true);
+            StartCoroutine(WindowsController.TransitionWindows(2, 1));
             WindowsController.CloseSkillTree();
+        }
+        
+        else
+        {
+            StartCoroutine(WindowsController.ToogleWindow(windows_id, false));
         }
         
     }
