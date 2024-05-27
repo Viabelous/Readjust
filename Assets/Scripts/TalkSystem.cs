@@ -101,6 +101,9 @@ public class TalkSystem : MonoBehaviour
                     case "Skill":
                         windowsController.GetComponent<windowsController>().toogleWindow(1, true);
                         break;
+                    case "Stat":
+                        windowsController.GetComponent<windowsController>().toogleWindow(7, true);
+                        break;
 
                     // NANTI GANTI !!!!
                     case "Stage":
@@ -154,6 +157,9 @@ public class TalkSystem : MonoBehaviour
                 break;
             case "openSkillWindows":
                 windows = "Skill";
+                break;
+            case "openStatWindows":
+                windows = "Item";
                 break;
         }
         teks.RemoveAt(teks.Count - 1);
