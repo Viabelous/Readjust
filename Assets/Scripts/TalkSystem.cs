@@ -12,10 +12,8 @@ public class TalkSystem : MonoBehaviour
     public GameObject dialogPanel;
     public Text dialogTeks;
     public Text nameTag;
-    public string talkerName;
     public GameObject player;
     public NPC npc;
-    public string selectedDialog;
     private List<string> dialog;
     public int index;
     public string windows;
@@ -39,7 +37,6 @@ public class TalkSystem : MonoBehaviour
         {
             ZoneManager.instance.ChangeCurrentState(ZoneState.OnDialog);
 
-            nameTag.text = talkerName;
             player.GetComponent<PlayerController>().movementEnable(false);
 
             // kalau dialog panel sudah aktif
@@ -52,7 +49,6 @@ public class TalkSystem : MonoBehaviour
                 }
 
             }
-
             // kalau belum, aktifkan dialog panel
             else
             {
@@ -102,6 +98,9 @@ public class TalkSystem : MonoBehaviour
                         windowsController.GetComponent<windowsController>().toogleWindow(1, true);
                         break;
                     case "Stat":
+                        windowsController.GetComponent<windowsController>().toogleWindow(6, true);
+                        break;
+                    case "Shop":
                         windowsController.GetComponent<windowsController>().toogleWindow(7, true);
                         break;
 
@@ -159,7 +158,7 @@ public class TalkSystem : MonoBehaviour
                 windows = "Skill";
                 break;
             case "openStatWindows":
-                windows = "Item";
+                windows = "Stat";
                 break;
         }
         teks.RemoveAt(teks.Count - 1);
@@ -168,5 +167,7 @@ public class TalkSystem : MonoBehaviour
         {
             this.dialog.Add(barisTeks);
         }
+
+        nameTag.text = npc.name;
     }
 }
