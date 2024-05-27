@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 90d0efd536c6f884ba60b69469553895
+guid: abc6ff1c4fac36f4296d6e514a8709cf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: selene_frontw_0
+      name: dysnom_flame_tusk_move_back_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 640
-        width: 640
-        height: 640
+        y: 300
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c33c01d0585fc64d8f86a1cf54f74aa
-      internalID: -629114875
+      spriteID: a87fe9f6206ad004cbd5c1fa270c0a79
+      internalID: 1771008510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_1
+      name: dysnom_flame_tusk_move_back_1
       rect:
         serializedVersion: 2
-        x: 640
-        y: 640
-        width: 640
-        height: 640
+        x: 400
+        y: 300
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aeff9dc305b9eb4aac02e36d2479ead
-      internalID: -1050389684
+      spriteID: 4763db266b54cbb4faaa54b9fd484df0
+      internalID: -1252997218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_2
+      name: dysnom_flame_tusk_move_back_2
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 640
-        width: 640
-        height: 640
+        x: 800
+        y: 300
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f84e1a1921c6d843b79872372315c9d
-      internalID: -895568843
+      spriteID: 58d91022cc7c1c3468b9ceaed10041dc
+      internalID: -879847938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_3
+      name: dysnom_flame_tusk_move_back_3
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 640
-        width: 640
-        height: 640
+        x: 1200
+        y: 300
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaed1e8e1b0cb174a9fc98cb26d3777f
-      internalID: -1080665621
+      spriteID: eb4ea9ea624c3b849864c7c0c5387e4c
+      internalID: 181202089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_4
+      name: dysnom_flame_tusk_move_back_4
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 640
-        width: 640
-        height: 640
+        x: 1600
+        y: 300
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae6be335343773c4196935b164704a2a
-      internalID: -1643703222
+      spriteID: aa42fc95ea5f7df489478982f72a280c
+      internalID: 1648939083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_5
+      name: dysnom_flame_tusk_move_back_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 640
-        height: 640
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a673147c8a5983b46bea8b327cab492a
-      internalID: -2043788893
+      spriteID: e5665e11a4caf1240b5454d8bacc8332
+      internalID: -220702953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_6
+      name: dysnom_flame_tusk_move_back_6
       rect:
         serializedVersion: 2
-        x: 640
+        x: 400
         y: 0
-        width: 640
-        height: 640
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41adc062f74d46f4aa9c87b34dd16044
-      internalID: -283303099
+      spriteID: 80d2705c4eae7344fa8ed0929fbca4cc
+      internalID: 1842799214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_7
+      name: dysnom_flame_tusk_move_back_7
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 800
         y: 0
-        width: 640
-        height: 640
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 716553fd3d9d3164082e6a750ff44a24
-      internalID: -1891945400
+      spriteID: 2c6f1f8622260d14f941b8ec2eed6033
+      internalID: -1930803143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_8
+      name: dysnom_flame_tusk_move_back_8
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 1200
         y: 0
-        width: 640
-        height: 640
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0246d59322c31df46b5f142044d1efa6
-      internalID: 520273528
+      spriteID: a90723662003ea3419e8e1b9141d2b9f
+      internalID: 147672780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selene_frontw_9
+      name: dysnom_flame_tusk_move_back_9
       rect:
         serializedVersion: 2
-        x: 2560
+        x: 1600
         y: 0
-        width: 640
-        height: 640
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a25057d0d0fe8c48a35b44296192ffc
-      internalID: -373933128
+      spriteID: c884303d465da3e4a97bd315679287a6
+      internalID: -300427284
       vertices: []
       indices: 
       edges: []
@@ -330,16 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      selene_frontw_0: -629114875
-      selene_frontw_1: -1050389684
-      selene_frontw_2: -895568843
-      selene_frontw_3: -1080665621
-      selene_frontw_4: -1643703222
-      selene_frontw_5: -2043788893
-      selene_frontw_6: -283303099
-      selene_frontw_7: -1891945400
-      selene_frontw_8: 520273528
-      selene_frontw_9: -373933128
+      dysnom_flame_tusk_move_back_0: 1771008510
+      dysnom_flame_tusk_move_back_1: -1252997218
+      dysnom_flame_tusk_move_back_2: -879847938
+      dysnom_flame_tusk_move_back_3: 181202089
+      dysnom_flame_tusk_move_back_4: 1648939083
+      dysnom_flame_tusk_move_back_5: -220702953
+      dysnom_flame_tusk_move_back_6: 1842799214
+      dysnom_flame_tusk_move_back_7: -1930803143
+      dysnom_flame_tusk_move_back_8: 147672780
+      dysnom_flame_tusk_move_back_9: -300427284
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -425,7 +425,7 @@ MonoBehaviour:
   movementEnabled: 1
   speed: 0
   animate: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 8643005998000185084}
   onSkillTrigger: 0
 --- !u!114 &-5924167133976428185
 MonoBehaviour:

@@ -110,11 +110,11 @@ Transform:
   m_GameObject: {fileID: 3201606327045059047}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.644, y: 0.011, z: 0}
+  m_LocalPosition: {x: 0.6439999, y: 0.011000001, z: 0}
   m_LocalScale: {x: 0.8483844, y: 0.8483844, z: 0.8483844}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1065298588416795965}
+  m_Father: {fileID: 3703956166455206152}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2958430739294392090
 SpriteRenderer:
@@ -168,6 +168,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5450219184536517572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3703956166455206152}
+  m_Layer: 11
+  m_Name: flame_tusk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3703956166455206152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450219184536517572}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8747316137131294241}
+  - {fileID: 6736334083219030455}
+  m_Father: {fileID: 1065298588416795965}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6565955311164720928
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,8 +240,7 @@ Transform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8747316137131294241}
-  - {fileID: 6736334083219030455}
+  - {fileID: 3703956166455206152}
   - {fileID: 2680174593030046800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -251,9 +283,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1452199741
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ee706bd8169d9bb44bfde508a572762e, type: 3}
+  m_Sprite: {fileID: -688270934, guid: fd6a0c78a073b0f4e91663e263d55f52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -463,7 +495,7 @@ GameObject:
   - component: {fileID: 8747316137131294241}
   - component: {fileID: 950625067928871321}
   m_Layer: 0
-  m_Name: flame_tusk
+  m_Name: flame_tusk_sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,11 +510,11 @@ Transform:
   m_GameObject: {fileID: 8543631806688762818}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.874, y: -0.451, z: 0}
+  m_LocalPosition: {x: 0.8740002, y: -0.45100003, z: 0}
   m_LocalScale: {x: 0.8483844, y: 0.8483844, z: 0.8483844}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1065298588416795965}
+  m_Father: {fileID: 3703956166455206152}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &950625067928871321
 SpriteRenderer:
