@@ -80,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1452199741
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1684163571, guid: 4d8ce61a63b75d349ab6e4e8f4c524c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5887d4aa784ffb04b98950d34331cf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivotOffset: -1
+  pivotOffset: -0.9
 --- !u!1 &8066736071986050131
 GameObject:
   m_ObjectHideFlags: 0
