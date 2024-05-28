@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Enemy/Selene")]
@@ -16,9 +17,10 @@ public class Selene : Enemy
 
     [Header("Summon Heal Mob")]
     [SerializeField] private float healSumMaxTime;
+    [SerializeField] private int maxHealMob;
     [SerializeField] private GameObject healMob;
     [SerializeField] private float healMaxTime;
-    [SerializeField] private float healValue;
+    [SerializeField] private float healPersenOfMaxHP;
     [SerializeField] private GameObject healEffect;
 
     [Header("Summon Attack Mob")]
@@ -28,7 +30,7 @@ public class Selene : Enemy
     private float healSumTimer, attSumTimer, healTimer;
     private MobController mobController;
     private SeleneState state;
-    private bool healActivated;
+    private bool canSummonHeal;
 
     public override void Spawning(GameObject gameObject)
     {
@@ -38,41 +40,27 @@ public class Selene : Enemy
         attSumTimer = attSumMaxTime;
         healTimer = healMaxTime;
 
-        healActivated = false;
+        canSummonHeal = true;
     }
 
     public override void OnAttacking(GameObject gameObject)
     {
-        if (state == SeleneState.Idle)
+        if (GameObject.FindObjectsOfType<SeleneHealMob>().ToList().Count == maxHealMob)
         {
-            healSumTimer -= Time.deltaTime;
-            attSumTimer -= Time.deltaTime;
-        }
-
-        if (healActivated)
-        {
-
-            healTimer -= Time.deltaTime;
-
-            if (healTimer <= 0)
-            {
-                Instantiate(healEffect, gameObject.transform);
-                Heal(Stat.HP, healValue);
-                healTimer = healMaxTime;
-            }
-
-            if (GameObject.FindObjectOfType<SeleneHealMob>() == null)
-            {
-                healActivated = false;
-                healTimer = healMaxTime;
-            }
+            canSummonHeal = false;
         }
         else
         {
-            if (GameObject.FindObjectOfType<SeleneHealMob>() != null)
+            canSummonHeal = true;
+        }
+
+        if (state == SeleneState.Idle)
+        {
+            if (canSummonHeal)
             {
-                healActivated = true;
+                healSumTimer -= Time.deltaTime;
             }
+            attSumTimer -= Time.deltaTime;
         }
 
         if (healSumTimer <= 0)
@@ -85,8 +73,6 @@ public class Selene : Enemy
             StartSummoning(SeleneState.SummoningAttack);
         }
 
-        Debug.Log(this.hp);
-
     }
 
     public GameObject GetHealMob()
@@ -97,6 +83,11 @@ public class Selene : Enemy
     public GameObject GetAttMob()
     {
         return attMob;
+    }
+
+    public GameObject GetHealEffect()
+    {
+        return healEffect;
     }
 
     public int GetAttMobNum()
@@ -141,6 +132,6 @@ public class Selene : Enemy
 
     public float GetHealValue()
     {
-        return this.healValue;
+        return healPersenOfMaxHP * GetMaxHP();
     }
 }
