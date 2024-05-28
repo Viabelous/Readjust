@@ -1014,6 +1014,7 @@ GameObject:
   - component: {fileID: 78684164}
   - component: {fileID: 78684166}
   - component: {fileID: 78684165}
+  - component: {fileID: 78684167}
   m_Layer: 5
   m_Name: button_stage1
   m_TagString: Untagged
@@ -1078,6 +1079,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78684163}
   m_CullTransparentMesh: 1
+--- !u!114 &78684167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78684163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1a2624ff27644683e6b0461c8493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 78684165}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 1944218205, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  HoverSprite: {fileID: -990170617, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  Left: {fileID: 1884400190}
+  Up: {fileID: 0}
+  Right: {fileID: 1658204391}
+  Down: {fileID: 0}
+  isUnlocked: 1
+  firstAccess: 1
+  stage: 1
+  popUp: {fileID: 637680375}
 --- !u!1 &85260418
 GameObject:
   m_ObjectHideFlags: 0
@@ -17275,6 +17300,7 @@ GameObject:
   - component: {fileID: 1504443918}
   - component: {fileID: 1504443920}
   - component: {fileID: 1504443919}
+  - component: {fileID: 1504443921}
   m_Layer: 5
   m_Name: button_stage_5
   m_TagString: Untagged
@@ -17339,6 +17365,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504443917}
   m_CullTransparentMesh: 1
+--- !u!114 &1504443921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504443917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1a2624ff27644683e6b0461c8493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 1504443919}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 1944218205, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  HoverSprite: {fileID: -990170617, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  Left: {fileID: 1774600546}
+  Up: {fileID: 0}
+  Right: {fileID: 0}
+  Down: {fileID: 0}
+  isUnlocked: 1
+  firstAccess: 0
+  stage: 5
+  popUp: {fileID: 1540084087}
 --- !u!1 &1509070486
 GameObject:
   m_ObjectHideFlags: 0
@@ -18374,6 +18424,7 @@ GameObject:
   - component: {fileID: 1592162129}
   - component: {fileID: 1592162131}
   - component: {fileID: 1592162130}
+  - component: {fileID: 1592162132}
   m_Layer: 5
   m_Name: button_stage_3
   m_TagString: Untagged
@@ -18438,6 +18489,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592162128}
   m_CullTransparentMesh: 1
+--- !u!114 &1592162132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592162128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1a2624ff27644683e6b0461c8493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 1592162130}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 1944218205, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  HoverSprite: {fileID: -990170617, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  Left: {fileID: 1658204391}
+  Up: {fileID: 0}
+  Right: {fileID: 1774600546}
+  Down: {fileID: 0}
+  isUnlocked: 1
+  firstAccess: 0
+  stage: 3
+  popUp: {fileID: 1901871948}
 --- !u!1 &1628484206
 GameObject:
   m_ObjectHideFlags: 0
@@ -18663,6 +18738,7 @@ GameObject:
   - component: {fileID: 1658204392}
   - component: {fileID: 1658204394}
   - component: {fileID: 1658204393}
+  - component: {fileID: 1658204395}
   m_Layer: 5
   m_Name: button_stage_2
   m_TagString: Untagged
@@ -18727,6 +18803,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658204391}
   m_CullTransparentMesh: 1
+--- !u!114 &1658204395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658204391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1a2624ff27644683e6b0461c8493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 1658204393}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 1944218205, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  HoverSprite: {fileID: -990170617, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  Left: {fileID: 78684163}
+  Up: {fileID: 0}
+  Right: {fileID: 1592162128}
+  Down: {fileID: 0}
+  isUnlocked: 1
+  firstAccess: 0
+  stage: 2
+  popUp: {fileID: 1334981657}
 --- !u!1 &1675734807
 GameObject:
   m_ObjectHideFlags: 0
@@ -20221,6 +20321,7 @@ GameObject:
   - component: {fileID: 1774600547}
   - component: {fileID: 1774600549}
   - component: {fileID: 1774600548}
+  - component: {fileID: 1774600550}
   m_Layer: 5
   m_Name: button_stage_4
   m_TagString: Untagged
@@ -20285,6 +20386,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774600546}
   m_CullTransparentMesh: 1
+--- !u!114 &1774600550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774600546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1a2624ff27644683e6b0461c8493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImageComponent: {fileID: 1774600548}
+  WindowsController: {fileID: 739427922}
+  BasicSprite: {fileID: 1944218205, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  HoverSprite: {fileID: -990170617, guid: d1a4c0c0942a1744086f247abd58539a, type: 3}
+  Left: {fileID: 1592162128}
+  Up: {fileID: 0}
+  Right: {fileID: 1504443917}
+  Down: {fileID: 0}
+  isUnlocked: 1
+  firstAccess: 0
+  stage: 4
+  popUp: {fileID: 5346769}
 --- !u!1 &1781734341
 GameObject:
   m_ObjectHideFlags: 0
@@ -22120,7 +22245,7 @@ MonoBehaviour:
   HoverSprite: {fileID: 21300000, guid: 454c1de14c0adad459d353652e80115e, type: 3}
   Left: {fileID: 0}
   Up: {fileID: 0}
-  Right: {fileID: 0}
+  Right: {fileID: 78684163}
   Down: {fileID: 0}
   windows_id: 0
 --- !u!1 &1886575442
