@@ -118,23 +118,35 @@ public class Player : Character
             case Progress.AirSkill:
                 this.airSkill += value;
                 break;
+
             case Progress.MaxHP:
-                this.maxHPLevel += value;
+                Upgrade(Stat.HP, value);
+                // this.maxHPLevel += value;
                 break;
+
             case Progress.MaxMana:
-                this.maxManaLevel += value;
+                Upgrade(Stat.Mana, value);
+                // this.maxManaLevel += value;
                 break;
+
             case Progress.ATK:
-                this.atkLevel += value;
+                Upgrade(Stat.ATK, value);
+                // this.atkLevel += value;
                 break;
+
             case Progress.DEF:
-                this.defLevel += value;
+                Upgrade(Stat.DEF, value);
+                // this.defLevel += value;
                 break;
+
             case Progress.FOC:
-                this.focLevel += value;
+                Upgrade(Stat.FOC, value);
+                // this.focLevel += value;
                 break;
+
             case Progress.AGI:
-                this.agiLevel += value;
+                Upgrade(Stat.AGI, value);
+                // this.agiLevel += value;
                 break;
         }
     }

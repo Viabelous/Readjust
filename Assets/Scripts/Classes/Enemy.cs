@@ -99,6 +99,24 @@ public class Enemy : Character
 
     }
 
+    public override void Heal(Stat stat, float value)
+    {
+        switch (stat)
+        {
+            case Stat.HP:
+                if (this.hp + value > this.maxHp)
+                {
+                    this.hp = this.maxHp;
+                }
+                else
+                {
+                    this.hp += value;
+                }
+                break;
+        }
+    }
+
+
 
     // public Enemy CloneObject()
     // {

@@ -55,9 +55,10 @@ public class MobController : MonoBehaviour
 
         state = CharacterState.Alive;
         isBoss = GetComponent<BossController>() != null;
+
+        movementEnabled = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (state)
