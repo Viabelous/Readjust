@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5846968007811048139}
   - component: {fileID: -5872995871299659495}
   - component: {fileID: 3121289651625582305}
+  - component: {fileID: 3539963119813677872}
   m_Layer: 11
   m_Name: Elpis
   m_TagString: Enemy
@@ -350,4 +351,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5887d4aa784ffb04b98950d34331cf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivotOffset: -1
+  pivotOffset: -1.02
+--- !u!114 &3539963119813677872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170722551558479055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab03520cd697fb840b8ba3ff087e82c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

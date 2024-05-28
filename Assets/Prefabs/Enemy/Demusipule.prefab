@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 412621924380607531}
   - component: {fileID: 9155712469995986980}
   - component: {fileID: -1881948656101206118}
-  - component: {fileID: 1866374865744087668}
   m_Layer: 11
   m_Name: Demusipule
   m_TagString: Enemy
@@ -371,18 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotOffset: -1
---- !u!114 &1866374865744087668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2404364144903811556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab03520cd697fb840b8ba3ff087e82c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8066736071986050131
 GameObject:
   m_ObjectHideFlags: 0
