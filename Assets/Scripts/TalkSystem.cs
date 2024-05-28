@@ -94,6 +94,9 @@ public class TalkSystem : MonoBehaviour
             {
                 switch (windows)
                 {
+                    case "Stage":
+                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(0, true));
+                        break;
                     case "Skill":
                         StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(1, true));
                         break;
@@ -103,12 +106,6 @@ public class TalkSystem : MonoBehaviour
                     case "Shop":
                         StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(7, true));
                         break;
-
-                    // NANTI GANTI !!!!
-                    case "Stage":
-                        SceneManager.LoadScene("Stage1");
-                        break;
-
                     default:
                         break;
                 }
@@ -151,7 +148,7 @@ public class TalkSystem : MonoBehaviour
         List<string> teks = new_dialog.Split("/plus/").ToList();
         switch (teks.Last())
         {
-            case "debugOnly_teleportStage1":
+            case "openStageWindows":
                 windows = "Stage";
                 break;
             case "openSkillWindows":
