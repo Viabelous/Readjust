@@ -31,6 +31,11 @@ public class GroundEnemy : MonoBehaviour
         }
     }
 
+    public float GetPivotOffset()
+    {
+        return pivotOffset;
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Object"))

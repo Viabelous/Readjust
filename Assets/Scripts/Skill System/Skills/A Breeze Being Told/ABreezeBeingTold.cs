@@ -9,8 +9,10 @@ public class ABreezeBeingTold : Skill
     [Header("Custom Timer")]
     [SerializeField] private float timerPersenOfAGI;
     [Header("Skill Effect")]
-    [SerializeField] private float dmgPersenOfTotalDmg;
     [SerializeField] public float HPPersenOfAGI;
+    [SerializeField] private float dmgPersenOfTotalDmg;
+    [SerializeField] private GameObject damageEffect;
+    [SerializeField] private GameObject healEffect;
     [Header("Level Up Value")]
     [SerializeField] private float dmgPersenOfTotalDmgUp;
     private PlayerController playerController;
@@ -77,12 +79,17 @@ public class ABreezeBeingTold : Skill
         MobController[] mobs = FindObjectsOfType<MobController>();
         foreach (MobController mob in mobs)
         {
+            GameObject damageObj = Instantiate(damageEffect);
+            damageObj.GetComponent<ABreezeBeingToldDamage>().SetEnemy(mob.transform);
+
             mob.Effected("breezewheel");
             mob.GetComponent<DefenseSystem>().TakeDamage(finalDamage);
         }
 
         if (buffSystem.CheckBuff(BuffType.Harmony) || buffSystem.CheckBuff(BuffType.Idiosyncrasy))
         {
+            Debug.Log("isinya buff system: " + buffSystem.buffsActive.Count);
+            Instantiate(healEffect);
             playerController.player.Heal(Stat.HP, HPPersenOfAGI * playerController.player.GetAGI());
         }
     }

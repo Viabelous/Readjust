@@ -17,5 +17,5 @@ MonoBehaviour:
   description: Banyakin spawn musuh
   price: 100
   icon: {fileID: 0}
-  types: 0e000000
+  types: 0f000000
   adaptable: 0

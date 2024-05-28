@@ -28,8 +28,15 @@ public class DefenseSystem : MonoBehaviour
 
     void Start()
     {
-        buffSystem = GetComponent<BuffSystem>();
         player = GameObject.Find("Player");
+        if (type == CharacterType.Player)
+        {
+            buffSystem = GetComponent<BuffSystem>();
+        }
+        else
+        {
+            buffSystem = player.GetComponent<BuffSystem>();
+        }
     }
 
     void Update()
@@ -366,7 +373,7 @@ public class DefenseSystem : MonoBehaviour
 
         MobController mobController = lockedEnemy.GetComponent<MobController>();
         mobController.Effected("nexus");
-
+        Instantiate(((Nexus)nexus).DamageEffect, mobController.transform.position, Quaternion.identity);
 
         float nexusDamage = ((Nexus)nexus).dmgPersenOfTotalDmgFinal * dealDamage;
 

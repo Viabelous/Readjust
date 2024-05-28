@@ -45,10 +45,12 @@ public class NexusTargetPos : MonoBehaviour
                 transform.position = playerController.transform.position;
                 break;
             case NexusComponent.Voodoo:
-                transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.5f;
+                // transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.5f;
+                transform.position = (Vector2)target.transform.position + Vector2.up * (-target.GetComponent<GroundEnemy>().GetPivotOffset() + 0.2f);
                 break;
             case NexusComponent.Link:
-                transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.1f;
+                // transform.position = (Vector2)target.transform.position + Vector2.up * targetSpriteRenderer.sprite.bounds.size.y * 0.1f;
+                transform.position = (Vector2)target.transform.position + Vector2.up * (-target.GetComponent<GroundEnemy>().GetPivotOffset() + 0.2f);
                 break;
         }
 

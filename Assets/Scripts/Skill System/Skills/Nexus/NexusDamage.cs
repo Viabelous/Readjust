@@ -3,22 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeleneHeal : MonoBehaviour
+public class NexusDamage : MonoBehaviour
 {
 
-    Transform selene;
+    Transform enemy;
 
     void Start()
     {
-        selene = transform.parent;
-        transform.position = selene.position;
+        enemy = GameObject.FindObjectOfType<NexusBehaviour>().skill.LockedEnemy;
+        transform.position = enemy.position;
     }
 
     void Update()
     {
-        if (selene != null)
+        if (enemy != null)
         {
-            transform.position = selene.position;
+
+            transform.position = enemy.position;
         }
         else
         {

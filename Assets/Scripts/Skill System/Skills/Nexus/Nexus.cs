@@ -9,6 +9,7 @@ public class Nexus : Skill
     [Header("Skill Effect")]
     [SerializeField] private float radius;
     [SerializeField] private float dmgPersenOfTotalDmg;
+    [SerializeField] private GameObject damageEffect;
 
     [Header("Level Up Value")]
     [SerializeField] private float dmgPersenOfTotalDmgUp;
@@ -20,6 +21,11 @@ public class Nexus : Skill
     public float dmgPersenOfTotalDmgFinal
     {
         get { return dmgPersenOfTotalDmg + dmgPersenOfTotalDmgUp * (level - 1); }
+    }
+
+    public GameObject DamageEffect
+    {
+        get { return damageEffect; }
     }
 
     public override string GetDescription()

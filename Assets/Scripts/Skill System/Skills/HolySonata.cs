@@ -75,7 +75,6 @@ public class HolySonata : Skill
                 );
             }
 
-
             // gunakan mana, tapi tidak memakan cooldown
             PayWithCostType(buffSystem.GetComponent<PlayerController>().player);
             // Payment(buffSystem.transform);
@@ -122,6 +121,8 @@ public class HolySonata : Skill
         {
             if (harmonyTimer <= 0)
             {
+                // Debug.Log("healHP: " + healHPValue);
+                // Debug.Log("healMana: " + healManaValue);
                 player.Heal(Stat.HP, healHPValue);
                 player.Heal(Stat.Mana, healManaValue);
 

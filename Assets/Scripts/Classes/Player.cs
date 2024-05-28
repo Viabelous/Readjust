@@ -120,33 +120,27 @@ public class Player : Character
                 break;
 
             case Progress.MaxHP:
-                Upgrade(Stat.HP, value);
-                // this.maxHPLevel += value;
+                this.maxHPLevel += value;
                 break;
 
             case Progress.MaxMana:
-                Upgrade(Stat.Mana, value);
-                // this.maxManaLevel += value;
+                this.maxManaLevel += value;
                 break;
 
             case Progress.ATK:
-                Upgrade(Stat.ATK, value);
-                // this.atkLevel += value;
+                this.atkLevel += value;
                 break;
 
             case Progress.DEF:
-                Upgrade(Stat.DEF, value);
-                // this.defLevel += value;
+                this.defLevel += value;
                 break;
 
             case Progress.FOC:
-                Upgrade(Stat.FOC, value);
-                // this.focLevel += value;
+                this.focLevel += value;
                 break;
 
             case Progress.AGI:
-                Upgrade(Stat.AGI, value);
-                // this.agiLevel += value;
+                this.agiLevel += value;
                 break;
         }
     }
@@ -302,6 +296,10 @@ public class Player : Character
     public Player CloneForStage()
     {
         Player newPlayer = Clone();
+        newPlayer.hp = GetMaxHP();
+        newPlayer.mana = GetMaxMana();
+        newPlayer.maxShield = 0;
+        newPlayer.shield = maxShield;
         newPlayer.aerus = 0;
         newPlayer.exp = 0;
         newPlayer.venetia = 0;
@@ -335,11 +333,11 @@ public class Player : Character
         {
             case Stat.HP:
                 this.maxHp += value;
-                this.hp = this.maxHp;
+                this.hp = GetMaxHP();
                 break;
             case Stat.Mana:
                 this.maxMana += value;
-                this.mana = this.maxMana;
+                this.mana = GetMaxMana();
                 break;
             case Stat.ATK:
                 this.atk += value;
@@ -439,9 +437,9 @@ public class Player : Character
         switch (stat)
         {
             case Stat.HP:
-                if (this.hp + value > this.maxHp)
+                if (this.hp + value > GetMaxHP())
                 {
-                    this.hp = this.maxHp;
+                    this.hp = GetMaxHP();
                 }
                 else
                 {
@@ -449,9 +447,9 @@ public class Player : Character
                 }
                 break;
             case Stat.Mana:
-                if (this.mana + value > this.maxMana)
+                if (this.mana + value > GetMaxMana())
                 {
-                    this.mana = this.maxMana;
+                    this.mana = GetMaxMana();
                 }
                 else
                 {
@@ -489,7 +487,6 @@ public class Player : Character
                 else
                 {
                     this.mana -= value;
-
                 }
                 break;
             case CostType.Hp:
@@ -538,9 +535,5 @@ public class Player : Character
             regenTimer = 0;
         }
     }
-
-
-
-
 
 }

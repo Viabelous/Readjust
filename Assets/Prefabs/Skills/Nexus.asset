@@ -31,4 +31,5 @@ MonoBehaviour:
   expUpCost: 20000
   radius: 8
   dmgPersenOfTotalDmg: 0.3
+  damageEffect: {fileID: 1286542825964308190, guid: 23ce8bbab45e3ca45b217f79c5d40398, type: 3}
   dmgPersenOfTotalDmgUp: 0.05
