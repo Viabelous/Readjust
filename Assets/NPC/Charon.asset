@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Charon
   pict: {fileID: 21300000, guid: 89df4d85a8c4816419926e69e8400c60, type: 3}
   dialogue:
-  - Kemana tujuan kali ini/plus/Tapi sebelumnya... /plus/Fitur ini belum tersedia/plus/Boong
-    uyy~ Menuju Stage 1!!!/plus/debugOnly_teleportStage1
+  - Ingin berangkat?/plus/Pastikan kamu telah memelajari beberapa skill elemental
+    dan telah membawa perlengkapan!/plus/Aku akan meneleportasimu kembali kemari
+    saat darahmu tersisa sedikit jadi tidak perlu khawatir meregang nyawa/plus/openStageWindows
