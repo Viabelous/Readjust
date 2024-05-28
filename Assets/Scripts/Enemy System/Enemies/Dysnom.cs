@@ -113,7 +113,7 @@ public class Dysnom : Enemy
                     break;
 
                 case FlameTuskState.Moving:
-                    mobController.animate.Play("dysnom_flame_tusk_frontw");
+                    mobController.animate.SetTrigger("Flame Tusk");
 
                     ChangeAttackDamage(flameTuskDamage);
                     // Debug.Log("serudukk: " + this.atk);

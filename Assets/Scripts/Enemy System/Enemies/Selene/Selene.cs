@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Enemy/Selene")]
@@ -15,7 +16,7 @@ public class Selene : Enemy
         SummoningAttack
     }
 
-    [Header("Summon Heal Mob")]
+    [Header("Summon Elpis")]
     [SerializeField] private float healSumMaxTime;
     [SerializeField] private int maxHealMob;
     [SerializeField] private GameObject healMob;
@@ -23,7 +24,7 @@ public class Selene : Enemy
     [SerializeField] private float healPersenOfMaxHP;
     [SerializeField] private GameObject healEffect;
 
-    [Header("Summon Attack Mob")]
+    [Header("Summon Yuetoo")]
     [SerializeField] private float attSumMaxTime;
     [SerializeField] private GameObject attMob;
     [SerializeField] private int attMobNum;
@@ -103,11 +104,11 @@ public class Selene : Enemy
         {
             case SeleneState.SummoningHeal:
                 healSumTimer = healSumMaxTime;
-                mobController.animate.Play("selene_summoning_front2");
+                mobController.animate.SetTrigger("Summon 2");
                 break;
             case SeleneState.SummoningAttack:
                 attSumTimer = attSumMaxTime;
-                mobController.animate.Play("selene_summoning_front");
+                mobController.animate.SetTrigger("Summon 1");
                 break;
         }
     }
