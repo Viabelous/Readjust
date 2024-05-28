@@ -14,7 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_not_so_ordinary_tree_branch
   name: Not-so-oridinary Tree Branch
-  description: Cuma tangkai pohon biasa kok
+  description: 'Meningkatkan Earth Damage sebesar 35%.
+
+
+
+
+    "Ranting ini menjadi
+    awal dari suatu kehidupan besar, walau terlihat kecil tapi ketika ditanam ia
+    akan menjadi pohon raksasa yang akan memberikan kesejukan kepada penanamnya".
+
+    "Eh?
+    bukannya ranting dan bibit itu tidak sama?"
+
+    "Aku sudah berkali-kali bilang
+    kepadanya, Rion, aku yakin ia akan mengawetkan ranting itu setelah mengetahui
+    kenyataannya nanti".'
   price: 100
   icon: {fileID: 21300000, guid: 002c9a0b835d6b2499307d6d4350e80e, type: 3}
   types: 09000000

@@ -14,9 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_lotus_flower_hairclip
   name: Lotus Flower Hairclip
-  description: Jepit rambut bunga lily
+  description: 'Meningkatkan Water Damage sebesar 35%.
+
+
+
+
+    "Bunga yang cantik".
+
+    "Aku
+    bisa mengawetkannya dan membuat menjadi jepitan rambut kalau kau mau".
+
+    "Sama
+    seperti ranting pohon yang berkali-kali kukatakan waktu itu?".
+
+    "Terimakasih,
+    jangan dengarkan apa yang dia katakan, sesuatu akan menjadi spesial jika kau
+    berpikir hal itu spesial".
+
+    "Kalau begitu kita berlima spesial?".
+
+    "Benar,
+    Rion".'
   price: 100
   icon: {fileID: 21300000, guid: c96d32b85206ac749bdb7c2f34f48059, type: 3}
   types: 0a000000
+  adaptable: 0
   persentase:
   - 0.35

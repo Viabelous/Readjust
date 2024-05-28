@@ -14,10 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_lucky_cat_paw
   name: Lucky Cat Paw
-  description: Paw paw kocheng
+  description: 'Melipatgandakan Aereus yang didapat di akhir pertempuran sebanyak
+    1.25 kali lipat.
+
+
+
+
+    Karya orisinil Zey dan Xiena sebagai hasil penungguan
+    untuk keluar dari dunia lain. Zey sangat menyukai kucing sementara Xiena senang
+    bermain dengan Zay, terciptalah benda bermanfaat yang tidak jelas seperti ini.
+    Tentunya bagian yang dikatakan bermanfaat di benda ini ada berkat campur tangan
+    Ken.'
   price: 50
-  icon: {fileID: 0}
-  types: 0c000000
+  icon: {fileID: 21300000, guid: 06837e4d86a44f94596110c0ba9eab3b, type: 3}
+  types: 
   adaptable: 0
   rewardType: 0
   persentase: 0.25

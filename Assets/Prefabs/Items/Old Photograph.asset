@@ -14,10 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_old_photograph
   name: Old Photograph
-  description: Foto keluarga usang
+  description: 'Meningkatkan Fire Damage, Earth Damage, Water Damage, dan Air Damage
+    sebesar 35%.
+
+
+
+
+    "Benda ini dinamakan kamera, aku membelinya di benua sebelah,
+    bolehkah aku mengambil potret kalian berlima?".
+
+    "Tentunya nyonya yang terhormat,
+    tetapi mengapa kami?".
+
+    "Kalian adalah sekelompok orang-orang hebat, kalian
+    akan menyadarinya suatu hari nanti".'
   price: 5
   icon: {fileID: 21300000, guid: fd8492186b069114e96f56aad53f8c34, type: 3}
   types: 08000000090000000a0000000b000000
+  adaptable: 0
   persentase:
   - 0.35
   - 0.35

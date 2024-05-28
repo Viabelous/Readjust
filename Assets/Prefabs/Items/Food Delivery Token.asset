@@ -14,7 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_food_delivery_token
   name: Food Delivery Token
-  description: Burger sebagai makanan malam hari
+  description: 'Menurunkan makanan di tempat acak setiap 15 detik yang akan mengisi
+    HP sebesar 35 dan MP sebesar 15.
+
+
+
+
+    Token untuk pelanggan setia restoran
+    terkemuka, tidak perlu ambil pusing dengan harga yang harus dibayar karena token
+    ini sebenarnya dibuat oleh pemilik toko untuk melunasi hutangnya yang tidak akan
+    pernah habis menurut kontrak.
+
+'
   price: 10
   icon: {fileID: 21300000, guid: f67ddd1c40ed5924c842b6d1a8c58a1e, type: 3}
   types: 0f000000

@@ -14,9 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_purple_hair_ribbon
   name: Purple Hair Ribbon
-  description: Pita ikat rambut pink boogie
+  description: 'Meningkatkan Fire Damage sebesar 35%.
+
+
+
+
+    "Pita ini cocok kan
+    dengan warna rambutku?".
+
+    "Iya, sangat cocok".
+
+    "Terimakasih Rion, meamng
+    hanya kamu dan kakakku yang sepemikiran denganku".
+
+    "Hei Rion, kamu tahu
+    kan ungu terang dan merah sangat tidak cocok?".
+
+    "Iya aku tahu, tapi selama
+    dia tersenyum maka biarkanlah".'
   price: 50
   icon: {fileID: 21300000, guid: 99a9a4438df7c844ebec51a702e1684e, type: 3}
   types: 08000000
+  adaptable: 0
   persentase:
   - 0.35

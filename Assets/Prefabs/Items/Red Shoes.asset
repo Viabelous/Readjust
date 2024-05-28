@@ -14,9 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_red_shoes
   name: Red Shoes
-  description: Sepatu merah snowwhite
+  description: 'Meningkatkan AGI sebesar 4.
+
+
+
+
+    Sepatu merah yang selalu dikenakan
+    oleh Sang Pahlawan di karangan populer benua ini. Warna merah yang mengisyaratkan
+    keberanian dari Sang Pahlawan itu memberikan dorongan kepada pemakainya untuk
+    terus melangkah maju.'
   price: 50
   icon: {fileID: 21300000, guid: 716c137b9030d614fb7463a08170affe, type: 3}
   types: 05000000
+  adaptable: 0
   value:
   - 4
