@@ -157,8 +157,8 @@ public class SkillWindowsBtnSelection : Navigation
 
                 else
                 {
-                    focusedSkill.Upgrade();
                     GameManager.player.Pay(CostType.Exp, skill.ExpUpCost);
+                    focusedSkill.Upgrade();
 
                     if (skill.Level == skill.MaxLevel)
                     {
@@ -183,6 +183,7 @@ public class SkillWindowsBtnSelection : Navigation
                 {
                     GameManager.player.Pay(CostType.Exp, skill.ExpUnlockCost);
                     GameManager.unlockedSkills.Add(skill.Name, skill.Level);
+
                     IncreaseElementSkillProgress(skill);
                 }
                 break;

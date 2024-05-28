@@ -32,15 +32,23 @@ public class StatSelection : Navigation
             case NavigationState.Hover:
                 WindowsController.FocusedButton = gameObject;
 
+                // tutup pop up
+                if (ZoneManager.instance.CurrentState() == ZoneState.OnPopUp)
+                {
+                    switch (WindowsController.popUp.id)
+                    {
+                        case "upgrade_failed":
+                            if (WindowsController.popUp.GetClickedBtn() == PopUpBtnType.OK)
+                            {
+                                Destroy(WindowsController.popUp.gameObject);
+                                ZoneManager.instance.ChangeCurrentState(ZoneState.Idle);
+                            }
+                            break;
+                    }
+                }
+
                 currentColor.r = 1f;
                 currentColor.g = 1f;
-                currentColor.b = 1f;
-                ImageComponent.color = currentColor;
-                break;
-
-            case NavigationState.Focused:
-                currentColor.r = 0.3f;
-                currentColor.g = 0.3f;
                 currentColor.b = 1f;
                 ImageComponent.color = currentColor;
                 break;
@@ -62,12 +70,61 @@ public class StatSelection : Navigation
     public override void Clicked()
     {
         print("klik stat");
-        // if (GameManager.player.CanBeUpgraded(type))
-        // {
-        //     print("sekarang hover ada di upgrade btn");
-        //     currState = NavigationState.Focused;
-        //     WindowsController.HoveredButton = GameObject.Find("upgrade_btn");
-        // }
+        if (GameManager.player.CanBeUpgraded(type))
+        {
+            // aerus dan exp tidak cukup
+            if (
+                GameManager.player.aerus < GameManager.player.GetAerusUpCost(type) &&
+                GameManager.player.exp < GameManager.player.GetExpUpCost(type)
+            )
+            {
+                WindowsController.CreatePopUp(
+                    "upgrade_failed",
+                    PopUpType.OK,
+                    "Anda membutuhkan lebih banyak Aerus dan Exp Orb untuk dapat meningkatkan stat ini."
+                );
+
+            }
+
+            // aerus tidak cukup
+            else if (GameManager.player.aerus < GameManager.player.GetAerusUpCost(type))
+            {
+                WindowsController.CreatePopUp(
+                    "upgrade_failed",
+                    PopUpType.OK,
+                    "Anda membutuhkan lebih banyak Aerus untuk dapat meningkatkan stat ini."
+                );
+            }
+
+            // exp tidak cukup
+            else if (GameManager.player.exp < GameManager.player.GetExpUpCost(type))
+            {
+                WindowsController.CreatePopUp(
+                    "upgrade_failed",
+                    PopUpType.OK,
+                    "Anda membutuhkan lebih banyak Exp Orb untuk dapat meningkatkan stat ini."
+                );
+            }
+
+            // berhasil upgrade
+            else
+            {
+                GameManager.player.Pay(CostType.Aerus, GameManager.player.GetAerusUpCost(type));
+                GameManager.player.Pay(CostType.Exp, GameManager.player.GetExpUpCost(type));
+
+                GameManager.player.IncreaseProgress(type, 1);
+
+            }
+
+        }
+        else
+        {
+            WindowsController.CreatePopUp(
+                "upgrade_failed",
+                PopUpType.OK,
+                "Stat telah mencapai level maksimal."
+            );
+        }
     }
 
     public override void ExclusiveKey()

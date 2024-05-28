@@ -25,14 +25,14 @@ public class Player : Character
 
 
     [Header("Stat Level")]
-    [SerializeField] private float expUpCost;
     [SerializeField] private float aerusUpCost;
-    private int maxHPLevel = 0;
-    private int maxManaLevel = 0;
-    private int atkLevel = 0;
-    private int defLevel = 0;
-    private int agiLevel = 0;
-    private int focLevel = 0;
+    [SerializeField] private float expUpCost;
+    private int maxHPLevel = 1;
+    private int maxManaLevel = 1;
+    private int atkLevel = 1;
+    private int defLevel = 1;
+    private int agiLevel = 1;
+    private int focLevel = 1;
     private int statMaxLevel = 10;
 
     public enum Progress
@@ -224,25 +224,6 @@ public class Player : Character
         return this.speed;
     }
 
-    public float GetExpUpCost(Progress type)
-    {
-        switch (type)
-        {
-            case Progress.MaxHP:
-                return this.expUpCost * (maxHPLevel - 1);
-            case Progress.MaxMana:
-                return this.expUpCost * (maxManaLevel - 1);
-            case Progress.ATK:
-                return this.expUpCost * (atkLevel - 1);
-            case Progress.DEF:
-                return this.expUpCost * (defLevel - 1);
-            case Progress.FOC:
-                return this.expUpCost * (focLevel - 1);
-            case Progress.AGI:
-                return this.expUpCost * (agiLevel - 1);
-        }
-        return 0;
-    }
     public float GetAerusUpCost(Progress type)
     {
         switch (type)
@@ -260,8 +241,29 @@ public class Player : Character
             case Progress.AGI:
                 return this.aerusUpCost * (agiLevel - 1);
         }
-        return 0;
+        return -1;
     }
+
+    public float GetExpUpCost(Progress type)
+    {
+        switch (type)
+        {
+            case Progress.MaxHP:
+                return this.expUpCost * (maxHPLevel - 1);
+            case Progress.MaxMana:
+                return this.expUpCost * (maxManaLevel - 1);
+            case Progress.ATK:
+                return this.expUpCost * (atkLevel - 1);
+            case Progress.DEF:
+                return this.expUpCost * (defLevel - 1);
+            case Progress.FOC:
+                return this.expUpCost * (focLevel - 1);
+            case Progress.AGI:
+                return this.expUpCost * (agiLevel - 1);
+        }
+        return -1;
+    }
+
 
     public Player CreateAsset(string name)
     {

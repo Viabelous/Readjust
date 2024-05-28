@@ -14,54 +14,52 @@ public class StatWindowsController : MonoBehaviour
 
     void Start()
     {
-        // UpdateStatBtnHover();
-    }
-
-    void Update()
-    {
         UpdateStatBtnHover();
         UpdateStatValue();
         SetStatDescription();
     }
 
+    void Update()
+    {
+        if (WindowsController.HoveredButton.GetComponent<StatSelection>() != null)
+        {
+            UpdateStatBtnHover();
+            SetStatDescription();
+            UpdateStatValue();
+        }
+    }
+
     void SetStatDescription()
     {
+        int level = GameManager.player.GetProgress(focusedStat.type);
+
+        statAerusCost.text = GameManager.player.GetAerusUpCost(focusedStat.type).ToString();
+        statExpCost.text = GameManager.player.GetExpUpCost(focusedStat.type).ToString();
+
         switch (focusedStat.type)
         {
             case Player.Progress.MaxHP:
-                statAerusCost.text = GameManager.player.GetAerusUpCost(Player.Progress.MaxHP).ToString();
-                statAerusCost.text = GameManager.player.GetExpUpCost(Player.Progress.MaxHP).ToString();
-                statName.text = "Max Health Point (HP)";
+                statName.text = "Max Health Point (HP) Lv. " + level;
                 statDescription.text = "Jumlah maksimal darah yang bisa didapatkan pada saat stage berlangsung stage.";
                 break;
             case Player.Progress.MaxMana:
-                statAerusCost.text = GameManager.player.GetAerusUpCost(Player.Progress.MaxMana).ToString();
-                statAerusCost.text = GameManager.player.GetExpUpCost(Player.Progress.MaxMana).ToString();
-                statName.text = "Max Mana Point (MP)";
+                statName.text = "Max Mana Point (MP) Lv. " + level;
                 statDescription.text = "Jumlah maksimal mana yang bisa digunakan pada saat stage berlangsung stage.";
                 break;
             case Player.Progress.ATK:
-                statAerusCost.text = GameManager.player.GetAerusUpCost(Player.Progress.ATK).ToString();
-                statAerusCost.text = GameManager.player.GetExpUpCost(Player.Progress.ATK).ToString();
-                statName.text = "Attack (ATK)";
+                statName.text = "Attack (ATK) Lv. " + level;
                 statDescription.text = "Kerusakan yang akan dikeluarkan oleh player";
                 break;
             case Player.Progress.DEF:
-                statAerusCost.text = GameManager.player.GetAerusUpCost(Player.Progress.DEF).ToString();
-                statAerusCost.text = GameManager.player.GetExpUpCost(Player.Progress.DEF).ToString();
-                statName.text = "Defense (DEF)";
+                statName.text = "Defense (DEF) Lv. " + level;
                 statDescription.text = "Sebagai tameng player.";
                 break;
             case Player.Progress.FOC:
-                statAerusCost.text = GameManager.player.GetAerusUpCost(Player.Progress.FOC).ToString();
-                statAerusCost.text = GameManager.player.GetExpUpCost(Player.Progress.FOC).ToString();
-                statName.text = "... (FOC)";
+                statName.text = "... (FOC) Lv. " + level;
                 statDescription.text = "Kemungkinan dikeluarkannya kerusakan yang tinggi pada saat menyerang.";
                 break;
             case Player.Progress.AGI:
-                statAerusCost.text = GameManager.player.GetAerusUpCost(Player.Progress.AGI).ToString();
-                statAerusCost.text = GameManager.player.GetExpUpCost(Player.Progress.AGI).ToString();
-                statName.text = "Agility (AGI)";
+                statName.text = "Agility (AGI) Lv. " + level;
                 statDescription.text = "Penambahan kecepatan pergerakan player.";
                 break;
         }
@@ -69,17 +67,7 @@ public class StatWindowsController : MonoBehaviour
 
     void UpdateStatBtnHover()
     {
-        if (WindowsController.FocusedButton == null)
-        {
-            focusedStat = WindowsController.HoveredButton.GetComponent<StatSelection>();
-            print(WindowsController.HoveredButton.GetComponent<StatSelection>() == null);
-            print(focusedStat == null);
-
-        }
-        else
-        {
-            focusedStat = WindowsController.FocusedButton.GetComponent<StatSelection>();
-        }
+        focusedStat = WindowsController.HoveredButton.GetComponent<StatSelection>();
     }
 
     public void UpdateStatValue()
