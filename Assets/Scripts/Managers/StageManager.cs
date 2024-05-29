@@ -40,10 +40,12 @@ public class StageManager : MonoBehaviour
 
     // pause ------------------------------
     [HideInInspector] private StageState state;
-    [SerializeField] private GameObject stateText, blackScreen;
+    [SerializeField] private GameObject[] popUps;
+    private NotifPopUp popUp;
+    [SerializeField] private GameObject blackScreen;
 
 
-    [HideInInspector] public bool validSkill;
+    [HideInInspector] public bool onPopUp;
     private bool onFinal, hasSavedReward;
 
 
@@ -60,11 +62,11 @@ public class StageManager : MonoBehaviour
         extraAerus = 0;
         extraExp = 0;
         state = StageState.Play;
-        stateText.SetActive(false);
         blackScreen.SetActive(false);
 
         onFinal = false;
         hasSavedReward = false;
+        onPopUp = false;
         // rewardPanel.SetActive(false);
     }
 
@@ -140,9 +142,7 @@ public class StageManager : MonoBehaviour
         ResumeTime();
         ActivateTimer();
 
-        stateText.SetActive(false);
         blackScreen.SetActive(false);
-
 
         switch (Input.inputString)
         {
@@ -162,20 +162,39 @@ public class StageManager : MonoBehaviour
     private void Pause()
     {
         PauseTime();
-
-        stateText.SetActive(true);
-        stateText.GetComponent<Text>().text = "PAUSE";
         blackScreen.SetActive(true);
+
+        if (popUp == null)
+        {
+            CreatePopUp(
+                "pause",
+                PopUpType.OKCancel,
+                "Apakah Anda ingin meninggalkan stage dan kembali ke Developer Zone? (Perhatikan: Hadiah yang telah terkumpul tidak akan tersimpan.)"
+            );
+        }
 
         switch (Input.inputString)
         {
             case " ":
                 ToggleState(StageState.Pause, StageState.Play);
-                break;
-            case "\b":
-                SceneManager.LoadScene("DeveloperZone");
+                Destroy(popUp.gameObject);
                 break;
         }
+
+        if (popUp.id == "pause")
+        {
+            if (popUp.GetComponent<NotifPopUp>().GetClickedBtn() == PopUpBtnType.OK)
+            {
+                Destroy(popUp.gameObject);
+                SceneManager.LoadScene("DeveloperZone");
+            }
+            else if (popUp.GetComponent<NotifPopUp>().GetClickedBtn() == PopUpBtnType.Cancel)
+            {
+                ToggleState(StageState.Pause, StageState.Play);
+                Destroy(popUp.gameObject);
+            }
+        }
+
     }
 
     private void Lose()
@@ -280,5 +299,17 @@ public class StageManager : MonoBehaviour
         GameManager.player.Collect(RewardType.Aerus, Mathf.FloorToInt(player.aerus + extraAerus));
         GameManager.player.Collect(RewardType.ExpOrb, Mathf.FloorToInt(player.exp + extraExp));
         GameManager.player.SaveHistory(score, time);
+    }
+
+    public void CreatePopUp(string id, PopUpType type, string info)
+    {
+        GameObject newpopUp = Instantiate(
+            popUps[type == PopUpType.OK ? 0 : 1],
+            GameObject.Find("UI").transform
+        );
+
+        popUp = newpopUp.GetComponent<NotifPopUp>();
+        popUp.id = id;
+        popUp.info = info;
     }
 }

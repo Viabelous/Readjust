@@ -69,7 +69,6 @@ public class StatSelection : Navigation
 
     public override void Clicked()
     {
-        print("klik stat");
         if (GameManager.player.CanBeUpgraded(type))
         {
             // aerus dan exp tidak cukup
@@ -119,11 +118,11 @@ public class StatSelection : Navigation
         }
         else
         {
-            WindowsController.CreatePopUp(
-                "upgrade_failed",
-                PopUpType.OK,
-                "Stat telah mencapai level maksimal."
-            );
+            // WindowsController.CreatePopUp(
+            //     "upgrade_failed",
+            //     PopUpType.OK,
+            //     "Stat telah mencapai level maksimal."
+            // );
         }
     }
 

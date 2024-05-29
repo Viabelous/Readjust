@@ -27,7 +27,7 @@ public class GameManager : ScriptableObject
     public static Player player;
 
     // map stage yang dipilih player
-    public static Map selectedMap = Map.Stage1;
+    public static Map selectedMap = Map.None;
 
     // skill yang sudah dibuka
     public static Dictionary<string, int> unlockedSkills = new Dictionary<string, int>();

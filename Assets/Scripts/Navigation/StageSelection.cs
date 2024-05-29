@@ -16,7 +16,7 @@ public class StageSelection : Navigation
 
     void Start()
     {
-        if(firstAccess)
+        if (firstAccess)
         {
             IsHovered(true);
         }
@@ -24,12 +24,13 @@ public class StageSelection : Navigation
 
     public override void IsHovered(bool state)
     {
-        if(isUnlocked == false)
+        if (isUnlocked == false)
         {
             WindowsController.HoveredButton = Left;
-        } else
+        }
+        else
         {
-            if(state)
+            if (state)
             {
                 GetComponent<Image>().sprite = HoverSprite;
                 popUp.SetActive(true);
@@ -45,9 +46,10 @@ public class StageSelection : Navigation
 
     public override void Clicked()
     {
-        if(isUnlocked)
+        if (isUnlocked)
         {
-            SceneManager.LoadScene(""+stage);
+            GameManager.selectedMap = stage;
+            SceneManager.LoadScene("" + stage);
         }
     }
 

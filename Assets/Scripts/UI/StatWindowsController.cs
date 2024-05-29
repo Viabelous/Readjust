@@ -33,8 +33,18 @@ public class StatWindowsController : MonoBehaviour
     {
         int level = GameManager.player.GetProgress(focusedStat.type);
 
-        statAerusCost.text = GameManager.player.GetAerusUpCost(focusedStat.type).ToString();
-        statExpCost.text = GameManager.player.GetExpUpCost(focusedStat.type).ToString();
+        if (GameManager.player.CanBeUpgraded(focusedStat.type))
+        {
+            statAerusCost.text = GameManager.player.GetAerusUpCost(focusedStat.type).ToString();
+            statExpCost.text = GameManager.player.GetExpUpCost(focusedStat.type).ToString();
+
+        }
+        else
+        {
+            statAerusCost.text = "-";
+            statExpCost.text = "-";
+        }
+
 
         switch (focusedStat.type)
         {
@@ -55,7 +65,7 @@ public class StatWindowsController : MonoBehaviour
                 statDescription.text = "Sebagai tameng player.";
                 break;
             case Player.Progress.FOC:
-                statName.text = "... (FOC) Lv. " + level;
+                statName.text = "Focus (FOC) Lv. " + level;
                 statDescription.text = "Kemungkinan dikeluarkannya kerusakan yang tinggi pada saat menyerang.";
                 break;
             case Player.Progress.AGI:

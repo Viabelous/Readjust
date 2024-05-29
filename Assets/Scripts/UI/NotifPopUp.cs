@@ -25,12 +25,20 @@ public class NotifPopUp : MonoBehaviour
     [SerializeField] private Text infoText;
     [SerializeField] List<Image> buttons;
     [SerializeField] Image currentBtn;
+    private Color initColor, unselectColor;
     private PopUpBtnType btnClicked;
 
     void Start()
     {
         currentBtn = buttons[0];
-        currentBtn.color = SelectedColor(currentBtn);
+        initColor = currentBtn.color;
+
+        if (type == PopUpType.OKCancel)
+        {
+            unselectColor = buttons[1].color;
+        }
+
+        // currentBtn.color = SelectedColor(currentBtn);
 
         infoText.text = info;
         btnClicked = PopUpBtnType.None;
@@ -56,16 +64,13 @@ public class NotifPopUp : MonoBehaviour
 
     private Color SelectedColor(Image btn)
     {
-        Color color = btn.color;
+        Color color = initColor;
         return color;
     }
 
     private Color UnSelectedColor(Image btn)
     {
-        Color color = btn.color;
-        color.r -= 0.1f;
-        color.g -= 0.1f;
-        color.b -= 0.1f;
+        Color color = unselectColor;
         return color;
     }
 

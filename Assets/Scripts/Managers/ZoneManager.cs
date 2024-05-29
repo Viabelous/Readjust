@@ -35,6 +35,7 @@ public class ZoneManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        GameManager.selectedMap = Map.None;
     }
 
     void Start()

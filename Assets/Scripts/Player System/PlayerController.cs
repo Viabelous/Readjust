@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        print(GameManager.selectedMap);
 
         // print("MaxHP: " + player.GetMaxHP());
         // print("MaxMana: " + player.GetMaxMana());

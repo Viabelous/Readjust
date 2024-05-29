@@ -246,17 +246,17 @@ public class Player : Character
         switch (type)
         {
             case Progress.MaxHP:
-                return this.aerusUpCost * (maxHPLevel - 1);
+                return this.aerusUpCost * maxHPLevel;
             case Progress.MaxMana:
-                return this.aerusUpCost * (maxManaLevel - 1);
+                return this.aerusUpCost * maxManaLevel;
             case Progress.ATK:
-                return this.aerusUpCost * (atkLevel - 1);
+                return this.aerusUpCost * atkLevel;
             case Progress.DEF:
-                return this.aerusUpCost * (defLevel - 1);
+                return this.aerusUpCost * defLevel;
             case Progress.FOC:
-                return this.aerusUpCost * (focLevel - 1);
+                return this.aerusUpCost * focLevel;
             case Progress.AGI:
-                return this.aerusUpCost * (agiLevel - 1);
+                return this.aerusUpCost * agiLevel;
         }
         return -1;
     }
@@ -266,17 +266,17 @@ public class Player : Character
         switch (type)
         {
             case Progress.MaxHP:
-                return this.expUpCost * (maxHPLevel - 1);
+                return this.expUpCost * maxHPLevel;
             case Progress.MaxMana:
-                return this.expUpCost * (maxManaLevel - 1);
+                return this.expUpCost * maxManaLevel;
             case Progress.ATK:
-                return this.expUpCost * (atkLevel - 1);
+                return this.expUpCost * atkLevel;
             case Progress.DEF:
-                return this.expUpCost * (defLevel - 1);
+                return this.expUpCost * defLevel;
             case Progress.FOC:
-                return this.expUpCost * (focLevel - 1);
+                return this.expUpCost * focLevel;
             case Progress.AGI:
-                return this.expUpCost * (agiLevel - 1);
+                return this.expUpCost * agiLevel;
         }
         return -1;
     }
@@ -365,6 +365,10 @@ public class Player : Character
 
         foreach (var score in data["scores"] as Dictionary<DateTime, List<float>>)
         {
+            if (this.scores.ContainsKey(score.Key))
+            {
+                continue;
+            }
             this.scores.Add(score.Key, score.Value);
         }
 
