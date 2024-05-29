@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class TalkSystem : MonoBehaviour
 {
@@ -19,7 +20,9 @@ public class TalkSystem : MonoBehaviour
     public string windows;
     public GameObject windowsController;
     public float wordSpeed;
-    public bool playerDekat;
+    [HideInInspector] public bool playerDekat;
+    private bool stopTyping;
+    private bool isTypingNow;
 
 
     void Start()
@@ -44,6 +47,7 @@ public class TalkSystem : MonoBehaviour
             {
                 if (dialogTeks.text == dialog.First() && Input.GetKeyDown(KeyCode.Q))
                 {
+                    isTypingNow = false;
                     dialog.RemoveAt(0);
                     NextLine();
                 }
@@ -52,10 +56,16 @@ public class TalkSystem : MonoBehaviour
             // kalau belum, aktifkan dialog panel
             else
             {
+                isTypingNow = false;
                 SetText(0);
                 dialogPanel.SetActive(true);
-                StartCoroutine(Typing());
+                NextLine();
             }
+        }
+        if(isTypingNow == true && Input.GetKeyDown(KeyCode.Q))
+        {
+            stopTyping = true;
+            isTypingNow = false;
         }
 
 
@@ -73,10 +83,22 @@ public class TalkSystem : MonoBehaviour
 
     IEnumerator Typing()
     {
+        stopTyping = false;
+        yield return new WaitForSeconds(0.2f);
+        isTypingNow = true;
         foreach (char letter in dialog.First())
         {
-            dialogTeks.text += letter;
-            yield return new WaitForSeconds(wordSpeed);
+            if(!stopTyping)
+            {
+                dialogTeks.text += letter;
+                yield return new WaitForSeconds(wordSpeed);
+            }
+            
+            else
+            {
+                dialogTeks.text = dialog.First();
+                yield break;
+            }
         }
     }
 

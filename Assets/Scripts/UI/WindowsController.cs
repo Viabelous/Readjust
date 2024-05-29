@@ -12,7 +12,7 @@ public class windowsController : MonoBehaviour
     public GameObject Player;
     public GameObject[] Windows;
     public GameObject[] WindowsButtonStartPointNavigation;
-    public GameObject[] SkillTree;
+    [HideInInspector] public GameObject[] SkillTree;
     public GameObject HoveredButton;
     public GameObject FocusedButton;
     public int ActiveWindowsID;
