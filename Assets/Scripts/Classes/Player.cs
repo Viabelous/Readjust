@@ -328,18 +328,18 @@ public class Player : Character
         data.Add("aerus", this.aerus);
         data.Add("exp", this.exp);
         data.Add("venetia", this.venetia);
-        data.Add("maxHPLevel", GetProgress(Progress.MaxHP));
-        data.Add("maxManaLevel", GetProgress(Progress.MaxMana));
-        data.Add("atkLevel", GetProgress(Progress.ATK));
-        data.Add("defLevel", GetProgress(Progress.DEF));
-        data.Add("focLevel", GetProgress(Progress.FOC));
-        data.Add("agiLevel", GetProgress(Progress.AGI));
+        data.Add("maxHPLevel", this.maxHPLevel);
+        data.Add("maxManaLevel", this.maxManaLevel);
+        data.Add("atkLevel", this.atkLevel);
+        data.Add("defLevel", this.defLevel);
+        data.Add("focLevel", this.focLevel);
+        data.Add("agiLevel", this.agiLevel);
 
-        data.Add("story", GetProgress(Progress.Story));
-        data.Add("fireSkill", GetProgress(Progress.FireSkill));
-        data.Add("earthSkill", GetProgress(Progress.EarthSkill));
-        data.Add("waterSkill", GetProgress(Progress.WaterSkill));
-        data.Add("airSkill", GetProgress(Progress.AirSkill));
+        data.Add("story", this.story);
+        data.Add("fireSkill", this.fireSkill);
+        data.Add("earthSkill", this.earthSkill);
+        data.Add("waterSkill", this.waterSkill);
+        data.Add("airSkill", this.airSkill);
 
         data.Add("scores", this.scores);
 
@@ -374,25 +374,25 @@ public class Player : Character
 
     }
 
-    public void LoadData(PlayerData playerData)
-    {
-        this.aerus = playerData.aerus;
-        this.exp = playerData.exp;
-        this.venetia = playerData.venetia;
+    // public void LoadData(PlayerData playerData)
+    // {
+    //     this.aerus = playerData.aerus;
+    //     this.exp = playerData.exp;
+    //     this.venetia = playerData.venetia;
 
-        this.maxHPLevel = playerData.maxHPLevel;
-        this.maxManaLevel = playerData.maxManaLevel;
-        this.atkLevel = playerData.atkLevel;
-        this.defLevel = playerData.defLevel;
-        this.agiLevel = playerData.agiLevel;
-        this.focLevel = playerData.focLevel;
+    //     this.maxHPLevel = playerData.maxHPLevel;
+    //     this.maxManaLevel = playerData.maxManaLevel;
+    //     this.atkLevel = playerData.atkLevel;
+    //     this.defLevel = playerData.defLevel;
+    //     this.agiLevel = playerData.agiLevel;
+    //     this.focLevel = playerData.focLevel;
 
-        this.story = playerData.story;
-        this.fireSkill = playerData.fireSkill;
-        this.earthSkill = playerData.earthSkill;
-        this.waterSkill = playerData.waterSkill;
-        this.airSkill = playerData.airSkill;
-    }
+    //     this.story = playerData.story;
+    //     this.fireSkill = playerData.fireSkill;
+    //     this.earthSkill = playerData.earthSkill;
+    //     this.waterSkill = playerData.waterSkill;
+    //     this.airSkill = playerData.airSkill;
+    // }
 
     public override void Upgrade(Stat stat, float value)
     {

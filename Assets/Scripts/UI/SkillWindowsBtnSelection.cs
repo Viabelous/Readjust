@@ -8,7 +8,7 @@ public class SkillWindowsBtnSelection : Navigation
 {
     enum BtnType
     {
-        Select, Upgrade, Locked
+        Select, OpenUpgrade, Upgrade, Unlock, Cancel
     }
 
     [SerializeField] private BtnType type;
@@ -17,16 +17,11 @@ public class SkillWindowsBtnSelection : Navigation
     private Color currentColor;
     private SkillsSelection focusedSkill;
 
-    public SkillWindowsBtnSelection()
-    {
-    }
-
     void Start()
     {
         currentColor = ImageComponent.color;
-        // currState = NavigationState.Active;
-
     }
+
     void Update()
     {
         Left = WindowsController.FocusedButton;
@@ -37,36 +32,31 @@ public class SkillWindowsBtnSelection : Navigation
         switch (type)
         {
             case BtnType.Select:
-
                 if (Down != null && !Down.activeInHierarchy)
                 {
                     Down = null;
                 }
-
-                else
+                else if (GameObject.Find("open_upgrade_btn") != null)
                 {
-                    Down = GameObject.Find("upgrade_btn");
+                    Down = GameObject.Find("open_upgrade_btn");
                 }
 
                 if (Left.GetComponent<SkillsSelection>().HasSelected())
                 {
-                    btnText.text = "UNSELECT";
+                    btnText.text = "BATALKAN";
                 }
                 else
                 {
-                    btnText.text = "SELECT";
+                    btnText.text = "GUNAKAN";
                 }
-
 
                 break;
 
             case BtnType.Upgrade:
-                costText.color = GameManager.player.exp < focusedSkill.GetSkill().ExpUpCost ? Color.red : Color.black;
 
-                costText.text = focusedSkill.GetSkill().ExpUpCost.ToString();
                 break;
 
-            case BtnType.Locked:
+            case BtnType.Unlock:
                 costText.color = GameManager.player.exp < focusedSkill.GetSkill().ExpUnlockCost ? Color.red : Color.black;
                 costText.text = focusedSkill.GetSkill().ExpUnlockCost.ToString();
                 break;
@@ -143,34 +133,8 @@ public class SkillWindowsBtnSelection : Navigation
                 }
                 break;
 
-            // upgrade skill --------------------------------------------------------
-
-            case BtnType.Upgrade:
-                if (GameManager.player.exp < skill.ExpUpCost)
-                {
-                    WindowsController.CreatePopUp(
-                        "upgrade_failed",
-                        PopUpType.OK,
-                        "Anda membutuhkan lebih banyak Exp Orb untuk meningkatkan skill ini."
-                    );
-                }
-
-                else
-                {
-                    GameManager.player.Pay(CostType.Exp, skill.ExpUpCost);
-                    focusedSkill.Upgrade();
-
-                    if (skill.Level == skill.MaxLevel)
-                    {
-                        HoverBackToSkill(focusedSkill);
-                        gameObject.SetActive(false);
-                    }
-
-                }
-                break;
-
             // beli / buka skill baru --------------------------------------------------------
-            case BtnType.Locked:
+            case BtnType.Unlock:
                 if (GameManager.player.exp < skill.ExpUnlockCost)
                 {
                     WindowsController.CreatePopUp(
@@ -183,32 +147,53 @@ public class SkillWindowsBtnSelection : Navigation
                 {
                     GameManager.player.Pay(CostType.Exp, skill.ExpUnlockCost);
                     GameManager.unlockedSkills.Add(skill.Name, skill.Level);
-
                     IncreaseElementSkillProgress(skill);
                 }
                 break;
+
+            case BtnType.OpenUpgrade:
+                currState = NavigationState.Active;
+                WindowsController.HoveredButton = null;
+                GameObject.FindObjectOfType<SkillWindowsController>().GetUpgradeWindow().SetActive(true);
+                break;
+
+            // upgrade skill --------------------------------------------------------
+            case BtnType.Upgrade:
+                if (GameManager.player.exp < skill.ExpUpCost)
+                {
+                    WindowsController.CreatePopUp(
+                        "upgrade_failed",
+                        PopUpType.OK,
+                        "Anda membutuhkan lebih banyak Exp Orb untuk meningkatkan skill ini."
+                    );
+                }
+                else
+                {
+                    GameManager.player.Pay(CostType.Exp, skill.ExpUpCost);
+                    focusedSkill.Upgrade();
+                }
+                break;
+
+            case BtnType.Cancel:
+                currState = NavigationState.Active;
+                GameObject.FindObjectOfType<SkillWindowsController>().GetUpgradeWindow().SetActive(false);
+                WindowsController.HoveredButton = GameObject.Find("select_btn");
+                break;
         }
     }
-
-    // private IEnumerator ClickedAnimation()
-    // {
-    //     currState = NavigationState.Active;
-    //     yield return new WaitForSeconds(0.5f);
-    //     currState = NavigationState.Hover;
-    // }
 
     public override void ExclusiveKey()
     {
 
     }
 
-    private void HoverBackToSkill(SkillsSelection focusedSkill)
-    {
-        focusedSkill.ChangeCurrentState(NavigationState.Hover);
-        WindowsController.HoveredButton = Left;
-        WindowsController.FocusedButton = null;
-        currState = NavigationState.Active;
-    }
+    // private void HoverBackToSkill(SkillsSelection focusedSkill)
+    // {
+    //     focusedSkill.ChangeCurrentState(NavigationState.Hover);
+    //     WindowsController.HoveredButton = Left;
+    //     WindowsController.FocusedButton = null;
+    //     currState = NavigationState.Active;
+    // }
 
     public void SetCostColor(Color color)
     {

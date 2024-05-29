@@ -303,6 +303,15 @@ public class Skill : ScriptableObject
 
     }
 
+    public bool CanBeUpgraded()
+    {
+        if (Level == MaxLevel)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public virtual void Activate(GameObject gameObject)
     {
 

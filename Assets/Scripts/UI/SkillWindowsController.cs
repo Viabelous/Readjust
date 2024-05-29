@@ -1,14 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillWindowsController : MonoBehaviour
 {
     [SerializeField] private windowsController WindowsController;
-    [SerializeField] private GameObject selectBtn, upgradeBtn, lockedBtn;
+    [SerializeField] private GameObject selectBtn, openUpgradeBtn, lockedBtn;
     [SerializeField] private Text skillName, skillCD, skillCost, skillDescription;
+    [SerializeField] private GameObject upgradeWindow;
     SkillsSelection skillsSelection;
 
     void Start()
@@ -36,17 +34,7 @@ public class SkillWindowsController : MonoBehaviour
     {
         // kalau sudah dibuka, maka tampilkan tombol select
         selectBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
-
-        // kalau skill yg dihover sudah mencapai level maksimal,
-        // maka sembunyikan tombol upgrade
-        if (skillsSelection.GetSkill().Level == skillsSelection.GetSkill().MaxLevel)
-        {
-            upgradeBtn.SetActive(false);
-        }
-        else
-        {
-            upgradeBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
-        }
+        openUpgradeBtn.SetActive(skillsSelection.hasUnlocked ? true : false);
 
         // kalau skill yg dihover belum dapat dibeli atau progres skill elemen
         // belum terpenuhi, maka sembunyikan tombol unlock
@@ -76,5 +64,10 @@ public class SkillWindowsController : MonoBehaviour
         {
             skillsSelection = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
         }
+    }
+
+    public GameObject GetUpgradeWindow()
+    {
+        return upgradeWindow;
     }
 }
