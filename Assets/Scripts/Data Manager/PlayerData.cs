@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.IO;
+using System.Collections.Generic;
+using System;
 
 public class PlayerData
 {
@@ -22,6 +24,8 @@ public class PlayerData
     public int waterSkill = 0;
     public int airSkill = 0;
 
+    public Dictionary<DateTime, List<float>> scores = new Dictionary<DateTime, List<float>>();
+
     public PlayerData(Player player)
     {
         this.aerus = player.aerus;
@@ -40,5 +44,7 @@ public class PlayerData
         this.earthSkill = player.GetProgress(Player.Progress.EarthSkill);
         this.waterSkill = player.GetProgress(Player.Progress.WaterSkill);
         this.airSkill = player.GetProgress(Player.Progress.AirSkill);
+
+        this.scores = player.GetScores();
     }
 }

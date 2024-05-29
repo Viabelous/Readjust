@@ -9,6 +9,20 @@ public static class DataManager
     private static string playerPath = path + "player.json";
     private static string skillPath = path + "skills.json";
 
+    // public static void SavePlayer(Player player)
+    // {
+    //     // buat direktori jika belum ada
+    //     if (!Directory.Exists(path))
+    //     {
+    //         Directory.CreateDirectory(path);
+    //     }
+
+    //     PlayerData data = new PlayerData(player);
+
+    //     string json = JsonUtility.ToJson(data);
+    //     File.WriteAllText(playerPath, json);
+    // }
+
     public static void SavePlayer(Player player)
     {
         // buat direktori jika belum ada
@@ -17,19 +31,26 @@ public static class DataManager
             Directory.CreateDirectory(path);
         }
 
-        PlayerData data = new PlayerData(player);
-
-        string json = JsonUtility.ToJson(data);
-        File.WriteAllText(playerPath, json);
-
+        string jsonData = JsonConvert.SerializeObject(
+            player.DataToJson(),
+            Formatting.Indented,
+            new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            }
+        );
+        File.WriteAllText(playerPath, jsonData);
     }
 
-    public static PlayerData LoadPlayer()
+    public static Dictionary<string, object> LoadPlayer()
     {
         if (File.Exists(playerPath))
         {
-            string json = File.ReadAllText(playerPath);
-            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
+            string jsonData = File.ReadAllText(playerPath);
+            var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonData, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
             return data;
         }
         else
@@ -38,6 +59,21 @@ public static class DataManager
             return null;
         }
     }
+
+    // public static PlayerData LoadPlayer()
+    // {
+    //     if (File.Exists(playerPath))
+    //     {
+    //         string json = File.ReadAllText(playerPath);
+    //         PlayerData data = JsonUtility.FromJson<PlayerData>(json);
+    //         return data;
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("No player data file found at " + playerPath);
+    //         return null;
+    //     }
+    // }
 
     public static void SaveSkills(Dictionary<string, int> dictData)
     {

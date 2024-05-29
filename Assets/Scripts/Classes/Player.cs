@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
-
+public enum HistoryType
+{
+    Score,
+    Time
+}
 
 [CreateAssetMenu]
 public class Player : Character
@@ -47,6 +52,12 @@ public class Player : Character
     private int earthSkill = 0;
     private int waterSkill = 0;
     private int airSkill = 0;
+
+    [Header("Score")]
+    // 0 -> score, 1 -> time
+    private Dictionary<DateTime, List<float>> scores = new Dictionary<DateTime, List<float>>();
+
+
 
     private void OnEnable()
     {
@@ -270,6 +281,10 @@ public class Player : Character
         return -1;
     }
 
+    public Dictionary<DateTime, List<float>> GetScores()
+    {
+        return this.scores;
+    }
 
     public Player CreateAsset(string name)
     {
@@ -305,6 +320,54 @@ public class Player : Character
         newPlayer.venetia = 0;
         newPlayer.regenTimer = 0;
         return newPlayer;
+    }
+
+    public Dictionary<string, object> DataToJson()
+    {
+        Dictionary<string, object> data = new Dictionary<string, object>();
+        data.Add("aerus", this.aerus);
+        data.Add("exp", this.exp);
+        data.Add("venetia", this.venetia);
+        data.Add("maxHPLevel", GetProgress(Progress.MaxHP));
+        data.Add("maxManaLevel", GetProgress(Progress.MaxMana));
+        data.Add("atkLevel", GetProgress(Progress.ATK));
+        data.Add("defLevel", GetProgress(Progress.DEF));
+        data.Add("focLevel", GetProgress(Progress.FOC));
+        data.Add("agiLevel", GetProgress(Progress.AGI));
+
+        data.Add("story", GetProgress(Progress.Story));
+        data.Add("fireSkill", GetProgress(Progress.FireSkill));
+        data.Add("earthSkill", GetProgress(Progress.EarthSkill));
+        data.Add("waterSkill", GetProgress(Progress.WaterSkill));
+        data.Add("airSkill", GetProgress(Progress.AirSkill));
+
+        data.Add("scores", this.scores);
+
+        return data;
+    }
+
+    public void JsonToPlayer(Dictionary<string, object> data)
+    {
+        this.aerus = float.Parse(data["aerus"].ToString());
+        this.exp = float.Parse(data["exp"].ToString());
+        this.venetia = float.Parse(data["venetia"].ToString());
+        this.maxHPLevel = int.Parse(data["maxHPLevel"].ToString());
+        this.maxManaLevel = int.Parse(data["maxManaLevel"].ToString());
+        this.atkLevel = int.Parse(data["atkLevel"].ToString());
+        this.defLevel = int.Parse(data["defLevel"].ToString());
+        this.focLevel = int.Parse(data["focLevel"].ToString());
+        this.agiLevel = int.Parse(data["agiLevel"].ToString());
+        this.story = int.Parse(data["story"].ToString());
+        this.fireSkill = int.Parse(data["fireSkill"].ToString());
+        this.earthSkill = int.Parse(data["earthSkill"].ToString());
+        this.waterSkill = int.Parse(data["waterSkill"].ToString());
+        this.airSkill = int.Parse(data["airSkill"].ToString());
+
+        foreach (var score in data["scores"] as Dictionary<DateTime, List<float>>)
+        {
+            this.scores.Add(score.Key, score.Value);
+        }
+
     }
 
     public void LoadData(PlayerData playerData)
@@ -536,4 +599,9 @@ public class Player : Character
         }
     }
 
+    public void SaveHistory(float score, float time)
+    {
+        List<float> scores = new List<float>() { score, time };
+        this.scores.Add(DateTime.Now, scores);
+    }
 }

@@ -29,7 +29,8 @@ public class LoadSaveDataManager : MonoBehaviour
         if (DataManager.CheckPath())
         {
             GameManager.player = playerBasic.Clone();
-            GameManager.player.LoadData(DataManager.LoadPlayer());
+            // GameManager.player.LoadData(DataManager.LoadPlayer());
+            GameManager.player.JsonToPlayer(DataManager.LoadPlayer());
 
             GameManager.unlockedSkills = DataManager.LoadSkills();
             print("Data loaded");
@@ -47,12 +48,12 @@ public class LoadSaveDataManager : MonoBehaviour
         Debug.Log("Data saved.");
     }
 
-    // saat aplikasi ditutup (setelah selesai di-build)
-    void OnApplicationQuit()
-    {
-        SaveData();
+    // // saat aplikasi ditutup (setelah selesai di-build)
+    // void OnApplicationQuit()
+    // {
+    //     SaveData();
 
-    }
+    // }
 
     // saat gameobject dihancurkan (saat run di unity editor dimatikan)
     void OnDestroy()

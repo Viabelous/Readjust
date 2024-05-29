@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
                 // jika run dari develop zone
                 if (GameManager.player != null)
                 {
-                    print("player kosong");
                     player = GameManager.player.CloneForStage();
                 }
                 // jika sedang debug dan lgsg run di stage
@@ -94,10 +93,10 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        print("MaxHP: " + player.GetMaxHP());
-        print("MaxMana: " + player.GetMaxMana());
-        print("HP: " + player.GetHP());
-        print("MANA: " + player.GetMana());
+        // print("MaxHP: " + player.GetMaxHP());
+        // print("MaxMana: " + player.GetMaxMana());
+        // print("HP: " + player.GetHP());
+        // print("MANA: " + player.GetMana());
         // print("ATK: " + player.atk);
         // print("DEF: " + player.GetDEF());
         // print("SHIELD: " + player.shield);

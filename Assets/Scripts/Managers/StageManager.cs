@@ -279,5 +279,6 @@ public class StageManager : MonoBehaviour
     {
         GameManager.player.Collect(RewardType.Aerus, Mathf.FloorToInt(player.aerus + extraAerus));
         GameManager.player.Collect(RewardType.ExpOrb, Mathf.FloorToInt(player.exp + extraExp));
+        GameManager.player.SaveHistory(score, time);
     }
 }
