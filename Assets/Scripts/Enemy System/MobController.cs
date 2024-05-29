@@ -31,7 +31,8 @@ public class MobController : MonoBehaviour
     [HideInInspector] public Animator animate;
     public SpriteRenderer spriteRenderer;
     private PlayerController playerController;
-    private bool gainSpeed = false, isBoss;
+    private bool gainSpeed = false, isBoss, randomMovement;
+    private Vector3 targetPos;
 
 
     [HideInInspector] public bool onSkillTrigger = false; // tanda apakah sedang berada di dalam collider skill
@@ -57,6 +58,8 @@ public class MobController : MonoBehaviour
         isBoss = GetComponent<BossController>() != null;
 
         movementEnabled = true;
+        targetPos = player.transform.position;
+        randomMovement = false;
     }
 
     void Update()
@@ -77,18 +80,19 @@ public class MobController : MonoBehaviour
                     playerController.player.Collect(RewardType.ExpOrb, enemy.GetExp());
                 }
 
-                if (player.transform.position.x != transform.position.x)
+                targetPos = randomMovement ? targetPos : player.transform.position;
+                if (targetPos.x != transform.position.x)
                 {
-                    movement.x = player.transform.position.x < transform.position.x ? -1 : 1;
+                    movement.x = targetPos.x < transform.position.x ? -1 : 1;
                 }
                 else
                 {
                     movement.x = 0;
                 }
 
-                if (player.transform.position.y != transform.position.y)
+                if (targetPos.y != transform.position.y)
                 {
-                    movement.y = player.transform.position.y < transform.position.y ? -1 : 1;
+                    movement.y = targetPos.y < transform.position.y ? -1 : 1;
                 }
                 else
                 {
@@ -129,7 +133,7 @@ public class MobController : MonoBehaviour
                 !crowdControlSystem.CheckCC(CrowdControlType.KnockBack)
             )
             {
-                Vector3 direction = (player.transform.position - transform.position).normalized;
+                Vector3 direction = (targetPos - transform.position).normalized;
                 transform.Translate(direction * speed * Time.deltaTime);
             }
 
@@ -173,6 +177,16 @@ public class MobController : MonoBehaviour
         Damaged();
         yield return new WaitForSeconds(0.2f);
         Undamaged();
+    }
+
+    public void SetTargetPos(Vector3 targetPos)
+    {
+        this.targetPos = targetPos;
+    }
+
+    public void SetRandomMovement(bool value)
+    {
+        this.randomMovement = value;
     }
 
 }

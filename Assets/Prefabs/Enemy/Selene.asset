@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3682d028bdf5744f8bdaae2b5d50832, type: 3}
   m_Name: Selene
   m_EditorClassIdentifier: 
-  id: enemy51909
+  id: enemy5228
   maxHp: 30000
   hp: 30000
   atk: 50
@@ -26,12 +26,12 @@ MonoBehaviour:
   type: 0
   aerus: 10000
   exp: 3000
-  healSumMaxTime: 35
+  healSumMaxTime: 10
   maxHealMob: 3
   healMob: {fileID: 6170722551558479055, guid: 932f193e420b2f3449de7392679c49fd, type: 3}
   healMaxTime: 5
   healPersenOfMaxHP: 0.1
   healEffect: {fileID: 1696558807697446950, guid: 1a91ca5b57799854eacd2f0a5c42808c, type: 3}
-  attSumMaxTime: 20
+  attSumMaxTime: 1000
   attMob: {fileID: 6170722551558479055, guid: 958dd6f3c4d1ae04ba24c597b1c574f0, type: 3}
   attMobNum: 5
