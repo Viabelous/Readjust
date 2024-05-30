@@ -204,7 +204,7 @@ public class StageManager : MonoBehaviour
 
         if (!rewardShowed)
         {
-            ShowReward();
+            ShowReward(false);
             blackScreen.SetActive(true);
             rewardShowed = true;
         }
@@ -215,13 +215,13 @@ public class StageManager : MonoBehaviour
         PauseTime();
         if (!rewardShowed)
         {
-            ShowReward();
+            ShowReward(true);
             blackScreen.SetActive(true);
             rewardShowed = true;
         }
     }
 
-    private void ShowReward()
+    private void ShowReward(bool status)
     {
         GameObject reward = Instantiate(rewardPanel, GameObject.Find("UI").transform);
 
@@ -242,7 +242,7 @@ public class StageManager : MonoBehaviour
 
         if (!hasSavedReward)
         {
-            SaveReward(playerController.player);
+            SaveReward(playerController.player, status);
             hasSavedReward = true;
         }
     }
@@ -294,11 +294,22 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private void SaveReward(Player player)
+    private void SaveReward(Player player, bool status)
     {
         GameManager.player.Collect(RewardType.Aerus, Mathf.FloorToInt(player.aerus + extraAerus));
         GameManager.player.Collect(RewardType.ExpOrb, Mathf.FloorToInt(player.exp + extraExp));
-        GameManager.player.SaveHistory(score, time);
+        GameManager.SaveHistory(
+            new Score(
+                DateTime.Now,
+                GameManager.selectedMap,
+                 score,
+                 time,
+                 player.aerus,
+                 player.exp,
+                 player.venetia,
+                 status
+            )
+        );
     }
 
     public void CreatePopUp(string id, PopUpType type, string info)

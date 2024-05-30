@@ -53,9 +53,9 @@ public class Player : Character
     private int waterSkill = 0;
     private int airSkill = 0;
 
-    [Header("Score")]
+    // [Header("Score")]
     // 0 -> score, 1 -> time
-    private Dictionary<DateTime, List<float>> scores = new Dictionary<DateTime, List<float>>();
+    // private Dictionary<DateTime, List<float>> scores = new Dictionary<DateTime, List<float>>();
 
 
 
@@ -281,10 +281,10 @@ public class Player : Character
         return -1;
     }
 
-    public Dictionary<DateTime, List<float>> GetScores()
-    {
-        return this.scores;
-    }
+    // public Dictionary<DateTime, List<float>> GetScores()
+    // {
+    //     return this.scores;
+    // }
 
     public Player CreateAsset(string name)
     {
@@ -341,7 +341,7 @@ public class Player : Character
         data.Add("waterSkill", this.waterSkill);
         data.Add("airSkill", this.airSkill);
 
-        data.Add("scores", this.scores);
+        // data.Add("scores", this.scores);
 
         return data;
     }
@@ -363,14 +363,14 @@ public class Player : Character
         this.waterSkill = int.Parse(data["waterSkill"].ToString());
         this.airSkill = int.Parse(data["airSkill"].ToString());
 
-        foreach (var score in data["scores"] as Dictionary<DateTime, List<float>>)
-        {
-            if (this.scores.ContainsKey(score.Key))
-            {
-                continue;
-            }
-            this.scores.Add(score.Key, score.Value);
-        }
+        // foreach (var score in data["scores"] as Dictionary<DateTime, List<float>>)
+        // {
+        //     if (this.scores.ContainsKey(score.Key))
+        //     {
+        //         continue;
+        //     }
+        //     this.scores.Add(score.Key, score.Value);
+        // }
 
     }
 
@@ -603,9 +603,9 @@ public class Player : Character
         }
     }
 
-    public void SaveHistory(float score, float time)
-    {
-        List<float> scores = new List<float>() { score, time };
-        this.scores.Add(DateTime.Now, scores);
-    }
+    // public void SaveHistory(float score, float time)
+    // {
+    //     List<float> scores = new List<float>() { score, time };
+    //     // this.scores.Add(DateTime.Now, scores);
+    // }
 }

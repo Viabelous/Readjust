@@ -13,7 +13,7 @@ public class LoadSaveDataManager : MonoBehaviour
 
     void Awake()
     {
-        GameManager.ResetData();
+        // GameManager.ResetData();
         LoadGameData();
         instance = this;
     }
@@ -32,7 +32,7 @@ public class LoadSaveDataManager : MonoBehaviour
             GameManager.player = playerBasic.Clone();
             // GameManager.player.LoadData(DataManager.LoadPlayer());
             GameManager.player.JsonToPlayer(DataManager.LoadPlayer());
-
+            GameManager.scores = Score.JsonToScores(DataManager.LoadScores());
             GameManager.unlockedSkills = DataManager.LoadSkills();
             print("Data loaded");
         }
@@ -46,6 +46,7 @@ public class LoadSaveDataManager : MonoBehaviour
     {
         DataManager.SavePlayer(GameManager.player);
         DataManager.SaveSkills(GameManager.unlockedSkills);
+        DataManager.SaveScores(Score.ScoresToJson());
         Debug.Log("Data saved.");
     }
 

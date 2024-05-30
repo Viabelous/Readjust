@@ -2,26 +2,14 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System;
 
 public static class DataManager
 {
     private static string path = "D:/ReadjustData/";
     private static string playerPath = path + "player.json";
-    private static string skillPath = path + "skills.json";
-
-    // public static void SavePlayer(Player player)
-    // {
-    //     // buat direktori jika belum ada
-    //     if (!Directory.Exists(path))
-    //     {
-    //         Directory.CreateDirectory(path);
-    //     }
-
-    //     PlayerData data = new PlayerData(player);
-
-    //     string json = JsonUtility.ToJson(data);
-    //     File.WriteAllText(playerPath, json);
-    // }
+    private static string skillsPath = path + "skills.json";
+    private static string scoresPath = path + "scores.json";
 
     public static void SavePlayer(Player player)
     {
@@ -60,20 +48,43 @@ public static class DataManager
         }
     }
 
-    // public static PlayerData LoadPlayer()
-    // {
-    //     if (File.Exists(playerPath))
-    //     {
-    //         string json = File.ReadAllText(playerPath);
-    //         PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-    //         return data;
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning("No player data file found at " + playerPath);
-    //         return null;
-    //     }
-    // }
+    public static void SaveScores(Dictionary<string, Dictionary<DateTime, List<float>>> scores)
+    {
+        // buat direktori jika belum ada
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+
+        string jsonData = JsonConvert.SerializeObject(
+            scores,
+            Formatting.Indented,
+            new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            }
+        );
+        File.WriteAllText(scoresPath, jsonData);
+    }
+
+    public static Dictionary<string, Dictionary<DateTime, List<float>>> LoadScores()
+    {
+        if (File.Exists(scoresPath))
+        {
+            string jsonData = File.ReadAllText(scoresPath);
+            var data = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<DateTime, List<float>>>>(jsonData, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
+            return data;
+        }
+        else
+        {
+            Debug.LogWarning("No score data file found at " + scoresPath);
+            return null;
+        }
+    }
+
 
     public static void SaveSkills(Dictionary<string, int> dictData)
     {
@@ -84,16 +95,16 @@ public static class DataManager
         }
 
         string json = JsonConvert.SerializeObject(dictData, Formatting.Indented);
-        File.WriteAllText(skillPath, json);
+        File.WriteAllText(skillsPath, json);
     }
 
     public static Dictionary<string, int> LoadSkills()
     {
-        if (File.Exists(skillPath))
+        if (File.Exists(skillsPath))
         {
             try
             {
-                string json = File.ReadAllText(skillPath);
+                string json = File.ReadAllText(skillsPath);
                 Dictionary<string, int> dict = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
                 return dict;
             }
@@ -105,7 +116,7 @@ public static class DataManager
         }
         else
         {
-            Debug.LogWarning("No skills data file found at " + skillPath);
+            Debug.LogWarning("No skills data file found at " + skillsPath);
             return null;
         }
     }
@@ -117,7 +128,7 @@ public static class DataManager
 
     public static bool CheckPath()
     {
-        if (File.Exists(playerPath) && File.Exists(skillPath))
+        if (File.Exists(playerPath) && File.Exists(skillsPath))
         {
             return true;
         }

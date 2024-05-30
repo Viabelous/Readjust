@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public enum GameState
 {
@@ -27,10 +28,12 @@ public class GameManager : ScriptableObject
     public static Player player;
 
     // map stage yang dipilih player
-    public static Map selectedMap = Map.None;
+    public static Map selectedMap = Map.Stage1;
 
     // skill yang sudah dibuka
     public static Dictionary<string, int> unlockedSkills = new Dictionary<string, int>();
+    // high score tiap map
+    public static List<Score> scores = new List<Score>();
 
     // skill yang dipakai selama stage berlangsung
     public static List<GameObject> selectedSkills = new List<GameObject>();
@@ -47,9 +50,18 @@ public class GameManager : ScriptableObject
     {
         player = null;
         selectedMap = Map.None;
+        scores.Clear();
         unlockedSkills.Clear();
         selectedItems.Clear();
         selectedSkills.Clear();
+    }
+
+    public static void SaveHistory(Score score)
+    {
+        scores.Add(score);
+        // Dictionary<DateTime, List<float>> scoreValue = new Dictionary<DateTime, List<float>>();
+        // scoreValue.Add(DateTime.Now, new List<float>() { score, time, status });
+        // scores.Add(map.ToString(), scoreValue);
     }
 
 

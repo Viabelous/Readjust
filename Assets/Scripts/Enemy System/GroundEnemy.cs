@@ -64,6 +64,11 @@ public class GroundEnemy : MonoBehaviour
                 spriteRenderer.sortingOrder = -1;
             }
         }
+
+        if (other.CompareTag("Player"))
+        {
+            spriteRenderer.sortingLayerName = other.GetComponent<PlayerController>().spriteRenderers[0].sortingLayerName;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)

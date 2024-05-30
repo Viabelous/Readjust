@@ -45,6 +45,6 @@ public class PlayerData
         this.waterSkill = player.GetProgress(Player.Progress.WaterSkill);
         this.airSkill = player.GetProgress(Player.Progress.AirSkill);
 
-        this.scores = player.GetScores();
+        // this.scores = player.GetScores();
     }
 }
