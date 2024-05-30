@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Badge of Honour
   description: Siapp
   price: 100
-  icon: {fileID: 0}
+  icon: {fileID: 1664431187, guid: 3eff3cb8a94eae447ab8f1c7cd7d7206, type: 3}
   types: 0c000000
   adaptable: 0
   rewardType: 3

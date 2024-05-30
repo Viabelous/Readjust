@@ -32,6 +32,10 @@ public class GameManager : ScriptableObject
 
     // skill yang sudah dibuka
     public static Dictionary<string, int> unlockedSkills = new Dictionary<string, int>();
+
+    // item yang sudah dibuka
+    public static Dictionary<string, int> unlockedItems = new Dictionary<string, int>();
+
     // high score tiap map
     public static List<Score> scores = new List<Score>();
 
