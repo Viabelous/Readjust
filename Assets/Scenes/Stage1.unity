@@ -5699,7 +5699,6 @@ MonoBehaviour:
   minMap: {x: -14, y: -9.5}
   maxMap: {x: 14, y: 9.5}
   rewardPanel: {fileID: 4390694241516146489, guid: 472df566eadb2f841b8e1187f6eed2bb, type: 3}
-  score: 0
   popUps:
   - {fileID: 5364974993854205787, guid: 535dbba1195d31a4a9ebc84b36fe7228, type: 3}
   - {fileID: 5252007345997431417, guid: afdbc02c4a50685428b2105d2fb97267, type: 3}
