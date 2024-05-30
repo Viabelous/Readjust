@@ -110,7 +110,7 @@ public class DefenseSystem : MonoBehaviour
 
         if (type == CharacterType.Enemy || type == CharacterType.FlyingEnemy)
         {
-            print("Enemy HP: " + defender.GetHP());
+            //print("Enemy HP: " + defender.GetHP());
         }
     }
 

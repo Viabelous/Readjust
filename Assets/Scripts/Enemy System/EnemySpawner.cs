@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (elapsedTime >= 60 && time <= totalTime)
         {
-            UpdateProbablities();
+            UpdateProbabilities();
             elapsedTime = 0;
         }
 
@@ -134,7 +134,7 @@ public class EnemySpawner : MonoBehaviour
         return enemySpawn;
     }
 
-    void UpdateProbablities()
+    public void UpdateProbabilities()
     {
 
         int minNow = (int)time / 60;
