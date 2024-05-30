@@ -48,7 +48,25 @@ public static class DataManager
         }
     }
 
-    public static void SaveScores(Dictionary<string, Dictionary<DateTime, List<float>>> scores)
+    // public static void SaveScores(Dictionary<string, Dictionary<DateTime, List<float>>> scores)
+    // {
+    //     // buat direktori jika belum ada
+    //     if (!Directory.Exists(path))
+    //     {
+    //         Directory.CreateDirectory(path);
+    //     }
+
+    //     string jsonData = JsonConvert.SerializeObject(
+    //         scores,
+    //         Formatting.Indented,
+    //         new JsonSerializerSettings
+    //         {
+    //             TypeNameHandling = TypeNameHandling.Auto
+    //         }
+    //     );
+    //     File.WriteAllText(scoresPath, jsonData);
+    // }
+    public static void SaveScores(List<Dictionary<string, object>> scores)
     {
         // buat direktori jika belum ada
         if (!Directory.Exists(path))
@@ -67,12 +85,12 @@ public static class DataManager
         File.WriteAllText(scoresPath, jsonData);
     }
 
-    public static Dictionary<string, Dictionary<DateTime, List<float>>> LoadScores()
+    public static List<Dictionary<string, object>> LoadScores()
     {
         if (File.Exists(scoresPath))
         {
             string jsonData = File.ReadAllText(scoresPath);
-            var data = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<DateTime, List<float>>>>(jsonData, new JsonSerializerSettings
+            var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(jsonData, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto
             });
@@ -84,6 +102,25 @@ public static class DataManager
             return null;
         }
     }
+
+    // public static Dictionary<string, Dictionary<DateTime, List<float>>> LoadScores()
+    // {
+    //     if (File.Exists(scoresPath))
+    //     {
+    //         string jsonData = File.ReadAllText(scoresPath);
+    //         var data = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<DateTime, List<float>>>>(jsonData, new JsonSerializerSettings
+    //         {
+    //             TypeNameHandling = TypeNameHandling.Auto
+    //         });
+    //         return data;
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("No score data file found at " + scoresPath);
+    //         return null;
+    //     }
+    // }
+
 
 
     public static void SaveSkills(Dictionary<string, int> dictData)
@@ -128,7 +165,7 @@ public static class DataManager
 
     public static bool CheckPath()
     {
-        if (File.Exists(playerPath) && File.Exists(skillsPath))
+        if (File.Exists(playerPath) && File.Exists(skillsPath) && File.Exists(scoresPath))
         {
             return true;
         }

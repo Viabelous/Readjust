@@ -35,7 +35,7 @@ public class StageManager : MonoBehaviour
     // panel reward --------------------------
     public GameObject rewardPanel;
     private bool rewardShowed = false;
-    [HideInInspector] public float score;
+    [HideInInspector] public Score score;
     private float extraScore, extraAerus, extraExp;
 
     // pause ------------------------------
@@ -57,7 +57,6 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         time = 0;
-        score = 0;
         extraScore = 0;
         extraAerus = 0;
         extraExp = 0;
@@ -230,11 +229,12 @@ public class StageManager : MonoBehaviour
 
         rewardPanelBehav.SetType(state);
 
+
         // finalisasi reward
         FinalizeReward();
-        score = GetScore(player.GetComponent<PlayerController>().player);
+        score = GetScore(player.GetComponent<PlayerController>().player, status);
 
-        rewardPanelBehav.SetScore(Mathf.FloorToInt(score + extraScore));
+        rewardPanelBehav.SetScore(score.GetScore());
         rewardPanelBehav.SetEndTime(timeText.text);
 
         rewardPanelBehav.SetEndAerus(Mathf.FloorToInt(playerController.player.aerus), Mathf.FloorToInt(extraAerus));
@@ -242,12 +242,12 @@ public class StageManager : MonoBehaviour
 
         if (!hasSavedReward)
         {
-            SaveReward(playerController.player, status);
+            SaveReward(playerController.player, score);
             hasSavedReward = true;
         }
     }
 
-    private float GetScore(Player player)
+    private Score GetScore(Player player, bool isWin)
     {
         float timeScore = 0;
 
@@ -257,7 +257,22 @@ public class StageManager : MonoBehaviour
             timeScore = (timeScore <= 0) ? 0 : timeScore * 50;
         }
 
-        score = player.aerus + extraAerus + player.exp + extraExp + timeScore;
+        int finalAerus, finalExp, finalScore;
+        finalAerus = Mathf.FloorToInt(player.aerus + extraAerus);
+        finalExp = Mathf.FloorToInt(player.exp + extraExp);
+        finalScore = Mathf.FloorToInt(finalAerus + finalExp + timeScore);
+
+        // Score score = player.aerus + extraAerus + player.exp + extraExp + timeScore;
+        Score score = new Score(
+            DateTime.Now,
+            GameManager.selectedMap,
+            finalScore,
+            (int)time,
+            finalAerus,
+            finalExp,
+            (int)player.venetia,
+            isWin
+        );
         return score;
     }
 
@@ -294,22 +309,11 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private void SaveReward(Player player, bool status)
+    private void SaveReward(Player player, Score score)
     {
         GameManager.player.Collect(RewardType.Aerus, Mathf.FloorToInt(player.aerus + extraAerus));
         GameManager.player.Collect(RewardType.ExpOrb, Mathf.FloorToInt(player.exp + extraExp));
-        GameManager.SaveHistory(
-            new Score(
-                DateTime.Now,
-                GameManager.selectedMap,
-                 score,
-                 time,
-                 player.aerus,
-                 player.exp,
-                 player.venetia,
-                 status
-            )
-        );
+        GameManager.SaveHistory(score);
     }
 
     public void CreatePopUp(string id, PopUpType type, string info)

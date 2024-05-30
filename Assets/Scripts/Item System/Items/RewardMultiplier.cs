@@ -38,7 +38,7 @@ public class RewardMultiplier : Item
                 // playerController.player.Collect(RewardType.Venetia, persentase * playerController.player.venetia);
                 break;
             case RewardType.Score:
-                result = persentase * StageManager.instance.score;
+                result = persentase * StageManager.instance.score.GetScore();
                 break;
         }
     }

@@ -91,8 +91,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Score.GetHighScoreByMap(Map.Stage1).GetScore());
-        print(Score.GetBestTimeByMap(Map.Stage1).GetTime());
 
         // print("MaxHP: " + player.GetMaxHP());
         // print("MaxMana: " + player.GetMaxMana());

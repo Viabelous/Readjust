@@ -30,7 +30,6 @@ public class LoadSaveDataManager : MonoBehaviour
         if (DataManager.CheckPath())
         {
             GameManager.player = playerBasic.Clone();
-            // GameManager.player.LoadData(DataManager.LoadPlayer());
             GameManager.player.JsonToPlayer(DataManager.LoadPlayer());
             GameManager.scores = Score.JsonToScores(DataManager.LoadScores());
             GameManager.unlockedSkills = DataManager.LoadSkills();
@@ -46,7 +45,7 @@ public class LoadSaveDataManager : MonoBehaviour
     {
         DataManager.SavePlayer(GameManager.player);
         DataManager.SaveSkills(GameManager.unlockedSkills);
-        DataManager.SaveScores(Score.ScoresToJson());
+        DataManager.SaveScores(Score.ScoresToJson(GameManager.scores));
         Debug.Log("Data saved.");
     }
 

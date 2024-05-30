@@ -10,11 +10,11 @@ public class Score
 {
     DateTime date;
     Map map;
-    float score;
-    float time;
-    float aerus;
-    float exp;
-    float venetia;
+    int score;
+    int time;
+    int aerus;
+    int exp;
+    int venetia;
     bool win;
 
     public DateTime GetDate()
@@ -27,24 +27,24 @@ public class Score
         return this.map;
     }
 
-    public float GetScore()
+    public int GetScore()
     {
         return this.score;
     }
-    public float GetTime()
+    public int GetTime()
     {
         return this.time;
     }
-    public float GetAerus()
+    public int GetAerus()
     {
         return this.aerus;
     }
 
-    public float GetExp()
+    public int GetExp()
     {
         return this.exp;
     }
-    public float GetVenetia()
+    public int GetVenetia()
     {
         return this.venetia;
     }
@@ -55,7 +55,7 @@ public class Score
     }
 
 
-    public Score(DateTime date, Map map, float score, float time, float aerus, float exp, float venetia, bool win)
+    public Score(DateTime date, Map map, int score, int time, int aerus, int exp, int venetia, bool win)
     {
         this.date = date;
         this.map = map;
@@ -67,73 +67,101 @@ public class Score
         this.win = win;
     }
 
-    public static Dictionary<string, Dictionary<DateTime, List<float>>> ScoresToJson()
+    public static List<Dictionary<string, object>> ScoresToJson(List<Score> scores)
     {
-        Dictionary<string, Dictionary<DateTime, List<float>>> data = new Dictionary<string, Dictionary<DateTime, List<float>>>();
-        foreach (Score score in GameManager.scores)
+        List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
+        foreach (Score score in scores)
         {
-            Dictionary<DateTime, List<float>> scoreValue = new Dictionary<DateTime, List<float>>();
-            scoreValue[score.date] = new List<float>() {
-                score.score, score.time, score.aerus, score.exp, score.venetia,score.win ? 1 : 0
-            };
-            data[score.map.ToString()] = scoreValue;
+            Dictionary<string, object> dictScore = new Dictionary<string, object>();
+            string mapStr = "" + score.map;
+            dictScore["date"] = DateTime.Now;
+            dictScore["map"] = mapStr[mapStr.Length - 1];
+            dictScore["score"] = score.score;
+            dictScore["time"] = score.time;
+            dictScore["aerus"] = score.aerus;
+            dictScore["exp"] = score.exp;
+            dictScore["venetia"] = score.venetia;
+            dictScore["is_win"] = score.win ? 1 : 0;
+
+            data.Add(dictScore);
         }
         return data;
     }
 
-    public static List<Score> JsonToScores(Dictionary<string, Dictionary<DateTime, List<float>>> data)
+    public static List<Score> JsonToScores(List<Dictionary<string, object>> data)
     {
         List<Score> scores = new List<Score>();
-        foreach (var scoreMap in data)
+        foreach (var score in data)
         {
-            Map map = (Map)Enum.Parse(typeof(Map), scoreMap.Key);
-            foreach (var scoreDate in scoreMap.Value)
-            {
-                DateTime date = scoreDate.Key;
-                Score score = new Score(
-                    date,
+            Map map = (Map)Enum.Parse(typeof(Map), "Stage" + score["map"]);
+            scores.Add(
+                new Score(
+                    (DateTime)score["date"],
                     map,
-                    scoreDate.Value[0], // score
-                    scoreDate.Value[1], // time
-                    scoreDate.Value[2], // aerus
-                    scoreDate.Value[3], // exp
-                    scoreDate.Value[4], // venetia
-                    scoreDate.Value[5] == 1 ? true : false
-                );
-                scores.Add(score);
-            }
+                    int.Parse(score["score"].ToString()),
+                    int.Parse(score["time"].ToString()),
+                    int.Parse(score["aerus"].ToString()),
+                    int.Parse(score["exp"].ToString()),
+                    int.Parse(score["venetia"].ToString()),
+                    int.Parse(score["is_win"].ToString()) == 1 ? true : false
+                )
+            );
         }
         return scores;
     }
 
     public static Score GetHighScore()
     {
-        return GameManager.scores
-        .Where(scoreObj => scoreObj.IsWin())
-        .OrderByDescending(scoreObj => scoreObj.score)
-        .ToList()[0];
+        List<Score> winScores = GameManager.scores
+                .Where(scoreObj => scoreObj.IsWin()).ToList();
+        if (winScores.Count == 0)
+        {
+            return null;
+        }
+        return winScores
+                .OrderByDescending(scoreObj => scoreObj.score)
+                .ToList()[0];
     }
+
     public static Score GetHighScoreByMap(Map map)
     {
-        return GameManager.scores
-        .Where(scoreObj => scoreObj.IsWin() && scoreObj.GetMap() == map)
-        .OrderByDescending(scoreObj => scoreObj.score)
-        .ToList()[0];
+        List<Score> winScores = GameManager.scores
+                .Where(scoreObj => scoreObj.IsWin()).ToList();
+        if (winScores.Count == 0)
+        {
+            return null;
+        }
+        return winScores
+                .Where(scoreObj => scoreObj.GetMap() == map)
+                .OrderByDescending(scoreObj => scoreObj.score)
+                .ToList()[0];
     }
 
     public static Score GetBestTime()
     {
-        return GameManager.scores
-        .Where(scoreObj => scoreObj.IsWin())
-        .OrderBy(scoreObj => scoreObj.time)
-        .ToList()[0];
+        List<Score> winScores = GameManager.scores
+                .Where(scoreObj => scoreObj.IsWin()).ToList();
+        if (winScores.Count == 0)
+        {
+            return null;
+        }
+        return winScores
+                .OrderBy(scoreObj => scoreObj.time)
+                .ToList()[0];
     }
+
     public static Score GetBestTimeByMap(Map map)
     {
-        return GameManager.scores
-        .Where(scoreObj => scoreObj.IsWin() && scoreObj.GetMap() == map)
-        .OrderBy(scoreObj => scoreObj.time)
-        .ToList()[0];
+        List<Score> winScores = GameManager.scores
+                .Where(scoreObj => scoreObj.IsWin()).ToList();
+        if (winScores.Count == 0)
+        {
+            return null;
+        }
+        return winScores
+                .Where(scoreObj => scoreObj.GetMap() == map)
+                .OrderBy(scoreObj => scoreObj.time)
+                .ToList()[0];
     }
 
 
