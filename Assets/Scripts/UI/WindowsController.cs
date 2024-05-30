@@ -19,12 +19,16 @@ public class windowsController : MonoBehaviour
 
     public GameObject[] popUps;
     [HideInInspector] public NotifPopUp popUp;
+    [HideInInspector] public bool isScrolling = false;
 
 
     void Update()
     {
-
-        if (ActiveWindowsID != -1 && ZoneManager.instance.CurrentState() != ZoneState.OnPopUp)
+        if(isScrolling)
+        {
+            HoveredButton.GetComponent<Navigation>().ExclusiveKey();
+        }
+        else if (ActiveWindowsID != -1 && ZoneManager.instance.CurrentState() != ZoneState.OnPopUp)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
