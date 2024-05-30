@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed371f0600def864eabbe102e517e93e, type: 3}
+  m_Name: Heka
+  m_EditorClassIdentifier: 
+  id: enemy56886
+  maxHp: 20000
+  hp: 20000
+  atk: 50
+  def: 0
+  agi: 0
+  speed: 1
+  foc: 0
+  actionEnabled: 1
+  movementEnabled: 1
+  name: Heka
+  type: 0
+  aerus: 20000
+  exp: 10000
+  sword: {fileID: 8631915786728067796, guid: bdeccfd72274eb043b5ad7525abf97d3, type: 3}
+  swordsOffset:
+  - {x: -0.7, y: 1, z: 0}
+  - {x: -0.4, y: 1.5, z: 0}
+  - {x: 0, y: 1.8, z: 0}
+  - {x: 0.4, y: 1.5, z: 0}
+  - {x: 0.7, y: 1, z: 0}
+  swordSpeed: 3
+  swordLifeTime: 5
+  summonMaxTime: 5
