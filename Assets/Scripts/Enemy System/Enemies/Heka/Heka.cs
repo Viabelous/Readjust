@@ -15,10 +15,11 @@ public class Heka : Enemy
     }
 
     [Header("Skill Effect")]
-    [SerializeField] GameObject sword;
-    [SerializeField] List<Vector3> swordsOffset;
+    [SerializeField] GameObject swords;
+    [SerializeField] float swordDamage;
     [SerializeField] float swordSpeed;
     [SerializeField] float swordLifeTime;
+    [SerializeField] float swordsDelay;
     [SerializeField] float summonMaxTime;
     float timer;
     HekaState state;
@@ -41,7 +42,6 @@ public class Heka : Enemy
                 if (timer <= 0)
                 {
                     StartSummoning();
-                    timer = summonMaxTime;
                 }
                 break;
         }
@@ -52,25 +52,19 @@ public class Heka : Enemy
         this.state = HekaState.SummoningSwords;
         mobController.animate.SetTrigger("Swords Rain");
         mobController.movementEnabled = false;
+        timer = summonMaxTime;
     }
 
     public void EndSummoning()
     {
         this.state = HekaState.Idle;
-        mobController.animate.SetTrigger("Swords Rain");
-        // Debug.Log(mobController == null);
+        mobController.animate.Play("heka_idle");
         mobController.movementEnabled = true;
     }
 
-    public GameObject GetSword()
+    public GameObject GetSwords()
     {
-        return sword;
-    }
-
-
-    public List<Vector3> GetOffsets()
-    {
-        return this.swordsOffset;
+        return swords;
     }
 
     public float GetSwordSpeed()
@@ -80,6 +74,15 @@ public class Heka : Enemy
     public float GetSwordLifeTime()
     {
         return this.swordLifeTime;
+    }
+    public float GetSwordsDelay()
+    {
+        return this.swordsDelay;
+    }
+
+    public float GetSwordDamage()
+    {
+        return this.swordDamage;
     }
 
 

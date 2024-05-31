@@ -5,61 +5,99 @@ using UnityEngine;
 
 public class HekaSwordBehaviour : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    Animator animator;
     [SerializeField] Vector3 offsetPivot;
     private bool canAttack = false;
     private Transform target;
-    private float speed, maxTime, timer;
+    private float speed, lifeTime, lifeTimer, delay, delayTimer;
 
+    private EnemySkillController enemySkillController;
 
+    void Start()
+    {
+        print("start");
+        canAttack = false;
+        lifeTimer = 0;
+        animator = GetComponent<Animator>();
+
+        enemySkillController = GetComponent<EnemySkillController>();
+    }
 
     void Update()
     {
+        // print("can attack = " + canAttack);
         if (canAttack)
         {
-
-            if (timer <= 0)
+            if (delayTimer <= 0)
             {
-                animator.Play("heka_sword_end");
+                if (lifeTimer <= 0)
+                {
+                    animator.SetTrigger("End");
+                }
+                else
+                {
+                    lifeTimer -= Time.deltaTime;
+                    Locking();
+                }
             }
             else
             {
-                timer -= Time.deltaTime;
-                Locking();
+                delayTimer -= Time.deltaTime;
             }
         }
     }
 
-    public void AttackNow(float speed, float maxTime)
+    public void AttackNow(GameObject heka, float damage, float speed, float lifeTime, float delay)
     {
+        enemySkillController.SetEnemy(heka);
+        enemySkillController.SetDamage(damage);
+
+        animator.SetTrigger("Attack");
+
         this.speed = speed;
-        this.maxTime = maxTime;
+        this.lifeTime = lifeTime;
+        this.delay = delay;
+        delayTimer = this.delay;
 
         canAttack = true;
 
-        timer = this.maxTime;
+        lifeTimer = this.lifeTime;
         target = GameObject.FindWithTag("Player").transform;
 
-        animator.Play("heka_sword_attack");
     }
+
+
 
     public void Locking()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+        if (target == null)
+        {
+            return;
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * 0.01f);
 
         // rotasikan arah hadap skill --------------------------------
-        Vector2 directionToTarget = target.position - (transform.position + offsetPivot);
+        transform.up = target.position - transform.position;
 
-        float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
 
-        // Terapkan rotasi pada titik pivot
-        transform.rotation = targetRotation;
+    public void Idle()
+    {
+        animator.SetTrigger("Idle");
     }
 
     public void EndAnimation()
     {
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            animator.SetTrigger("End");
+        }
     }
 
 

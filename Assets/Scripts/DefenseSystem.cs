@@ -139,6 +139,7 @@ public class DefenseSystem : MonoBehaviour
                 }
                 break;
 
+
             case CharacterType.FlyingEnemy:
                 if (other.CompareTag("Damage"))
                 {
@@ -156,6 +157,19 @@ public class DefenseSystem : MonoBehaviour
 
                 }
                 break;
+
+            case CharacterType.Player:
+                if (other.CompareTag("EnemyDamage"))
+                {
+                    float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+
+                    // jika player punya buff thorn, pantulkan damage ke musuh yg serang
+                    DoIfThornCoverActivated(other);
+                    GetComponent<PlayerController>().Effected("enemy_damage");
+                    TakeDamage(dealDamage);
+                }
+                break;
+
         }
 
     }
@@ -179,14 +193,7 @@ public class DefenseSystem : MonoBehaviour
                     float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
 
                     // jika player punya buff thorn, pantulkan damage ke musuh yg serang
-                    if (buffSystem.CheckBuff(BuffType.Thorn))
-                    {
-                        float thornDamage = buffSystem.buffsActive.Find(buff => buff.type == BuffType.Thorn).value;
-
-                        // musuh yg menyerang juga terkena damage
-                        other.GetComponent<DefenseSystem>().Attacked(thornDamage);
-                        other.GetComponent<MobController>().Effected("thorn");
-                    }
+                    DoIfThornCoverActivated(other);
 
                     gameObject.GetComponent<PlayerController>().Damaged();
                     Attacked(dealDamage);
@@ -222,11 +229,10 @@ public class DefenseSystem : MonoBehaviour
         switch (type)
         {
             case CharacterType.Player:
-                if (other.CompareTag("Enemy"))
+                if (other.CompareTag("Enemy") || other.CompareTag("EnemyDamage"))
                 {
                     timer = 0;
                     gameObject.GetComponent<PlayerController>().Undamaged();
-
                 }
                 break;
 
@@ -415,7 +421,6 @@ public class DefenseSystem : MonoBehaviour
         }
     }
 
-
     private void SetDefender()
     {
         switch (type)
@@ -432,5 +437,15 @@ public class DefenseSystem : MonoBehaviour
         }
     }
 
+    private void DoIfThornCoverActivated(Collider2D other)
+    {
+        if (buffSystem.CheckBuff(BuffType.Thorn))
+        {
+            float thornDamage = buffSystem.buffsActive.Find(buff => buff.type == BuffType.Thorn).value;
 
+            // musuh yg menyerang juga terkena damage
+            other.GetComponent<DefenseSystem>().Attacked(thornDamage);
+            other.GetComponent<MobController>().Effected("thorn");
+        }
+    }
 }

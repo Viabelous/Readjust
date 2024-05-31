@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 
 // dikasih ke skill
 public class AttackSystem : MonoBehaviour
@@ -31,18 +30,7 @@ public class AttackSystem : MonoBehaviour
         // kalo ditaruh di update kadang error, 
         // mungkin malah bisa jadi deal damage dipanggil duluan dari pada update (?)
 
-        switch (type)
-        {
-            case CharacterType.Player:
-                attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
-                damage = GetComponent<SkillController>().skill.GetDamage((Player)attacker);
-                break;
-
-            case CharacterType.Enemy:
-                attacker = GetComponent<MobController>().enemy;
-                damage = attacker.GetATK();
-                break;
-        }
+        SetAttacker();
 
         if (UnityEngine.Random.Range(0f, 100f) <= attacker.GetFOC() && attacker.GetFOC() != 0)
         {
@@ -133,4 +121,29 @@ public class AttackSystem : MonoBehaviour
         return boosterDmg;
     }
 
+    private void SetAttacker()
+    {
+        switch (type)
+        {
+            case CharacterType.Player:
+                attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
+                damage = GetComponent<SkillController>().skill.GetDamage((Player)attacker);
+                break;
+
+            case CharacterType.Enemy:
+                // attack system di musuh
+                if (GetComponent<MobController>() != null)
+                {
+                    attacker = GetComponent<MobController>().enemy;
+                    damage = attacker.GetATK();
+                    // attack system di skill musuh
+                }
+                else
+                {
+                    attacker = GetComponent<EnemySkillController>().GetEnemy().GetComponent<MobController>().enemy;
+                    damage = GetComponent<EnemySkillController>().GetDamage();
+                }
+                break;
+        }
+    }
 }

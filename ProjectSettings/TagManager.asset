@@ -10,6 +10,7 @@ TagManager:
   - Buff
   - Object
   - Window
+  - EnemyDamage
   layers:
   - Default
   - TransparentFX

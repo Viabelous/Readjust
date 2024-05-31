@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         // print("MaxHP: " + player.GetMaxHP());
         // print("MaxMana: " + player.GetMaxMana());
-        // print("HP: " + player.GetHP());
+        print("HP: " + player.GetHP());
         // print("MANA: " + player.GetMana());
         // print("ATK: " + player.atk);
         // print("DEF: " + player.GetDEF());
@@ -268,6 +268,21 @@ public class PlayerController : MonoBehaviour
     public void interactableNearby(bool state)
     {
         nearInteractable = state;
+    }
+    public void Effected(string effect)
+    {
+        switch (effect)
+        {
+            case "enemy_damage":
+                StartCoroutine(EffectedCoroutine());
+                break;
+        }
+    }
+    IEnumerator EffectedCoroutine()
+    {
+        Damaged();
+        yield return new WaitForSeconds(0.2f);
+        Undamaged();
     }
 }
 
