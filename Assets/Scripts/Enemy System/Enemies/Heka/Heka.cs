@@ -16,7 +16,7 @@ public class Heka : Enemy
 
     [Header("Skill Effect")]
     [SerializeField] GameObject swords;
-    [SerializeField] float swordDamage;
+    [SerializeField] float dmgPersenOfATK;
     [SerializeField] float swordSpeed;
     [SerializeField] float swordLifeTime;
     [SerializeField] float swordsDelay;
@@ -82,7 +82,7 @@ public class Heka : Enemy
 
     public float GetSwordDamage()
     {
-        return this.swordDamage;
+        return atk + atk * dmgPersenOfATK;
     }
 
 

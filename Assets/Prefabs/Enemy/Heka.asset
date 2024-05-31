@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed371f0600def864eabbe102e517e93e, type: 3}
   m_Name: Heka
   m_EditorClassIdentifier: 
-  id: enemy17613
+  id: enemy48673
   maxHp: 12500
   hp: 12500
   atk: 50
   def: 0
   agi: 0
-  speed: 0
+  speed: 1.5
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
@@ -27,8 +27,8 @@ MonoBehaviour:
   aerus: 10000
   exp: 7734
   swords: {fileID: 7017900107985692853, guid: 9bd13531693393740a058f8f2395461b, type: 3}
-  swordDamage: 10
+  dmgPersenOfATK: 0.5
   swordSpeed: 3
   swordLifeTime: 5
   swordsDelay: 0.3
-  summonMaxTime: 5
+  summonMaxTime: 20
