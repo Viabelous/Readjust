@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Xiena
   pict: {fileID: 21300000, guid: 89df4d85a8c4816419926e69e8400c60, type: 3}
   dialogue:
-  - Kek sanggup aja beli...
+  - Selamat datang, selamat datang, silakan berbelanja./plus/openShopWindows

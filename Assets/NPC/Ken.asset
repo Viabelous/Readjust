@@ -15,4 +15,6 @@ MonoBehaviour:
   name: Ken
   pict: {fileID: 21300000, guid: 89df4d85a8c4816419926e69e8400c60, type: 3}
   dialogue:
-  - Nak apgred stat ye?/plus/openStatWindows
+  - Ingin meningkatkan stat?/plus/openStatWindows
+  - Stat yang ditingkatkan hanya berlaku di dunia ini, saat kita keluar maka tentunya
+    stat dunia nyata tidak akan ikut tertingkatkan./plus/ Karenanya olahraga./plus/openStatWindows

@@ -16,8 +16,8 @@ public class TalkSystem : MonoBehaviour
     public GameObject player;
     public NPC npc;
     private List<string> dialog;
-    public int index;
-    public string windows;
+    private int index = 0;
+    private string windows;
     public GameObject windowsController;
     public float wordSpeed;
     [HideInInspector] public bool playerDekat;
@@ -166,6 +166,7 @@ public class TalkSystem : MonoBehaviour
     {
         this.dialog = new List<string>();
         pic.GetComponent<Image>().sprite = npc.Pict;
+        index = UnityEngine.Random.Range(0, npc.Dialogue.Length);
         string new_dialog = npc.Dialogue[index];
         List<string> teks = new_dialog.Split("/plus/").ToList();
         switch (teks.Last())
@@ -178,6 +179,9 @@ public class TalkSystem : MonoBehaviour
                 break;
             case "openStatWindows":
                 windows = "Stat";
+                break;
+            case "openShopWindows":
+                windows = "Shop";
                 break;
         }
         teks.RemoveAt(teks.Count - 1);
