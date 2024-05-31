@@ -118,6 +118,13 @@ public class windowsController : MonoBehaviour
         HoveredButton.GetComponent<Navigation>().IsHovered(true);
     }
 
+    public void openShop()
+    {
+        isScrolling = true;
+        HoveredButton = WindowsButtonStartPointNavigation[7];
+        StartCoroutine(ToogleWindow(7, true));
+    }
+
     public void CloseSkillTree()
     {
         foreach (GameObject obj in SkillTree)

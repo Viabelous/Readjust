@@ -126,7 +126,7 @@ public class TalkSystem : MonoBehaviour
                         StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(6, true));
                         break;
                     case "Shop":
-                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(7, true));
+                        windowsController.GetComponent<windowsController>().openShop();
                         break;
                     default:
                         break;
