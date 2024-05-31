@@ -598,6 +598,7 @@ MonoBehaviour:
   shopManager: {fileID: 309974895}
   nama: {fileID: 1425208322}
   harga: {fileID: 1331102148}
+  icon: {fileID: 154650634}
 --- !u!1 &21603480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &309974896
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18368,6 +18369,7 @@ MonoBehaviour:
   shopManager: {fileID: 309974895}
   nama: {fileID: 1736793875}
   harga: {fileID: 955185374}
+  icon: {fileID: 933758455}
 --- !u!114 &1206483204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24821,6 +24823,7 @@ MonoBehaviour:
   shopManager: {fileID: 309974895}
   nama: {fileID: 341228804}
   harga: {fileID: 459031165}
+  icon: {fileID: 1354369325}
 --- !u!114 &1719039590
 MonoBehaviour:
   m_ObjectHideFlags: 0
