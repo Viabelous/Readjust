@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: GreenBoogie
   m_EditorClassIdentifier: 
-  id: enemy11077
+  id: enemy95843
   maxHp: 50
   hp: 50
   atk: 18
@@ -24,5 +24,5 @@ MonoBehaviour:
   movementEnabled: 1
   name: Green Boogie
   type: 0
-  aerus: 10
-  exp: 6
+  aerus: 2
+  exp: 2

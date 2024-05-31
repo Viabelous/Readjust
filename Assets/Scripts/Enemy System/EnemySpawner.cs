@@ -144,46 +144,68 @@ public class EnemySpawner : MonoBehaviour
             case 0:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 1f, 0f, 0f, 0f, 0f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 1f, 0f, 0f, 0f, 0f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 1f, 0f, 0f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 1f, 0f, 0f, 0f, 0f });
                 break;
             case 1:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0.5f, 0.5f, 0f, 0f, 0f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0.5f, 0.5f, 0f, 0f, 0f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0.5f, 0.5f, 0f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0.5f, 0.5f, 0f, 0f, 0f });
                 break;
             case 2:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0f, 1f, 0f, 0f, 0f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 1f, 0f, 0f, 0f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0f, 1f, 0f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0f, 1f, 0f, 0f, 0f });
                 break;
             case 3:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0f, 0.5f, 0.5f, 0f, 0f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 0.5f, 0.5f, 0f, 0f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0f, 0.5f, 0.5f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0f, 0.5f, 0.5f, 0f, 0f });
                 break;
             case 4:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0f, 0f, 1f, 0f, 0f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 0f, 0.5f, 0.4f, 0.1f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0f, 0f, 1f, 0f, 0f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0f, 0f, 1f, 0f, 0f });
                 break;
             case 5:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0f, 0f, 0.5f, 0.5f, 0f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0f, 0.5f, 0.5f, 0f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0f, 0f, 0.5f, 0.5f, 0f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0f, 0f, 0.5f, 0.5f, 0f });
                 break;
             case 6:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 1f, 0f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0f, 0f, 1f, 0f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 1f, 0f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 1f, 0f });
                 break;
             case 7:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0.5f, 0.5f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0f, 0f, 0.5f, 0.5f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0.5f, 0.5f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0.5f, 0.5f });
                 break;
             case 8:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0f, 1f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 1f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0f, 1f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0f, 0f, 0f, 0f, 1f });
                 break;
             case 9:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.1f, 0.2f, 0.5f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.1f, 0.1f, 0.2f, 0.2f, 0.2f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.1f, 0.2f, 0.5f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.1f, 0.2f, 0.5f });
                 break;
             case 10:
                 if (spawnHolder.Stage == Map.Stage1) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.2f, 0.2f, 0.4f });
                 else if (spawnHolder.Stage == Map.Stage2) SpawnRateAdjuster(new float[] { 0f, 0f, 0.0f, 0.1f, 0.3f, 0.3f, 0.3f });
+                else if (spawnHolder.Stage == Map.Stage3) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.2f, 0.2f, 0.4f });
+                else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.1f, 0.3f, 0.4f });
                 break;
         }
 
