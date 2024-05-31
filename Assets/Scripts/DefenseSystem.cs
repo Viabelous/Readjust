@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -442,7 +443,6 @@ public class DefenseSystem : MonoBehaviour
         if (buffSystem.CheckBuff(BuffType.Thorn))
         {
             float thornDamage = buffSystem.buffsActive.Find(buff => buff.type == BuffType.Thorn).value;
-
             // musuh yg menyerang juga terkena damage
             other.GetComponent<DefenseSystem>().Attacked(thornDamage);
             other.GetComponent<MobController>().Effected("thorn");

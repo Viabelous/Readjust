@@ -11,15 +11,6 @@ public enum GameState
 
 }
 
-public enum Map
-{
-    None,
-    Stage1,
-    Stage2,
-    Stage3,
-    Stage4,
-    Stage5
-}
 
 // digunakan dalam menuju on stage (?)
 public class GameManager : ScriptableObject

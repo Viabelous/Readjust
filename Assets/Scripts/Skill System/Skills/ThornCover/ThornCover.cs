@@ -12,8 +12,12 @@ public class ThornCover : Skill
     [Header("Level Up Value")]
     [SerializeField] private float dmgPersenOfDEFUp;
     [SerializeField] private float dmgPersenOfATKUp;
+    [Header("Skill Effect")]
+    private GameObject thornEffect;
     private BuffSystem buffSystem;
     private Buff buff;
+
+    private float thornTimer = 0;
 
     public float dmgPersenOfDEFFinal
     {
@@ -53,9 +57,30 @@ public class ThornCover : Skill
 
     public override void OnActivated(GameObject gameObject)
     {
+        thornTimer -= Time.deltaTime;
         if (!buffSystem.CheckBuff(buff))
         {
             Destroy(gameObject);
+        }
+    }
+
+    public GameObject GetThornEffect()
+    {
+        return thornEffect;
+    }
+
+    public override void WhileHitEnemy(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (thornTimer <= 0)
+            {
+                Instantiate(thornEffect, buffSystem.transform);
+            }
+            else
+            {
+                thornTimer = 1;
+            }
         }
     }
 }

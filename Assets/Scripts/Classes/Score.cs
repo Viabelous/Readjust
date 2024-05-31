@@ -127,10 +127,12 @@ public class Score
     {
         List<Score> winScores = GameManager.scores
                 .Where(scoreObj => scoreObj.IsWin()).ToList();
+
         if (winScores.Count == 0)
         {
             return null;
         }
+
         return winScores
                 .Where(scoreObj => scoreObj.GetMap() == map)
                 .OrderByDescending(scoreObj => scoreObj.score)

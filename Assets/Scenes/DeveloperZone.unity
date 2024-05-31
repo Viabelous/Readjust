@@ -306,6 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5346770}
+  - component: {fileID: 5346771}
   m_Layer: 5
   m_Name: Pop Up
   m_TagString: Untagged
@@ -336,6 +337,26 @@ RectTransform:
   m_AnchoredPosition: {x: 172.8, y: 5.9}
   m_SizeDelta: {x: 97.02051, y: 119.7108}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5346771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c828f0751ddef4e9278c71e09ab67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 11400000, guid: 1de1da7c76d17804388e14e27d600d81, type: 2}
+  typeText: {fileID: 994356503}
+  nameText: {fileID: 954868357}
+  descText: {fileID: 2108096957}
+  scoreText: {fileID: 16799152}
+  timeText: {fileID: 1148135150}
+  statusText: {fileID: 356188751}
+  preview: {fileID: 1174051554}
 --- !u!1 &16799150
 GameObject:
   m_ObjectHideFlags: 0
@@ -8508,6 +8529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 637680376}
+  - component: {fileID: 637680377}
   m_Layer: 5
   m_Name: Pop Up
   m_TagString: Untagged
@@ -8538,6 +8560,26 @@ RectTransform:
   m_AnchoredPosition: {x: -65.66374, y: 2.5}
   m_SizeDelta: {x: 97.02051, y: 119.7108}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &637680377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637680375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c828f0751ddef4e9278c71e09ab67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 11400000, guid: 357607d0a977e4f4e9f01f167e5c8b0b, type: 2}
+  typeText: {fileID: 1123212170}
+  nameText: {fileID: 1578866179}
+  descText: {fileID: 1797537068}
+  scoreText: {fileID: 1806629755}
+  timeText: {fileID: 556353101}
+  statusText: {fileID: 708909262}
+  preview: {fileID: 1764755670}
 --- !u!1 &642430419
 GameObject:
   m_ObjectHideFlags: 0
@@ -9090,7 +9132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000002861, y: -46.2}
+  m_AnchoredPosition: {x: 0, y: -46.2}
   m_SizeDelta: {x: 67.7649, y: 10.362}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708909262
@@ -18691,6 +18733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334981658}
+  - component: {fileID: 1334981659}
   m_Layer: 5
   m_Name: Pop Up
   m_TagString: Untagged
@@ -18721,6 +18764,26 @@ RectTransform:
   m_AnchoredPosition: {x: -65.66374, y: 2.5}
   m_SizeDelta: {x: 97.02051, y: 119.7108}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1334981659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334981657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c828f0751ddef4e9278c71e09ab67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 11400000, guid: c9755c727ebd3bd4d880d10e84631aaa, type: 2}
+  typeText: {fileID: 804704993}
+  nameText: {fileID: 1489937642}
+  descText: {fileID: 942605732}
+  scoreText: {fileID: 702268046}
+  timeText: {fileID: 1763299330}
+  statusText: {fileID: 383428495}
+  preview: {fileID: 857919152}
 --- !u!1 &1347745134
 GameObject:
   m_ObjectHideFlags: 0
@@ -21205,6 +21268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1540084088}
+  - component: {fileID: 1540084089}
   m_Layer: 5
   m_Name: Pop Up
   m_TagString: Untagged
@@ -21235,6 +21299,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.0010147}
   m_SizeDelta: {x: 370, y: 370}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1540084089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540084087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c828f0751ddef4e9278c71e09ab67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 11400000, guid: 9497ab31785593e468a26e5c5fc7223b, type: 2}
+  typeText: {fileID: 1892889345}
+  nameText: {fileID: 630517447}
+  descText: {fileID: 349108149}
+  scoreText: {fileID: 2000968388}
+  timeText: {fileID: 349460728}
+  statusText: {fileID: 1103684004}
+  preview: {fileID: 617726108}
 --- !u!1 &1543110510
 GameObject:
   m_ObjectHideFlags: 0
@@ -27251,6 +27335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1901871949}
+  - component: {fileID: 1901871950}
   m_Layer: 5
   m_Name: Pop Up
   m_TagString: Untagged
@@ -27281,6 +27366,26 @@ RectTransform:
   m_AnchoredPosition: {x: -65.66374, y: 2.5}
   m_SizeDelta: {x: 97.02051, y: 119.7108}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1901871950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901871948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c828f0751ddef4e9278c71e09ab67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 11400000, guid: ba855a6b8e4124b40b098c0d15372072, type: 2}
+  typeText: {fileID: 743703579}
+  nameText: {fileID: 1080946458}
+  descText: {fileID: 1079184793}
+  scoreText: {fileID: 1809905324}
+  timeText: {fileID: 856125942}
+  statusText: {fileID: 800787888}
+  preview: {fileID: 1888193838}
 --- !u!1 &1902009546
 GameObject:
   m_ObjectHideFlags: 0

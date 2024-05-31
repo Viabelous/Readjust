@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb59f8c38815e544ab20c48c155e1101, type: 3}
+  m_Name: Stage1
+  m_EditorClassIdentifier: 
+  map: 1
+  name: Stilbon Desert
+  description: Wilayah terpanas di sepenjuru benua. Stilbon Desert menjadi kering
+    berkat dampak dari Gunung Berapi Stilbon yang ada di dekatnya. Esensi elemen
+    api bergelora hebat di wilayah ini, memenuhi angin dengan suhu panas membuat
+    kulit terasa terbakar walau berada di tempat teduhan.
+  preview: {fileID: 21300000, guid: 8dbad4dd751c62a448e2b400cdfd34f1, type: 3}
