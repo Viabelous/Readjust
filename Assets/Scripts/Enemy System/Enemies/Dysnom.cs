@@ -73,6 +73,7 @@ public class Dysnom : Enemy
             switch (flameTuskState)
             {
                 case FlameTuskState.Delayed:
+                    mobController.movementEnabled = true;
                     ChangeAttackDamage(initialATK);
 
                     if (flameTuskNumber == 3)
@@ -113,6 +114,7 @@ public class Dysnom : Enemy
                     break;
 
                 case FlameTuskState.Moving:
+                    mobController.movementEnabled = false;
                     mobController.animate.SetTrigger("Flame Tusk");
 
                     ChangeAttackDamage(flameTuskDamage);
