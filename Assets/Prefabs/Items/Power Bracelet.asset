@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_power_bracelet
   name: Power Bracelet
-  description: 'Meningkatkan ATK sebesar 8.
+  description: 'Meningkatkan ATK sebesar 12.
 
 
 
@@ -25,9 +25,9 @@ MonoBehaviour:
     adanya sementara untuk bagian anti-gravitasi sepertinya hanya rumor belaka.
 
 '
-  price: 100
+  price: 2000
   icon: {fileID: 21300000, guid: 9321f0f36e0e752448f3bc6f044a6079, type: 3}
   types: 03000000
   adaptable: 0
   value:
-  - 8
+  - 12

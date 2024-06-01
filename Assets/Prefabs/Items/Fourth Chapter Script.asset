@@ -15,8 +15,9 @@ MonoBehaviour:
   id: item_fourth_chapter_script
   name: Fourth Chapter Script
   description: Penuh plotwist
-  price: 5
+  price: 8000
   icon: {fileID: 21300000, guid: ded853054d869684ebd973a2826a7fd1, type: 3}
   types: 0b000000
+  adaptable: 0
   persentase:
-  - 0.1
+  - 0.15

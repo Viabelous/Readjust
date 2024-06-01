@@ -1,29 +1,13 @@
-using UnityEngine.UI;
-using UnityEngine;
-using UnityEditor;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager.Requests;
-using System;
+using UnityEngine;
+using UnityEngine.UI;
 
-public enum Display
+public class StorageScroll : Navigation
 {
-    display1, display2, display3
-}
-
-public class ShopSelection : Navigation
-{
-    public Display display;
-    public Item obvirtu;
-    public ShopManager shopManager;
-
-    [SerializeField] private Text nama;
-    [SerializeField] private Text harga;
-    [SerializeField] private GameObject icon;
-
-    void Update()
-    {
-        refreshObvirtu();
-    }
+    [SerializeField] GameObject[] display;
+    [SerializeField] Item[] listOfObvirtu;
 
     public override void IsHovered(bool state)
     {
@@ -32,27 +16,34 @@ public class ShopSelection : Navigation
             GetComponent<Image>().sprite = HoverSprite;
             WindowsController.FocusedButton = gameObject;
             WindowsController.GetComponent<windowsController>().isScrolling = true;
+            print(GameManager.unlockedItems[0]);
+            print(GameManager.unlockedItems[1]);
         }
         else
         {
             GetComponent<Image>().sprite = BasicSprite;
+            print(GameManager.unlockedItems.Count);
         }
     }
 
     public override void Clicked()
     {
+        /*
         WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
         WindowsController.isScrolling = false;
-        shopManager.descriptionBox.GetComponent<Navigation>().Left = WindowsController.FocusedButton;
+        shopManager.GetComponent<ShopManager>().descriptionBox.GetComponent<Navigation>().Left = WindowsController.FocusedButton;
         WindowsController.HoveredButton = shopManager.GetComponent<ShopManager>().buyButton;
         WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
+        */
     }
     public override void ExclusiveKey()
     {
         WindowsController.isScrolling = true;
 
+        /*
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            
             shopManager.GetComponent<ShopManager>().index -= 1;
             if (display == Display.display1)
             {
@@ -60,30 +51,30 @@ public class ShopSelection : Navigation
             }
             else
             {
-                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
-                WindowsController.HoveredButton = Up;
-                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
+                WindowsController.GetComponent<windowsController>().HoveredButton.GetComponent<Navigation>().IsHovered(false);
+                WindowsController.GetComponent<windowsController>().HoveredButton = Up;
+                WindowsController.GetComponent<windowsController>().HoveredButton.GetComponent<Navigation>().IsHovered(true);
             }
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            shopManager.index += 1;
+            shopManager.GetComponent<ShopManager>().index += 1;
             if (display == Display.display3)
             {
                 shopManager.GetComponent<ShopManager>().scrollShop(true);
             }
             else
             {
-                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
-                WindowsController.HoveredButton = Down;
-                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
+                WindowsController.GetComponent<windowsController>().HoveredButton.GetComponent<Navigation>().IsHovered(false);
+                WindowsController.GetComponent<windowsController>().HoveredButton = Down;
+                WindowsController.GetComponent<windowsController>().HoveredButton.GetComponent<Navigation>().IsHovered(true);
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
+        }*/
 
-            shopManager.closeBtn.GetComponent<Navigation>().Left = gameObject;
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
             WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
+            WindowsController.HoveredButton.GetComponent<Navigation>().Right.GetComponent<Navigation>().Left = gameObject;
             WindowsController.HoveredButton = Right;
             WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
             WindowsController.isScrolling = false;
@@ -93,13 +84,7 @@ public class ShopSelection : Navigation
         {
             Clicked();
         }
-    }
-
-    public void refreshObvirtu()
-    {
-        nama.text = obvirtu.name;
-        harga.text = obvirtu.Price.ToString();
-        icon.GetComponent<Image>().sprite = obvirtu.Icon;
+        
     }
 
 }

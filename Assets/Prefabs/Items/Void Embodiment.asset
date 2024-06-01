@@ -15,7 +15,7 @@ MonoBehaviour:
   id: item_void_embodiment
   name: Void Embodiment
   description: Banyakin spawn musuh
-  price: 100
-  icon: {fileID: 372145110, guid: 37af40bce35d35e448247c5056b36f8d, type: 3}
+  price: 2000
+  icon: {fileID: 21300000, guid: e0f86c302eb15a649a1bc3e876307464, type: 3}
   types: 0f000000
   adaptable: 0

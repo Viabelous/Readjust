@@ -15,8 +15,9 @@ MonoBehaviour:
   id: item_second_chapter_script
   name: Second Chapter Script
   description: Dah masuk cerita
-  price: 10
+  price: 5000
   icon: {fileID: 21300000, guid: d094a0421a1dbaf4da624071a45392e3, type: 3}
   types: 08000000
+  adaptable: 0
   persentase:
-  - 0.1
+  - 0.15

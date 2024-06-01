@@ -15,9 +15,10 @@ MonoBehaviour:
   id: item_fifth_chapter_script
   name: Fifth Chapter Script
   description: Bad ending sepertinya
-  price: 5
+  price: 10000
   icon: {fileID: 21300000, guid: 4f705886e8d77c24c91844eee88562f1, type: 3}
   types: 08000000090000000a0000000b000000
+  adaptable: 0
   persentase:
   - 0.08
   - 0.08

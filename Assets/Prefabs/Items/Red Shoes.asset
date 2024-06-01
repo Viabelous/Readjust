@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_red_shoes
   name: Red Shoes
-  description: 'Meningkatkan AGI sebesar 4.
+  description: 'Meningkatkan AGI sebesar 8.
 
 
 
@@ -23,9 +23,9 @@ MonoBehaviour:
     oleh Sang Pahlawan di karangan populer benua ini. Warna merah yang mengisyaratkan
     keberanian dari Sang Pahlawan itu memberikan dorongan kepada pemakainya untuk
     terus melangkah maju.'
-  price: 50
+  price: 2000
   icon: {fileID: 21300000, guid: 716c137b9030d614fb7463a08170affe, type: 3}
   types: 05000000
   adaptable: 0
   value:
-  - 4
+  - 8

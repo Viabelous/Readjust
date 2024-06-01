@@ -25,7 +25,7 @@ MonoBehaviour:
     bermain dengan Zay, terciptalah benda bermanfaat yang tidak jelas seperti ini.
     Tentunya bagian yang dikatakan bermanfaat di benda ini ada berkat campur tangan
     Ken.'
-  price: 50
+  price: 1000
   icon: {fileID: 21300000, guid: 06837e4d86a44f94596110c0ba9eab3b, type: 3}
   types: 
   adaptable: 0

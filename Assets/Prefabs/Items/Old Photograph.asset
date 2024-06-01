@@ -28,7 +28,7 @@ MonoBehaviour:
 
     "Kalian adalah sekelompok orang-orang hebat, kalian
     akan menyadarinya suatu hari nanti".'
-  price: 5
+  price: 15000
   icon: {fileID: 21300000, guid: fd8492186b069114e96f56aad53f8c34, type: 3}
   types: 08000000090000000a0000000b000000
   adaptable: 0

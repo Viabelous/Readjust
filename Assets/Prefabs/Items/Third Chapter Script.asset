@@ -15,8 +15,9 @@ MonoBehaviour:
   id: item_third_chapter_script
   name: Third Chapter Script
   description: Puncak konflik
-  price: 5
+  price: 2000
   icon: {fileID: 21300000, guid: 81a57915f2a6f2a489690bc723eda989, type: 3}
   types: 0a000000
+  adaptable: 0
   persentase:
-  - 0.1
+  - 0.15

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ken
   m_EditorClassIdentifier: 
   name: Ken
-  pict: {fileID: 21300000, guid: 89df4d85a8c4816419926e69e8400c60, type: 3}
+  pict: {fileID: 21300000, guid: e5b3da42736b3e94c90a266d70eeece7, type: 3}
   dialogue:
   - Ingin meningkatkan stat?/plus/openStatWindows
   - Stat yang ditingkatkan hanya berlaku di dunia ini, saat kita keluar maka tentunya

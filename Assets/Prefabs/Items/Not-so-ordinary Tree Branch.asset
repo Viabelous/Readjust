@@ -29,7 +29,7 @@ MonoBehaviour:
     "Aku sudah berkali-kali bilang
     kepadanya, Rion, aku yakin ia akan mengawetkan ranting itu setelah mengetahui
     kenyataannya nanti".'
-  price: 100
+  price: 7500
   icon: {fileID: 21300000, guid: 002c9a0b835d6b2499307d6d4350e80e, type: 3}
   types: 09000000
   adaptable: 0

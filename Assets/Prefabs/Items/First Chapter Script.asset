@@ -15,8 +15,9 @@ MonoBehaviour:
   id: item_first_chapter_script
   name: First Chapter Script
   description: 'Masih prolog '
-  price: 5
+  price: 5000
   icon: {fileID: 21300000, guid: a33a3b63be5614d47bb7851613cd4310, type: 3}
   types: 09000000
+  adaptable: 0
   persentase:
-  - 0.1
+  - 0.15

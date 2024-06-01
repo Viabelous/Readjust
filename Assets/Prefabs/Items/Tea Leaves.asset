@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_tea_leaves
   name: Tea Leaves
-  description: 'Meningkatkan FOC sebesar 4.
+  description: 'Meningkatkan FOC sebesar 8.
 
 
 
@@ -22,9 +22,9 @@ MonoBehaviour:
     Dua tangkai daun teh pilihan
     bertekstur bak kain wool. Benda ini benar-benar daun dan bukan kain perca hijau
     yang dipotong membentuk daun.'
-  price: 10
+  price: 3000
   icon: {fileID: 21300000, guid: e5ebbbda1ba5a0b48b6fc9e63b17e0cd, type: 3}
   types: 06000000
   adaptable: 0
   value:
-  - 4
+  - 8

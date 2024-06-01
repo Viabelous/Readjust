@@ -35,7 +35,7 @@ MonoBehaviour:
 
     "Benar,
     Rion".'
-  price: 100
+  price: 7500
   icon: {fileID: 21300000, guid: c96d32b85206ac749bdb7c2f34f48059, type: 3}
   types: 0a000000
   adaptable: 0

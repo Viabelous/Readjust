@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Xiena
   m_EditorClassIdentifier: 
   name: Xiena
-  pict: {fileID: 21300000, guid: 89df4d85a8c4816419926e69e8400c60, type: 3}
+  pict: {fileID: 21300000, guid: 83898aafb354a344fbf9fc9a9ebe9e46, type: 3}
   dialogue:
   - Selamat datang, selamat datang, silakan berbelanja./plus/openShopWindows

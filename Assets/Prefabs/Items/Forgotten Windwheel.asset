@@ -33,7 +33,7 @@ MonoBehaviour:
     sendirian sampai aku mati".
 
     "Kau orang aneh".'
-  price: 5
+  price: 7500
   icon: {fileID: 21300000, guid: 7d83b51ac0bd9ff4d876173008330426, type: 3}
   types: 0b000000
   adaptable: 0

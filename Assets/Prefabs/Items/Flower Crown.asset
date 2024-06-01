@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_flower_crown
   name: Flower Crown
-  description: 'Meningkatkan Max HP dan Max Mana sebanyak 25.
+  description: 'Meningkatkan Max HP dan Max Mana sebanyak 150.
 
 
 
@@ -23,9 +23,9 @@ MonoBehaviour:
     yang terasa damai dan menghangatkan, terlihat sangat sempurna meski dibuat hanya
     untuk menjadi contoh pembuatan mahkota bunga lain. Andai saja penciptanya juga
     berpikir demikian.'
-  price: 50
+  price: 3000
   icon: {fileID: 21300000, guid: 107b15f616f2b9a4cb973e0afbb691a7, type: 3}
   types: 
   adaptable: 0
-  extraMaxHP: 25
-  extraMaxMana: 25
+  extraMaxHP: 150
+  extraMaxMana: 150

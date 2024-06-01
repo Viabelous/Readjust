@@ -25,7 +25,7 @@ MonoBehaviour:
     tersambung di tengah-tengahnya. Energi kuat mengelilingi lilitan halus dari barang
     antik ini, sapaan paduan enigmatik antara elemen Ether dan Void dapat dirasakan
     ketika menyentuhnya.'
-  price: 100
+  price: 20000
   icon: {fileID: 21300000, guid: 0057aa5658b67464e992efd5af8bd628, type: 3}
   types: 0f000000
   adaptable: 1

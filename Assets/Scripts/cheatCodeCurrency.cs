@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-
-
-public class cheatCode : MonoBehaviour
+public class cheatCodeCurrency : MonoBehaviour
 {
-    public GameObject stageManager;
+    [HideInInspector] PlayerController thisPlayer;
+
     private KeyCode[] sequence = new KeyCode[]{
         KeyCode.UpArrow,
         KeyCode.UpArrow,
@@ -20,7 +18,11 @@ public class cheatCode : MonoBehaviour
         KeyCode.B,
         KeyCode.A};
     private int sequenceIndex;
-    public GameObject[] spawner;
+
+    void Start()
+    {
+        thisPlayer = GetComponent<PlayerController>();
+    }
 
     void Update()
     {
@@ -28,17 +30,10 @@ public class cheatCode : MonoBehaviour
         if (++sequenceIndex == sequence.Length){
              sequenceIndex = 0;
             
-            float time = stageManager.GetComponent<StageManager>().time;
-            stageManager.GetComponent<StageManager>().time = 
-            60 + (time - (time % 60));
-            foreach(GameObject spawn in spawner)
-            {
-                spawn.GetComponent<EnemySpawner>().UpdateProbabilities();
-            }
-            
+            thisPlayer.player.aerus += 20000;
+            thisPlayer.player.exp += 20000;
 
          }
     } else if (Input.anyKeyDown) sequenceIndex = 0;
     }
-
 }
