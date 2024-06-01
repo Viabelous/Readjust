@@ -87,7 +87,7 @@ public class ShopSelection : Navigation
             WindowsController.HoveredButton = Right;
             WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
             WindowsController.isScrolling = false;
-            
+
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
