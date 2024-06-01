@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83970c5c64c9ea04691554104bfbdf7e, type: 3}
   m_Name: Eris
   m_EditorClassIdentifier: 
-  id: enemy48929
+  id: enemy30464
   maxHp: 20000
   hp: 20000
   atk: 50
@@ -29,10 +29,6 @@ MonoBehaviour:
   distanceToPlayer: 5
   HPPersenOfMaxHP: 0.3
   erisProjectile: {fileID: 3990146848265617124, guid: a07e33c4bd597694db02fb4518bdb952, type: 3}
-  erisProjectileDmg: 5
-  erisProjectileSpeed: 7
   erisProjectileTimer: 3
   xenaProjectile: {fileID: 231698026191886059, guid: 5097e5456b1fe674a9d559c4ce034856, type: 3}
-  xenaProjectileDmg: 10
-  xenaProjectileSpeed: 14
   xenaProjectileTimer: 1

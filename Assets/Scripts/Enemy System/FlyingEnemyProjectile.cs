@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class FlyingEnemyProjectile : MonoBehaviour
 {
+    [SerializeField] EnemyProjectile projectile;
+    [SerializeField] EnemySkillController skillController;
+
     Transform target;
     Vector3 targetPos;
     float speed;
@@ -19,28 +22,29 @@ public class FlyingEnemyProjectile : MonoBehaviour
     {
         target = GameObject.FindWithTag("Player").transform;
         onLocking = true;
-        // targetPos = target.position;
         timer = 0;
 
-        transform.position = GetComponent<EnemySkillController>()
-        .GetEnemy().GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position;
+        speed = projectile.GetSpeed();
+        skillController = GetComponent<EnemySkillController>();
 
+        // transform.position = skillController.GetEnemy().
+        // GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position;
 
+        skillController.SetDamage(projectile.GetDamage());
+        skillController.SetSpeed(projectile.GetSpeed());
     }
 
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (onLocking && timer >= 1)
+        if (onLocking && timer >= projectile.GetLockingTime())
         {
             onLocking = false;
             targetPos = target.position;
             initPos = transform.position;
             initDistance = Vector3.Distance(initPos, targetPos);
         }
-
-        speed = GetComponent<EnemySkillController>().GetSpeed();
 
         transform.position = Vector3.MoveTowards(
             transform.position,
@@ -58,10 +62,17 @@ public class FlyingEnemyProjectile : MonoBehaviour
 
     }
 
+    public EnemyProjectile GetProjectile()
+    {
+        return projectile;
+    }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 
-    // void UpdateTargetPos()
-    // {
-
-    // }
 }

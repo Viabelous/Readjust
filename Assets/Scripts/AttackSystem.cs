@@ -26,6 +26,7 @@ public class AttackSystem : MonoBehaviour
 
     public float DealDamage()
     {
+
         // ditaruh di sini karena dipakenya di skill bukan di player yg mana skill munculnya sbenetar ae
         // kalo ditaruh di update kadang error, 
         // mungkin malah bisa jadi deal damage dipanggil duluan dari pada update (?)
@@ -136,11 +137,12 @@ public class AttackSystem : MonoBehaviour
                 {
                     attacker = GetComponent<MobController>().enemy;
                     damage = attacker.GetATK();
-                    // attack system di skill musuh
                 }
+                // attack system di skill musuh
                 else
                 {
-                    attacker = GetComponent<EnemySkillController>().GetEnemy().GetComponent<MobController>().enemy;
+                    attacker = GetComponent<EnemySkillController>().GetEnemy()
+                    .GetComponent<MobController>().enemy;
                     damage = GetComponent<EnemySkillController>().GetDamage();
                 }
                 break;

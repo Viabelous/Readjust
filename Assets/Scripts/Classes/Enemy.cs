@@ -25,6 +25,8 @@ public class Enemy : Character
     [SerializeField] protected float aerus;
     [SerializeField] protected float exp;
     [SerializeField] protected float distanceToPlayer;
+    [Header("Flying Enemy")]
+    [SerializeField] protected GameObject projectile;
 
     private void OnEnable()
     {
@@ -80,6 +82,11 @@ public class Enemy : Character
     public float GetDistanceToPlayer()
     {
         return this.distanceToPlayer;
+    }
+
+    public GameObject GetProjectile()
+    {
+        return this.projectile;
     }
 
 

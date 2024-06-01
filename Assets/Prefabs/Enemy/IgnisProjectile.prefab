@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &231698026191886059
+--- !u!1 &4773343033628093566
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7268764290362026410}
-  - component: {fileID: 8205275675984448222}
-  - component: {fileID: -2227368944070931033}
-  - component: {fileID: -6701155113584774684}
-  - component: {fileID: -2056398912400443585}
-  - component: {fileID: 1820519966700435224}
-  - component: {fileID: -5951938534475227912}
+  - component: {fileID: 4969794852022422527}
+  - component: {fileID: 667624716803896174}
+  - component: {fileID: 7581554822025740348}
+  - component: {fileID: 8393808089630605733}
+  - component: {fileID: 2867939430550715287}
+  - component: {fileID: 1884621788285258280}
+  - component: {fileID: 2226906381535924269}
   m_Layer: 0
-  m_Name: XenaProjectile
+  m_Name: IgnisProjectile
   m_TagString: EnemyDamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7268764290362026410
+--- !u!4 &4969794852022422527
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231698026191886059}
+  m_GameObject: {fileID: 4773343033628093566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.221, y: -3.585, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8205275675984448222
+--- !u!212 &667624716803896174
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231698026191886059}
+  m_GameObject: {fileID: 4773343033628093566}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,10 +75,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 573214375
-  m_SortingLayer: 7
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 80bced4df045cf043a7e666143d44621, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa55966e187d74d4e961695bdd585f6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,13 +89,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &-2227368944070931033
-PolygonCollider2D:
+--- !u!58 &7581554822025740348
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231698026191886059}
+  m_GameObject: {fileID: 4773343033628093566}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -121,75 +121,56 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.14999999, y: 0.16}
-      - {x: -0.04, y: 0.16}
-      - {x: -0.19, y: 0.099999994}
-      - {x: -0.19, y: -0.12}
-      - {x: -0.12, y: -0.21}
-      - {x: 0.13, y: -0.21}
-      - {x: 0.19999999, y: -0.099999994}
-      - {x: 0.19999999, y: 0.07}
-      - {x: 0.19, y: 0.099999994}
-  m_UseDelaunayMesh: 0
---- !u!114 &-6701155113584774684
+  m_Offset: {x: -0.001980573, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.19522086
+--- !u!114 &8393808089630605733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231698026191886059}
+  m_GameObject: {fileID: 4773343033628093566}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f05e7d5a83a102a42acb1259909cd8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2056398912400443585
+--- !u!114 &2867939430550715287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231698026191886059}
+  m_GameObject: {fileID: 4773343033628093566}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
---- !u!114 &1820519966700435224
+--- !u!114 &1884621788285258280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231698026191886059}
+  m_GameObject: {fileID: 4773343033628093566}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fad260f617b41fa459ea0b9b8a351830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: 2810f0d04973eb043a8d5a84571147f0, type: 2}
-  skillController: {fileID: -6701155113584774684}
---- !u!96 &-5951938534475227912
+  projectile: {fileID: 11400000, guid: 9e5ce363144005241908f64e0f0f4659, type: 2}
+  skillController: {fileID: 8393808089630605733}
+--- !u!96 &2226906381535924269
 TrailRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231698026191886059}
+  m_GameObject: {fileID: 4773343033628093566}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -224,7 +205,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -242,8 +223,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.9973047
-        value: 0.50641024
+        time: 1
+        value: 0.714744
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -255,8 +236,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.49758703, g: 0.61921906, b: 0.8742138, a: 0.78431374}
-      key1: {r: 0.06407963, g: 0.6484262, b: 0.754717, a: 0}
+      key0: {r: 0.91194963, g: 0.2858837, b: 0.0028675736, a: 0.78431374}
+      key1: {r: 1, g: 0.66342616, b: 0, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -271,7 +252,7 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 129
+      atime0: 0
       atime1: 65535
       atime2: 0
       atime3: 0

@@ -19,16 +19,10 @@ public class Eris : Enemy
 
     [Header("Eris")]
     [SerializeField] private GameObject erisProjectile;
-    [SerializeField] private float erisProjectileDmg;
-    [SerializeField] private float erisProjectileSpeed;
-    [SerializeField] private float erisProjectileTimer;
 
 
     [Header("Xena")]
     [SerializeField] private GameObject xenaProjectile;
-    [SerializeField] private float xenaProjectileDmg;
-    [SerializeField] private float xenaProjectileSpeed;
-    [SerializeField] private float xenaProjectileTimer;
 
     MobController mobController;
 
@@ -38,7 +32,7 @@ public class Eris : Enemy
 
     public override void Spawning(GameObject gameObject)
     {
-        projectileTimer = erisProjectileTimer;
+        projectileTimer = erisProjectile.GetComponent<FlyingEnemyProjectile>().GetProjectile().GetTimeInterval();
 
         state = ErisState.Eris;
         mobController = gameObject.GetComponent<MobController>();
@@ -59,7 +53,8 @@ public class Eris : Enemy
             case ErisState.Eris:
                 if (projectileTimer <= 0)
                 {
-                    projectileTimer = erisProjectileTimer;
+                    projectileTimer = erisProjectile.GetComponent<FlyingEnemyProjectile>()
+                                    .GetProjectile().GetTimeInterval();
                     AttackEris(gameObject);
                 }
                 break;
@@ -67,7 +62,8 @@ public class Eris : Enemy
             case ErisState.Xena:
                 if (projectileTimer <= 0)
                 {
-                    projectileTimer = xenaProjectileTimer;
+                    projectileTimer = xenaProjectile.GetComponent<FlyingEnemyProjectile>()
+                                    .GetProjectile().GetTimeInterval();
                     AttackXena(gameObject);
                 }
                 break;
@@ -76,46 +72,42 @@ public class Eris : Enemy
 
     public void AttackEris(GameObject gameObject)
     {
-        // Vector3 startPos = gameObject.GetComponent<FlyingEnemyShadow>().children[0].transform.position;
-        GameObject projectile = Instantiate(erisProjectile);
+        GameObject projectile = Instantiate(erisProjectile, gameObject.transform.position, Quaternion.identity);
         projectile.GetComponent<EnemySkillController>().SetEnemy(gameObject);
-        projectile.GetComponent<EnemySkillController>().SetDamage(erisProjectileDmg);
-        projectile.GetComponent<EnemySkillController>().SetSpeed(erisProjectileSpeed);
+
     }
 
     public void AttackXena(GameObject gameObject)
     {
-        // Vector3 startPos = gameObject.GetComponent<FlyingEnemyShadow>().children[0].transform.position;
-        GameObject projectile = Instantiate(xenaProjectile);
+        GameObject projectile = Instantiate(xenaProjectile, gameObject.transform.position, Quaternion.identity);
         projectile.GetComponent<EnemySkillController>().SetEnemy(gameObject);
-        projectile.GetComponent<EnemySkillController>().SetDamage(xenaProjectileDmg);
-        projectile.GetComponent<EnemySkillController>().SetSpeed(xenaProjectileSpeed);
+
     }
 
-    public GameObject GetErisProjectile()
-    {
-        return erisProjectile;
-    }
-    public float GetErisProjectileDmg()
-    {
-        return erisProjectileDmg;
-    }
-    public float GetErisProjectileSpeed()
-    {
-        return erisProjectileSpeed;
-    }
+    // public GameObject GetErisProjectile()
+    // {
+    //     return erisProjectile;
+    // }
+    // public float GetErisProjectileDmg()
+    // {
+    //     return erisProjectileDmg;
+    // }
+    // public float GetErisProjectileSpeed()
+    // {
+    //     return erisProjectileSpeed;
+    // }
 
-    public GameObject GetXenaProjectile()
-    {
-        return xenaProjectile;
-    }
-    public float GetXenaProjectileDmg()
-    {
-        return xenaProjectileDmg;
-    }
+    // public GameObject GetXenaProjectile()
+    // {
+    //     return xenaProjectile;
+    // }
+    // public float GetXenaProjectileDmg()
+    // {
+    //     return xenaProjectileDmg;
+    // }
 
-    public float GetXenaProjectileSpeed()
-    {
-        return xenaProjectileSpeed;
-    }
+    // public float GetXenaProjectileSpeed()
+    // {
+    //     return xenaProjectileSpeed;
+    // }
 }
