@@ -203,7 +203,7 @@ public class Player : Character
 
     public override float GetMaxHP()
     {
-        return this.maxHp + 100 * maxHPLevel;
+        return this.maxHp + 100 * (maxHPLevel - 1);
     }
 
     public override float GetHP()
@@ -212,7 +212,7 @@ public class Player : Character
     }
     public float GetMaxMana()
     {
-        return this.maxMana + 50 * maxManaLevel;
+        return this.maxMana + 50 * (maxManaLevel - 1);
     }
 
     public float GetMana()
@@ -222,19 +222,19 @@ public class Player : Character
 
     public override float GetATK()
     {
-        return this.atk + 5 * atkLevel; ;
+        return this.atk + 5 * (atkLevel - 1); ;
     }
     public override float GetDEF()
     {
-        return this.def + 5 * defLevel;
+        return this.def + 5 * (defLevel - 1);
     }
     public override float GetFOC()
     {
-        return this.foc + 1 * focLevel;
+        return this.foc + 1 * (focLevel - 1);
     }
     public override float GetAGI()
     {
-        return this.agi + 1 * agiLevel;
+        return this.agi + 1 * (agiLevel - 1);
     }
     public override float GetSpeed()
     {

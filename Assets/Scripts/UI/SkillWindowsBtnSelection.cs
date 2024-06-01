@@ -24,7 +24,7 @@ public class SkillWindowsBtnSelection : Navigation
 
     void Update()
     {
-        Left = WindowsController.FocusedButton;
+
         focusedSkill = WindowsController.FocusedButton.GetComponent<SkillsSelection>();
 
         // hasUnlocked = GameManager.CheckUnlockedSkill(Left.GetComponent<SkillsSelection>().GetSkill().Name);
@@ -32,6 +32,7 @@ public class SkillWindowsBtnSelection : Navigation
         switch (type)
         {
             case BtnType.Select:
+                Left = WindowsController.FocusedButton;
                 if (Down != null && !Down.activeInHierarchy)
                 {
                     Down = null;
@@ -52,11 +53,13 @@ public class SkillWindowsBtnSelection : Navigation
 
                 break;
 
-            case BtnType.Upgrade:
-
+            case BtnType.OpenUpgrade:
+                Left = WindowsController.FocusedButton;
                 break;
 
             case BtnType.Unlock:
+                Left = WindowsController.FocusedButton;
+
                 costText.color = GameManager.player.exp < focusedSkill.GetSkill().ExpUnlockCost ? Color.red : Color.black;
                 costText.text = focusedSkill.GetSkill().ExpUnlockCost.ToString();
                 break;

@@ -53,10 +53,13 @@ public class Skill : ScriptableObject
     [SerializeField] protected SkillHitType hitType; // tipe pukulan yg diberikan 
     [SerializeField] protected SkillMovementType movementType; // tipe gerakan skill 
     [SerializeField] protected CostType costType;   // tipe bayaran yg dipake
-    [SerializeField] protected float maxCd;          // cd maksimal
+    [SerializeField] protected float initCd, maxCd;          // cd maksimal
     [SerializeField] protected float cost;           // total mana/hp di awal
     [SerializeField] protected float damage;         // total damage di awal
 
+    [Header("Upgrade Skill")]
+    [SerializeField] protected float upCd;
+    [SerializeField] protected float upCost;
 
 
     [Header("Skill Icon")]
@@ -78,6 +81,7 @@ public class Skill : ScriptableObject
     [Header("Price")]
     [SerializeField] protected float expUnlockCost;
     [SerializeField] protected float expUpCost;
+
 
     protected List<string> enemiesId = new List<string>();
     protected Transform lockedEnemy;
@@ -123,7 +127,8 @@ public class Skill : ScriptableObject
     {
         get
         {
-            return maxCd;
+            float finalCd = initCd + upCd * (Level - 1);
+            return finalCd < maxCd ? maxCd : finalCd;
         }
     }
 
@@ -132,7 +137,7 @@ public class Skill : ScriptableObject
     {
         get
         {
-            return cost;
+            return cost + upCost * (Level - 1);
         }
     }
 

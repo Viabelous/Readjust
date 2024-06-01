@@ -24,10 +24,11 @@ public class windowsController : MonoBehaviour
 
     void Update()
     {
-        if(isScrolling)
+        if (isScrolling)
         {
             HoveredButton.GetComponent<Navigation>().ExclusiveKey();
         }
+
         else if (ActiveWindowsID != -1 && ZoneManager.instance.CurrentState() != ZoneState.OnPopUp)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))

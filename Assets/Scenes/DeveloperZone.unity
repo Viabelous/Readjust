@@ -9280,7 +9280,7 @@ MonoBehaviour:
   Left: {fileID: 0}
   Up: {fileID: 0}
   Right: {fileID: 1024851252}
-  Down: {fileID: 1024851252}
+  Down: {fileID: 0}
   textObject: {fileID: 1560603941}
   FocusSprite: {fileID: 21300000, guid: 7002bfc25a774f349a6af44c8362c3a6, type: 3}
   yVal: 10
@@ -18798,7 +18798,7 @@ MonoBehaviour:
   Left: {fileID: 1024851252}
   Up: {fileID: 0}
   Right: {fileID: 0}
-  Down: {fileID: 1024851252}
+  Down: {fileID: 0}
   textObject: {fileID: 293324821}
   FocusSprite: {fileID: 21300000, guid: 7002bfc25a774f349a6af44c8362c3a6, type: 3}
   yVal: 10
@@ -31349,6 +31349,8 @@ MonoBehaviour:
   desc2: {fileID: 293324823}
   costText: {fileID: 1347745136}
   skillImg: {fileID: 606141438}
+  descImg1: {fileID: 679679787}
+  descImg2: {fileID: 1227874555}
   upgradeBtn: {fileID: 1024851252}
   cancelBtn: {fileID: 62630997}
   price: {fileID: 147808587}
