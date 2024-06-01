@@ -13,7 +13,8 @@ public class ShopManager : MonoBehaviour
 
     public GameObject obvirtuName;
     public GameObject pic;
-    public GameObject descriptionText;
+    public GameObject descriptionBox;
+    public Text descriptionText;
     public GameObject buyButton;
     public Text price;
     [HideInInspector] public int index = 0;
@@ -28,7 +29,7 @@ public class ShopManager : MonoBehaviour
             obvirtuFocused = WindowsController.HoveredButton.GetComponent<ShopSelection>();
             obvirtuName.GetComponent<Text>().text = obvirtuFocused.obvirtu.Name;
             pic.GetComponent<Image>().sprite = obvirtuFocused.obvirtu.Icon;
-            descriptionText.GetComponent<Text>().text = obvirtuFocused.obvirtu.Description;
+            descriptionText.text = obvirtuFocused.obvirtu.Description;
             price.text = obvirtuFocused.obvirtu.Price.ToString();
         }
     }

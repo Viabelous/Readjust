@@ -41,11 +41,11 @@ public class ShopSelection : Navigation
 
     public override void Clicked()
     {
-        WindowsController.GetComponent<windowsController>().HoveredButton.GetComponent<Navigation>().IsHovered(false);
-        //shopManager.GetComponent<ShopManager>().buyButton.left = WindowsController.GetComponent<windowsController>().HoveredButton;
-        WindowsController.GetComponent<windowsController>().isScrolling = false;
-        WindowsController.GetComponent<windowsController>().HoveredButton = shopManager.GetComponent<ShopManager>().buyButton;
-        WindowsController.GetComponent<windowsController>().HoveredButton.GetComponent<Navigation>().IsHovered(true);
+        WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
+        WindowsController.isScrolling = false;
+        shopManager.GetComponent<ShopManager>().descriptionBox.GetComponent<Navigation>().Left = WindowsController.FocusedButton;
+        WindowsController.HoveredButton = shopManager.GetComponent<ShopManager>().buyButton;
+        WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
     }
     public override void ExclusiveKey()
     {
@@ -78,6 +78,16 @@ public class ShopSelection : Navigation
                 WindowsController.GetComponent<windowsController>().HoveredButton = Down;
                 WindowsController.GetComponent<windowsController>().HoveredButton.GetComponent<Navigation>().IsHovered(true);
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+
+            shopManager.GetComponent<ShopManager>().closeBtn.GetComponent<Navigation>().Left = WindowsController.HoveredButton;
+            WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
+            WindowsController.HoveredButton = Right;
+            WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
+            WindowsController.isScrolling = false;
+            
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
