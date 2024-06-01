@@ -9,10 +9,6 @@ public class SkillUpgradeWindowsController : MonoBehaviour
     [SerializeField] private GameObject upgradeBtn, cancelBtn, price;
     private Skill skill;
 
-    // void Start()
-    // {
-
-    // }
     void Update()
     {
         print(WindowsController.HoveredButton != null ? WindowsController.HoveredButton.name : "null");

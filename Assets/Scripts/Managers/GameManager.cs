@@ -25,7 +25,7 @@ public class GameManager : ScriptableObject
     public static Dictionary<string, int> unlockedSkills = new Dictionary<string, int>();
 
     // item yang sudah dibuka
-    public static Dictionary<string, int> unlockedItems = new Dictionary<string, int>();
+    public static List<string> unlockedItems = new List<string>();
 
     // high score tiap map
     public static List<Score> scores = new List<Score>();
@@ -41,6 +41,11 @@ public class GameManager : ScriptableObject
         return unlockedSkills.ContainsKey(name);
     }
 
+    public static bool CheckUnlockedItems(string name)
+    {
+        return unlockedItems.Contains(name);
+    }
+
     public static void ResetData()
     {
         player = null;
@@ -54,9 +59,6 @@ public class GameManager : ScriptableObject
     public static void SaveHistory(Score score)
     {
         scores.Add(score);
-        // Dictionary<DateTime, List<float>> scoreValue = new Dictionary<DateTime, List<float>>();
-        // scoreValue.Add(DateTime.Now, new List<float>() { score, time, status });
-        // scores.Add(map.ToString(), scoreValue);
     }
 
 

@@ -10,6 +10,7 @@ public static class DataManager
     private static string playerPath = path + "player.json";
     private static string skillsPath = path + "skills.json";
     private static string scoresPath = path + "scores.json";
+    private static string itemsPath = path + "items.json";
 
     public static void SavePlayer(Player player)
     {
@@ -48,24 +49,6 @@ public static class DataManager
         }
     }
 
-    // public static void SaveScores(Dictionary<string, Dictionary<DateTime, List<float>>> scores)
-    // {
-    //     // buat direktori jika belum ada
-    //     if (!Directory.Exists(path))
-    //     {
-    //         Directory.CreateDirectory(path);
-    //     }
-
-    //     string jsonData = JsonConvert.SerializeObject(
-    //         scores,
-    //         Formatting.Indented,
-    //         new JsonSerializerSettings
-    //         {
-    //             TypeNameHandling = TypeNameHandling.Auto
-    //         }
-    //     );
-    //     File.WriteAllText(scoresPath, jsonData);
-    // }
     public static void SaveScores(List<Dictionary<string, object>> scores)
     {
         // buat direktori jika belum ada
@@ -103,26 +86,6 @@ public static class DataManager
         }
     }
 
-    // public static Dictionary<string, Dictionary<DateTime, List<float>>> LoadScores()
-    // {
-    //     if (File.Exists(scoresPath))
-    //     {
-    //         string jsonData = File.ReadAllText(scoresPath);
-    //         var data = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<DateTime, List<float>>>>(jsonData, new JsonSerializerSettings
-    //         {
-    //             TypeNameHandling = TypeNameHandling.Auto
-    //         });
-    //         return data;
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning("No score data file found at " + scoresPath);
-    //         return null;
-    //     }
-    // }
-
-
-
     public static void SaveSkills(Dictionary<string, int> dictData)
     {
         // buat direktori jika belum ada
@@ -158,14 +121,45 @@ public static class DataManager
         }
     }
 
-    public static void SaveItem(Player player)
+    public static void SaveItems(List<String> listData)
     {
+        // buat direktori jika belum ada
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
 
+        string json = JsonConvert.SerializeObject(listData, Formatting.Indented);
+        File.WriteAllText(itemsPath, json);
     }
+
+    public static List<string> LoadItems()
+    {
+        if (File.Exists(itemsPath))
+        {
+            try
+            {
+                string json = File.ReadAllText(itemsPath);
+                List<string> dict = JsonConvert.DeserializeObject<List<string>>(json);
+                return dict;
+            }
+            catch (IOException e)
+            {
+                Debug.LogError("Failed to load items data: " + e.Message);
+                return null;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No items data file found at " + itemsPath);
+            return null;
+        }
+    }
+
 
     public static bool CheckPath()
     {
-        if (File.Exists(playerPath) && File.Exists(skillsPath) && File.Exists(scoresPath))
+        if (File.Exists(playerPath) && File.Exists(skillsPath) && File.Exists(scoresPath) && File.Exists(itemsPath))
         {
             return true;
         }
