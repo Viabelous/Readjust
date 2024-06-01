@@ -173,7 +173,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.10391736}
+  m_Offset: {x: 0, y: 0.0023459196}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -184,7 +184,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.29216528}
+  m_Size: {x: 1.5, y: 0.50469184}
   m_EdgeRadius: 0
 --- !u!114 &8771922181480160492
 MonoBehaviour:
@@ -268,8 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023b96539eb1f0f4d90351092e3e6180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  children:
-  - {fileID: 6571338170955928856}
+  flyingEnemy: {fileID: 6571338170955928856}
 --- !u!1 &6571338170955928856
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,9 +341,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 573214375
-  m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingLayerID: 1406762595
+  m_SortingLayer: 8
+  m_SortingOrder: 10
   m_Sprite: {fileID: 848955355, guid: 0174531d6dc346b4f876aff790952c11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -381,16 +380,16 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8192
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
+    m_Bits: 8192
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008838415, y: -0.09068757}
+  m_Offset: {x: 0.11867732, y: 0.07933373}
   serializedVersion: 2
-  m_Radius: 0.5244364
+  m_Radius: 0.48193085
 --- !u!114 &4821217497097005141
 MonoBehaviour:
   m_ObjectHideFlags: 0

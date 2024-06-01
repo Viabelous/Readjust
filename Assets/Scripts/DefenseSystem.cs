@@ -207,6 +207,7 @@ public class DefenseSystem : MonoBehaviour
                 // player sedang menyerang enemy
                 if (other.CompareTag("Damage"))
                 {
+
                     Skill skill = other.GetComponent<SkillController>().skill;
 
                     // damage hanya akan diberikan jika skill merupakan skill ber waktu
@@ -251,7 +252,6 @@ public class DefenseSystem : MonoBehaviour
                 {
                     timer = 0;
                     transform.parent.GetComponent<MobController>().Undamaged();
-
                 }
                 break;
 
@@ -307,6 +307,8 @@ public class DefenseSystem : MonoBehaviour
             {
                 return false;
             }
+
+
         }
 
         gameObject.GetComponent<MobController>().Damaged();
@@ -332,8 +334,6 @@ public class DefenseSystem : MonoBehaviour
         {
             return false;
         }
-
-        print("validd");
 
         // kalau skill me-lock musuh, tapi yang di lock bukan orang ini
         // artinya skillnya cuma lewati orang ini

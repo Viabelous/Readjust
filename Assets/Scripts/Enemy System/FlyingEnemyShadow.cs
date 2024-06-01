@@ -5,7 +5,9 @@ using UnityEngine;
 public class FlyingEnemyShadow : MonoBehaviour
 {
 
-    public List<GameObject> children;
+    public GameObject flyingEnemy;
+
+
     private SpriteRenderer spriteRenderer;
     // private DefenseSystem defenseSystem;
 
@@ -30,14 +32,12 @@ public class FlyingEnemyShadow : MonoBehaviour
             {
                 return;
             }
-            foreach (GameObject child in children)
-            {
-                SpriteRenderer childSpriteRend = child.GetComponent<SpriteRenderer>();
 
-                // efeknya ketika kena skill
-                childSpriteRend.sortingLayerName = spriteRenderer.sortingLayerName;
-                childSpriteRend.color = spriteRenderer.color;
-            }
+            SpriteRenderer childSpriteRend = flyingEnemy.GetComponent<SpriteRenderer>();
+
+            // efeknya ketika kena skill
+            childSpriteRend.sortingLayerName = spriteRenderer.sortingLayerName;
+            childSpriteRend.color = spriteRenderer.color;
         }
     }
 
@@ -52,14 +52,11 @@ public class FlyingEnemyShadow : MonoBehaviour
 
             spriteRenderer.sortingLayerName = "Shadow";
 
-            foreach (GameObject child in children)
-            {
-                SpriteRenderer childSpriteRend = child.GetComponent<SpriteRenderer>();
+            SpriteRenderer childSpriteRend = flyingEnemy.GetComponent<SpriteRenderer>();
 
-                // efeknya setelah kena skill kembali ke awal
-                childSpriteRend.sortingLayerName = "Enemy";
-                childSpriteRend.color = spriteRenderer.color;
-            }
+            // efeknya setelah kena skill kembali ke awal
+            childSpriteRend.sortingLayerName = "AboveAll";
+            childSpriteRend.color = spriteRenderer.color;
         }
     }
 
