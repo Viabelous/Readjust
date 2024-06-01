@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Exoct
   m_EditorClassIdentifier: 
-  id: enemy61930
+  id: enemy37939
   maxHp: 100
   hp: 100
   atk: 10
@@ -26,3 +26,4 @@ MonoBehaviour:
   type: 1
   aerus: 1
   exp: 1
+  distanceToPlayer: 2

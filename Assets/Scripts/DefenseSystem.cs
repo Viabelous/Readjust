@@ -153,7 +153,6 @@ public class DefenseSystem : MonoBehaviour
 
                         // kalau player punya buff nexus
                         AttackIfNexusActivated(dealDamage);
-
                     }
 
                 }
@@ -200,6 +199,7 @@ public class DefenseSystem : MonoBehaviour
                     Attacked(dealDamage);
                 }
                 break;
+
 
             // saat enemy sebagai defender
             case CharacterType.Enemy:
@@ -332,6 +332,8 @@ public class DefenseSystem : MonoBehaviour
         {
             return false;
         }
+
+        print("validd");
 
         // kalau skill me-lock musuh, tapi yang di lock bukan orang ini
         // artinya skillnya cuma lewati orang ini

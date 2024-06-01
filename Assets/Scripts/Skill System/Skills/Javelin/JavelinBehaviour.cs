@@ -13,9 +13,14 @@ public class JavelinBehaviour : MonoBehaviour
     {
         skill = GetComponent<SkillController>().skill;
         player = GameObject.Find("Player").transform;
+    }
 
-        // GetNearestEnemy();
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("FlyingEnemy"))
+        {
+            Destroy(gameObject, 0.3f);
+        }
     }
 
 

@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         // print("MaxHP: " + player.GetMaxHP());
         // print("MaxMana: " + player.GetMaxMana());
-        print("HP: " + player.GetHP());
+        // print("HP: " + player.GetHP());
         // print("MANA: " + player.GetMana());
         // print("ATK: " + player.atk);
         // print("DEF: " + player.GetDEF());

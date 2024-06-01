@@ -130,7 +130,8 @@ public class MobController : MonoBehaviour
         {
             if (
                 !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
-                !crowdControlSystem.CheckCC(CrowdControlType.KnockBack)
+                !crowdControlSystem.CheckCC(CrowdControlType.KnockBack) &&
+                (Vector3.Distance(transform.position, targetPos) > enemy.GetDistanceToPlayer() && !randomMovement)
             )
             {
                 Vector3 direction = (targetPos - transform.position).normalized;

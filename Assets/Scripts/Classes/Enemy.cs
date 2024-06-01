@@ -24,6 +24,7 @@ public class Enemy : Character
     public EnemyType type;
     [SerializeField] protected float aerus;
     [SerializeField] protected float exp;
+    [SerializeField] protected float distanceToPlayer;
 
     private void OnEnable()
     {
@@ -74,6 +75,11 @@ public class Enemy : Character
     public float GetExp()
     {
         return this.exp;
+    }
+
+    public float GetDistanceToPlayer()
+    {
+        return this.distanceToPlayer;
     }
 
 

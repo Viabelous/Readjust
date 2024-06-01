@@ -86,7 +86,8 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
         if (
             other.CompareTag("FlyingEnemy") &&
             skill.Element == Element.Air &&
-            skill.MovementType == SkillMovementType.Locking
+            skill.MovementType == SkillMovementType.Locking &&
+            skill.LockedEnemy == other.transform
         )
         {
             // biasanya tipe projectile

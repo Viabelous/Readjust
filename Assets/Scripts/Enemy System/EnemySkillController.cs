@@ -7,6 +7,7 @@ public class EnemySkillController : MonoBehaviour
 {
     private GameObject enemy;
     private float damage;
+    private float speed;
 
     public GameObject GetEnemy()
     {
@@ -25,5 +26,14 @@ public class EnemySkillController : MonoBehaviour
     public float GetDamage()
     {
         return damage;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+    public float GetSpeed()
+    {
+        return speed;
     }
 }

@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1452199741
-  m_SortingLayer: 4
+  m_SortingLayerID: 675013767
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 230d5d18af555a14192df23a4ee72b7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aab027c29ecc4fbdcdcd5df8a5ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 1c8d8dfac24427b4783f7918fa33458c, type: 2}
+  enemy: {fileID: 11400000, guid: 0a5bdde822afa364db7cf6585a5a0c61, type: 2}
   movementEnabled: 1
   speed: 0
   animate: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 4821217497097005141}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: FlyingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,7 +357,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 2126705339, guid: 0792354d90d6cb2419bdef858973199a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

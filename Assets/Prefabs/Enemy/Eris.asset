@@ -9,20 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
+  m_Script: {fileID: 11500000, guid: 83970c5c64c9ea04691554104bfbdf7e, type: 3}
   m_Name: Eris
   m_EditorClassIdentifier: 
-  id: enemy97179
-  maxHp: 100
-  hp: 100
-  atk: 10
+  id: enemy48929
+  maxHp: 20000
+  hp: 20000
+  atk: 50
   def: 0
   agi: 0
-  speed: 1.6
+  speed: 1.3
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
   name: Eris
   type: 1
-  aerus: 1
-  exp: 1
+  aerus: 50000
+  exp: 30000
+  distanceToPlayer: 5
+  HPPersenOfMaxHP: 0.3
+  erisProjectile: {fileID: 3990146848265617124, guid: a07e33c4bd597694db02fb4518bdb952, type: 3}
+  erisProjectileDmg: 5
+  erisProjectileSpeed: 7
+  erisProjectileTimer: 3
+  xenaProjectile: {fileID: 231698026191886059, guid: 5097e5456b1fe674a9d559c4ce034856, type: 3}
+  xenaProjectileDmg: 10
+  xenaProjectileSpeed: 14
+  xenaProjectileTimer: 1
