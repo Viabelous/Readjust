@@ -38,7 +38,7 @@ public class Player : Character
     private int defLevel = 1;
     private int agiLevel = 1;
     private int focLevel = 1;
-    private int statMaxLevel = 10;
+    private int statMaxLevel = 20;
 
     public enum Progress
     {
@@ -212,7 +212,7 @@ public class Player : Character
     }
     public float GetMaxMana()
     {
-        return this.maxMana + 50 * (maxManaLevel - 1);
+        return this.maxMana + 150 * (maxManaLevel - 1);
     }
 
     public float GetMana()
@@ -230,11 +230,11 @@ public class Player : Character
     }
     public override float GetFOC()
     {
-        return this.foc + 1 * (focLevel - 1);
+        return this.foc + 2 * (focLevel - 1);
     }
     public override float GetAGI()
     {
-        return this.agi + 1 * (agiLevel - 1);
+        return this.agi + 2 * (agiLevel - 1);
     }
     public override float GetSpeed()
     {

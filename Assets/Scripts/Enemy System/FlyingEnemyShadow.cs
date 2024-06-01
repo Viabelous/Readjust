@@ -55,7 +55,7 @@ public class FlyingEnemyShadow : MonoBehaviour
             SpriteRenderer childSpriteRend = flyingEnemy.GetComponent<SpriteRenderer>();
 
             // efeknya setelah kena skill kembali ke awal
-            childSpriteRend.sortingLayerName = "AboveAll";
+            childSpriteRend.sortingLayerName = "Chr Front";
             childSpriteRend.color = spriteRenderer.color;
         }
     }

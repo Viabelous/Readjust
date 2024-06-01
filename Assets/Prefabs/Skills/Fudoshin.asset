@@ -30,7 +30,5 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 30
-  expUnlockCost: 500
-  expUpCost: 750
   DEFValue: 30
-  DEFValueUp: 0
+  DEFValueUp: 5

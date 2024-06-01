@@ -21,7 +21,11 @@ public class FlyingEnemyAttack : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            GameObject obj = Instantiate(GetComponent<MobController>().enemy.GetProjectile(), transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(
+                GetComponent<MobController>().enemy.GetProjectile(),
+                GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position,
+                Quaternion.identity
+            );
             obj.GetComponent<EnemySkillController>().SetEnemy(gameObject);
             timer = projectile.GetTimeInterval();
         }

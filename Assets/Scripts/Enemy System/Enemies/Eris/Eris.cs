@@ -72,14 +72,22 @@ public class Eris : Enemy
 
     public void AttackEris(GameObject gameObject)
     {
-        GameObject projectile = Instantiate(erisProjectile, gameObject.transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(
+            erisProjectile,
+            gameObject.GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position,
+            Quaternion.identity
+        );
         projectile.GetComponent<EnemySkillController>().SetEnemy(gameObject);
 
     }
 
     public void AttackXena(GameObject gameObject)
     {
-        GameObject projectile = Instantiate(xenaProjectile, gameObject.transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(
+            xenaProjectile,
+            gameObject.GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position,
+            Quaternion.identity
+        );
         projectile.GetComponent<EnemySkillController>().SetEnemy(gameObject);
     }
 

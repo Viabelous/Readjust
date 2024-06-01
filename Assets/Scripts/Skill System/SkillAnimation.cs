@@ -60,6 +60,15 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
     {
         if (other.CompareTag("Enemy"))
         {
+            // kalau skill bukan angin kena bayangan musuh terbang
+            if (
+                skill.Element != Element.Air &&
+                other.GetComponent<MobController>().enemy.type == EnemyType.Flying
+            )
+            {
+                return;
+            }
+
             // kalau skill locking kena bayangan musuh terbang atau
             // kalau skill kena org yg bukan di-locknya
             if (

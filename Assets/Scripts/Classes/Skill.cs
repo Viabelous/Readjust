@@ -79,8 +79,8 @@ public class Skill : ScriptableObject
     protected int maxLevel = 10;
 
     [Header("Price")]
-    [SerializeField] protected float expUnlockCost;
-    [SerializeField] protected float expUpCost;
+    protected float expUnlockCost;
+    protected float expUpCost;
 
 
     protected List<string> enemiesId = new List<string>();
@@ -143,12 +143,54 @@ public class Skill : ScriptableObject
 
     public float ExpUpCost
     {
-        get { return expUnlockCost + expUpCost * level; }
+        get
+        {
+            switch (classTier)
+            {
+                case SkillClass.Basic:
+                    this.expUpCost = 50;
+                    break;
+
+                case SkillClass.Intermediate:
+                    this.expUpCost = 500;
+                    break;
+
+                case SkillClass.High:
+                    this.expUpCost = 1000;
+                    break;
+
+                case SkillClass.Supreme:
+                    this.expUpCost = 2000;
+                    break;
+            }
+            return expUnlockCost + expUpCost * level;
+        }
     }
 
     public float ExpUnlockCost
     {
-        get { return expUnlockCost; }
+        get
+        {
+            switch (classTier)
+            {
+                case SkillClass.Basic:
+                    this.expUnlockCost = 100;
+                    break;
+
+                case SkillClass.Intermediate:
+                    this.expUnlockCost = 1500;
+                    break;
+
+                case SkillClass.High:
+                    this.expUnlockCost = 5000;
+                    break;
+
+                case SkillClass.Supreme:
+                    this.expUnlockCost = 12500;
+                    break;
+            }
+            return expUnlockCost;
+        }
     }
 
     public Sprite Sprite

@@ -30,7 +30,5 @@ MonoBehaviour:
   movementSpeed: 7
   movementRange: 30
   timer: 0
-  expUnlockCost: 5000
-  expUpCost: 7500
   dmgPersenOfATK: 0.5
-  dmgPersenOfATKUp: 0
+  dmgPersenOfATKUp: 0.05
