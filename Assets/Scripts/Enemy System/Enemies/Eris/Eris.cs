@@ -84,30 +84,4 @@ public class Eris : Enemy
 
     }
 
-    // public GameObject GetErisProjectile()
-    // {
-    //     return erisProjectile;
-    // }
-    // public float GetErisProjectileDmg()
-    // {
-    //     return erisProjectileDmg;
-    // }
-    // public float GetErisProjectileSpeed()
-    // {
-    //     return erisProjectileSpeed;
-    // }
-
-    // public GameObject GetXenaProjectile()
-    // {
-    //     return xenaProjectile;
-    // }
-    // public float GetXenaProjectileDmg()
-    // {
-    //     return xenaProjectileDmg;
-    // }
-
-    // public float GetXenaProjectileSpeed()
-    // {
-    //     return xenaProjectileSpeed;
-    // }
 }
