@@ -22,7 +22,8 @@ public class FlyingEnemyProjectile : MonoBehaviour
         // targetPos = target.position;
         timer = 0;
 
-        transform.position = GetComponent<EnemySkillController>().GetEnemy().GetComponent<FlyingEnemyShadow>().children[0].transform.position;
+        transform.position = GetComponent<EnemySkillController>()
+        .GetEnemy().GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position;
 
 
     }

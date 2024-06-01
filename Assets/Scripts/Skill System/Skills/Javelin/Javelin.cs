@@ -93,7 +93,7 @@ public class Javeline : Skill
 
         if (closestEnemy != null)
         {
-            this.lockedEnemy = closestEnemy.GetComponent<FlyingEnemyShadow>().children[0].transform;
+            this.lockedEnemy = closestEnemy.GetComponent<FlyingEnemyShadow>().flyingEnemy.transform;
         }
 
 

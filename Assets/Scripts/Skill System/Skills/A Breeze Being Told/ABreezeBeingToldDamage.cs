@@ -10,15 +10,28 @@ public class ABreezeBeingToldDamage : MonoBehaviour
 
     void Start()
     {
-        // enemy = GameObject.FindObjectOfType<NexusBehaviour>().skill.LockedEnemy;
-        transform.position = enemy.position;
+        if (enemy.GetComponent<MobController>().enemy.type == EnemyType.Ground)
+        {
+            transform.position = enemy.position;
+        }
+        else
+        {
+            transform.position = enemy.GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position;
+        }
     }
 
     void Update()
     {
         if (enemy != null)
         {
-            transform.position = enemy.position;
+            if (enemy.GetComponent<MobController>().enemy.type == EnemyType.Ground)
+            {
+                transform.position = enemy.position;
+            }
+            else
+            {
+                transform.position = enemy.GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position;
+            }
         }
         else
         {

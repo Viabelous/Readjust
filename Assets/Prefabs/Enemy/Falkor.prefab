@@ -170,10 +170,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.007591456, y: -0.010121539}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -184,7 +184,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.5}
+  m_Size: {x: 1.3329935, y: 0.47975692}
   m_EdgeRadius: 0
 --- !u!114 &8771922181480160492
 MonoBehaviour:
@@ -268,8 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023b96539eb1f0f4d90351092e3e6180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  children:
-  - {fileID: 6571338170955928856}
+  flyingEnemy: {fileID: 6571338170955928856}
 --- !u!1 &6571338170955928856
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054257595129349041}
   - component: {fileID: 4081035912943464787}
-  - component: {fileID: 4106447227334848337}
+  - component: {fileID: 8455628483138792719}
   - component: {fileID: 4821217497097005141}
   m_Layer: 0
   m_Name: enemy
@@ -356,8 +355,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4106447227334848337
-CircleCollider2D:
+--- !u!60 &8455628483138792719
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -381,16 +380,60 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8192
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
+    m_Bits: 8192
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008838415, y: -0.09068757}
-  serializedVersion: 2
-  m_Radius: 0.5244364
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 2.5, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.171875, y: 0.0234375}
+      - {x: 1.171875, y: 0.2578125}
+      - {x: 1.125, y: 0.421875}
+      - {x: 0.609375, y: 0.796875}
+      - {x: 0.609375, y: 0.9375}
+      - {x: 0.515625, y: 0.984375}
+      - {x: 0.3515625, y: 0.984375}
+      - {x: 0.1171875, y: 0.9140625}
+      - {x: -0.09375, y: 0.5390625}
+      - {x: 0.046875, y: 0.375}
+      - {x: 0.1640625, y: 0.3515625}
+      - {x: 0.140625, y: 0.28125}
+      - {x: 0.09375, y: 0.328125}
+      - {x: -0.1640625, y: 0.3515625}
+      - {x: -0.5390625, y: 0.234375}
+      - {x: -0.609375, y: 0.1875}
+      - {x: -0.515625, y: 0.0234375}
+      - {x: -0.28125, y: -0.1640625}
+      - {x: -0.6328125, y: -0.046875}
+      - {x: -1.078125, y: 0.234375}
+      - {x: -1.265625, y: 0.3046875}
+      - {x: -1.3359375, y: 0.140625}
+      - {x: -1.3359375, y: 0.046875}
+      - {x: -1.078125, y: -0.1875}
+      - {x: -0.75, y: -0.4921875}
+      - {x: -0.1640625, y: -0.84375}
+      - {x: -0.0703125, y: -1.0078125}
+      - {x: 0.1875, y: -1.0078125}
+      - {x: 0.3515625, y: -0.984375}
+      - {x: 0.4453125, y: -1.0078125}
+      - {x: 0.65625, y: -1.0078125}
+      - {x: 0.6796875, y: -0.9609375}
+      - {x: 0.8671875, y: -0.46875}
+      - {x: 1.03125, y: -0.2578125}
+  m_UseDelaunayMesh: 0
 --- !u!114 &4821217497097005141
 MonoBehaviour:
   m_ObjectHideFlags: 0
