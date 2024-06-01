@@ -11,6 +11,7 @@ public class HydroPulseBehaviour : MonoBehaviour
     [SerializeField] private GameObject hydro;
     [HideInInspector] private List<Transform> lockedEnemies = new List<Transform>();
     [HideInInspector] Animator animator;
+    // Vector3 finalPos;
 
 
     void Start()
@@ -36,7 +37,7 @@ public class HydroPulseBehaviour : MonoBehaviour
 
     void Update()
     {
-        transform.position = player.position;
+        // transform.position = player.position;
         if (AllEnemiesKilled())
         {
             Destroy(gameObject);
@@ -45,7 +46,7 @@ public class HydroPulseBehaviour : MonoBehaviour
 
     private void InstantiateHydros()
     {
-
+        // finalPos = transform.position;
         GetComponent<SkillMovement>().type = SkillMovementType.Area;
 
         for (int i = 0; i < lockedEnemies.Count; i++)

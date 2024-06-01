@@ -70,7 +70,6 @@ public class SkillMovement : MonoBehaviour
     void Update()
     {
 
-
         if (
             skillAnimation != null &&
             skillAnimation.skill.HitType == SkillHitType.Once &&
@@ -82,6 +81,10 @@ public class SkillMovement : MonoBehaviour
 
         switch (type)
         {
+            case SkillMovementType.Area:
+                print("uhuyy");
+                return;
+
             case SkillMovementType.Linear:
                 LinearMovement();
 

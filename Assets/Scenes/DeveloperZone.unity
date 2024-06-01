@@ -3852,7 +3852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &309974896
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3930,8 +3930,8 @@ MonoBehaviour:
   closeBtn: {fileID: 637389967}
   obvirtuName: {fileID: 917350697}
   pic: {fileID: 1915552796}
-  descriptionBox: {fileID: 0}
-  descriptionText: {fileID: 862640773}
+  descriptionBox: {fileID: 673529729}
+  descriptionText: {fileID: 862640775}
   buyButton: {fileID: 484632000}
   price: {fileID: 1584762682}
   index: 0
