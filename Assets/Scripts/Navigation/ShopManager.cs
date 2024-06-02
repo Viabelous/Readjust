@@ -36,7 +36,6 @@ public class ShopManager : MonoBehaviour
 
     public void scrollShop(bool scrollDown)
     {
-        print("test: " + index);
         if (index >= listObvirtu.Length)
         {
             index = 0;

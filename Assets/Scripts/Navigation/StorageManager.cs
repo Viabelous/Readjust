@@ -22,8 +22,8 @@ public class StorageManager : Navigation
     {
         foreach(string obvirtuName in GameManager.unlockedItems)
         {
-            if(!unlockedItemList.Contains(listOfObvirtu.Where(obj => obj.name == obvirtuName).SingleOrDefault()))
-            unlockedItemList.Add(listOfObvirtu.Where(obj => obj.name == obvirtuName).SingleOrDefault());
+            if(!unlockedItemList.Contains(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault()))
+            unlockedItemList.Add(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault());
         }
 
         if(unlockedItemList.Count >= 1)
