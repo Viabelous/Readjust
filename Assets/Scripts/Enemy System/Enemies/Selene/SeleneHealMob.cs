@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SeleneHealMob : MonoBehaviour
@@ -45,7 +42,6 @@ public class SeleneHealMob : MonoBehaviour
 
         if (nowDistance > initDistance)
         {
-            print("ganti posisi");
             UpdateTargetPos();
         }
     }

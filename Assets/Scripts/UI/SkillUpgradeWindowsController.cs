@@ -1,3 +1,4 @@
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,6 @@ public class SkillUpgradeWindowsController : MonoBehaviour
 
     void Update()
     {
-        print(WindowsController.HoveredButton != null ? WindowsController.HoveredButton.name : "null");
-
         if (gameObject.activeInHierarchy && WindowsController.HoveredButton == null)
         {
             skill = WindowsController.FocusedButton.GetComponent<SkillsSelection>().GetSkill();
@@ -58,10 +57,17 @@ public class SkillUpgradeWindowsController : MonoBehaviour
         }
         else
         {
+            if (WindowsController.HoveredButton == upgradeBtn)
+            {
+                WindowsController.HoveredButton = cancelBtn;
+                cancelBtn.GetComponent<Navigation>().IsHovered(true);
+                cancelBtn.GetComponent<Navigation>().Up = null;
+            }
+
             descImg1.gameObject.GetComponent<DescriptionBehavior>().Right = cancelBtn;
             descImg2.gameObject.GetComponent<DescriptionBehavior>().Left = cancelBtn;
 
-            WindowsController.HoveredButton = WindowsController.HoveredButton == null ? cancelBtn : WindowsController.HoveredButton;
+            // WindowsController.HoveredButton = WindowsController.HoveredButton == null ? cancelBtn : WindowsController.HoveredButton;
             upgradeBtn.SetActive(false);
             price.SetActive(false);
 

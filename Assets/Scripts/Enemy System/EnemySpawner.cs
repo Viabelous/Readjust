@@ -80,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnRateAdjuster(float[] rate)
     {
-        for (int i = 0; i < spawnHolder.enemyPrefs.Count - 1; i++)
+        for (int i = 0; i < spawnHolder.enemyPrefs.Count; i++)
         {
             enemies[spawnHolder.enemyPrefs[i]] = rate[i];
         };
@@ -104,18 +104,6 @@ public class EnemySpawner : MonoBehaviour
             // Generate a random number between 0 and totalProbability
             float randomPoint = Random.value * totalProbability;
 
-            // Pilih objek berdasarkan probabilitas
-            // foreach (var enemy in enemies)
-            // {
-            //     if (randomPoint < enemy.Value)
-            //     {
-            //         enemySpawn = enemy.Key;
-            //     }
-            //     else
-            //     {
-            //         randomPoint -= enemy.Value;
-            //     }
-            // }
             foreach (var enemy in enemies)
             {
                 if (randomPoint < enemy.Value)
@@ -206,36 +194,5 @@ public class EnemySpawner : MonoBehaviour
                 else if (spawnHolder.Stage == Map.Stage4) SpawnRateAdjuster(new float[] { 0.1f, 0.1f, 0.1f, 0.3f, 0.4f });
                 break;
         }
-
-        // int j = 1;
-        // for (int i = 0; i < enemies.Count; i++)
-        // {
-        //     if (minNow >= 10)
-        //     {
-        //         enemies[enemies.ElementAt(i).Key] = 0.2f;
-        //         continue;
-        //     }
-
-        //     if (minNow == j)
-        //     {
-        //         enemies[enemies.ElementAt(i).Key] = 1f;
-        //     }
-
-        //     if (minNow - 1 == j)
-        //     {
-        //         enemies[enemies.ElementAt(i).Key] -= 0.5f;
-        //     }
-        //     else if (minNow + 1 == j)
-        //     {
-        //         enemies[enemies.ElementAt(i).Key] += 0.5f;
-        //     }
-
-        //     if (minNow == j + 2)
-        //     {
-        //         enemies[enemies.ElementAt(i).Key] -= 0.5f;
-        //     }
-        //     j += 2;
-        // }
-
     }
 }

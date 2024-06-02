@@ -60,6 +60,9 @@ public class SkillWindowsBtnSelection : Navigation
                 costText.color = GameManager.player.exp < focusedSkill.GetSkill().ExpUnlockCost ? Color.red : Color.black;
                 costText.text = focusedSkill.GetSkill().ExpUnlockCost.ToString();
                 break;
+
+            case BtnType.Cancel:
+                break;
         }
 
         switch (currState)

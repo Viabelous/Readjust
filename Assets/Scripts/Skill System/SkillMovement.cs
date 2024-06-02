@@ -261,7 +261,7 @@ public class SkillMovement : MonoBehaviour
             return;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * 0.01f);
+        transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * Time.deltaTime);
 
         // print("musuh: " + skill.LockedEnemy.position);
         // rotasikan arah hadap skill --------------------------------

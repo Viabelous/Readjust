@@ -55,7 +55,7 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
-        time = 0;
+        time = 420;
         extraScore = 0;
         extraAerus = 0;
         extraExp = 0;
