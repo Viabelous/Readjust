@@ -80,7 +80,7 @@ public class StatSelection : Navigation
                 WindowsController.CreatePopUp(
                     "upgrade_failed",
                     PopUpType.OK,
-                    "Anda membutuhkan lebih banyak Aerus dan Exp Orb untuk dapat meningkatkan stat ini."
+                    "Anda membutuhkan lebih banyak Aereus dan Exp Orb untuk dapat meningkatkan stat ini."
                 );
 
             }
@@ -91,7 +91,7 @@ public class StatSelection : Navigation
                 WindowsController.CreatePopUp(
                     "upgrade_failed",
                     PopUpType.OK,
-                    "Anda membutuhkan lebih banyak Aerus untuk dapat meningkatkan stat ini."
+                    "Anda membutuhkan lebih banyak Aereus untuk dapat meningkatkan stat ini."
                 );
             }
 
