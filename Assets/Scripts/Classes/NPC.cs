@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEditor;
 
 [CreateAssetMenu]
 public class NPC : ScriptableObject
@@ -11,7 +7,7 @@ public class NPC : ScriptableObject
     [SerializeField] protected Sprite pict;
 
     [Header("List of Dialogue")]
-    [TextArea(15,15)]
+    [TextArea(15, 15)]
     [SerializeField] protected string[] dialogue;
     public string Name
     {

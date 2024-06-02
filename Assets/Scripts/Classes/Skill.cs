@@ -1,14 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEditor;
 
-// public enum SkillName
-// {
-//     BasicStab, Sacrivert, WillOfFire, Explosion, Ignite, Whirlwind, Fireball, HighTide, Waterwall,
-//     PeebleCreation, Avalanche
-// }
+
 
 public enum Element
 {

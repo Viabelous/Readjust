@@ -1,7 +1,5 @@
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEditor;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
@@ -62,7 +60,6 @@ public class MainMenuManager : MonoBehaviour
             }
             else if (currentBtn.name == exitBtn.name)
             {
-                UnityEditor.EditorApplication.isPlaying = false;
                 Application.Quit();
             }
         }

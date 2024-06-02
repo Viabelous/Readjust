@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
 
 public class TalkSystem : MonoBehaviour
 {
@@ -63,7 +61,7 @@ public class TalkSystem : MonoBehaviour
                 NextLine();
             }
         }
-        if(isTypingNow == true && Input.GetKeyDown(KeyCode.Q))
+        if (isTypingNow == true && Input.GetKeyDown(KeyCode.Q))
         {
             stopTyping = true;
             isTypingNow = false;
@@ -89,12 +87,12 @@ public class TalkSystem : MonoBehaviour
         isTypingNow = true;
         foreach (char letter in dialog.First())
         {
-            if(!stopTyping)
+            if (!stopTyping)
             {
                 dialogTeks.text += letter;
                 yield return new WaitForSeconds(wordSpeed);
             }
-            
+
             else
             {
                 dialogTeks.text = dialog.First();
@@ -112,7 +110,7 @@ public class TalkSystem : MonoBehaviour
         }
         else
         {
-            if(GameManager.firstEncounter[npc.Name]) GameManager.firstEncounter[npc.Name] = false;
+            if (GameManager.firstEncounter[npc.Name]) GameManager.firstEncounter[npc.Name] = false;
             resetTeks();
             if (windows != string.Empty)
             {
@@ -171,7 +169,7 @@ public class TalkSystem : MonoBehaviour
     {
         this.dialog = new List<string>();
         pic.GetComponent<Image>().sprite = npc.Pict;
-        int indexChoosen = GameManager.firstEncounter[npc.Name] ? 0 
+        int indexChoosen = GameManager.firstEncounter[npc.Name] ? 0
                                                                 : UnityEngine.Random.Range(1, npc.Dialogue.Length);
         string new_dialog = npc.Dialogue[indexChoosen];
         List<string> teks = new_dialog.Split("/plus/").ToList();

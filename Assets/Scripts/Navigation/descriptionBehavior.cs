@@ -1,10 +1,5 @@
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEditor;
-using Unity.VisualScripting;
-using System.Collections;
-using System;
-
 public class DescriptionBehavior : Navigation
 {
     public GameObject textObject;
@@ -17,26 +12,28 @@ public class DescriptionBehavior : Navigation
 
     public override void IsHovered(bool state)
     {
-        if(!isFocused)
+        if (!isFocused)
         {
-            if(state)
+            if (state)
             {
                 GetComponent<Image>().sprite = HoverSprite;
-            } else
+            }
+            else
             {
                 GetComponent<Image>().sprite = BasicSprite;
             }
-        } else
+        }
+        else
         {
             GetComponent<Image>().sprite = FocusSprite;
         }
-        
+
 
     }
 
     public override void Clicked()
     {
-        if(isFocused == true)
+        if (isFocused == true)
         {
             scrollValue = 0f;
             scrolling();
@@ -45,7 +42,7 @@ public class DescriptionBehavior : Navigation
             IsHovered(false);
         }
         else
-        {        
+        {
             WindowsController.isScrolling = true;
             isFocused = true;
             IsHovered(true);
@@ -56,12 +53,12 @@ public class DescriptionBehavior : Navigation
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if(scrollValue > 0) scrollValue -= 1; 
+            if (scrollValue > 0) scrollValue -= 1;
             scrolling();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if(scrollValue <= yVal) scrollValue += 1;
+            if (scrollValue <= yVal) scrollValue += 1;
             scrolling();
         }
         else if (Input.GetKeyDown(KeyCode.Q))
@@ -72,9 +69,9 @@ public class DescriptionBehavior : Navigation
 
     private void scrolling()
     {
-        if(yBase == 0) yBase = textObject.GetComponent<RectTransform>().anchoredPosition.y;
+        if (yBase == 0) yBase = textObject.GetComponent<RectTransform>().anchoredPosition.y;
         textObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(
-            textObject.GetComponent<RectTransform>().anchoredPosition.x, 
+            textObject.GetComponent<RectTransform>().anchoredPosition.x,
             yBase + scrollValue * 20f,
             0
             );

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -24,21 +21,24 @@ public class cheatCodeTime : MonoBehaviour
 
     void Update()
     {
-    if (Input.GetKeyDown(sequence[sequenceIndex])) {
-        if (++sequenceIndex == sequence.Length){
-             sequenceIndex = 0;
-            
-            float time = stageManager.GetComponent<StageManager>().time;
-            stageManager.GetComponent<StageManager>().time = 
-            60 + (time - (time % 60));
-            foreach(GameObject spawn in spawner)
+        if (Input.GetKeyDown(sequence[sequenceIndex]))
+        {
+            if (++sequenceIndex == sequence.Length)
             {
-                spawn.GetComponent<EnemySpawner>().UpdateProbabilities();
-            }
-            
+                sequenceIndex = 0;
 
-         }
-    } else if (Input.anyKeyDown) sequenceIndex = 0;
+                float time = stageManager.GetComponent<StageManager>().time;
+                stageManager.GetComponent<StageManager>().time =
+                60 + (time - (time % 60));
+                foreach (GameObject spawn in spawner)
+                {
+                    spawn.GetComponent<EnemySpawner>().UpdateProbabilities();
+                }
+
+
+            }
+        }
+        else if (Input.anyKeyDown) sequenceIndex = 0;
     }
 
 }

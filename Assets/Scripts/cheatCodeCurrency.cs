@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class cheatCodeCurrency : MonoBehaviour
@@ -26,14 +24,17 @@ public class cheatCodeCurrency : MonoBehaviour
 
     void Update()
     {
-    if (Input.GetKeyDown(sequence[sequenceIndex])) {
-        if (++sequenceIndex == sequence.Length){
-             sequenceIndex = 0;
-            
-            thisPlayer.player.aerus += 20000;
-            thisPlayer.player.exp += 20000;
+        if (Input.GetKeyDown(sequence[sequenceIndex]))
+        {
+            if (++sequenceIndex == sequence.Length)
+            {
+                sequenceIndex = 0;
 
-         }
-    } else if (Input.anyKeyDown) sequenceIndex = 0;
+                thisPlayer.player.aerus += 20000;
+                thisPlayer.player.exp += 20000;
+
+            }
+        }
+        else if (Input.anyKeyDown) sequenceIndex = 0;
     }
 }

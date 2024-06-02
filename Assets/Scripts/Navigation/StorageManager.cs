@@ -1,49 +1,48 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
 public class StorageManager : Navigation
 {
-    
+
     public Text obvirtuName;
     public Text descriptionText;
     public Image iconFocus;
     [SerializeField] Image[] displayImage;
     [SerializeField] Item[] listOfObvirtu;
-    [HideInInspector] List<Item> unlockedItemList = new List<Item>{};
+    [HideInInspector] List<Item> unlockedItemList = new List<Item> { };
     [HideInInspector] int index = 0;
     [HideInInspector] public Item focusedObvirtu;
 
 
     public void Update()
     {
-        foreach(string obvirtuName in GameManager.unlockedItems)
+        foreach (string obvirtuName in GameManager.unlockedItems)
         {
-            if(!unlockedItemList.Contains(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault()))
-            unlockedItemList.Add(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault());
+            if (!unlockedItemList.Contains(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault()))
+                unlockedItemList.Add(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault());
         }
 
-        if(unlockedItemList.Count >= 1)
+        if (unlockedItemList.Count >= 1)
         {
-            foreach(Image img in displayImage)
+            foreach (Image img in displayImage)
                 img.color = new Color(img.color.r, img.color.g, img.color.b, 255f);
-            
-            iconFocus.color = new Color(iconFocus.color.a, iconFocus.color.g, iconFocus.color.b,255f);
-            
+
+            iconFocus.color = new Color(iconFocus.color.a, iconFocus.color.g, iconFocus.color.b, 255f);
+
             refreshObvirtu();
-        } else
+        }
+        else
         {
-            foreach(Image img in displayImage)
+            foreach (Image img in displayImage)
             {
                 img.color = new Color(img.color.r, img.color.g, img.color.b, 0f);
             }
 
-            iconFocus.color = new Color(iconFocus.color.a, iconFocus.color.g, iconFocus.color.b,0f);
+            iconFocus.color = new Color(iconFocus.color.a, iconFocus.color.g, iconFocus.color.b, 0f);
         }
-        
+
     }
     public override void IsHovered(bool state)
     {
@@ -89,12 +88,12 @@ public class StorageManager : Navigation
         {
             Clicked();
         }
-        
+
     }
 
     void refreshObvirtu()
     {
-        if(focusedObvirtu == null) focusedObvirtu = unlockedItemList[0];
+        if (focusedObvirtu == null) focusedObvirtu = unlockedItemList[0];
         obvirtuName.text = focusedObvirtu.name;
         iconFocus.GetComponent<Image>().sprite = focusedObvirtu.Icon;
         descriptionText.text = focusedObvirtu.Description;
@@ -103,11 +102,12 @@ public class StorageManager : Navigation
 
     private int CalculateIndex(int num)
     {
-        if(num < 0)
+        if (num < 0)
         {
             num += unlockedItemList.Count;
             return CalculateIndex(num);
-        } else if(num >= unlockedItemList.Count)
+        }
+        else if (num >= unlockedItemList.Count)
         {
             num -= unlockedItemList.Count;
             return CalculateIndex(num);

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,8 +16,8 @@ public class StorageWindowsBtnEquip : Navigation
     }
 
     void Update()
-    {   
-        if(storageManager.focusedObvirtu != null)
+    {
+        if (storageManager.focusedObvirtu != null)
         {
             isEquiped = GameManager.CheckSelectedItems(storageManager.focusedObvirtu);
             isFull = GameManager.selectedItems.Count >= 3;
@@ -33,7 +30,8 @@ public class StorageWindowsBtnEquip : Navigation
             {
                 text.text = isFull ? "PENUH" : "KENAKAN";
             }
-        } else
+        }
+        else
         {
             text.text = "KOSONG";
         }
@@ -68,17 +66,18 @@ public class StorageWindowsBtnEquip : Navigation
 
         if (storageManager.focusedObvirtu != null)
         {
-            if(isEquiped)
+            if (isEquiped)
             {
                 GameManager.selectedItems.Remove(storageManager.focusedObvirtu);
                 refresh();
 
-            } else
+            }
+            else
             {
-                if(!isFull) GameManager.selectedItems.Add(storageManager.focusedObvirtu);
+                if (!isFull) GameManager.selectedItems.Add(storageManager.focusedObvirtu);
                 refresh();
             }
-        } 
+        }
 
     }
 
@@ -88,19 +87,21 @@ public class StorageWindowsBtnEquip : Navigation
 
     private void refresh()
     {
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
-            if(i <= GameManager.selectedItems.Count - 1)
+            if (i <= GameManager.selectedItems.Count - 1)
             {
                 displayEquipment[i].sprite = GameManager.selectedItems[i].Icon;
                 displayEquipment[i].color = new Color(displayEquipment[i].color.r,
                                                     displayEquipment[i].color.g,
-                                                    displayEquipment[i].color.b, 
+                                                    displayEquipment[i].color.b,
                                                     255f);
-            } else{
+            }
+            else
+            {
                 displayEquipment[i].color = new Color(displayEquipment[i].color.r,
                                                     displayEquipment[i].color.g,
-                                                    displayEquipment[i].color.b, 
+                                                    displayEquipment[i].color.b,
                                                     0f);
             }
         }

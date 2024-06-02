@@ -1,8 +1,4 @@
-using UnityEngine.UI;
 using UnityEngine;
-using UnityEditor;
-using Unity.VisualScripting;
-
 public enum NavigationState
 {
     Active,

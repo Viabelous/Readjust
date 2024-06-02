@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 // dikasih ke musuh/player yg bisa kena cc
 public class CrowdControlSystem : MonoBehaviour

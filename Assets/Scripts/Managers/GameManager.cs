@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using System;
-
 public enum GameState
 {
     OnStage,
@@ -37,7 +33,7 @@ public class GameManager : ScriptableObject
     public static List<Item> selectedItems = new List<Item>();
 
     // pertemuan pertama dengan NPC
-    public static Dictionary<string, bool> firstEncounter = new Dictionary<string, bool>() 
+    public static Dictionary<string, bool> firstEncounter = new Dictionary<string, bool>()
                                                             {
                                                                 {"Rion", true},
                                                                 {"Zey", true},

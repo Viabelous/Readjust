@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
-using UnityEditor;
 using UnityEngine;
 
 public enum HistoryType
@@ -281,21 +278,6 @@ public class Player : Character
                 return this.expUpCost * agiLevel;
         }
         return -1;
-    }
-
-    public Player CreateAsset(string name)
-    {
-        Player asset = ScriptableObject.CreateInstance<Player>();
-
-        string assetName = "Assets/Prefabs/" + name + ".asset";
-
-        AssetDatabase.CreateAsset(asset, assetName);
-        AssetDatabase.SaveAssets();
-
-        EditorUtility.FocusProjectWindow();
-
-        Selection.activeObject = asset;
-        return asset;
     }
 
     public Player Clone()
