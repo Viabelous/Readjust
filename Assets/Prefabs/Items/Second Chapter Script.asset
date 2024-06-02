@@ -14,7 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_second_chapter_script
   name: Second Chapter Script
-  description: Dah masuk cerita
+  description: 'Meningkatkan Fire Damage sebesar 15%.
+
+
+
+
+    Naskah cerita Tales
+    of the Adjust bagian kedua.
+
+    Ringkasan: Setelah melatih penggunaan elemen
+    tanah dengan Heka, Asta pergi mengelana Gurun Stilbon untuk mengalahkan salah
+    satu kaki tangan Raja Iblis. Untuk sampai di sana tentu tidak mudah mengingat
+    temperatur luar biasa dari Gurun Stilbon dan musuh-musuh yang bernaung di Gunung
+    Stilbon. Tidak memakan waktu lama untuk Asta dalam beradaptasi dengan kondisi
+    Gunung Stilbon karena Adaptasi adalah satu-satunya kemampuan Asta sebelum ia
+    bersatu dengan esensi elemen tanah. Ia berhasil menemukan kaki tangan Raja Iblis
+    yang spesialis dalam sihir Api yaitu, Nyx. Asta hampir dikalahkan oleh Nyx hingga
+    di saat-saat genting ia bersatu dengan esensi elemen api yang menyelimuti Gunung
+    Stilbon. Nyx pun berhasil dikalahkan dan Asta kembali ke gubuk tuanya untuk melaporkan
+    situasi kepada Heka.'
   price: 5000
   icon: {fileID: 21300000, guid: d094a0421a1dbaf4da624071a45392e3, type: 3}
   types: 08000000

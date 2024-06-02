@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed371f0600def864eabbe102e517e93e, type: 3}
   m_Name: Heka
   m_EditorClassIdentifier: 
-  id: enemy48673
+  id: enemy75488
   maxHp: 12500
   hp: 12500
-  atk: 50
+  atk: 75
   def: 0
   agi: 0
   speed: 1.5
@@ -26,6 +26,8 @@ MonoBehaviour:
   type: 0
   aerus: 10000
   exp: 7734
+  distanceToPlayer: 0
+  projectile: {fileID: 0}
   swords: {fileID: 7017900107985692853, guid: 9bd13531693393740a058f8f2395461b, type: 3}
   dmgPersenOfATK: 0.5
   swordSpeed: 3

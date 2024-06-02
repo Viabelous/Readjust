@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_badge_of_honour
   name: Badge of Honour
-  description: Siapp
-  price: 1500
+  description: 'Mengurangi HP menjadi 1. Melipatgandakan skor akhir sebanyak 1.25
+    kali lipat. Skill [Sacrivert] tidak dapat digunakan. Item penambahan Max HP tidak
+    berpengaruh.
+
+
+
+
+    Simbol kepahlawanan yang diberikan kepada ksatria di masa
+    lampau. Mengenakannya di dada tentu saja dapat memberikan rasa bangga sekaligus
+    tekanan yang besar kepada pemakainya.'
+  price: 2000
   icon: {fileID: 21300000, guid: af0b2f84693e95541a0adab98b44db7f, type: 3}
   types: 0f000000
   adaptable: 0

@@ -14,7 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_end_of_may_scroll
   name: End of May Scroll
-  description: Di akhir mei ada score
+  description: 'Melipatgandakan Exp Orb yang didapat di akhir pertempuran sebanyak
+    1.25 kali lipat.
+
+
+
+
+    Sebuah gulungan legendaris yang mengisahkan sejarah
+    pertengkaran dua klan rival ninja yaitu klan Oga dan klan Iga yang telah berlangsung
+    selama 400 tahun. Setiap gulungannya diisikan dengan nama-nama para pejuang masing-masing
+    klan yang berjumlah 20, hasil pertempuran antar keduanya baru dapat disimpulkan
+    dengan menghitung jumlah gulungan tersisa dari masing-masing klan. Perhitungan
+    akan dimulai di akhir bulan Mei.'
   price: 1500
   icon: {fileID: 21300000, guid: 9adeda3a6c7d31343b1dffa54e9d12ae, type: 3}
   types: 0f000000
