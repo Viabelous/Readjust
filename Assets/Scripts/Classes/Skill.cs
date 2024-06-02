@@ -53,7 +53,8 @@ public class Skill : ScriptableObject
     [SerializeField] protected SkillHitType hitType; // tipe pukulan yg diberikan 
     [SerializeField] protected SkillMovementType movementType; // tipe gerakan skill 
     [SerializeField] protected CostType costType;   // tipe bayaran yg dipake
-    [SerializeField] protected float initCd, maxCd;          // cd maksimal
+    [SerializeField] protected float initCd;          // cd maksimal
+    protected float maxCd = 0.5f;          // cd maksimal
     [SerializeField] protected float cost;           // total mana/hp di awal
     [SerializeField] protected float damage;         // total damage di awal
 

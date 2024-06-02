@@ -20,17 +20,14 @@ MonoBehaviour:
   hitType: 1
   movementType: 1
   costType: 1
-  initCd: 1
-  maxCd: 0.5
-  cost: 5
+  initCd: 0.5
+  cost: 30
   damage: 40
-  upCd: -0.2
-  upCost: 2
+  upCd: -0.001
+  upCost: -1
   sprite: {fileID: 21300000, guid: da0218d52da46ae4991cded223ffa31d, type: 3}
   movementSpeed: 15
   movementRange: 30
   timer: 0
-  expUnlockCost: 500
-  expUpCost: 750
   dmgPersenOfAGI: 0.8
   dmgPersenOfAGIUp: 0.2

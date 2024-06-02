@@ -20,12 +20,11 @@ MonoBehaviour:
   hitType: 1
   movementType: 3
   costType: 1
-  initCd: 20
-  maxCd: 10
-  cost: 30
+  initCd: 35
+  cost: 20
   damage: 0
-  upCd: -0.5
-  upCost: 10
+  upCd: -1
+  upCost: -1
   sprite: {fileID: 21300000, guid: 763e04c070e0d424b8a7c58b0b10463e, type: 3}
   movementSpeed: 0
   movementRange: 0
@@ -33,6 +32,6 @@ MonoBehaviour:
   HPManaPersenOfFOC: 1
   ATKPersenOfATK: 0.5
   DEFPersenOfDEF: 0.5
-  HPManaPersenOfFOCUp: 0.15
-  ATKPersenOfATKUp: -0.05
-  DEFPersenOfDEFUp: -0.05
+  HPManaPersenOfFOCUp: 0.05
+  ATKPersenOfATKUp: -0.03
+  DEFPersenOfDEFUp: -0.03

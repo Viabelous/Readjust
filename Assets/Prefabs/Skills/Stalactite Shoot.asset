@@ -21,11 +21,10 @@ MonoBehaviour:
   movementType: 1
   costType: 1
   initCd: 3
-  maxCd: 1
-  cost: 10
+  cost: 30
   damage: 20
-  upCd: -0.4
-  upCost: 3
+  upCd: -0.25
+  upCost: -2
   sprite: {fileID: 21300000, guid: 5e383c2069d58dd44bdeb92211b81f08, type: 3}
   movementSpeed: 8
   movementRange: 30
@@ -33,4 +32,4 @@ MonoBehaviour:
   dmgPersenOfDEF: 0.8
   dmgPersenOfATK: 1.8
   dmgPersenOfDEFUp: 0.15
-  dmgPersenOfATKUp: 0.4
+  dmgPersenOfATKUp: 0.2
