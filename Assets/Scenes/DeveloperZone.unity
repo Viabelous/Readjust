@@ -28518,7 +28518,7 @@ RectTransform:
   m_GameObject: {fileID: 1884400190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.27027026, y: 0.27027026, z: 0.27027026}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.27027026}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2017071864}
@@ -28548,7 +28548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3927885c54040c7448789dda0e7380a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 917f57efac77c2b4bbc6ba96fc9b4708, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28580,8 +28580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImageComponent: {fileID: 1884400192}
   WindowsController: {fileID: 739427922}
-  BasicSprite: {fileID: 21300000, guid: 3927885c54040c7448789dda0e7380a7, type: 3}
-  HoverSprite: {fileID: 21300000, guid: 454c1de14c0adad459d353652e80115e, type: 3}
+  BasicSprite: {fileID: 21300000, guid: 917f57efac77c2b4bbc6ba96fc9b4708, type: 3}
+  HoverSprite: {fileID: 21300000, guid: a02a89c2d3ec5a64cb0e49824100efcd, type: 3}
   Left: {fileID: 0}
   Up: {fileID: 0}
   Right: {fileID: 78684163}

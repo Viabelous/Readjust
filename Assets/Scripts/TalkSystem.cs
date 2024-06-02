@@ -55,6 +55,8 @@ public class TalkSystem : MonoBehaviour
             // kalau belum, aktifkan dialog panel
             else
             {
+                player.GetComponent<Animator>().SetFloat("Speed", 0);
+                player.GetComponent<Animator>().SetFloat("Face", 2);
                 isTypingNow = false;
                 SetText();
                 dialogPanel.SetActive(true);

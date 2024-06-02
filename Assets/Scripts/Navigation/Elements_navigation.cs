@@ -17,6 +17,7 @@ public class Elements : Navigation
 
     void Start()
     {
+        isUnlocked = GameManager.player.GetProgress(Player.Progress.Story) >= elementNumber;
         if(isUnlocked)
         {        
             GetComponent<Image>().sprite = BasicSprite;
