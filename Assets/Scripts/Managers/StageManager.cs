@@ -168,7 +168,7 @@ public class StageManager : MonoBehaviour
             CreatePopUp(
                 "pause",
                 PopUpType.OKCancel,
-                "Apakah Anda ingin meninggalkan stage dan kembali ke Developer Zone? (Perhatikan: Hadiah yang telah terkumpul tidak akan tersimpan.)"
+                "Apakah Anda ingin meninggalkan stage dan kembali ke Developer Zone? (Perhatian: Hadiah yang telah terkumpul tidak akan tersimpan.)"
             );
         }
 
