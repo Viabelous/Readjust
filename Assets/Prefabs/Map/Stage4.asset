@@ -17,4 +17,5 @@ MonoBehaviour:
   description: "\tShani Peak adalah dataran tinggi yang kaya akan esensi dari elemen
     angin. Monster-monster di area ini memanfaatkan kondisi angin di tempat ini untuk
     terbang tinggi dan menyerang mangsa yang menapak."
-  preview: {fileID: 21300000, guid: 8dbad4dd751c62a448e2b400cdfd34f1, type: 3}
+  preview: {fileID: 21300000, guid: ab377f638a65fa949933097106bff2fd, type: 3}
+  unlockedProgress: 4
