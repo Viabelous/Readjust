@@ -29,6 +29,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7e3a6bcc601079c42be5c560454f07fd, type: 3}
   movementSpeed: 0
   movementRange: 0
-  timer: 30
+  timer: 20
   DEFValue: 30
   DEFValueUp: 5
