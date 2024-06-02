@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: BrownBoogie
   m_EditorClassIdentifier: 
-  id: enemy97474
+  id: enemy54697
   maxHp: 100
   hp: 100
   atk: 25
@@ -24,5 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Brown Boogie
   type: 0
-  aerus: 2
-  exp: 2
+  aerus: 5
+  exp: 4
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

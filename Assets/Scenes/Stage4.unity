@@ -12950,8 +12950,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stage: 4
   enemyPrefs:
-  - {fileID: 6170722551558479055, guid: ac7d11d60718488418d9ed44a363b4c1, type: 3}
   - {fileID: 218449121411476219, guid: 45f0721a471eb304bbe9951b027eb8bc, type: 3}
+  - {fileID: 6170722551558479055, guid: ac7d11d60718488418d9ed44a363b4c1, type: 3}
   - {fileID: 3796948361964280087, guid: 97b757f4b3ac89943af8ebb183b88bbb, type: 3}
   - {fileID: 3796948361964280087, guid: 86af668f6c685394fa8685c7189254e8, type: 3}
   - {fileID: 3796948361964280087, guid: 7c56cfe568eb8544cadca8f1915b3476, type: 3}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: WhiteBoogie
   m_EditorClassIdentifier: 
-  id: enemy50966
+  id: enemy21575
   maxHp: 165
-  hp: 156
+  hp: 165
   atk: 45
   def: 0
   agi: 0
@@ -24,5 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: White Boogie
   type: 0
-  aerus: 4
-  exp: 4
+  aerus: 40
+  exp: 29
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

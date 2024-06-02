@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Falkor
   m_EditorClassIdentifier: 
-  id: enemy35190
-  maxHp: 100
+  id: enemy58601
+  maxHp: 67
   hp: 100
   atk: 10
   def: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Falkor
   type: 1
-  aerus: 1
-  exp: 1
+  aerus: 58
+  exp: 50
   distanceToPlayer: 5
   projectile: {fileID: 6348641604317434814, guid: 9162742c16c90d0469bbc2e7e0aecba0, type: 3}

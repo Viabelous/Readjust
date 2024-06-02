@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Exoct
   m_EditorClassIdentifier: 
-  id: enemy29617
-  maxHp: 100
+  id: enemy6828
+  maxHp: 35
   hp: 100
   atk: 10
   def: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Exoct
   type: 1
-  aerus: 1
-  exp: 1
+  aerus: 52
+  exp: 45
   distanceToPlayer: 3
   projectile: {fileID: 4601651192781902135, guid: 8000e717e87b9654fbe055beedcd1052, type: 3}
