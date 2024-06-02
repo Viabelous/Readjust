@@ -203,16 +203,17 @@ public class Player : Character
 
     public override float GetMaxHP()
     {
-        return this.maxHp + 100 * (maxHPLevel - 1);
+        return this.maxHp + 50 * (maxHPLevel - 1);
     }
 
     public override float GetHP()
     {
         return hp;
     }
+
     public float GetMaxMana()
     {
-        return this.maxMana + 150 * (maxManaLevel - 1);
+        return this.maxMana + 100 * (maxManaLevel - 1);
     }
 
     public float GetMana()
@@ -226,16 +227,17 @@ public class Player : Character
     }
     public override float GetDEF()
     {
-        return this.def + 5 * (defLevel - 1);
+        return this.def + 2 * (defLevel - 1);
     }
     public override float GetFOC()
     {
-        return this.foc + 2 * (focLevel - 1);
+        return this.foc + 1 * (focLevel - 1);
     }
     public override float GetAGI()
     {
         return this.agi + 2 * (agiLevel - 1);
     }
+
     public override float GetSpeed()
     {
         return this.speed;
@@ -280,11 +282,6 @@ public class Player : Character
         }
         return -1;
     }
-
-    // public Dictionary<DateTime, List<float>> GetScores()
-    // {
-    //     return this.scores;
-    // }
 
     public Player CreateAsset(string name)
     {

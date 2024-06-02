@@ -8,6 +8,7 @@ public class ABreezeBeingTold : Skill
 {
     [Header("Custom Timer")]
     [SerializeField] private float timerPersenOfAGI;
+
     [Header("Skill Effect")]
     [SerializeField] public float HPPersenOfAGI;
     [SerializeField] private float dmgPersenOfTotalDmg;
