@@ -31,6 +31,6 @@ MonoBehaviour:
   movementRange: 0
   timer: 0
   dmgPersenOfATK: 0.25
-  dmgPersenOfATKUp: 0.05
+  dmgPersenOfATKUp: 0.1
   pushSpeed: 5
   pushRange: 1

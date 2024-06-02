@@ -30,7 +30,5 @@ MonoBehaviour:
   movementSpeed: 15
   movementRange: 30
   timer: 0
-  expUnlockCost: 5000
-  expUpCost: 7500
   dmgPersenOfDEF: 1
-  dmgPersenOfDEFUp: 0.05
+  dmgPersenOfDEFUp: 0.3

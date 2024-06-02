@@ -30,9 +30,7 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
-  expUnlockCost: 30000
-  expUpCost: 25000
   HPManaPersenOfFOC: 1
   ATKPersenOfFOC: 5
   HPManaPersenOfFOCUp: -0.05
-  ATKPersenOfFOCUp: 0.1
+  ATKPersenOfFOCUp: 0.2

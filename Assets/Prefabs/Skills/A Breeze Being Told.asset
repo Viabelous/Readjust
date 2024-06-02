@@ -30,11 +30,9 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
-  expUnlockCost: 25000
-  expUpCost: 30000
   timerPersenOfAGI: 0.5
   HPPersenOfAGI: 1
   dmgPersenOfTotalDmg: 0.3
   damageEffect: {fileID: 1439889761343291733, guid: de874b846b7c87444936199c9eb000e5, type: 3}
   healEffect: {fileID: 3250263821668302241, guid: 7e878dda5cdcc284ead0ce4b5708c32d, type: 3}
-  dmgPersenOfTotalDmgUp: 0.05
+  dmgPersenOfTotalDmgUp: 0.1

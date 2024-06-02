@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Elpis
   m_EditorClassIdentifier: 
-  id: enemy56520
+  id: enemy75732
   maxHp: 100
   hp: 100
-  atk: 0
+  atk: 1
   def: 0
   agi: 0
   speed: 3.8

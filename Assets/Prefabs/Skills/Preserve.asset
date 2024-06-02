@@ -30,7 +30,5 @@ MonoBehaviour:
   movementSpeed: 0
   movementRange: 0
   timer: 0
-  expUnlockCost: 500
-  expUpCost: 750
   shieldPersenOfDEF: 3
-  shieldPersenOfDEFUp: 0.02
+  shieldPersenOfDEFUp: 0.3

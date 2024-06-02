@@ -31,4 +31,4 @@ MonoBehaviour:
   movementRange: 30
   timer: 0
   dmgPersenOfATK: 0.5
-  dmgPersenOfATKUp: 0.05
+  dmgPersenOfATKUp: 0.15
