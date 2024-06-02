@@ -14,7 +14,7 @@ public class ItemSystem : MonoBehaviour
         // aktifkan semua item untuk pertama kalinya
         if (!hasActivated)
         {
-            foreach (Item item in CumaBuatDebug.instance.selectedItems)
+            foreach (Item item in GameManager.selectedItems)
             {
                 Item itemActivated = item.Clone();
                 itemsActivated.Add(itemActivated);
@@ -57,12 +57,7 @@ public class ItemSystem : MonoBehaviour
 
     public bool CheckItem(string name)
     {
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!NANTI UBAH WOIII!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-
-        // return GameManager.selectedItems.FindIndex(item => item.Name == name) != -1;
-        return CumaBuatDebug.instance.selectedItems.FindIndex(item => item.Name == name) != -1;
+        return GameManager.selectedItems.FindIndex(item => item.Name == name) != -1;
     }
 }
 

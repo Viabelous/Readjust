@@ -30,10 +30,12 @@ public class LoadSaveDataManager : MonoBehaviour
         if (DataManager.CheckPath())
         {
             GameManager.player = playerBasic.Clone();
+
             GameManager.player.JsonToPlayer(DataManager.LoadPlayer());
             GameManager.scores = Score.JsonToScores(DataManager.LoadScores());
             GameManager.unlockedSkills = DataManager.LoadSkills();
             GameManager.unlockedItems = DataManager.LoadItems();
+            GameManager.firstEncounter = DataManager.LoadNPCData();
             print("Data loaded");
         }
         else
@@ -45,9 +47,11 @@ public class LoadSaveDataManager : MonoBehaviour
     private void SaveData()
     {
         DataManager.SavePlayer(GameManager.player);
+        DataManager.SaveScores(Score.ScoresToJson(GameManager.scores));
         DataManager.SaveSkills(GameManager.unlockedSkills);
         DataManager.SaveItems(GameManager.unlockedItems);
-        DataManager.SaveScores(Score.ScoresToJson(GameManager.scores));
+        DataManager.SaveNPCData(GameManager.firstEncounter);
+
         Debug.Log("Data saved.");
     }
 
@@ -61,12 +65,6 @@ public class LoadSaveDataManager : MonoBehaviour
     // saat gameobject dihancurkan (saat run di unity editor dimatikan)
     void OnDestroy()
     {
-        // Pastikan ini hanya dijalankan saat berhenti play mode di editor
-        if (!Application.isPlaying)
-        {
-            return;
-        }
-
         SaveData();
     }
 }
