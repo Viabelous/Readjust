@@ -42,8 +42,8 @@ public class HolySonata : Skill
     public override string GetDescription()
     {
         string additionHPMana = level > 1 ? " (+" + PersentaseToInt(HPManaPersenOfFOCFinal - HPManaPersenOfFOC) + "%) " : " ";
-        string additionATK = level > 1 ? " (-" + PersentaseToInt(ATKPersenOfATKFinal - ATKPersenOfATK) + "%) " : " ";
-        string additionDEF = level > 1 ? " (-" + PersentaseToInt(DEFPersenOfDEFFinal - DEFPersenOfDEF) + "%) " : " ";
+        string additionATK = level > 1 ? " (" + PersentaseToInt(ATKPersenOfATKFinal - ATKPersenOfATK) + "%) " : " ";
+        string additionDEF = level > 1 ? " (" + PersentaseToInt(DEFPersenOfDEFFinal - DEFPersenOfDEF) + "%) " : " ";
 
         description = "Memberikan status {Harmony} pada karakter yang akan terus mengisi HP dan Mana karakter sebanyak " + PersentaseToInt(HPManaPersenOfFOC) + "%" + additionHPMana + "FOC setiap detik namun menurunkan ATK serta DEF karakter masing-masing sebanyak " + PersentaseToInt(ATKPersenOfATK) + "%" + additionATK + "ATK dan " + PersentaseToInt(DEFPersenOfDEF) + "%" + additionDEF + "DEF. Menggunakan kembali skill ini saat sedang memiliki status {Harmony} tidak akan mengurangi Mana dan akan menonaktifkan status {Harmony}. Menggunakan skill ini akan menghapus status {Idiosyncrasy}.";
         return description;

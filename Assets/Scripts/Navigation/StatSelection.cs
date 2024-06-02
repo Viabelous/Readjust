@@ -116,14 +116,7 @@ public class StatSelection : Navigation
             }
 
         }
-        else
-        {
-            // WindowsController.CreatePopUp(
-            //     "upgrade_failed",
-            //     PopUpType.OK,
-            //     "Stat telah mencapai level maksimal."
-            // );
-        }
+
     }
 
     public override void ExclusiveKey()

@@ -58,7 +58,7 @@ public class StatWindowsController : MonoBehaviour
                 break;
             case Player.Progress.ATK:
                 statName.text = "Attack (ATK) Lv. " + level;
-                statDescription.text = "stat yang menentukan basis kekuatan dari karakter, damage dari basic attack dan sebagian besar skill dipengaruhi oleh stat ini.";
+                statDescription.text = "Stat yang menentukan basis kekuatan dari karakter, damage dari basic attack dan sebagian besar skill dipengaruhi oleh stat ini.";
                 break;
             case Player.Progress.DEF:
                 statName.text = "Defend (DEF) Lv. " + level;

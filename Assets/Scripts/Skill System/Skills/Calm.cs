@@ -20,7 +20,7 @@ public class Calm : Skill
     public override string GetDescription()
     {
         string additionFOC = level > 1 ? " (+" + (FOCValueFinal - FOCValue) + ") " : " ";
-        description = "Meningkatkan FOC sebanyak" + FOCValue + additionFOC + "selama " + timer + " detik.";
+        description = "Meningkatkan FOC sebanyak " + FOCValue + additionFOC + "selama " + timer + " detik.";
         return description;
     }
 
