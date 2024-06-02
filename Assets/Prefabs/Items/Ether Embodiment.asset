@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Nda tau..
   price: 50
   icon: {fileID: 1521393163, guid: d917843dabe74654eba0de380d4a699b, type: 3}
-  types: 0c000000
+  types: 0f000000
   adaptable: 0
   rewardType: 2
   persentase: 1
