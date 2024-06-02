@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Siapp
   price: 1500
   icon: {fileID: 21300000, guid: af0b2f84693e95541a0adab98b44db7f, type: 3}
-  types: 0c000000
+  types: 0f000000
   adaptable: 0
   rewardType: 3
   persentase: 0.25
