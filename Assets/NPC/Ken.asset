@@ -15,6 +15,13 @@ MonoBehaviour:
   name: Ken
   pict: {fileID: 21300000, guid: e5b3da42736b3e94c90a266d70eeece7, type: 3}
   dialogue:
+  - Kenapa kita bisa terlempar ke dunia ini? Dilihat dari situasinya jelas semuanya
+    gak masuk akal./plus/Aku ngurus Windows Stat, kalau mau naikin stat datengin
+    aku./plus/Dari cara bicaraku udah bisa ditebak kan aku siapa?/plus/Menurut yang
+    kudengar, kayaknya semuanya punya kemampuan berbeda-beda./plus/Zey dengan kemampuan
+    Skill Trainer, Xiena Merchant, aku Stat Trainer, yang tersisa tinggal Obvirtu
+    Enchanter dan Karakter Utama, Asta./plus/Aku yakin kemampuanmu yang terakhir
+    melihat kamu membawa pedang pendek... em.. pisau./plus/
   - Ingin meningkatkan stat?/plus/openStatWindows
   - Stat yang ditingkatkan hanya berlaku di dunia ini, saat kita keluar maka tentunya
     stat dunia nyata tidak akan ikut tertingkatkan./plus/ Karenanya olahraga./plus/openStatWindows

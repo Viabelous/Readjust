@@ -36,6 +36,15 @@ public class GameManager : ScriptableObject
     // item yang dipakai selama stage berlangsung
     public static List<Item> selectedItems = new List<Item>();
 
+    // pertemuan pertama dengan NPC
+    public static Dictionary<string, bool> firstEncounter = new Dictionary<string, bool>() 
+                                                            {
+                                                                {"Rion", true},
+                                                                {"Zey", true},
+                                                                {"Xiena", true},
+                                                                {"Ken", true}
+                                                            };
+
     public static bool CheckUnlockedSkill(string name)
     {
         return unlockedSkills.ContainsKey(name);

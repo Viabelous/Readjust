@@ -30,7 +30,7 @@ public class TalkSystem : MonoBehaviour
         {
             pic.GetComponent<Image>().sprite = npc.Pict;
         }
-        SetText(0);
+        SetText();
     }
 
     void Update()
@@ -56,7 +56,7 @@ public class TalkSystem : MonoBehaviour
             else
             {
                 isTypingNow = false;
-                SetText(0);
+                SetText();
                 dialogPanel.SetActive(true);
                 NextLine();
             }
@@ -110,6 +110,7 @@ public class TalkSystem : MonoBehaviour
         }
         else
         {
+            if(GameManager.firstEncounter[npc.Name]) GameManager.firstEncounter[npc.Name] = false;
             resetTeks();
             if (windows != string.Empty)
             {
@@ -126,6 +127,9 @@ public class TalkSystem : MonoBehaviour
                         break;
                     case "Shop":
                         windowsController.GetComponent<windowsController>().openShop();
+                        break;
+                    case "Story0":
+                        SceneManager.LoadScene("Stage1");
                         break;
                     default:
                         break;
@@ -161,11 +165,12 @@ public class TalkSystem : MonoBehaviour
         }
     }
 
-    public void SetText(int index)
+    public void SetText()
     {
         this.dialog = new List<string>();
         pic.GetComponent<Image>().sprite = npc.Pict;
-        int indexChoosen = UnityEngine.Random.Range(0, npc.Dialogue.Length);
+        int indexChoosen = GameManager.firstEncounter[npc.Name] ? 0 
+                                                                : UnityEngine.Random.Range(1, npc.Dialogue.Length);
         string new_dialog = npc.Dialogue[indexChoosen];
         List<string> teks = new_dialog.Split("/plus/").ToList();
         switch (teks.Last())
@@ -182,6 +187,9 @@ public class TalkSystem : MonoBehaviour
             case "openShopWindows":
                 windows = "Shop";
                 break;
+            case "doStory0":
+                windows = "Story0";
+                break;
         }
         teks.RemoveAt(teks.Count - 1);
 
@@ -190,6 +198,6 @@ public class TalkSystem : MonoBehaviour
             this.dialog.Add(barisTeks);
         }
 
-        nameTag.text = npc.name;
+        nameTag.text = npc.Name;
     }
 }
