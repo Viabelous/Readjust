@@ -6,33 +6,36 @@ using UnityEngine.UI;
 
 public class StorageWindowsBtnEquip : Navigation
 {
-
-    // [SerializeField] Sprite hoverImg, activeImg;
     [SerializeField] Text text;
     [SerializeField] NavigationState currState;
-    ShopSelection focusedObvirtu;
-    bool canBuy;
+    [SerializeField] StorageManager storageManager;
+    [SerializeField] Image[] displayEquipment;
+    bool isEquiped;
+    bool isFull;
+
+    void Start()
+    {
+        refresh();
+    }
 
     void Update()
-    {
-        Left = WindowsController.FocusedButton;
-
-        print("left: " + Left.name);
-        print("hovered: " + WindowsController.HoveredButton.name);
-
-        focusedObvirtu = Left.GetComponent<ShopSelection>();
-
-        canBuy = !GameManager.CheckUnlockedItems(focusedObvirtu.obvirtu.Name);
-
-        if (canBuy)
+    {   if(storageManager.focusedObvirtu != null)
         {
-            text.text = "KENAKAN";
-        }
-        else
-        {
-            text.text = "LEPASKAN";
-        }
+            isEquiped = GameManager.CheckSelectedItems(storageManager.focusedObvirtu);
+            isFull = GameManager.selectedItems.Count >= 3;
 
+            if (isEquiped)
+            {
+                text.text = "LEPASKAN";
+            }
+            else
+            {
+                text.text = isFull ? "PENUH" : "KENAKAN";
+            }
+        } else
+        {
+            text.text = "KOSONG";
+        }
 
         switch (currState)
         {
@@ -43,20 +46,6 @@ public class StorageWindowsBtnEquip : Navigation
             case NavigationState.Hover:
                 ImageComponent.sprite = HoverSprite;
                 break;
-        }
-
-        if (ZoneManager.instance.CurrentState() == ZoneState.OnPopUp)
-        {
-            switch (WindowsController.popUp.id)
-            {
-                case "buy_failed":
-                    if (WindowsController.popUp.GetClickedBtn() == PopUpBtnType.OK)
-                    {
-                        Destroy(WindowsController.popUp.gameObject);
-                        ZoneManager.instance.ChangeCurrentState(ZoneState.Idle);
-                    }
-                    break;
-            }
         }
 
     }
@@ -75,24 +64,20 @@ public class StorageWindowsBtnEquip : Navigation
 
     public override void Clicked()
     {
-        // kalau belum pernah beli, bisa klik beli
-        if (canBuy)
-        {
-            if (GameManager.player.aerus < focusedObvirtu.obvirtu.Price)
-            {
-                WindowsController.CreatePopUp(
-                    "buy_failed",
-                    PopUpType.OK,
-                    "Anda membutuhkan lebih banyak Aerus untuk membuka skill ini."
-                );
-            }
-            else
-            {
-                GameManager.player.Pay(CostType.Aerus, focusedObvirtu.obvirtu.Price);
-                GameManager.unlockedItems.Add(focusedObvirtu.obvirtu.Name);
-            }
 
-        }
+        if (storageManager.focusedObvirtu != null)
+        {
+            if(isEquiped)
+            {
+                GameManager.selectedItems.Remove(storageManager.focusedObvirtu);
+                refresh();
+
+            } else
+            {
+                if(!isFull) GameManager.selectedItems.Add(storageManager.focusedObvirtu);
+                refresh();
+            }
+        } 
 
     }
 
@@ -100,4 +85,23 @@ public class StorageWindowsBtnEquip : Navigation
     {
     }
 
+    private void refresh()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            if(i <= GameManager.selectedItems.Count - 1)
+            {
+                displayEquipment[i].sprite = GameManager.selectedItems[i].Icon;
+                displayEquipment[i].color = new Color(displayEquipment[i].color.r,
+                                                    displayEquipment[i].color.g,
+                                                    displayEquipment[i].color.b, 
+                                                    255f);
+            } else{
+                displayEquipment[i].color = new Color(displayEquipment[i].color.r,
+                                                    displayEquipment[i].color.g,
+                                                    displayEquipment[i].color.b, 
+                                                    0f);
+            }
+        }
+    }
 }

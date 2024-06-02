@@ -46,6 +46,11 @@ public class GameManager : ScriptableObject
         return unlockedItems.Contains(name);
     }
 
+    public static bool CheckSelectedItems(Item item)
+    {
+        return selectedItems.Contains(item);
+    }
+
     public static void ResetData()
     {
         player = null;

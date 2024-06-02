@@ -18,9 +18,6 @@ public class ShopWindowsBtnSelection : Navigation
     {
         Left = WindowsController.FocusedButton;
 
-        print("left: " + Left.name);
-        print("hovered: " + WindowsController.HoveredButton.name);
-
         focusedObvirtu = Left.GetComponent<ShopSelection>();
 
         canBuy = !GameManager.CheckUnlockedItems(focusedObvirtu.obvirtu.Name);
@@ -32,7 +29,7 @@ public class ShopWindowsBtnSelection : Navigation
         }
         else
         {
-            text.text = "DIBELI";
+            text.text = "DIMILIKI";
             price.SetActive(false);
         }
 
