@@ -18,16 +18,21 @@ public class StorageManager : Navigation
     [HideInInspector] public Item focusedObvirtu;
 
 
-    public void Start()
+    public void Update()
     {
         foreach(string obvirtuName in GameManager.unlockedItems)
         {
+            if(!unlockedItemList.Contains(listOfObvirtu.Where(obj => obj.name == obvirtuName).SingleOrDefault()))
             unlockedItemList.Add(listOfObvirtu.Where(obj => obj.name == obvirtuName).SingleOrDefault());
         }
 
-        if(unlockedItemList.Count >= 0)
+        if(unlockedItemList.Count >= 1)
         {
-            focusedObvirtu = unlockedItemList[0];
+            foreach(Image img in displayImage)
+                img.color = new Color(img.color.r, img.color.g, img.color.b, 255f);
+            
+            iconFocus.color = new Color(iconFocus.color.a, iconFocus.color.g, iconFocus.color.b,255f);
+            
             refreshObvirtu();
         } else
         {
@@ -36,7 +41,7 @@ public class StorageManager : Navigation
                 img.color = new Color(img.color.r, img.color.g, img.color.b, 0f);
             }
 
-            iconFocus.color = new Color(iconFocus.color.a, iconFocus.color.g, iconFocus.color.b,0);
+            iconFocus.color = new Color(iconFocus.color.a, iconFocus.color.g, iconFocus.color.b,0f);
         }
         
     }
@@ -66,14 +71,14 @@ public class StorageManager : Navigation
     {
         WindowsController.isScrolling = true;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && unlockedItemList.Count >= 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && unlockedItemList.Count >= 1)
         {
             index -= 1;
             index = CalculateIndex(index);
             focusedObvirtu = unlockedItemList[index];
             refreshObvirtu();
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && unlockedItemList.Count >= 0)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && unlockedItemList.Count >= 1)
         {
             index += 1;
             index = CalculateIndex(index);
@@ -89,6 +94,7 @@ public class StorageManager : Navigation
 
     void refreshObvirtu()
     {
+        if(focusedObvirtu == null) focusedObvirtu = unlockedItemList[0];
         obvirtuName.text = focusedObvirtu.name;
         iconFocus.GetComponent<Image>().sprite = focusedObvirtu.Icon;
         descriptionText.text = focusedObvirtu.Description;
@@ -119,8 +125,3 @@ public class StorageManager : Navigation
     }
 
 }
-
-//  "Red Shoes",
-//  "First Chapter Script",
-//  "End of May Scroll",
-//  "Tea Leaves"

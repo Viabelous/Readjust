@@ -19,7 +19,8 @@ public class StorageWindowsBtnEquip : Navigation
     }
 
     void Update()
-    {   if(storageManager.focusedObvirtu != null)
+    {   
+        if(storageManager.focusedObvirtu != null)
         {
             isEquiped = GameManager.CheckSelectedItems(storageManager.focusedObvirtu);
             isFull = GameManager.selectedItems.Count >= 3;
