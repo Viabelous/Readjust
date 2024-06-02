@@ -11,7 +11,7 @@ public static class DataManager
     private static string skillsPath = path + "skills.json";
     private static string scoresPath = path + "scores.json";
     private static string itemsPath = path + "items.json";
-    private static string npcPath = path + "npcPath.json";
+    private static string npcPath = path + "npc.json";
 
 
     public static void SavePlayer(Player player)
