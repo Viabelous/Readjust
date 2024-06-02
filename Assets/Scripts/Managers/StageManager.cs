@@ -243,7 +243,7 @@ public class StageManager : MonoBehaviour
         if (!hasSavedReward)
         {
 
-            if (GameManager.player.GetProgress(Player.Progress.Story) == 0 || status == true)
+            if (status == true)
             {
                 GameManager.player.IncreaseProgress(Player.Progress.Story, 1);
             }
@@ -329,5 +329,14 @@ public class StageManager : MonoBehaviour
         popUp = newpopUp.GetComponent<NotifPopUp>();
         popUp.id = id;
         popUp.info = info;
+    }
+
+    void OnDestroy()
+    {
+        if (GameManager.player.GetProgress(Player.Progress.Story) == 0)
+        {
+            GameManager.player.IncreaseProgress(Player.Progress.Story, 1);
+        }
+
     }
 }

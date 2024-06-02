@@ -62,7 +62,6 @@ public class Skill : ScriptableObject
     [SerializeField] protected float upCd;
     [SerializeField] protected float upCost;
 
-
     [Header("Skill Icon")]
     [SerializeField] protected Sprite sprite;
 

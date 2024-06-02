@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 519462401}
   objDark: {fileID: 724175801}
-  skillHolder: {fileID: 260168801}
+  skillHolder: {fileID: 0}
   cdText: {fileID: 1647211032}
   slotNumber: 2
   skillPref: {fileID: 0}
@@ -1403,50 +1403,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &260168801
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 260168803}
-  - component: {fileID: 260168802}
-  m_Layer: 0
-  m_Name: CumaBuatDebug
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &260168802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260168801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4502086c4bb36a548bda1ed213a55e2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &260168803
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260168801}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 360.4524, y: 144.91699, z: -1.584868}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &278054054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,7 +2630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 1003035104}
   objDark: {fileID: 120255681}
-  skillHolder: {fileID: 260168801}
+  skillHolder: {fileID: 0}
   cdText: {fileID: 858605202}
   slotNumber: 6
   skillPref: {fileID: 0}
@@ -6174,7 +6130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 466687316}
   objDark: {fileID: 731676442}
-  skillHolder: {fileID: 260168801}
+  skillHolder: {fileID: 0}
   cdText: {fileID: 630231153}
   slotNumber: 4
   skillPref: {fileID: 0}
@@ -7014,7 +6970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 985303115}
   objDark: {fileID: 485191567}
-  skillHolder: {fileID: 260168801}
+  skillHolder: {fileID: 0}
   cdText: {fileID: 420348118}
   slotNumber: 1
   skillPref: {fileID: 0}
@@ -7291,7 +7247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 734131497}
   objDark: {fileID: 189802845}
-  skillHolder: {fileID: 260168801}
+  skillHolder: {fileID: 0}
   cdText: {fileID: 549071945}
   slotNumber: 5
   skillPref: {fileID: 0}
@@ -9301,7 +9257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 1828936792}
   objDark: {fileID: 2014131914}
-  skillHolder: {fileID: 260168801}
+  skillHolder: {fileID: 0}
   cdText: {fileID: 1564798652}
   slotNumber: 3
   skillPref: {fileID: 0}
@@ -11080,7 +11036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objLight: {fileID: 1934671496}
   objDark: {fileID: 302463197}
-  skillHolder: {fileID: 260168801}
+  skillHolder: {fileID: 0}
   cdText: {fileID: 1531944734}
   slotNumber: 7
   skillPref: {fileID: 0}
@@ -12202,5 +12158,4 @@ SceneRoots:
   - {fileID: 1024394244}
   - {fileID: 983503449}
   - {fileID: 1677781013}
-  - {fileID: 260168803}
   - {fileID: 1001853180}

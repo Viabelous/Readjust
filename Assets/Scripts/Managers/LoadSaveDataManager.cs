@@ -13,8 +13,6 @@ public class LoadSaveDataManager : MonoBehaviour
 
     void Awake()
     {
-        // GameManager.ResetData();
-        LoadGameData();
         instance = this;
     }
 

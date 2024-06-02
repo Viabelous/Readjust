@@ -2006,6 +2006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 117794865}
   - component: {fileID: 117794864}
+  - component: {fileID: 117794866}
   m_Layer: 8
   m_Name: Ken
   m_TagString: Object
@@ -2077,6 +2078,19 @@ Transform:
   - {fileID: 1797422975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &117794866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117794863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760fe7cc3730aed42bcb4a95e3b97cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progress: 1
 --- !u!1 &120950539
 GameObject:
   m_ObjectHideFlags: 0
@@ -14843,6 +14857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016757495}
   - component: {fileID: 1016757494}
+  - component: {fileID: 1016757496}
   m_Layer: 8
   m_Name: Xiena
   m_TagString: Object
@@ -14914,6 +14929,19 @@ Transform:
   - {fileID: 770188414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016757496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016757493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760fe7cc3730aed42bcb4a95e3b97cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progress: 1
 --- !u!1 &1024851252
 GameObject:
   m_ObjectHideFlags: 0
@@ -19266,6 +19294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275960198}
   - component: {fileID: 1275960197}
+  - component: {fileID: 1275960199}
   m_Layer: 8
   m_Name: Zey
   m_TagString: Object
@@ -19337,6 +19366,19 @@ Transform:
   - {fileID: 2111854903}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1275960199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275960196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760fe7cc3730aed42bcb4a95e3b97cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progress: 1
 --- !u!1 &1279678586
 GameObject:
   m_ObjectHideFlags: 0
