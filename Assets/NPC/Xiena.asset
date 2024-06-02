@@ -15,4 +15,13 @@ MonoBehaviour:
   name: Xiena
   pict: {fileID: 21300000, guid: 83898aafb354a344fbf9fc9a9ebe9e46, type: 3}
   dialogue:
+  - Modelku cakep banget weh./plus/Aku Xiena, aku ngurus Windows Shop kayak Merchant
+    buat jualan Obvirtu./plus/Walaupun aku yang jualan tapi kamu harus bayar kalau
+    mau beli di sini, udah aturannya begitu, OK?/plus/Kalau udah ada uang bisa datengin
+    aku lagi./plus/
   - Selamat datang, selamat datang, silakan berbelanja./plus/openShopWindows
+  - Adakah duit nak beli Obvirtu? wkwkwk. mana tau kamu lupa, Obvirtu singkatan dari
+    Object of Virtu, kalau mau pakai itu datengin chest di sana nanti./plus/openShopWindows
+  - Selamat datang wahai pelanggan, jangan lupa beli Obvirtu edisi khusus buatanku
+    sama Zey yang bentukannya kayak paw paw kucing./plus/Walau aku gak suka megang
+    kucing bukan berarti aku gak mau bikin-bikin yang ada kucingnya./plus/openShopWindows

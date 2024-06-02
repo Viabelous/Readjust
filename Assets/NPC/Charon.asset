@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a25e989188f934492fa5e19ee528dd, type: 3}
   m_Name: Charon
   m_EditorClassIdentifier: 
-  name: Charon
+  name: Rion
   pict: {fileID: 21300000, guid: 89df4d85a8c4816419926e69e8400c60, type: 3}
   dialogue:
+  - ???/plus/Kamu tidak seharusnya berada di sini./plus/Tapi mungkin dunia mengirimmu
+    untuk memperbaiki kesalahan yang telah terjadi./plus/Mungkin dengan mengalahkan
+    Raja Iblis di istananya baru kamu dapat pulang ke dunia asalmu./plus/Karenanya
+    akan kuteleportasi kamu ke Gurun Stilbon untuk melatih diri../plus/doStory0
   - Ingin berangkat?/plus/Pastikan kamu telah memelajari beberapa skill elemental
     dan telah membawa perlengkapan!/plus/Aku akan meneleportasimu kembali kemari
     saat darahmu tersisa sedikit jadi tidak perlu khawatir meregang nyawa/plus/openStageWindows
   - Stage mungkin memiliki musuh yang unik, pastikan kamu sudah memelajari beberapa
-    skill elemental yang cocok dan membawa obvirtu yang bisa membantu./plus/OpenStageWindows
+    skill elemental yang cocok dan membawa obvirtu yang bisa membantu./plus/openStageWindows
