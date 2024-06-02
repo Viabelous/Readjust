@@ -14,7 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_fourth_chapter_script
   name: Fourth Chapter Script
-  description: Penuh plotwist
+  description: 'Meningkatkan Air Damage sebesar 15%.
+
+
+
+
+    Naskah cerita Tales
+    of the Adjust bagian keempat.
+
+    Ringkasan: Kemampuan Asta yang sekarang dikatakan
+    sudah dapat menyetarai Si Tua Heka ataupun teman seperjuangan Si Tua itu, Xena.
+    Xena sempat berniat menghentikan Asta dan sebagai gantinya akan menyelamatkan
+    Selene bersama Heka tetapi Asta menolak karena tekadnya sudah bulat. Asta langsung
+    bergerak ke dataran tinggi Shani untuk mengalahkan Jendral Raja Iblis lainnya.
+    Sialnya dia, di dataran tinggi Shani saat itu ada dua jendral Raja Iblis yang
+    sedang berunding yakni Styx dan Kerberos yang seharusnya berada di pedalaman
+    hutan Terra. Di detik-detik kekalahan Asta, angin bergerak berhembus memutari
+    Asta yang membuatnya bersatu dengan esensi elemen angin. Walau belum bisa menguasai
+    sepenuhnya, Asta berhasil mengalahkan kedua jendral berkat elemen angin yang
+    baru ia dapat.'
   price: 8000
   icon: {fileID: 21300000, guid: ded853054d869684ebd973a2826a7fd1, type: 3}
   types: 0b000000
