@@ -75,7 +75,7 @@ public class Score
             Dictionary<string, object> dictScore = new Dictionary<string, object>();
             string mapStr = "" + score.map;
             dictScore["date"] = DateTime.Now;
-            dictScore["map"] = mapStr[mapStr.Length - 1];
+            dictScore["map"] = mapStr;
             dictScore["score"] = score.score;
             dictScore["time"] = score.time;
             dictScore["aerus"] = score.aerus;
@@ -93,7 +93,7 @@ public class Score
         List<Score> scores = new List<Score>();
         foreach (var score in data)
         {
-            Map map = (Map)Enum.Parse(typeof(Map), "Stage" + score["map"]);
+            Map map = (Map)Enum.Parse(typeof(Map), score["map"].ToString());
             scores.Add(
                 new Score(
                     (DateTime)score["date"],
