@@ -345,4 +345,36 @@ public class StageManager : MonoBehaviour
         }
 
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "Stage1":
+                GameManager.selectedMap = Map.Stage1;
+                break;
+            case "Stage2":
+                GameManager.selectedMap = Map.Stage2;
+                break;
+            case "Stage3":
+                GameManager.selectedMap = Map.Stage3;
+                break;
+            case "Stage4":
+                GameManager.selectedMap = Map.Stage4;
+                break;
+            case "Stage5":
+                GameManager.selectedMap = Map.Stage5;
+                break;
+        }
+    }
 }

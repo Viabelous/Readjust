@@ -129,6 +129,7 @@ public class TalkSystem : MonoBehaviour
                         windowsController.GetComponent<windowsController>().openShop();
                         break;
                     case "Story0":
+                        GameManager.selectedMap = Map.Stage1;
                         SceneManager.LoadScene("Stage1");
                         break;
                     default:

@@ -27,7 +27,7 @@ public class StatSelection : Navigation
                 break;
 
             case NavigationState.Hover:
-                WindowsController.FocusedButton = gameObject;
+                // WindowsController.FocusedButton = gameObject;
 
                 // tutup pop up
                 if (ZoneManager.instance.CurrentState() == ZoneState.OnPopUp)

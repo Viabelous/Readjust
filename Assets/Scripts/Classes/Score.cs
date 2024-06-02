@@ -121,7 +121,7 @@ public class Score
     public static Score GetHighScoreByMap(Map map)
     {
         List<Score> winScores = GameManager.scores
-                .Where(scoreObj => scoreObj.IsWin()).ToList();
+                .Where(scoreObj => scoreObj.IsWin() && scoreObj.GetMap() == map).ToList();
 
         if (winScores.Count == 0)
         {
@@ -129,7 +129,6 @@ public class Score
         }
 
         return winScores
-                .Where(scoreObj => scoreObj.GetMap() == map)
                 .OrderByDescending(scoreObj => scoreObj.score)
                 .ToList()[0];
     }
@@ -150,13 +149,12 @@ public class Score
     public static Score GetBestTimeByMap(Map map)
     {
         List<Score> winScores = GameManager.scores
-                .Where(scoreObj => scoreObj.IsWin()).ToList();
+                .Where(scoreObj => scoreObj.IsWin() && scoreObj.GetMap() == map).ToList();
         if (winScores.Count == 0)
         {
             return null;
         }
         return winScores
-                .Where(scoreObj => scoreObj.GetMap() == map)
                 .OrderBy(scoreObj => scoreObj.time)
                 .ToList()[0];
     }

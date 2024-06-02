@@ -39,7 +39,7 @@ public class SkillWindowsBtnSelection : Navigation
                     Down = GameObject.Find("open_upgrade_btn");
                 }
 
-                if (Left.GetComponent<SkillsSelection>().HasSelected())
+                if (Left != null && Left.GetComponent<SkillsSelection>().HasSelected())
                 {
                     btnText.text = "BATALKAN";
                 }
