@@ -14,7 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_fifth_chapter_script
   name: Fifth Chapter Script
-  description: Bad ending sepertinya
+  description: 'Meningkatkan Fire Damage, Earth Damage, Water Damage, dan Air Damage
+    sebesar 8%.
+
+
+
+
+
+    Naskah cerita Tales of the Adjust bagian kelima.
+
+    Naskah
+    belum selesai ditulis. Secara keseluruhan membahas tentang pertarungan Asta dan
+    Selene melawan Raja Iblis Varkaris Charon.'
   price: 10000
   icon: {fileID: 21300000, guid: 4f705886e8d77c24c91844eee88562f1, type: 3}
   types: 08000000090000000a0000000b000000
