@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83970c5c64c9ea04691554104bfbdf7e, type: 3}
   m_Name: Eris
   m_EditorClassIdentifier: 
-  id: enemy46485
-  maxHp: 20000
+  id: enemy89475
+  maxHp: 10000
   hp: 20000
   atk: 50
   def: 0

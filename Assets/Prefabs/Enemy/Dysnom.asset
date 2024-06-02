@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f178503a818ad0c4985f5aeae7da75a8, type: 3}
   m_Name: Dysnom
   m_EditorClassIdentifier: 
-  id: enemy73522
+  id: enemy36531
   maxHp: 5000
   hp: 5000
   atk: 50
@@ -24,8 +24,10 @@ MonoBehaviour:
   movementEnabled: 1
   name: Dysnom
   type: 0
-  aerus: 3000
-  exp: 100
+  aerus: 2300
+  exp: 1998
+  distanceToPlayer: 0
+  projectile: {fileID: 0}
   minTime: 12
   maxTime: 17
   flameTuskDelay: 0.5

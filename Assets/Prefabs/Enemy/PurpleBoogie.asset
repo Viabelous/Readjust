@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: PurpleBoogie
   m_EditorClassIdentifier: 
-  id: enemy4200
+  id: enemy69945
   maxHp: 156
-  hp: 1
+  hp: 156
   atk: 40
   def: 0
   agi: 0
@@ -24,5 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Purple Boogie
   type: 0
-  aerus: 3
-  exp: 3
+  aerus: 35
+  exp: 24
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

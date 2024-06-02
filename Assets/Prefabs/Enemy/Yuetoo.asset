@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Yuetoo
   m_EditorClassIdentifier: 
-  id: enemy21005
+  id: enemy7047
   maxHp: 100
-  hp: 50
+  hp: 100
   atk: 50
   def: 0
   agi: 0
@@ -24,5 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Yuetoo
   type: 0
-  aerus: 5
-  exp: 5
+  aerus: 20
+  exp: 18
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

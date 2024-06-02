@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: FlamingBird
   m_EditorClassIdentifier: 
-  id: enemy39783
+  id: enemy13597
   maxHp: 140
   hp: 140
   atk: 23
@@ -24,5 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Flaming Bird
   type: 0
-  aerus: 5
-  exp: 3
+  aerus: 8
+  exp: 6
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

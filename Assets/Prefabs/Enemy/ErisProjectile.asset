@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0e5541e55a5c146a7ff8f55a3318bf, type: 3}
   m_Name: ErisProjectile
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 75
   speed: 8
   lockingTime: 0.7
   timeInterval: 5

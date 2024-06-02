@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Scorp
   m_EditorClassIdentifier: 
-  id: enemy29680
+  id: enemy18800
   maxHp: 200
   hp: 200
   atk: 30
@@ -24,5 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Scorp
   type: 0
-  aerus: 10
-  exp: 4
+  aerus: 15
+  exp: 12
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

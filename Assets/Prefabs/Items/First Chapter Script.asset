@@ -14,7 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_first_chapter_script
   name: First Chapter Script
-  description: 'Masih prolog '
+  description: 'Meningkatkan Earth Damage sebesar 15%.
+
+
+
+
+    Naskah cerita Tales
+    of the Adjust bagian pertama.
+
+    Ringkasan: Di tengah-tengah hutan rimba Terra
+    terdapat sebuah gubuk besar tempat sang mantan Arch Swordmage Hoshekka atau yang
+    disebut Si Tua Bangka Heka oleh para anak didiknya. Asta yang adalah anak didik
+    terlemah diperintahkan untuk mengambil beberapa kekayaan alam di kedalaman hutan
+    Terra. Tanpa disadarinya, Asta bersatu dengan esensi-esensi elemen hutan Terra
+    yang membuatnya dapat menggunakan sihir Tanah dengan mudah. Begitu kembali ke
+    gubuk tuanya, teman-teman seperjuangannya yang sudah bisa disebut keluarga olehnya
+    itu penuh dengan luka. Si Tua Heka menceritakan tentang serangan dari Raja Iblis,
+    Varkaris Charon beberapa saat lalu dan penculikan murid terbaiknya sekaligus
+    sahabat Asta, Selene. Asta kemudian bertekad menyelamatkan Selene dan mengalahkan
+    Raja Iblis.'
   price: 5000
   icon: {fileID: 21300000, guid: a33a3b63be5614d47bb7851613cd4310, type: 3}
   types: 09000000
