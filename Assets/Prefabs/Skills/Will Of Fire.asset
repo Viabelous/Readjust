@@ -29,8 +29,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: f4960afafb44e9e4d81d93df89185730, type: 3}
   movementSpeed: 0
   movementRange: 0
-  timer: 30
-  expUnlockCost: 500
-  expUpCost: 750
+  timer: 20
   ATKValue: 30
   ATKValueUp: 5
