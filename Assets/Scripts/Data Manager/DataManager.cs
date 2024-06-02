@@ -6,12 +6,12 @@ using System;
 
 public static class DataManager
 {
-    private static string path = "D:/ReadjustData/";
-    private static string playerPath = path + "player.json";
-    private static string skillsPath = path + "skills.json";
-    private static string scoresPath = path + "scores.json";
-    private static string itemsPath = path + "items.json";
-    private static string npcPath = path + "npc.json";
+    private static string path = Application.persistentDataPath;
+    private static string playerPath = Path.Combine(path, "player.json");
+    private static string skillsPath = Path.Combine(path, "skills.json");
+    private static string scoresPath = Path.Combine(path, "scores.json");
+    private static string itemsPath = Path.Combine(path, "items.json");
+    private static string npcPath = Path.Combine(path, "npc.json");
 
 
     public static void SavePlayer(Player player)
