@@ -42,7 +42,7 @@ public class StageManager : MonoBehaviour
     [HideInInspector] private StageState state;
     [SerializeField] private GameObject[] popUps;
     private NotifPopUp popUp;
-    [SerializeField] private GameObject blackScreen;
+    [SerializeField] private GameObject blackScreen, suddenDeath;
 
 
     [HideInInspector] public bool onPopUp;
@@ -62,6 +62,7 @@ public class StageManager : MonoBehaviour
         extraExp = 0;
         state = StageState.Play;
         blackScreen.SetActive(false);
+        suddenDeath.SetActive(false);
 
         onFinal = false;
         hasSavedReward = false;
@@ -97,6 +98,12 @@ public class StageManager : MonoBehaviour
             case StageState.Lose:
                 Lose();
                 break;
+        }
+
+        if (time > 14 * 60)
+        {
+            suddenDeath.SetActive(true);
+
         }
     }
 
