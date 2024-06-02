@@ -50,27 +50,27 @@ public class StatWindowsController : MonoBehaviour
         {
             case Player.Progress.MaxHP:
                 statName.text = "Max Health Point (HP) Lv. " + level;
-                statDescription.text = "Jumlah maksimal darah yang bisa didapatkan pada saat stage berlangsung stage.";
+                statDescription.text = "Stat yang menjadi nilai dasar darah karakter. Saat HP habis, karakter akan Game Over.";
                 break;
             case Player.Progress.MaxMana:
                 statName.text = "Max Mana Point (MP) Lv. " + level;
-                statDescription.text = "Jumlah maksimal mana yang bisa digunakan pada saat stage berlangsung stage.";
+                statDescription.text = "Stat yang menjadi batasan dalam penggunaan skill. Dalam penggunaan skill diperlukan Mana kecuali skill tertentu, skill tidak dapat digunakan ketika Mana tidak mencukupi.";
                 break;
             case Player.Progress.ATK:
                 statName.text = "Attack (ATK) Lv. " + level;
-                statDescription.text = "Kerusakan yang akan dikeluarkan oleh player";
+                statDescription.text = "stat yang menentukan basis kekuatan dari karakter, damage dari basic attack dan sebagian besar skill dipengaruhi oleh stat ini.";
                 break;
             case Player.Progress.DEF:
-                statName.text = "Defense (DEF) Lv. " + level;
-                statDescription.text = "Sebagai tameng player.";
+                statName.text = "Defend (DEF) Lv. " + level;
+                statDescription.text = "Stat yang menentukan ketahanan karakter. Saat menerima damage dari musuh, damage diterima akan berkurang tergantung dari stat ini.";
                 break;
             case Player.Progress.FOC:
                 statName.text = "Focus (FOC) Lv. " + level;
-                statDescription.text = "Kemungkinan dikeluarkannya kerusakan yang tinggi pada saat menyerang.";
+                statDescription.text = "Stat yang menentukan damage akhir dari tiap serangan karakter. Semakin besar tingkat FOCUS karakter, semakin mungkin karakter mengakibatkan serangan ampuh yang senilai dengan 250% damage asli.";
                 break;
             case Player.Progress.AGI:
                 statName.text = "Agility (AGI) Lv. " + level;
-                statDescription.text = "Penambahan kecepatan pergerakan player.";
+                statDescription.text = "Stat yang menentukan kecepatan berjalan karakter. Dibutuhkan kecepatan berjalan yang lebih tinggi untuk menandingi kecepatan musuh yang tinggi.";
                 break;
         }
     }

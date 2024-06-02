@@ -83,7 +83,7 @@ public class ShopWindowsBtnSelection : Navigation
                 WindowsController.CreatePopUp(
                     "buy_failed",
                     PopUpType.OK,
-                    "Anda membutuhkan lebih banyak Aerus untuk membuka skill ini."
+                    "Anda membutuhkan lebih banyak Aerus untuk membeli item ini."
                 );
             }
             else

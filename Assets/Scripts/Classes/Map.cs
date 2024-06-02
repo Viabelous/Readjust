@@ -24,4 +24,9 @@ public class MapProperty : ScriptableObject
     public string description;
     public Sprite preview;
     public int unlockedProgress;
+
+    public bool HasUnlocked()
+    {
+        return GameManager.player.GetProgress(Player.Progress.Story) >= unlockedProgress;
+    }
 }

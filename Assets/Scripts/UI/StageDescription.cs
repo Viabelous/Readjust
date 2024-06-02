@@ -10,6 +10,11 @@ public class StageDescription : MonoBehaviour
     [SerializeField] TextMeshProUGUI typeText, nameText, descText, scoreText, timeText, statusText;
     [SerializeField] Image preview;
 
+    public MapProperty GetFocusedMap()
+    {
+        return map;
+    }
+
     void Start()
     {
         typeText.text = "Stage " + map.map.ToString()[map.map.ToString().Length - 1];

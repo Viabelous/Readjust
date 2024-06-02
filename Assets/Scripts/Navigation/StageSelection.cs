@@ -11,36 +11,58 @@ public class StageSelection : Navigation
     public bool isUnlocked;
     public bool firstAccess;
     public Map stage;
-
     public GameObject popUp;
 
     void Start()
     {
+        isUnlocked = popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked();
+        if (Right != null && !Right.GetComponent<StageSelection>().popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked())
+        {
+            Right = null;
+        }
+
         if (firstAccess)
         {
             IsHovered(true);
         }
     }
 
+    void Update()
+    {
+        if (ZoneManager.instance.CurrentState() == ZoneState.OnPopUp)
+        {
+            switch (WindowsController.popUp.id)
+            {
+                case "load_stage_failed":
+                    if (WindowsController.popUp.GetClickedBtn() == PopUpBtnType.OK)
+                    {
+                        Destroy(WindowsController.popUp.gameObject);
+                        ZoneManager.instance.ChangeCurrentState(ZoneState.Idle);
+                    }
+                    break;
+            }
+        }
+    }
+
     public override void IsHovered(bool state)
     {
-        if (isUnlocked == false)
+
+        // else
+        // {
+        // }
+
+        if (state)
         {
-            WindowsController.HoveredButton = Left;
+            GetComponent<Image>().sprite = HoverSprite;
+            popUp.SetActive(true);
         }
         else
         {
-            if (state)
-            {
-                GetComponent<Image>().sprite = HoverSprite;
-                popUp.SetActive(true);
-            }
-            else
-            {
-                GetComponent<Image>().sprite = BasicSprite;
-                popUp.SetActive(false);
-            }
+            GetComponent<Image>().sprite = BasicSprite;
+            popUp.SetActive(false);
         }
+
+
 
     }
 
@@ -50,6 +72,14 @@ public class StageSelection : Navigation
         {
             GameManager.selectedMap = stage;
             SceneManager.LoadScene("" + stage);
+        }
+        else
+        {
+            WindowsController.CreatePopUp(
+                "load_stage_failed",
+                PopUpType.OK,
+                "Menangkan stage sebelumnya untuk membuka stage ini."
+            );
         }
     }
 
