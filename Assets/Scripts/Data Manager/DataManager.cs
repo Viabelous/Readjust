@@ -11,6 +11,8 @@ public static class DataManager
     private static string skillsPath = path + "skills.json";
     private static string scoresPath = path + "scores.json";
     private static string itemsPath = path + "items.json";
+    private static string npcPath = path + "npcPath.json";
+
 
     public static void SavePlayer(Player player)
     {
@@ -156,14 +158,59 @@ public static class DataManager
         }
     }
 
+    public static void SaveNPCData(Dictionary<string, bool> dictData)
+    {
+        // buat direktori jika belum ada
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+
+        string json = JsonConvert.SerializeObject(dictData, Formatting.Indented);
+        File.WriteAllText(npcPath, json);
+    }
+
+    public static Dictionary<string, bool> LoadNPCData()
+    {
+        if (File.Exists(npcPath))
+        {
+            try
+            {
+                string json = File.ReadAllText(npcPath);
+                Dictionary<string, bool> dict = JsonConvert.DeserializeObject<Dictionary<string, bool>>(json);
+                return dict;
+            }
+            catch (IOException e)
+            {
+                Debug.LogError("Failed to load etc data: " + e.Message);
+                return null;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No etc data file found at " + itemsPath);
+            return null;
+        }
+    }
+
+
+
 
     public static bool CheckPath()
     {
-        if (File.Exists(playerPath) && File.Exists(skillsPath) && File.Exists(scoresPath) && File.Exists(itemsPath))
+        if (
+            File.Exists(playerPath) &&
+            File.Exists(skillsPath) &&
+            File.Exists(scoresPath) &&
+            File.Exists(itemsPath) &&
+            File.Exists(npcPath)
+        )
         {
             return true;
         }
         return false;
     }
+
+
 
 }

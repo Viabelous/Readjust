@@ -242,6 +242,12 @@ public class StageManager : MonoBehaviour
 
         if (!hasSavedReward)
         {
+
+            if (GameManager.player.GetProgress(Player.Progress.Story) == 0 || status == true)
+            {
+                GameManager.player.IncreaseProgress(Player.Progress.Story, 1);
+            }
+
             SaveReward(playerController.player, score);
             hasSavedReward = true;
         }
@@ -278,11 +284,8 @@ public class StageManager : MonoBehaviour
 
     private void FinalizeReward()
     {
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!NANTI UBAH WOIII!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is MultiplyReward);
-        List<Item> rewardItem = CumaBuatDebug.instance.selectedItems.FindAll(item => item is RewardMultiplier);
+
+        List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is RewardMultiplier);
 
         if (rewardItem.Count == 0)
         {
