@@ -17,6 +17,14 @@ public class windowsController : MonoBehaviour
     public GameObject[] popUps;
     [HideInInspector] public NotifPopUp popUp;
     [HideInInspector] public bool isScrolling = false;
+    [Header("Sound")]
+    [SerializeField] private AudioSource audioSrc = new AudioSource(){};
+    [Tooltip("Sesuaikan dengan nomor windows di property Windows")]
+    public AudioClip[] clickButtonSound;
+    [Tooltip("Sesuaikan dengan nomor windows di property Windows")]
+    public AudioClip[] navigateButtonSound;
+    [Tooltip("index 0 untuk scroll shop, index 1 untuk scroll storage")]
+    public AudioClip[] scrollButtonSound;
 
 
     void Update()
@@ -32,6 +40,7 @@ public class windowsController : MonoBehaviour
             {
                 if (HoveredButton.GetComponent<Navigation>().Left != null)
                 {
+                    PlaySound(navigateButtonSound[ActiveWindowsID]);
                     HoveredButton.GetComponent<Navigation>().IsHovered(false);
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Left;
                     HoveredButton.GetComponent<Navigation>().IsHovered(true);
@@ -42,6 +51,7 @@ public class windowsController : MonoBehaviour
             {
                 if (HoveredButton.GetComponent<Navigation>().Right != null)
                 {
+                    PlaySound(navigateButtonSound[ActiveWindowsID]);
                     HoveredButton.GetComponent<Navigation>().IsHovered(false);
                     HoveredButton = HoveredButton.GetComponent<Navigation>().Right;
                     HoveredButton.GetComponent<Navigation>().IsHovered(true);
@@ -52,6 +62,7 @@ public class windowsController : MonoBehaviour
             {
                 if (HoveredButton.GetComponent<Navigation>().Up != null)
                 {
+                    PlaySound(navigateButtonSound[ActiveWindowsID]);
                     if (HoveredButton.GetComponent<Navigation>().Up.name == "close")
                     {
                         HoveredButton.GetComponent<Navigation>().Up.GetComponent<Navigation>().Down = HoveredButton;
@@ -64,6 +75,7 @@ public class windowsController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+                PlaySound(navigateButtonSound[ActiveWindowsID]);
                 if (HoveredButton.GetComponent<Navigation>().Down != null)
                 {
                     HoveredButton.GetComponent<Navigation>().IsHovered(false);
@@ -73,12 +85,9 @@ public class windowsController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Q))
             {
+                PlaySound(clickButtonSound[ActiveWindowsID]);
                 HoveredButton.GetComponent<Navigation>().Clicked();
             }
-            // else
-            // {
-            //     HoveredButton.GetComponent<Navigation>().ExclusiveKey();
-            // }
         }
 
     }
@@ -144,4 +153,11 @@ public class windowsController : MonoBehaviour
 
         ZoneManager.instance.ChangeCurrentState(ZoneState.OnPopUp);
     }
+
+    public void PlaySound(AudioClip audio)
+    {
+        audioSrc.clip = audio;
+        audioSrc.Play();
+    }
+
 }
