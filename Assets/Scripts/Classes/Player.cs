@@ -71,7 +71,7 @@ public class Player : Character
     }
     public int StatMaxLevel
     {
-        get { return this.statMaxLevel; }
+        get { return StatMaxLevel; }
     }
 
     // public int StatPriceUp {
@@ -158,37 +158,37 @@ public class Player : Character
         switch (type)
         {
             case Progress.MaxHP:
-                if (maxHPLevel < 10)
+                if (maxHPLevel < StatMaxLevel)
                 {
                     return true;
                 }
                 break;
             case Progress.MaxMana:
-                if (maxManaLevel < 10)
+                if (maxManaLevel < StatMaxLevel)
                 {
                     return true;
                 }
                 break;
             case Progress.ATK:
-                if (atkLevel < 10)
+                if (atkLevel < StatMaxLevel)
                 {
                     return true;
                 }
                 break;
             case Progress.DEF:
-                if (defLevel < 10)
+                if (defLevel < StatMaxLevel)
                 {
                     return true;
                 }
                 break;
             case Progress.FOC:
-                if (focLevel < 10)
+                if (focLevel < StatMaxLevel)
                 {
                     return true;
                 }
                 break;
             case Progress.AGI:
-                if (agiLevel < 10)
+                if (agiLevel < StatMaxLevel)
                 {
                     return true;
                 }
