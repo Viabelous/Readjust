@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 7564463693808802502}
   - component: {fileID: 600108324530085273}
   - component: {fileID: -7047030170237070683}
-  - component: {fileID: 3942500282892234039}
-  - component: {fileID: -7394421249312328743}
   m_Layer: 15
   m_Name: Avalanche
   m_TagString: Damage
@@ -85,47 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877746aa957df934ea6fb78901d9e948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3942500282892234039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509709916755308712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: def1fc9317c02024c8ebbf4554f31807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  offsetRight: {x: 2, y: -0.3, z: 0}
-  offsetLeft: {x: -2, y: -0.3, z: 0}
-  offsetFront: {x: 0, y: -2, z: 0}
-  offsetBack: {x: -0.1, y: 0, z: 0}
-  rotationRight: 0
-  rotationLeft: 0
-  rotationFront: 0
-  rotationBack: 0
-  flipRight: 0
-  flipLeft: 1
-  flipFront: 0
-  flipBack: 0
-  spriteRenderer: {fileID: 0}
-  oppositeDirection: 0
-  offsetPivot: {x: 0, y: 0, z: 0}
---- !u!114 &-7394421249312328743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509709916755308712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42a1d149ef003f40b04f2c2d4016442, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
 --- !u!1 &7220625004617547205
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +99,7 @@ GameObject:
   - component: {fileID: 6712630878361923158}
   m_Layer: 0
   m_Name: avalanche_front
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,10 +251,10 @@ MonoBehaviour:
   rotationFront: 0
   rotationBack: 0
   flipRight: 0
-  flipLeft: 1
+  flipLeft: 0
   flipFront: 0
   flipBack: 0
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 2825853564414692937}
   oppositeDirection: 0
   offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &6712630878361923158
@@ -329,7 +286,7 @@ GameObject:
   - component: {fileID: 7330858183018419198}
   m_Layer: 0
   m_Name: avalanche_left_right
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,7 +441,7 @@ MonoBehaviour:
   flipLeft: 1
   flipFront: 0
   flipBack: 0
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 5635002984189854997}
   oppositeDirection: 0
   offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &7330858183018419198
@@ -516,7 +473,7 @@ GameObject:
   - component: {fileID: 2347596489495824642}
   m_Layer: 0
   m_Name: avalanche_back
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -668,10 +625,10 @@ MonoBehaviour:
   rotationFront: 0
   rotationBack: 0
   flipRight: 0
-  flipLeft: 1
+  flipLeft: 0
   flipFront: 0
   flipBack: 0
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1014008890485943448}
   oppositeDirection: 0
   offsetPivot: {x: 0, y: 0, z: 0}
 --- !u!114 &2347596489495824642

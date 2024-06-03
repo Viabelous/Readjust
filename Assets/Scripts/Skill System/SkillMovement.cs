@@ -140,13 +140,13 @@ public class SkillMovement : MonoBehaviour
                             FlipVertical();
                         }
 
-                        if (
-                            type == SkillMovementType.Linear ||
-                            type == SkillMovementType.Area
-                        )
-                        {
-                            spriteRenderer.sortingLayerName = "Skill Front";
-                        }
+                        // if (
+                        //     type == SkillMovementType.Linear ||
+                        //     type == SkillMovementType.Area
+                        // )
+                        // {
+                        //     spriteRenderer.sortingLayerName = "Skill Front";
+                        // }
 
                         transform.position = player.transform.position + offsetFront;
                         transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationFront);
@@ -159,14 +159,14 @@ public class SkillMovement : MonoBehaviour
                             FlipVertical();
                         }
 
-                        if (
-                            type == SkillMovementType.Linear ||
-                            type == SkillMovementType.Area
-                        )
-                        {
-                            spriteRenderer.sortingLayerName = "Skill Back";
+                        // if (
+                        //     type == SkillMovementType.Linear ||
+                        //     type == SkillMovementType.Area
+                        // )
+                        // {
+                        //     spriteRenderer.sortingLayerName = "Skill Back";
 
-                        }
+                        // }
 
                         transform.position = player.transform.position + offsetBack;
                         transform.rotation = transform.rotation * Quaternion.Euler(0, 0, rotationBack);

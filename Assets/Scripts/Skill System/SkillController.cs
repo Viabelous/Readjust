@@ -49,15 +49,6 @@ public class SkillController : MonoBehaviour
 
             if (mobController.enemy.type == EnemyType.Ground)
             {
-                if (transform.position.y > other.transform.position.y)
-                {
-                    mobController.spriteRenderer.sortingLayerName = "Chr Back";
-                }
-                else
-                {
-                    mobController.spriteRenderer.sortingLayerName = "Chr Front";
-                }
-
                 mobController.onSkillTrigger = true;
             }
 

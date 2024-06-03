@@ -33,9 +33,6 @@ public class AvalancheBehaviour : MonoBehaviour
                 OnBackAnimation();
                 break;
         }
-
-        print(GetComponent<SpriteRenderer>().sortingLayerName);
-
     }
 
     private void OnLeftRightAnimation()
