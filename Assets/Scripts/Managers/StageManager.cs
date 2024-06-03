@@ -48,6 +48,8 @@ public class StageManager : MonoBehaviour
     [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioClip pauseAudio, winAudio, loseAudio, basicAttAudio;
 
+    // transition
+    [SerializeField] public LevelChanger levelChanger;
 
     [HideInInspector] public bool onPopUp;
     private bool onFinal, hasSavedReward;
@@ -77,7 +79,7 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        print(Time.deltaTime);
         switch (state)
         {
             case StageState.Play:
@@ -101,6 +103,9 @@ public class StageManager : MonoBehaviour
                 break;
             case StageState.Lose:
                 Lose();
+                break;
+            case StageState.Reward:
+                ResumeTime();
                 break;
         }
 
@@ -199,7 +204,9 @@ public class StageManager : MonoBehaviour
             if (popUp.GetComponent<NotifPopUp>().GetClickedBtn() == PopUpBtnType.OK)
             {
                 Destroy(popUp.gameObject);
-                SceneManager.LoadScene("DeveloperZone");
+                // SceneManager.LoadScene("DeveloperZone");
+                ToggleState(StageState.Pause, StageState.Play);
+                levelChanger.Transition("DeveloperZone");
             }
             else if (popUp.GetComponent<NotifPopUp>().GetClickedBtn() == PopUpBtnType.Cancel)
             {

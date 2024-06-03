@@ -77,7 +77,6 @@ public class SkillMovement : MonoBehaviour
         switch (type)
         {
             case SkillMovementType.Area:
-                print("uhuyy");
                 return;
 
             case SkillMovementType.Linear:

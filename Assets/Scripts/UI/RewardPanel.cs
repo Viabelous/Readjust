@@ -1,3 +1,4 @@
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class RewardPanel : MonoBehaviour
     [SerializeField] private Text status, score, time, aerus, extraAerus, exp, extraExp;
     [SerializeField] private Image currentBtn, otherBtn;
     [SerializeField] private Sprite loseBanner, winBanner;
+    LevelChanger levelChanger;
+    StageManager stageManager;
     // private Color selectedColor, unselectedColor;
     // private bool instantiated = false;
 
@@ -15,6 +18,8 @@ public class RewardPanel : MonoBehaviour
     {
         currentBtn.color = SelectedColor(currentBtn);
         otherBtn.color = UnSelectedColor(otherBtn);
+        levelChanger = GameObject.FindObjectOfType<LevelChanger>();
+        stageManager = GameObject.FindObjectOfType<StageManager>();
     }
 
     void Update()
@@ -28,8 +33,8 @@ public class RewardPanel : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q) && currentBtn.name == "menu_btn")
         {
-            StageManager.instance.ResumeTime();
             SceneManager.LoadScene("DeveloperZone");
+            // levelChanger.Transition("DeveloperZone");
         }
         else if (Input.GetKeyDown(KeyCode.Q) && currentBtn.name == "replay_btn")
         {
@@ -37,6 +42,7 @@ public class RewardPanel : MonoBehaviour
             string currentSceneName = SceneManager.GetActiveScene().name;
             // Muat ulang scene yang sedang aktif
             SceneManager.LoadScene(currentSceneName);
+            // levelChanger.Transition(currentSceneName);
         }
 
     }

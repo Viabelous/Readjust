@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Grok
   m_EditorClassIdentifier: 
-  id: enemy56644
-  maxHp: 162
-  hp: 100
+  id: enemy94461
+  maxHp: 152
+  hp: 162
   atk: 44
   def: 0
   agi: 0
-  speed: 1.3
+  speed: 1.25
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
@@ -26,3 +26,5 @@ MonoBehaviour:
   type: 0
   aerus: 40
   exp: 29
+  distanceToPlayer: 0
+  projectile: {fileID: 0}
