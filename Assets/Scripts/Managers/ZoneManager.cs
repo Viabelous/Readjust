@@ -26,6 +26,7 @@ public class ZoneManager : MonoBehaviour
     public GameObject dialogPanel;
 
     private ZoneState state;
+    [SerializeField] LevelChanger levelChanger;
 
 
     void Awake()
@@ -46,7 +47,7 @@ public class ZoneManager : MonoBehaviour
             case ZoneState.Idle:
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    SceneManager.LoadScene("MainMenu");
+                    levelChanger.Transition("MainMenu");
                 }
 
                 if (dialogPanel.activeInHierarchy)

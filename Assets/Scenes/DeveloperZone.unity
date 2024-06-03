@@ -7168,6 +7168,7 @@ MonoBehaviour:
   minMap: {x: -30, y: -20}
   maxMap: {x: 30, y: 20}
   dialogPanel: {fileID: 1628484206}
+  levelChanger: {fileID: 183297778}
 --- !u!4 &502121418
 Transform:
   m_ObjectHideFlags: 0
