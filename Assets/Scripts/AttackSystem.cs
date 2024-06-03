@@ -133,13 +133,14 @@ public class AttackSystem : MonoBehaviour
                     attacker = GetComponent<MobController>().enemy;
                     damage = attacker.GetATK();
                 }
+                break;
+
+            case CharacterType.FlyingEnemy:
                 // attack system di skill musuh
-                else
-                {
-                    attacker = GetComponent<EnemySkillController>().GetEnemy()
-                    .GetComponent<MobController>().enemy;
-                    damage = GetComponent<EnemySkillController>().GetDamage();
-                }
+                attacker = transform.parent
+                .GetComponent<MobController>().enemy;
+                damage = GetComponent<EnemySkillController>().GetDamage();
+
                 break;
         }
     }

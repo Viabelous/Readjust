@@ -86,7 +86,6 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
             {
                 isAttacking = false;
                 animator.Play(endAnimationName);
-
             }
         }
 
@@ -97,12 +96,12 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
             skill.LockedEnemy == other.transform
         )
         {
+            print("masuk sini gak");
             // biasanya tipe projectile
             if (isAttacking && skill.HitType == SkillHitType.Once)
             {
                 isAttacking = false;
                 animator.Play(endAnimationName);
-
             }
         }
     }

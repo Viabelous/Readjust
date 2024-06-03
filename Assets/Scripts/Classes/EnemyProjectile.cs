@@ -12,7 +12,7 @@ public class EnemyProjectile : ScriptableObject
 
     public float GetDamage()
     {
-        return speed;
+        return damage;
     }
 
     public float GetSpeed()

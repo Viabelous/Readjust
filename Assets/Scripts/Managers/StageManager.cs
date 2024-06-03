@@ -79,7 +79,6 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Time.deltaTime);
         switch (state)
         {
             case StageState.Play:

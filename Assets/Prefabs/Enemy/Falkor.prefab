@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 4821217497097005141}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: FlyingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

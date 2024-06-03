@@ -23,6 +23,7 @@ public class FlyingEnemyProjectile : MonoBehaviour
 
         speed = projectile.GetSpeed();
         skillController = GetComponent<EnemySkillController>();
+        transform.position = transform.parent.GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position;
 
         // transform.position = skillController.GetEnemy().
         // GetComponent<FlyingEnemyShadow>().flyingEnemy.transform.position;

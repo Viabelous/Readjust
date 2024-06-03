@@ -100,15 +100,9 @@ public class DefenseSystem : MonoBehaviour
             finalDamage = 1;
         }
 
-        // print("totalDamage = " + totalDamage);
-        // print("finalDamage = " + finalDamage);
 
         defender.hp -= finalDamage;
 
-        if (type == CharacterType.Enemy || type == CharacterType.FlyingEnemy)
-        {
-            //print("Enemy HP: " + defender.GetHP());
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -155,8 +149,10 @@ public class DefenseSystem : MonoBehaviour
                 break;
 
             case CharacterType.Player:
+                // print("trigger");
                 if (other.CompareTag("EnemyDamage"))
                 {
+                    // print("kena damage musuh");
                     float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
 
                     // jika player punya buff thorn, pantulkan damage ke musuh yg serang
@@ -344,8 +340,6 @@ public class DefenseSystem : MonoBehaviour
         //     return false;
         // }
         StartCoroutine(FlyingEnemyDamaged());
-
-
         return true;
     }
 
