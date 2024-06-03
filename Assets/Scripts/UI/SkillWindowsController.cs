@@ -17,17 +17,21 @@ public class SkillWindowsController : MonoBehaviour
     void Update()
     {
         UpdateSkillBtnHover();
-        SetSkillDescription();
-
-        // sesudah upgrade skill, hover ke arah select btn
-        if (
-            skillsSelection.CurrentState() == NavigationState.Focused &&
-            WindowsController.HoveredButton == lockedBtn &&
-            !lockedBtn.activeInHierarchy
-        )
+        if (skillsSelection != null)
         {
-            WindowsController.HoveredButton = selectBtn;
+            SetSkillDescription();
+            // sesudah upgrade skill, hover ke arah select btn
+            if (
+                skillsSelection.CurrentState() == NavigationState.Focused &&
+                WindowsController.HoveredButton == lockedBtn &&
+                !lockedBtn.activeInHierarchy
+            )
+            {
+                WindowsController.HoveredButton = selectBtn;
+            }
         }
+
+
     }
 
     void SetSkillDescription()
