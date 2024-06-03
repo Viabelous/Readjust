@@ -18222,8 +18222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImageComponent: {fileID: 1160254475}
   WindowsController: {fileID: 739427922}
-  BasicSprite: {fileID: 21300000, guid: 126aab3b4cabdf04d9d789164372034c, type: 3}
-  HoverSprite: {fileID: 21300000, guid: 126aab3b4cabdf04d9d789164372034c, type: 3}
+  BasicSprite: {fileID: 21300000, guid: d21b37d54f150424d956c9d322e27c2b, type: 3}
+  HoverSprite: {fileID: 21300000, guid: 8072a41370c3b0741a0faf393554d8cd, type: 3}
   Left: {fileID: 834617974}
   Up: {fileID: 0}
   Right: {fileID: 0}

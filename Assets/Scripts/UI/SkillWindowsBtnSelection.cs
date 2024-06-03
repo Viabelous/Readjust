@@ -30,6 +30,7 @@ public class SkillWindowsBtnSelection : Navigation
         {
             case BtnType.Select:
                 Left = WindowsController.FocusedButton;
+
                 if (Down != null && !Down.activeInHierarchy)
                 {
                     Down = null;
@@ -39,7 +40,7 @@ public class SkillWindowsBtnSelection : Navigation
                     Down = GameObject.Find("open_upgrade_btn");
                 }
 
-                if (Left != null && Left.GetComponent<SkillsSelection>().HasSelected())
+                if (Left != null && Left.GetComponent<SkillsSelection>() != null && Left.GetComponent<SkillsSelection>().HasSelected())
                 {
                     btnText.text = "BATALKAN";
                 }

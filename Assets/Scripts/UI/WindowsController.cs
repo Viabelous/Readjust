@@ -18,7 +18,7 @@ public class windowsController : MonoBehaviour
     [HideInInspector] public NotifPopUp popUp;
     [HideInInspector] public bool isScrolling = false;
     [Header("Sound")]
-    [SerializeField] private AudioSource audioSrc = new AudioSource(){};
+    [SerializeField] private AudioSource audioSrc = new AudioSource() { };
     [Tooltip("Sesuaikan dengan nomor windows di property Windows")]
     public AudioClip[] clickButtonSound;
     [Tooltip("Sesuaikan dengan nomor windows di property Windows")]

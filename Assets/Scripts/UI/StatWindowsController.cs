@@ -12,6 +12,8 @@ public class StatWindowsController : MonoBehaviour
 
     void Start()
     {
+        WindowsController.FocusedButton = null;
+
         UpdateStatBtnHover();
         UpdateStatValue();
         SetStatDescription();
