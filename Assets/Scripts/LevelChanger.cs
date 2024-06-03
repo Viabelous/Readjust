@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,24 +7,16 @@ public class LevelChanger : MonoBehaviour
 {
     public Animator animator;
 
-    private int levelToLoad;
-
-    void UpdateMainmMenu()
+    public void Transition(string sceneName)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            FadeToLevel(1);
-        }
+        StartCoroutine(TransitionCoroutine(sceneName));
     }
 
-    public void FadeToLevel(int levelIndex)
+    private IEnumerator TransitionCoroutine(string sceneName)
     {
-        levelToLoad = levelIndex;
-        animator.SetTrigger("FadeOut");
-    }
-
-    public void OnFadeComplete()
-    {
-        SceneManager.LoadScene(levelToLoad);
+        animator.Play("Fade_In");
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(sceneName);
     }
 }
+

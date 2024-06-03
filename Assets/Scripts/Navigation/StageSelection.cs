@@ -67,7 +67,7 @@ public class StageSelection : Navigation
         if (isUnlocked)
         {
             GameManager.selectedMap = stage;
-            SceneManager.LoadScene("" + stage);
+            WindowsController.levelChanger.Transition("" + stage);
         }
         else
         {

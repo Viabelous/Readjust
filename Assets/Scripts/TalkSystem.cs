@@ -15,7 +15,7 @@ public class TalkSystem : MonoBehaviour
     public NPC npc;
     private List<string> dialog;
     private string windows;
-    public GameObject windowsController;
+    public windowsController WindowsController;
     public float wordSpeed;
     [HideInInspector] public bool playerDekat;
     private bool stopTyping;
@@ -33,7 +33,7 @@ public class TalkSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && windowsController.GetComponent<windowsController>().ActiveWindowsID == -1)
+        if (Input.GetKeyDown(KeyCode.Q) && playerDekat && WindowsController.ActiveWindowsID == -1)
         {
             ZoneManager.instance.ChangeCurrentState(ZoneState.OnDialog);
 
@@ -117,20 +117,20 @@ public class TalkSystem : MonoBehaviour
                 switch (windows)
                 {
                     case "Stage":
-                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(0, true));
+                        StartCoroutine(WindowsController.ToogleWindow(0, true));
                         break;
                     case "Skill":
-                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(1, true));
+                        StartCoroutine(WindowsController.ToogleWindow(1, true));
                         break;
                     case "Stat":
-                        StartCoroutine(windowsController.GetComponent<windowsController>().ToogleWindow(6, true));
+                        StartCoroutine(WindowsController.ToogleWindow(6, true));
                         break;
                     case "Shop":
-                        windowsController.GetComponent<windowsController>().openShop();
+                        WindowsController.openShop();
                         break;
                     case "Story0":
                         GameManager.selectedMap = Map.Stage1;
-                        SceneManager.LoadScene("Stage1");
+                        WindowsController.levelChanger.Transition("Stage1");
                         break;
                     default:
                         break;

@@ -6,6 +6,7 @@ public class windowsController : MonoBehaviour
 {
 
     public GameObject Player;
+    public LevelChanger levelChanger;
     public GameObject[] Windows;
     public GameObject[] WindowsButtonStartPointNavigation;
     [HideInInspector] public GameObject[] SkillTree;

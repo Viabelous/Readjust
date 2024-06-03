@@ -1,10 +1,12 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
+    public LevelChanger levelChanger;
 
     [SerializeField] private Image newBtn, loadBtn, exitBtn;
     private Image currentBtn;
@@ -51,12 +53,12 @@ public class MainMenuManager : MonoBehaviour
             if (currentBtn.name == newBtn.name)
             {
                 LoadSaveDataManager.instance.CreateNewData();
-                SceneManager.LoadScene("DeveloperZone");
+                levelChanger.Transition("DeveloperZone");
             }
             else if (currentBtn.name == loadBtn.name)
             {
                 LoadSaveDataManager.instance.LoadGameData();
-                SceneManager.LoadScene("DeveloperZone");
+                levelChanger.Transition("DeveloperZone");
             }
             else if (currentBtn.name == exitBtn.name)
             {
@@ -64,6 +66,7 @@ public class MainMenuManager : MonoBehaviour
             }
         }
     }
+
 
     private void ToggleBtn(Image otherBtn)
     {
