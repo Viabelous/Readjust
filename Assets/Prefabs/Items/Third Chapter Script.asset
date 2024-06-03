@@ -31,7 +31,7 @@ MonoBehaviour:
     hendak pulang, esensi elemen air seakan membisik Asta dan akhirnya menyatu dengan
     Asta. Awalnya Asta merasakan rasa sakit yang hebat tetapi tentunya tidak memakan
     waktu lama baginya beradaptasi.'
-  price: 2000
+  price: 5000
   icon: {fileID: 21300000, guid: 81a57915f2a6f2a489690bc723eda989, type: 3}
   types: 0a000000
   adaptable: 0
