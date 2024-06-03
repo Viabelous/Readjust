@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8201811442486859590}
   - component: {fileID: -4248570389151874492}
   - component: {fileID: 9087462365717237163}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Ignite
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 20
   m_Sprite: {fileID: -1614154391, guid: 9c53e489d393a114aa69acad855c421d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

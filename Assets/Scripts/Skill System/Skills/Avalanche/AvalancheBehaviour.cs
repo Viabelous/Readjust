@@ -34,28 +34,29 @@ public class AvalancheBehaviour : MonoBehaviour
                 break;
         }
 
+        print(GetComponent<SpriteRenderer>().sortingLayerName);
+
     }
 
     private void OnLeftRightAnimation()
     {
         animator.Play("avalanche_left_right");
-        boxCollider.offset = new Vector2(0.3f, -0.36f);
-        boxCollider.size = new Vector2(3.9f, 1.55f);
+        // boxCollider.offset = new Vector2(0.3f, -0.36f);
+        // boxCollider.size = new Vector2(3.9f, 1.55f);
 
     }
 
     private void OnFrontAnimation()
     {
         animator.Play("avalanche_front");
-        boxCollider.offset = new Vector2(0.2f, 0.26f);
-        boxCollider.size = new Vector2(0.1f, 3f);
+        // boxCollider.offset = new Vector2(0.2f, 0.26f);
+        // boxCollider.size = new Vector2(0.1f, 3f);
     }
     private void OnBackAnimation()
     {
         animator.Play("avalanche_back");
-        boxCollider.offset = new Vector2(0.075f, 1.23f);
-        boxCollider.size = new Vector2(0.85f, 3f);
-
+        // boxCollider.offset = new Vector2(0.075f, 1.23f);
+        // boxCollider.size = new Vector2(0.85f, 3f);
     }
 
 }

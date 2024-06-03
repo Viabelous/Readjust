@@ -263,9 +263,6 @@ public class SkillMovement : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, skill.LockedEnemy.position, skill.MovementSpeed * Time.deltaTime);
 
-        // print("musuh: " + skill.LockedEnemy.position);
-        // rotasikan arah hadap skill --------------------------------
-
         // Menghitung arah vektor dari titik pivot ke targetObject
         Vector2 directionToTarget = skill.LockedEnemy.position - (transform.position + offsetPivot);
 
@@ -275,12 +272,6 @@ public class SkillMovement : MonoBehaviour
 
         // Terapkan rotasi pada titik pivot
         transform.rotation = targetRotation;
-
-        // if (transform.position == skill.LockedEnemy.position)
-        // {
-        //     // print("Hilangkan skill");
-        //     Destroy(gameObject);
-        // }
 
     }
 

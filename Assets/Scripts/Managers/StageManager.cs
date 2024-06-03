@@ -160,12 +160,12 @@ public class StageManager : MonoBehaviour
                 player.GetComponent<Animator>().SetTrigger("BasicAttack");
                 if (!GameObject.Find(basicStab.name + "(Clone)"))
                 {
-                    // PlaySound(basicAttAudio);
+                    PlaySound(basicAttAudio);
                     Instantiate(basicStab);
                 }
                 break;
             case " ":
-                // pauseAudio.Play();
+                PlaySound(pauseAudio);
                 ToggleState(StageState.Pause, StageState.Play);
                 break;
         }
@@ -188,7 +188,7 @@ public class StageManager : MonoBehaviour
         switch (Input.inputString)
         {
             case " ":
-                // PlaySound(pauseAudio);
+                PlaySound(pauseAudio);
                 ToggleState(StageState.Pause, StageState.Play);
                 Destroy(popUp.gameObject);
                 break;
@@ -203,6 +203,7 @@ public class StageManager : MonoBehaviour
             }
             else if (popUp.GetComponent<NotifPopUp>().GetClickedBtn() == PopUpBtnType.Cancel)
             {
+                PlaySound(pauseAudio);
                 ToggleState(StageState.Pause, StageState.Play);
                 Destroy(popUp.gameObject);
             }
@@ -236,16 +237,14 @@ public class StageManager : MonoBehaviour
 
     private void ShowReward(bool status)
     {
-        // if (status == true)
-        // {
-        //     PlaySound(winAudio);
-
-        // }
-        // else
-        // {
-        //     PlaySound(loseAudio);
-
-        // }
+        if (status == true)
+        {
+            PlaySound(winAudio);
+        }
+        else
+        {
+            PlaySound(loseAudio);
+        }
 
         GameObject reward = Instantiate(rewardPanel, GameObject.Find("UI").transform);
 

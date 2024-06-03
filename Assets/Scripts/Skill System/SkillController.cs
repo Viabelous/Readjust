@@ -64,28 +64,6 @@ public class SkillController : MonoBehaviour
         }
 
         skill.WhileHitEnemy(other);
-
-        // if (other.CompareTag("Object"))
-        // {
-        //     // kalau skill ada di atas object
-        //     if (transform.position.y > other.transform.position.y)
-        //     {
-        //         if (GetComponent<SpriteRenderer>() != null)
-        //         {
-        //             GetComponent<SpriteRenderer>().sortingOrder = -1;
-        //         }
-        //     }
-        //     // kalau skill ada di bawah object
-        //     else
-        //     {
-        //         if (GetComponent<SpriteRenderer>() != null)
-        //         {
-        //             GetComponent<SpriteRenderer>().sortingOrder = 20;
-        //         }
-        //     }
-        // }
-
-
     }
 
     private void OnTriggerExit2D(Collider2D other)
