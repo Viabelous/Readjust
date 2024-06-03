@@ -9090,14 +9090,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImageComponent: {fileID: 673529731}
   WindowsController: {fileID: 739427922}
-  BasicSprite: {fileID: 21300000, guid: 11f159328b7c66345bc1bc2b6a44d342, type: 3}
-  HoverSprite: {fileID: 21300000, guid: d2a08d7a1451267478b6ddbf26927507, type: 3}
+  BasicSprite: {fileID: 21300000, guid: 41688ed93754e79439a4136255c700bf, type: 3}
+  HoverSprite: {fileID: 21300000, guid: cee59e486a415874aa92065df925e2d6, type: 3}
   Left: {fileID: 0}
   Up: {fileID: 0}
   Right: {fileID: 0}
   Down: {fileID: 484632000}
   textObject: {fileID: 862640773}
-  FocusSprite: {fileID: 21300000, guid: 7002bfc25a774f349a6af44c8362c3a6, type: 3}
+  FocusSprite: {fileID: 21300000, guid: 4fcee5e0bf5ea9f488f6ba52740bbf2b, type: 3}
   yVal: 20
 --- !u!1 &678840492
 GameObject:
