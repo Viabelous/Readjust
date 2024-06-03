@@ -60,6 +60,7 @@ public class StorageManager : Navigation
 
     public override void Clicked()
     {
+        WindowsController.PlaySound(WindowsController.clickButtonSound[8]);
         WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
         WindowsController.HoveredButton.GetComponent<Navigation>().Right.GetComponent<Navigation>().Left = gameObject;
         WindowsController.HoveredButton = Right;
@@ -72,6 +73,7 @@ public class StorageManager : Navigation
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && unlockedItemList.Count >= 1)
         {
+            WindowsController.PlaySound(WindowsController.scrollButtonSound[1]);
             index -= 1;
             index = CalculateIndex(index);
             focusedObvirtu = unlockedItemList[index];
@@ -79,6 +81,7 @@ public class StorageManager : Navigation
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && unlockedItemList.Count >= 1)
         {
+            WindowsController.PlaySound(WindowsController.scrollButtonSound[1]);
             index += 1;
             index = CalculateIndex(index);
             focusedObvirtu = unlockedItemList[index];
@@ -86,7 +89,12 @@ public class StorageManager : Navigation
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Clicked();
+                WindowsController.PlaySound(WindowsController.navigateButtonSound[8]);
+                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
+                WindowsController.HoveredButton.GetComponent<Navigation>().Right.GetComponent<Navigation>().Left = gameObject;
+                WindowsController.HoveredButton = Right;
+                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
+                WindowsController.isScrolling = false;
         }
 
     }

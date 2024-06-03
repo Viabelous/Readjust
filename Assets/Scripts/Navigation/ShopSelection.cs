@@ -49,6 +49,7 @@ public class ShopSelection : Navigation
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            WindowsController.PlaySound(WindowsController.scrollButtonSound[0]);
             shopManager.GetComponent<ShopManager>().index -= 1;
             if (display == Display.display1)
             {
@@ -63,6 +64,7 @@ public class ShopSelection : Navigation
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            WindowsController.PlaySound(WindowsController.scrollButtonSound[0]);
             shopManager.index += 1;
             if (display == Display.display3)
             {
@@ -77,7 +79,7 @@ public class ShopSelection : Navigation
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-
+            WindowsController.PlaySound(WindowsController.navigateButtonSound[7]);
             shopManager.closeBtn.GetComponent<Navigation>().Left = gameObject;
             WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
             WindowsController.HoveredButton = Right;
@@ -87,6 +89,7 @@ public class ShopSelection : Navigation
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
+            WindowsController.PlaySound(WindowsController.clickButtonSound[7]);
             Clicked();
         }
     }
