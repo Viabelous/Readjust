@@ -11,7 +11,7 @@ public class StageSelection : Navigation
 
     void Start()
     {
-        isUnlocked = popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked();
+        isUnlocked = stage == Map.Stage5 ? false : popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked();
         if (Right != null && !Right.GetComponent<StageSelection>().popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked())
         {
             Right = null;
