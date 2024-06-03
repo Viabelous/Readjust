@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Demusipule
   m_EditorClassIdentifier: 
-  id: enemy63236
-  maxHp: 150
-  hp: 150
+  id: enemy69099
+  maxHp: 160
+  hp: 160
   atk: 38
   def: 0
   agi: 0
@@ -26,3 +26,5 @@ MonoBehaviour:
   type: 0
   aerus: 30
   exp: 18
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

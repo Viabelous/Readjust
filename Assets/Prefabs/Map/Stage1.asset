@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: 1
   name: Stilbon Desert
-  description: Wilayah terpanas di sepenjuru benua. Stilbon Desert menjadi kering
-    berkat dampak dari Gunung Berapi Stilbon yang ada di dekatnya. Esensi elemen
-    api bergelora hebat di wilayah ini, memenuhi angin dengan suhu panas membuat
-    kulit terasa terbakar walau berada di tempat teduhan.
+  description: "\tWilayah terpanas di sepenjuru benua. Stilbon Desert menjadi kering
+    berkat dampak dari Gunung Berapi Nyx yang ada di dekatnya. Esensi elemen api
+    bergelora hebat di wilayah ini, memenuhi udara dengan suhu panas membuat kulit
+    terasa terbakar walau berada di tempat teduhan."
   preview: {fileID: 21300000, guid: 8dbad4dd751c62a448e2b400cdfd34f1, type: 3}
+  unlockedProgress: 0

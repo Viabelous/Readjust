@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3682d028bdf5744f8bdaae2b5d50832, type: 3}
   m_Name: Selene
   m_EditorClassIdentifier: 
-  id: enemy46203
-  maxHp: 27321
-  hp: 27321
+  id: enemy92925
+  maxHp: 20000
+  hp: 20000
   atk: 68
   def: 0
   agi: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   movementEnabled: 1
   name: Selene
   type: 0
-  aerus: 18000
+  aerus: 18413
   exp: 16319
   distanceToPlayer: 0
   projectile: {fileID: 0}
