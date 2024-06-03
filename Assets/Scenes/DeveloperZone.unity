@@ -10435,8 +10435,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 826fada0d314e034ab568a00fc739661, type: 3}
   - {fileID: 8300000, guid: 826fada0d314e034ab568a00fc739661, type: 3}
   scrollButtonSound:
-  - {fileID: 8300000, guid: d5b5ccde4d186e246a85dec6050ae70f, type: 3}
-  - {fileID: 8300000, guid: d5b5ccde4d186e246a85dec6050ae70f, type: 3}
+  - {fileID: 8300000, guid: 2fe711ead1be8534ca932fd92cbd7204, type: 3}
+  - {fileID: 8300000, guid: 2fe711ead1be8534ca932fd92cbd7204, type: 3}
 --- !u!4 &739427923
 Transform:
   m_ObjectHideFlags: 0
