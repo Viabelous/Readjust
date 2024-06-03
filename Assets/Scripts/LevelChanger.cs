@@ -7,8 +7,7 @@ public class LevelChanger : MonoBehaviour
 
     private int levelToLoad;
 
-    // Update is called once per frame
-    void Update()
+    void UpdateMainmMenu()
     {
         if (Input.GetMouseButtonDown(0))
         {
