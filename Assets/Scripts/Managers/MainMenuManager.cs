@@ -11,6 +11,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Image newBtn, loadBtn, exitBtn;
     private Image currentBtn;
 
+    // sound
+    [SerializeField] private AudioSource audioSrc;
+    [SerializeField] private AudioClip buttonSelectedAudio, buttonChangeAudio, transitionAudio;
+
     void Awake()
     {
         instance = this;
@@ -30,10 +34,12 @@ public class MainMenuManager : MonoBehaviour
         {
             if (currentBtn.name == newBtn.name)
             {
+                PlaySound(buttonChangeAudio);
                 ToggleBtn(loadBtn);
             }
             else if (currentBtn.name == loadBtn.name)
             {
+                PlaySound(buttonChangeAudio);
                 ToggleBtn(exitBtn);
             }
         }
@@ -41,10 +47,12 @@ public class MainMenuManager : MonoBehaviour
         {
             if (currentBtn.name == loadBtn.name)
             {
+                PlaySound(buttonChangeAudio);
                 ToggleBtn(newBtn);
             }
             else if (currentBtn.name == exitBtn.name)
             {
+                PlaySound(buttonChangeAudio);
                 ToggleBtn(loadBtn);
             }
         }
@@ -52,16 +60,19 @@ public class MainMenuManager : MonoBehaviour
         {
             if (currentBtn.name == newBtn.name)
             {
+                PlaySound(buttonSelectedAudio);
                 LoadSaveDataManager.instance.CreateNewData();
                 levelChanger.Transition("DeveloperZone");
             }
             else if (currentBtn.name == loadBtn.name)
             {
+                PlaySound(buttonSelectedAudio);
                 LoadSaveDataManager.instance.LoadGameData();
                 levelChanger.Transition("DeveloperZone");
             }
             else if (currentBtn.name == exitBtn.name)
             {
+                PlaySound(buttonSelectedAudio);
                 Application.Quit();
             }
         }
@@ -98,7 +109,11 @@ public class MainMenuManager : MonoBehaviour
         return color;
     }
 
-
+    void PlaySound(AudioClip audio)
+    {
+        audioSrc.clip = audio;
+        audioSrc.Play();
+    }
 
 
 }
