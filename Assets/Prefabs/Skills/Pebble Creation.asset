@@ -20,11 +20,11 @@ MonoBehaviour:
   hitType: 0
   movementType: 1
   costType: 1
-  initCd: 2
-  cost: 15
+  initCd: 1.5
+  cost: 10
   damage: 60
   upCd: -0.15
-  upCost: -0.5
+  upCost: -0.2
   sprite: {fileID: 21300000, guid: cb0baa6b47ba2e644b55e186de9eae97, type: 3}
   movementSpeed: 15
   movementRange: 30

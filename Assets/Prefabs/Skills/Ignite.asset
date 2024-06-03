@@ -24,7 +24,7 @@ MonoBehaviour:
   cost: 20
   damage: 150
   upCd: -0.3
-  upCost: -0.5
+  upCost: -0.2
   sprite: {fileID: 21300000, guid: e5402d0581b6de941ba2f65c77532dc0, type: 3}
   movementSpeed: 0
   movementRange: 0

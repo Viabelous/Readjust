@@ -45,7 +45,8 @@ public class StageManager : MonoBehaviour
     [SerializeField] private GameObject blackScreen, suddenDeath;
 
     // sound
-    [SerializeField] private AudioSource pauseAudio, winAudio, loseAudio, basicAttAudio;
+    [SerializeField] private AudioClip pauseAudio, winAudio, loseAudio, basicAttAudio;
+    private AudioSource src;
 
 
     [HideInInspector] public bool onPopUp;
@@ -159,7 +160,7 @@ public class StageManager : MonoBehaviour
                 player.GetComponent<Animator>().SetTrigger("BasicAttack");
                 if (!GameObject.Find(basicStab.name + "(Clone)"))
                 {
-                    // basicAttAudio.Play();
+                    PlaySound(basicAttAudio);
                     Instantiate(basicStab);
                 }
                 break;
@@ -187,7 +188,7 @@ public class StageManager : MonoBehaviour
         switch (Input.inputString)
         {
             case " ":
-                // pauseAudio.Play();
+                PlaySound(pauseAudio);
                 ToggleState(StageState.Pause, StageState.Play);
                 Destroy(popUp.gameObject);
                 break;
@@ -235,14 +236,16 @@ public class StageManager : MonoBehaviour
 
     private void ShowReward(bool status)
     {
-        // if (status == true)
-        // {
-        //     winAudio.Play();
-        // }
-        // else
-        // {
-        //     loseAudio.Play();
-        // }
+        if (status == true)
+        {
+            PlaySound(winAudio);
+
+        }
+        else
+        {
+            PlaySound(loseAudio);
+
+        }
 
         GameObject reward = Instantiate(rewardPanel, GameObject.Find("UI").transform);
 
@@ -391,5 +394,11 @@ public class StageManager : MonoBehaviour
                 GameManager.selectedMap = Map.Stage5;
                 break;
         }
+    }
+
+    void PlaySound(AudioClip audio)
+    {
+        src.clip = audio;
+        src.Play();
     }
 }
