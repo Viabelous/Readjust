@@ -294,7 +294,7 @@ public class StageManager : MonoBehaviour
 
         float scoreResult = player.aerus + player.exp + timeScore;
 
-        Score score = new Score(
+        score = new Score(
             DateTime.Now,
             GameManager.selectedMap,
             (int)scoreResult,
