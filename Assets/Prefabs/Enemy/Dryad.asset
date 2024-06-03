@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Dryad
   m_EditorClassIdentifier: 
-  id: enemy83743
-  maxHp: 165
-  hp: 165
+  id: enemy31021
+  maxHp: 175
+  hp: 175
   atk: 42
   def: 0
   agi: 0

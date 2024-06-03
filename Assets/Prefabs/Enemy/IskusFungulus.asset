@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: IskusFungulus
   m_EditorClassIdentifier: 
-  id: enemy74793
-  maxHp: 100
-  hp: 100
+  id: enemy78507
+  maxHp: 110
+  hp: 110
   atk: 40
   def: 0
   agi: 0

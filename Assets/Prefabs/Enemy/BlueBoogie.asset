@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: BlueBoogie
   m_EditorClassIdentifier: 
-  id: enemy753
-  maxHp: 121
+  id: enemy70032
+  maxHp: 141
   hp: 141
   atk: 35
   def: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Grok
   m_EditorClassIdentifier: 
-  id: enemy94461
-  maxHp: 152
-  hp: 162
+  id: enemy65054
+  maxHp: 172
+  hp: 172
   atk: 44
   def: 0
   agi: 0

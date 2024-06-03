@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Yuetoo
   m_EditorClassIdentifier: 
-  id: enemy7047
-  maxHp: 100
-  hp: 100
-  atk: 50
+  id: enemy98567
+  maxHp: 120
+  hp: 120
+  atk: 65
   def: 0
   agi: 0
   speed: 3.5
