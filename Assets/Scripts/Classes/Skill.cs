@@ -179,7 +179,7 @@ public class Skill : ScriptableObject
                     break;
 
                 case SkillClass.Supreme:
-                    this.expUnlockCost = 12500;
+                    this.expUnlockCost = 10500;
                     break;
             }
             return expUnlockCost;

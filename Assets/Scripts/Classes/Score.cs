@@ -17,6 +17,7 @@ public class Score
         return this.date;
     }
 
+
     public Map GetMap()
     {
         return this.map;
@@ -26,6 +27,10 @@ public class Score
     {
         return this.score;
     }
+    public void IncreaseScore(int value)
+    {
+        this.score += value;
+    }
     public int GetTime()
     {
         return this.time;
@@ -34,10 +39,18 @@ public class Score
     {
         return this.aerus;
     }
-
+    public void IncreaseAerus(int value)
+    {
+        this.aerus += value;
+    }
     public int GetExp()
     {
         return this.exp;
+    }
+
+    public void IncreaseExp(int value)
+    {
+        this.exp += value;
     }
     public int GetVenetia()
     {

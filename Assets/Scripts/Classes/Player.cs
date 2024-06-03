@@ -576,8 +576,8 @@ public class Player : Character
         regenTimer += Time.deltaTime;
         if (regenTimer >= 1)
         {
-            Heal(Stat.Mana, manaRegen);
-            Heal(Stat.HP, hpRegen);
+            Heal(Stat.Mana, manaRegen * GetMaxMana());
+            Heal(Stat.HP, hpRegen * GetMaxHP());
             regenTimer = 0;
         }
     }

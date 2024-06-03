@@ -37,11 +37,15 @@ public class StageManager : MonoBehaviour
     [HideInInspector] public Score score;
     private float extraScore, extraAerus, extraExp;
 
+
     // pause ------------------------------
     [HideInInspector] private StageState state;
     [SerializeField] private GameObject[] popUps;
     private NotifPopUp popUp;
     [SerializeField] private GameObject blackScreen, suddenDeath;
+
+    // sound
+    [SerializeField] private AudioSource pauseAudio, winAudio, loseAudio, basicAttAudio;
 
 
     [HideInInspector] public bool onPopUp;
@@ -155,10 +159,12 @@ public class StageManager : MonoBehaviour
                 player.GetComponent<Animator>().SetTrigger("BasicAttack");
                 if (!GameObject.Find(basicStab.name + "(Clone)"))
                 {
+                    basicAttAudio.Play();
                     Instantiate(basicStab);
                 }
                 break;
             case " ":
+                pauseAudio.Play();
                 ToggleState(StageState.Pause, StageState.Play);
                 break;
         }
@@ -181,6 +187,7 @@ public class StageManager : MonoBehaviour
         switch (Input.inputString)
         {
             case " ":
+                pauseAudio.Play();
                 ToggleState(StageState.Pause, StageState.Play);
                 Destroy(popUp.gameObject);
                 break;
@@ -228,6 +235,15 @@ public class StageManager : MonoBehaviour
 
     private void ShowReward(bool status)
     {
+        if (status == true)
+        {
+            winAudio.Play();
+        }
+        else
+        {
+            loseAudio.Play();
+        }
+
         GameObject reward = Instantiate(rewardPanel, GameObject.Find("UI").transform);
 
         PlayerController playerController = player.GetComponent<PlayerController>();
@@ -237,7 +253,6 @@ public class StageManager : MonoBehaviour
 
 
         // finalisasi reward
-        FinalizeReward();
         score = GetScore(player.GetComponent<PlayerController>().player, status);
 
         rewardPanelBehav.SetScore(score.GetScore());
@@ -248,7 +263,6 @@ public class StageManager : MonoBehaviour
 
         if (!hasSavedReward)
         {
-
             if (status == true)
             {
                 GameManager.player.IncreaseProgress(Player.Progress.Story, 1);
@@ -261,6 +275,7 @@ public class StageManager : MonoBehaviour
 
     private Score GetScore(Player player, bool isWin)
     {
+
         float timeScore = 0;
 
         if (time > 600)
@@ -269,54 +284,54 @@ public class StageManager : MonoBehaviour
             timeScore = (timeScore <= 0) ? 0 : timeScore * 50;
         }
 
-        int finalAerus, finalExp, finalScore;
-        finalAerus = Mathf.FloorToInt(player.aerus + extraAerus);
-        finalExp = Mathf.FloorToInt(player.exp + extraExp);
-        finalScore = Mathf.FloorToInt(finalAerus + finalExp + timeScore);
+        float scoreResult = player.aerus + player.exp + timeScore;
 
-        // Score score = player.aerus + extraAerus + player.exp + extraExp + timeScore;
         Score score = new Score(
             DateTime.Now,
             GameManager.selectedMap,
-            finalScore,
+            (int)scoreResult,
             (int)time,
-            finalAerus,
-            finalExp,
+            (int)player.aerus,
+            (int)player.exp,
             (int)player.venetia,
             isWin
         );
+
+        // cek apakah ada item reward
+        List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is RewardMultiplier);
+
+        if (rewardItem.Count > 0)
+        {
+            foreach (Item item in rewardItem)
+            {
+                item.Activate(this.player);
+
+                RewardMultiplier itemReward = (RewardMultiplier)item;
+                switch (itemReward.rewardType)
+                {
+                    case RewardType.Aerus:
+                        extraAerus += itemReward.result;
+                        break;
+                    case RewardType.ExpOrb:
+                        extraExp += itemReward.result;
+                        break;
+                    case RewardType.Score:
+                        extraScore += itemReward.result;
+                        break;
+                }
+            }
+        }
+
+        score.IncreaseScore((int)extraScore);
+        score.IncreaseAerus((int)extraAerus);
+        score.IncreaseExp((int)extraExp);
+
         return score;
     }
 
-    private void FinalizeReward()
-    {
-
-        List<Item> rewardItem = GameManager.selectedItems.FindAll(item => item is RewardMultiplier);
-
-        if (rewardItem.Count == 0)
-        {
-            return;
-        }
-
-        foreach (Item item in rewardItem)
-        {
-            item.Activate(this.player);
-
-            RewardMultiplier itemReward = (RewardMultiplier)item;
-            switch (itemReward.rewardType)
-            {
-                case RewardType.Aerus:
-                    extraAerus += itemReward.result;
-                    break;
-                case RewardType.ExpOrb:
-                    extraExp += itemReward.result;
-                    break;
-                case RewardType.Score:
-                    extraScore += itemReward.result;
-                    break;
-            }
-        }
-    }
+    // private void FinalizeReward()
+    // {
+    // }
 
     private void SaveReward(Player player, Score score)
     {
