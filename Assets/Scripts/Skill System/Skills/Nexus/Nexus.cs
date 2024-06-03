@@ -89,7 +89,6 @@ public class Nexus : Skill
 
             if (mob.enemy.type != EnemyType.Ground)
             {
-                // flyingEnemyIndexes.Add(i);
                 continue;
             }
 
@@ -103,8 +102,8 @@ public class Nexus : Skill
             return;
         }
 
-        enemies.OrderBy(dict => dict.Value[0]).ToDictionary(pair => pair.Key, pair => pair.Value);
-        enemies.OrderByDescending(dict => dict.Value[1]).ToDictionary(pair => pair.Key, pair => pair.Value);
+        enemies = enemies.OrderBy(dict => dict.Value[0]).ToDictionary(pair => pair.Key, pair => pair.Value);
+        enemies = enemies.OrderByDescending(dict => dict.Value[1]).ToDictionary(pair => pair.Key, pair => pair.Value);
         this.lockedEnemy = enemies.Keys.ElementAt(0);
     }
 

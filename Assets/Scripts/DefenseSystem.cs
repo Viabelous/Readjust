@@ -34,6 +34,8 @@ public class DefenseSystem : MonoBehaviour
         {
             buffSystem = player.GetComponent<BuffSystem>();
         }
+
+        SetDefender();
     }
 
     void Update()

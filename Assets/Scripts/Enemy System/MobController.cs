@@ -126,12 +126,26 @@ public class MobController : MonoBehaviour
         {
             if (
                 !crowdControlSystem.CheckCC(CrowdControlType.Slide) &&
-                !crowdControlSystem.CheckCC(CrowdControlType.KnockBack) &&
-                (Vector3.Distance(transform.position, targetPos) > enemy.GetDistanceToPlayer() && !randomMovement)
+                !crowdControlSystem.CheckCC(CrowdControlType.KnockBack)
             )
             {
-                Vector3 direction = (targetPos - transform.position).normalized;
-                transform.Translate(direction * speed * Time.deltaTime);
+                if (enemy.GetDistanceToPlayer() != 0)
+                {
+                    if (
+                        Vector3.Distance(transform.position, targetPos) > enemy.GetDistanceToPlayer() &&
+                    !randomMovement
+                    )
+                    {
+                        Vector3 direction = (targetPos - transform.position).normalized;
+                        transform.Translate(direction * speed * Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    Vector3 direction = (targetPos - transform.position).normalized;
+                    transform.Translate(direction * speed * Time.deltaTime);
+                }
+
             }
 
             if (movement.x != 0 && movement.y != 0)
