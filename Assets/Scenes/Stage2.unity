@@ -3809,7 +3809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 24
   amount: 1
   spawnY: 1
@@ -3858,7 +3858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 19
   amount: 1
   spawnY: 1
@@ -5181,7 +5181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 19
   amount: 1
   spawnY: 1
@@ -6252,7 +6252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 19
   amount: 1
   spawnY: 0
@@ -10400,7 +10400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 24
   amount: 1
   spawnY: 0
@@ -11584,7 +11584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 19
   amount: 1
   spawnY: 0
@@ -11633,7 +11633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 24
   amount: 1
   spawnY: 1
@@ -12807,7 +12807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 1727689848}
-  minTime: 1
+  minTime: 2
   maxTime: 24
   amount: 1
   spawnY: 0

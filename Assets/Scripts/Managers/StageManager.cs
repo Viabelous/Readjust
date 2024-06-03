@@ -160,7 +160,7 @@ public class StageManager : MonoBehaviour
                 player.GetComponent<Animator>().SetTrigger("BasicAttack");
                 if (!GameObject.Find(basicStab.name + "(Clone)"))
                 {
-                    PlaySound(basicAttAudio);
+                    // PlaySound(basicAttAudio);
                     Instantiate(basicStab);
                 }
                 break;
@@ -188,7 +188,7 @@ public class StageManager : MonoBehaviour
         switch (Input.inputString)
         {
             case " ":
-                PlaySound(pauseAudio);
+                // PlaySound(pauseAudio);
                 ToggleState(StageState.Pause, StageState.Play);
                 Destroy(popUp.gameObject);
                 break;
@@ -236,16 +236,16 @@ public class StageManager : MonoBehaviour
 
     private void ShowReward(bool status)
     {
-        if (status == true)
-        {
-            PlaySound(winAudio);
+        // if (status == true)
+        // {
+        //     PlaySound(winAudio);
 
-        }
-        else
-        {
-            PlaySound(loseAudio);
+        // }
+        // else
+        // {
+        //     PlaySound(loseAudio);
 
-        }
+        // }
 
         GameObject reward = Instantiate(rewardPanel, GameObject.Find("UI").transform);
 

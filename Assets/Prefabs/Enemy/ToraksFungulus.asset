@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: ToraksFungulus
   m_EditorClassIdentifier: 
-  id: enemy27117
+  id: enemy28507
   maxHp: 150
   hp: 150
   atk: 25
   def: 0
   agi: 0
-  speed: 1.1
+  speed: 1.05
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
@@ -26,3 +26,5 @@ MonoBehaviour:
   type: 0
   aerus: 20
   exp: 12
+  distanceToPlayer: 0
+  projectile: {fileID: 0}

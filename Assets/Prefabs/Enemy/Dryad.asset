@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Dryad
   m_EditorClassIdentifier: 
-  id: enemy11381
+  id: enemy83743
   maxHp: 165
-  hp: 150
+  hp: 165
   atk: 42
   def: 0
   agi: 0
-  speed: 1.3
+  speed: 1.25
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
@@ -26,3 +26,5 @@ MonoBehaviour:
   type: 0
   aerus: 35
   exp: 21
+  distanceToPlayer: 0
+  projectile: {fileID: 0}
