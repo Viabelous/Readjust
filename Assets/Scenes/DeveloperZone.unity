@@ -10415,15 +10415,15 @@ MonoBehaviour:
   isScrolling: 0
   audioSrc: {fileID: 944860718}
   clickButtonSound:
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
-  - {fileID: 8300000, guid: 9782f4d433e2bd543a31bf99e7ad0da3, type: 3}
+  - {fileID: 8300000, guid: c5db9ea8ac71bc244a5a59e31b6a408a, type: 3}
+  - {fileID: 8300000, guid: c5db9ea8ac71bc244a5a59e31b6a408a, type: 3}
+  - {fileID: 8300000, guid: 4d903a219f7d1a346b453ba85daad79b, type: 3}
+  - {fileID: 8300000, guid: 4d903a219f7d1a346b453ba85daad79b, type: 3}
+  - {fileID: 8300000, guid: 4d903a219f7d1a346b453ba85daad79b, type: 3}
+  - {fileID: 8300000, guid: 4d903a219f7d1a346b453ba85daad79b, type: 3}
+  - {fileID: 8300000, guid: c5db9ea8ac71bc244a5a59e31b6a408a, type: 3}
+  - {fileID: 8300000, guid: c5db9ea8ac71bc244a5a59e31b6a408a, type: 3}
+  - {fileID: 8300000, guid: c5db9ea8ac71bc244a5a59e31b6a408a, type: 3}
   navigateButtonSound:
   - {fileID: 8300000, guid: 826fada0d314e034ab568a00fc739661, type: 3}
   - {fileID: 8300000, guid: 826fada0d314e034ab568a00fc739661, type: 3}
