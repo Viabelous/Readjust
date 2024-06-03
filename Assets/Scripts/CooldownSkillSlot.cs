@@ -28,6 +28,9 @@ public class SkillUsage : MonoBehaviour
     private PlayerController playerController;
     private float maxCd, currCd, minCd;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip fireSound, earthSound, waterSound, airSound;
+
     void Start()
     {
 
@@ -121,5 +124,26 @@ public class SkillUsage : MonoBehaviour
     public void ChangeState(SkillState newState)
     {
         state = newState;
+    }
+
+    public void PlaySound()
+    {
+        switch (skill.Element)
+        {
+            case Element.Fire:
+                audioSource.clip = fireSound;
+                break;
+            case Element.Earth:
+                audioSource.clip = earthSound;
+                break;
+            case Element.Water:
+                audioSource.clip = waterSound;
+                break;
+            case Element.Air:
+                audioSource.clip = airSound;
+                break;
+        }
+
+        audioSource.Play();
     }
 }

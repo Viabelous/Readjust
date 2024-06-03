@@ -1315,6 +1315,11 @@ MonoBehaviour:
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
+  audioSource: {fileID: 2041577077}
+  fireSound: {fileID: 8300000, guid: b60a51c4a9395fc46af4a7a5176f5691, type: 3}
+  earthSound: {fileID: 8300000, guid: a81c4403bd63ec24fb7ecee986728507, type: 3}
+  waterSound: {fileID: 0}
+  airSound: {fileID: 8300000, guid: 42ce095bb48ec8842b842b09e416504b, type: 3}
 --- !u!1 &222819897
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,6 +3570,11 @@ MonoBehaviour:
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
+  audioSource: {fileID: 2041577077}
+  fireSound: {fileID: 8300000, guid: b60a51c4a9395fc46af4a7a5176f5691, type: 3}
+  earthSound: {fileID: 8300000, guid: a81c4403bd63ec24fb7ecee986728507, type: 3}
+  waterSound: {fileID: 0}
+  airSound: {fileID: 8300000, guid: 42ce095bb48ec8842b842b09e416504b, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7629,6 +7639,11 @@ MonoBehaviour:
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
+  audioSource: {fileID: 2041577077}
+  fireSound: {fileID: 8300000, guid: b60a51c4a9395fc46af4a7a5176f5691, type: 3}
+  earthSound: {fileID: 8300000, guid: a81c4403bd63ec24fb7ecee986728507, type: 3}
+  waterSound: {fileID: 0}
+  airSound: {fileID: 8300000, guid: 42ce095bb48ec8842b842b09e416504b, type: 3}
 --- !u!1 &1097688639
 GameObject:
   m_ObjectHideFlags: 0
@@ -8834,6 +8849,11 @@ MonoBehaviour:
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
+  audioSource: {fileID: 2041577077}
+  fireSound: {fileID: 8300000, guid: b60a51c4a9395fc46af4a7a5176f5691, type: 3}
+  earthSound: {fileID: 8300000, guid: a81c4403bd63ec24fb7ecee986728507, type: 3}
+  waterSound: {fileID: 0}
+  airSound: {fileID: 8300000, guid: 42ce095bb48ec8842b842b09e416504b, type: 3}
 --- !u!1 &1250963793
 GameObject:
   m_ObjectHideFlags: 0
@@ -9111,6 +9131,11 @@ MonoBehaviour:
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
+  audioSource: {fileID: 2041577077}
+  fireSound: {fileID: 8300000, guid: b60a51c4a9395fc46af4a7a5176f5691, type: 3}
+  earthSound: {fileID: 8300000, guid: a81c4403bd63ec24fb7ecee986728507, type: 3}
+  waterSound: {fileID: 0}
+  airSound: {fileID: 8300000, guid: 42ce095bb48ec8842b842b09e416504b, type: 3}
 --- !u!1 &1328783764
 GameObject:
   m_ObjectHideFlags: 0
@@ -11272,6 +11297,11 @@ MonoBehaviour:
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
+  audioSource: {fileID: 2041577077}
+  fireSound: {fileID: 8300000, guid: b60a51c4a9395fc46af4a7a5176f5691, type: 3}
+  earthSound: {fileID: 8300000, guid: a81c4403bd63ec24fb7ecee986728507, type: 3}
+  waterSound: {fileID: 0}
+  airSound: {fileID: 8300000, guid: 42ce095bb48ec8842b842b09e416504b, type: 3}
 --- !u!1 &1674829428
 GameObject:
   m_ObjectHideFlags: 0
@@ -13127,6 +13157,11 @@ MonoBehaviour:
   skillPref: {fileID: 0}
   skill: {fileID: 0}
   isEmpty: 0
+  audioSource: {fileID: 2041577077}
+  fireSound: {fileID: 8300000, guid: b60a51c4a9395fc46af4a7a5176f5691, type: 3}
+  earthSound: {fileID: 8300000, guid: a81c4403bd63ec24fb7ecee986728507, type: 3}
+  waterSound: {fileID: 0}
+  airSound: {fileID: 8300000, guid: 42ce095bb48ec8842b842b09e416504b, type: 3}
 --- !u!1 &1968226314
 GameObject:
   m_ObjectHideFlags: 0

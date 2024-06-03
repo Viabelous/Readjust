@@ -437,7 +437,8 @@ public class Skill : ScriptableObject
     public void StartCooldown()
     {
         int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
-        GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>().ChangeState(SkillState.Active);
+        SkillUsage skillUsage = GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>();
+        skillUsage.ChangeState(SkillState.Active);
     }
 
     public void PayWithCostType(Player player)
