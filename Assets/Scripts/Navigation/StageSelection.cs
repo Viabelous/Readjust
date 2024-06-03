@@ -11,7 +11,7 @@ public class StageSelection : Navigation
 
     void Start()
     {
-        isUnlocked = stage == Map.Stage5 ? false : popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked();
+        isUnlocked = popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked();
         if (Right != null && !Right.GetComponent<StageSelection>().popUp.GetComponent<StageDescription>().GetFocusedMap().HasUnlocked())
         {
             Right = null;
@@ -64,6 +64,17 @@ public class StageSelection : Navigation
 
     public override void Clicked()
     {
+        if (stage == Map.Stage5)
+        {
+            WindowsController.CreatePopUp(
+                "load_stage_failed",
+                PopUpType.OK,
+                "Stage ini belum tersedia."
+            );
+
+            return;
+        }
+
         if (isUnlocked)
         {
             GameManager.selectedMap = stage;

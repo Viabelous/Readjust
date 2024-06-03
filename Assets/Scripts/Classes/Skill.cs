@@ -439,6 +439,7 @@ public class Skill : ScriptableObject
         int index = GameManager.selectedSkills.FindIndex(skillPref => Name == skillPref.GetComponent<SkillController>().skill.Name);
         SkillUsage skillUsage = GameObject.Find("slot_" + (index + 1)).GetComponent<SkillUsage>();
         skillUsage.ChangeState(SkillState.Active);
+        skillUsage.PlaySound();
     }
 
     public void PayWithCostType(Player player)

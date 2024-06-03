@@ -71,7 +71,7 @@ public class Player : Character
     }
     public int StatMaxLevel
     {
-        get { return StatMaxLevel; }
+        get { return this.statMaxLevel; }
     }
 
     // public int StatPriceUp {

@@ -35,12 +35,7 @@ public class SkillUsage : MonoBehaviour
     {
 
         // slot ada skillnya
-
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!NANTI UBAH WOIII!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!
         if (slotNumber <= GameManager.selectedSkills.Count)
-        // if (slotNumber <= CumaBuatDebug.instance.selectedSkills.Count)
         {
             isEmpty = false;
             playerController = GameObject.FindObjectOfType<PlayerController>();

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ExoctProjectile
   m_EditorClassIdentifier: 
   damage: 40
-  speed: 5
+  speed: 3.5
   lockingTime: 1
   timeInterval: 3
