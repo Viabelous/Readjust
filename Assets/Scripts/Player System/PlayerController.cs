@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.CompareTag("Object") || other.CompareTag("Damage"))
+        if (other.CompareTag("Object"))
         {
             // kalau player di atas object
             if (transform.position.y - 0.85f > other.transform.position.y)
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Object") || other.CompareTag("Damage"))
+        if (other.CompareTag("Object"))
         {
             // kalau player di atas object
             if (transform.position.y - 0.85f > other.transform.position.y)

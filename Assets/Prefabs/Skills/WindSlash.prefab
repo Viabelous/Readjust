@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7685322259799395445}
   - component: {fileID: 3677553145342025275}
   - component: {fileID: 3581669792570935956}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: front_col
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 5161074888541414274}
   - component: {fileID: 2114495814327890689}
   - component: {fileID: 5558711008155670304}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: back_col
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 827287321135853947}
   - component: {fileID: 1182971618855163999}
   - component: {fileID: 181205750440210948}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: WindSlash
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 6939238792037633140}
   - component: {fileID: 4209500934609541846}
   - component: {fileID: 6960746497290443754}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: front
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -1138,7 +1138,7 @@ GameObject:
   - component: {fileID: 1650272135371901701}
   - component: {fileID: 4884329745370197186}
   - component: {fileID: 8766682181830188854}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: left_right_col
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -1482,7 +1482,7 @@ GameObject:
   - component: {fileID: 6293324699363823851}
   - component: {fileID: 8462003192831185470}
   - component: {fileID: 5235714806694891436}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: left_right
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -1826,7 +1826,7 @@ GameObject:
   - component: {fileID: 6634239490374367692}
   - component: {fileID: 4262486964013634211}
   - component: {fileID: 4959611466102470435}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: back
   m_TagString: Damage
   m_Icon: {fileID: 0}

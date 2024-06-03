@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2003495853961622070}
   - component: {fileID: 7672286352614517325}
   - component: {fileID: 7119398851235812307}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Waterwall
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3125027653769903293}
   - component: {fileID: 1247202651652684345}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: waterwall_front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 20
   m_Sprite: {fileID: -1851422620, guid: 985ff6925c5666f439f6cc81222bb942, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1423502070035833437}
   - component: {fileID: 1044397769341321836}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: waterwall_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}

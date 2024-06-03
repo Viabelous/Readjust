@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7896209760236105840}
   - component: {fileID: 287480391288425983}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: high_tide_front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 20
   m_Sprite: {fileID: 707105528, guid: d4377d813a4d7904689b3180f0e13448, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2639889955653576784}
   - component: {fileID: 6207069053977314443}
   - component: {fileID: 4302961139427784445}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HeavyTide
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1988265679017548294}
   - component: {fileID: 6609938650695258848}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: high_tide_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}

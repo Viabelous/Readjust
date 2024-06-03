@@ -56,7 +56,7 @@ public class GroundEnemy : MonoBehaviour
             spriteRenderer.sortingLayerName = other.GetComponent<PlayerController>().spriteRenderers[0].sortingLayerName;
         }
 
-        if (other.CompareTag("Object") || other.CompareTag("Damage"))
+        if (other.CompareTag("Object"))
         {
             // kalau musuh di atas object
             if (transform.position.y + pivotOffset > other.transform.position.y)

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6749344124527671434}
   - component: {fileID: 1404557614770824953}
   - component: {fileID: 5011938875378734137}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ABreezeBeingTold
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8402720354727938538}
   - component: {fileID: 7011259116131333385}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5397225092673589213}
   - component: {fileID: 9070486256933650808}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: windwheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

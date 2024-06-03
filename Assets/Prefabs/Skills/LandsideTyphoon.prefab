@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6981321189939517089}
   - component: {fileID: 6112719182095238235}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: landside_typhoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 20
   m_Sprite: {fileID: 314919735, guid: abc39225624edeb489e2f713b6914a11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9019608}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7873307891044492097}
   - component: {fileID: 9090087688447881899}
   - component: {fileID: 3348997406490189632}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LandsideTyphoon
   m_TagString: Damage
   m_Icon: {fileID: 0}

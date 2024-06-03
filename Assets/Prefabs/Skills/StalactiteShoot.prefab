@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4496268710673638912}
   - component: {fileID: 2079992640913453812}
   - component: {fileID: 1012745960575054088}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: stalactite_back
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 20
   m_Sprite: {fileID: 1360456890, guid: 83b8b73c6c405524f9d7b167f17576ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 242289677856242539}
   - component: {fileID: 8111378322959267080}
   - component: {fileID: 4782026432262633095}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: stalactite_front
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573214375
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 20
   m_Sprite: {fileID: -1207471621, guid: 83b8b73c6c405524f9d7b167f17576ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
