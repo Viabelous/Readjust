@@ -2383,6 +2383,10 @@ MonoBehaviour:
   - {fileID: 5252007345997431417, guid: afdbc02c4a50685428b2105d2fb97267, type: 3}
   blackScreen: {fileID: 908248928}
   suddenDeath: {fileID: 289374827}
+  pauseAudio: {fileID: 0}
+  winAudio: {fileID: 0}
+  loseAudio: {fileID: 0}
+  basicAttAudio: {fileID: 0}
   onPopUp: 0
 --- !u!4 &244258419
 Transform:
@@ -5161,7 +5165,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2f53aa68b5e519c43aee7d751ba82646, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0ae57796503cf4441b668a188b1e46c7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
