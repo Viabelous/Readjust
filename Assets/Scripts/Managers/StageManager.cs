@@ -45,8 +45,8 @@ public class StageManager : MonoBehaviour
     [SerializeField] private GameObject blackScreen, suddenDeath;
 
     // sound
+    [SerializeField] private AudioSource audioSrc;
     [SerializeField] private AudioClip pauseAudio, winAudio, loseAudio, basicAttAudio;
-    private AudioSource src;
 
 
     [HideInInspector] public bool onPopUp;
@@ -397,7 +397,7 @@ public class StageManager : MonoBehaviour
 
     void PlaySound(AudioClip audio)
     {
-        src.clip = audio;
-        src.Play();
+        audioSrc.clip = audio;
+        audioSrc.Play();
     }
 }
