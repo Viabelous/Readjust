@@ -65,6 +65,7 @@ public class GameManager : ScriptableObject
         unlockedItems.Clear();
         selectedItems.Clear();
         selectedSkills.Clear();
+        firstEncounter.Clear();
     }
 
     public static void SaveHistory(Score score)

@@ -16,7 +16,6 @@ public class LoadSaveDataManager : MonoBehaviour
     {
         GameManager.ResetData();
         GameManager.player = playerBasic.Clone();
-        GameManager.unlockedSkills = new Dictionary<string, int>();
     }
 
     public void LoadGameData()
