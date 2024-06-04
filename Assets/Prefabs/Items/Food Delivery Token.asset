@@ -32,5 +32,5 @@ MonoBehaviour:
   adaptable: 0
   food: {fileID: 3169602492680716054, guid: 78917f25fd5e88e45ad54982d8003302, type: 3}
   healHP: 35
-  healMana: 15
+  healMana: 35
   timer: 30

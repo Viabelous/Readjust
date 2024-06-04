@@ -7,7 +7,7 @@ public class Hydro : MonoBehaviour
     // [HideInInspector] public int index;
     void Start()
     {
-        skill = GetComponent<SkillController>().skill;
+        skill = GetComponent<SkillController>().playerSkill;
     }
 
     void OnDestroy()

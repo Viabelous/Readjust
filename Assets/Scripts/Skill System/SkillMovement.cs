@@ -52,7 +52,7 @@ public class SkillMovement : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         direction = player.GetComponent<PlayerController>().direction;
         skillAnimation = GetComponent<SkillAnimation>();
-        skill = GetComponent<SkillController>().skill;
+        skill = GetComponent<SkillController>().playerSkill;
 
         // isInstantiate = true;
 

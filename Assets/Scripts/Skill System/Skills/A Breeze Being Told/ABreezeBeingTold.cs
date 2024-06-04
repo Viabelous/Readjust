@@ -94,7 +94,7 @@ public class ABreezeBeingTold : Skill
 
     public override void HitEnemy(Collider2D other)
     {
-        if (other.CompareTag("Damage") && other.GetComponent<SkillController>().skill.HitType == SkillHitType.Once)
+        if (other.CompareTag("Damage") && other.GetComponent<SkillController>().playerSkill.HitType == SkillHitType.Once)
         {
             SkillEffect(other);
         }
@@ -103,7 +103,7 @@ public class ABreezeBeingTold : Skill
 
     public override void WhileHitEnemy(Collider2D other)
     {
-        if (other.CompareTag("Damage") && other.GetComponent<SkillController>().skill.HitType == SkillHitType.Temporary)
+        if (other.CompareTag("Damage") && other.GetComponent<SkillController>().playerSkill.HitType == SkillHitType.Temporary)
         {
             if (hitTimer <= 0)
             {

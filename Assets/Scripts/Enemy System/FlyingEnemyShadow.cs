@@ -26,7 +26,7 @@ public class FlyingEnemyShadow : MonoBehaviour
         // sehingga gambar musuh terbang harus mengikuti layer bayangan
         if (other.CompareTag("Damage"))
         {
-            if (other.GetComponent<SkillController>().skill.Element != Element.Air)
+            if (other.GetComponent<SkillController>().playerSkill.Element != Element.Air)
             {
                 return;
             }
@@ -43,7 +43,7 @@ public class FlyingEnemyShadow : MonoBehaviour
     {
         if (other.CompareTag("Damage"))
         {
-            if (other.GetComponent<SkillController>().skill.Element != Element.Air)
+            if (other.GetComponent<SkillController>().playerSkill.Element != Element.Air)
             {
                 return;
             }

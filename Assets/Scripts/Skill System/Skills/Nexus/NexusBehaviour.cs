@@ -7,7 +7,7 @@ public class NexusBehaviour : MonoBehaviour
 
     private void Start()
     {
-        skill = GetComponent<SkillController>().skill;
+        skill = GetComponent<SkillController>().playerSkill;
     }
 
     // private void Update()

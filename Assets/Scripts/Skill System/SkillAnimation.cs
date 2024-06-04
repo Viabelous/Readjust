@@ -18,7 +18,7 @@ public class SkillAnimation : MonoBehaviour // skill pake waktu
 
     void Start()
     {
-        skill = GetComponent<SkillController>().skill;
+        skill = GetComponent<SkillController>().playerSkill;
         animator = GetComponent<Animator>();
 
         timer = skill.Timer;

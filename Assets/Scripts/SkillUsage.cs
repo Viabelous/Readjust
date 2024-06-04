@@ -45,7 +45,7 @@ public class SkillUsage : MonoBehaviour
 
             skillPref = GameManager.selectedSkills[index];
             // skillPref = CumaBuatDebug.instance.selectedSkills[index];
-            skill = skillPref.GetComponent<SkillController>().skill;
+            skill = skillPref.GetComponent<SkillController>().playerSkill;
 
             objLight.GetComponent<Image>().sprite = skill.Sprite;
             objDark.GetComponent<Image>().sprite = objLight.GetComponent<Image>().sprite;
@@ -86,8 +86,6 @@ public class SkillUsage : MonoBehaviour
                     )
                     {
                         Instantiate(skillPref);
-                        // skill.Activate(skillPref);
-
                     }
                     break;
 

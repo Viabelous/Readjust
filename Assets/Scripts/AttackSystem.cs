@@ -57,7 +57,7 @@ public class AttackSystem : MonoBehaviour
         {
             return 0;
         }
-        Skill skill = GetComponent<SkillController>().skill;
+        Skill skill = GetComponent<SkillController>().playerSkill;
         buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
         float boosterDmg = 0;
@@ -123,7 +123,7 @@ public class AttackSystem : MonoBehaviour
         {
             case CharacterType.Player:
                 attacker = GameObject.FindWithTag("Player").GetComponent<PlayerController>().player;
-                damage = GetComponent<SkillController>().skill.GetDamage((Player)attacker);
+                damage = GetComponent<SkillController>().playerSkill.GetDamage((Player)attacker);
                 break;
 
             case CharacterType.Enemy:

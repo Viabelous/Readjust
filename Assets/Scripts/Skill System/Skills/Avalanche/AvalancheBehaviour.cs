@@ -14,7 +14,7 @@ public class AvalancheBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        skill = GetComponent<SkillController>().skill;
+        skill = GetComponent<SkillController>().playerSkill;
 
         // skill.Damage += dmgPersenOfAtk * GameObject.Find("Player").GetComponent<PlayerController>().player.atk;
 

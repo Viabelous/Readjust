@@ -25,6 +25,7 @@ public class CloseButton : Navigation
 
         else
         {
+            ZoneManager.instance.ChangeCurrentState(ZoneState.Idle);
             StartCoroutine(WindowsController.ToogleWindow(windows_id, false));
         }
 

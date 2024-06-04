@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public enum NavigationState
 {
@@ -127,6 +128,7 @@ public class SkillsSelection : Navigation
         // kalau slot belum penuh
         if (GameManager.selectedSkills.Count < 7)
         {
+            prefab.GetComponent<SkillController>().playerSkill = skill;
             GameManager.selectedSkills.Add(prefab);
             currState = NavigationState.Selected;
         }

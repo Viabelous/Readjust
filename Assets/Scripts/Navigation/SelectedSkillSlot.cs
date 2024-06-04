@@ -27,7 +27,7 @@ public class SelectedSkillSlot : MonoBehaviour
         {
             index = slotNumber - 1;
             prefab = GameManager.selectedSkills[index];
-            slotImg.GetComponent<Image>().sprite = prefab.GetComponent<SkillController>().skill.Sprite;
+            slotImg.GetComponent<Image>().sprite = prefab.GetComponent<SkillController>().playerSkill.Sprite;
         }
         else
         {

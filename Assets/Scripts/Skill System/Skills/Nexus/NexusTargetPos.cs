@@ -17,7 +17,7 @@ public class NexusTargetPos : MonoBehaviour
     {
         // SetPosition();
 
-        skill = transform.parent.GetComponent<SkillController>().skill;
+        skill = transform.parent.GetComponent<SkillController>().playerSkill;
         playerController = StageManager.instance.player.GetComponent<PlayerController>();
     }
 

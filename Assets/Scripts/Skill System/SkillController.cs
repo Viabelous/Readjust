@@ -4,6 +4,7 @@ public class SkillController : MonoBehaviour
 {
     [SerializeField]
     public Skill skill;
+    public Skill playerSkill;
 
     // [HideInInspector] public bool validAttack = true;
 
@@ -11,30 +12,30 @@ public class SkillController : MonoBehaviour
 
     private void Awake()
     {
-        skill = skill.Clone();
+        playerSkill = skill.Clone();
     }
 
     private void Start()
     {
-        skill.Activate(gameObject);
+        playerSkill.Activate(gameObject);
     }
 
     private void Update()
     {
-        skill.OnActivated(gameObject);
+        playerSkill.OnActivated(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            if (skill.Element != Element.Air && other.GetComponent<MobController>().enemy.type == EnemyType.Flying)
+            if (playerSkill.Element != Element.Air && other.GetComponent<MobController>().enemy.type == EnemyType.Flying)
             {
                 return;
             }
         }
 
-        skill.HitEnemy(other);
+        playerSkill.HitEnemy(other);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -42,7 +43,7 @@ public class SkillController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             MobController mobController = other.GetComponent<MobController>();
-            if (skill.Element != Element.Air && mobController.enemy.type == EnemyType.Flying)
+            if (playerSkill.Element != Element.Air && mobController.enemy.type == EnemyType.Flying)
             {
                 return;
             }
@@ -63,36 +64,14 @@ public class SkillController : MonoBehaviour
 
         }
 
-        skill.WhileHitEnemy(other);
-
-        // if (other.CompareTag("Object"))
-        // {
-        //     // kalau skill ada di atas object
-        //     if (transform.position.y > other.transform.position.y)
-        //     {
-        //         if (GetComponent<SpriteRenderer>() != null)
-        //         {
-        //             GetComponent<SpriteRenderer>().sortingOrder = -1;
-        //         }
-        //     }
-        //     // kalau skill ada di bawah object
-        //     else
-        //     {
-        //         if (GetComponent<SpriteRenderer>() != null)
-        //         {
-        //             GetComponent<SpriteRenderer>().sortingOrder = 20;
-        //         }
-        //     }
-        // }
-
-
+        playerSkill.WhileHitEnemy(other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            skill.AfterHitEnemy(other);
+            playerSkill.AfterHitEnemy(other);
             other.GetComponent<MobController>().onSkillTrigger = false;
         }
     }

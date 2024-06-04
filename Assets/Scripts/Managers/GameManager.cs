@@ -62,6 +62,7 @@ public class GameManager : ScriptableObject
         selectedMap = Map.None;
         scores.Clear();
         unlockedSkills.Clear();
+        unlockedItems.Clear();
         selectedItems.Clear();
         selectedSkills.Clear();
     }

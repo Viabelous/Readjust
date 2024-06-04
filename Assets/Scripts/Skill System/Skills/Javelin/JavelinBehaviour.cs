@@ -8,7 +8,7 @@ public class JavelinBehaviour : MonoBehaviour
 
     void Start()
     {
-        skill = GetComponent<SkillController>().skill;
+        skill = GetComponent<SkillController>().playerSkill;
         player = GameObject.Find("Player").transform;
     }
 

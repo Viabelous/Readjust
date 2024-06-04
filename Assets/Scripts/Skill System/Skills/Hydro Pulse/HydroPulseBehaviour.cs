@@ -15,7 +15,7 @@ public class HydroPulseBehaviour : MonoBehaviour
 
     void Start()
     {
-        skill = GetComponent<SkillController>().skill;
+        skill = GetComponent<SkillController>().playerSkill;
         player = GameObject.Find("Player").transform;
 
         animator = gameObject.GetComponent<Animator>();
@@ -54,7 +54,7 @@ public class HydroPulseBehaviour : MonoBehaviour
             SkillController hydroController = hydroPref.GetComponent<SkillController>();
 
             // hydroController.skill = skill.Clone();
-            hydroController.skill.LockedEnemy = lockedEnemies[i];
+            hydroController.playerSkill.LockedEnemy = lockedEnemies[i];
         }
 
         Destroy(hydro);

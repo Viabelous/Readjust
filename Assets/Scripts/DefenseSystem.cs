@@ -115,7 +115,7 @@ public class DefenseSystem : MonoBehaviour
             case CharacterType.Enemy:
                 if (other.CompareTag("Damage"))
                 {
-                    Skill skill = other.GetComponent<SkillController>().skill;
+                    Skill skill = other.GetComponent<SkillController>().playerSkill;
 
                     // damage hanya akan diberikan jika skill hanya memberikan damage sekali
                     if (EnemyDefendingIsValid(skill, SkillHitType.Once))
@@ -136,7 +136,7 @@ public class DefenseSystem : MonoBehaviour
             case CharacterType.FlyingEnemy:
                 if (other.CompareTag("Damage"))
                 {
-                    Skill skill = other.GetComponent<SkillController>().skill;
+                    Skill skill = other.GetComponent<SkillController>().playerSkill;
 
                     if (FlyingEnemyDefendingIsValid(skill, SkillHitType.Once))
                     {
@@ -202,7 +202,7 @@ public class DefenseSystem : MonoBehaviour
                 if (other.CompareTag("Damage"))
                 {
 
-                    Skill skill = other.GetComponent<SkillController>().skill;
+                    Skill skill = other.GetComponent<SkillController>().playerSkill;
 
                     // damage hanya akan diberikan jika skill merupakan skill ber waktu
                     if (EnemyDefendingIsValid(skill, SkillHitType.Temporary))
@@ -364,7 +364,7 @@ public class DefenseSystem : MonoBehaviour
 
     private void DamagedByNexusSkill(float dealDamage)
     {
-        Skill nexus = GameObject.FindObjectOfType<NexusBehaviour>().GetComponent<SkillController>().skill;
+        Skill nexus = GameObject.FindObjectOfType<NexusBehaviour>().GetComponent<SkillController>().playerSkill;
         Transform lockedEnemy = nexus.LockedEnemy;
 
         if (lockedEnemy == null)
@@ -398,7 +398,7 @@ public class DefenseSystem : MonoBehaviour
         if (buffSystem.CheckBuff("Invitro") && invitro != null)
         {
             print("Heal ~");
-            Skill skill = invitro.GetComponent<SkillController>().skill;
+            Skill skill = invitro.GetComponent<SkillController>().playerSkill;
             float gainHp = ((Invitro)skill).hpPersenOfDmg * takenDamage;
             playerDefender.Heal(Stat.HP, gainHp);
 

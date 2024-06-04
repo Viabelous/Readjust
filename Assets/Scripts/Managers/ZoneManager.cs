@@ -54,12 +54,6 @@ public class ZoneManager : MonoBehaviour
                 {
                     ChangeCurrentState(ZoneState.OnDialog);
                 }
-
-                // if (GameObject.FindWithTag("Window") != null)
-                // {
-                //     ChangeCurrentState(ZoneState.OnWindow);
-                // }
-
                 break;
 
             case ZoneState.OnDialog:
