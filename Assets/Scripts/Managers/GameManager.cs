@@ -65,7 +65,10 @@ public class GameManager : ScriptableObject
         unlockedItems.Clear();
         selectedItems.Clear();
         selectedSkills.Clear();
-        firstEncounter.Clear();
+        firstEncounter["Rion"] = true;
+        firstEncounter["Zey"] = true;
+        firstEncounter["Xiena"] = true;
+        firstEncounter["Ken"] = true;
     }
 
     public static void SaveHistory(Score score)
