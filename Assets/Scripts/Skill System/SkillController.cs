@@ -12,11 +12,12 @@ public class SkillController : MonoBehaviour
 
     private void Awake()
     {
-        playerSkill = skill.Clone();
+        // playerSkill = skill.Clone();
     }
 
     private void Start()
     {
+        playerSkill = playerSkill == null ? skill.Clone() : playerSkill;
         playerSkill.Activate(gameObject);
     }
 
