@@ -5,6 +5,7 @@ public class WillOfFire : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float ATKValue;
+
     [Header("Level Up Value")]
     [SerializeField] private float ATKValueUp;
     private BuffSystem buffSystem;

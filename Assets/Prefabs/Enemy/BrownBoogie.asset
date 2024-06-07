@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: BrownBoogie
   m_EditorClassIdentifier: 
-  id: enemy78211
-  maxHp: 60
-  hp: 60
+  id: enemy56489
+  maxHp: 70
+  hp: 70
   atk: 25
   def: 0
   agi: 0

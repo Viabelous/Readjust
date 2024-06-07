@@ -17,6 +17,12 @@ public class Explosion : Skill
         get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
+    public float dmgPersenOfATKFinalPersen
+    {
+        get { return dmgPersenOfATKFinal + 1; }
+    }
+
+
     private GameObject gameObject;
 
     public override string GetDescription()
@@ -28,7 +34,7 @@ public class Explosion : Skill
 
     public override float GetDamage(Player player)
     {
-        return this.damage + dmgPersenOfATKFinal * player.GetATK();
+        return this.damage + dmgPersenOfATKFinalPersen * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

@@ -23,10 +23,19 @@ public class CacophonySonata : Skill
     {
         get { return HPManaPersenOfFOC + HPManaPersenOfFOCUp * (level - 1); }
     }
+    public float HPManaPersenOfFOCFinalPersen
+    {
+        get { return HPManaPersenOfFOCFinal + 2.5f; }
+    }
 
     public float ATKPersenOfFOCFinal
     {
         get { return ATKPersenOfFOC + ATKPersenOfFOCUp * (level - 1); }
+    }
+
+    public float ATKPersenOfFOCFinalPersen
+    {
+        get { return ATKPersenOfFOCFinal + 2.5f; }
     }
 
     public override string GetDescription()
@@ -66,8 +75,8 @@ public class CacophonySonata : Skill
             PayWithCostType(buffSystem.GetComponent<PlayerController>().player);
             // Payment(buffSystem.transform);
 
-            manaValue = HPManaPersenOfFOCFinal * player.GetFOC();
-            hpValue = HPManaPersenOfFOCFinal * player.GetFOC();
+            manaValue = HPManaPersenOfFOCFinalPersen * player.GetFOC();
+            hpValue = HPManaPersenOfFOCFinalPersen * player.GetFOC();
 
             buff = new Buff(
                     this.id,
@@ -81,7 +90,7 @@ public class CacophonySonata : Skill
                     this.id + "atk",
                     this.Name,
                     BuffType.ATK,
-                    ATKPersenOfFOC * player.GetFOC(),
+                    ATKPersenOfFOCFinalPersen * player.GetFOC(),
                     this.timer
                 );
 

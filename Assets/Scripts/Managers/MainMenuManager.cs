@@ -8,7 +8,7 @@ public class MainMenuManager : MonoBehaviour
     public static MainMenuManager instance;
     public LevelChanger levelChanger;
 
-    [SerializeField] private Image newBtn, loadBtn, exitBtn;
+    [SerializeField] private Image newBtn, loadBtn, exitBtn, creditBtn, credit, okBtn;
     private Image currentBtn;
 
     // sound
@@ -26,6 +26,8 @@ public class MainMenuManager : MonoBehaviour
         newBtn.color = SelectedColor(currentBtn);
         loadBtn.color = UnSelectedColor(loadBtn);
         exitBtn.color = UnSelectedColor(exitBtn);
+        creditBtn.color = UnSelectedColor(creditBtn);
+        credit.gameObject.SetActive(false);
     }
 
     void Update()
@@ -56,6 +58,22 @@ public class MainMenuManager : MonoBehaviour
                 ToggleBtn(loadBtn);
             }
         }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (currentBtn.name == loadBtn.name || currentBtn.name == newBtn.name || currentBtn.name == exitBtn.name)
+            {
+                PlaySound(buttonChangeAudio);
+                ToggleBtn(creditBtn);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (currentBtn.name == creditBtn.name)
+            {
+                PlaySound(buttonChangeAudio);
+                ToggleBtn(newBtn);
+            }
+        }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             if (currentBtn.name == newBtn.name)
@@ -75,9 +93,30 @@ public class MainMenuManager : MonoBehaviour
                 PlaySound(buttonSelectedAudio);
                 Application.Quit();
             }
+            else if (currentBtn.name == creditBtn.name)
+            {
+                PlaySound(buttonSelectedAudio);
+                OpenCredit();
+            }
+            else if (currentBtn.name == okBtn.name)
+            {
+                PlaySound(buttonSelectedAudio);
+                CloseCredit();
+            }
         }
     }
 
+    void OpenCredit()
+    {
+        credit.gameObject.SetActive(true);
+        ToggleBtn(okBtn);
+    }
+
+    void CloseCredit()
+    {
+        credit.gameObject.SetActive(false);
+        ToggleBtn(creditBtn);
+    }
 
     private void ToggleBtn(Image otherBtn)
     {

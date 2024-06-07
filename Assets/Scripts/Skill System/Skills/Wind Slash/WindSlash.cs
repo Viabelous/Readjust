@@ -13,6 +13,13 @@ public class WindSlash : Skill
         get { return dmgPersenOfAGI + dmgPersenOfAGIUp * (level - 1); }
     }
 
+
+    public float dmgPersenOfAGIFinalPersen
+    {
+        get { return dmgPersenOfAGIFinal + 2.5f; }
+    }
+
+
     public override string GetDescription()
     {
         string additionAGI = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfAGIFinal - dmgPersenOfAGI) + "%) " : " ";
@@ -23,7 +30,7 @@ public class WindSlash : Skill
 
     public override float GetDamage(Player player)
     {
-        return this.damage + dmgPersenOfAGIFinal * player.GetAGI();
+        return this.damage + dmgPersenOfAGIFinalPersen * player.GetAGI();
     }
 
     public override void Activate(GameObject gameObject)

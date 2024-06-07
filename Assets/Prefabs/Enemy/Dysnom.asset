@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f178503a818ad0c4985f5aeae7da75a8, type: 3}
   m_Name: Dysnom
   m_EditorClassIdentifier: 
-  id: enemy67779
-  maxHp: 5000
-  hp: 5000
+  id: enemy49100
+  maxHp: 5500
+  hp: 5500
   atk: 40
   def: 0
   agi: 0

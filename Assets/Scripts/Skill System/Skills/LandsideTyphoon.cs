@@ -27,10 +27,24 @@ public class LandsideTyphoon : Skill
         get { return dmgPersenOfAGI + dmgPersenOfAGIUp * (level - 1); }
     }
 
+
+    public float dmgPersenOfAGIFinalPersen
+    {
+        get { return dmgPersenOfAGIFinal + 2.5f; }
+    }
+
+
     public float dmgPersenOfATKFinal
     {
         get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
+
+
+    public float dmgPersenOfATKFinalPersen
+    {
+        get { return dmgPersenOfATKFinal + 1; }
+    }
+
 
     public override string GetDescription()
     {
@@ -43,7 +57,7 @@ public class LandsideTyphoon : Skill
 
     public override float GetDamage(Player player)
     {
-        return damage + dmgPersenOfAGIFinal * player.GetAGI() + dmgPersenOfATKFinal * player.GetATK();
+        return damage + dmgPersenOfAGIFinalPersen * player.GetAGI() + dmgPersenOfATKFinalPersen * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

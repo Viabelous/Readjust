@@ -13,6 +13,11 @@ public class Ignite : Skill
         get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
+    public float dmgPersenOfATKFinalPersen
+    {
+        get { return dmgPersenOfATKFinal + 1; }
+    }
+
     public override string GetDescription()
     {
         string additionATK = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfATKFinal - dmgPersenOfATK) + "%) " : " ";
@@ -22,7 +27,7 @@ public class Ignite : Skill
 
     public override float GetDamage(Player player)
     {
-        return this.damage + dmgPersenOfATKFinal * player.GetATK();
+        return this.damage + dmgPersenOfATKFinalPersen * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

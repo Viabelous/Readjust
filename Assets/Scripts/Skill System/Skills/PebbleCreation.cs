@@ -12,6 +12,11 @@ public class PebbleCreation : Skill
         get { return dmgPersenOfDEF + dmgPersenOfDEFUp * (level - 1); }
     }
 
+    public float dmgPersenOfDEFFinalPersen
+    {
+        get { return dmgPersenOfDEFFinal + 2.5f; }
+    }
+
     public override string GetDescription()
     {
         string additionDmg = level > 1 ? " (+" + PersentaseToInt(dmgPersenOfDEFFinal - dmgPersenOfDEF) + ") " : " ";
@@ -22,7 +27,7 @@ public class PebbleCreation : Skill
 
     public override float GetDamage(Player player)
     {
-        return damage + dmgPersenOfDEFFinal * player.GetDEF();
+        return damage + dmgPersenOfDEFFinalPersen * player.GetDEF();
     }
 
     public override void Activate(GameObject gameObject)
@@ -31,16 +36,3 @@ public class PebbleCreation : Skill
     }
 
 }
-// public class PebbleCreation : MonoBehaviour
-// {
-//     private Skill skill;
-//     [SerializeField] private float dmgPersenOfDef;
-//     private void Start()
-//     {
-//         skill = GetComponent<SkillController>().skill;
-//         skill.Damage += dmgPersenOfDef * GameObject.Find("Player").GetComponent<PlayerController>().player.def;
-//         StageManager.instance.PlayerActivatesSkill(skill);
-//     }
-
-
-// }

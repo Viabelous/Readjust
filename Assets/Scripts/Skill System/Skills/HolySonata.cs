@@ -27,14 +27,29 @@ public class HolySonata : Skill
     {
         get { return HPManaPersenOfFOC + HPManaPersenOfFOCUp * (level - 1); }
     }
+    public float HPManaPersenOfFOCFinalPersen
+    {
+        get { return HPManaPersenOfFOCFinal + 2.5f; }
+    }
 
     public float ATKPersenOfATKFinal
     {
         get { return ATKPersenOfATK + ATKPersenOfATKUp * (level - 1); }
     }
+    public float ATKPersenOfATKFinalPersen
+    {
+        get { return ATKPersenOfATKFinal + 1; }
+    }
+
+
     public float DEFPersenOfDEFFinal
     {
         get { return DEFPersenOfDEF + DEFPersenOfDEFUp * (level - 1); }
+    }
+
+    public float DEFPersenOfDEFFinalPersen
+    {
+        get { return DEFPersenOfDEFFinal + 2.5f; }
     }
 
     public override string GetDescription()
@@ -86,21 +101,21 @@ public class HolySonata : Skill
                 );
             buffSystem.ActivateBuff(buff);
 
-            healHPValue = HPManaPersenOfFOCFinal * player.GetFOC();
-            healManaValue = HPManaPersenOfFOCFinal * player.GetFOC();
+            healHPValue = HPManaPersenOfFOCFinalPersen * player.GetFOC();
+            healManaValue = HPManaPersenOfFOCFinalPersen * player.GetFOC();
 
             debuffATK = new Buff(
                     this.id + "atk",
                     this.Name,
                     BuffType.ATK,
-                    ATKPersenOfATKFinal * player.GetATK(),
+                    ATKPersenOfATKFinalPersen * player.GetATK(),
                     Timer
                 );
             debuffDEF = new Buff(
                     this.id + "def",
                     this.Name,
                     BuffType.DEF,
-                    DEFPersenOfDEFFinal * player.GetDEF(),
+                    DEFPersenOfDEFFinalPersen * player.GetDEF(),
                     Timer
                 );
             debuffSystem.ActivateDebuff(debuffATK);

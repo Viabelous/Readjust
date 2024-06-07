@@ -18,6 +18,11 @@ public class HydroPulse : Skill
         get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
 
+    public float dmgPersenOfATKFinalPersen
+    {
+        get { return dmgPersenOfATKFinal + 1; }
+    }
+
 
     public override string GetDescription()
     {
@@ -29,7 +34,7 @@ public class HydroPulse : Skill
 
     public override float GetDamage(Player player)
     {
-        return damage + dmgPersenOfATKFinal * player.GetATK();
+        return damage + dmgPersenOfATKFinalPersen * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

@@ -22,9 +22,20 @@ public class Whirlwind : Skill
         get { return dmgPersenOfAGI + dmgPersenOfAGIUp * (level - 1); }
     }
 
+    public float dmgPersenOfAGIFinalPersen
+    {
+        get { return dmgPersenOfAGIFinal + 2.5f; }
+    }
+
+
     public float dmgPersenOfATKFinal
     {
         get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
+    }
+
+    public float dmgPersenOfATKFinalPersen
+    {
+        get { return dmgPersenOfATKFinal + 1f; }
     }
 
     public override string GetDescription()
@@ -38,7 +49,7 @@ public class Whirlwind : Skill
 
     public override float GetDamage(Player player)
     {
-        return this.damage + dmgPersenOfAGIFinal * player.GetAGI() + dmgPersenOfATKFinal * player.GetATK();
+        return this.damage + dmgPersenOfAGIFinalPersen * player.GetAGI() + dmgPersenOfATKFinalPersen * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

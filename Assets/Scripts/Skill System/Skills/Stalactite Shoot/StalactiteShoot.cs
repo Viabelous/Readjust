@@ -16,9 +16,19 @@ public class StalactiteShoot : Skill
         get { return dmgPersenOfDEF + dmgPersenOfDEFUp * (level - 1); }
     }
 
+    public float dmgPersenOfDEFFinalPersen
+    {
+        get { return dmgPersenOfDEFFinal + 2.5f; }
+    }
+
     public float dmgPersenOfATKFinal
     {
         get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
+    }
+
+    public float dmgPersenOfATKFinalPersen
+    {
+        get { return dmgPersenOfATKFinal + 1; }
     }
 
     public override string GetDescription()
@@ -32,7 +42,7 @@ public class StalactiteShoot : Skill
 
     public override float GetDamage(Player player)
     {
-        return damage += dmgPersenOfDEFFinal * player.GetDEF() + dmgPersenOfATKFinal * player.GetATK();
+        return damage += dmgPersenOfDEFFinalPersen * player.GetDEF() + dmgPersenOfATKFinalPersen * player.GetATK();
     }
 
     public override void Activate(GameObject gameObject)

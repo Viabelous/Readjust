@@ -11,6 +11,11 @@ public class Preserve : Skill
     {
         get { return shieldPersenOfDEF + shieldPersenOfDEFUp * (level - 1); }
     }
+    public float shieldPersenOfDEFFinalPersen
+    {
+        get { return shieldPersenOfDEFFinal + 2.5f; }
+    }
+
     public override string GetDescription()
     {
         string additionDEF = level > 1 ? " (+" + PersentaseToInt(shieldPersenOfDEFFinal - shieldPersenOfDEF) + "%) " : " ";
@@ -25,7 +30,7 @@ public class Preserve : Skill
         BuffSystem buffSystem = GameObject.Find("Player").GetComponent<BuffSystem>();
 
         PlayerController playerController = buffSystem.GetComponent<PlayerController>();
-        float value = shieldPersenOfDEFFinal * playerController.player.GetDEF();
+        float value = shieldPersenOfDEFFinalPersen * playerController.player.GetDEF();
 
         buffSystem.ActivateBuff(
                new Buff(

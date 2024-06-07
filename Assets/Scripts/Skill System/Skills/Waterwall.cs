@@ -18,6 +18,10 @@ public class Waterwall : Skill
     {
         get { return dmgPersenOfFOC + dmgPersenOfFOCUp * (level - 1); }
     }
+    public float dmgPersenOfFOCFinalPersen
+    {
+        get { return dmgPersenOfFOCFinal + 2.5f; }
+    }
 
     public override string GetDescription()
     {
@@ -30,7 +34,7 @@ public class Waterwall : Skill
     public override float GetDamage(Player player)
     {
 
-        return dmgPersenOfFOCFinal * player.GetFOC();
+        return dmgPersenOfFOCFinalPersen * player.GetFOC();
     }
 
     public override void Activate(GameObject gameObject)

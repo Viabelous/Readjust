@@ -22,10 +22,23 @@ public class ThornCover : Skill
         get { return dmgPersenOfDEF + dmgPersenOfDEFUp * (level - 1); }
     }
 
+    public float dmgPersenOfDEFFinalPersen
+    {
+        get { return dmgPersenOfDEFFinal + 2.5f; }
+    }
+
+
     public float dmgPersenOfATKFinal
     {
         get { return dmgPersenOfATK + dmgPersenOfATKUp * (level - 1); }
     }
+
+
+    public float dmgPersenOfATKFinalPersen
+    {
+        get { return dmgPersenOfATKFinal + 1; }
+    }
+
 
     public override string GetDescription()
     {
@@ -42,7 +55,7 @@ public class ThornCover : Skill
         buffSystem = playerController.GetComponent<BuffSystem>();
         Payment(buffSystem.transform);
 
-        float value = dmgPersenOfDEFFinal * playerController.player.GetDEF() + dmgPersenOfATKFinal * playerController.player.GetATK();
+        float value = dmgPersenOfDEFFinalPersen * playerController.player.GetDEF() + dmgPersenOfATKFinalPersen * playerController.player.GetATK();
         buff = new Buff(
                 this.id,
                 this.name,

@@ -13,6 +13,10 @@ public class Lenire : Skill
     {
         get { return manaPersenOfFOC + manaPersenOfFOCUp * (level - 1); }
     }
+    public float manaPersenOfFOCFinalPersen
+    {
+        get { return manaPersenOfFOCFinal + 2.5f; }
+    }
 
     public override string GetDescription()
     {
@@ -29,7 +33,7 @@ public class Lenire : Skill
         Payment(playerController.transform);
 
         BuffSystem buffSystem = playerController.GetComponent<BuffSystem>();
-        float value = manaValue + manaPersenOfFOCFinal * playerController.player.GetFOC();
+        float value = manaValue + manaPersenOfFOCFinalPersen * playerController.player.GetFOC();
 
         buffSystem.ActivateBuff(
            new Buff(

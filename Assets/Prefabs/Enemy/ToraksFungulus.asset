@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: ToraksFungulus
   m_EditorClassIdentifier: 
-  id: enemy35019
-  maxHp: 160
-  hp: 160
+  id: enemy19789
+  maxHp: 170
+  hp: 170
   atk: 25
   def: 0
   agi: 0

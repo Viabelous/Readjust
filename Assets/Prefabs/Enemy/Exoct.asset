@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Exoct
   m_EditorClassIdentifier: 
-  id: enemy6828
-  maxHp: 35
-  hp: 100
+  id: enemy81283
+  maxHp: 55
+  hp: 35
   atk: 10
   def: 0
   agi: 0

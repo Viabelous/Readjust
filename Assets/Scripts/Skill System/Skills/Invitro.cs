@@ -22,6 +22,12 @@ public class Invitro : Skill
         get { return shieldPersenOfDEF + shieldPersenOfDEFUp * (level - 1); }
     }
 
+    public float shieldPersenOfDEFFinalPersen
+    {
+        get { return shieldPersenOfDEFFinal + 2.5f; }
+    }
+
+
     public override string GetDescription()
     {
         string additionDEF = level > 1 ? " (+" + PersentaseToInt(shieldPersenOfDEFFinal - shieldPersenOfDEF) + "%) " : " ";
@@ -39,7 +45,7 @@ public class Invitro : Skill
         buffSystem = player.GetComponent<BuffSystem>();
 
         playerController = player.GetComponent<PlayerController>();
-        shield = shieldPersenOfMaxHP * playerController.player.GetMaxHP() + shieldPersenOfDEFFinal * playerController.player.GetDEF();
+        shield = shieldPersenOfMaxHP * playerController.player.GetMaxHP() + shieldPersenOfDEFFinalPersen * playerController.player.GetDEF();
         buffSystem.ActivateBuff(
            new Buff(
                 this.id,
