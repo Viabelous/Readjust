@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,9 +6,10 @@ using UnityEngine.UI;
 public class RewardPanel : MonoBehaviour
 {
     StageState type;
-    [SerializeField] private Text status, score, time, aerus, extraAerus, exp, extraExp;
+    [SerializeField] private Text status, score, time, aerus, extraAerus, exp, extraExp, guide;
     [SerializeField] private Image currentBtn, otherBtn;
     [SerializeField] private Sprite loseBanner, winBanner;
+    private bool canInteract = false;
     LevelChanger levelChanger;
     StageManager stageManager;
     // private Color selectedColor, unselectedColor;
@@ -19,32 +21,52 @@ public class RewardPanel : MonoBehaviour
         otherBtn.color = UnSelectedColor(otherBtn);
         levelChanger = GameObject.FindObjectOfType<LevelChanger>();
         stageManager = GameObject.FindObjectOfType<StageManager>();
+
+        canInteract = false;
+        currentBtn.gameObject.SetActive(false);
+        otherBtn.gameObject.SetActive(false);
+        guide.gameObject.SetActive(true);
     }
 
     void Update()
     {
-        if (
-            currentBtn.name == "replay_btn" && Input.GetKeyDown(KeyCode.RightArrow) ||
-            currentBtn.name == "menu_btn" && Input.GetKeyDown(KeyCode.LeftArrow)
-        )
+        if (canInteract)
         {
-            ToggleBtn();
+            if (
+                currentBtn.name == "replay_btn" && Input.GetKeyDown(KeyCode.RightArrow) ||
+                currentBtn.name == "menu_btn" && Input.GetKeyDown(KeyCode.LeftArrow)
+            )
+            {
+                ToggleBtn();
+            }
+            else if (Input.GetKeyDown(KeyCode.Q) && currentBtn.name == "menu_btn")
+            {
+                SceneManager.LoadScene("DeveloperZone");
+                // levelChanger.Transition("DeveloperZone");
+            }
+            else if (Input.GetKeyDown(KeyCode.Q) && currentBtn.name == "replay_btn")
+            {
+                // Dapatkan nama scene yang sedang aktif
+                string currentSceneName = SceneManager.GetActiveScene().name;
+                // Muat ulang scene yang sedang aktif
+                SceneManager.LoadScene(currentSceneName);
+                // levelChanger.Transition(currentSceneName);
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && currentBtn.name == "menu_btn")
+        else
         {
-            SceneManager.LoadScene("DeveloperZone");
-            // levelChanger.Transition("DeveloperZone");
-        }
-        else if (Input.GetKeyDown(KeyCode.Q) && currentBtn.name == "replay_btn")
-        {
-            // Dapatkan nama scene yang sedang aktif
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            // Muat ulang scene yang sedang aktif
-            SceneManager.LoadScene(currentSceneName);
-            // levelChanger.Transition(currentSceneName);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                canInteract = true;
+                currentBtn.gameObject.SetActive(true);
+                otherBtn.gameObject.SetActive(true);
+                guide.gameObject.SetActive(false);
+
+            }
         }
 
     }
+
 
     private Color SelectedColor(Image btn)
     {
