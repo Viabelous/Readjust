@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f178503a818ad0c4985f5aeae7da75a8, type: 3}
   m_Name: Dysnom
   m_EditorClassIdentifier: 
-  id: enemy49100
-  maxHp: 5500
+  id: enemy98658
+  maxHp: 8500
   hp: 5500
   atk: 40
   def: 0

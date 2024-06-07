@@ -854,7 +854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 16
+  maxTime: 15
   amount: 1
   spawnY: 0
 --- !u!1 &58506662
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 21
+  maxTime: 20
   amount: 1
   spawnY: 0
 --- !u!1 &109938565
@@ -7460,7 +7460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 21
+  maxTime: 20
   amount: 1
   spawnY: 0
 --- !u!1 &635510359
@@ -11597,7 +11597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 16
+  maxTime: 15
   amount: 1
   spawnY: 1
 --- !u!1 &1208448850
@@ -13593,7 +13593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 16
+  maxTime: 15
   amount: 1
   spawnY: 1
 --- !u!1 &1383522938
@@ -15556,7 +15556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 21
+  maxTime: 20
   amount: 1
   spawnY: 1
 --- !u!1 &1559108648
@@ -20438,7 +20438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 21
+  maxTime: 20
   amount: 1
   spawnY: 1
 --- !u!1 &2136176955
@@ -20568,7 +20568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 254449682}
   minTime: 1
-  maxTime: 16
+  maxTime: 15
   amount: 1
   spawnY: 0
 --- !u!1 &2139575071

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Falkor
   m_EditorClassIdentifier: 
-  id: enemy67074
-  maxHp: 77
-  hp: 67
+  id: enemy99351
+  maxHp: 107
+  hp: 77
   atk: 10
   def: 0
   agi: 0

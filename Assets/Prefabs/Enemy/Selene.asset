@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3682d028bdf5744f8bdaae2b5d50832, type: 3}
   m_Name: Selene
   m_EditorClassIdentifier: 
-  id: enemy27599
-  maxHp: 21000
+  id: enemy42018
+  maxHp: 27000
   hp: 21000
   atk: 68
   def: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Yuetoo
   m_EditorClassIdentifier: 
-  id: enemy98567
-  maxHp: 120
+  id: enemy84575
+  maxHp: 150
   hp: 120
   atk: 65
   def: 0

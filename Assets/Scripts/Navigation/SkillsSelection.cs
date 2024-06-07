@@ -133,6 +133,7 @@ public class SkillsSelection : Navigation
             currState = NavigationState.Selected;
         }
     }
+
     public void Unselected()
     {
         GameManager.selectedSkills.Remove(prefab);
@@ -141,6 +142,7 @@ public class SkillsSelection : Navigation
     public void Upgrade()
     {
         skill.UpgradeLevel();
+        prefab.GetComponent<SkillController>().playerSkill = skill;
         GameManager.unlockedSkills[skill.Name] = skill.Level;
     }
 }

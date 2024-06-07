@@ -53,7 +53,7 @@ public class HydroPulseBehaviour : MonoBehaviour
             GameObject hydroPref = Instantiate(hydro, transform);
             SkillController hydroController = hydroPref.GetComponent<SkillController>();
 
-            // hydroController.skill = skill.Clone();
+            hydroController.playerSkill = skill.Clone();
             hydroController.playerSkill.LockedEnemy = lockedEnemies[i];
         }
 
@@ -92,7 +92,7 @@ public class HydroPulseBehaviour : MonoBehaviour
             return;
         }
 
-        distances.OrderBy(dict => dict.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+        distances = distances.OrderBy(dict => dict.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
 
         int index = 0;
         foreach (Transform key in distances.Keys)
@@ -103,7 +103,6 @@ public class HydroPulseBehaviour : MonoBehaviour
             }
             index++;
         }
-
     }
 
     public bool AllEnemiesKilled()

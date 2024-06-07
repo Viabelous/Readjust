@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Ignis
   m_EditorClassIdentifier: 
-  id: enemy23451
-  maxHp: 102
-  hp: 100
+  id: enemy19226
+  maxHp: 132
+  hp: 102
   atk: 10
   def: 0
   agi: 0

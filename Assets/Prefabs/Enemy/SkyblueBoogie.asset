@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: SkyblueBoogie
   m_EditorClassIdentifier: 
-  id: enemy89410
-  maxHp: 178
-  hp: 172
+  id: enemy61248
+  maxHp: 208
+  hp: 178
   atk: 50
   def: 0
   agi: 0

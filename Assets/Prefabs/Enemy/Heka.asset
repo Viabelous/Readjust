@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed371f0600def864eabbe102e517e93e, type: 3}
   m_Name: Heka
   m_EditorClassIdentifier: 
-  id: enemy35200
-  maxHp: 13000
+  id: enemy71684
+  maxHp: 15000
   hp: 13000
   atk: 75
   def: 0
