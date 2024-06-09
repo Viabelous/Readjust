@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Ignis
   m_EditorClassIdentifier: 
-  id: enemy19226
+  id: enemy17912
   maxHp: 132
-  hp: 102
+  hp: 132
   atk: 10
   def: 0
   agi: 0
-  speed: 1.6
+  speed: 2
   foc: 0
   actionEnabled: 1
   movementEnabled: 1

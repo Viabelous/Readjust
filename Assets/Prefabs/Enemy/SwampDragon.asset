@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: SwampDragon
   m_EditorClassIdentifier: 
-  id: enemy63440
+  id: enemy38489
   maxHp: 232
-  hp: 203
+  hp: 232
   atk: 50
   def: 0
   agi: 0
-  speed: 1.3
+  speed: 2
   foc: 0
   actionEnabled: 1
   movementEnabled: 1

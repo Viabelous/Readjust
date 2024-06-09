@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: DunatosFungulus
   m_EditorClassIdentifier: 
-  id: enemy97757
+  id: enemy78289
   maxHp: 190
-  hp: 160
+  hp: 190
   atk: 35
   def: 0
   agi: 0
-  speed: 1.2
+  speed: 1.4
   foc: 0
   actionEnabled: 1
   movementEnabled: 1

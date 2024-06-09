@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83970c5c64c9ea04691554104bfbdf7e, type: 3}
   m_Name: Eris
   m_EditorClassIdentifier: 
-  id: enemy33405
+  id: enemy46403
   maxHp: 15000
-  hp: 12000
+  hp: 15000
   atk: 50
   def: 0
   agi: 0
-  speed: 1.3
+  speed: 3
   foc: 0
   actionEnabled: 1
   movementEnabled: 1
