@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Ether Embodiment
   description: Nda tau..
   price: 50
-  icon: {fileID: 1521393163, guid: d917843dabe74654eba0de380d4a699b, type: 3}
+  icon: {fileID: 21300000, guid: d01d1ce2a41f46a45aa88b8fb5570c82, type: 3}
   types: 0f000000
   adaptable: 0
   rewardType: 2

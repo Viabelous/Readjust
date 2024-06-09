@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: item_food_delivery_token
   name: Food Delivery Token
-  description: 'Menurunkan makanan di tempat acak setiap 15 detik yang akan mengisi
-    HP sebesar 35 dan MP sebesar 15.
+  description: 'Menurunkan makanan di tempat acak setiap 30 detik yang akan mengisi
+    HP sebesar 35 dan MP sebesar 35.
 
 
 
