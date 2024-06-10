@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: XenaProjectile
   m_EditorClassIdentifier: 
   damage: 100
-  speed: 9
+  speed: 8.5
   lockingTime: 0.85
   timeInterval: 3

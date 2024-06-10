@@ -15,15 +15,14 @@ MonoBehaviour:
   id: item_food_delivery_token
   name: Food Delivery Token
   description: 'Menurunkan makanan di tempat acak setiap 30 detik yang akan mengisi
-    HP sebesar 35 dan MP sebesar 35.
+    HP dan MP sebesar 18%.
 
 
 
-
-    Token untuk pelanggan setia restoran
-    terkemuka, tidak perlu ambil pusing dengan harga yang harus dibayar karena token
-    ini sebenarnya dibuat oleh pemilik toko untuk melunasi hutangnya yang tidak akan
-    pernah habis menurut kontrak.
+    Token untuk pelanggan setia restoran terkemuka,
+    tidak perlu ambil pusing dengan harga yang harus dibayar karena token ini sebenarnya
+    dibuat oleh pemilik toko untuk melunasi hutangnya yang tidak akan pernah habis
+    menurut kontrak.
 
 '
   price: 5000
@@ -31,6 +30,6 @@ MonoBehaviour:
   types: 0f000000
   adaptable: 0
   food: {fileID: 3169602492680716054, guid: 78917f25fd5e88e45ad54982d8003302, type: 3}
-  healHP: 35
-  healMana: 35
+  healHPPersenOfMaxHP: 0.18
+  healManaPersenOfMaxMana: 0.18
   timer: 30

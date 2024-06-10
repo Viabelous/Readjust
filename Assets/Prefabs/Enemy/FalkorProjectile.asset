@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0e5541e55a5c146a7ff8f55a3318bf, type: 3}
   m_Name: FalkorProjectile
   m_EditorClassIdentifier: 
-  damage: 50
-  speed: 5
+  damage: 54
+  speed: 5.5
   lockingTime: 1.2
   timeInterval: 8

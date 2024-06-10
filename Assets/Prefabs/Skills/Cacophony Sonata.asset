@@ -21,7 +21,7 @@ MonoBehaviour:
   movementType: 3
   costType: 1
   initCd: 35
-  cost: 20
+  cost: 30
   damage: 0
   upCd: -1
   upCost: -1

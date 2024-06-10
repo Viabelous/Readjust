@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: Octoleus
   m_EditorClassIdentifier: 
-  id: enemy85339
+  id: enemy65637
   maxHp: 245
   hp: 245
-  atk: 58
+  atk: 88
   def: 0
   agi: 0
   speed: 2.2

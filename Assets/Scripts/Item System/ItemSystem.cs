@@ -14,7 +14,6 @@ public class ItemSystem : MonoBehaviour
         {
             foreach (Item item in GameManager.selectedItems)
             {
-                print(item.Name);
                 Item itemActivated = item.Clone();
                 itemsActivated.Add(itemActivated);
 

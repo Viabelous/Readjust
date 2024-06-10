@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: WhiteBoogie
   m_EditorClassIdentifier: 
-  id: enemy97970
+  id: enemy13529
   maxHp: 195
   hp: 195
-  atk: 45
+  atk: 58
   def: 0
   agi: 0
   speed: 2.5

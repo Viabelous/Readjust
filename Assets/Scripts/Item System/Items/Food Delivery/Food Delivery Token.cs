@@ -6,33 +6,39 @@ public class FoodDeliveryToken : Item
     [Header("Food Sprite")]
     [SerializeField] private GameObject food;
     [Header("Heal Value")]
-    [SerializeField] private float healHP;
-    [SerializeField] private float healMana;
+    [SerializeField] private float healHPPersenOfMaxHP;
+    [SerializeField] private float healManaPersenOfMaxMana;
     [Header("Time Interval")]
     [SerializeField] private float timer;
     private float maxTimer;
+    private bool setValue;
     // private BuffSystem buffSystem;
-
-
 
     public override void Activate(GameObject player)
     {
         maxTimer = timer;
-        // buffSystem = player.GetComponent<BuffSystem>();
-        // Buff buff = new Buff(this.id, this.name, BuffType.Custom, 0, 0);
-        // buffSystem.ActivateBuff(buff);
-
-        food.GetComponent<FoodDeliveryBehaviour>().healHP = healHP;
-        food.GetComponent<FoodDeliveryBehaviour>().healMana = healMana;
+        setValue = false;
     }
 
     public override void OnActivated(GameObject player)
     {
+        if (!setValue)
+        {
+            float healHP = healHPPersenOfMaxHP * player.GetComponent<PlayerController>().player.GetMaxHP();
+            float healMana = healManaPersenOfMaxMana * player.GetComponent<PlayerController>().player.GetMaxHP();
+
+            food.GetComponent<FoodDeliveryBehaviour>().healHP = healHP;
+            food.GetComponent<FoodDeliveryBehaviour>().healMana = healMana;
+
+            setValue = true;
+        }
+
         timer -= Time.deltaTime;
 
         if (timer <= 0)
         {
             Debug.Log("Food dropped!");
+
             DropFood();
             timer = maxTimer;
         }

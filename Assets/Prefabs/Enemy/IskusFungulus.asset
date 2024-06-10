@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c1fa30af7401242a857110829ce835, type: 3}
   m_Name: IskusFungulus
   m_EditorClassIdentifier: 
-  id: enemy39959
+  id: enemy10832
   maxHp: 150
-  hp: 120
-  atk: 40
+  hp: 150
+  atk: 60
   def: 0
   agi: 0
   speed: 1.15
