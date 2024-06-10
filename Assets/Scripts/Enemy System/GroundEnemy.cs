@@ -36,26 +36,12 @@ public class GroundEnemy : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-
-        if (other.CompareTag("Enemy"))
-        {
-            // kalau musuh di atas object
-            if (transform.position.y + pivotOffset > other.transform.position.y)
-            {
-                spriteRenderer.sortingOrder = -10;
-            }
-            // musuh di bawah object
-            else
-            {
-                spriteRenderer.sortingOrder = -1;
-            }
-        }
-
         if (other.CompareTag("Player"))
         {
             spriteRenderer.sortingLayerName = other.GetComponent<PlayerController>().spriteRenderers[0].sortingLayerName;
         }
 
+        
         if (other.CompareTag("Object"))
         {
             // kalau musuh di atas object
@@ -69,6 +55,7 @@ public class GroundEnemy : MonoBehaviour
                 spriteRenderer.sortingLayerName = "Chr Front";
             }
         }
+        
     }
 
     void OnTriggerExit2D(Collider2D other)
