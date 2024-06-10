@@ -141,19 +141,19 @@ public class Skill : ScriptableObject
             switch (classTier)
             {
                 case SkillClass.Basic:
-                    this.expUpCost = 50;
+                    this.expUpCost = 100;
                     break;
 
                 case SkillClass.Intermediate:
-                    this.expUpCost = 500;
+                    this.expUpCost = 750;
                     break;
 
                 case SkillClass.High:
-                    this.expUpCost = 1000;
+                    this.expUpCost = 2000;
                     break;
 
                 case SkillClass.Supreme:
-                    this.expUpCost = 2000;
+                    this.expUpCost = 5000;
                     break;
             }
             return expUnlockCost + expUpCost * level;
@@ -167,19 +167,19 @@ public class Skill : ScriptableObject
             switch (classTier)
             {
                 case SkillClass.Basic:
-                    this.expUnlockCost = 100;
+                    this.expUnlockCost = 250;
                     break;
 
                 case SkillClass.Intermediate:
-                    this.expUnlockCost = 1500;
+                    this.expUnlockCost = 2000;
                     break;
 
                 case SkillClass.High:
-                    this.expUnlockCost = 5000;
+                    this.expUnlockCost = 7500;
                     break;
 
                 case SkillClass.Supreme:
-                    this.expUnlockCost = 10500;
+                    this.expUnlockCost = 20000;
                     break;
             }
             return expUnlockCost;

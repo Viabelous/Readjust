@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f025acaea34cd0f4082f62b4f7e2299e, type: 3}
   m_Name: PlayerBasic
   m_EditorClassIdentifier: 
-  id: player72519
+  id: player54335
   maxHp: 100
   hp: 100
   atk: 10
@@ -31,5 +31,5 @@ MonoBehaviour:
   aerus: 0
   exp: 0
   venetia: 0
-  aerusUpCost: 100
-  expUpCost: 50
+  aerusUpCost: 200
+  expUpCost: 100
