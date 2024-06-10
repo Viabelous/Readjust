@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +28,11 @@ public class ShopManager : MonoBehaviour
             obvirtuFocused = WindowsController.HoveredButton.GetComponent<ShopSelection>();
             obvirtuName.GetComponent<Text>().text = obvirtuFocused.obvirtu.Name;
             pic.GetComponent<Image>().sprite = obvirtuFocused.obvirtu.Icon;
-            descriptionText.text = obvirtuFocused.obvirtu.Description;
+
+            string desc = obvirtuFocused.obvirtu.Description;
+            List<string> descSplit = desc.Split("\n").ToList();
+            descriptionText.text = descSplit.First();
+            
             price.text = obvirtuFocused.obvirtu.Price.ToString();
         }
     }
