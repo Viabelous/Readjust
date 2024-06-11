@@ -88,7 +88,6 @@ public class DefenseSystem : MonoBehaviour
                     {
                         playerDefender.shield -= totalDamage;
                         return;
-
                     }
                 }
 
@@ -105,6 +104,7 @@ public class DefenseSystem : MonoBehaviour
 
         defender.hp -= finalDamage;
 
+        print("HP: " + defender.hp);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -154,13 +154,14 @@ public class DefenseSystem : MonoBehaviour
                 // print("trigger");
                 if (other.CompareTag("EnemyDamage"))
                 {
-                    // print("kena damage musuh");
                     float dealDamage = other.GetComponent<AttackSystem>().DealDamage();
+                    TakeDamage(dealDamage);
 
                     // jika player punya buff thorn, pantulkan damage ke musuh yg serang
                     DoIfThornCoverActivated(other);
+
                     GetComponent<PlayerController>().Effected("enemy_damage");
-                    TakeDamage(dealDamage);
+
                 }
                 break;
 
@@ -373,7 +374,6 @@ public class DefenseSystem : MonoBehaviour
         }
 
         MobController mobController = lockedEnemy.GetComponent<MobController>();
-        mobController.Effected("nexus");
         Instantiate(((Nexus)nexus).DamageEffect, mobController.transform.position, Quaternion.identity);
 
         float nexusDamage = ((Nexus)nexus).dmgPersenOfTotalDmgFinal * dealDamage;
@@ -387,6 +387,7 @@ public class DefenseSystem : MonoBehaviour
 
         // berikan damage ke musuh yg ditandai
         lockedEnemy.GetComponent<DefenseSystem>().TakeDamage(nexusDamage);
+        mobController.Effected("nexus");
 
     }
 

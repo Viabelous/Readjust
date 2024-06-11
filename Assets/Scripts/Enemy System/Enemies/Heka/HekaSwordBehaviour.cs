@@ -15,7 +15,6 @@ public class HekaSwordBehaviour : MonoBehaviour
 
     void Start()
     {
-        print("start");
         canAttack = false;
         lifeTimer = 0;
         animator = GetComponent<Animator>();
@@ -75,10 +74,17 @@ public class HekaSwordBehaviour : MonoBehaviour
             return;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * 0.01f);
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
         // rotasikan arah hadap skill --------------------------------
-        transform.up = target.position - transform.position;
+        // transform.up = target.position - transform.position;
+        transform.up = (target.position - transform.position).normalized;
+        // Vector2 direction = (target.position - transform.position).normalized;
+
+        // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        // transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 200 * Time.deltaTime);
 
     }
 
@@ -96,7 +102,8 @@ public class HekaSwordBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animator.SetTrigger("End");
+            // animator.SetTrigger("End");
+            Destroy(gameObject);
         }
     }
 

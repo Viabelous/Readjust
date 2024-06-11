@@ -2339,11 +2339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1244711691460411139, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
       propertyPath: m_CallbackLayers.m_Bits
-      value: 4294967295
+      value: 44087
       objectReference: {fileID: 0}
     - target: {fileID: 1244711691460411139, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
       propertyPath: m_ContactCaptureLayers.m_Bits
-      value: 4294967295
+      value: 44087
       objectReference: {fileID: 0}
     - target: {fileID: 1292305430675066341, guid: 9fe8beb8e4807d24e857eabd3b0aa095, type: 3}
       propertyPath: expText

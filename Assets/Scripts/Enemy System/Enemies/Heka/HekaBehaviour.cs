@@ -12,7 +12,6 @@ public class HekaBehaviour : MonoBehaviour
     {
         heka = (Heka)GetComponent<MobController>().enemy;
         swordsObj = Instantiate(heka.GetSwords(), transform);
-        print("summon");
     }
 
     private void StartAttack()

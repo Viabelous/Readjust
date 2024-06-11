@@ -82,7 +82,7 @@ public class Heka : Enemy
 
     public float GetSwordDamage()
     {
-        return atk + atk * dmgPersenOfATK;
+        return atk * dmgPersenOfATK;
     }
 
 
