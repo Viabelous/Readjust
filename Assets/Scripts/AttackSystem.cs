@@ -77,19 +77,13 @@ public class AttackSystem : MonoBehaviour
                 }
                 break;
             case Map.Stage3:
-                if (skill.Element == Element.Earth)
+                if (skill.Element == Element.Water)
                 {
                     boosterDmg += 0.08f;
                 }
                 break;
             case Map.Stage4:
-                if (skill.Element == Element.Earth)
-                {
-                    boosterDmg += 0.08f;
-                }
-                break;
-            case Map.Stage5:
-                if (skill.Element == Element.Earth)
+                if (skill.Element == Element.Air)
                 {
                     boosterDmg += 0.08f;
                 }

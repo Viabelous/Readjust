@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemSystem : MonoBehaviour
 {
     private bool hasActivated = false;
-    [SerializeField] private Map map;
+    // [SerializeField] private Map map;
     List<Item> itemsActivated = new List<Item>();
 
     private void Update()
@@ -19,7 +19,7 @@ public class ItemSystem : MonoBehaviour
 
                 if (itemActivated.Adaptable)
                 {
-                    itemActivated.Adapting(map);
+                    itemActivated.Adapting(GameManager.selectedMap);
                 }
 
                 if (itemActivated.GetType() != typeof(RewardMultiplier))
