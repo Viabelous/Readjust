@@ -32,7 +32,7 @@ public class ShopManager : MonoBehaviour
             string desc = obvirtuFocused.obvirtu.Description;
             List<string> descSplit = desc.Split("\n").ToList();
             descriptionText.text = descSplit.First();
-            
+
             price.text = obvirtuFocused.obvirtu.Price.ToString();
         }
     }
@@ -65,5 +65,10 @@ public class ShopManager : MonoBehaviour
         {
             dis.GetComponent<ShopSelection>().refreshObvirtu();
         }
+    }
+
+    public Item[] GetItemsList()
+    {
+        return listObvirtu;
     }
 }

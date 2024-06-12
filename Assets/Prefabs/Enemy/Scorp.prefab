@@ -262,6 +262,7 @@ MonoBehaviour:
   animate: {fileID: 0}
   spriteRenderer: {fileID: 5175660484313669127}
   onSkillTrigger: 0
+  healthBar: {fileID: 1272909296020714056, guid: 6e8bb66f732164a4dbb518ea6be01471, type: 3}
 --- !u!114 &1245312988786642586
 MonoBehaviour:
   m_ObjectHideFlags: 0

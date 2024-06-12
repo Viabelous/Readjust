@@ -104,6 +104,11 @@ public class DefenseSystem : MonoBehaviour
 
         defender.hp -= finalDamage;
 
+        if (type == CharacterType.Enemy || type == CharacterType.FlyingEnemy)
+        {
+            GetComponent<MobController>().UpdateBar();
+        }
+
         print("HP: " + defender.hp);
     }
 

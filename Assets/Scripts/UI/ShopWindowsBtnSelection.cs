@@ -9,7 +9,7 @@ public class ShopWindowsBtnSelection : Navigation
     [SerializeField] GameObject price;
     [SerializeField] NavigationState currState;
     ShopSelection focusedObvirtu;
-    bool canBuy;
+    bool canBuy = false;
 
     void Update()
     {

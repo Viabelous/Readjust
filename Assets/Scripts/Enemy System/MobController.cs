@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public enum CharacterState
@@ -30,9 +31,8 @@ public class MobController : MonoBehaviour
     private bool gainSpeed = false, isBoss, randomMovement;
     private Vector3 targetPos;
 
-
     [HideInInspector] public bool onSkillTrigger = false; // tanda apakah sedang berada di dalam collider skill
-
+    [SerializeField] private GameObject healthBar;
     // private bool thorned;
 
 
@@ -56,6 +56,11 @@ public class MobController : MonoBehaviour
         movementEnabled = true;
         targetPos = player.transform.position;
         randomMovement = false;
+
+        if (player.GetComponent<ItemSystem>().CheckItem("Purah Sekihi"))
+        {
+            healthBar = Instantiate(healthBar, transform);
+        }
     }
 
     void Update()
@@ -198,6 +203,11 @@ public class MobController : MonoBehaviour
     public void SetRandomMovement(bool value)
     {
         this.randomMovement = value;
+    }
+
+    public void UpdateBar()
+    {
+        healthBar.GetComponent<EnemyBar>().UpdateBar();
     }
 
 }

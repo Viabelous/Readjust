@@ -10,7 +10,8 @@ public class StorageManager : Navigation
     public Text descriptionText;
     public Image iconFocus;
     [SerializeField] Image[] displayImage;
-    [SerializeField] Item[] listOfObvirtu;
+    // [SerializeField] Item[] listOfObvirtu;
+    [SerializeField] ShopManager shopManager;
     [HideInInspector] List<Item> unlockedItemList = new List<Item> { };
     [HideInInspector] int index = 0;
     [HideInInspector] public Item focusedObvirtu;
@@ -20,8 +21,8 @@ public class StorageManager : Navigation
     {
         foreach (string obvirtuName in GameManager.unlockedItems)
         {
-            if (!unlockedItemList.Contains(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault()))
-                unlockedItemList.Add(listOfObvirtu.Where(obj => obj.Name == obvirtuName).SingleOrDefault());
+            if (!unlockedItemList.Contains(shopManager.GetItemsList().Where(obj => obj.Name == obvirtuName).SingleOrDefault()))
+                unlockedItemList.Add(shopManager.GetItemsList().Where(obj => obj.Name == obvirtuName).SingleOrDefault());
         }
 
         if (unlockedItemList.Count >= 1)
@@ -89,12 +90,12 @@ public class StorageManager : Navigation
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-                WindowsController.PlaySound(WindowsController.navigateButtonSound[8]);
-                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
-                WindowsController.HoveredButton.GetComponent<Navigation>().Right.GetComponent<Navigation>().Left = gameObject;
-                WindowsController.HoveredButton = Right;
-                WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
-                WindowsController.isScrolling = false;
+            WindowsController.PlaySound(WindowsController.navigateButtonSound[8]);
+            WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(false);
+            WindowsController.HoveredButton.GetComponent<Navigation>().Right.GetComponent<Navigation>().Left = gameObject;
+            WindowsController.HoveredButton = Right;
+            WindowsController.HoveredButton.GetComponent<Navigation>().IsHovered(true);
+            WindowsController.isScrolling = false;
         }
 
     }

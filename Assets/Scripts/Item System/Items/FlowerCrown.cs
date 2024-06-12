@@ -12,9 +12,7 @@ public class FlowerCrown : Item
     public override void Activate(GameObject player)
     {
         itemSystem = player.GetComponent<ItemSystem>();
-        // !!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!NANTI UBAH WOIII!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!
+
         if (itemSystem.CheckItem("Badge of Honour"))
         {
             return;

@@ -4,6 +4,7 @@ public class FlyingEnemyShadow : MonoBehaviour
 {
 
     public GameObject flyingEnemy;
+    public float pivotOffset;
 
 
     private SpriteRenderer spriteRenderer;
@@ -56,6 +57,11 @@ public class FlyingEnemyShadow : MonoBehaviour
             childSpriteRend.sortingLayerName = "Chr Front";
             childSpriteRend.color = spriteRenderer.color;
         }
+    }
+
+    public float GetPivotOffset()
+    {
+        return pivotOffset;
     }
 
 
