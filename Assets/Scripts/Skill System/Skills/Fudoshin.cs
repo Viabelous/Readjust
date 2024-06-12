@@ -19,7 +19,7 @@ public class Fudoshin : Skill
     {
         string additionDEF = level > 1 ? " (+" + (DEFValueFinal - DEFValue) + ") " : " ";
 
-        description = "Meningkatkan DEF sebanyak " + DEFValue + additionDEF + "untuk selama " + timer + "detik.";
+        description = "Meningkatkan DEF sebanyak " + DEFValue + additionDEF + "untuk selama " + timer + " detik.";
         return description;
     }
 

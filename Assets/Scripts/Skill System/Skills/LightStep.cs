@@ -5,6 +5,7 @@ public class LightStep : Skill
 {
     [Header("Buff Value")]
     [SerializeField] private float AGIValue;
+
     [Header("Level Up Value")]
     [SerializeField] private float AGIValueUp;
     private BuffSystem buffSystem;
@@ -19,7 +20,7 @@ public class LightStep : Skill
     {
         string additionAGI = level > 1 ? " (+" + (AGIValueFinal - AGIValue) + ") " : " ";
 
-        description = "Meningkatkan AGI sebanyak " + AGIValue + additionAGI + "selama " + timer + "detik.";
+        description = "Meningkatkan AGI sebanyak " + AGIValue + additionAGI + "selama " + timer + " detik.";
         return description;
     }
 

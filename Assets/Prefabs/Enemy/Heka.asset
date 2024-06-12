@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed371f0600def864eabbe102e517e93e, type: 3}
   m_Name: Heka
   m_EditorClassIdentifier: 
-  id: enemy54506
+  id: enemy29775
   maxHp: 15000
   hp: 15000
   atk: 80
@@ -33,4 +33,4 @@ MonoBehaviour:
   swordSpeed: 5.5
   swordLifeTime: 5
   swordsDelay: 0.3
-  summonMaxTime: 10
+  summonMaxTime: 20

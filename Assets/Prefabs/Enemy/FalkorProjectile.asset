@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FalkorProjectile
   m_EditorClassIdentifier: 
   damage: 54
-  speed: 5.5
+  speed: 5.7
   lockingTime: 1.2
-  timeInterval: 8
+  timeInterval: 5

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ErisProjectile
   m_EditorClassIdentifier: 
   damage: 75
-  speed: 7
+  speed: 7.2
   lockingTime: 0.7
   timeInterval: 5

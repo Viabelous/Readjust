@@ -15,4 +15,4 @@ MonoBehaviour:
   damage: 100
   speed: 8.5
   lockingTime: 0.85
-  timeInterval: 3
+  timeInterval: 2.7

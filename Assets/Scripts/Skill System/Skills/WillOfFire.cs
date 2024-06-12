@@ -18,7 +18,7 @@ public class WillOfFire : Skill
 
     public override string GetDescription()
     {
-        string additionATK = level > 1 ? " (+" + (ATKValueFinal - ATKValue) + ")" : " ";
+        string additionATK = level > 1 ? " (+" + (ATKValueFinal - ATKValue) + ") " : " ";
 
         description = "Meningkatkan ATK sebanyak " + ATKValue + additionATK + "selama " + timer + " detik.";
         return description;

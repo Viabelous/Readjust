@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: IgnisProjectile
   m_EditorClassIdentifier: 
   damage: 67
-  speed: 6.2
+  speed: 6.5
   lockingTime: 0.5
   timeInterval: 8
